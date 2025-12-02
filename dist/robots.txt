@@ -1,0 +1,73 @@
+# robots.txt - Best Event SEO Optimization
+# Optimized for better crawl efficiency and SEO
+# Last Updated: 28 November 2025
+
+# Default robots
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*utm_source=*
+Disallow: /*?*utm_medium=*
+Disallow: /*?*utm_campaign=*
+
+# Allow important paths
+Allow: /organizasyonlar/
+Allow: /hakkimizda
+Allow: /iletisim
+Allow: /galeri
+Allow: /hizmet-bolgeleri
+Allow: /organik-pastalar
+
+# Google Bot (Priority crawler)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+Disallow: /admin/
+Disallow: /private/
+
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /
+Allow: /content/images/
+Allow: /assets/images/
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+Disallow: /admin/
+
+# Yandex Bot
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Baidu (Chinese search engine)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 3
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemaps (Multiple for better organization)
+Sitemap: https://www.bestevent.com.tr/sitemap.xml
+Sitemap: https://www.bestevent.com.tr/sitemap-images.xml
+
+# Contact Information (Schema.org compatible)
+# Host: www.bestevent.com.tr
+# Contact: info@bestevent.com
+# Phone: +905349306799

@@ -1,0 +1,158 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './styles/theme-base.css';
+@import './styles/theme-core.css';
+@import './styles/theme-kids.css';
+@import './styles/kids-product-hero.css';
+@import './styles/standartlardosyasi.css';
+
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&family=Poppins:wght@400;500;600;700&display=swap');
+
+@layer utilities {
+  .font-display {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-purple-600 via-pink-600 to-violet-600 bg-clip-text text-transparent;
+  }
+}
+
+/* Sihirbaz Hero Image - Responsive Position */
+.sihirbaz-hero-img {
+  object-position: 30% center; /* Mobil: %20 sola kaydırılmış */
+}
+
+@media (min-width: 768px) {
+  .sihirbaz-hero-img {
+    object-position: 30% 45%; /* Desktop: %20 sola + %15 aşağı */
+  }
+}
+
+/* Pamuk Şeker Hero Image - Responsive Position */
+.pamuk-seker-hero-img {
+  object-position: 35% center; /* Mobil: %15 sola kaydırılmış */
+}
+
+@media (min-width: 768px) {
+  .pamuk-seker-hero-img {
+    object-position: center center; /* Desktop: varsayılan konum */
+  }
+}
+
+/* Minnie Mouse Hero Background - Desktop Position */
+.minnie-mouse-hero-bg {
+  background-position: center center;
+}
+
+@media (min-width: 768px) {
+  .minnie-mouse-hero-bg {
+    background-position: center 60%; /* Desktop: %10 aşağı indirilmiş */
+  }
+}
+
+/* Hero background fit adjustments for mobile */
+.hero-image-mobile-wide {
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 767px) {
+  .hero-image-mobile-wide {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000;
+  }
+}
+
+/* Swiper Custom Styles */
+.swiper-slide {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.5s ease, visibility 0.5s ease !important;
+}
+
+.swiper-slide-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hide content of non-active slides */
+.swiper-slide:not(.swiper-slide-active) * {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.swiper-slide-active * {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+}
+
+.swiper-pagination-bullet {
+  background: white !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #d946ef !important;
+}
+
+/* Scrollbar Hide Utility (Netflix-style) */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+}
+
+/* ===== APPLE STYLE WALL (iPhone 17 Pro) ===== */
+html, body, #root {
+  height: 100%;
+  background: #050507; /* wall */
+}
+
+/* Tek duvar hissi: hafif vignette + yumuşak gradient */
+.wall-bg {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(120,120,160,0.12), transparent 60%),
+    radial-gradient(900px 500px at 10% 10%, rgba(255,255,255,0.04), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(255,255,255,0.03), transparent 60%),
+    linear-gradient(180deg, #050507 0%, #050507 35%, #0b0b10 70%, #050507 100%);
+}
+
+/* Çok hafif grain (Apple hissi). İstersen kaldır */
+.wall-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .06;
+  mix-blend-mode: soft-light;
+  background-image:
+    url("data:image/svg+xml;utf8,\
+    <svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>\
+    <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter>\
+    <rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/>\
+    </svg>");
+  background-size: 220px 220px;
+}
+
+/* Custom padding for Home manifesto section */
+@media (min-width: 768px) {
+  .md\:pt-28 {
+    padding-top: 17rem !important;
+  }
+}

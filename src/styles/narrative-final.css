@@ -1,0 +1,181 @@
+/* Apple-style Narrative Section System */
+
+:root {
+  --ink: #0f1115;
+  --muted: #667085;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .06);
+}
+
+/* Alternating backgrounds (Apple.com pattern) */
+.narrative-section {
+  padding: clamp(40px, 6vw, 80px) 0;
+  background: transparent;
+  transition: background 0.4s ease;
+  position: relative;
+}
+
+.narrative-section:nth-child(odd) {
+  background: #ffffff;
+}
+
+.narrative-section:nth-child(even) {
+  background: #fafafa;
+}
+
+/* Soft dividers between sections */
+.narrative-section + .narrative-section {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: clamp(40px, 6vw, 80px);
+}
+
+/* Container */
+.narrative-wrap {
+  max-width: 880px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(14px, 2.4vw, 18px);
+}
+
+/* Typography: Apple-style tight & sharp */
+.narrative-eyebrow {
+  color: #6e6e73;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.narrative-title {
+  color: #1d1d1f;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.narrative-body {
+  color: #1d1d1f;
+  font-size: clamp(1.06rem, 2vw, 1.3rem);
+  line-height: 1.47;
+  letter-spacing: -0.01em;
+  max-width: 700px;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Image: small but crystal clear */
+.narrative-figure {
+  margin-top: clamp(10px, 2vw, 14px);
+  width: 100%;
+  max-width: 640px;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.narrative-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.narrative-img:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.narrative-caption {
+  margin-top: 0.45rem;
+  color: #8a8f98;
+  font-size: 0.78rem;
+}
+
+/* Fade-in animation (Apple cubic-bezier) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .narrative-eyebrow,
+  .narrative-title,
+  .narrative-body,
+  .narrative-figure {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Desktop: Görseller viewport'un tam genişliğine yayılır */
+@media (min-width: 769px) {
+  .narrative-figure {
+    width: 100vw; /* Viewport'un tamamı */
+    margin-left: calc(-50vw + 50%); /* Container'dan taşırıp ekran genişliğine yay */
+    max-width: none; /* Sınır kaldır */
+  }
+  
+  .narrative-img {
+    max-height: 65vh; /* Viewport yüksekliğinin %65'i - yukarı taşmayı önle */
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Konteynerı tamamen doldur, siyah boşluk olmasın */
+    aspect-ratio: auto; /* Orijinal oran korunsun */
+  }
+}
+
+/* Inline narrative images - Siyah boşluk olmadan */
+.narrative-inline-img {
+  max-height: 90vh;
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Konteynerı tamamen doldur, siyah boşluk olmasın */
+  display: block;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .narrative-section {
+    padding: clamp(28px, 4vw, 40px) 0;
+  }
+  
+  .narrative-section + .narrative-section {
+    padding-top: clamp(28px, 4vw, 40px);
+  }
+  
+  .narrative-img {
+    border-radius: 12px;
+  }
+}

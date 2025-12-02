@@ -1,0 +1,108 @@
+/* Çocuk Teması: Apple-style gradient + pastel renk paleti */
+:root.theme-kids {
+  --bg-gradient: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #fafafa 50%,
+    #f8f8f8 100%
+  );
+  --bg-mobile: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+  --ink: #0f1115;
+  --ink-soft: rgba(15, 17, 21, .78);
+  --cta-grad: linear-gradient(90deg, #ff8a00, #ff4d4d);
+  --cta-ink: #fff;
+  --cta2-bg: #147ce5;
+  --cta2-ink: #fff;
+  --ring: 0 0 0 1px rgba(0, 0, 0, .06) inset;
+}
+
+/* Body: Apple tarzı gradient background */
+body.theme-kids {
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Mobil için simplified gradient (performans) */
+@media (max-width: 768px) {
+  body.theme-kids {
+    background: var(--bg-mobile);
+  }
+}
+
+/* Section'lar transparent (gradient görünsün) */
+section {
+  background: transparent;
+  padding-top: clamp(32px, 4vw, 80px);
+  padding-bottom: clamp(32px, 4vw, 80px);
+}
+
+/* Başlıklar: Apple tarzı tight letter-spacing, koyu kontrast */
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f1115;
+}
+
+/* Paragraflar: Yumuşak kontrast */
+p, .muted {
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* Butonlar */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: var(--fs-body, 1rem);
+  transition: all .2s ease-in-out;
+  box-shadow: var(--ring);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.btn-primary {
+  background: var(--cta-grad);
+  color: var(--cta-ink);
+  box-shadow: 0 10px 36px rgba(255, 77, 77, .28);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 14px 42px rgba(255, 77, 77, .35);
+}
+
+.btn-secondary {
+  background: var(--cta2-bg);
+  color: var(--cta2-ink);
+}
+
+/* Card'lar: Beyaz background (kontrast için) */
+.card, .concept-card, .hero-card {
+  background-color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .04);
+  border-radius: 16px;
+  transition: all .3s ease;
+}
+
+.card:hover, .concept-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .08);
+  transform: translateY(-2px);
+}
+
+/* Responsive utility */
+@media (max-width: 640px) {
+  section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}

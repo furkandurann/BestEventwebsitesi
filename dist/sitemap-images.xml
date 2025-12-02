@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Ana Sayfa Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/slider/konfeti.jpg</image:loc>
+      <image:title>Best Event - İstanbul Etkinlik Organizasyonu</image:title>
+      <image:caption>Profesyonel etkinlik organizasyonu hizmetleri</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Yüz Boyama Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/yuz-boyama</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/yuz-boyama-hero.jpg</image:loc>
+      <image:title>Profesyonel Yüz Boyama İstanbul</image:title>
+      <image:caption>Çocuk doğum günleri için yüz boyama hizmeti</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Magic Show Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/magic-show</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/gosteriler/magic-show.jpg</image:loc>
+      <image:title>Magic Show İstanbul - Sihirbaz Gösterisi</image:title>
+      <image:caption>Profesyonel sihirbaz gösterisi ve magic show</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Bubble Show Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/bubble-show</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/bubbleshow/bubble-show-main.jpg</image:loc>
+      <image:title>Bubble Show İstanbul - Sabun Köpüğü Gösterisi</image:title>
+      <image:caption>Büyülü bubble show gösterisi</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Kostümlü Karakterler Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/kostumlu-karakterler</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/Kostumlukarakterler/elsa.JPG</image:loc>
+      <image:title>Elsa Kiralama İstanbul</image:title>
+      <image:caption>Elsa kostümlü karakter kiralama</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/Kostumlukarakterler/pamukprensesyenii.JPG</image:loc>
+      <image:title>Pamuk Prenses Kiralama İstanbul</image:title>
+      <image:caption>Pamuk Prenses kostümlü karakter</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/Kostumlukarakterler/batman.jpg</image:loc>
+      <image:title>Batman Kiralama İstanbul</image:title>
+      <image:caption>Batman kostümlü karakter kiralama</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/Kostumlukarakterler/minniemause.JPG</image:loc>
+      <image:title>Minnie Mouse Kiralama İstanbul</image:title>
+      <image:caption>Minnie Mouse kostümlü karakter</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Palyaço Kiralama Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/palyaco-kiralama</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/Kostumlukarakterler/palyaco.JPG</image:loc>
+      <image:title>Palyaço Kiralama İstanbul</image:title>
+      <image:caption>Profesyonel palyaço kiralama hizmeti</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Dans Etkinlikleri Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/dans-etkinlikleri</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/Anasayfa/balletdans.jpg</image:loc>
+      <image:title>Dans Etkinlikleri İstanbul</image:title>
+      <image:caption>Profesyonel dans gösterileri ve etkinlikleri</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/Anasayfa/dansgirl.jpeg</image:loc>
+      <image:title>Dans Gösterisi İstanbul</image:title>
+      <image:caption>Çeşitli dans türleri ve gösterileri</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Müzik Etkinlikleri Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/muzik-etkinlikleri</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/music/trio-main.jpg</image:loc>
+      <image:title>Trio Kiralama İstanbul</image:title>
+      <image:caption>Canlı müzik trio ekibi</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Konsept Doğum Günü Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/konsept-dogum-gunu</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/konseptdogumgunu/konsept-main.jpg</image:loc>
+      <image:title>Konsept Doğum Günü İstanbul</image:title>
+      <image:caption>Özel tema doğum günü organizasyonları</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Organik Pastalar Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organik-pastalar</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/dogumgunupastasi/organic-cake-1.jpg</image:loc>
+      <image:title>Organik Doğum Günü Pastası İstanbul</image:title>
+      <image:caption>El yapımı organik pastalar</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Referanslar Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/referanslar</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/Anasayfa/kocholdingkurumsal.jpg</image:loc>
+      <image:title>Koç Holding Kurumsal Etkinlik</image:title>
+      <image:caption>Kurumsal etkinlik organizasyonu referansları</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/Anasayfa/vodafonekurumsal.jpeg</image:loc>
+      <image:title>Vodafone Kurumsal Etkinlik</image:title>
+      <image:caption>Vodafone etkinlik organizasyonu</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- VR Deneyimi Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/vr-sanal-gerceklik</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/vr-experience.jpg</image:loc>
+      <image:title>VR Sanal Gerçeklik İstanbul</image:title>
+      <image:caption>Sanal gerçeklik deneyimi etkinliği</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Şişme Oyun Parkı Görselleri -->
+  <url>
+    <loc>https://www.bestevent.com.tr/organizasyonlar/sisme-oyun-parki</loc>
+    <image:image>
+      <image:loc>https://www.bestevent.com.tr/content/images/inflatable-park.jpg</image:loc>
+      <image:title>Şişme Oyun Parkı İstanbul</image:title>
+      <image:caption>Çocuklar için şişme oyun parkı kiralama</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

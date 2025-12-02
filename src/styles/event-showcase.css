@@ -1,0 +1,92 @@
+.event-showcase {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: #111;
+    padding: clamp(40px, 5vw, 80px);
+    text-align: center;
+  }
+
+  .event-showcase--dark {
+    background: #000;
+    color: #fff;
+  }
+
+  .event-showcase__content {
+    margin-bottom: clamp(24px, 6vh, 64px);
+    max-width: 1000px;
+  }
+
+  .event-showcase__title {
+    font-family: 'SF Pro Display', 'Poppins', sans-serif;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-showcase__subtitle {
+    margin-top: 0.5rem;
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 1.7;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+
+  .event-showcase--dark .event-showcase__subtitle {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .event-showcase__cta {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.8rem 1.6rem;
+    min-height: 44px;
+    min-width: 44px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: #fff;
+    background: linear-gradient(90deg, #FFD480, #FF9040);
+    box-shadow: 0 8px 30px rgba(255, 144, 64, 0.25);
+    transition: all 0.25s ease;
+    text-decoration: none;
+  }
+
+  .event-showcase__cta:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+    box-shadow: 0 10px 36px rgba(255, 144, 64, 0.35);
+  }
+
+  .event-showcase__media {
+    max-width: 90vw;
+    width: 100%;
+  }
+
+  .event-showcase__media img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 40px rgba(0, 0, 0, 0.25));
+    transition: transform 1s ease;
+    border-radius: 16px;
+  }
+
+  .event-showcase__media img:hover {
+    transform: scale(1.02);
+  }
+
+  /* Responsive adjustments */
+@media (min-width: 768px) {
+  .event-showcase {
+    padding: clamp(60px, 8vw, 120px);
+  }
+}

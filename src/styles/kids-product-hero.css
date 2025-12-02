@@ -1,0 +1,115 @@
+/* Kids Product Canvas: CLS/LCP dostu, contain odaklı hero bölümü */
+.kids-hero {
+  position: relative;
+  width: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.kids-hero__inner {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: clamp(56px, 7vw, 96px) var(--container-pad);
+  display: grid;
+  row-gap: clamp(18px, 3vw, 30px);
+  justify-items: center;
+  text-align: center;
+}
+
+.kids-hero__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--track-tight);
+  font-size: var(--fs-hero);
+  line-height: 1.06;
+  margin-bottom: 0.5rem;
+}
+
+.kids-hero__subtitle {
+  margin-top: 0.5rem;
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: var(--fs-sub);
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.kids-hero__ctas {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Görsel alanı: kırpmasız, CLS önleme için width/height tutulur */
+.kids-hero__mediaWrap {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  min-height: clamp(38vh, 54vh, 66vh);
+  padding-block: clamp(12px, 3vw, 24px);
+}
+
+.kids-hero__img {
+  max-width: min(94vw, 1200px);
+  max-height: clamp(40vh, 60vh, 72vh);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  filter: drop-shadow(var(--shadow-soft));
+  border-radius: 16px;
+}
+
+@media (max-width: 480px) {
+  .kids-hero__title {
+    font-size: clamp(1.9rem, 9.5vw, 2.6rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+/* Doğum Günü Organizasyonu - Web için %40 yukarı kaydırma */
+@media (min-width: 768px) {
+  .dogum-gunu-hero-img {
+    object-position: center 10% !important;
+  }
+}
+
+/* Kostümlü Karakterler - Web için %30 sağa kaydırma */
+@media (min-width: 768px) {
+  .kostumlu-karakterler-hero-img {
+    object-position: 80% center !important;
+  }
+}
+
+/* Kostümlü Karakterler - Mobilde %30 sağa kaydırma */
+@media (max-width: 767px) {
+  .kostumlu-karakterler-hero-img {
+    object-position: 80% center !important;
+  }
+}
+
+/* Palyaço Etkinliği - %45 konumlandırma */
+.palyaco-hero-img {
+  object-position: 45% center !important;
+}
+
+/* Sihirbazlık Gösterisi - %75 yatay, %30 yukarı */
+.sihirbaz-hero-img {
+  object-position: 75% 30% !important;
+}
+
+/* Sihirbazlık Gösterisi - Desktop için %20 yukarı */
+@media (min-width: 768px) {
+  .sihirbaz-hero-img {
+    object-position: 75% 20% !important;
+  }
+}

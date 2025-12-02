@@ -3,10 +3,21 @@ import react from '@vitejs/plugin-react'
 import compression from 'vite-plugin-compression'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { VitePWA } from 'vite-plugin-pwa'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
   plugins: [
     react(),
+    
+    // Copy content folder to dist
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'content/**/*',
+          dest: 'content'
+        }
+      ]
+    }),
     
     // Gzip compression
     compression({

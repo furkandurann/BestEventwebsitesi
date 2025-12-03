@@ -104,20 +104,6 @@ const BubbleShow = () => {
           />
         </div>
 
-        {/* Section 4: Doğum Günü Bubble Show Paketleri */}
-        <NarrativeSection
-          eyebrow="ÖZEL PAKETLER"
-          title="Doğum Günü Bubble Show Paketleri"
-          body="Doğum günü organizasyonu bubble show paketlerimiz ile çocuklarınızın özel günlerini unutulmaz kılın. Her doğum günü temasına uygun özel bubble show gösterileri hazırlıyoruz. Prenses temalı, süper kahraman temalı, deniz altı temalı ve daha fazla özel konsept bubble show organizasyonu. Doğum günü pastası kesimi sırasında özel bubble show sunumu da dahil."
-        />
-        <div className="w-full flex justify-center items-center bg-white py-8">
-          <img 
-            src="/content/images/bubbleshow/bubbleshowslider.jpeg"
-            alt="Doğum günü bubble show paketleri"
-            className="object-contain max-h-[80vh] w-auto"
-          />
-        </div>
-
         {/* Section 5: Dev Sabun Köpükleri */}
         <NarrativeSection
           eyebrow="DEV KÖPÜKLER"

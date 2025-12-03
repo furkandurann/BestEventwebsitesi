@@ -147,7 +147,7 @@ const heroSlides = {
     {
       title: 'Dans Etkinlikleri',
       subtitle: 'Enerjiyi sahneye taşıyoruz',
-      image: '/content/images/dance/dance1.jpg',
+      image: '/content/images/dance/lüksdanskarsilamaekibi.jpeg',
       focal: 'center 42%',
       position: 'bottom-left',
       ctaText: 'Paketleri Gör',

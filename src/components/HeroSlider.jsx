@@ -9,9 +9,7 @@ import 'swiper/css/navigation'
 
 const slides = [
   {
-    title: 'Hayalinizdeki Etkinlik',
-    description: 'Mutluluk İncelik Gerektirir',
-    backgroundImage: '/content/images/slider/konfeti.jpg',
+    backgroundImage: '/content/images/Anasayfa/siteanahero.jpg',
   },
   {
     title: 'Çocuk Etkinlikleri',
@@ -38,7 +36,7 @@ const slides = [
   {
     title: 'Dans Etkinlikleri',
     description: 'Enerji dolu dans ve takım sporları ile motivasyonu artırın',
-    backgroundImage: '/content/images/dance/dansanasayfaanagorsel.JPG',
+    backgroundImage: '/content/images/Anasayfa/dansanasayfaanagorsel.JPG',
   },
 ]
 
@@ -72,7 +70,7 @@ const HeroSlider = () => {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="swiper-slide">
-            <div className="absolute inset-0 h-full w-full flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 h-full w-full flex items-start justify-start overflow-hidden pt-[30vh]">
               {slide.backgroundImage && (
                 <div
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -80,9 +78,12 @@ const HeroSlider = () => {
                 />
               )}
 
-              <div className="absolute inset-0 bg-black/50" />
-
-              <div className="relative z-10 layout-container pt-32 sm:pt-36 md:pt-24">
+              <div 
+                className="relative z-10 layout-container"
+                style={{
+                  marginLeft: index === 3 ? '15vw' : (index === 4 || index === 5) ? '25vw' : '10vw'
+                }}
+              >
                 <div className="max-w-[80%]">
                   <motion.div
                     initial={
@@ -95,31 +96,10 @@ const HeroSlider = () => {
                         : { delay: 0.2, duration: 0.8, ease: 'easeOut' }
                     }
                   >
-                    <h1 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-white mb-4 drop-shadow-2xl [text-shadow:_0_4px_8px_rgb(0_0_0_/_80%)] text-left">
-                      {slide.title}
-                    </h1>
-
-                    {slide.description && (
-                      <p className="text-base sm:text-lg md:text-2xl text-white/95 mb-7 font-medium drop-shadow-xl [text-shadow:_0_2px_4px_rgb(0_0_0_/_60%)] text-left">
-                        {slide.description}
-                      </p>
-                    )}
-
-                    {slide.slogan && (
-                      <motion.p
-                        initial={
-                          shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                        }
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={
-                          shouldReduceMotion
-                            ? { duration: 0 }
-                            : { delay: 0.4, ease: 'easeOut' }
-                        }
-                        className="mb-10 text-lg md:text-2xl font-semibold text-white/90 drop-shadow-xl text-left"
-                      >
-                        {slide.slogan}
-                      </motion.p>
+                    {slide.title && (
+                      <h1 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-white mb-4 drop-shadow-2xl [text-shadow:_0_4px_8px_rgb(0_0_0_/_80%)] text-left">
+                        {slide.title}
+                      </h1>
                     )}
 
                   {slide.categories && (
@@ -146,7 +126,7 @@ const HeroSlider = () => {
                     </div>
                   )}
 
-                    {slide.ctaLabel && slide.ctaLink ? (
+                    {slide.ctaLabel && slide.ctaLink && (
                       <Link to={slide.ctaLink}>
                         <motion.span
                           whileHover={{ scale: 1.05 }}
@@ -156,18 +136,6 @@ const HeroSlider = () => {
                           {slide.ctaLabel}
                         </motion.span>
                       </Link>
-                    ) : (
-                      <div className="mt-6 flex items-center gap-2 text-white/80">
-                        <span className="text-sm font-medium">İncele</span>
-                        <motion.div
-                          animate={{ y: [0, 8, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-                        >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </motion.div>
-                      </div>
                     )}
                   </motion.div>
                 </div>

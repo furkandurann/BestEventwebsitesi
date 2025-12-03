@@ -164,7 +164,6 @@ const Home = () => {
         <div className="absolute inset-0">
           <HeroSlider />
         </div>
-        <div className="absolute inset-0 bg-black/65" />
       </section>
 
       {/* Siyah nefes katmanı */}
@@ -173,9 +172,15 @@ const Home = () => {
       {/* Manifesto + kartlar */}
       <section className="relative bg-black min-h-[120vh] md:min-h-[140vh] py-[18vh] px-6 md:px-10 pt-24 md:pt-28">
         <div className="text-center">
-          <h1 className="text-white font-extrabold tracking-[-0.02em] leading-[0.95] text-[clamp(2.6rem,6vw,5.5rem)] max-w-[16ch] mx-auto text-center">
-            Etkinliği değil ; <br /> Etkiyi yaratıyoruz
+          {/* Mini H1 - SEO için, görsel olarak küçük */}
+          <h1 className="text-center text-[clamp(1.25rem,1.8vw,1.6rem)] font-medium text-white/70 mb-32 tracking-wide">
+            İstanbul Etkinlik Organizasyonu
           </h1>
+          
+          {/* Ana Slogan - Görsel olarak dominant */}
+          <p className="text-white font-extrabold tracking-[-0.02em] leading-[0.95] text-[clamp(2.6rem,6vw,5.5rem)] max-w-[16ch] mx-auto text-center">
+            Etkinliği değil ; <br /> Etkiyi yaratıyoruz
+          </p>
         </div>
 
         <div className="mt-[29vh] max-w-6xl mx-auto text-center">
@@ -446,16 +451,10 @@ function StatBox({ big, small }) {
 
 function CinemaStrip() {
   const scrollContainerRef = useRef(null)
+  const [isPaused, setIsPaused] = useState(false)
+  const [translateX, setTranslateX] = useState(0)
 
   const scrollImages = [
-    { file: 'vodafone1.jpeg', alt: 'Vodafone kurumsal etkinlik organizasyonu İstanbul - Best Event referans çalışması' },
-    { file: 'sencard3.jpg', alt: 'SenCard kurumsal organizasyon etkinliği İstanbul - Best Event portfolio' },
-    { file: 'kocholdıng1.jpg', alt: 'Koç Holding kurumsal etkinlik ve organizasyon İstanbul - Best Event' },
-    { file: 'dansanagorsel1.jpeg', alt: 'Profesyonel dans gösterisi İstanbul - Oryantal dans etkinliği - Best Event' },
-    { file: 'dansgirl.jpeg', alt: 'Modern dans gösterisi ve dans etkinliği organizasyonu İstanbul - Best Event' },
-    { file: 'allianz1.jpeg', alt: 'Allianz kurumsal etkinlik organizasyonu İstanbul - Best Event referans' },
-    { file: 'dogumgunu1.jpg', alt: 'Konsept doğum günü organizasyonu İstanbul - Çocuk etkinliği - Best Event' },
-    { file: 'dogumgunu2.jpg', alt: 'Palyaço kiralama ve çocuk doğum günü etkinliği İstanbul - Best Event' },
     { file: 'IMG_1879 2_LE_upscale_strong_x4_tone_enhance_30_color_enhance_30.jpg', alt: 'Özel doğum günü organizasyonu ve etkinlik İstanbul - Best Event' },
     { file: 'forest1.JPG', alt: 'Forest kurumsal etkinlik ve organizasyon hizmeti İstanbul - Best Event' },
     { file: 'forest2.JPG', alt: 'Forest etkinlik organizasyonu ve kurumsal hizmetler İstanbul - Best Event' },
@@ -463,6 +462,19 @@ function CinemaStrip() {
     { file: 'MST04637.JPG', alt: 'Etkinlik ve organizasyon hizmetleri İstanbul - Best Event portfolio' },
     { file: 'pexels-maksgelatin-5046522.jpg', alt: 'Özel etkinlik organizasyonu ve kutlama İstanbul - Best Event' },
     { file: 'pexels-tima-miroshnichenko-5805041.jpg', alt: 'Etkinlik organizasyonu ve profesyonel hizmetler İstanbul - Best Event' },
+    { file: 'vodafone1.jpeg', alt: 'Vodafone kurumsal etkinlik organizasyonu İstanbul - Best Event referans çalışması' },
+    { file: 'sencard3.jpg', alt: 'SenCard kurumsal organizasyon etkinliği İstanbul - Best Event portfolio' },
+    { file: 'kocholdıng1.jpg', alt: 'Koç Holding kurumsal etkinlik ve organizasyon İstanbul - Best Event' },
+    { file: 'dansanagorsel1.jpeg', alt: 'Profesyonel dans gösterisi İstanbul - Oryantal dans etkinliği - Best Event' },
+    { file: 'dansgirl.jpeg', alt: 'Modern dans gösterisi ve dans etkinliği organizasyonu İstanbul - Best Event' },
+    { file: 'allianz1.jpeg', alt: 'Allianz kurumsal etkinlik organizasyonu İstanbul - Best Event referans' },
+    { file: 'anabubbleeklee.JPG', alt: 'Bubble show etkinliği İstanbul - Best Event' },
+    { file: 'bandoekle.jpg', alt: 'Bando ve müzik gösterisi İstanbul - Best Event' },
+    { file: 'ekle.JPG', alt: 'Etkinlik organizasyonu İstanbul - Best Event' },
+    { file: 'ekleee.jpg', alt: 'Özel etkinlik organizasyonu İstanbul - Best Event' },
+    { file: 'eklee.jpg', alt: 'Profesyonel etkinlik hizmeti İstanbul - Best Event' },
+    { file: 'sencard2ekle.JPG', alt: 'SenCard kurumsal etkinlik İstanbul - Best Event' },
+    { file: 'vodafone3ekle.JPG', alt: 'Vodafone kurumsal organizasyon İstanbul - Best Event' },
   ]
 
   // Dinamik hesaplama - fotoğraf sayısı değiştiğinde otomatik güncellenir
@@ -474,20 +486,21 @@ function CinemaStrip() {
   // Triple images for smoother infinite loop
   const allImages = [...scrollImages, ...scrollImages, ...scrollImages]
 
-  // Sadece otomatik scroll
+  // Sadece otomatik scroll - CSS transform ile smooth
   useEffect(() => {
-    const container = scrollContainerRef.current
-    if (!container) return
-    
-    const scrollSpeed = 2.0 // px per frame (x4 hız)
+    const scrollSpeed = 6.0 // px per frame
     let animationFrameId
     
     const autoScroll = () => {
-      container.scrollLeft += scrollSpeed
-      
-      // Başa dön (seamless loop)
-      if (container.scrollLeft >= totalWidth) {
-        container.scrollLeft = 0
+      if (!isPaused) {
+        setTranslateX(prev => {
+          const newValue = prev - scrollSpeed
+          // Başa dön (seamless loop)
+          if (Math.abs(newValue) >= totalWidth) {
+            return 0
+          }
+          return newValue
+        })
       }
       
       animationFrameId = requestAnimationFrame(autoScroll)
@@ -498,15 +511,23 @@ function CinemaStrip() {
     return () => {
       cancelAnimationFrame(animationFrameId)
     }
-  }, [totalWidth])
+  }, [totalWidth, isPaused])
 
   return (
     <div className="relative w-screen -mx-6 md:-mx-10">
       <div 
         ref={scrollContainerRef}
-        className="overflow-hidden scrollbar-hide"
+        className="overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="flex gap-6">
+        <div 
+          className="flex gap-6"
+          style={{
+            transform: `translate3d(${translateX}px, 0, 0)`,
+            willChange: 'transform'
+          }}
+        >
           {allImages.map((item, idx) => (
             <div
               key={idx}
@@ -527,16 +548,6 @@ function CinemaStrip() {
         </div>
       </div>
 
-      <style>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   )
 }

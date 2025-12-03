@@ -79,7 +79,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-4 lg:space-x-6 mr-8">
+          <div className="hidden lg:flex items-center space-x-2 lg:space-x-4 mr-8">
             {/* Etkinlikler Dropdown */}
             <div
               className="relative"
@@ -87,7 +87,7 @@ const Navbar = () => {
               onMouseLeave={() => setServicesOpen(false)}
             >
               <button
-                className={`nav-link text-base md:text-lg flex items-center space-x-1 ${
+                className={`nav-link text-sm md:text-base flex items-center space-x-1 ${
                   scrolled
                     ? 'text-dark hover:text-primary'
                     : 'text-white hover:text-accent'
@@ -135,7 +135,7 @@ const Navbar = () => {
 
             <Link
               to="/ekibimiz"
-              className={`nav-link text-base md:text-lg ${
+              className={`nav-link text-sm md:text-base ${
                 scrolled
                   ? 'text-dark hover:text-primary'
                   : 'text-white hover:text-accent'
@@ -146,7 +146,7 @@ const Navbar = () => {
             
             <Link
               to="/referanslar"
-              className={`nav-link text-base md:text-lg ${
+              className={`nav-link text-sm md:text-base ${
                 scrolled
                   ? 'text-dark hover:text-primary'
                   : 'text-white hover:text-accent'
@@ -157,7 +157,7 @@ const Navbar = () => {
             
             <Link
               to="/galeri"
-              className={`nav-link text-base md:text-lg ${
+              className={`nav-link text-sm md:text-base ${
                 scrolled
                   ? 'text-dark hover:text-primary'
                   : 'text-white hover:text-accent'
@@ -168,35 +168,24 @@ const Navbar = () => {
             
             <Link
               to="/hakkimizda"
-              className={`nav-link text-base md:text-lg ${
+              className={`nav-link text-sm md:text-base ${
                 scrolled
                   ? 'text-dark hover:text-primary'
                   : 'text-white hover:text-accent'
               }`}
             >
-              BestEvent Hakkında
+              Hakkımızda
             </Link>
             
             <Link
               to="/iletisim"
-              className={`nav-link text-base md:text-lg ${
+              className={`nav-link text-sm md:text-base ${
                 scrolled
                   ? 'text-dark hover:text-primary'
                   : 'text-white hover:text-accent'
               }`}
             >
               İletişim
-            </Link>
-            
-            <Link
-              to="/organik-pastalar"
-              className={`nav-link text-base md:text-lg ${
-                scrolled
-                  ? 'text-dark hover:text-primary'
-                  : 'text-white hover:text-accent'
-              }`}
-            >
-              %100 Organik Pasta
             </Link>
           </div>
 

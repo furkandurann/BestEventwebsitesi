@@ -1,5 +1,6 @@
 import SeoHead from '../../components/SeoHead'
 import KidsSection from '../../components/KidsSection'
+import SantaClausFeatured from '../../components/SantaClausFeatured'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
@@ -204,6 +205,9 @@ const ChildEvents = () => {
             index={index}
           />
         ))}
+
+        {/* NOEL BABA FEATURED - Yılbaşı Özel Kampanya */}
+        <SantaClausFeatured />
 
         {/* DİĞER HİZMETLER - Enhanced Apple Style */}
         <section className="py-20 sm:py-28 lg:py-32 bg-gradient-to-b from-gray-50 to-white">

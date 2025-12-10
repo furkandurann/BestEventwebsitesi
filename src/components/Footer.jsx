@@ -81,6 +81,7 @@ const Footer = () => {
     { name: 'Hakkımızda', path: '/hakkimizda' },
     { name: 'Hizmet Bölgeleri', path: '/hizmet-bolgeleri' },
     { name: 'Galeri', path: '/galeri' },
+    { name: 'Blog', path: '/blog' },
     { name: 'İletişim', path: '/iletisim' },
     { name: 'Ekibimiz', path: '/ekibimiz' },
     { name: 'Referanslarımız', path: '/referanslar' },

@@ -1,5 +1,8 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
+import RelatedServices from '../../components/RelatedServices'
+import { trackWhatsAppClick, trackPhoneClick, trackServicePageView } from '../../utils/tracking'
 
 const heroImages = [
   '/content/images/profesyonelmakeup/profesyonelkopyasiistanbul.jpg',
@@ -82,6 +85,11 @@ const faqs = [
 ]
 
 const FacePainting = () => {
+  // Track page view on mount
+  useEffect(() => {
+    trackServicePageView('Profesyonel Yüz Boyama', 'Çocuk Etkinlikleri')
+  }, [])
+
   return (
     <>
       <Helmet>
@@ -412,6 +420,7 @@ const FacePainting = () => {
                 href="https://wa.me/905349306799?text=Merhaba! Yüz boyama hakkında bilgi almak istiyorum."
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('Profesyonel Yüz Boyama', window.location.href)}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="group relative w-full sm:w-auto"
@@ -438,6 +447,7 @@ const FacePainting = () => {
 
               <motion.a
                 href="tel:+905349306799"
+                onClick={() => trackPhoneClick('Profesyonel Yüz Boyama', window.location.href)}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="group relative w-full sm:w-auto"
@@ -464,6 +474,9 @@ const FacePainting = () => {
             </div>
           </div>
         </section>
+
+        {/* Related Services */}
+        <RelatedServices currentService="yuz-boyama" />
 
         {/* FAQ */}
         <section className="py-18 px-6 bg-gradient-to-br from-gray-50 to-white text-gray-900">

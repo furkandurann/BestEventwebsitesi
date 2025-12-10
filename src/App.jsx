@@ -56,8 +56,20 @@ const FireShow = lazy(() => import('./pages/services/FireShow'))
 const StiltWalkers = lazy(() => import('./pages/services/StiltWalkers'))
 const FullBirthdayOrganization = lazy(() => import('./pages/organizations/FullBirthdayOrganization'))
 
+// Noel Baba Kiralama (lazy)
+const SantaClausRental = lazy(() => import('./pages/organizations/SantaClausRental'))
+
 // Organik Pastalar (lazy)
 const OrganicCakes = lazy(() => import('./pages/OrganicCakes'))
+
+// Blog (lazy)
+const Blog = lazy(() => import('./pages/Blog'))
+
+// Blog Details (lazy)
+const AcilisOrganizasyonu = lazy(() => import('./pages/blog/AcilisOrganizasyonu'))
+const PalyacoKiralama = lazy(() => import('./pages/blog/PalyacoKiralama'))
+const SihirbazGosterisi = lazy(() => import('./pages/blog/SihirbazGosterisi'))
+const BubbleShowGosterisi = lazy(() => import('./pages/blog/BubbleShowGosterisi'))
 
 function App() {
   const location = useLocation()
@@ -96,6 +108,11 @@ function App() {
         <Route path="/referanslar" element={<Clients />} />
         <Route path="/hizmet-bolgeleri" element={<ServiceAreas />} />
         <Route path="/organik-pastalar" element={<OrganicCakes />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/acilis-organizasyonu-istanbul" element={<AcilisOrganizasyonu />} />
+        <Route path="/blog/palyaco-kiralama-istanbul" element={<PalyacoKiralama />} />
+        <Route path="/blog/sihirbaz-gosterisi-istanbul" element={<SihirbazGosterisi />} />
+        <Route path="/blog/bubble-show-istanbul" element={<BubbleShowGosterisi />} />
         
         {/* Service Routes */}
         <Route path="/organizasyonlar/cocuk-etkinlikleri" element={<ChildEvents />} />
@@ -137,6 +154,7 @@ function App() {
         <Route path="/organizasyonlar/palyaco-kiralama" element={<ClownRental />} />
         <Route path="/organizasyonlar/sihirbaz" element={<MagicShow />} />
         <Route path="/organizasyonlar/dogum-gunu" element={<FullBirthdayOrganization />} />
+        <Route path="/organizasyonlar/noel-baba-kiralama" element={<SantaClausRental />} />
         <Route path="/organizasyonlar/dj-kiralama" element={<MusicEvents />} />
         <Route path="/organizasyonlar/muzisyen-kiralama" element={<MusicEvents />} />
         <Route path="/organizasyonlar/dansci-kiralama" element={<ChildEvents />} />

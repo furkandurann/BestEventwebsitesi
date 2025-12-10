@@ -9,34 +9,49 @@ import 'swiper/css/navigation'
 
 const slides = [
   {
+    title: '🎄 Yılbaşı Özel',
+    description: 'Noel Baba Kiralama - Çocuklarınızın Rüyası Gerçek Olsun',
+    ctaLabel: 'Hemen İncele',
+    ctaLink: '/organizasyonlar/noel-baba-kiralama',
+    link: '/organizasyonlar/noel-baba-kiralama',
+    backgroundImage: '/content/images/noelbaba/WhatsApp Image 2025-12-05 at 12.05.57.jpeg',
+    badge: '⏰ Son Kontenjan!'
+  },
+  {
     backgroundImage: '/content/images/Anasayfa/siteanahero.jpg',
+    link: '/hizmetler',
   },
   {
     title: 'Çocuk Etkinlikleri',
     slogan: 'Çocuğunuz için en iyisi',
     ctaLabel: 'Hemen İncele',
     ctaLink: '/organizasyonlar/cocuk-etkinlikleri',
+    link: '/organizasyonlar/cocuk-etkinlikleri',
     backgroundImage: '/content/images/slider/slider1.jpg',
   },
   {
     title: 'Yetişkin Doğum Günü',
     description: 'Arkadaşlığı hissettir ',
     backgroundImage: '/content/images/yetiskindogumgunu/yetiskindogumgunu2.jpg',
+    link: '/hizmetler',
   },
   {
     title: 'Kurumsal Etkinlikler',
     description: 'Takım ruhunu güçlendiren prestijli organizasyonlar',
     backgroundImage: '/content/images/slider/pexels-olly-787968.jpg',
+    link: '/hizmetler',
   },
   {
     title: 'Müzik Etkinlikleri',
     description: 'Profesyonel müzisyenlerle unutulmaz sahne deneyimleri',
     backgroundImage: '/content/images/music/anamusik.jpg',
+    link: '/hizmetler/muzik-etkinlikleri',
   },
   {
     title: 'Dans Etkinlikleri',
     description: 'Enerji dolu dans ve takım sporları ile motivasyonu artırın',
     backgroundImage: '/content/images/Anasayfa/dansanasayfaanagorsel.JPG',
+    link: '/hizmetler/dans-etkinlikleri',
   },
 ]
 
@@ -70,7 +85,11 @@ const HeroSlider = () => {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="swiper-slide">
-            <div className="absolute inset-0 h-full w-full flex items-start justify-start overflow-hidden pt-[30vh]">
+            <Link 
+              to={slide.link || '#'} 
+              className={`block h-full w-full ${slide.link ? 'cursor-pointer' : 'cursor-default'}`}
+            >
+            <div className="absolute inset-0 h-full w-full flex items-start justify-start overflow-hidden pt-[10vh] md:pt-[30vh]">
               {slide.backgroundImage && (
                 <div
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -79,12 +98,12 @@ const HeroSlider = () => {
               )}
 
               <div 
-                className="relative z-10 layout-container"
+                className="relative z-10 layout-container text-center md:text-left"
                 style={{
                   marginLeft: index === 3 ? '15vw' : (index === 4 || index === 5) ? '25vw' : '10vw'
                 }}
               >
-                <div className="max-w-[80%]">
+                <div className="max-w-[80%] mx-auto md:mx-0">
                   <motion.div
                     initial={
                       shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -96,10 +115,25 @@ const HeroSlider = () => {
                         : { delay: 0.2, duration: 0.8, ease: 'easeOut' }
                     }
                   >
+                    {slide.badge && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.4, duration: 0.5 }}
+                        className="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4 shadow-lg"
+                      >
+                        {slide.badge}
+                      </motion.div>
+                    )}
                     {slide.title && (
-                      <h1 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-white mb-4 drop-shadow-2xl [text-shadow:_0_4px_8px_rgb(0_0_0_/_80%)] text-left">
+                      <h1 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-white mb-4 drop-shadow-2xl [text-shadow:_0_4px_8px_rgb(0_0_0_/_80%)] text-center md:text-left leading-tight">
                         {slide.title}
                       </h1>
+                    )}
+                    {slide.description && (
+                      <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 drop-shadow-lg">
+                        {slide.description}
+                      </p>
                     )}
 
                   {slide.categories && (
@@ -165,6 +199,7 @@ const HeroSlider = () => {
                 </>
               )}
             </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

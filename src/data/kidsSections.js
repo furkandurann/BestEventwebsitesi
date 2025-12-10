@@ -16,6 +16,14 @@ export const kidsSections = [
     cta: { text: 'Detayları Keşfet', to: '/organizasyonlar/konsept-dogum-gunu' }
   },
   {
+    key: 'noel-baba-kiralama',
+    title: 'Noel Baba Kiralama',
+    subtitle: 'Yılbaşı büyüsünü yaşatın.',
+    img: '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg',
+    alt: 'noel baba kiralama istanbul yılbaşı özel private standart paket',
+    cta: { text: 'Detayları Keşfet', to: '/organizasyonlar/noel-baba-kiralama' }
+  },
+  {
     key: 'kostumlu-karakterler',
     title: 'Kostümlü Karakterler',
     subtitle: 'Çocukların gözündeki şaşkınlık.',

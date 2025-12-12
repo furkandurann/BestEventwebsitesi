@@ -359,7 +359,7 @@ const CharacterDetail = () => {
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
                 <motion.a
-                  href={`https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum
+                  href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02, y: -2 }}
@@ -794,7 +794,7 @@ const CharacterDetail = () => {
                     <li>✅ Ses sistemi</li>
                   </ul>
                   <a
-                    href={`https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum
+                    href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-center bg-white text-purple-600 px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all"

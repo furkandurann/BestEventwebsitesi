@@ -6,39 +6,8 @@ import 'swiper/css'
 import Seo from '../../components/Seo'
 
 // Clown FAQ Section Component
-function ClownFAQSection() {
+function ClownFAQSection({ faqs }) {
   const [openIndex, setOpenIndex] = useState(0)
-
-  const faqs = [
-    {
-      question: 'Palyaço kiralama hizmetinizde deneyiminiz nedir?',
-      answer: 'İstanbul\'da 10 yılı aşkın süredir yüzlerce ailenin doğum günü ve etkinliklerini başarıyla tasarlıyoruz. 5.000\'den fazla etkinlik deneyimimizle her yaş grubuna uygun aktiviteleri planlıyor, çocukları ilk karşılamadan son fotoğrafa kadar mutlu bir deneyime taşıyoruz.'
-    },
-    {
-      question: 'Etkinliğe ne zaman gelirsiniz?',
-      answer: 'Ekiplerimiz etkinlik başlangıcından 15 dakika önce alanda olur. Hazırlıklarını sessizce tamamlar ve çocukları karşılamaya hazır bekler. Söz verdiğimiz saatlerde, her zaman.'
-    },
-    {
-      question: 'İki saatlik palyaço etkinliğinde neler var?',
-      answer: 'Hizmetimiz sadece bir gösteri değil; uçtan uca bir deneyimdir: Tanışma & Yüz Boyama, Yaş Grubuna Uygun Grup Oyunları, Kar Spreyi & Konfeti Gösterisi, Sosis Balonlar ve Pinyata Finali, Veda Fotoğrafı. Her etkinlik atmosferi, çocukların yaş aralığına göre özelleştirilir.'
-    },
-    {
-      question: 'Hangi yaş gruplarına hizmet veriyorsunuz?',
-      answer: '3–5 Yaş, 6–8 Yaş ve 9–12 Yaş grupları için özel aktivite planlarımız var. Yumuşak ve sevimli oyunlardan, enerjik grup aktivitelerine ve interaktif mini şovlara kadar tüm içerikler yaşa göre tasarlanır.'
-    },
-    {
-      question: 'Yüz boyama malzemeleriniz güvenli mi?',
-      answer: 'Playdoh\'un en yüksek kalitede serilerini kullanmaktayız. Hijyen ve kalite önceliğimizdir. Her etkinlikten sonra tüm malzemeler yıkanır ve temizlenir.'
-    },
-    {
-      question: 'Animatörleriniz deneyimli mi?',
-      answer: 'Çalışanlarımız 19-28 yaş aralığında, güler yüzlü ve profesyonel ekip üyelerimizdir. Yüksek iletişim becerisi ve enerjik yapılarıyla çocuklarınıza unutulmaz anlar yaşatırlar.'
-    },
-    {
-      question: 'Hangi bölgelere hizmet veriyorsunuz?',
-      answer: 'Tüm İstanbul\'a palyaço kiralama hizmeti sunuyoruz. Kadıköy, Beşiktaş, Şişli, Bakırköy, Ataşehir ve İstanbul\'un tüm ilçelerinde profesyonel palyaço organizasyonu yapıyoruz.'
-    }
-  ]
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? -1 : index)
@@ -196,7 +165,7 @@ function ClownFAQSection() {
             Başka sorularınız mı var?
           </p>
           <a
-            href="https://wa.me/905349306799?text=Merhaba! Palyaço kiralama hakkında sorularım var."
+            href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
@@ -217,6 +186,37 @@ function ClownFAQSection() {
 }
 
 const ClownRental = () => {
+  const faqData = [
+    {
+      question: 'Palyaço kiralama hizmetinizde deneyiminiz nedir?',
+      answer: 'İstanbul\'da 10 yılı aşkın süredir yüzlerce ailenin doğum günü ve etkinliklerini başarıyla tasarlıyoruz. 5.000\'den fazla etkinlik deneyimimizle her yaş grubuna uygun aktiviteleri planlıyor, çocukları ilk karşılamadan son fotoğrafa kadar mutlu bir deneyime taşıyoruz.'
+    },
+    {
+      question: 'Etkinliğe ne zaman gelirsiniz?',
+      answer: 'Ekiplerimiz etkinlik başlangıcından 15 dakika önce alanda olur. Hazırlıklarını sessizce tamamlar ve çocukları karşılamaya hazır bekler. Söz verdiğimiz saatlerde, her zaman.'
+    },
+    {
+      question: 'İki saatlik palyaço etkinliğinde neler var?',
+      answer: 'Hizmetimiz sadece bir gösteri değil; uçtan uca bir deneyimdir: Tanışma & Yüz Boyama, Yaş Grubuna Uygun Grup Oyunları, Kar Spreyi & Konfeti Gösterisi, Sosis Balonlar ve Pinyata Finali, Veda Fotoğrafı. Her etkinlik atmosferi, çocukların yaş aralığına göre özelleştirilir.'
+    },
+    {
+      question: 'Hangi yaş gruplarına hizmet veriyorsunuz?',
+      answer: '3–5 Yaş, 6–8 Yaş ve 9–12 Yaş grupları için özel aktivite planlarımız var. Yumuşak ve sevimli oyunlardan, enerjik grup aktivitelerine ve interaktif mini şovlara kadar tüm içerikler yaşa göre tasarlanır.'
+    },
+    {
+      question: 'Yüz boyama malzemeleriniz güvenli mi?',
+      answer: 'Playdoh\'un en yüksek kalitede serilerini kullanmaktayız. Hijyen ve kalite önceliğimizdir. Her etkinlikten sonra tüm malzemeler yıkanır ve temizlenir.'
+    },
+    {
+      question: 'Animatörleriniz deneyimli mi?',
+      answer: 'Çalışanlarımız 19-28 yaş aralığında, güler yüzlü ve profesyonel ekip üyelerimizdir. Yüksek iletişim becerisi ve enerjik yapılarıyla çocuklarınıza unutulmaz anlar yaşatırlar.'
+    },
+    {
+      question: 'Hangi bölgelere hizmet veriyorsunuz?',
+      answer: 'Tüm İstanbul\'a palyaço kiralama hizmeti sunuyoruz. Kadıköy, Beşiktaş, Şişli, Bakırköy, Ataşehir ve İstanbul\'un tüm ilçelerinde profesyonel palyaço organizasyonu yapıyoruz.'
+    }
+  ]
+
   const heroSlides = [
     {
       src: '/content/images/palyaco/palyaconattiveguleryuz.jpg',
@@ -311,6 +311,39 @@ const ClownRental = () => {
           'palyaço kiralama fiyatları'
         ]}
         canonicalPath="/organizasyonlar/palyaco-kiralama"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Palyaço Kiralama İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "areaServed": [
+                "Kadıköy", "Üsküdar", "Maltepe", "Ataşehir", "Ümraniye", "Kartal", "Pendik", "Beykoz",
+                "Beşiktaş", "Şişli", "Bakırköy", "Beylikdüzü", "Esenyurt", "Başakşehir", "Sarıyer",
+                "Fatih", "Beyoğlu", "Kağıthane", "Güngören", "Bahçelievler", "İstanbul"
+              ]
+            },
+            "serviceType": "Palyaço Kiralama",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqData.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
       />
       
       {/* Hero Section */}
@@ -666,7 +699,7 @@ const ClownRental = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
               {/* WhatsApp Button */}
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba! Palyaço kiralama hakkında bilgi almak istiyorum."
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -2 }}
@@ -737,7 +770,7 @@ const ClownRental = () => {
       </section>
 
       {/* FAQ Section */}
-      <ClownFAQSection />
+      <ClownFAQSection faqs={faqData} />
 
       {/* Service Areas Section */}
       <section className="py-16 sm:py-20 px-6 bg-gradient-to-br from-purple-950/30 to-pink-950/30 border-t border-white/10">

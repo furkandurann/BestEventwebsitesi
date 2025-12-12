@@ -66,7 +66,7 @@ const DJRental = () => {
             <p className="mt-3 text-sm md:text-base text-white/70 max-w-3xl">{hero.description}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="https://wa.me/905349306799?text=DJ%20kiralama%20i%C3%A7in%20rezervasyon%20bilgisi%20almak%20istiyorum"
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 className="inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 text-sm font-semibold shadow-lg hover:shadow-xl transition"
               >
                 💬 WhatsApp ile Rezervasyon
@@ -160,7 +160,7 @@ const DJRental = () => {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
               <a
-                href="https://wa.me/905349306799?text=DJ%20kiralama%20i%C3%A7in%20rezervasyon%20bilgisi%20almak%20istiyorum"
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-full sm:w-auto"

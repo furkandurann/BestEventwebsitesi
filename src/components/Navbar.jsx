@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,7 +11,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -49,33 +48,17 @@ const Navbar = () => {
         <div className="flex justify-start items-center gap-8 lg:gap-12">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="logo-lockup font-display"
-            >
-              <motion.span 
-                className={scrolled ? 'text-gradient' : 'text-white drop-shadow-lg'}
-                animate={{
-                  textShadow: [
-                    '0 0 15px rgba(255, 200, 80, 0.4), 0 0 30px rgba(255, 160, 50, 0.3), 0 0 45px rgba(255, 120, 30, 0.2)',
-                    '0 0 20px rgba(255, 210, 90, 0.5), 0 0 35px rgba(255, 170, 60, 0.4), 0 0 50px rgba(255, 130, 40, 0.3)',
-                    '0 0 18px rgba(255, 205, 85, 0.45), 0 0 33px rgba(255, 165, 55, 0.35), 0 0 48px rgba(255, 125, 35, 0.25)',
-                    '0 0 15px rgba(255, 200, 80, 0.4), 0 0 30px rgba(255, 160, 50, 0.3), 0 0 45px rgba(255, 120, 30, 0.2)',
-                  ]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut'
-                }}
+            <div className="logo-lockup font-display hover:scale-105 transition-transform">
+              <span 
+                className={`${scrolled ? 'text-gradient' : 'text-white drop-shadow-lg'} logo-glow`}
                 style={{
                   textShadow: '0 0 15px rgba(255, 200, 80, 0.4), 0 0 30px rgba(255, 160, 50, 0.3), 0 0 45px rgba(255, 120, 30, 0.2)',
                   filter: 'brightness(1.05)'
                 }}
               >
                 Best Event
-              </motion.span>
-            </motion.div>
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Menu */}
@@ -111,26 +94,19 @@ const Navbar = () => {
                 </svg>
               </button>
 
-              <AnimatePresence>
-                {servicesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-2xl py-2 grid grid-cols-1 gap-1"
-                  >
-                    {services.map((service) => (
-                      <Link
-                        key={service.path}
-                        to={service.path}
-                        className="nav-link text-dark px-4 py-2 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
-                      >
-                        {service.name}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {servicesOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-2xl py-2 grid grid-cols-1 gap-1 animate-fade-in">
+                  {services.map((service) => (
+                    <Link
+                      key={service.path}
+                      to={service.path}
+                      className="nav-link text-dark px-4 py-2 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             <Link
@@ -215,14 +191,8 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden mt-4 bg-white rounded-lg shadow-xl overflow-hidden"
-            >
+        {isOpen && (
+          <div className="lg:hidden mt-4 bg-white rounded-lg shadow-xl overflow-hidden animate-fade-in">
               <div className="flex flex-col space-y-2 p-4">
                 <Link
                   to="/"
@@ -298,9 +268,8 @@ const Navbar = () => {
                   Rezervasyon Yap
                 </a>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </div>
+        )}
       </div>
     </nav>
   )

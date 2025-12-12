@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -94,14 +93,9 @@ const Footer = () => {
         <div className="layout-grid gap-12">
           {/* Company Info */}
           <div>
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="logo-lockup font-display text-gradient mb-4"
-            >
+            <h3 className="logo-lockup font-display text-gradient mb-4 animate-fade-in">
               Best Event
-            </motion.h3>
+            </h3>
             <p className="text-gray-600 mb-6">
               Hayalinizdeki etkinliği gerçeğe dönüştürüyoruz. Profesyonel ekibimizle unutulmaz anlar yaratıyoruz.
             </p>

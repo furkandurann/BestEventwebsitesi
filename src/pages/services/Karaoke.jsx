@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async'
+import OptimizedImage from '../../components/OptimizedImage'
 
 const Karaoke = () => {
   const hero = {
@@ -49,10 +50,12 @@ const Karaoke = () => {
       <main className="bg-white text-gray-900">
         <section className="relative overflow-hidden min-h-[65vh] flex items-center bg-black text-white">
           <div className="absolute inset-0">
-            <img
+            <OptimizedImage
               src={hero.image}
               alt="Karaoke etkinliği"
               className="w-full h-full object-cover object-center"
+              loading="eager"
+              fetchpriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black" />
           </div>
@@ -65,7 +68,7 @@ const Karaoke = () => {
             <p className="mt-3 text-sm md:text-base text-white/70 max-w-3xl">{hero.description}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="https://wa.me/905349306799?text=Karaoke%20etkinli%C4%9Fi%20i%C3%A7in%20rezervasyon%20bilgisi%20almak%20istiyorum"
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 className="inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 text-sm font-semibold shadow-lg hover:shadow-xl transition"
               >
                 💬 WhatsApp ile Rezervasyon
@@ -128,7 +131,7 @@ const Karaoke = () => {
               </div>
               <div className="mt-4 flex flex-wrap gap-3">
                 <a
-                  href="https://wa.me/905349306799?text=Karaoke%20i%C3%A7in%20tarih%2Fmekan%20bilgisi%20payla%C5%9F%C4%B1yorum"
+                  href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                   className="inline-flex items-center justify-center rounded-full bg-black text-white px-4 py-2.5 text-sm font-semibold hover:bg-black/90 transition"
                 >
                   WhatsApp Teklif Al
@@ -165,7 +168,7 @@ const Karaoke = () => {
                   📞 0534 930 67 99
                 </a>
                 <a
-                  href="https://wa.me/905349306799?text=Karaoke%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum"
+                  href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                   className="inline-flex items-center justify-center rounded-full bg-green-500 text-white px-4 py-2.5 text-sm font-semibold hover:bg-green-600 transition"
                 >
                   💬 WhatsApp

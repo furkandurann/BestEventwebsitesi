@@ -1,5 +1,5 @@
-import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
+import Seo from '../../components/Seo'
 
 const heroImages = [
   '/content/images/profesyonelmakeup/profesyonelmakeupistanbul.JPG',
@@ -17,7 +17,7 @@ const faqs = [
   {
     question: 'Profesyonel makyaj ne kadar sürer?',
     answer:
-      'Standart uygulama 45-60 dakika; gelin makyajı gibi detaylı çalışmalar 60-90 dakika sürebilir. Grup uygulamalarında kişi başı 30-45 dakika planlanır.'
+      'Organizasyonda ki çocuk sayısına göre değişmekle birlikte bir çocuk için ortalama 5-6 dk sürmektedir.'
   },
   {
     question: 'Kullandığınız ürünler alerjik mi?',
@@ -59,18 +59,50 @@ const serviceAreas = [
 const ProfessionalMakeup = () => {
   return (
     <>
-      <Helmet>
-        <title>Profesyonel Makyaj | İstanbul Makeup Artist | Best Event</title>
-        <meta
-          name="description"
-          content="İstanbul'da profesyonel makyaj: gelin, davet, kurumsal etkinlik ve fotoğraf çekimi için sertifikalı makeup artist kadrosu. Premium ürünler, hijyenik uygulama."
-        />
-        <meta
-          name="keywords"
-          content="profesyonel makyaj istanbul, gelin makyajı, makeup artist kadıköy, düğün makyajı, nişan makyajı, kurumsal etkinlik makyajı"
-        />
-        <link rel="canonical" href="https://www.bestevent.com.tr/organizasyonlar/profesyonel-makyaj" />
-      </Helmet>
+      <Seo
+        title="Profesyonel Makyaj | İstanbul Makeup Artist | Best Event"
+        description="İstanbul'da profesyonel makyaj: gelin, davet, kurumsal etkinlik ve fotoğraf çekimi için sertifikalı makeup artist kadrosu. Premium ürünler, hijyenik uygulama."
+        keywords={[
+          'profesyonel makyaj istanbul',
+          'gelin makyajı',
+          'makeup artist kadıköy',
+          'düğün makyajı',
+          'nişan makyajı',
+          'kurumsal etkinlik makyajı',
+          'istanbul makeup artist',
+          'profesyonel makyaj hizmeti'
+        ]}
+        canonicalPath="/organizasyonlar/profesyonel-makyaj"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Profesyonel Makyaj İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "areaServed": serviceAreas.map(area => area)
+            },
+            "serviceType": "Profesyonel Makyaj",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
+      />
 
       <main className="bg-black text-white">
         {/* Hero */}
@@ -298,7 +330,7 @@ const ProfessionalMakeup = () => {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba! Profesyonel makyaj için bilgi almak istiyorum."
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -2 }}

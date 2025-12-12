@@ -390,7 +390,7 @@ const FullPackageOrganization = () => {
           <p className="text-2xl mb-10 text-white/90">Hayalinizi gerçeğe dönüştürmenin zamanı geldi</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <a
-              href="https://wa.me/905349306799?text=Merhaba! Full paket doğum günü organizasyonu hakkında bilgi almak istiyorum."
+              href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-full font-bold text-xl shadow-2xl transition-all"

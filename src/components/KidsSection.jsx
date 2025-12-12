@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import OptimizedImage from './OptimizedImage'
 
 export default function KidsSection({ 
   title, 
@@ -28,11 +28,12 @@ export default function KidsSection({
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
-        <img
+        <OptimizedImage
           src={img}
           alt={alt}
           loading={index === 0 ? 'eager' : 'lazy'}
-          decoding="async"
+          fetchpriority={index === 0 ? 'high' : 'auto'}
+          sizes="100vw"
           className={`w-full h-full object-cover ${
             title === 'Sihirbazlık Gösterisi' 
               ? 'sihirbaz-hero-img' 
@@ -52,7 +53,7 @@ export default function KidsSection({
               : title === 'Full Paket Organizasyon'
               ? { objectPosition: 'center 30%' }
               : title === 'Sihirbazlık Gösterisi'
-              ? undefined // CSS class ile kontrol edilecek
+              ? undefined
               : undefined
           }
         />
@@ -64,13 +65,7 @@ export default function KidsSection({
       </div>
 
       {/* Content - Title & Subtitle */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-[27vh] md:mt-[37vh]"
-      >
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-[27vh] md:mt-[37vh] animate-fade-in">
         {/* Title - Apple Minimal */}
         <h1 
           className="font-bold text-white mb-3 leading-tight tracking-tight"
@@ -100,19 +95,11 @@ export default function KidsSection({
             {subtitle}
           </p>
         )}
-      </motion.div>
+      </div>
 
       {/* CTA - Sağ Alt Köşe (Apple Style) */}
       {cta && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="absolute bottom-8 right-8 z-10"
-          role="navigation" 
-          aria-label="Eylemler"
-        >
+        <div className="absolute bottom-8 right-8 z-10 animate-fade-in" role="navigation" aria-label="Eylemler">
           <Link to={cta.to} className="group flex items-center gap-1.5 text-white/90 hover:text-white transition-colors duration-200">
             <span 
               style={{
@@ -132,7 +119,7 @@ export default function KidsSection({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
             </svg>
           </Link>
-        </motion.div>
+        </div>
       )}
     </section>
   )

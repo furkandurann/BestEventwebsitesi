@@ -67,7 +67,7 @@ const VRExperience = () => {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="https://wa.me/905349306799?text=VR%20Sanal%20Ger%C3%A7eklik%20i%C3%A7in%20rezervasyon%20bilgisi%20almak%20istiyorum"
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 className="inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 text-sm font-semibold shadow-lg hover:shadow-xl transition"
               >
                 💬 WhatsApp ile Rezervasyon
@@ -137,7 +137,7 @@ const VRExperience = () => {
               </div>
               <div className="mt-4 flex flex-wrap gap-3">
                 <a
-                  href="https://wa.me/905349306799?text=VR%20Sanal%20Ger%C3%A7eklik%20i%C3%A7in%20tarih%2Fmekan%20bilgisi%20payla%C5%9F%C4%B1yorum"
+                  href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                   className="inline-flex items-center justify-center rounded-full bg-black text-white px-4 py-2.5 text-sm font-semibold hover:bg-black/90 transition"
                 >
                   WhatsApp Teklif Al

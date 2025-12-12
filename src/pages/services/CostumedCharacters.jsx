@@ -1,10 +1,28 @@
 import { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
-import { motion } from 'framer-motion'
+import Seo from '../../components/Seo'
 import { costumedCharactersData } from '../../data/costumedCharactersData'
 import NarrativeSection from '../../components/NarrativeSection'
 import FullBleedHero from '../../components/FullBleedHero'
 import { useNavigate } from 'react-router-dom'
+
+const faqData = [
+  {
+    question: 'Hangi karakterler mevcut?',
+    answer: 'Elsa, Pamuk Prenses, Minnie Mouse, Deniz Kızı, Spiderman, Batman, Sonic ve daha fazlası. Geniş portföyümüz için bizi arayın.'
+  },
+  {
+    question: 'Kostümlü karakter kiralama kaç saat sürer?',
+    answer: 'Standart paketlerimiz 1-2 saat arası sürmektedir. İhtiyacınıza göre süre uzatılabilir.'
+  },
+  {
+    question: "İstanbul'un hangi bölgelerinde hizmet veriyorsunuz?",
+    answer: "Kadıköy, Üsküdar, Ataşehir, Maltepe, Kartal, Şişli, Beşiktaş, Beyoğlu, Bakırköy, Başakşehir, Sarıyer, Esenyurt ve İstanbul'un tüm ilçelerinde hizmet veriyoruz."
+  },
+  {
+    question: 'Fiyatlar nedir?',
+    answer: 'Fiyatlarımız karakter, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0534 930 67 99'
+  }
+]
 
 const CostumedCharacters = () => {
   const [activeSection, setActiveSection] = useState(0)
@@ -32,7 +50,7 @@ const CostumedCharacters = () => {
       })
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -59,13 +77,49 @@ const CostumedCharacters = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Kostümlü Karakterler Kiralama İstanbul | Elsa, Spiderman, Batman | Best Event</title>
-        <meta
-          name="description"
-          content="İstanbul'da kostümlü karakter kiralama. Elsa, Spiderman, Batman, Pamuk Prenses, Minnie Mouse, Deniz Kızı. ☎ 0534 930 67 99"
-        />
-      </Helmet>
+      <Seo
+        title="Kostümlü Karakterler Kiralama İstanbul | Elsa, Spiderman, Batman | Best Event"
+        description="İstanbul'da kostümlü karakter kiralama. Elsa, Spiderman, Batman, Pamuk Prenses, Minnie Mouse, Deniz Kızı. ☎ 0534 930 67 99"
+        keywords={[
+          'kostümlü karakter kiralama istanbul',
+          'elsa kiralama',
+          'spiderman kiralama',
+          'batman kiralama',
+          'pamuk prenses kiralama',
+          'minnie mouse kiralama',
+          'istanbul kostümlü karakter'
+        ]}
+        canonicalPath="/organizasyonlar/kostumlu-karakterler"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Kostümlü Karakterler Kiralama İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "areaServed": ["Kadıköy", "Üsküdar", "Ataşehir", "Maltepe", "Kartal", "Şişli", "Beşiktaş", "Beyoğlu", "Bakırköy", "Başakşehir", "Sarıyer", "Esenyurt", "İstanbul"]
+            },
+            "serviceType": "Kostümlü Karakter Kiralama",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqData.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
+      />
 
       <main className="overflow-x-hidden scroll-smooth snap-y snap-mandatory">
         {/* Progress Indicators */}
@@ -107,12 +161,8 @@ const CostumedCharacters = () => {
             </div>
 
             <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-[17vh]">
-              <motion.h1
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="font-bold text-white leading-tight tracking-tight"
+              <h1
+                className="font-bold text-white leading-tight tracking-tight animate-fade-in"
                 style={{
                   textShadow: '0 2px 20px rgba(0,0,0,.45)',
                   fontSize: 'clamp(2.25rem, 6vw, 4rem)',
@@ -123,35 +173,22 @@ const CostumedCharacters = () => {
                 }}
               >
                 {character.name}
-              </motion.h1>
+              </h1>
             </div>
 
-            <motion.a
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+            <a
               href={`/${character.slug}`}
-              className="absolute bottom-8 right-8 z-20 min-h-[44px] px-7 py-3.5 bg-white/90 backdrop-blur-md text-purple-600 rounded-full font-semibold text-base hover:shadow-xl transition-all transform hover:scale-105"
+              className="absolute bottom-8 right-8 z-20 min-h-[44px] px-7 py-3.5 bg-white/90 backdrop-blur-md text-purple-600 rounded-full font-semibold text-base hover:shadow-xl transition-all transform hover:scale-105 animate-fade-in"
             >
               İncele →
-            </motion.a>
+            </a>
 
             {index === 0 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2"
-              >
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in">
                 <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-                  <motion.div
-                    animate={{ y: [0, 12, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="w-1.5 h-1.5 bg-white rounded-full"
-                  />
+                  <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
                 </div>
-              </motion.div>
+              </div>
             )}
           </section>
         ))}
@@ -198,38 +235,14 @@ const CostumedCharacters = () => {
           <div className="max-w-3xl mx-auto px-4">
             <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Sıkça Sorulan Sorular</h2>
             <div className="space-y-6">
-              {[
-                {
-                  question: 'Hangi karakterler mevcut?',
-                  answer:
-                    'Elsa, Pamuk Prenses, Minnie Mouse, Deniz Kızı, Spiderman, Batman, Sonic ve daha fazlası. Geniş portföyümüz için bizi arayın.'
-                },
-                {
-                  question: 'Kostümlü karakter kiralama kaç saat sürer?',
-                  answer: 'Standart paketlerimiz 1-2 saat arası sürmektedir. İhtiyacınıza göre süre uzatılabilir.'
-                },
-                {
-                  question: "İstanbul'un hangi bölgelerinde hizmet veriyorsunuz?",
-                  answer:
-                    "Kadıköy, Üsküdar, Ataşehir, Maltepe, Kartal, Şişli, Beşiktaş, Beyoğlu, Bakırköy, Başakşehir, Sarıyer, Esenyurt ve İstanbul'un tüm ilçelerinde hizmet veriyoruz."
-                },
-                {
-                  question: 'Fiyatlar nedir?',
-                  answer:
-                    'Fiyatlarımız karakter, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0534 930 67 99'
-                }
-              ].map((faq, index) => (
-                <motion.div
+              {faqData.map((faq, index) => (
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-6 shadow-sm"
+                  className="bg-white rounded-xl p-6 shadow-sm animate-fade-in"
                 >
                   <h3 className="font-bold text-xl text-gray-900 mb-3">{faq.question}</h3>
                   <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -243,7 +256,7 @@ const CostumedCharacters = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/905349306799?text=Kostümlü karakter kiralama hakkında bilgi almak istiyorum"
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-full font-bold text-xl shadow-2xl transition-all"

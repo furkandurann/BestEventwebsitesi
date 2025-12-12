@@ -453,7 +453,7 @@ const FullBirthdayOrganization = () => {
                   className="mt-5 w-full rounded-full bg-white text-black font-semibold text-sm md:text-base py-3 shadow-lg shadow-black/40 hover:bg-white/90 transition-colors"
                   onClick={() =>
                     window.open(
-                      "https://wa.me/905349306799?text=Merhaba! Full doğum günü organizasyonu için bilgi almak istiyorum.",
+                      "https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum",
                       "_blank"
                     )
                   }

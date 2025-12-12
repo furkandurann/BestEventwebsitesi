@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
+import Seo from '../../components/Seo'
 import RelatedServices from '../../components/RelatedServices'
 import { trackWhatsAppClick, trackPhoneClick, trackServicePageView } from '../../utils/tracking'
 
@@ -92,18 +92,49 @@ const FacePainting = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Profesyonel Yüz Boyama | İstanbul Face Painting | Best Event</title>
-        <meta
-          name="description"
-          content="İstanbul'da profesyonel yüz boyama: FDA onaylı boyalar, 100+ tasarım, hijyen protokolü. Çocuk etkinlikleri, doğum günü ve festivaller için yerinde hizmet."
-        />
-        <meta
-          name="keywords"
-          content="yüz boyama istanbul, face painting, çocuk yüz boyama, fda onaylı yüz boyası, yüz boyama fiyatları"
-        />
-        <link rel="canonical" href="https://www.bestevent.com/organizasyonlar/yuz-boyama" />
-      </Helmet>
+      <Seo
+        title="Profesyonel Yüz Boyama | İstanbul Face Painting | Best Event"
+        description="İstanbul'da profesyonel yüz boyama: FDA onaylı boyalar, 100+ tasarım, hijyen protokolü. Çocuk etkinlikleri, doğum günü ve festivaller için yerinde hizmet."
+        keywords={[
+          'yüz boyama istanbul',
+          'face painting',
+          'çocuk yüz boyama',
+          'fda onaylı yüz boyası',
+          'yüz boyama fiyatları',
+          'profesyonel yüz boyama',
+          'istanbul face painting'
+        ]}
+        canonicalPath="/organizasyonlar/yuz-boyama"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Profesyonel Yüz Boyama İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "areaServed": serviceAreas.map(area => area)
+            },
+            "serviceType": "Yüz Boyama",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
+      />
 
       <main className="bg-black text-white">
         {/* Hero */}
@@ -417,7 +448,7 @@ const FacePainting = () => {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba! Yüz boyama hakkında bilgi almak istiyorum."
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick('Profesyonel Yüz Boyama', window.location.href)}

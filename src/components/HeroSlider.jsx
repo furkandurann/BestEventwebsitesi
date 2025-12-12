@@ -1,22 +1,15 @@
+import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import OptimizedImage from './OptimizedImage'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
 const slides = [
-  {
-    title: '🎄 Yılbaşı Özel',
-    description: 'Noel Baba Kiralama - Çocuklarınızın Rüyası Gerçek Olsun',
-    ctaLabel: 'Hemen İncele',
-    ctaLink: '/organizasyonlar/noel-baba-kiralama',
-    link: '/organizasyonlar/noel-baba-kiralama',
-    backgroundImage: '/content/images/noelbaba/WhatsApp Image 2025-12-05 at 12.05.57.jpeg',
-    badge: '⏰ Son Kontenjan!'
-  },
   {
     backgroundImage: '/content/images/Anasayfa/siteanahero.jpg',
     link: '/hizmetler',
@@ -57,6 +50,17 @@ const slides = [
 
 const HeroSlider = () => {
   const shouldReduceMotion = useReducedMotion()
+  const [isMobile, setIsMobile] = React.useState(false)
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   return (
     <div className="relative h-[80vh] md:h-screen w-full">
@@ -89,21 +93,25 @@ const HeroSlider = () => {
               to={slide.link || '#'} 
               className={`block h-full w-full ${slide.link ? 'cursor-pointer' : 'cursor-default'}`}
             >
-            <div className="absolute inset-0 h-full w-full flex items-start justify-start overflow-hidden pt-[10vh] md:pt-[30vh]">
+            <div className="absolute inset-0 h-full w-full flex items-center justify-center md:items-start md:justify-start overflow-hidden pt-0 md:pt-[30vh]">
               {slide.backgroundImage && (
-                <div
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                  style={{ backgroundImage: `url(${slide.backgroundImage})` }}
+                <OptimizedImage
+                  src={slide.backgroundImage}
+                  alt={slide.title || 'Best Event - Etkinlik Organizasyonu'}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={index === 0 ? 'high' : 'auto'}
+                  sizes="100vw"
                 />
               )}
 
-              <div 
-                className="relative z-10 layout-container text-center md:text-left"
-                style={{
-                  marginLeft: index === 3 ? '15vw' : (index === 4 || index === 5) ? '25vw' : '10vw'
-                }}
-              >
-                <div className="max-w-[80%] mx-auto md:mx-0">
+              <div className="relative z-10 w-full text-center md:text-left">
+                <div 
+                  className="max-w-[90%] mx-auto md:mx-0" 
+                  style={{
+                    marginLeft: isMobile ? 'auto' : (index === 3 ? '15vw' : (index === 4 || index === 5) ? '25vw' : '10vw')
+                  }}
+                >
                   <motion.div
                     initial={
                       shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
@@ -126,12 +134,12 @@ const HeroSlider = () => {
                       </motion.div>
                     )}
                     {slide.title && (
-                      <h1 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-white mb-4 drop-shadow-2xl [text-shadow:_0_4px_8px_rgb(0_0_0_/_80%)] text-center md:text-left leading-tight">
+                      <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-white mb-4 drop-shadow-2xl [text-shadow:_0_4px_8px_rgb(0_0_0_/_80%)] text-center md:text-left leading-tight whitespace-nowrap">
                         {slide.title}
                       </h1>
                     )}
                     {slide.description && (
-                      <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-6 drop-shadow-lg">
+                      <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 drop-shadow-lg whitespace-nowrap">
                         {slide.description}
                       </p>
                     )}

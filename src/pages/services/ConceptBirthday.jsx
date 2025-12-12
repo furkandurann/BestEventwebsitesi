@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
+import Seo from '../../components/Seo'
 import NarrativeSection from '../../components/NarrativeSection'
 
 const ConceptBirthday = () => {
@@ -41,14 +41,49 @@ const ConceptBirthday = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Konsept Doğum Günü Organizasyonu | İstanbul | Best Event</title>
-        <meta 
-          name="description" 
-          content="İstanbul'da çocuklar için özel konsept doğum günü organizasyonu. Prenses, süper kahraman, unicorn temaları. Profesyonel dekorasyon ve animasyon." 
-        />
-        <meta name="keywords" content="konsept doğum günü, tema parti, çocuk doğum günü istanbul, prenses doğum günü" />
-      </Helmet>
+      <Seo
+        title="Konsept Doğum Günü Organizasyonu | İstanbul | Best Event"
+        description="İstanbul'da çocuklar için özel konsept doğum günü organizasyonu. Prenses, süper kahraman, unicorn temaları. Profesyonel dekorasyon ve animasyon."
+        keywords={[
+          'konsept doğum günü',
+          'tema parti',
+          'çocuk doğum günü istanbul',
+          'prenses doğum günü',
+          'barbie doğum günü',
+          'süper kahraman doğum günü',
+          'konsept organizasyon istanbul'
+        ]}
+        canonicalPath="/organizasyonlar/konsept-dogum-gunu"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Konsept Doğum Günü Organizasyonu",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "areaServed": ["Kadıköy", "Beşiktaş", "Şişli", "Bakırköy", "Üsküdar", "Maltepe", "Kartal", "Ataşehir", "Pendik", "Sarıyer", "Beyoğlu", "Fatih", "Başakşehir", "Küçükçekmece", "Esenyurt", "İstanbul"]
+            },
+            "serviceType": "Konsept Doğum Günü Organizasyonu",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
+      />
 
       {/* Hero Section - With Barbie Background */}
       <motion.section 
@@ -785,21 +820,6 @@ const ConceptBirthday = () => {
           </div>
         </div>
 
-        {/* FAQPage Schema Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          })}
-        </script>
       </section>
 
       {/* Hizmet Bölgeleri */}
@@ -842,7 +862,7 @@ const ConceptBirthday = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/905349306799?text=Konsept doğum günü rezervasyonu yapmak istiyorum"
+              href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-xl font-bold text-xl shadow-2xl transition-all"

@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -101,7 +101,7 @@ function App() {
             <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hakkimizda" element={<About />} />
-        <Route path="/organizasyonlar" element={<Services />} />
+        <Route path="/organizasyonlar" element={<Navigate to="/organizasyonlar/cocuk-etkinlikleri" replace />} />
         <Route path="/galeri" element={<Gallery />} />
         <Route path="/iletisim" element={<Contact />} />
         <Route path="/ekibimiz" element={<Team />} />
@@ -124,7 +124,7 @@ function App() {
         <Route path="/organizasyonlar/bubble-show" element={<BubbleShow />} />
         <Route path="/organizasyonlar/kostumlu-karakterler" element={<CostumedCharacters />} />
         
-        <Route path="/organizasyonlar/dogum-gunu-organizasyonu" element={<FullPackageOrganization />} />
+        <Route path="/organizasyonlar/dogum-gunu-organizasyonu" element={<FullBirthdayOrganization />} />
         <Route path="/organizasyonlar/konsept-dogum-gunu" element={<ConceptBirthday />} />
         <Route path="/organizasyonlar/pamuk-seker" element={<CottonCandyCart />} />
         <Route path="/organizasyonlar/karaoke-etkinligi" element={<Karaoke />} />

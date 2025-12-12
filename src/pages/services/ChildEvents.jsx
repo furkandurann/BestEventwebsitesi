@@ -1,6 +1,6 @@
 import SeoHead from '../../components/SeoHead'
 import KidsSection from '../../components/KidsSection'
-import SantaClausFeatured from '../../components/SantaClausFeatured'
+import OptimizedImage from '../../components/OptimizedImage'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
@@ -38,7 +38,7 @@ const ChildEvents = () => {
       })
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
     
     return () => window.removeEventListener('scroll', handleScroll)
@@ -206,9 +206,6 @@ const ChildEvents = () => {
           />
         ))}
 
-        {/* NOEL BABA FEATURED - Yılbaşı Özel Kampanya */}
-        <SantaClausFeatured />
-
         {/* DİĞER HİZMETLER - Enhanced Apple Style */}
         <section className="py-20 sm:py-28 lg:py-32 bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -241,10 +238,11 @@ const ChildEvents = () => {
                   <div className="block cursor-default">
                     <div className="relative aspect-square overflow-hidden rounded-3xl shadow-lg transition-all duration-500">
                       {/* Image */}
-                      <img
+                      <OptimizedImage
                         src={service.image}
                         alt={service.name}
                         loading="lazy"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="w-full h-full object-cover transition-transform duration-700"
                       />
                       {/* Gradient Overlay */}
@@ -457,7 +455,7 @@ const ChildEvents = () => {
               {/* CTA Button */}
               <div className="mt-10">
                 <a
-                  href="https://wa.me/905349306799?text=Merhaba! Çocuk etkinlikleri hakkında bilgi almak istiyorum."
+                  href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"

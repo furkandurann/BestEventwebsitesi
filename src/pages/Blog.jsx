@@ -90,7 +90,7 @@ const Blog = () => {
               📞 Hemen Ara
             </a>
             <a 
-              href="https://wa.me/905551234567"
+              href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-600 hover:bg-green-700 text-white font-bold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-2xl hover:scale-105"

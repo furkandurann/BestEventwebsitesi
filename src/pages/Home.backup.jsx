@@ -362,7 +362,7 @@ const Home = () => {
               </p>
               
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba! Best Event hakkında bilgi almak istiyorum."
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

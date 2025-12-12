@@ -1,13 +1,60 @@
 import { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
-import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
+import Seo from '../../components/Seo'
 import NarrativeSection from '../../components/NarrativeSection'
+import OptimizedImage from '../../components/OptimizedImage'
+
+// Simplified Rabbit Animation (CSS only)
+function JumpingRabbit() {
+  const [isVisible, setIsVisible] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(false)
+    }, 4000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (!isVisible) return null
+
+  return (
+    <div className="fixed bottom-8 right-8 z-50 pointer-events-none animate-bounce">
+      <div className="text-8xl filter drop-shadow-2xl">🐰</div>
+    </div>
+  )
+}
 
 const MagicShow = () => {
+  const faqData = [
+    {
+      question: "Magic show gösterisi ne kadar sürer?",
+      answer: "Standart magic show gösterilerimiz 30-45 dakika arası sürmektedir. Talebe göre 60 dakikaya kadar uzatılabilir. Küçük çocuklar için 20-30 dakikalık kısa versiyonlar da mevcuttur."
+    },
+    {
+      question: "Hangi yaş grubu için uygundur?",
+      answer: "Magic show gösterilerimiz 3-12 yaş arası çocuklar için idealdir. Farklı yaş grupları için içerik özelleştirmesi yapıyoruz. Daha küçük çocuklar için basit ve renkli numaralar, büyük çocuklar için daha karmaşık illüzyonlar sunuyoruz."
+    },
+    {
+      question: "Çocuklar gösteriye katılabilir mi?",
+      answer: "Evet! Gösterilerimiz interaktiftir. Çocuklar sahneye davet edilir, sihir numaralarına yardımcı olurlar. Bu, gösteriyi daha eğlenceli ve unutulmaz kılar."
+    },
+    {
+      question: "Hangi bölgelere hizmet veriyorsunuz?",
+      answer: "İstanbul'un tüm ilçelerine hizmet veriyoruz. Kadıköy, Erenköy, Üsküdar, Maltepe, Kartal, Ataşehir, Pendik başta olmak üzere Anadolu ve Avrupa yakasının her bölgesine gidiyoruz."
+    },
+    {
+      question: "Malzeme ve ekipmanları siz mi getiriyorsunuz?",
+      answer: "Evet, tüm sihir malzemeleri, ses sistemi, ışık ekipmanları ve sahne aksesuarlarını biz sağlıyoruz. Sizin herhangi bir şey temin etmenize gerek yoktur."
+    },
+    {
+      question: "Fiyatlar nedir?",
+      answer: "Fiyatlarımız gösteri süresine, katılımcı sayısına ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0534 930 67 99"
+    }
+  ]
+
   const heroSlides = [
     {
       src: '/content/images/sihirbaz/sihirbazhero.jpeg',
@@ -25,13 +72,55 @@ const MagicShow = () => {
 
   return (
     <>
-      <Helmet>
-        <title>İstanbul Magic Show Organizasyonu | Sihirbaz Kiralama | Best Event</title>
-        <meta 
-          name="description" 
-          content="İstanbul'un en iyi magic show organizasyonu. Tüm İstanbul'da profesyonel sihirbaz kiralama. Kadıköy, Maltepe, Üsküdar. ☎ 0534 930 67 99" 
-        />
-      </Helmet>
+      <Seo
+        title="İstanbul Magic Show Organizasyonu | Sihirbaz Kiralama | Best Event"
+        description="İstanbul'un en iyi magic show organizasyonu. Tüm İstanbul'da profesyonel sihirbaz kiralama. Kadıköy, Maltepe, Üsküdar. ☎ 0534 930 67 99"
+        keywords={[
+          'magic show istanbul',
+          'sihirbaz kiralama',
+          'magic show organizasyonu',
+          'çocuk magic show',
+          'sihir gösterisi',
+          'istanbul sihirbaz',
+          'profesyonel sihirbaz kiralama'
+        ]}
+        canonicalPath="/organizasyonlar/magic-show"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Magic Show İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "areaServed": [
+                "Kadıköy", "Üsküdar", "Maltepe", "Kartal", "Ataşehir", "Pendik", "Erenköy",
+                "Beylikdüzü", "Sarıyer", "Beşiktaş", "Şişli", "Bakırköy", "İstanbul"
+              ]
+            },
+            "serviceType": "Magic Show Organizasyonu",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqData.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
+      />
+
+      {/* Jumping Rabbit Animation */}
+      <JumpingRabbit />
 
       <main className="overflow-x-hidden scroll-smooth">
         {/* Hero Slider */}
@@ -60,38 +149,101 @@ const MagicShow = () => {
           </Swiper>
 
           <div className="relative z-10 max-w-4xl mx-auto px-6 text-center py-16 sm:py-20 md:py-24">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+            <h1
+              className="font-bold text-white animate-fade-in"
+              style={{
+                fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+                lineHeight: '1.1',
+                letterSpacing: '-0.025em',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+              }}
             >
-              <p className="uppercase tracking-[0.3em] text-xs sm:text-sm text-pink-200 mb-4 font-medium">
-                İstanbul Magic Show
-              </p>
-              <h1
-                className="font-bold text-white mb-4"
+              Sihirbazlık Gösterisi
+            </h1>
+          </div>
+        </section>
+
+        {/* Brand Impact Section - Magic Show (Blue Theme) */}
+        <section className="py-20 sm:py-28 px-6 bg-gradient-to-br from-blue-950/40 via-black to-cyan-950/40 border-y border-white/10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="animate-fade-in">
+              {/* BestEvent Bilgisi */}
+              <h2 
+                className="font-bold mb-8 text-white px-4 text-center"
                 style={{
-                  fontSize: 'clamp(2.25rem, 5.5vw, 4rem)',
-                  lineHeight: '1.1',
-                  letterSpacing: '-0.025em',
+                  fontSize: 'clamp(1.41rem, 3.74vw, 2.48rem)',
+                  lineHeight: '1.35',
+                  letterSpacing: '-0.015em',
+                  fontWeight: '700',
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
                 }}
               >
-                Sihirbaz Kiralama & Magic Show
-              </h1>
-              <p
-                className="text-white/85 max-w-2xl mx-auto"
+                <span style={{ whiteSpace: 'nowrap' }}>
+                  Profesyonel{' '}
+                  <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-bold">
+                    sihirbazlar
+                  </span>
+                </span>
+                , büyüleyici illüzyonlar ile
+              </h2>
+
+              {/* Ana Mesaj */}
+              <p 
+                className="text-white mb-12 text-center mx-auto"
                 style={{
-                  fontSize: 'clamp(1rem, 1.8vw, 1.25rem)',
-                  lineHeight: '1.6',
-                  letterSpacing: '-0.01em',
-                  fontWeight: '500',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                  fontSize: 'clamp(1.125rem, 2.5vw, 1.75rem)',
+                  lineHeight: '1.5',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '600',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
                 }}
               >
-                İstanbul genelinde 10+ yıl deneyim, interaktif sahne şovları ve çocuklara özel sihir numaraları. Hemen rezervasyon için 0534 930 67 99.
+                10+ Yıldır Sihirli Anlar Yaratıyoruz
               </p>
-            </motion.div>
+
+              {/* İstatistikler */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
+                <div>
+                  <p 
+                    style={{
+                      fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                      lineHeight: '1.4',
+                      letterSpacing: '-0.015em',
+                      fontWeight: '500',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif',
+                      color: '#E5E5E5'
+                    }}
+                  >
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 font-bold" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>+5000</span>
+                    {' '}Gösteri
+                  </p>
+                </div>
+
+                <div className="hidden sm:block w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-transparent" />
+                <div className="block sm:hidden w-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+                <div>
+                  <p 
+                    className="text-white font-bold"
+                    style={{
+                      fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                      lineHeight: '1.4',
+                      letterSpacing: '-0.015em',
+                      fontWeight: '700',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                    }}
+                  >
+                    Binlerce{' '}
+                    <span 
+                      className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-bold"
+                      style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
+                    >
+                      Büyülenmiş Çocuk
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -102,10 +254,12 @@ const MagicShow = () => {
           body="Best Event olarak İstanbul'un her bölgesinde profesyonel magic show gösterileri sunuyoruz. Deneyimli sihirbazlarımız, interaktif gösteriler ve çocukları büyüleyen sihir numaraları ile unutulmaz anlar yaratıyoruz. Kadıköy'den Beylikdüzü'ne, Üsküdar'dan Sarıyer'e kadar tüm İstanbul'da hizmetinizdeyiz."
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
-          <img 
+          <OptimizedImage
             src="/content/images/sihirbaz/IMG_3293.jpeg"
             alt="İstanbul magic show organizasyonu"
             className="object-contain max-h-[80vh] w-auto"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 80vh"
           />
         </div>
 
@@ -116,10 +270,12 @@ const MagicShow = () => {
           body="10+ yıllık deneyimimiz ve 5000+ başarılı etkinliğimiz ile İstanbul'un en güvenilir magic show organizasyon firmasıyız. Profesyonel sihirbazlarımız klasik sihir numaraları, büyük illüzyonlar, hayvan sihirleri ve interaktif performanslarla çocukları büyülüyor. Her gösteri 30-60 dakika sürer ve yaş grubuna göre özelleştirilir."
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
-          <img 
+          <OptimizedImage
             src="/content/images/sihirbaz/sihirbazhero.jpeg"
             alt="İstanbul'un en iyi sihirbazlık gösterileri"
             className="object-contain max-h-[80vh] w-auto"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 80vh"
           />
         </div>
 
@@ -130,10 +286,12 @@ const MagicShow = () => {
           body="Deneyimli ve sertifikalı sihirbazlarımız çocuklarla iletişimde uzman profesyonellerdir. Her yaş grubuna özel içerik hazırlıyoruz: 3-12 yaş arası çocuklar için eğlenceli ve anlaşılır numaralar, yetişkinler için daha karmaşık illüzyonlar. Tüm malzemelerimiz, ses sistemi, ışık ekipmanları ve sahne aksesuarlarını biz sağlıyoruz."
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
-          <img 
+          <OptimizedImage
             src="/content/images/sihirbaz/IMG_4800.jpeg"
             alt="Profesyonel sihirbaz kiralama"
             className="object-contain max-h-[80vh] w-auto"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 80vh"
           />
         </div>
 
@@ -144,10 +302,12 @@ const MagicShow = () => {
           body="Profesyonel sihirbazlarımız klasik tavşan ve güvercin sihirleriyle çocukları büyülüyor. Şapkadan tavşan çıkarma, güvercin dönüşümleri ve hayvan illüzyonları ile gösterilerimiz daha renkli ve eğlenceli hale geliyor. Tüm hayvanlarımız eğitimli, sevimli ve çocuklarla iletişime açıktır. Bu klasik sihir numaraları, çocukların en çok sevdiği ve hatırladığı anlar arasındadır."
           />
         <div className="w-full flex justify-center items-center bg-white py-8">
-          <img 
+          <OptimizedImage
             src="/content/images/sihirbaz/IMG_4864.jpeg"
             alt="Tavşan ve güvercin ile klasik sihir gösterileri"
             className="object-contain max-h-[80vh] w-auto"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 80vh"
           />
         </div>
 
@@ -158,10 +318,12 @@ const MagicShow = () => {
           body="Çocukların aktif katılımıyla interaktif magic show deneyimi sunuyoruz. Çocuklar sahneye davet edilir, sihir numaralarına yardımcı olurlar ve kendileri de küçük sihirler yapmayı öğrenirler. Komedi ve eğlence odaklı sunum ile hem çocuklar hem yetişkinler eğlenir. Bu interaktif yaklaşım gösteriyi daha unutulmaz kılar."
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
-          <img 
+          <OptimizedImage
             src="/content/images/sihirbaz/IMG_8855.PNG"
             alt="İnteraktif magic show deneyimi"
             className="object-contain max-h-[80vh] w-auto"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 80vh"
           />
         </div>
 
@@ -180,46 +342,17 @@ const MagicShow = () => {
         </div>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-gradient-to-br from-purple-100 via-pink-100 to-orange-100">
+        <section className="py-20 bg-gradient-to-br from-blue-100 via-cyan-100 to-sky-100">
           <div className="max-w-3xl mx-auto px-4">
             <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
               Sıkça Sorulan Sorular
             </h2>
             
             <div className="space-y-6">
-              {[
-                {
-                  question: "Magic show gösterisi ne kadar sürer?",
-                  answer: "Standart magic show gösterilerimiz 30-45 dakika arası sürmektedir. Talebe göre 60 dakikaya kadar uzatılabilir. Küçük çocuklar için 20-30 dakikalık kısa versiyonlar da mevcuttur."
-                },
-                {
-                  question: "Hangi yaş grubu için uygundur?",
-                  answer: "Magic show gösterilerimiz 3-12 yaş arası çocuklar için idealdir. Farklı yaş grupları için içerik özelleştirmesi yapıyoruz. Daha küçük çocuklar için basit ve renkli numaralar, büyük çocuklar için daha karmaşık illüzyonlar sunuyoruz."
-                },
-                {
-                  question: "Çocuklar gösteriye katılabilir mi?",
-                  answer: "Evet! Gösterilerimiz interaktiftir. Çocuklar sahneye davet edilir, sihir numaralarına yardımcı olurlar. Bu, gösteriyi daha eğlenceli ve unutulmaz kılar."
-                },
-                {
-                  question: "Hangi bölgelere hizmet veriyorsunuz?",
-                  answer: "İstanbul'un tüm ilçelerine hizmet veriyoruz. Kadıköy, Erenköy, Üsküdar, Maltepe, Kartal, Ataşehir, Pendik başta olmak üzere Anadolu ve Avrupa yakasının her bölgesine gidiyoruz."
-                },
-                {
-                  question: "Malzeme ve ekipmanları siz mi getiriyorsunuz?",
-                  answer: "Evet, tüm sihir malzemeleri, ses sistemi, ışık ekipmanları ve sahne aksesuarlarını biz sağlıyoruz. Sizin herhangi bir şey temin etmenize gerek yoktur."
-                },
-                {
-                  question: "Fiyatlar nedir?",
-                  answer: "Fiyatlarımız gösteri süresine, katılımcı sayısına ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0534 930 67 99"
-                }
-              ].map((faq, index) => (
-                <motion.div
+              {faqData.map((faq, index) => (
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-6 shadow-sm"
+                  className="bg-white rounded-xl p-6 shadow-sm animate-fade-in"
                 >
                   <h3 className="font-bold text-xl text-gray-900 mb-3">
                     {faq.question}
@@ -227,14 +360,14 @@ const MagicShow = () => {
                   <p className="text-gray-700 leading-relaxed">
                     {faq.answer}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Final CTA */}
-        <section className="py-20 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500">
+        <section className="py-20 bg-gradient-to-br from-blue-500 via-cyan-500 to-sky-500">
           <div className="max-w-4xl mx-auto px-4 text-center text-white">
             <h2 className="text-5xl font-bold mb-6">Hemen Rezervasyon Yapın!</h2>
             <p className="text-2xl mb-10 text-white/90">
@@ -243,7 +376,7 @@ const MagicShow = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/905349306799?text=Magic show hakkında bilgi almak istiyorum"
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-full font-bold text-xl shadow-2xl transition-all"

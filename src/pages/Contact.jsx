@@ -85,7 +85,7 @@ const Contact = () => {
       `${service ? `Hizmet: ${service}%0A` : ''}` +
       `Açıklama: ${message || '-'}`
     
-    window.open(`https://wa.me/905349306799?text=${text}`, '_blank')
+    window.open(`https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum
   }
 
   // Show service dropdown only for non-kurumsal types

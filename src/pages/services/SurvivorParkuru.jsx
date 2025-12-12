@@ -142,7 +142,7 @@ const SurvivorParkuru = () => {
               </motion.a>
               
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba, survivor parkuru hakkında bilgi almak istiyorum"
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -478,7 +478,7 @@ const SurvivorParkuru = () => {
               </motion.a>
               
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba, survivor parkuru için fiyat teklifi almak istiyorum"
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

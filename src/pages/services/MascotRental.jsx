@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import Seo from '../../components/Seo'
 
 const MascotRental = () => {
   // FAQ
@@ -41,14 +41,50 @@ const MascotRental = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Maskot Kiralama İstanbul | Koca Kafalı Karakterler | Best Event</title>
-        <meta 
-          name="description" 
-          content="İstanbul'da maskot organizasyon. Hello Kitty, Sonic, Mickey Mouse, Paw Patrol maskot organizasyon. Doğum günü etkinlikleri. ☎ 0534 930 67 99" 
-        />
-        <meta name="keywords" content="maskot organizasyon istanbul, koca kafalı maskot, hello kitty maskot, sonic maskot, mickey mouse maskot, doğum günü maskotları" />
-      </Helmet>
+      <Seo
+        title="Maskot Kiralama İstanbul | Koca Kafalı Karakterler | Best Event"
+        description="İstanbul'da maskot organizasyon. Hello Kitty, Sonic, Mickey Mouse, Paw Patrol maskot organizasyon. Doğum günü etkinlikleri. ☎ 0534 930 67 99"
+        keywords={[
+          'maskot organizasyon istanbul',
+          'koca kafalı maskot',
+          'hello kitty maskot',
+          'sonic maskot',
+          'mickey mouse maskot',
+          'doğum günü maskotları',
+          'istanbul maskot kiralama',
+          'maskot kiralama fiyatları'
+        ]}
+        canonicalPath="/organizasyonlar/maskot-kiralama"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Maskot Kiralama İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "areaServed": ["Kadıköy", "Beşiktaş", "Şişli", "Bakırköy", "Üsküdar", "Maltepe", "Kartal", "Ataşehir", "Pendik", "Sarıyer", "Beyoğlu", "Fatih", "Başakşehir", "Küçükçekmece", "Esenyurt", "İstanbul"]
+            },
+            "serviceType": "Maskot Kiralama",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
+      />
 
       {/* 2 BIG HERO SECTIONS */}
       
@@ -277,21 +313,6 @@ const MascotRental = () => {
           </div>
         </div>
 
-        {/* FAQPage Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          })}
-        </script>
       </section>
 
       {/* Hizmet Bölgeleri */}
@@ -339,7 +360,7 @@ const MascotRental = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/905349306799?text=Maskot organizasyon hakkında bilgi almak istiyorum"
+              href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="min-h-[44px] bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-xl font-bold text-xl shadow-2xl transition-all transform hover:scale-105"

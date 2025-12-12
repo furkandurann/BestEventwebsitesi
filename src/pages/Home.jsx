@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import HeroSlider from '../components/HeroSlider'
 import Seo from '../components/Seo'
+import OptimizedImage from '../components/OptimizedImage'
 
 const Home = () => {
   const localBusinessSchema = {
@@ -185,15 +185,9 @@ const Home = () => {
 
         <div className="mt-[29vh] max-w-6xl mx-auto text-center">
           {/* Supporting line */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="font-medium text-[clamp(1.15rem,1.9vw,1.35rem)] text-[#e5e5e5] text-center mt-[4.5rem] mb-[3.5rem] max-w-[950px] mx-auto tracking-[0.25px] opacity-92"
-          >
+          <p className="font-medium text-[clamp(1.15rem,1.9vw,1.35rem)] text-[#e5e5e5] text-center mt-[4.5rem] mb-[3.5rem] max-w-[950px] mx-auto tracking-[0.25px] opacity-92 animate-fade-in">
             ve bunu her gün yapıyoruz
-          </motion.p>
+          </p>
 
           {/* 4 kart */}
           <div className="mt-[6.25rem] md:mt-[8.75rem] grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -204,12 +198,14 @@ const Home = () => {
               to="/organizasyonlar/cocuk-etkinlikleri"
               img="/content/images/Anasayfa/vodafonekurumsal.jpeg"
               altText="İstanbul çocuk etkinlikleri - Palyaço, sihirbaz kiralama, kostümlü karakter ve konsept doğum günü organizasyonu - Best Event"
+              fetchpriority="high"
             />
             <CardImageNoLink
               title="Kurumsal Etkinlikler"
               desc="Lansman, gala, festival ve premium sahne prodüksiyonları."
               img="/content/images/Anasayfa/SenCard.JPG"
               altText="İstanbul kurumsal etkinlik organizasyonu - Lansman, gala ve festival etkinlikleri - Best Event"
+              fetchpriority="high"
             />
             <CardImage
               title="Müzik Etkinlikleri"
@@ -218,6 +214,7 @@ const Home = () => {
               to="/organizasyonlar/muzik-etkinlikleri"
               img="/content/images/music/musiketkinlikleri.JPG"
               altText="İstanbul canlı müzik organizasyonu - DJ, trio band ve profesyonel müzisyen kiralama - Best Event"
+              fetchpriority="high"
             />
             <CardImage
               title="Dans Etkinlikleri"
@@ -226,6 +223,7 @@ const Home = () => {
               to="/organizasyonlar/dans-etkinlikleri"
               img="/content/images/dance/lüksdanskarsilamaekibi.JPG"
               altText="İstanbul dans gösterileri - Oryantal dans, flamenko ve modern dans etkinlikleri - Best Event"
+              fetchpriority="high"
             />
           </div>
         </div>
@@ -284,7 +282,7 @@ const Home = () => {
           <div className="mt-8 flex items-center justify-center gap-4">
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/905349306799?text=Merhaba! Best Event hakkında bilgi almak istiyorum."
+              href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300"
@@ -321,27 +319,24 @@ const Home = () => {
 }
 
 // Küçük bileşenler
-function CardImage({ title, desc, cta, to, img, altText }) {
+function CardImage({ title, desc, cta, to, img, altText, fetchpriority }) {
   return (
     <Link
       to={to}
       className="group relative rounded-2xl overflow-hidden bg-zinc-900/50 backdrop-blur-sm border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500"
     >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="aspect-[16/11] w-full bg-black/60 overflow-hidden"
-      >
+      <div className="aspect-[16/11] w-full bg-black/60 overflow-hidden">
         {img && (
-          <img
+          <OptimizedImage
             src={img}
             alt={altText || title}
             className="w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+            loading="lazy"
+            fetchpriority={fetchpriority}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         )}
-      </motion.div>
+      </div>
 
       <div className="p-8 sm:p-10 text-left">
         <h4 
@@ -385,24 +380,21 @@ function CardImage({ title, desc, cta, to, img, altText }) {
   )
 }
 
-function CardImageNoLink({ title, desc, img, altText }) {
+function CardImageNoLink({ title, desc, img, altText, fetchpriority }) {
   return (
     <div className="relative rounded-2xl overflow-hidden bg-zinc-900/50 backdrop-blur-sm border border-white/[0.08]">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="aspect-[16/11] w-full bg-black/60 overflow-hidden"
-      >
+      <div className="aspect-[16/11] w-full bg-black/60 overflow-hidden">
         {img && (
-          <img
+          <OptimizedImage
             src={img}
             alt={altText || title}
             className="w-full h-full object-cover opacity-95"
+            loading="lazy"
+            fetchpriority={fetchpriority}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         )}
-      </motion.div>
+      </div>
 
       <div className="p-8 sm:p-10 text-left">
         <h4 
@@ -436,23 +428,17 @@ function CardImageNoLink({ title, desc, img, altText }) {
 
 function StatBox({ big, small }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-7 shadow-soft"
-    >
+    <div className="rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-7 shadow-soft animate-fade-in">
       <div className="text-3xl sm:text-4xl font-semibold">{big}</div>
       <div className="mt-2 text-white/60 text-sm uppercase tracking-wider">{small}</div>
-    </motion.div>
+    </div>
   )
 }
 
 function CinemaStrip() {
-  const scrollContainerRef = useRef(null)
-  const [isPaused, setIsPaused] = useState(false)
-  const [translateX, setTranslateX] = useState(0)
+  const stripRef = useRef(null)
+  const isPausedRef = useRef(false)
+  const translateXRef = useRef(0)
 
   const scrollImages = [
     { file: 'IMG_1879 2_LE_upscale_strong_x4_tone_enhance_30_color_enhance_30.jpg', alt: 'Özel doğum günü organizasyonu ve etkinlik İstanbul - Best Event' },
@@ -477,30 +463,28 @@ function CinemaStrip() {
     { file: 'vodafone3ekle.JPG', alt: 'Vodafone kurumsal organizasyon İstanbul - Best Event' },
   ]
 
-  // Dinamik hesaplama - fotoğraf sayısı değiştiğinde otomatik güncellenir
-  const IMAGE_WIDTH = 450  // px
-  const GAP = 24           // gap-6 = 1.5rem = 24px
+  const IMAGE_WIDTH = 450
+  const GAP = 24
   const imageCount = scrollImages.length
   const totalWidth = (IMAGE_WIDTH * imageCount) + (GAP * (imageCount - 1))
-
-  // Triple images for smoother infinite loop
   const allImages = [...scrollImages, ...scrollImages, ...scrollImages]
 
-  // Sadece otomatik scroll - CSS transform ile smooth
+  // Optimized scroll - Direct DOM manipulation (NO state updates!)
   useEffect(() => {
-    const scrollSpeed = 6.0 // px per frame
+    const scrollSpeed = 0.5 // Reduced speed for smoother scroll
     let animationFrameId
-    
+
     const autoScroll = () => {
-      if (!isPaused) {
-        setTranslateX(prev => {
-          const newValue = prev - scrollSpeed
-          // Başa dön (seamless loop)
-          if (Math.abs(newValue) >= totalWidth) {
-            return 0
-          }
-          return newValue
-        })
+      if (!isPausedRef.current && stripRef.current) {
+        translateXRef.current -= scrollSpeed
+        
+        // Reset seamlessly
+        if (Math.abs(translateXRef.current) >= totalWidth) {
+          translateXRef.current = 0
+        }
+        
+        // Direct DOM update - NO React re-render!
+        stripRef.current.style.transform = `translate3d(${translateXRef.current}px, 0, 0)`
       }
       
       animationFrameId = requestAnimationFrame(autoScroll)
@@ -511,21 +495,21 @@ function CinemaStrip() {
     return () => {
       cancelAnimationFrame(animationFrameId)
     }
-  }, [totalWidth, isPaused])
+  }, [totalWidth])
 
   return (
     <div className="relative w-screen -mx-6 md:-mx-10">
       <div 
-        ref={scrollContainerRef}
         className="overflow-hidden"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        onMouseEnter={() => { isPausedRef.current = true }}
+        onMouseLeave={() => { isPausedRef.current = false }}
       >
         <div 
+          ref={stripRef}
           className="flex gap-6"
           style={{
-            transform: `translate3d(${translateX}px, 0, 0)`,
-            willChange: 'transform'
+            willChange: 'transform',
+            transform: 'translate3d(0, 0, 0)'
           }}
         >
           {allImages.map((item, idx) => (
@@ -533,10 +517,12 @@ function CinemaStrip() {
               key={idx}
               className="flex-shrink-0"
             >
-              <img
+              <OptimizedImage
                 src={`/content/images/Anasayfa/anasayfascroll/${item.file}`}
                 alt={item.alt}
                 className="h-72 w-[450px] object-cover rounded-2xl brightness-[1.15] contrast-[1.08] saturate-[1.1]"
+                loading="lazy"
+                sizes="450px"
                 style={
                   item.file === 'kocholdıng1.jpg'
                     ? { objectPosition: 'center 30%' }

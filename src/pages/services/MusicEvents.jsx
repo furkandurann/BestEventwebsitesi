@@ -251,7 +251,7 @@ const MusicEvents = () => {
             {/* CTA Button */}
             <div className="mt-10 text-center">
               <a
-                href="https://wa.me/905349306799?text=Merhaba! Müzik etkinlikleri hakkında bilgi almak istiyorum."
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"

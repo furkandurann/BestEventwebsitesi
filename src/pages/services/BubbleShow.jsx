@@ -1,18 +1,84 @@
 import { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
-import { motion } from 'framer-motion'
+import Seo from '../../components/Seo'
 import NarrativeSection from '../../components/NarrativeSection'
+import OptimizedImage from '../../components/OptimizedImage'
 
 const BubbleShow = () => {
+  const faqData = [
+    {
+      question: "Bubble show gösterisi ne kadar sürer?",
+      answer: "Standart bubble show gösterilerimiz 20-30 dakika arası sürmektedir. Talebe göre 40 dakikaya kadar uzatılabilir. Küçük etkinlikler için 15 dakikalık express versiyonlar da mevcuttur."
+    },
+    {
+      question: "Bubble show için hangi yaş grubu uygundur?",
+      answer: "Bubble show gösterileri 2-12 yaş arası çocuklar için idealdir. Küçük bebekler için pasif izleme, büyük çocuklar için interaktif katılım şeklinde özelleştirilir. Yetişkin etkinlikleri için de özel gösteriler yapabiliyoruz."
+    },
+    {
+      question: "İç mekanda bubble show yapılabilir mi?",
+      answer: "Evet! Bubble show hem iç hem dış mekanlarda yapılabilir. İç mekan için minimum 4x4 metre alan ve 2.5 metre tavan yüksekliği yeterlidir. Zemin su geçirmez veya silinebilir olmalıdır."
+    },
+    {
+      question: "Sabun köpükleri zararlı mı? Alerjik reaksiyona neden olur mu?",
+      answer: "Kullandığımız sabun köpüğü solüsyonları tamamen çocuk dostu, toksik olmayan ve alerjik reaksiyon riski minimum ürünlerdir. Hassas cildi olan çocuklar için önceden bilgi vermenizi öneriyoruz."
+    },
+    {
+      question: "Hangi bölgelere hizmet veriyorsunuz?",
+      answer: "İstanbul'un tüm ilçelerine hizmet veriyoruz. Kadıköy, Erenköy, Üsküdar, Maltepe, Kartal, Ataşehir, Pendik başta olmak üzere Anadolu ve Avrupa yakasının her bölgesine gidiyoruz."
+    },
+    {
+      question: "Fiyatlar nedir?",
+      answer: "Fiyatlarımız gösteri süresine, mekan tipine ve katılımcı sayısına göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0534 930 67 99"
+    }
+  ]
+
   return (
     <>
-      <Helmet>
-        <title>İstanbul Bubble Show Organizasyonu | Köpük Şov Kiralama | Best Event</title>
-        <meta 
-          name="description" 
-          content="İstanbul'un en iyi bubble show organizasyonu. Tüm İstanbul'da profesyonel köpük şov kiralama. Kadıköy, Maltepe, Üsküdar. ☎ 0534 930 67 99" 
-        />
-      </Helmet>
+      <Seo
+        title="İstanbul Bubble Show Organizasyonu | Köpük Şov Kiralama | Best Event"
+        description="İstanbul'un en iyi bubble show organizasyonu. Tüm İstanbul'da profesyonel köpük şov kiralama. Kadıköy, Maltepe, Üsküdar. ☎ 0534 930 67 99"
+        keywords={[
+          'bubble show istanbul',
+          'köpük şov kiralama',
+          'bubble show organizasyonu',
+          'çocuk bubble show',
+          'dev sabun köpükleri',
+          'bubble show doğum günü',
+          'istanbul köpük gösterisi'
+        ]}
+        canonicalPath="/organizasyonlar/bubble-show"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Bubble Show İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "areaServed": [
+                "Kadıköy", "Üsküdar", "Maltepe", "Kartal", "Ataşehir", "Pendik", "Erenköy",
+                "Beylikdüzü", "Sarıyer", "Beşiktaş", "Şişli", "Bakırköy", "İstanbul"
+              ]
+            },
+            "serviceType": "Bubble Show Organizasyonu",
+            "offers": {
+              "@type": "Offer",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqData.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          }
+        ]}
+      />
 
       <main className="overflow-x-hidden scroll-smooth">
         {/* Full-Screen Hero Section */}
@@ -27,11 +93,8 @@ const BubbleShow = () => {
 
           {/* Content */}
           <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-[17vh]">
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="font-bold text-white leading-tight tracking-tight"
+            <h1
+              className="font-bold text-white leading-tight tracking-tight animate-fade-in"
               style={{ 
                 textShadow: '0 2px 20px rgba(0,0,0,.45)',
                 fontSize: 'clamp(2.25rem, 6vw, 4rem)',
@@ -42,24 +105,15 @@ const BubbleShow = () => {
               }}
             >
               İstanbul'un En İyi Bubble Show Organizasyonu
-            </motion.h1>
+            </h1>
           </div>
 
           {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in">
             <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-1.5 h-1.5 bg-white rounded-full"
-              />
+              <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" />
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* Section 1: Tüm İstanbul Bubble Show */}
@@ -182,39 +236,10 @@ const BubbleShow = () => {
             </h2>
             
             <div className="space-y-6">
-              {[
-                {
-                  question: "Bubble show gösterisi ne kadar sürer?",
-                  answer: "Standart bubble show gösterilerimiz 20-30 dakika arası sürmektedir. Talebe göre 40 dakikaya kadar uzatılabilir. Küçük etkinlikler için 15 dakikalık express versiyonlar da mevcuttur."
-                },
-                {
-                  question: "Bubble show için hangi yaş grubu uygundur?",
-                  answer: "Bubble show gösterileri 2-12 yaş arası çocuklar için idealdir. Küçük bebekler için pasif izleme, büyük çocuklar için interaktif katılım şeklinde özelleştirilir. Yetişkin etkinlikleri için de özel gösteriler yapabiliyoruz."
-                },
-                {
-                  question: "İç mekanda bubble show yapılabilir mi?",
-                  answer: "Evet! Bubble show hem iç hem dış mekanlarda yapılabilir. İç mekan için minimum 4x4 metre alan ve 2.5 metre tavan yüksekliği yeterlidir. Zemin su geçirmez veya silinebilir olmalıdır."
-                },
-                {
-                  question: "Sabun köpükleri zararlı mı? Alerjik reaksiyona neden olur mu?",
-                  answer: "Kullandığımız sabun köpüğü solüsyonları tamamen çocuk dostu, toksik olmayan ve alerjik reaksiyon riski minimum ürünlerdir. Hassas cildi olan çocuklar için önceden bilgi vermenizi öneriyoruz."
-                },
-                {
-                  question: "Hangi bölgelere hizmet veriyorsunuz?",
-                  answer: "İstanbul'un tüm ilçelerine hizmet veriyoruz. Kadıköy, Erenköy, Üsküdar, Maltepe, Kartal, Ataşehir, Pendik başta olmak üzere Anadolu ve Avrupa yakasının her bölgesine gidiyoruz."
-                },
-                {
-                  question: "Fiyatlar nedir?",
-                  answer: "Fiyatlarımız gösteri süresine, mekan tipine ve katılımcı sayısına göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0534 930 67 99"
-                }
-              ].map((faq, index) => (
-                <motion.div
+              {faqData.map((faq, index) => (
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-6 shadow-sm"
+                  className="bg-white rounded-xl p-6 shadow-sm animate-fade-in"
                 >
                   <h3 className="font-bold text-xl text-gray-900 mb-3">
                     {faq.question}
@@ -222,7 +247,7 @@ const BubbleShow = () => {
                   <p className="text-gray-700 leading-relaxed">
                     {faq.answer}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -238,7 +263,7 @@ const BubbleShow = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/905349306799?text=Bubble show hakkında bilgi almak istiyorum"
+                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-full font-bold text-xl shadow-2xl transition-all"

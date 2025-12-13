@@ -331,7 +331,7 @@ function CardImage({ title, desc, cta, to, img, altText, fetchpriority }) {
             src={img}
             alt={altText || title}
             className="w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-700 ease-out"
-            loading="lazy"
+            loading={fetchpriority === 'high' ? 'eager' : 'lazy'}
             fetchpriority={fetchpriority}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
@@ -389,7 +389,7 @@ function CardImageNoLink({ title, desc, img, altText, fetchpriority }) {
             src={img}
             alt={altText || title}
             className="w-full h-full object-cover opacity-95"
-            loading="lazy"
+            loading={fetchpriority === 'high' ? 'eager' : 'lazy'}
             fetchpriority={fetchpriority}
             sizes="(max-width: 768px) 100vw, 50vw"
           />

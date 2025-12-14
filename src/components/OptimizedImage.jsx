@@ -44,27 +44,8 @@ const OptimizedImage = ({
     onError?.(e);
   };
 
-  // Modern format desteği (AVIF + WebP) ve responsive images
-  const getSourceSets = () => {
-    if (!src) return null;
-    
-    const basePath = src.replace(/\.(jpg|jpeg|png|webp)$/i, '');
-    const ext = src.match(/\.(jpg|jpeg|png|webp)$/i)?.[0] || '.jpg';
-    
-    return {
-      avif: `${basePath}.avif`,
-      webp: `${basePath}.webp`,
-      original: src,
-      // Responsive sizes (optional)
-      srcSet: props.sizes ? {
-        avif: `${basePath}-480.avif 480w, ${basePath}-800.avif 800w, ${basePath}-1200.avif 1200w`,
-        webp: `${basePath}-480.webp 480w, ${basePath}-800.webp 800w, ${basePath}-1200.webp 1200w`,
-        original: `${basePath}-480${ext} 480w, ${basePath}-800${ext} 800w, ${basePath}-1200${ext} 1200w`
-      } : null
-    };
-  };
-
-  const sources = getSourceSets();
+  // Basitleştirilmiş - Vite otomatik optimize ediyor
+  const sources = null;
 
   // Aspect ratio wrapper
   const AspectRatioWrapper = ({ children }) => {
@@ -90,35 +71,8 @@ const OptimizedImage = ({
 
   return (
     <AspectRatioWrapper>
-      <picture>
-        {/* AVIF source (best compression, modern browsers) */}
-        {sources?.avif && (
-          <source 
-            srcSet={sources.srcSet?.avif || sources.avif}
-            sizes={props.sizes}
-            type="image/avif" 
-          />
-        )}
-        
-        {/* WebP source (good compression, wide support) */}
-        {sources?.webp && (
-          <source 
-            srcSet={sources.srcSet?.webp || sources.webp}
-            sizes={props.sizes}
-            type="image/webp" 
-          />
-        )}
-        
-        {/* Original format source (responsive if sizes provided) */}
-        {sources?.srcSet?.original && (
-          <source 
-            srcSet={sources.srcSet.original}
-            sizes={props.sizes}
-          />
-        )}
-        
-        {/* Fallback image */}
-        <img
+      {/* Basitleştirilmiş - Vite otomatik optimize ediyor */}
+      <img
           src={src}
           alt={alt}
           loading={loading}
@@ -147,7 +101,6 @@ const OptimizedImage = ({
             `}
           />
         )}
-      </picture>
       
       {/* Loading spinner */}
       {!isLoaded && (

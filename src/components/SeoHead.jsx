@@ -1,10 +1,9 @@
-import { Helmet, HelmetProvider } from 'react-helmet-async'
+import { Helmet } from 'react-helmet-async'
 
 export default function SeoHead({ title, description, image, url, schema }) {
   const siteName = 'BestEvent'
-  
+
   return (
-    <HelmetProvider>
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -42,6 +41,5 @@ export default function SeoHead({ title, description, image, url, schema }) {
           </script>
         )}
       </Helmet>
-    </HelmetProvider>
   )
 }

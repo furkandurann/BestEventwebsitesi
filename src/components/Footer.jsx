@@ -1,18 +1,13 @@
 import { Link } from 'react-router-dom'
+import { trackPhoneClick } from '../utils/tracking'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
-  // Track phone click in Google Analytics
+  // Track phone click - Google Ads Conversion + GA4
   const handlePhoneClick = () => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'phone_click', {
-        event_category: 'engagement',
-        event_label: 'Footer Phone',
-        value: 1
-      });
-    }
-  };
+    trackPhoneClick('Footer', window.location.href)
+  }
 
   // Gösteriler & Animasyon
   const showServices = [
@@ -60,19 +55,19 @@ const Footer = () => {
       name: 'Transformers Robot', 
       path: '/organizasyonlar/transformers-robot',
       description: '2.5m robot şovu ve pozitif enerji',
-      image: '/content/images/bidolu/transformers.jpeg'
+      image: '/content/images/bidolu/transformers.webp'
     },
     { 
       name: 'Karaoke Etkinliği', 
       path: '/organizasyonlar/karaoke-etkinligi',
       description: 'Profesyonel ses ve dev ekran',
-      image: '/content/images/bidolu/karaoke.jpg'
+      image: '/content/images/bidolu/karaoke.webp'
     },
     { 
       name: 'Gezegen Tanıtım', 
       path: '/organizasyonlar/gezegen-tanitim',
       description: 'Uzay temalı interaktif deneyim',
-      image: '/content/images/bidolu/gezegentanıtım.jpeg'
+      image: '/content/images/bidolu/gezegentanıtım.webp'
     },
   ]
 

@@ -5,42 +5,42 @@ import RelatedServices from '../../components/RelatedServices'
 import { trackWhatsAppClick, trackPhoneClick, trackServicePageView } from '../../utils/tracking'
 
 const heroImages = [
-  '/content/images/profesyonelmakeup/profesyonelkopyasiistanbul.jpg',
-  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligi.JPG',
-  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibakirkoy.JPG',
-  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibeyoglu.JPG',
-  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligii.jpg',
-  '/content/images/profesyonelmakeup/IMG_7513.JPG',
-  '/content/images/profesyonelmakeup/profesyonel.jpg',
-  '/content/images/profesyonelmakeup/profesyonelmakeupistanbul.JPG',
-  '/content/images/profesyonelmakeup/bdffc833-ebbf-4a9f-9395-c2b8d75520ed.JPG'
+  '/content/images/profesyonelmakeup/profesyonelkopyasiistanbul.webp',
+  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligi.webp',
+  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp',
+  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibeyoglu.webp',
+  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligii.webp',
+  '/content/images/profesyonelmakeup/IMG_7513.webp',
+  '/content/images/profesyonelmakeup/profesyonel.webp',
+  '/content/images/profesyonelmakeup/profesyonelmakeupistanbul.webp',
+  '/content/images/profesyonelmakeup/bdffc833-ebbf-4a9f-9395-c2b8d75520ed.webp'
 ]
 
 const highlights = [
   {
     title: 'FDA onaylı, su bazlı ve cilt dostu boyalar',
     desc: 'Hipoalerjenik seçenekler, suyla kolay temizlik, hassas ciltler için ön test.',
-    img: '/content/images/profesyonelmakeup/profesyonelmakeupistanbul.JPG'
+    img: '/content/images/profesyonelmakeup/profesyonelmakeupistanbul.webp'
   },
   {
     title: '100+ karakter ve tema',
     desc: 'Süper kahraman, prenses, unicorn, hayvan ve özel gün temaları.',
-    img: '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligi.JPG'
+    img: '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligi.webp'
   },
   {
     title: '5-10 dk hızlı uygulama',
     desc: 'Kısa bekleme süresi; 20+ çocuk için ek sanatçı ile akıcı akış.',
-    img: '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibakirkoy.JPG'
+    img: '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp'
   },
   {
     title: 'Hijyen protokolü',
     desc: 'Tek kullanımlık ped, steril fırçalar, her çocuk için ayrı malzeme.',
-    img: '/content/images/profesyonelmakeup/profesyonel.jpg'
+    img: '/content/images/profesyonelmakeup/profesyonel.webp'
   },
   {
     title: 'İstanbul geneli yerinde hizmet',
     desc: 'Tüm ilçelerde adrese geliyoruz; ekipman ve boyalar bizden.',
-    img: '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligii.jpg'
+    img: '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligii.webp'
   }
 ]
 

@@ -60,12 +60,12 @@ const CharacterDetail = () => {
               className="h-full w-full bg-black"
             >
               {[
-                '/content/images/palyaco/palyacoanaherogrupoyunlari.JPG',
-                '/content/images/palyaco/palyaconattiveenbas.jpeg',
-                '/content/images/palyaco/palyaconattive3yuzboyamasi.JPG',
-                '/content/images/palyaco/cocuklarinyuzundekiheyecan.JPG',
-                '/content/images/palyaco/palyacogrupoyunlari.jpg',
-                '/content/images/palyaco/palyaconattive1.JPG'
+                '/content/images/palyaco/palyacoanaherogrupoyunlari.webp',
+                '/content/images/palyaco/palyaconattiveenbas.webp',
+                '/content/images/palyaco/palyaconattive3yuzboyamasi.webp',
+                '/content/images/palyaco/cocuklarinyuzundekiheyecan.webp',
+                '/content/images/palyaco/palyacogrupoyunlari.webp',
+                '/content/images/palyaco/palyaconattive1.webp'
               ].map((img, index) => (
                 <SwiperSlide key={index} className="relative h-full w-full bg-black">
                   <div 
@@ -523,7 +523,7 @@ const CharacterDetail = () => {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden"
                 >
                   <img 
-                    src="/content/images/palyaco/palyacogrupoyunlari.jpg" 
+                    src="/content/images/palyaco/palyacogrupoyunlari.webp" 
                     alt="Palyaço Kiralama Grup Oyunları İstanbul"
                     className="w-full h-64 object-cover"
                     loading="lazy"
@@ -553,7 +553,7 @@ const CharacterDetail = () => {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden"
                 >
                   <img 
-                    src="/content/images/palyaco/palyaconattive3yuzboyamasi.JPG" 
+                    src="/content/images/palyaco/palyaconattive3yuzboyamasi.webp" 
                     alt="Palyaço Yüz Boyama İstanbul"
                     className="w-full h-64 object-cover"
                     loading="lazy"
@@ -583,7 +583,7 @@ const CharacterDetail = () => {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden"
                 >
                   <img 
-                    src="/content/images/palyaco/palyaconattive1.JPG" 
+                    src="/content/images/palyaco/palyaconattive1.webp" 
                     alt="Palyaço Sosis Balon İstanbul"
                     className="w-full h-64 object-cover"
                     loading="lazy"
@@ -613,7 +613,7 @@ const CharacterDetail = () => {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden"
                 >
                   <img 
-                    src="/content/images/palyaco/palyacoonemlifotografguleryız.jpg" 
+                    src="/content/images/palyaco/palyacoonemlifotografguleryız.webp" 
                     alt="Palyaço Güler Yüz İstanbul - Mutlu Çocuklar"
                     className="w-full h-64 object-cover"
                     loading="lazy"

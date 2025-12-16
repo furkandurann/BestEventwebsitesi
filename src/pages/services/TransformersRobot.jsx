@@ -6,7 +6,7 @@ const TransformersRobot = () => {
     title: 'Transformers Robot Kiralama',
     subtitle: '2.5-3 metre LED robot performansı, fotoğraf ve dans şovu',
     description: 'AVM açılışları, festival ve doğum günleri için dev robot gösterisi. İstanbul genelinde kurulum ve profesyonel performans sanatçıları.',
-    image: '/content/images/bidolu/transformers.jpeg',
+    image: '/content/images/bidolu/transformers.webp',
   }
 
   const stats = [
@@ -31,10 +31,10 @@ const TransformersRobot = () => {
   ]
 
   const photos = [
-    '/content/images/cocukdogumgunu/556fe6ff-e557-4b33-b59d-16b1690624ac.JPG',
-    '/content/images/cocukdogumgunu/66a266b0-ef8f-4a4a-9e3e-39c657157777.JPG',
-    '/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.JPG',
-    '/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.JPG',
+    '/content/images/cocukdogumgunu/556fe6ff-e557-4b33-b59d-16b1690624ac.webp',
+    '/content/images/cocukdogumgunu/66a266b0-ef8f-4a4a-9e3e-39c657157777.webp',
+    '/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp',
+    '/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.webp',
   ]
 
   return (

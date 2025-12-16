@@ -6,7 +6,7 @@ const PlanetEducation = () => {
     title: 'Gezegen Tanıtım & Uzay Atölyesi',
     subtitle: '4-14 yaş için interaktif astronomi deneyimi',
     description: 'Güneş sistemi, gezegen maketleri, astronot kostümü ve soru-cevapla çocuklara uzayı sevdiren kompakt program.',
-    image: '/content/images/bidolu/gezegentanıtım.jpeg',
+    image: '/content/images/bidolu/gezegentanıtım.webp',
   }
 
   const stats = [
@@ -30,10 +30,10 @@ const PlanetEducation = () => {
   ]
 
   const photos = [
-    '/content/images/cocukdogumgunu/556fe6ff-e557-4b33-b59d-16b1690624ac.JPG',
-    '/content/images/cocukdogumgunu/66a266b0-ef8f-4a4a-9e3e-39c657157777.JPG',
-    '/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.JPG',
-    '/content/images/cocukdogumgunu/c3f9812a-98cb-4f8e-a6c2-fcbda31a6dfd.JPG',
+    '/content/images/cocukdogumgunu/556fe6ff-e557-4b33-b59d-16b1690624ac.webp',
+    '/content/images/cocukdogumgunu/66a266b0-ef8f-4a4a-9e3e-39c657157777.webp',
+    '/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.webp',
+    '/content/images/cocukdogumgunu/c3f9812a-98cb-4f8e-a6c2-fcbda31a6dfd.webp',
   ]
 
   const faq = [

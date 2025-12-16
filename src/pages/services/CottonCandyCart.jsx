@@ -7,7 +7,7 @@ const CottonCandyCart = () => {
       id: 'chocolate-fountain',
       title: 'Çikolata Şelalesi',
       description: 'Etkinlikleriniz için profesyonel çikolata şelalesi kiralama hizmeti',
-      image: '/content/images/çikolataselalesi/hareketlislider6cikolataselalsi.jpeg',
+      image: '/content/images/çikolataselalesi/hareketlislider6cikolataselalsi.webp',
       alt: 'Çikolata şelalesi kiralama İstanbul - Best Event'
     },
     {

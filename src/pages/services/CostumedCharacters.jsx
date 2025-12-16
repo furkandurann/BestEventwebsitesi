@@ -200,7 +200,7 @@ const CostumedCharacters = () => {
           body="Best Event olarak İstanbul'da 10+ yıldır unutulmaz kostümlü karakter kiralama hizmeti sunuyoruz. Elsa, Spiderman, Batman, Pamuk Prenses ve daha fazlası... Çocuğunuzun en sevdiği karakterle özel anlar yaratıyoruz. Her detayı titizlikle planlıyor, sizin sadece keyif almanızı sağlıyoruz."
         />
         <FullBleedHero
-          media={{ type: 'image', src: '/content/images/Kostumlukarakterler/elsaheroo.JPG', alt: 'İstanbul Elsa kiralama hizmeti' }}
+          media={{ type: 'image', src: '/content/images/Kostumlukarakterler/elsaheroo.webp', alt: 'İstanbul Elsa kiralama hizmeti' }}
           theme="dark"
           fit="cover"
           gradient={false}
@@ -212,7 +212,7 @@ const CostumedCharacters = () => {
           body="Tüm kostümlerimiz profesyonel standartlarda, hijyenik ve düzenli olarak yenilenir. Karakterlerimiz çocuklarla iletişimde uzman, deneyimli animatörler tarafından canlandırılır. Güvenlik ve hijyen önceliğimizdir."
         />
         <FullBleedHero
-          media={{ type: 'image', src: '/content/images/Kostumlukarakterler/spidermanrenkliii.jpg', alt: 'İstanbul Spiderman kiralama' }}
+          media={{ type: 'image', src: '/content/images/Kostumlukarakterler/spidermanrenkliii.webp', alt: 'İstanbul Spiderman kiralama' }}
           theme="dark"
           fit="cover"
           gradient={false}
@@ -224,7 +224,7 @@ const CostumedCharacters = () => {
           body="Prenseslerden süper kahramanlara, çizgi film karakterlerinden maskot kiralama seçeneklerine kadar geniş bir portföyümüz var. Elsa, Pamuk Prenses, Minnie Mouse, Spiderman, Batman, Sonic ve daha fazlası. İsteğinize özel karakterler de temin edebiliriz."
         />
         <FullBleedHero
-          media={{ type: 'image', src: '/content/images/Kostumlukarakterler/pamuksprenseshero.JPG', alt: 'İstanbul Pamuk Prenses kiralama' }}
+          media={{ type: 'image', src: '/content/images/Kostumlukarakterler/pamuksprenseshero.webp', alt: 'İstanbul Pamuk Prenses kiralama' }}
           theme="dark"
           fit="cover"
           gradient={false}

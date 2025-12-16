@@ -2,15 +2,15 @@ import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
 
 const heroImages = [
-  '/content/images/profesyonelmakeup/profesyonelmakeupistanbul.JPG',
-  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligi.JPG',
-  '/content/images/profesyonelmakeup/profesyonelkopyasiistanbul.jpg',
-  '/content/images/profesyonelmakeup/profesyonel.jpg',
-  '/content/images/profesyonelmakeup/IMG_7513.JPG',
-  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibakirkoy.JPG',
-  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibeyoglu.JPG',
-  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligii.jpg',
-  '/content/images/profesyonelmakeup/bdffc833-ebbf-4a9f-9395-c2b8d75520ed.JPG'
+  '/content/images/profesyonelmakeup/profesyonelmakeupistanbul.webp',
+  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligi.webp',
+  '/content/images/profesyonelmakeup/profesyonelkopyasiistanbul.webp',
+  '/content/images/profesyonelmakeup/profesyonel.webp',
+  '/content/images/profesyonelmakeup/IMG_7513.webp',
+  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp',
+  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibeyoglu.webp',
+  '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligii.webp',
+  '/content/images/profesyonelmakeup/bdffc833-ebbf-4a9f-9395-c2b8d75520ed.webp'
 ]
 
 const faqs = [

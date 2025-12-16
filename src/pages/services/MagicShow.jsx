@@ -57,15 +57,15 @@ const MagicShow = () => {
 
   const heroSlides = [
     {
-      src: '/content/images/sihirbaz/sihirbazhero.jpeg',
+      src: '/content/images/sihirbaz/sihirbazhero.webp',
       alt: 'İstanbul sihirbazlık gösterisi sahne',
     },
     {
-      src: '/content/images/sihirbaz/IMG_3293.jpeg',
+      src: '/content/images/sihirbaz/IMG_3293.webp',
       alt: 'Çocuklar için magic show',
     },
     {
-      src: '/content/images/sihirbaz/IMG_4864.jpeg',
+      src: '/content/images/sihirbaz/IMG_4864.webp',
       alt: 'Güvercinli sihirbaz gösterisi',
     },
   ]
@@ -255,7 +255,7 @@ const MagicShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <OptimizedImage
-            src="/content/images/sihirbaz/IMG_3293.jpeg"
+            src="/content/images/sihirbaz/IMG_3293.webp"
             alt="İstanbul magic show organizasyonu"
             className="object-contain max-h-[80vh] w-auto"
             loading="lazy"
@@ -271,7 +271,7 @@ const MagicShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <OptimizedImage
-            src="/content/images/sihirbaz/sihirbazhero.jpeg"
+            src="/content/images/sihirbaz/sihirbazhero.webp"
             alt="İstanbul'un en iyi sihirbazlık gösterileri"
             className="object-contain max-h-[80vh] w-auto"
             loading="lazy"
@@ -287,7 +287,7 @@ const MagicShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <OptimizedImage
-            src="/content/images/sihirbaz/IMG_4800.jpeg"
+            src="/content/images/sihirbaz/IMG_4800.webp"
             alt="Profesyonel sihirbaz kiralama"
             className="object-contain max-h-[80vh] w-auto"
             loading="lazy"
@@ -303,7 +303,7 @@ const MagicShow = () => {
           />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <OptimizedImage
-            src="/content/images/sihirbaz/IMG_4864.jpeg"
+            src="/content/images/sihirbaz/IMG_4864.webp"
             alt="Tavşan ve güvercin ile klasik sihir gösterileri"
             className="object-contain max-h-[80vh] w-auto"
             loading="lazy"
@@ -319,7 +319,7 @@ const MagicShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <OptimizedImage
-            src="/content/images/sihirbaz/IMG_8855.PNG"
+            src="/content/images/sihirbaz/IMG_8855.webp"
             alt="İnteraktif magic show deneyimi"
             className="object-contain max-h-[80vh] w-auto"
             loading="lazy"
@@ -335,7 +335,7 @@ const MagicShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
-            src="/content/images/sihirbaz/IMG_4864.jpeg"
+            src="/content/images/sihirbaz/IMG_4864.webp"
             alt="Kadıköy sihirbaz organizasyonu"
             className="object-contain max-h-[80vh] w-auto"
           />

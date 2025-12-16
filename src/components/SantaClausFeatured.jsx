@@ -102,7 +102,7 @@ const SantaClausFeatured = () => {
             {/* Görsel */}
             <div className="relative h-80 rounded-lg overflow-hidden mb-6">
               <img 
-                src="/content/images/noelbaba/noelbabastandart/noelannestandart.jpg"
+                src="/content/images/noelbaba/noelbabastandart/noelannestandart.webp"
                 alt="Standart Noel Baba"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />

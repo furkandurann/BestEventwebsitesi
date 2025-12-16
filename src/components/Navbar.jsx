@@ -62,7 +62,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-2 lg:space-x-4 mr-8">
+          <div className="hidden lg:flex items-center space-x-2 lg:space-x-4 flex-1">
             {/* Etkinlikler Dropdown */}
             <div
               className="relative"
@@ -95,16 +95,18 @@ const Navbar = () => {
               </button>
 
               {servicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-2xl py-2 grid grid-cols-1 gap-1 animate-fade-in">
-                  {services.map((service) => (
-                    <Link
-                      key={service.path}
-                      to={service.path}
-                      className="nav-link text-dark px-4 py-2 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
+                <div className="absolute top-full left-0 pt-2 w-64">
+                  <div className="bg-white rounded-lg shadow-2xl py-2 grid grid-cols-1 gap-1 animate-fade-in">
+                    {services.map((service) => (
+                      <Link
+                        key={service.path}
+                        to={service.path}
+                        className="nav-link text-dark px-4 py-2 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 hover:text-primary"
+                      >
+                        {service.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -168,7 +170,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2"
+            className="lg:hidden p-2 ml-auto"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <span

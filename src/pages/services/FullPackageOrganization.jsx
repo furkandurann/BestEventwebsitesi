@@ -31,14 +31,14 @@ const FullPackageOrganization = () => {
   ]
 
   const heroSlides = [
-    '/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.jpg',
-    '/content/images/fullpaket/hareketlislider3kostumlukkarakterler.jpg',
-    '/content/images/fullpaket/hareketlislider6osterilersihirbazhero.jpeg',
-    '/content/images/fullpaket/hareketlislider6osterilerbubblshow.JPG',
-    '/content/images/fullpaket/hareketlisliderfotograf4.jpeg',
-    '/content/images/fullpaket/hareketlislider5bubbleshowgosteriler.jpeg',
-    '/content/images/fullpaket/hareketlislider6cikolataselalsi.jpeg',
-    '/content/images/fullpaket/hareketlislider7popcorn.jpeg'
+    '/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp',
+    '/content/images/fullpaket/hareketlislider3kostumlukkarakterler.webp',
+    '/content/images/fullpaket/hareketlislider6osterilersihirbazhero.webp',
+    '/content/images/fullpaket/hareketlislider6osterilerbubblshow.webp',
+    '/content/images/fullpaket/hareketlisliderfotograf4.webp',
+    '/content/images/fullpaket/hareketlislider5bubbleshowgosteriler.webp',
+    '/content/images/fullpaket/hareketlislider6cikolataselalsi.webp',
+    '/content/images/fullpaket/hareketlislider7popcorn.webp'
   ]
 
   const badgeItems = [
@@ -190,7 +190,7 @@ const FullPackageOrganization = () => {
       {/* Konsept süsleme */}
       <div className="max-w-7xl mx-auto">
         <img
-          src="/content/images/fullpaket/konseptnattive.jpg"
+          src="/content/images/fullpaket/konseptnattive.webp"
           alt="Konsept doğum günü süsleme - İstanbul"
           className="w-full h-auto"
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
@@ -204,7 +204,7 @@ const FullPackageOrganization = () => {
       {/* Pasta */}
       <div className="max-w-7xl mx-auto">
         <img
-          src="/content/images/fullpaket/pastanattivee1.jpg"
+          src="/content/images/fullpaket/pastanattivee1.webp"
           alt="Konsept pasta - Le Cordon Bleu kalitesi"
           className="w-full h-auto"
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
@@ -218,7 +218,7 @@ const FullPackageOrganization = () => {
       {/* Yüz boyama */}
       <div className="max-w-7xl mx-auto">
         <img
-          src="/content/images/fullpaket/istanbulprofesyonelyuzboyasietkinligibakirkoy.JPG"
+          src="/content/images/fullpaket/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp"
           alt="Profesyonel yüz boyama - İstanbul"
           className="w-full h-auto"
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
@@ -233,7 +233,7 @@ const FullPackageOrganization = () => {
       {/* Sihirbaz */}
       <div className="max-w-7xl mx-auto">
         <img
-          src="/content/images/fullpaket/sihirbaznattive.jpeg"
+          src="/content/images/fullpaket/sihirbaznattive.webp"
           alt="Sihirbazlık gösterisi - İstanbul"
           className="w-full h-auto"
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
@@ -247,7 +247,7 @@ const FullPackageOrganization = () => {
       {/* Bubble */}
       <div className="max-w-7xl mx-auto">
         <img
-          src="/content/images/fullpaket/bubbleshownattive2.jpeg"
+          src="/content/images/fullpaket/bubbleshownattive2.webp"
           alt="Bubble Show - İstanbul"
           className="w-full h-auto"
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
@@ -261,7 +261,7 @@ const FullPackageOrganization = () => {
       {/* Palyaço */}
       <div className="max-w-7xl mx-auto">
         <img
-          src="/content/images/palyaco/palyacoanaherogrupoyunlari.JPG"
+          src="/content/images/palyaco/palyacoanaherogrupoyunlari.webp"
           alt="Palyaço ve animasyon - İstanbul"
           className="w-full h-auto"
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
@@ -275,7 +275,7 @@ const FullPackageOrganization = () => {
       {/* Kostümlü */}
       <div className="max-w-7xl mx-auto">
         <img
-          src="/content/images/fullpaket/elsaheroo.JPG"
+          src="/content/images/fullpaket/elsaheroo.webp"
           alt="Kostümlü karakter - İstanbul"
           className="w-full h-auto"
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
@@ -289,7 +289,7 @@ const FullPackageOrganization = () => {
       {/* Ek hizmetler */}
       <div className="max-w-7xl mx-auto">
         <img
-          src="/content/images/fullpaket/68978382-5a6b-414b-875c-06b29db251fc.jpg"
+          src="/content/images/fullpaket/68978382-5a6b-414b-875c-06b29db251fc.webp"
           alt="Ek hizmetler - Popcorn arabası"
           className="w-full h-auto"
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}

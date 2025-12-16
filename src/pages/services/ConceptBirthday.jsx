@@ -92,7 +92,7 @@ const ConceptBirthday = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         style={{
-          backgroundImage: 'url(/content/images/konsepts/barbiekonseptdogumgunu.jpg)',
+          backgroundImage: 'url(/content/images/konsepts/barbiekonseptdogumgunu.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -191,7 +191,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/barbiekonseptdogumgunu.jpg"
+          src="/content/images/konsepts/barbiekonseptdogumgunu.webp"
           alt="Barbie konsept doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -229,7 +229,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/biryasdogumgunu.jpeg"
+          src="/content/images/konsepts/biryasdogumgunu.webp"
           alt="1 yaş doğum günü konsepti - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -272,7 +272,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/denizkizidogumgunu.jpeg"
+          src="/content/images/konsepts/denizkizidogumgunu.webp"
           alt="Deniz kızı Ariel konsept doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -315,7 +315,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/futbolkonsetdogumgunu.jpeg"
+          src="/content/images/konsepts/futbolkonsetdogumgunu.webp"
           alt="Futbol konsept doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -358,7 +358,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/galatasaraykonseptdogumgunu.jpg"
+          src="/content/images/konsepts/galatasaraykonseptdogumgunu.webp"
           alt="Galatasaray konsept doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -401,7 +401,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/hartypotterdogumgunu.jpeg"
+          src="/content/images/konsepts/hartypotterdogumgunu.webp"
           alt="Harry Potter konsept doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -444,7 +444,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/hellokittydogumgunu.jpeg"
+          src="/content/images/konsepts/hellokittydogumgunu.webp"
           alt="Hello Kitty konsept doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -487,7 +487,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/ironmandogumgunusuperkahraman.jpeg"
+          src="/content/images/konsepts/ironmandogumgunusuperkahraman.webp"
           alt="Iron Man süper kahraman doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -530,7 +530,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/minecraftdogumgunu.jpg"
+          src="/content/images/konsepts/minecraftdogumgunu.webp"
           alt="Minecraft konsept doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -573,7 +573,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/okyanukonseptdogumgunu.jpeg"
+          src="/content/images/konsepts/okyanukonseptdogumgunu.webp"
           alt="Okyanus konsept doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -616,7 +616,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/spidermanbatmandemiradamsuperkahramandogumgunu.jpg"
+          src="/content/images/konsepts/spidermanbatmandemiradamsuperkahramandogumgunu.webp"
           alt="Spider-Man Batman Iron Man süper kahraman doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />
@@ -659,7 +659,7 @@ const ConceptBirthday = () => {
       </section>
       <div className="w-full flex justify-center items-center bg-white py-8">
         <img 
-          src="/content/images/konsepts/sungerbobdogumgunu.jpeg"
+          src="/content/images/konsepts/sungerbobdogumgunu.webp"
           alt="Sünger Bob konsept doğum günü - İstanbul"
           className="object-contain max-h-[80vh] w-auto"
         />

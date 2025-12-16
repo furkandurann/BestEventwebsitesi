@@ -8,15 +8,15 @@ import { kidsSections } from '../../data/kidsSections'
 
 // DİĞER HİZMETLER (Split Screen)
 const OTHER_SERVICES = [
-  { name: 'Karaoke Etkinliği', image: '/content/images/bidolu/karaoke.jpg', link: '/organizasyonlar/karaoke-etkinligi' },
-  { name: 'Gezegen Tanıtım', image: '/content/images/bidolu/gezegentanıtım.jpeg', link: '/organizasyonlar/gezegen-tanitim' },
-  { name: 'Maskot Kiralama', image: '/content/images/cocukdogumgunu/maskotistanbul.JPG', link: '/organizasyonlar/maskot-kiralama' },
-  { name: 'Çocuk Masa Sandalye', image: '/content/images/cocukdogumgunu/IMG_0777.JPG', link: '/organizasyonlar/cocuk-masa-sandalye' },
-  { name: 'Transformers Robot', image: '/content/images/bidolu/transformers.jpeg', link: '/organizasyonlar/transformers-robot' },
-  { name: 'Şişme Oyun Parkları', image: '/content/images/cocukdogumgunu/IMG_0777.JPG', link: '/organizasyonlar/sisme-oyun-parki' },
-  { name: 'Atölye Etkinlikleri', image: '/content/images/cocukdogumgunu/7dbaca4e-d254-4663-b4bd-b106207970c8.JPG', link: '/organizasyonlar/atolye-etkinlikleri' },
-  { name: 'Çikolata Şelalesi', image: '/content/images/bidolu/cikolataselalesikartfoto.jpeg', link: '/organizasyonlar/cikolata-selalesi' },
-  { name: 'Ateş Gösterisi', image: '/content/images/gosteriler/tesbaz.jpg', link: '/organizasyonlar/ates-gosterisi' }
+  { name: 'Karaoke Etkinliği', image: '/content/images/bidolu/karaoke.webp', link: '/organizasyonlar/karaoke-etkinligi' },
+  { name: 'Gezegen Tanıtım', image: '/content/images/bidolu/gezegentanıtım.webp', link: '/organizasyonlar/gezegen-tanitim' },
+  { name: 'Maskot Kiralama', image: '/content/images/cocukdogumgunu/maskotistanbul.webp', link: '/organizasyonlar/maskot-kiralama' },
+  { name: 'Çocuk Masa Sandalye', image: '/content/images/cocukdogumgunu/IMG_0777.webp', link: '/organizasyonlar/cocuk-masa-sandalye' },
+  { name: 'Transformers Robot', image: '/content/images/bidolu/transformers.webp', link: '/organizasyonlar/transformers-robot' },
+  { name: 'Şişme Oyun Parkları', image: '/content/images/cocukdogumgunu/IMG_0777.webp', link: '/organizasyonlar/sisme-oyun-parki' },
+  { name: 'Atölye Etkinlikleri', image: '/content/images/cocukdogumgunu/7dbaca4e-d254-4663-b4bd-b106207970c8.webp', link: '/organizasyonlar/atolye-etkinlikleri' },
+  { name: 'Çikolata Şelalesi', image: '/content/images/bidolu/cikolataselalesikartfoto.webp', link: '/organizasyonlar/cikolata-selalesi' },
+  { name: 'Ateş Gösterisi', image: '/content/images/gosteriler/tesbaz.webp', link: '/organizasyonlar/ates-gosterisi' }
 ]
 
 const ChildEvents = () => {
@@ -70,10 +70,10 @@ const ChildEvents = () => {
     description: 'Çocuk doğum günü, palyaço, bubble ve sihirli gösterilerde profesyonel ekip. Kadıköy\'den Beylikdüzü\'ne, Bodrum ve Antalya\'ya yerinde hizmet.',
     url: 'https://www.bestevent.com/organizasyonlar/cocuk-etkinlikleri',
     image: {
-      src640: '/content/images/cocukdogumgunu/konseptdogumgunu.JPG',
-      src1280: '/content/images/cocukdogumgunu/konseptdogumgunu.JPG',
-      src1920: '/content/images/cocukdogumgunu/konseptdogumgunu.JPG',
-      src1200: '/content/images/cocukdogumgunu/konseptdogumgunu.JPG'
+      src640: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
+      src1280: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
+      src1920: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
+      src1200: '/content/images/cocukdogumgunu/konseptdogumgunu.webp'
     },
     schema: [
       {

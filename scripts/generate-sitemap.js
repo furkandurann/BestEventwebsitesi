@@ -22,6 +22,15 @@ const staticPages = [
   { url: '/referanslar', priority: 0.8, changefreq: 'monthly' },
   { url: '/hizmet-bolgeleri', priority: 0.8, changefreq: 'monthly' },
   { url: '/organik-pastalar', priority: 0.8, changefreq: 'weekly' },
+  { url: '/blog', priority: 0.8, changefreq: 'weekly' },
+]
+
+// Blog sayfaları
+const blogPages = [
+  { url: '/blog/acilis-organizasyonu-istanbul', priority: 0.7, changefreq: 'monthly' },
+  { url: '/blog/palyaco-kiralama-istanbul', priority: 0.7, changefreq: 'monthly' },
+  { url: '/blog/sihirbaz-gosterisi-istanbul', priority: 0.7, changefreq: 'monthly' },
+  { url: '/blog/bubble-show-istanbul', priority: 0.7, changefreq: 'monthly' },
 ]
 
 // Hizmet sayfaları (otomatik priority hesaplama)
@@ -107,7 +116,7 @@ function generateSitemap() {
   // Hizmet sayfalarını ekle
   servicePages.forEach(page => {
     const config = categoryConfig[page.category] || { priority: 0.7, changefreq: 'weekly' }
-    
+
     xml += '  <url>\n'
     xml += `    <loc>${BASE_URL}${page.url}</loc>\n`
     xml += `    <lastmod>${today}</lastmod>\n`
@@ -116,7 +125,18 @@ function generateSitemap() {
     xml += '  </url>\n'
     xml += '  \n'
   })
-  
+
+  // Blog sayfalarını ekle
+  blogPages.forEach(page => {
+    xml += '  <url>\n'
+    xml += `    <loc>${BASE_URL}${page.url}</loc>\n`
+    xml += `    <lastmod>${today}</lastmod>\n`
+    xml += `    <changefreq>${page.changefreq}</changefreq>\n`
+    xml += `    <priority>${page.priority}</priority>\n`
+    xml += '  </url>\n'
+    xml += '  \n'
+  })
+
   xml += '</urlset>\n'
   
   return xml
@@ -138,7 +158,7 @@ function writeSitemap() {
   
   console.log('✅ Sitemap generated successfully!')
   console.log(`📍 Location: ${sitemapPath}`)
-  console.log(`📊 Total URLs: ${staticPages.length + servicePages.length}`)
+  console.log(`📊 Total URLs: ${staticPages.length + servicePages.length + blogPages.length}`)
   console.log(`📅 Last Modified: ${today}`)
 }
 

@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { mascotsData } from '../../data/mascotsData'
-import NarrativeSection from '../../components/NarrativeSection'
-import FullBleedHero from '../../components/FullBleedHero'
+import Seo from '../../components/Seo'
 
 const BoysMascots = () => {
   const [activeSection, setActiveSection] = useState(0)
@@ -56,13 +54,36 @@ const BoysMascots = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Erkek Çocuk Maskotları Kiralama İstanbul | Sonic, Super Mario | Best Event</title>
-        <meta 
-          name="description" 
-          content="İstanbul'da erkek çocuk maskot organizasyon. Sonic, Super Mario, Paw Patrol, Mickey Mouse maskotları. ☎ 0534 930 67 99" 
-        />
-      </Helmet>
+      <Seo
+        title="Erkek Çocuk Maskotları Kiralama İstanbul | Sonic, Super Mario | Best Event"
+        description="İstanbul'da erkek çocuk maskot organizasyon. Sonic, Super Mario, Paw Patrol, Mickey Mouse maskotları. Kadıköy, Üsküdar, Ataşehir, Maltepe ve tüm İstanbul'da hizmet. ☎ 0534 930 67 99"
+        keywords={[
+          'erkek maskot kiralama istanbul',
+          'sonic maskot kiralama',
+          'super mario maskot',
+          'paw patrol maskot istanbul',
+          'mickey mouse maskot kiralama',
+          'çocuk doğum günü maskot',
+          'erkek çocuk maskotları'
+        ]}
+        canonicalPath="/organizasyonlar/erkek-maskotlari"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          'name': 'Erkek Çocuk Maskotları Kiralama',
+          'provider': {
+            '@type': 'LocalBusiness',
+            'name': 'Best Event',
+            'telephone': '+90-534-930-67-99'
+          },
+          'areaServed': {
+            '@type': 'City',
+            'name': 'İstanbul'
+          },
+          'serviceType': 'Erkek Maskot Kiralama',
+          'description': 'Sonic, Super Mario, Paw Patrol, Mickey Mouse ve daha fazla erkek çocuk maskotu kiralama hizmeti.'
+        }}
+      />
 
       <main className="overflow-x-hidden scroll-smooth snap-y snap-mandatory">
         {/* Progress Indicators */}

@@ -86,7 +86,7 @@ const BubbleShow = () => {
           {/* Background Image */}
           <div 
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('/content/images/bubbleshow/anabubblee.JPG')` }}
+            style={{ backgroundImage: `url('/content/images/bubbleshow/anabubblee.webp')` }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50"></div>
           </div>
@@ -124,7 +124,7 @@ const BubbleShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
-            src="/content/images/bubbleshow/anabubble.JPG"
+            src="/content/images/bubbleshow/anabubble.webp"
             alt="İstanbul bubble show organizasyonu"
             className="object-contain max-h-[80vh] w-auto"
           />
@@ -138,7 +138,7 @@ const BubbleShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
-            src="/content/images/bubbleshow/anabubbleee.JPG"
+            src="/content/images/bubbleshow/anabubbleee.webp"
             alt="İstanbul'un en iyi bubble show gösterileri"
             className="object-contain max-h-[80vh] w-auto"
           />
@@ -152,7 +152,7 @@ const BubbleShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
-            src="/content/images/bubbleshow/anabuble.JPG"
+            src="/content/images/bubbleshow/anabuble.webp"
             alt="Çocuk dostu güvenli köpük solüsyonları"
             className="object-contain max-h-[80vh] w-auto"
           />
@@ -166,7 +166,7 @@ const BubbleShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
-            src="/content/images/bubbleshow/bubbleshowslider2.jpeg"
+            src="/content/images/bubbleshow/bubbleshowslider2.webp"
             alt="Dev sabun köpükleri ve LED ışıklar"
             className="object-contain max-h-[80vh] w-auto"
           />
@@ -180,7 +180,7 @@ const BubbleShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
-            src="/content/images/bubbleshow/bubbleshowslider3.jpeg"
+            src="/content/images/bubbleshow/bubbleshowslider3.webp"
             alt="İnteraktif bubble show deneyimi"
             className="object-contain max-h-[80vh] w-auto"
           />
@@ -194,7 +194,7 @@ const BubbleShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
-            src="/content/images/bubbleshow/bubbleshowslider5.jpeg"
+            src="/content/images/bubbleshow/bubbleshowslider5.webp"
             alt="Bubble show ile doğum günü süsleme"
             className="object-contain max-h-[80vh] w-auto"
           />
@@ -208,7 +208,7 @@ const BubbleShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
-            src="/content/images/bubbleshow/bubbleshowslideranahero.JPG"
+            src="/content/images/bubbleshow/bubbleshowslideranahero.webp"
             alt="Profesyonel bubble show ekipmanları"
             className="object-contain max-h-[80vh] w-auto"
           />
@@ -222,7 +222,7 @@ const BubbleShow = () => {
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
-            src="/content/images/bubbleshow/bubbleshownattive.jpeg"
+            src="/content/images/bubbleshow/bubbleshownattive.webp"
             alt="Organizasyon dahil bubble show doğum günü"
             className="object-contain max-h-[80vh] w-auto"
           />

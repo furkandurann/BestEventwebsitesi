@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 
 const SITE_URL = 'https://www.bestevent.com.tr'
-const DEFAULT_IMAGE = '/content/images/slider/konfeti.jpg'
+const DEFAULT_IMAGE = '/content/images/slider/konfeti.webp'
 
 const Seo = ({
   title,

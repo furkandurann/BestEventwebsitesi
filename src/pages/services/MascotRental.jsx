@@ -99,7 +99,7 @@ const MascotRental = () => {
           {/* Background */}
           <div 
             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-            style={{ backgroundImage: `url('/content/images/maskotlar/kizanahero.jpeg')` }}
+            style={{ backgroundImage: `url('/content/images/maskotlar/kizanahero.webp')` }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/15 to-black/5"></div>
           </div>
@@ -141,7 +141,7 @@ const MascotRental = () => {
           {/* Background */}
           <div 
             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-            style={{ backgroundImage: `url('/content/images/maskotlar/erkekanahero.JPG')` }}
+            style={{ backgroundImage: `url('/content/images/maskotlar/erkekanahero.webp')` }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/15 to-black/5"></div>
           </div>

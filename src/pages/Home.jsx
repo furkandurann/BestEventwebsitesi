@@ -9,7 +9,7 @@ const Home = () => {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Best Event - Etkinlik Organizasyonu',
-    image: 'https://www.bestevent.com.tr/content/images/slider/konfeti.jpg',
+    image: 'https://www.bestevent.com.tr/content/images/slider/konfeti.webp',
     '@id': 'https://www.bestevent.com.tr',
     url: 'https://www.bestevent.com.tr',
     telephone: '+905349306799',
@@ -54,7 +54,7 @@ const Home = () => {
     '@type': 'Organization',
     name: 'Best Event',
     url: 'https://www.bestevent.com.tr',
-    logo: 'https://www.bestevent.com.tr/content/images/slider/konfeti.jpg',
+    logo: 'https://www.bestevent.com.tr/content/images/slider/konfeti.webp',
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -196,14 +196,14 @@ const Home = () => {
               desc="Konsept doğum günleri, palyaço, sihirbaz, bubble show, kostümlü karakterler."
               cta="Detayları Keşfet"
               to="/organizasyonlar/cocuk-etkinlikleri"
-              img="/content/images/Anasayfa/vodafonekurumsal.jpeg"
+              img="/content/images/Anasayfa/vodafonekurumsal.webp"
               altText="İstanbul çocuk etkinlikleri - Palyaço, sihirbaz kiralama, kostümlü karakter ve konsept doğum günü organizasyonu - Best Event"
               fetchpriority="high"
             />
             <CardImageNoLink
               title="Kurumsal Etkinlikler"
               desc="Lansman, gala, festival ve premium sahne prodüksiyonları."
-              img="/content/images/Anasayfa/SenCard.JPG"
+              img="/content/images/referanslar/sencard.webp"
               altText="İstanbul kurumsal etkinlik organizasyonu - Lansman, gala ve festival etkinlikleri - Best Event"
               fetchpriority="high"
             />
@@ -212,7 +212,7 @@ const Home = () => {
               desc="Canlı müzik, DJ, trio band ve profesyonel sahne performansları."
               cta="Detayları Keşfet"
               to="/organizasyonlar/muzik-etkinlikleri"
-              img="/content/images/music/musiketkinlikleri.JPG"
+              img="/content/images/music/musiketkinlikleri.webp"
               altText="İstanbul canlı müzik organizasyonu - DJ, trio band ve profesyonel müzisyen kiralama - Best Event"
               fetchpriority="high"
             />
@@ -221,7 +221,7 @@ const Home = () => {
               desc="Oryantal, luxury dance girl, flamenko ve modern dans gösterileri."
               cta="Detayları Keşfet"
               to="/organizasyonlar/dans-etkinlikleri"
-              img="/content/images/dance/lüksdanskarsilamaekibi.JPG"
+              img="/content/images/dance/dansanagorsel1.webp"
               altText="İstanbul dans gösterileri - Oryantal dans, flamenko ve modern dans etkinlikleri - Best Event"
               fetchpriority="high"
             />
@@ -439,13 +439,26 @@ function CinemaStrip() {
   const stripRef = useRef(null)
   const isPausedRef = useRef(false)
   const translateXRef = useRef(0)
+  const isDraggingRef = useRef(false)
+  const startXRef = useRef(0)
+  const scrollLeftRef = useRef(0)
 
-  const scrollImages = [
-    { file: 'IMG_1879 2_LE_upscale_strong_x4_tone_enhance_30_color_enhance_30.jpg', alt: 'Özel doğum günü organizasyonu ve etkinlik İstanbul - Best Event' },
-    { file: 'forest1.JPG', alt: 'Forest kurumsal etkinlik ve organizasyon hizmeti İstanbul - Best Event' },
-    { file: 'forest2.JPG', alt: 'Forest etkinlik organizasyonu ve kurumsal hizmetler İstanbul - Best Event' },
-    { file: 'MST04619.JPG', alt: 'Profesyonel etkinlik organizasyonu İstanbul - Best Event çalışma referansı' },
-    { file: 'MST04637.JPG', alt: 'Etkinlik ve organizasyon hizmetleri İstanbul - Best Event portfolio' },
+  // Fisher-Yates shuffle algorithm
+  const shuffleArray = (array) => {
+    const shuffled = [...array]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return shuffled
+  }
+
+  const baseImages = [
+    { file: 'IMG_1879 2_LE_upscale_strong_x4_tone_enhance_30_color_enhance_30.webp', alt: 'Özel doğum günü organizasyonu ve etkinlik İstanbul - Best Event' },
+    { file: 'forest1.webp', alt: 'Forest kurumsal etkinlik ve organizasyon hizmeti İstanbul - Best Event' },
+    { file: 'forest2.webp', alt: 'Forest etkinlik organizasyonu ve kurumsal hizmetler İstanbul - Best Event' },
+    { file: 'MST04619.webp', alt: 'Profesyonel etkinlik organizasyonu İstanbul - Best Event çalışma referansı' },
+    { file: 'MST04637.webp', alt: 'Etkinlik ve organizasyon hizmetleri İstanbul - Best Event portfolio' },
     { file: 'pexels-maksgelatin-5046522.jpg', alt: 'Özel etkinlik organizasyonu ve kutlama İstanbul - Best Event' },
     { file: 'pexels-tima-miroshnichenko-5805041.jpg', alt: 'Etkinlik organizasyonu ve profesyonel hizmetler İstanbul - Best Event' },
     { file: 'vodafone1.jpeg', alt: 'Vodafone kurumsal etkinlik organizasyonu İstanbul - Best Event referans çalışması' },
@@ -459,9 +472,17 @@ function CinemaStrip() {
     { file: 'ekle.JPG', alt: 'Etkinlik organizasyonu İstanbul - Best Event' },
     { file: 'ekleee.jpg', alt: 'Özel etkinlik organizasyonu İstanbul - Best Event' },
     { file: 'eklee.jpg', alt: 'Profesyonel etkinlik hizmeti İstanbul - Best Event' },
-    { file: 'sencard2ekle.JPG', alt: 'SenCard kurumsal etkinlik İstanbul - Best Event' },
+    { file: 'sencard2ekle.webp', alt: 'SenCard kurumsal etkinlik İstanbul - Best Event' },
     { file: 'vodafone3ekle.JPG', alt: 'Vodafone kurumsal organizasyon İstanbul - Best Event' },
+    { file: '360selfie.jpeg', alt: '360 derece selfie standı kiralama İstanbul - İnteraktif fotoğraf çekimi etkinliği - Best Event' },
+    { file: '360selifee.jpeg', alt: '360 selfie booth etkinlik hizmeti İstanbul - Özel anlar için fotoğraf çözümleri - Best Event' },
+    { file: 'heryasauygunbubbleshowpartisi.jpg', alt: 'Her yaşa uygun bubble show partisi İstanbul - Köpük gösterisi ve eğlence organizasyonu - Best Event' },
+    { file: 'sihirbazlıkgosterisivekomedishow.jpg', alt: 'Sihirbazlık gösterisi ve komedi show İstanbul - Eğlenceli etkinlik organizasyonu - Best Event' },
+    { file: 'vedafotoğrafı.jpg', alt: 'Veda partisi organizasyonu İstanbul - Özel anlar için profesyonel etkinlik hizmeti - Best Event' },
   ]
+
+  // Shuffle images on component mount
+  const [scrollImages] = useState(() => shuffleArray(baseImages))
 
   const IMAGE_WIDTH = 450
   const GAP = 24
@@ -471,11 +492,11 @@ function CinemaStrip() {
 
   // Optimized scroll - Direct DOM manipulation (NO state updates!)
   useEffect(() => {
-    const scrollSpeed = 0.5 // Reduced speed for smoother scroll
+    const scrollSpeed = 8.0 // 16x faster scroll speed
     let animationFrameId
 
     const autoScroll = () => {
-      if (!isPausedRef.current && stripRef.current) {
+      if (!isPausedRef.current && !isDraggingRef.current && stripRef.current) {
         translateXRef.current -= scrollSpeed
         
         // Reset seamlessly
@@ -497,8 +518,114 @@ function CinemaStrip() {
     }
   }, [totalWidth])
 
+  // Manual scroll handlers
+  const handleMouseDown = (e) => {
+    isDraggingRef.current = true
+    startXRef.current = e.pageX
+    scrollLeftRef.current = translateXRef.current
+    if (stripRef.current) {
+      stripRef.current.style.cursor = 'grabbing'
+    }
+  }
+
+  const handleMouseMove = (e) => {
+    if (!isDraggingRef.current) return
+    e.preventDefault()
+    const x = e.pageX
+    const walk = (x - startXRef.current) * 2
+    translateXRef.current = scrollLeftRef.current + walk
+    
+    // Reset if needed
+    if (Math.abs(translateXRef.current) >= totalWidth) {
+      translateXRef.current = 0
+      scrollLeftRef.current = 0
+    } else if (translateXRef.current > 0) {
+      translateXRef.current = -totalWidth
+      scrollLeftRef.current = -totalWidth
+    }
+    
+    if (stripRef.current) {
+      stripRef.current.style.transform = `translate3d(${translateXRef.current}px, 0, 0)`
+    }
+  }
+
+  const handleMouseUp = () => {
+    isDraggingRef.current = false
+    if (stripRef.current) {
+      stripRef.current.style.cursor = 'grab'
+    }
+  }
+
+  const handleTouchStart = (e) => {
+    isDraggingRef.current = true
+    startXRef.current = e.touches[0].pageX
+    scrollLeftRef.current = translateXRef.current
+  }
+
+  const handleTouchMove = (e) => {
+    if (!isDraggingRef.current) return
+    const x = e.touches[0].pageX
+    const walk = (x - startXRef.current) * 2
+    translateXRef.current = scrollLeftRef.current + walk
+    
+    if (Math.abs(translateXRef.current) >= totalWidth) {
+      translateXRef.current = 0
+      scrollLeftRef.current = 0
+    } else if (translateXRef.current > 0) {
+      translateXRef.current = -totalWidth
+      scrollLeftRef.current = -totalWidth
+    }
+    
+    if (stripRef.current) {
+      stripRef.current.style.transform = `translate3d(${translateXRef.current}px, 0, 0)`
+    }
+  }
+
+  const handleTouchEnd = () => {
+    isDraggingRef.current = false
+  }
+
+  const scrollManual = (direction) => {
+    const distance = 500
+    if (direction === 'left') {
+      translateXRef.current += distance
+      if (translateXRef.current > 0) {
+        translateXRef.current = -totalWidth
+      }
+    } else {
+      translateXRef.current -= distance
+      if (Math.abs(translateXRef.current) >= totalWidth) {
+        translateXRef.current = 0
+      }
+    }
+    if (stripRef.current) {
+      stripRef.current.style.transform = `translate3d(${translateXRef.current}px, 0, 0)`
+    }
+  }
+
   return (
     <div className="relative w-screen -mx-6 md:-mx-10">
+      {/* Scroll Buttons */}
+      <button
+        onClick={() => scrollManual('left')}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-black rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+        aria-label="Sola kaydır"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button
+        onClick={() => scrollManual('right')}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-black rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+        aria-label="Sağa kaydır"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
       <div 
         className="overflow-hidden"
         onMouseEnter={() => { isPausedRef.current = true }}
@@ -506,11 +633,18 @@ function CinemaStrip() {
       >
         <div 
           ref={stripRef}
-          className="flex gap-6"
+          className="flex gap-6 cursor-grab active:cursor-grabbing"
           style={{
             willChange: 'transform',
             transform: 'translate3d(0, 0, 0)'
           }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {allImages.map((item, idx) => (
             <div
@@ -526,6 +660,12 @@ function CinemaStrip() {
                 style={
                   item.file === 'kocholdıng1.jpg'
                     ? { objectPosition: 'center 30%' }
+                    : item.file === 'sencard3.jpg'
+                    ? { objectPosition: 'center 70%' }
+                    : item.file === 'allianz1.jpeg'
+                    ? { objectPosition: 'center 70%' }
+                    : item.file === 'anabubbleeklee.JPG'
+                    ? { objectPosition: '40% center' }
                     : undefined
                 }
               />

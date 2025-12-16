@@ -6,7 +6,7 @@ const Karaoke = () => {
     title: 'Karaoke Etkinliği',
     subtitle: '1000+ şarkı, profesyonel ekipman ve sunucu',
     description: 'Doğum günü, okul etkinliği veya parti için çocuklara uygun karaoke set-up: ses sistemi, ekran ve LED ışık.',
-    image: '/content/images/bidolu/karaoke.jpg',
+    image: '/content/images/bidolu/karaoke.wepb',
   }
 
   const stats = [

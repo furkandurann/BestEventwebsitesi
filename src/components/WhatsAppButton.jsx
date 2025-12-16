@@ -1,29 +1,24 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { trackWhatsAppClick } from '../utils/tracking'
 
 const WhatsAppButton = () => {
   const location = useLocation()
   const [isHovered, setIsHovered] = useState(false)
-  
+
   // CostumedCharacters sayfasında WhatsApp butonunu gizle
   if (location.pathname === '/organizasyonlar/kostumlu-karakterler') {
     return null
   }
-  
+
   // WhatsApp numarası
   const phoneNumber = '+905349306799'
   const message = 'Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum'
-  
+
   const handleClick = () => {
-    // Track WhatsApp click in Google Analytics
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'whatsapp_click', {
-        event_category: 'engagement',
-        event_label: 'WhatsApp Button',
-        value: 1
-      });
-    }
-    
+    // Track WhatsApp click - Google Ads Conversion + GA4
+    trackWhatsAppClick('WhatsApp Button', window.location.href)
+
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     window.open(url, '_blank')
   }

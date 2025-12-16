@@ -9,14 +9,14 @@ export const costumedCharactersData = {
       emoji: '⭐',
       title: 'Frozen\'ın Prensesi',
       description: 'Çocukların en sevdiği Frozen karakteri Elsa, doğum günü partinize geliyor. Profesyonel kostüm ve performansla unutulmaz anlar.',
-      heroImage: '/content/images/Kostumlukarakterler/elsaheroo.JPG',
+      heroImage: '/content/images/Kostumlukarakterler/elsaheroo.webp',
       images: [
-        '/content/images/Kostumlukarakterler/elsaheroo.JPG',
-        '/content/images/Kostumlukarakterler/elsavodafone2ikincihero.JPG',
-        '/content/images/Kostumlukarakterler/elsa.JPG',
-        '/content/images/Kostumlukarakterler/elsacute.JPG',
-        '/content/images/Kostumlukarakterler/elsacutee.JPG',
-        '/content/images/Kostumlukarakterler/elsavodafonee.jpg'
+        '/content/images/Kostumlukarakterler/elsaheroo.webp',
+        '/content/images/Kostumlukarakterler/elsavodafone2ikincihero.webp',
+        '/content/images/Kostumlukarakterler/elsa.webp',
+        '/content/images/Kostumlukarakterler/elsacute.webp',
+        '/content/images/Kostumlukarakterler/elsacutee.webp',
+        '/content/images/Kostumlukarakterler/elsavodafonee.webp'
       ],
       glassColor: 'rgba(173, 216, 230, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -38,15 +38,15 @@ export const costumedCharactersData = {
       emoji: '👑',
       title: 'Masal Prensesi',
       description: 'Masalların vazgeçilmez karakteri Pamuk Prenses, çocuklarınızı masalsı bir dünyaya davet ediyor.',
-      heroImage: '/content/images/Kostumlukarakterler/pamukprensesyenii.JPG',
+      heroImage: '/content/images/Kostumlukarakterler/pamukprensesyenii.webp',
       images: [
-        '/content/images/Kostumlukarakterler/pamukprensesyenii.JPG',
-        '/content/images/Kostumlukarakterler/pamukprensesyeniii.JPG',
-        '/content/images/Kostumlukarakterler/pamukprenseselsakurumsal.jpg',
-        '/content/images/Kostumlukarakterler/pamukprensesistanbul.JPG',
-        '/content/images/Kostumlukarakterler/pamukpresnesistanbul.JPG',
-        '/content/images/Kostumlukarakterler/pamukprensesss.JPG',
-        '/content/images/Kostumlukarakterler/pamuksprenseshero.JPG'
+        '/content/images/Kostumlukarakterler/pamukprensesyenii.webp',
+        '/content/images/Kostumlukarakterler/pamukprensesyeniii.webp',
+        '/content/images/Kostumlukarakterler/pamukprenseselsakurumsal.webp',
+        '/content/images/Kostumlukarakterler/pamukprensesistanbul.webp',
+        '/content/images/Kostumlukarakterler/pamukpresnesistanbul.webp',
+        '/content/images/Kostumlukarakterler/pamukprensesss.webp',
+        '/content/images/Kostumlukarakterler/pamuksprenseshero.webp'
       ],
       glassColor: 'rgba(255, 215, 0, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -68,16 +68,16 @@ export const costumedCharactersData = {
       emoji: '🎀',
       title: 'Disney İkonu',
       description: 'Disney\'in sevimli karakteri Minnie Mouse, çocukların gönüllerini fethetmeye geliyor. Neşe ve eğlence garantisi.',
-      heroImage: '/content/images/Kostumlukarakterler/minniemausekiralamaheroo.jpg',
+      heroImage: '/content/images/Kostumlukarakterler/minniemausekiralamaheroo.webp',
       images: [
-        '/content/images/Kostumlukarakterler/minniemausekiralamaheroo.jpg',
-        '/content/images/Kostumlukarakterler/minniemause.JPG',
-        '/content/images/Kostumlukarakterler/minniemausekarakter.JPG',
-        '/content/images/Kostumlukarakterler/minniemausekarakter3.JPG',
-        '/content/images/Kostumlukarakterler/minniemausee.jpg',
-        '/content/images/Kostumlukarakterler/minnieyenii.jpg',
-        '/content/images/Kostumlukarakterler/minniemickeyyenii.jpg',
-        '/content/images/Kostumlukarakterler/minniemickeyyeniii.jpg'
+        '/content/images/Kostumlukarakterler/minniemausekiralamaheroo.webp',
+        '/content/images/Kostumlukarakterler/minniemause.webp',
+        '/content/images/Kostumlukarakterler/minniemausekarakter.webp',
+        '/content/images/Kostumlukarakterler/minniemausekarakter3.webp',
+        '/content/images/Kostumlukarakterler/minniemausee.webp',
+        '/content/images/Kostumlukarakterler/minnieyenii.webp',
+        '/content/images/Kostumlukarakterler/minniemickeyyenii.webp',
+        '/content/images/Kostumlukarakterler/minniemickeyyeniii.webp'
       ],
       glassColor: 'rgba(255, 105, 180, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -99,10 +99,10 @@ export const costumedCharactersData = {
       emoji: '🧜‍♀️',
       title: 'Okyanus Prensesi',
       description: 'Masalsı deniz dünyasından gelen güzel deniz kızı, çocukları büyülü bir sualtı macerasına davet ediyor.',
-      heroImage: '/content/images/Kostumlukarakterler/elsaheroo.JPG',
+      heroImage: '/content/images/Kostumlukarakterler/elsaheroo.webp',
       images: [
-        '/content/images/Kostumlukarakterler/elsaheroo.JPG',
-        '/content/images/Kostumlukarakterler/pamuksprenseshero.JPG'
+        '/content/images/Kostumlukarakterler/elsaheroo.webp',
+        '/content/images/Kostumlukarakterler/pamuksprenseshero.webp'
       ],
       glassColor: 'rgba(0, 191, 255, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -124,9 +124,9 @@ export const costumedCharactersData = {
       emoji: '🦄',
       title: 'Sihirli At',
       description: 'Rüya dünyasından gelen büyülü unicorn, çocuklara sihirli bir masal atmosferi yaşatıyor. Rengarenk ve ışıltılı dünyasıyla unutulmaz anlar.',
-      heroImage: '/content/images/Kostumlukarakterler/unicornyeniii.jpg',
+      heroImage: '/content/images/Kostumlukarakterler/unicornyeniii.webp',
       images: [
-        '/content/images/Kostumlukarakterler/unicornyeniii.jpg'
+        '/content/images/Kostumlukarakterler/unicornyeniii.webp'
       ],
       glassColor: 'rgba(255, 192, 203, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -151,15 +151,15 @@ export const costumedCharactersData = {
       emoji: '🕷️',
       title: 'Süper Kahraman',
       description: 'En sevilen süper kahraman Spiderman, çocukların hayal ettiği macera dolu partiyi gerçeğe dönüştürüyor.',
-      heroImage: '/content/images/Kostumlukarakterler/renklispidermanprivate.jpg',
+      heroImage: '/content/images/Kostumlukarakterler/renklispidermanprivate.webp',
       images: [
-        '/content/images/Kostumlukarakterler/renklispidermanprivate.jpg',
-        '/content/images/Kostumlukarakterler/spidermanrenkliii.jpg',
-        '/content/images/Kostumlukarakterler/spidermana.jpg',
-        '/content/images/Kostumlukarakterler/spidermancosku.JPG',
-        '/content/images/Kostumlukarakterler/spidermannature.jpg',
-        '/content/images/Kostumlukarakterler/spiderman2.jpg',
-        '/content/images/Kostumlukarakterler/spidermann.JPG'
+        '/content/images/Kostumlukarakterler/renklispidermanprivate.webp',
+        '/content/images/Kostumlukarakterler/spidermanrenkliii.webp',
+        '/content/images/Kostumlukarakterler/spidermana.webp',
+        '/content/images/Kostumlukarakterler/spidermancosku.webp',
+        '/content/images/Kostumlukarakterler/spidermannature.webp',
+        '/content/images/Kostumlukarakterler/spiderman2.webp',
+        '/content/images/Kostumlukarakterler/spidermann.webp'
       ],
       glassColor: 'rgba(220, 38, 38, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -181,10 +181,10 @@ export const costumedCharactersData = {
       emoji: '🦇',
       title: 'Gotham\'ın Koruyucusu',
       description: 'Karanlığın şövalyesi Batman, çocukların kahramanlık hayallerini gerçeğe dönüştürüyor. Profesyonel performans garantisi.',
-      heroImage: '/content/images/Kostumlukarakterler/batmanistan.JPG',
+      heroImage: '/content/images/Kostumlukarakterler/batmanistan.webp',
       images: [
-        '/content/images/Kostumlukarakterler/batmanistan.JPG',
-        '/content/images/Kostumlukarakterler/batman.jpg'
+        '/content/images/Kostumlukarakterler/batmanistan.webp',
+        '/content/images/Kostumlukarakterler/batman.webp'
       ],
       glassColor: 'rgba(30, 30, 30, 0.4)',
       borderColor: 'rgba(255, 215, 0, 0.4)',
@@ -206,10 +206,10 @@ export const costumedCharactersData = {
       emoji: '🐾',
       title: 'Kurtarma Ekibi',
       description: 'Çocukların en sevdiği kurtarma ekibi Paw Patrol karakterleri, eğlenceli maceralar için hazır!',
-      heroImage: '/content/images/Kostumlukarakterler/pawpetrolkesinhero.JPG',
+      heroImage: '/content/images/Kostumlukarakterler/pawpetrolkesinhero.webp',
       images: [
-        '/content/images/Kostumlukarakterler/pawpetrolkesinhero.JPG',
-        '/content/images/Kostumlukarakterler/pawpetrol2.jpeg'
+        '/content/images/Kostumlukarakterler/pawpetrolkesinhero.webp',
+        '/content/images/Kostumlukarakterler/pawpetrol2.webp'
       ],
       glassColor: 'rgba(59, 130, 246, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -234,23 +234,23 @@ export const costumedCharactersData = {
       emoji: '🤡',
       title: 'Neşe Kaynağı',
       description: 'Profesyonel palyaçomuz, çocukları güldürüyor, eğlendiriyor ve unutulmaz anlar yaratıyor. Grup oyunları, yüz boyama ve balon şekillendirme ile doğum günü partinizi renklendiriyoruz.',
-      heroImage: '/content/images/palyaco/palyacoanaherogrupoyunlari.JPG',
+      heroImage: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp',
       images: [
-        '/content/images/palyaco/palyaconattiveenbas.jpeg',
-        '/content/images/palyaco/palyaconattive3yuzboyamasi.JPG',
-        '/content/images/palyaco/palyacoanaherogrupoyunlari.JPG',
-        '/content/images/palyaco/palyaconattive1.JPG',
-        '/content/images/palyaco/cocuklarinyuzundekiheyecan.JPG',
-        '/content/images/palyaco/palyaconattive2.jpg',
-        '/content/images/palyaco/palyacogrupoyunlari.jpg',
-        '/content/images/palyaco/palyaconattive.jpg',
-        '/content/images/palyaco/palyacooo.jpg',
-        '/content/images/palyaco/IMG_2050.JPG',
-        '/content/images/palyaco/IMG_2064.JPG',
-        '/content/images/palyaco/IMG_2065.JPG',
-        '/content/images/palyaco/MST04316.JPG',
-        '/content/images/palyaco/MST04321.JPG',
-        '/content/images/palyaco/MST04344.JPG'
+        '/content/images/palyaco/palyaconattiveenbas.webp',
+        '/content/images/palyaco/palyaconattive3yuzboyamasi.webp',
+        '/content/images/palyaco/palyacoanaherogrupoyunlari.webp',
+        '/content/images/palyaco/palyaconattive1.webp',
+        '/content/images/palyaco/cocuklarinyuzundekiheyecan.webp',
+        '/content/images/palyaco/palyaconattive2.webp',
+        '/content/images/palyaco/palyacogrupoyunlari.webp',
+        '/content/images/palyaco/palyaconattive.webp',
+        '/content/images/palyaco/palyacooo.webp',
+        '/content/images/palyaco/IMG_2050.webp',
+        '/content/images/palyaco/IMG_2064.webp',
+        '/content/images/palyaco/IMG_2065.webp',
+        '/content/images/palyaco/MST04316.webp',
+        '/content/images/palyaco/MST04321.webp',
+        '/content/images/palyaco/MST04344.webp'
       ],
       glassColor: 'rgba(255, 165, 0, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -273,11 +273,11 @@ export const costumedCharactersData = {
       emoji: '🐭',
       title: 'Disney\'nin Yıldızı',
       description: 'Disney\'nin en sevilen karakteri Mickey Mouse, çocuklara eğlence dolu anlar yaşatıyor. Minnie ile birlikte unutulmaz bir parti deneyimi.',
-      heroImage: '/content/images/Kostumlukarakterler/mickeyyeni.jpg',
+      heroImage: '/content/images/Kostumlukarakterler/mickeyyeni.webp',
       images: [
-        '/content/images/Kostumlukarakterler/mickeyyeni.jpg',
-        '/content/images/Kostumlukarakterler/minniemickeyyenii.jpg',
-        '/content/images/Kostumlukarakterler/minniemickeyyeniii.jpg'
+        '/content/images/Kostumlukarakterler/mickeyyeni.webp',
+        '/content/images/Kostumlukarakterler/minniemickeyyenii.webp',
+        '/content/images/Kostumlukarakterler/minniemickeyyeniii.webp'
       ],
       glassColor: 'rgba(220, 38, 38, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -299,11 +299,11 @@ export const costumedCharactersData = {
       emoji: '🐻',
       title: 'Eğlenceli İkili',
       description: 'Çocukların en sevdiği çizgi film karakterleri Maşa ve Koca Ayı, neşeli maceraları ve oyunlarıyla çocukları eğlendiriyor.',
-      heroImage: '/content/images/Kostumlukarakterler/masakocaayi.jpg',
+      heroImage: '/content/images/Kostumlukarakterler/masakocaayi.webp',
       images: [
-        '/content/images/Kostumlukarakterler/masakocaayi.jpg',
-        '/content/images/Kostumlukarakterler/masakocaayiyenii.jpg',
-        '/content/images/Kostumlukarakterler/pikacumasakocaayyeniii.jpg'
+        '/content/images/Kostumlukarakterler/masakocaayi.webp',
+        '/content/images/Kostumlukarakterler/masakocaayiyenii.webp',
+        '/content/images/Kostumlukarakterler/pikacumasakocaayyeniii.webp'
       ],
       glassColor: 'rgba(34, 197, 94, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -325,9 +325,9 @@ export const costumedCharactersData = {
       emoji: '⚡',
       title: 'Pokemon Yıldızı',
       description: 'Pokemon dünyasının en sevilen karakteri Pikachu, çocukları renkli bir maceraya davet ediyor. Enerji dolu performansıyla parti favorisi.',
-      heroImage: '/content/images/Kostumlukarakterler/pikacumasakocaayyeniii.jpg',
+      heroImage: '/content/images/Kostumlukarakterler/pikacumasakocaayyeniii.webp',
       images: [
-        '/content/images/Kostumlukarakterler/pikacumasakocaayyeniii.jpg'
+        '/content/images/Kostumlukarakterler/pikacumasakocaayyeniii.webp'
       ],
       glassColor: 'rgba(250, 204, 21, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -349,10 +349,10 @@ export const costumedCharactersData = {
       emoji: '🎅',
       title: 'Kış Sihri',
       description: 'Noel Baba ve yardımcısı Anna, çocuklara hediyeler dağıtıyor ve bayram neşesi yaşatıyor.',
-      heroImage: '/content/images/Kostumlukarakterler/noelbaba.JPG',
+      heroImage: '/content/images/Kostumlukarakterler/noelbaba.webp',
       images: [
-        '/content/images/Kostumlukarakterler/noelbaba.JPG',
-        '/content/images/Kostumlukarakterler/noelanne.JPG'
+        '/content/images/Kostumlukarakterler/noelbaba.webp',
+        '/content/images/Kostumlukarakterler/noelanne.webp'
       ],
       glassColor: 'rgba(220, 38, 38, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',

@@ -168,9 +168,10 @@ export default defineConfig({
   },
   
   server: {
-    open: true,
+    open: false,
     port: 5173,
-    allowedHosts: ['testevent.pasistan.com']
+    host: '0.0.0.0',
+    allowedHosts: ['test.bestevent.com.tr']
   },
   
   build: {

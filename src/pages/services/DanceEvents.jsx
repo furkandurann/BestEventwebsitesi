@@ -7,28 +7,28 @@ const DanceEvents = () => {
       id: 'oriental',
       title: 'Oryantal Dans Gösterisi',
       description: 'Profesyonel oryantal dansçılar ile büyüleyici gösteriler',
-      image: '/content/images/dance/oryantal/oryantalistanahero.jpeg',
+      image: '/content/images/dance/oryantal/oryantalistanahero.webp',
       alt: 'Oryantal dans gösterisi İstanbul - Best Event'
     },
     {
       id: 'luxury-dance',
       title: 'Lüks Dans Karşılama',
       description: 'Özel etkinlikler için lüks dans karşılama ekibi',
-      image: '/content/images/dance/lüksdanskarsilamaekibi.jpeg',
+      image: '/content/images/dance/lüksdanskarsilamaekibi.webp',
       alt: 'Lüks dans karşılama ekibi İstanbul - Best Event'
     },
     {
       id: 'led-dance',
       title: 'LED Dans Gösterisi',
       description: 'Işıltılı LED kostümlerle etkileyici dans performansları',
-      image: '/content/images/dance/lüksledlidansekibi.jpg',
+      image: '/content/images/dance/lüksledlidansekibi.webp',
       alt: 'LED dans gösterisi İstanbul - Best Event'
     },
     {
       id: 'zumba',
       title: 'Zumba Dans',
       description: 'Eğlenceli ve enerjik zumba dans gösterileri',
-      image: '/content/images/dance/zumbadans.JPG',
+      image: '/content/images/dance/zumbadans.webp',
       alt: 'Zumba dans gösterisi İstanbul - Best Event'
     },
     {
@@ -42,7 +42,7 @@ const DanceEvents = () => {
       id: 'yoga',
       title: 'Yoga Eğitmeni',
       description: 'Profesyonel yoga eğitmenleri ile etkinliklerinizde huzur',
-      image: '/content/images/dance/yogaegitmeni.jpg',
+      image: '/content/images/dance/yogaegitmeni.webp',
       alt: 'Yoga eğitmeni İstanbul - Best Event'
     }
   ]
@@ -69,7 +69,7 @@ const DanceEvents = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="/content/images/dance/lüksdanskarsilamaekibi.jpeg" 
+            src="/content/images/dance/lüksdanskarsilamaekibi.webp" 
             alt="Dans gösterileri İstanbul - Best Event"
             className="w-full h-full object-cover"
           />

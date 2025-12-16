@@ -71,6 +71,9 @@ const PalyacoKiralama = lazy(() => import('./pages/blog/PalyacoKiralama'))
 const SihirbazGosterisi = lazy(() => import('./pages/blog/SihirbazGosterisi'))
 const BubbleShowGosterisi = lazy(() => import('./pages/blog/BubbleShowGosterisi'))
 
+// 404 Page (lazy)
+const NotFound = lazy(() => import('./pages/NotFound'))
+
 function App() {
   const location = useLocation()
   
@@ -96,7 +99,7 @@ function App() {
       <ScrollToTop />
       <Breadcrumb />
       <main>
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={null}>
           <ThemeProvider>
             <Routes>
         <Route path="/" element={<Home />} />
@@ -160,8 +163,12 @@ function App() {
         <Route path="/organizasyonlar/dansci-kiralama" element={<ChildEvents />} />
         <Route path="/organizasyonlar/hostes-kiralama" element={<ChildEvents />} />
         
-        {/* Kostümlü Karakter Detay Sayfaları - Dinamik Route (en sonda) */}
-        <Route path="/:slug" element={<CharacterDetail />} />
+        {/* Kostümlü Karakter Detay Sayfaları - Dinamik Route */}
+        <Route path="/karakter/:slug" element={<CharacterDetail />} />
+        <Route path="/maskot/:slug" element={<MascotDetail />} />
+
+        {/* 404 - Sayfa Bulunamadı (en sonda olmalı) */}
+        <Route path="*" element={<NotFound />} />
             </Routes>
           </ThemeProvider>
         </Suspense>

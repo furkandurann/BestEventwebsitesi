@@ -1,42 +1,43 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import BirthdayHeroSlider from "../../components/BirthdayHeroSlider";
 
 const timeline = [
   {
     time: "0–40 dk",
     title: "Karşılama + Yüz Boyama",
     desc: "Çocuklar karakterlerle tanışır, yüz boyama ile parti havasına girer.",
-    image: "/content/images/fullpaket/istanbulprofesyonelyuzboyasietkinligibakirkoy.JPG",
+    image: "/content/images/fullpaket/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp",
   },
   {
     time: "40–80 dk",
     title: "Oyunlar + Danslar",
     desc: "Yaş grubuna göre seçilen grup oyunları ve müzikli aktivitelerle enerji yükselir.",
-    image: "/content/images/palyaco/palyacoanaherogrupoyunlari.JPG",
+    image: "/content/images/palyaco/palyacoanaherogrupoyunlari.webp",
   },
   {
     time: "80–100 dk",
     title: "Pasta Seremonisi",
     desc: "Konsept pastayla mumlar üflenir, aile fotoğrafları için sahne hazırlanır.",
-    image: "/content/images/fullpaket/pastanattivee1.jpg",
+    image: "/content/images/fullpaket/pastanattivee1.webp",
   },
   {
     time: "100–130 dk",
     title: "Bubble Show – 30 Dakika",
     desc: "Çocuklar dev baloncukların içine girer; videoluk kareler garanti.",
-    image: "/content/images/fullpaket/hareketlislider5bubbleshowgosteriler.jpeg",
+    image: "/content/images/fullpaket/hareketlislider5bubbleshowgosteriler.webp",
   },
   {
     time: "130–160 dk",
     title: "Sihirbazlık Gösterisi – 30 Dakika",
     desc: "Tavşan, güvercin ve interaktif numaralarla dolu komedi ağırlıklı bir şov.",
-    image: "/content/images/fullpaket/hareketlislider6osterilersihirbazhero.jpeg",
+    image: "/content/images/fullpaket/hareketlislider6osterilersihirbazhero.webp",
   },
   {
     time: "160–180 dk",
     title: "Final: Pinyata + Sosis Balon + Veda Fotoğrafı",
     desc: "Hediye dağıtımı, toplu fotoğraf ve güçlü bir finalle etkinlik tamamlanır.",
-    image: "/content/images/fullpaket/hareketlisliderfotograf4.jpeg",
+    image: "/content/images/fullpaket/hareketlisliderfotograf4.webp",
   },
 ];
 
@@ -44,42 +45,42 @@ const packageItems = [
   {
     title: "Konsept Doğum Günü Süslemesi",
     desc: "Balon kemeri, backdrop, masa düzeni ve konseptin tüm detayları. Fotoğraflar için kusursuz bir sahne kuruyoruz.",
-    image: "/content/images/fullpaket/konseptnattive.jpg",
+    image: "/content/images/fullpaket/konseptnattive.webp",
   },
   {
     title: "Organik Şef Pastası",
     desc: "Cordon bleu eğitimli şefimizin hazırladığı, konseptinize özel, %100 organik pasta. Hem lezzeti hem görünümüyle günün yıldızı.",
-    image: "/content/images/fullpaket/pastanattivee1.jpg",
+    image: "/content/images/fullpaket/pastanattivee1.webp",
   },
   {
     title: "Bubble Show – 30 Dakika",
     desc: "Dev baloncuklar, sahne efektleri ve çocukların içine girebildiği büyülü anlar. Çocuklar için saf mutluluk.",
-    image: "/content/images/fullpaket/hareketlislider5bubbleshowgosteriler.jpeg",
+    image: "/content/images/fullpaket/hareketlislider5bubbleshowgosteriler.webp",
   },
   {
     title: "Sihirbazlık Gösterisi – 30 Dakika",
     desc: "Tavşan, güvercin ve interaktif numaralarla dolu eğlenceli bir performans. Çocuklar sadece izleyen değil, gösterinin parçası olur.",
-    image: "/content/images/fullpaket/hareketlislider6osterilersihirbazhero.jpeg",
+    image: "/content/images/fullpaket/hareketlislider6osterilersihirbazhero.webp",
   },
   {
     title: "Palyaço & Kostümlü Karakter Animasyonu",
     desc: "Tüm etkinlik boyunca oyunlar, danslar, kar spreyi ve pinyata akışını profesyonel animatör ekibimiz yönetir.",
-    image: "/content/images/palyaco/palyacoanaherogrupoyunlari.JPG",
+    image: "/content/images/palyaco/palyacoanaherogrupoyunlari.webp",
   },
   {
     title: "Profesyonel Yüz Boyama & Glitter",
     desc: "Hijyenik, kaliteli malzemelerle yapılan yüz boyama ve glitter detaylarıyla herkes sahneye hazır hale gelir.",
-    image: "/content/images/fullpaket/istanbulprofesyonelyuzboyasietkinligibakirkoy.JPG",
+    image: "/content/images/fullpaket/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp",
   },
   {
     title: "Party Box Ses Sistemi (Hediye)",
     desc: "Etkinliğe özel playlist ve güçlü ses sistemiyle, ortamın enerjisi her an yüksek kalır.",
-    image: "/content/images/fullpaket/hareketlislider7popcorn.jpeg",
+    image: "/content/images/fullpaket/hareketlislider7popcorn.webp",
   },
   {
     title: "Tam Zamanında Kurulum",
     desc: "Ekip, misafirler gelmeden önce alanda olur, tüm sahne kurulumu zamanında ve eksiksiz tamamlar.",
-    image: "/content/images/fullpaket/hareketlislider3yeni.JPG",
+    image: "/content/images/fullpaket/hareketlislider3yeni.webp",
   },
 ];
 
@@ -127,339 +128,936 @@ const faqs = [
 
 const FullBirthdayOrganization = () => {
   const [openFaq, setOpenFaq] = useState(0);
+  
+  // WhatsApp Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    address: '',
+    date: '',
+    time: '',
+    notes: ''
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const sendWhatsAppMessage = () => {
+    const message = `🎉 *Doğum Günü Organizasyonu Talebi*
+
+📝 *Ad Soyad:* ${formData.name || 'Belirtilmedi'}
+📞 *Telefon:* ${formData.phone || 'Belirtilmedi'}
+📍 *Adres:* ${formData.address || 'Belirtilmedi'}
+📅 *Tarih:* ${formData.date || 'Belirtilmedi'}
+🕐 *Saat:* ${formData.time || 'Belirtilmedi'}
+📋 *Konsept/Notlar:* ${formData.notes || 'Belirtilmedi'}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/905349306799?text=${encodedMessage}`, '_blank');
+  };
 
   return (
     <>
       <Helmet>
-        <title>Full Doğum Günü Organizasyonu | Best Event</title>
+        <title>Doğum Günü Organizasyonu İstanbul | Full Paket Etkinlik - Best Event</title>
         <meta
           name="description"
-          content="Konsept süsleme, organik şef pastası, bubble show, sihirbazlık, palyaço ve kostümlü karakter, yüz boyama ve party box ses sistemi tek pakette. Full doğum günü organizasyonu Best Event ile."
+          content="İstanbul'da doğum günü organizasyonu: Konsept süsleme, organik pasta, bubble show, sihirbazlık gösterisi, palyaço animasyonu ve profesyonel fotoğraf çekimi. Tüm ilçelerde hizmet. ☎️ 0534 930 67 99"
         />
+        <meta name="keywords" content="doğum günü organizasyonu istanbul, çocuk doğum günü organizasyonu, konsept doğum günü, bubble show, sihirbazlık gösterisi, palyaço kiralama, doğum günü pastası" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Doğum Günü Organizasyonu İstanbul | Full Paket Etkinlik" />
+        <meta property="og:description" content="İstanbul'da profesyonel doğum günü organizasyonu. Konsept süsleme, organik pasta, bubble show, sihirbazlık ve daha fazlası tek pakette!" />
+        <meta property="og:image" content="https://bestevent.com.tr/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp" />
+        
+        {/* Schema.org LocalBusiness + Service Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Best Event - Doğum Günü Organizasyonu",
+            "image": "https://bestevent.com.tr/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp",
+            "description": "İstanbul'da profesyonel doğum günü organizasyonu hizmeti. Konsept süsleme, organik pasta, bubble show, sihirbazlık gösterisi ve animasyon.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "İstanbul",
+              "addressCountry": "TR"
+            },
+            "telephone": "+905349306799",
+            "priceRange": "$$",
+            "areaServed": {
+              "@type": "City",
+              "name": "İstanbul"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Doğum Günü Organizasyon Hizmetleri",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Full Doğum Günü Organizasyonu",
+                    "description": "Konsept süsleme, organik pasta, bubble show, sihirbazlık, palyaço animasyonu, kostümlü karakter, yüz boyama ve ses sistemi dahil tam paket organizasyon."
+                  }
+                }
+              ]
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "127"
+            }
+          })}
+        </script>
       </Helmet>
 
       <main className="bg-[#050509] text-white">
-        {/* HERO */}
-        <section className="relative overflow-hidden bg-black">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[url('/content/images/fullpaket/fullpaketanahero.jpg')] bg-cover bg-center opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/75 to-black/90" />
-          </div>
-
-          <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-28 md:pt-40 md:pb-36">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
-                Full Doğum Günü Organizasyonu
-              </h1>
-              <p className="mt-4 text-base md:text-lg text-white/85 leading-relaxed max-w-2xl">
-                Tüm günü tek pakette, kusursuz bir akışla yönetiyoruz.
-              </p>
-
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <a
-                  href="https://wa.me/905349306799"
-                  className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm md:text-base font-semibold bg-white text-black shadow-lg shadow-black/40 hover:bg-white/90 transition-colors"
-                >
-                  💬 WhatsApp’tan Fiyat Öğren
-                </a>
-                <a
-                  href="#flow"
-                  className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm md:text-base font-medium border border-white/30 text-white hover:border-white hover:bg-white/10 transition-colors"
-                >
-                  Paketin Akışını Gör
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* CINEMATIK HERO SLIDER */}
+        <BirthdayHeroSlider />
 
         {/* Tek Paket blok */}
-        <section className="relative overflow-hidden bg-[#0a0a10] border-t border-white/5">
-          <div className="absolute inset-0 opacity-10">
+        <section className="relative overflow-hidden bg-gradient-to-b from-[#0a0a10] via-[#050509] to-[#0a0a10]">
+          <div className="absolute inset-0 opacity-[0.07]">
             <div
               className="absolute inset-0"
               style={{
-                backgroundImage: 'radial-gradient(circle at 10% 10%, rgba(255,122,24,0.25), transparent 35%), radial-gradient(circle at 90% 20%, rgba(255,255,255,0.14), transparent 30%)'
+                backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(255,122,24,0.3), transparent 40%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15), transparent 35%)'
               }}
             />
           </div>
-          <div className="relative max-w-5xl mx-auto px-6 py-16 md:py-20 space-y-8 text-center">
-            <div className="space-y-4">
-              <h2
-                className="font-semibold text-white leading-tight"
-                style={{ fontSize: 'clamp(2.35rem, 5vw, 3.25rem)', letterSpacing: '-0.02em', lineHeight: 1.15 }}
-              >
-                Tek Paket. Tek Ekip. Tek muhattap.
-              </h2>
-              <p className="text-sm md:text-base text-white/85 leading-relaxed">
-                Konsept süsleme | %100 Organik Pasta | Bubble show | Magic Show | Kostümlü karakter | Palyaço
-              </p>
-              <p className="text-base md:text-lg text-white/90 leading-relaxed">
-                Sen uğraşma , Bi bunu her gün yapıyoruz ;)
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center">
-              {[
-                'Kurulum + sahne 2 saat önce hazır',
-                'Organik pasta + konsept süsleme tek ekipte',
-                'Yaşa göre oyun dili ve tempo planlaması',
-                'Tek paket, net bütçe, sürpriz masraf yok'
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="px-4 py-3 rounded-full border border-white/15 bg-gradient-to-r from-primary to-secondary text-sm md:text-base text-white shadow-[0_10px_28px_rgba(0,0,0,0.35)] backdrop-blur-sm"
+          
+          <div className="relative">
+            {/* Ana Başlık - H1 for SEO */}
+            <div className="min-h-[50vh] flex items-center justify-center px-6 py-20 md:py-32">
+              <div className="max-w-6xl mx-auto text-center space-y-8">
+                <h1
+                  className="font-bold text-white leading-[1.1]"
+                  style={{ 
+                    fontSize: 'clamp(2.75rem, 7vw, 5rem)', 
+                    letterSpacing: '-0.03em'
+                  }}
                 >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 3 SAATLİK AKIŞ */}
-        <section id="flow" className="bg-[#0a0a0f] border-t border-white/5">
-          <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-            <div className="mb-10 text-center">
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                3 Saatlik Profesyonel Akış
-              </h2>
-              <p className="mt-3 text-sm md:text-base text-white/80">
-                Üç saat boyunca her şey, doğru sırayla ve doğru tempoda ilerler.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {timeline.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 shadow-[0_18px_40px_rgba(0,0,0,0.4)]"
+                  Doğum Günü Organizasyonu İstanbul
+                </h1>
+                <h2
+                  className="font-medium text-white/90 leading-[1.2]"
+                  style={{ 
+                    fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', 
+                    letterSpacing: '-0.02em'
+                  }}
                 >
-                  {item.image && (
-                    <div className="w-full sm:w-24 h-24 rounded-xl overflow-hidden border border-white/10 bg-black/40">
-                      <img src={item.image} alt={item.title} className="w-full h-full object-cover" loading="lazy" />
-                    </div>
-                  )}
-                  <div className="shrink-0">
-                    <div className="inline-flex items-center justify-center rounded-full bg-white/15 text-xs font-semibold px-3 py-1 text-white">
-                      ⏱ {item.time}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm md:text-base text-white">
-                      {item.title}
-                    </p>
-                    <p className="mt-1 text-sm text-white/80 leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* PAKET İÇERİĞİ */}
-        <section className="bg-[#050509] border-t border-white/5">
-          <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-              Paket İçinde Neler Var?
-            </h2>
-            <p className="mt-3 text-sm md:text-base text-white/80 max-w-2xl leading-relaxed">
-              Doğum gününü baştan sona taşıyan tüm içerikler, tek pakette ve tek ekip
-              kontrolünde.
-            </p>
-
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {packageItems.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-3xl bg-white/6 border border-white/10 px-6 py-5 shadow-[0_18px_45px_rgba(0,0,0,0.55)] backdrop-blur-sm"
-                >
-                  {item.image && (
-                    <div className="mb-3 rounded-2xl overflow-hidden border border-white/10 bg-black/30">
-                      <img src={item.image} alt={item.title} className="w-full h-44 object-cover" loading="lazy" />
-                    </div>
-                  )}
-                  <h3 className="text-lg md:text-xl font-semibold">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm md:text-[15px] text-white/85 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* NEDEN FULL PAKET */}
-        <section className="bg-[#07070c] border-t border-white/5">
-          <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-              Neden Full Paket Doğum Günü?
-            </h2>
-
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {reasons.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-3xl bg-white/6 border border-white/10 px-6 py-5 shadow-[0_18px_45px_rgba(0,0,0,0.45)] backdrop-blur-sm"
-                >
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm md:text-[15px] text-white/85 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* DUYGUSAL STORY BLOĞU */}
-        <section className="bg-gradient-to-b from-[#f8b500]/18 via-[#0a0a0f] to-[#050509] border-t border-white/5">
-          <div className="max-w-5xl mx-auto px-6 py-16 md:py-20 space-y-4">
-            <p className="text-2xl md:text-3xl font-semibold leading-snug text-white">
-              Doğum günü, çocuğunuz için yılın en özel günü.  
-              Biz de bu günü, eksiksiz ve unutulmaz bir hikâyeye dönüştürüyoruz.
-            </p>
-            <p className="text-sm md:text-base text-white/85 leading-relaxed">
-              Konsept süsleme, organik şef pastası, bubble show, sihirbazlık, palyaço ve
-              kostümlü karakter animasyonu, yüz boyama, glitter ve party box ses sistemi…
-              Hepsi aynı ekip tarafından, birbirine uyumlu bir akışla planlanır.  
-              Siz sadece tarihi, adresi ve konsepti söylersiniz; biz tanışmadan veda fotoğrafına kadar
-              tüm düzeni yönetiriz.
-            </p>
-            <p className="text-sm md:text-base text-white/80 leading-relaxed">
-              Ortaya, misafirlerin uzun süre anlattığı; sizin ise sadece keyfini sürdüğünüz,
-              eksiksiz ve hatırlanır bir doğum günü çıkar.
-            </p>
-          </div>
-        </section>
-
-        {/* Görsel seçki */}
-        <section className="bg-[#050509] border-t border-white/5">
-          <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">Görsellerden Kareler</h2>
-            <p className="text-sm md:text-base text-white/75 mb-8 max-w-3xl">
-              Konsept süsleme, pasta, bubble show ve animasyonlardan seçilen kareler. Tüm görseller paket içeriğinden.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-              {[
-                { src: '/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.jpg', alt: 'konsept doğum günü süsleme' },
-                { src: '/content/images/fullpaket/pastanattivee1.jpg', alt: 'organik şef pastası' },
-                { src: '/content/images/fullpaket/hareketlislider5bubbleshowgosteriler.jpeg', alt: 'bubble show doğum günü' },
-                { src: '/content/images/fullpaket/hareketlislider6osterilersihirbazhero.jpeg', alt: 'sihirbazlık gösterisi' },
-                { src: '/content/images/palyaco/palyacoanaherogrupoyunlari.JPG', alt: 'palyaço ve oyunlar' },
-                { src: '/content/images/fullpaket/elsaheroo.JPG', alt: 'kostümlü karakter animasyonu' }
-              ].map((img) => (
-                <div key={img.src} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
-                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover" loading="lazy" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA + FORM */}
-        <section id="rezervasyon" className="bg-black border-t border-white/5">
-          <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr,1fr] items-start">
-              {/* Sol: Başlık */}
-              <div>
-                <p className="text-xs tracking-[0.25em] text-[#f8b500] uppercase">
-                  İSTANBUL’UN HER YERİNDEYİZ
-                </p>
-                <h2 className="mt-3 text-2xl md:text-3xl font-semibold tracking-tight">
-                  Hızlı Bilgi ve Rezervasyon
+                  Tek Paket. Tek Ekip. Tek Muhattap.
                 </h2>
-                <p className="mt-3 text-sm md:text-base text-white/80 max-w-md">
-                  Tarih, adres ve konseptinizi kısaca yazın; ekibimiz size en kısa sürede
-                  net fiyat ve uygun saat seçenekleriyle dönüş yapsın.
-                </p>
-                <div className="mt-6 flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="https://wa.me/905349306799"
-                    className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm md:text-base font-semibold bg-white text-black shadow-lg shadow-black/40 hover:bg-white/90 transition-colors"
-                  >
-                    💬 WhatsApp’tan Gönder
-                  </a>
-                  <a
-                    href="tel:05349306799"
-                    className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm md:text-base font-medium border border-white/30 text-white hover:bg-white/10 transition-colors"
-                  >
-                    📞 Hemen Ara: 0534 930 67 99
-                  </a>
-                </div>
-                <p className="mt-3 text-xs text-white/50">
-                  Telefon görüşmeleri çoğu zaman %40 daha hızlı sonuçlanıyor.
+              </div>
+            </div>
+
+            {/* Hizmet Listesi */}
+            <div className="px-6 py-16 md:py-20">
+              <div className="max-w-4xl mx-auto text-center">
+                <p 
+                  className="text-white/80 leading-relaxed font-light"
+                  style={{ fontSize: 'clamp(1rem, 2.5vw, 1.35rem)' }}
+                >
+                  Konsept Süsleme • %100 Organik Pasta • Bubble Show • Magic Show • Kostümlü Karakter • Palyaço • Yüz Boyama • Party Box
                 </p>
               </div>
+            </div>
 
-              {/* Sağ: Form */}
-              <div className="rounded-3xl bg-[#0f0f14] border border-white/10 px-6 py-6 md:px-7 md:py-7 shadow-[0_18px_45px_rgba(0,0,0,0.55)] backdrop-blur-sm">
-                <p className="text-sm md:text-base text-white/80 mb-4">
-                  Bilgilerinizi yazın; formu gönderdiğinizde WhatsApp’tan detayları konuşmak için hemen dönüş yapıyoruz.
+            {/* Ana Mesaj */}
+            <div className="px-6 py-16 md:py-24">
+              <div className="max-w-3xl mx-auto text-center space-y-8">
+                <p 
+                  className="text-white/95 leading-snug font-medium"
+                  style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)', letterSpacing: '-0.01em' }}
+                >
+                  Doğum günün için gerekli her şey bu pakette
                 </p>
+                
+                {/* CTA Button - Minimal & Action-Oriented */}
+                <a 
+                  href="#rezervasyon"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full text-white/90 hover:text-white text-sm font-medium transition-all duration-300 hover:scale-105"
+                >
+                  <span>Akışa Hazır Ol</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* MODÜL 1: PROFESYONEL MAKEUP & YÜZ BOYAMA */}
+        <section className="bg-[#0a0a0f] border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            {/* Başlık + Slogan */}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Profesyonel Makeup & Yüz Boyama
+              </h2>
+              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+                Karakterine Hazır Ol!
+              </h3>
+            </div>
+
+            {/* Horizontal Scroll Galeri */}
+            <div className="relative mb-12">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+                  {[
+                    'istanbulprofesyonelyuzboyasietkinligibakirkoy.webp',
+                    'profesyonelyuzboyamasianafoto.webp',
+                    'profesyonelmakeupistanbul.webp',
+                    'istanbulprofesyonelyuzboyasietkinligi.webp',
+                    'profesyonelyuzboyamasiacu4.webp',
+                    'istanbulprofesyonelyuzboyasietkinligibeyoglu.webp',
+                    'profesyonelyuzboyamasıacu.webp',
+                    'profesyonelyuzboyamasıacu2.webp',
+                    'profesyonelyuzboyamasıacu3.webp',
+                    'profesyonel.webp'
+                  ].map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-none w-[95vw] md:w-[90vw] lg:w-[85vw] rounded-2xl overflow-hidden border border-white/10 bg-black/30 shadow-2xl"
+                      style={{ scrollSnapAlign: 'center' }}
+                    >
+                      <img
+                        src={`/content/images/profesyonelmakeup/${img}`}
+                        alt={`Profesyonel yüz boyama ${idx + 1}`}
+                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* SEO Açıklama */}
+            <div className="max-w-4xl mx-auto">
+              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+                Profesyonel makeup artistlerimiz ve yüz boyama uzmanlarımız, çocukların en sevdikleri karakterlere dönüşmesini sağlar. Hijyenik, kaliteli ve cilt dostu malzemeler kullanarak, her çocuğa özel ilgi gösteriyoruz.
+              </p>
+              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+                Glitter, face painting ve karakter makyajı ile doğum günü partiniz başlar başlamaz çocuklar kendilerini özel hisseder. Prenses, kahraman, hayvan karakterleri ve daha fazlası... Hayal gücünün sınırı yok!
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* MODÜL 2: %100 ORGANİK PASTA */}
+        <section className="bg-[#050509] border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                %100 Organik Şef Pastası
+              </h2>
+              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+                Cordon Bleu Şef'ten, Sağlıklı Lezzet
+              </h3>
+            </div>
+
+            <div className="relative mb-12">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+                  {[
+                    'pastanattivee1.webp',
+                    'hareketlislider1konseptdogumgunubaslikk.webp'
+                  ].map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-none w-[95vw] md:w-[90vw] lg:w-[85vw] rounded-2xl overflow-hidden border border-white/10 bg-black/30 shadow-2xl"
+                      style={{ scrollSnapAlign: 'center' }}
+                    >
+                      <img
+                        src={`/content/images/fullpaket/${img}`}
+                        alt={`Organik pasta ${idx + 1}`}
+                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+                Cordon Bleu eğitimi almış şefimiz, her pastayı özel olarak tasarlar ve hazırlar. %100 organik malzemeler kullanılır; ilave şeker, yağ veya krem şanti yoktur. Konseptinize özel tasarım, hem görsel hem de lezzet açısından unutulmaz bir deneyim sunar.
+              </p>
+              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+                Elsa'dan Spiderman'e, Safari'den Prenses temasına kadar her konsepte uygun pasta tasarımı yapıyoruz. Sağlıklı, lezzetli ve estetik - tam da aradığınız pasta!
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* MODÜL 3: KONSEPT DOĞUM GÜNÜ + SÜSLEME */}
+        <section className="bg-[#0a0a0f] border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Konsept Doğum Günü & Süsleme
+              </h2>
+              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+                Hayalindeki Tema, Gerçek Oluyor
+              </h3>
+            </div>
+
+            <div className="relative mb-12">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+                  {[
+                    'karkonsept.webp',
+                    'karkonsept2.webp',
+                    'karkonısept3.webp',
+                    'kirazkonsept.webp',
+                    'kirazkonsept3.webp',
+                    'kirazkonsept4.webp',
+                    'lolbebekkonsept.webp',
+                    'one1.webp',
+                    'one11.webp',
+                    'one12.webp'
+                  ].map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-none w-[95vw] md:w-[90vw] lg:w-[85vw] rounded-2xl overflow-hidden border border-white/10 bg-black/30 shadow-2xl"
+                      style={{ scrollSnapAlign: 'center' }}
+                    >
+                      <img
+                        src={`/content/images/konseptdogumgunu/${img}`}
+                        alt={`Konsept süsleme ${idx + 1}`}
+                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+                Elsa, Safari, Wednesday, Spiderman ve daha fazlası! İstediğiniz konsepti detaylarıyla birlikte hayata geçiriyoruz. Balon kemerleri, backdrop, masa düzeni, konsept aksesuarlar ve tema renklerine uygun tüm dekorasyon elementleri profesyonel ekibimiz tarafından kurulur.
+              </p>
+              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+                Her detay fotoğraf çekimleri için kusursuz bir sahne yaratır. Misafirleriniz geldiklerinde, tam bir konsept dünyasına adım atacaklar.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* MODÜL 4: BUBBLE SHOW GÖSTERİSİ */}
+        <section className="bg-[#050509] border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Bubble Show Gösterisi
+              </h2>
+              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+                Dev Baloncuklarla Büyülü 30 Dakika
+              </h3>
+            </div>
+
+            <div className="relative mb-12">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+                  {[
+                    { src: 'bubbleshow/bubbleshowhero.webp', alt: 'Bubble show hero' },
+                    { src: 'ahunundogumgunu/minniebubblegosterisi.jpg', alt: 'Minnie bubble gösterisi' },
+                    { src: 'bubbleshow/bubbleshowslider2.webp', alt: 'Bubble show slider 2' },
+                    { src: 'ahunundogumgunu/anaherobubbleshowgosterisi.jpg', alt: 'Ana hero bubble show gösterisi' },
+                    { src: 'bubbleshow/IMG_1797.webp', alt: 'Bubble show çocuklar' },
+                    { src: 'ahunundogumgunu/heryasauygunbubbleshowpartisi.jpg', alt: 'Her yaşa uygun bubble show partisi' },
+                    { src: 'bubbleshow/bubbleshowslider3.webp', alt: 'Bubble show slider 3' },
+                    { src: 'ahunundogumgunu/bubbleshowgosterisi.jpg', alt: 'Bubble show gösterisi' },
+                    { src: 'bubbleshow/bubbleshowslider5.webp', alt: 'Bubble show slider 5' },
+                    { src: 'bubbleshow/bubbleshowslider.webp', alt: 'Bubble show slider 1' }
+                  ].map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-none w-[95vw] md:w-[90vw] lg:w-[85vw] rounded-2xl overflow-hidden border border-white/10 bg-black/30 shadow-2xl"
+                      style={{ scrollSnapAlign: 'center' }}
+                    >
+                      <img
+                        src={`/content/images/${item.src}`}
+                        alt={item.alt}
+                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+                30 dakika süren bubble show gösterimizde, dev baloncuklar, sahne efektleri ve çocukların içine girebildiği büyülü anlar var. Profesyonel bubble artist'imiz, müzik eşliğinde görsel bir şölen sunuyor.
+              </p>
+              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+                Çocuklar büyük baloncukların içine girer, rengarenk köpüklerle oynar ve unutulmaz kareler için poz verir. Video çekimi için mükemmel bir show!
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* MODÜL 5: PALYAÇO & ANİMASYON */}
+        <section className="bg-[#0a0a0f] border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Palyaço & Animasyon Ekibi
+              </h2>
+              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+                Oyun, Dans, Kahkaha!
+              </h3>
+            </div>
+
+            <div className="relative mb-12">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+                  {[
+                    'palyacoanaherogrupoyunlari.webp',
+                    'palyacogrupoyunlari.webp',
+                    'palyacogrupoyunlarii.webp',
+                    'palyaconattiveguleryuz.webp',
+                    'palyacoonemlifotografguleryız.webp',
+                    'palyacosevgidoluonemli.webp',
+                    'palyacososisbalon.webp',
+                    'palyacokarsoleni.webp',
+                    'palyacoyuzboyama2.webp',
+                    'palyacoboyama.webp'
+                  ].map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-none w-[95vw] md:w-[90vw] lg:w-[85vw] rounded-2xl overflow-hidden border border-white/10 bg-black/30 shadow-2xl"
+                      style={{ scrollSnapAlign: 'center' }}
+                    >
+                      <img
+                        src={`/content/images/palyaco/${img}`}
+                        alt={`Palyaço animasyon ${idx + 1}`}
+                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+                Profesyonel palyaço ve animatör ekibimiz, etkinlik boyunca grup oyunları, müzikli danslar, kar show'u, konfeti partisi, pinyata ve sosis balon yapımı ile çocukları aktif tutar. Hiçbir çocuk kenarda kalmaz!
+              </p>
+              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+                Yaş grubuna özel oyunlar, komik skečler ve sürpriz aktivitelerle dolu bir animasyon programı. Enerjisi yüksek, güvenli ve eğlenceli!
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* MODÜL 6: KOSTÜMLÜ KARAKTER */}
+        <section className="bg-[#050509] border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Kostümlü Karakter
+              </h2>
+              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+                En Sevdiğin Karakter Yanında
+              </h3>
+            </div>
+
+            <div className="relative mb-12">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+                  {[
+                    'elsaheroo.webp',
+                    'pamuksprenseshero.webp',
+                    'spidermanonemli.webp',
+                    'minniemausekiralamaheroo.webp',
+                    'batmanistan.webp',
+                    'elsavodafone2ikincihero.webp',
+                    'pamukprensesistanbul.webp',
+                    'pawpetrolkesinhero.webp',
+                    'spidermancosku.webp',
+                    'minniemickeyyenii.webp'
+                  ].map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-none w-[95vw] md:w-[90vw] lg:w-[85vw] rounded-2xl overflow-hidden border border-white/10 bg-black/30 shadow-2xl"
+                      style={{ scrollSnapAlign: 'center' }}
+                    >
+                      <img
+                        src={`/content/images/Kostumlukarakterler/${img}`}
+                        alt={`Kostümlü karakter ${idx + 1}`}
+                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+                Elsa, Pamuk Prenses, Spiderman, Batman ve daha fazlası! Seçeceğiniz 1 kostümlü karakter, etkinlik boyunca çocuklarla birlikte olur, fotoğraf çeker, dans eder ve özel anlar yaratır.
+              </p>
+              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+                Profesyonel kostümler, karaktere uygun davranış ve çocuklarla özel bağ kurma yeteneği ile unutulmaz bir deneyim sunuyoruz.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* MODÜL 7: PROFESYONEL FOTOĞRAF & VİDEO ÇEKİMİ */}
+        <section className="bg-[#0a0a0f] border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Profesyonel Fotoğraf & Video Çekimi
+              </h2>
+              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+                Unutulmaz Anlar, Sonsuza Dek Kayıt Altında
+              </h3>
+            </div>
+
+            <div className="relative mb-12">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+                  {[
+                    { src: 'ahunundogumgunu/dogumgunucocugunaozelfotorafcekimleri.jpg', alt: 'Doğum günü çocuğuna özel fotoğraf çekimleri' },
+                    { src: 'ahunundogumgunu/vedafotoğrafı.jpg', alt: 'Veda fotoğrafı' },
+                    { src: 'ahunundogumgunu/grupoyunları.jpg', alt: 'Grup oyunları fotoğrafları' },
+                    { src: 'ahunundogumgunu/konseptdogumgunu.jpg', alt: 'Konsept doğum günü fotoğrafları' },
+                    { src: 'ahunundogumgunu/_DSF4779.jpg', alt: 'Profesyonel fotoğraf karesi 1' },
+                    { src: 'ahunundogumgunu/_DSF4827.jpg', alt: 'Profesyonel fotoğraf karesi 2' },
+                    { src: 'ahunundogumgunu/_DSF5285.jpg', alt: 'Profesyonel fotoğraf karesi 3' },
+                    { src: 'ahunundogumgunu/_DSF4904.jpg', alt: 'Profesyonel fotoğraf karesi 4' },
+                    { src: 'ahunundogumgunu/_DSF5125.jpg', alt: 'Profesyonel fotoğraf karesi 5' },
+                    { src: 'ahunundogumgunu/_DSF6181.jpg', alt: 'Profesyonel fotoğraf karesi 6' }
+                  ].map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-none w-[95vw] md:w-[70vw] lg:w-[45vw] rounded-2xl overflow-hidden border border-white/10 bg-black/30 shadow-2xl"
+                      style={{ scrollSnapAlign: 'center' }}
+                    >
+                      <img
+                        src={`/content/images/${item.src}`}
+                        alt={item.alt}
+                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+                Profesyonel fotoğraf ve video çekimi hizmeti ile tüm özel anları kaydediyoruz. Her kareden duygular taşar; çocukların mutluluğu, ailenin sevinci ve unutulmaz anlar profesyonel ekipmanlarla ölümsüzleşir.
+              </p>
+              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+                Etkinlik sonunda size özel 1 dakikalık unutulmaz doğum günü klibi hazırlıyoruz. Bu anılar, yıllarca izlenecek ve tekrar tekrar hatırlanacak!
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* MODÜL 8: PARTY BOX SES SİSTEMİ */}
+        <section className="bg-[#050509] border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Party Box Ses Sistemi
+              </h2>
+              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+                Her Anın Enerjisi, Doğru Müzikle!
+              </h3>
+            </div>
+
+            <div className="relative mb-12">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+                  {[
+                    { src: 'fullpaket/hareketlislider7popcorn.webp', alt: 'Party box ses sistemi' },
+                    { src: 'fullpaket/hareketlislider3yeni.webp', alt: 'Etkinlik kurulumu ses sistemi' },
+                    { src: 'fullpaket/konseptnattive.webp', alt: 'Konsept organizasyon ses' },
+                    { src: 'palyaco/palyacoanaherogrupoyunlari.webp', alt: 'Oyunlar ses sistemi' },
+                    { src: 'fullpaket/hareketlisliderfotograf4.webp', alt: 'Sahne düzeni' },
+                    { src: 'palyaco/palyacogrupoyunlari.webp', alt: 'Grup aktiviteleri müzik' },
+                    { src: 'fullpaket/pastanattivee1.webp', alt: 'Pasta seremonisi müzik' },
+                    { src: 'palyaco/palyacokarsoleni.webp', alt: 'Kar şöleni müzik' },
+                    { src: 'profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp', alt: 'Etkinlik atmosferi' },
+                    { src: 'fullpaket/hareketlislider5bubbleshowgosteriler.webp', alt: 'Gösteri müziği' }
+                  ].map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-none w-[95vw] md:w-[70vw] lg:w-[45vw] rounded-2xl overflow-hidden border border-white/10 bg-black/30 shadow-2xl"
+                      style={{ scrollSnapAlign: 'center' }}
+                    >
+                      <img
+                        src={`/content/images/${item.src}`}
+                        alt={item.alt}
+                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+                Profesyonel party box ses sistemi ve mikrofon ile etkinlik boyunca kaliteli ses deneyimi yaşatıyoruz. Özel playlist hazırlayarak, her anın enerjisini doğru müzikle destekliyoruz.
+              </p>
+              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+                Karşılamadan vedaya kadar tüm etkinlik boyunca uygun ses seviyesi ve müzik seçimi ile misafirlerinize keyifli bir deneyim sunuyoruz. Oyunlar, danslar ve gösteriler için özel ses efektleri de dahil!
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* YENİ: Güven & Değer Bölümü - Sofistike Design */}
+        <section className="bg-gradient-to-b from-white via-gray-50 to-white border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+            {/* Ana Başlık */}
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              <h2 
+                className="text-black font-semibold mb-4"
+                style={{ 
+                  fontSize: 'clamp(2rem, 4vw, 3rem)', 
+                  lineHeight: '1.15',
+                  letterSpacing: '-0.025em'
+                }}
+              >
+                Bir organizasyondan fazlası
+              </h2>
+              <p 
+                className="text-gray-600 max-w-2xl mx-auto"
+                style={{ 
+                  fontSize: 'clamp(1rem, 1.5vw, 1.125rem)',
+                  lineHeight: '1.6',
+                  letterSpacing: '-0.011em'
+                }}
+              >
+                Doğum günü, yılın tek günü. Biz bu günü, detayların uyumlu bir hikâyeye dönüştüğü deneyime çeviriyoruz.
+              </p>
+            </div>
+
+            {/* 4 Değer Kartı */}
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-20">
+              {[
+                {
+                  title: 'Tek ekip, uyumlu akış',
+                  desc: 'Süsleme, pasta, gösteriler, animasyon — tüm unsurlar aynı ekip tarafından, birbirine uyumlu planlama ile.'
+                },
+                {
+                  title: 'Net bütçe, şeffaf süreç',
+                  desc: 'Paket fiyatınız bellidir. Son dakika sürprizi, ek maliyet ya da karışıklık yaşamazsınız.'
+                },
+                {
+                  title: 'Yaşa özel içerik',
+                  desc: 'Oyunlar, gösteriler ve temponun tümü çocuğun yaşına göre ayarlanır. Enerji doğru anda yükselir, doğru anda dinlenir.'
+                },
+                {
+                  title: 'Zamanında kurulum',
+                  desc: 'Ekibimiz, misafirler gelmeden önce alanda olur. Sahne tamamen hazır, siz sadece partinin tadını çıkarırsınız.'
+                }
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group relative p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-lg"
+                >
+                  <div className="absolute top-5 right-5 text-5xl font-bold text-gray-100 group-hover:text-gray-200 transition-colors">
+                    {String(idx + 1).padStart(2, '0')}
+                  </div>
+                  <div className="relative z-10">
+                    <h3 
+                      className="text-gray-900 font-semibold mb-2"
+                      style={{ 
+                        fontSize: 'clamp(1.125rem, 1.75vw, 1.375rem)',
+                        lineHeight: '1.3',
+                        letterSpacing: '-0.02em'
+                      }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p 
+                      className="text-gray-600"
+                      style={{ 
+                        fontSize: 'clamp(0.9375rem, 1.25vw, 1rem)',
+                        lineHeight: '1.6',
+                        letterSpacing: '-0.011em'
+                      }}
+                    >
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Duygusal Mesaj - Merkezi Vurgu */}
+            <div className="max-w-4xl mx-auto">
+              <div className="relative rounded-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-8 md:p-12 overflow-hidden">
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(248,181,0,0.1),transparent_50%)]"></div>
+                
+                <div className="relative z-10 space-y-6">
+                  <p 
+                    className="text-white font-medium"
+                    style={{ 
+                      fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                      lineHeight: '1.4',
+                      letterSpacing: '-0.02em'
+                    }}
+                  >
+                    Siz konsepti, tarihi ve adresi söylersiniz.
+                  </p>
+                  
+                  <p 
+                    className="text-white/80"
+                    style={{ 
+                      fontSize: 'clamp(1rem, 1.5vw, 1.125rem)',
+                      lineHeight: '1.6',
+                      letterSpacing: '-0.011em'
+                    }}
+                  >
+                    Ekibimiz karşılamadan vedaya kadar tüm süreci yönetir. Ortaya, çocuğunuzun ve misafirlerinizin uzun süre hatırlayacağı, sizin ise sadece keyifle yaşadığınız bir gün çıkar.
+                  </p>
+
+                  <div className="pt-2">
+                    <div className="inline-block px-3 py-1.5 rounded-full bg-[#f8b500]/20 border border-[#f8b500]/30">
+                      <p className="text-xs font-medium text-[#f8b500] tracking-wide uppercase">
+                        Tüm İstanbul'dayız
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Görsel seçki - Elegant Slider */}
+        <section className="bg-white border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+            <div className="text-center mb-16">
+              <h2 
+                className="text-black font-semibold mb-5"
+                style={{ 
+                  fontSize: 'clamp(2rem, 4vw, 3rem)',
+                  lineHeight: '1.15',
+                  letterSpacing: '-0.025em'
+                }}
+              >
+                Görsellerden Kareler
+              </h2>
+              <p 
+                className="text-gray-700 max-w-2xl mx-auto"
+                style={{ 
+                  fontSize: 'clamp(1.0625rem, 1.5vw, 1.125rem)',
+                  lineHeight: '1.6',
+                  letterSpacing: '-0.011em'
+                }}
+              >
+                Konsept süsleme, pasta, bubble show ve animasyonlardan seçilen kareler. Tüm görseller paket içeriğinden.
+              </p>
+            </div>
+
+            {/* Horizontal Scroll Gallery */}
+            <div className="relative">
+              <div className="overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+                  {[
+                    { src: '/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp', alt: 'konsept doğum günü süsleme' },
+                    { src: '/content/images/fullpaket/pastanattivee1.webp', alt: 'organik şef pastası' },
+                    { src: '/content/images/fullpaket/hareketlislider5bubbleshowgosteriler.webp', alt: 'bubble show doğum günü' },
+                    { src: '/content/images/fullpaket/hareketlislider6osterilersihirbazhero.webp', alt: 'sihirbazlık gösterisi' },
+                    { src: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp', alt: 'palyaço ve oyunlar' },
+                    { src: '/content/images/Kostumlukarakterler/elsaheroo.webp', alt: 'kostümlü karakter animasyonu' },
+                    { src: '/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp', alt: 'profesyonel yüz boyama' },
+                    { src: '/content/images/fullpaket/konseptnattive.webp', alt: 'konsept organizasyon' },
+                    { src: '/content/images/bubbleshow/bubbleshowhero.webp', alt: 'bubble show gösterisi' },
+                    { src: '/content/images/konseptdogumgunu/karkonsept.webp', alt: 'konsept süsleme detay' }
+                  ].map((img, idx) => (
+                    <div 
+                      key={idx} 
+                      className="flex-none w-[85vw] md:w-[70vw] lg:w-[60vw] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                      style={{ 
+                        scrollSnapAlign: 'center',
+                        border: '1px solid rgba(0,0,0,0.08)'
+                      }}
+                    >
+                      <img 
+                        src={img.src} 
+                        alt={img.alt} 
+                        className="w-full h-[400px] md:h-[500px] object-cover" 
+                        loading="lazy" 
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA + FORM - WhatsApp Theme */}
+        <section id="rezervasyon" className="bg-[#0a0a0f] border-t border-white/5">
+          <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
+            <div className="grid gap-10 lg:grid-cols-[1.1fr,1fr] items-start">
+              {/* Sol: Başlık - Ultra Minimal */}
+              <div>
+                <p className="text-xs font-medium text-[#f8b500] uppercase tracking-wider mb-8">
+                  Tüm İstanbul'dayız
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://wa.me/905349306799"
+                    className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm md:text-base font-semibold bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 hover:bg-[#128C7E] transition-all duration-300 hover:scale-105"
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    WhatsApp'tan Mesaj Gönder
+                  </a>
+                  
+                  <a
+                    href="tel:05349306799"
+                    className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm md:text-base font-medium border-2 border-[#25D366]/50 text-white hover:bg-[#25D366]/10 transition-colors"
+                  >
+                    📞 Hemen Ara
+                  </a>
+                </div>
+              </div>
+
+              {/* Sağ: WhatsApp Form */}
+              <div className="rounded-3xl bg-gradient-to-br from-[#128C7E] to-[#075E54] border-2 border-[#25D366]/30 px-6 py-6 md:px-7 md:py-7 shadow-[0_20px_60px_rgba(37,211,102,0.25)] relative">
+                {/* Online Badge - Blinking */}
+                <div className="absolute top-4 right-4 flex items-center gap-1.5">
+                  <div className="relative">
+                    <div className="w-2 h-2 bg-[#25D366] rounded-full"></div>
+                    <div className="absolute inset-0 w-2 h-2 bg-[#25D366] rounded-full animate-ping"></div>
+                  </div>
+                  <span className="text-[10px] text-[#DCF8C6] font-medium">Çevrimiçi</span>
+                </div>
+
+                {/* Form Header */}
+                <div className="flex items-center gap-3 mb-6 pb-5 border-b border-white/20">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                    <svg className="w-7 h-7 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold text-base">WhatsApp Rezervasyon</p>
+                    <p className="text-[#DCF8C6] text-xs">Hızlı yanıt garantisi</p>
+                  </div>
+                </div>
+
                 <div className="grid gap-4">
                   <div>
-                    <label className="block text-xs text-white/60 mb-1">Ad Soyad</label>
+                    <label className="block text-xs text-white/90 font-medium mb-1.5">Ad Soyad</label>
                     <input
                       type="text"
-                      className="w-full rounded-2xl bg-black/50 border border-white/15 px-3 py-2 text-sm outline-none focus:border-white/40"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors"
                       placeholder="Adınız ve soyadınız"
                     />
                   </div>
+                  
                   <div>
-                    <label className="block text-xs text-white/60 mb-1">Telefon</label>
+                    <label className="block text-xs text-white/90 font-medium mb-1.5">Telefon</label>
                     <input
                       type="tel"
-                      className="w-full rounded-2xl bg-black/50 border border-white/15 px-3 py-2 text-sm outline-none focus:border-white/40"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors"
                       placeholder="+90 5XX XXX XX XX"
                     />
                   </div>
+                  
                   <div>
-                    <label className="block text-xs text-white/60 mb-1">Etkinlik Adresi</label>
+                    <label className="block text-xs text-white/90 font-medium mb-1.5">Etkinlik Adresi</label>
                     <input
                       type="text"
-                      className="w-full rounded-2xl bg-black/50 border border-white/15 px-3 py-2 text-sm outline-none focus:border-white/40"
-                      placeholder="İlçe, mahalle, mekan adı"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleInputChange}
+                      className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors"
+                      placeholder="İlçe, mahalle"
                     />
                   </div>
+                  
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs text-white/60 mb-1">Tarih</label>
+                      <label className="block text-xs text-white/90 font-medium mb-1.5">Tarih</label>
                       <input
                         type="date"
-                        className="w-full rounded-2xl bg-black/50 border border-white/15 px-3 py-2 text-sm outline-none focus:border-white/40"
+                        name="date"
+                        value={formData.date}
+                        onChange={handleInputChange}
+                        className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 outline-none focus:border-[#25D366] transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs text-white/60 mb-1">Saat</label>
+                      <label className="block text-xs text-white/90 font-medium mb-1.5">Saat</label>
                       <input
                         type="time"
-                        className="w-full rounded-2xl bg-black/50 border border-white/15 px-3 py-2 text-sm outline-none focus:border-white/40"
+                        name="time"
+                        value={formData.time}
+                        onChange={handleInputChange}
+                        className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 outline-none focus:border-[#25D366] transition-colors"
                       />
                     </div>
                   </div>
+                  
                   <div>
-                    <label className="block text-xs text-white/60 mb-1">Konsept / Notlar</label>
+                    <label className="block text-xs text-white/90 font-medium mb-1.5">Konsept / Notlar</label>
                     <textarea
-                      rows={4}
-                      className="w-full rounded-2xl bg-black/50 border border-white/15 px-3 py-2 text-sm outline-none focus:border-white/40 resize-none"
-                      placeholder="Örneğin: Barbie, Spiderman, prenses konsepti, katılacak çocuk sayısı vb."
+                      rows={3}
+                      name="notes"
+                      value={formData.notes}
+                      onChange={handleInputChange}
+                      className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors resize-none"
+                      placeholder="Örn: Spiderman konsepti, 20 çocuk"
                     />
                   </div>
                 </div>
+                
                 <button
                   type="button"
-                  className="mt-5 w-full rounded-full bg-white text-black font-semibold text-sm md:text-base py-3 shadow-lg shadow-black/40 hover:bg-white/90 transition-colors"
-                  onClick={() =>
-                    window.open(
-                      "https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum",
-                      "_blank"
-                    )
-                  }
+                  className="mt-5 w-full rounded-xl bg-white text-[#128C7E] font-bold text-sm md:text-base py-3.5 shadow-lg hover:shadow-xl hover:bg-[#DCF8C6] transition-all duration-300 flex items-center justify-center gap-2 group"
+                  onClick={sendWhatsAppMessage}
                 >
-                  WhatsApp’a Gönder ve Fiyat Al
+                  <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  WhatsApp'a Gönder ve Anında Yanıt Al
                 </button>
+
+                <p className="text-xs text-center text-[#DCF8C6] mt-4">
+                  🔒 Bilgileriniz güvenle saklanır ve sadece rezervasyon için kullanılır
+                </p>
               </div>
             </div>
           </div>

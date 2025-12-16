@@ -51,14 +51,14 @@ const SantaClausRental = () => {
   ]
 
   const standardPhotos = [
-    '/content/images/noelbaba/noelbabastandart/noelannestandart.jpg',
-    '/content/images/noelbaba/noelbabastandart/7BDA73F5-5BE9-419C-AD20-98CB8A679C51.jpg',
+    '/content/images/noelbaba/noelbabastandart/noelannestandart.webp',
+    '/content/images/noelbaba/noelbabastandart/7BDA73F5-5BE9-419C-AD20-98CB8A679C51.webp',
     '/content/images/noelbaba/noelbabastandart/8B071122-174A-4DFE-AFBB-E1A5108E1009 2.jpg',
     '/content/images/noelbaba/noelbabastandart/8211BF23-166D-4080-B7CD-AA8C757CDB59 2.jpg'
   ]
 
   const decorationPhotos = [
-    '/content/images/noelbaba/noelsüslemesi/IMG_0197.JPG',
+    '/content/images/noelbaba/noelsüslemesi/IMG_0197.webp',
     '/content/images/noelbaba/noelsüslemesi/WhatsApp Image 2025-12-04 at 23.58.57.jpeg'
   ]
 
@@ -313,7 +313,7 @@ const SantaClausRental = () => {
                     {/* Görsel */}
                     <div>
                       <img 
-                        src="/content/images/noelbaba/noelbabastandart/noelannestandart.jpg"
+                        src="/content/images/noelbaba/noelbabastandart/noelannestandart.webp"
                         alt="Standart Noel Baba"
                         className="w-full h-full object-cover rounded-2xl shadow-xl"
                       />

@@ -8,32 +8,32 @@ import 'swiper/css/pagination'
 const MomentsSlider = () => {
   const moments = [
     {
-      image: '/content/images/cocukdogumgunu/konseptdogumgunu.JPG',
+      image: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
       title: 'Konsept Doğum Günü',
       category: 'Çocuk Etkinliği'
     },
     {
-      image: '/content/images/fullpaket/fullpaket1.JPG',
+      image: '/content/images/fullpaket/fullpaket1.webp',
       title: 'Tam Paket Organizasyon',
       category: 'Premium Paket'
     },
     {
-      image: '/content/images/Kostumlukarakterler/minniemausekiralamaheroo.jpg',
+      image: '/content/images/Kostumlukarakterler/minniemausekiralamaheroo.webp',
       title: 'Kostümlü Karakterler',
       category: 'Animasyon'
     },
     {
-      image: '/content/images/bubbleshow/bubbleshow1.JPG',
+      image: '/content/images/bubbleshow/bubbleshow1.webp',
       title: 'Bubble Show',
       category: 'Sahne Gösterisi'
     },
     {
-      image: '/content/images/kurumsal/kurumsal1.JPG',
+      image: '/content/images/kurumsal/kurumsal1.webp',
       title: 'Kurumsal Etkinlik',
       category: 'Profesyonel'
     },
     {
-      image: '/content/images/sihirbaz/sihirbaz1.JPG',
+      image: '/content/images/sihirbaz/sihirbaz1.webp',
       title: 'Sihirbazlık Gösterisi',
       category: 'Eğlence'
     }

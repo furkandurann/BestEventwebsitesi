@@ -15,6 +15,24 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const { name, phone, message } = formData
+
+    // Google Analytics Form Submit Tracking
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'form_submit', {
+        event_category: 'lead_generation',
+        event_label: 'Contact Form WhatsApp',
+        form_name: 'Contact Form',
+        value: 1
+      })
+
+      // Google Ads Conversion Tracking (ID alındığında aktif edilecek)
+      // window.gtag('event', 'conversion', {
+      //   'send_to': 'AW-XXXXXXXXX/CONVERSION_LABEL',
+      //   'value': 100,
+      //   'currency': 'TRY'
+      // })
+    }
+
     const text = `Merhaba Best Event,%0AAd: ${name || '-'}%0ATelefon: ${
       phone || '-'
     }%0AMesaj: ${message || '-'}`

@@ -29,7 +29,7 @@ const OrganicCakes = () => {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-pink-50 to-purple-50 py-20 md:py-32">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/content/images/konseptpasta/pasta-pattern.jpg')] opacity-5 bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/content/images/konseptpasta/pasta-pattern.webp')] opacity-5 bg-cover bg-center"></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-6 text-center">
@@ -113,7 +113,7 @@ const OrganicCakes = () => {
                     alt={cake.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     onError={(e) => {
-                      e.target.src = '/content/images/konseptpasta/default-cake.jpg'
+                      e.target.src = '/content/images/konseptpasta/default-cake.webp'
                     }}
                   />
                   <div className="absolute top-4 right-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">

@@ -44,41 +44,57 @@ export const trackGA4Event = (eventName, params = {}) => {
 
 /**
  * WhatsApp Click Tracking
+ * Google Ads Conversion ID: AW-17782159242
+ * (WhatsApp için aynı Phone Click conversion kullanılıyor)
  * @param {string} serviceName - Hizmet adı (örn: "Yüz Boyama")
  * @param {string} pageUrl - Sayfa URL'i
  */
 export const trackWhatsAppClick = (serviceName, pageUrl) => {
-  // Google Ads Conversion
-  // NOT: conversionId ve conversionLabel'ı Google Ads hesabınızdan alacaksınız
-  // Şimdilik placeholder değerler kullanıyorum
-  trackGoogleAdsConversion('AW-XXXXXXXXX', 'whatsapp_conversion', 50)
-  
+  // Google Ads Conversion - WhatsApp Click (Phone Click ile aynı conversion)
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-17782159242/MD1dCKzw2NEbEIrvmJ9C',
+      'value': 1.0,
+      'currency': 'TRY'
+    })
+    console.log('[Google Ads] WhatsApp Click Conversion tracked')
+  }
+
   // GA4 Event
   trackGA4Event('whatsapp_click', {
     service_name: serviceName,
     page_url: pageUrl,
     event_category: 'engagement',
     event_label: 'WhatsApp CTA',
-    value: 50
+    value: 1
   })
 }
 
 /**
- * Phone Click Tracking
+ * Phone Click Tracking (Tıkla ve Ara)
+ * Google Ads Conversion ID: AW-17782159242
+ * Conversion Label: MD1dCKzw2NEbEIrvmJ9C
  * @param {string} serviceName - Hizmet adı
  * @param {string} pageUrl - Sayfa URL'i
  */
 export const trackPhoneClick = (serviceName, pageUrl) => {
-  // Google Ads Conversion
-  trackGoogleAdsConversion('AW-XXXXXXXXX', 'phone_conversion', 75)
-  
+  // Google Ads Conversion - Tıkla ve Ara
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-17782159242/MD1dCKzw2NEbEIrvmJ9C',
+      'value': 1.0,
+      'currency': 'TRY'
+    })
+    console.log('[Google Ads] Phone Click Conversion tracked')
+  }
+
   // GA4 Event
   trackGA4Event('phone_click', {
     service_name: serviceName,
     page_url: pageUrl,
     event_category: 'engagement',
     event_label: 'Phone CTA',
-    value: 75
+    value: 1
   })
 }
 

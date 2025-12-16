@@ -9,12 +9,12 @@ export const mascotsData = {
       emoji: '🎀',
       title: 'Sevimli Kedi',
       description: 'Dünyanın en sevilen kedisi Hello Kitty, çocukların kalbini fethetmeye geliyor. Koca kafalı maskot kostümü ile unutulmaz anlar.',
-      heroImage: '/content/images/maskotlar/hellokittyyy.jpeg',
+      heroImage: '/content/images/maskotlar/hellokittyyy.webp',
       images: [
-        '/content/images/maskotlar/hellokittyyy.jpeg',
-        '/content/images/maskotlar/hellokitty.jpeg',
-        '/content/images/maskotlar/hellokitty2.jpeg',
-        '/content/images/maskotlar/hellokittyy.jpeg'
+        '/content/images/maskotlar/hellokittyyy.webp',
+        '/content/images/maskotlar/hellokitty.webp',
+        '/content/images/maskotlar/hellokitty2.webp',
+        '/content/images/maskotlar/hellokittyy.webp'
       ],
       glassColor: 'rgba(255, 182, 193, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -36,17 +36,17 @@ export const mascotsData = {
       emoji: '🎀',
       title: 'Koca Kafalı Maskot',
       description: 'Minnie Mouse koca kafalı maskot kostümü ile çocukların doğum günü partilerinde unutulmaz anlar yaşatıyoruz.',
-      heroImage: '/content/images/maskotlar/minnieemakott.jpeg',
+      heroImage: '/content/images/maskotlar/minnieemakott.webp',
       images: [
-        '/content/images/maskotlar/minnieemakott.jpeg',
-        '/content/images/maskotlar/Minniemause2.JPG',
-        '/content/images/maskotlar/minnisemause1.JPG',
-        '/content/images/maskotlar/mickeyvemousemaskotlarvekendikismininherosu.JPG',
-        '/content/images/maskotlar/minniemickey.JPG',
-        '/content/images/maskotlar/minniemickey23.JPG',
-        '/content/images/Kostumlukarakterler/minnieyenii.jpg',
-        '/content/images/Kostumlukarakterler/minniemickeyyenii.jpg',
-        '/content/images/Kostumlukarakterler/minniemickeyyeniii.jpg'
+        '/content/images/maskotlar/minnieemakott.webp',
+        '/content/images/maskotlar/Minniemause2.webp',
+        '/content/images/maskotlar/minnisemause1.webp',
+        '/content/images/maskotlar/mickeyvemousemaskotlarvekendikismininherosu.webp',
+        '/content/images/maskotlar/minniemickey.webp',
+        '/content/images/maskotlar/minniemickey23.webp',
+        '/content/images/Kostumlukarakterler/minnieyenii.webp',
+        '/content/images/Kostumlukarakterler/minniemickeyyenii.webp',
+        '/content/images/Kostumlukarakterler/minniemickeyyeniii.webp'
       ],
       glassColor: 'rgba(255, 105, 180, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -68,11 +68,11 @@ export const mascotsData = {
       emoji: '🖤',
       title: 'Sevimli Tavşan',
       description: 'Sanrio\'nun popüler karakteri Kuromi, koca kafalı maskot kostümü ile çocukları eğlendiriyor.',
-      heroImage: '/content/images/maskotlar/kuromiii.jpeg',
+      heroImage: '/content/images/maskotlar/kuromiii.webp',
       images: [
-        '/content/images/maskotlar/kuromiii.jpeg',
-        '/content/images/maskotlar/kuromiistanbul1.JPG',
-        '/content/images/maskotlar/kuromiistanbul2.JPG'
+        '/content/images/maskotlar/kuromiii.webp',
+        '/content/images/maskotlar/kuromiistanbul1.webp',
+        '/content/images/maskotlar/kuromiistanbul2.webp'
       ],
       glassColor: 'rgba(0, 0, 0, 0.3)',
       borderColor: 'rgba(255, 192, 203, 0.4)',
@@ -94,10 +94,10 @@ export const mascotsData = {
       emoji: '🦄',
       title: 'Sihirli At',
       description: 'Masalların sihirli unicorn\'u, koca kafalı maskot kostümü ile çocukların hayal dünyasında.',
-      heroImage: '/content/images/maskotlar/unicornnn.jpeg',
+      heroImage: '/content/images/maskotlar/unicornnn.webp',
       images: [
-        '/content/images/maskotlar/unicornnn.jpeg',
-        '/content/images/maskotlar/unicorn.JPG'
+        '/content/images/maskotlar/unicornnn.webp',
+        '/content/images/maskotlar/unicorn.webp'
       ],
       glassColor: 'rgba(255, 192, 203, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -119,10 +119,10 @@ export const mascotsData = {
       emoji: '🎀',
       title: 'Popüler Karakter',
       description: 'Çocukların en sevdiği LOL Surprise bebekleri, koca kafalı maskot olarak partinizde!',
-      heroImage: '/content/images/maskotlar/lolbebek.jpeg',
+      heroImage: '/content/images/maskotlar/lolbebek.webp',
       images: [
-        '/content/images/maskotlar/lolbebek.jpeg',
-        '/content/images/maskotlar/lolbebek.JPG'
+        '/content/images/maskotlar/lolbebek.webp',
+        '/content/images/maskotlar/lolbebek.webp'
       ],
       glassColor: 'rgba(255, 105, 180, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -144,10 +144,10 @@ export const mascotsData = {
       emoji: '🐰',
       title: 'Pembe Tavşan',
       description: 'Sevimli pembe tavşan maskotu, çocukların en iyi arkadaşı olmaya geliyor.',
-      heroImage: '/content/images/maskotlar/sevimlitavsanistanbul1.JPG',
+      heroImage: '/content/images/maskotlar/sevimlitavsanistanbul1.webp',
       images: [
-        '/content/images/maskotlar/sevimlitavsanistanbul1.JPG',
-        '/content/images/maskotlar/sevimlitavsan2.JPG'
+        '/content/images/maskotlar/sevimlitavsanistanbul1.webp',
+        '/content/images/maskotlar/sevimlitavsan2.webp'
       ],
       glassColor: 'rgba(255, 192, 203, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -169,10 +169,10 @@ export const mascotsData = {
       emoji: '🐱',
       title: 'Tatlı Kedi',
       description: 'Sevimli kedi maskotu, çocukları miyavlayarak eğlendiriyor.',
-      heroImage: '/content/images/maskotlar/sevimlikedi1.JPG',
+      heroImage: '/content/images/maskotlar/sevimlikedi1.webp',
       images: [
-        '/content/images/maskotlar/sevimlikedi1.JPG',
-        '/content/images/maskotlar/sevimlikedi.JPG'
+        '/content/images/maskotlar/sevimlikedi1.webp',
+        '/content/images/maskotlar/sevimlikedi.webp'
       ],
       glassColor: 'rgba(255, 165, 0, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -194,9 +194,9 @@ export const mascotsData = {
       emoji: '💖',
       title: 'Aşk Maskotu',
       description: 'Sevgi dolu kalp maskotu, çocuklara mutluluk dağıtıyor.',
-      heroImage: '/content/images/maskotlar/kalp.JPG',
+      heroImage: '/content/images/maskotlar/kalp.webp',
       images: [
-        '/content/images/maskotlar/kalp.JPG'
+        '/content/images/maskotlar/kalp.webp'
       ],
       glassColor: 'rgba(255, 20, 147, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -221,11 +221,11 @@ export const mascotsData = {
       emoji: '🦔',
       title: 'Hızlı Kirpi',
       description: 'Dünyanın en hızlı kirpisi Sonic, koca kafalı maskot kostümü ile çocukları heyecanlandırıyor.',
-      heroImage: '/content/images/maskotlar/sonic1.JPG',
+      heroImage: '/content/images/maskotlar/sonic1.webp',
       images: [
-        '/content/images/maskotlar/sonic1.JPG',
-        '/content/images/maskotlar/sonicmascot.jpeg',
-        '/content/images/maskotlar/sonic2.JPG'
+        '/content/images/maskotlar/sonic1.webp',
+        '/content/images/maskotlar/sonicmascot.webp',
+        '/content/images/maskotlar/sonic2.webp'
       ],
       glassColor: 'rgba(59, 130, 246, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -247,10 +247,10 @@ export const mascotsData = {
       emoji: '🍄',
       title: 'Oyun Kahramanı',
       description: 'Oyun dünyasının efsanesi Super Mario, koca kafalı maskot olarak çocukları maceraya davet ediyor.',
-      heroImage: '/content/images/maskotlar/supermario1.JPG',
+      heroImage: '/content/images/maskotlar/supermario1.webp',
       images: [
-        '/content/images/maskotlar/supermario1.JPG',
-        '/content/images/maskotlar/supermario.JPG'
+        '/content/images/maskotlar/supermario1.webp',
+        '/content/images/maskotlar/supermario.webp'
       ],
       glassColor: 'rgba(220, 38, 38, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -272,12 +272,12 @@ export const mascotsData = {
       emoji: '🐾',
       title: 'Kurtarma Ekibi',
       description: 'Paw Patrol ekibi koca kafalı maskot kostümleri ile kurtarma görevlerinde!',
-      heroImage: '/content/images/maskotlar/pawpetrolkesinhero.JPG',
+      heroImage: '/content/images/maskotlar/pawpetrolkesinhero.webp',
       images: [
-        '/content/images/maskotlar/pawpetrolkesinhero.JPG',
-        '/content/images/maskotlar/pawpetrol.JPG',
-        '/content/images/maskotlar/pawpetrol2.JPG',
-        '/content/images/maskotlar/pawpetrolistanbul1.JPG'
+        '/content/images/maskotlar/pawpetrolkesinhero.webp',
+        '/content/images/maskotlar/pawpetrol.webp',
+        '/content/images/maskotlar/pawpetrol2.webp',
+        '/content/images/maskotlar/pawpetrolistanbul1.webp'
       ],
       glassColor: 'rgba(59, 130, 246, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -299,9 +299,9 @@ export const mascotsData = {
       emoji: '⚡',
       title: 'Pokémon',
       description: 'Dünyanın en sevilen Pokémon\'u Pikachu, koca kafalı maskot olarak çocuklarla buluşuyor.',
-      heroImage: '/content/images/maskotlar/pikacu2.JPG',
+      heroImage: '/content/images/maskotlar/pikacu2.webp',
       images: [
-        '/content/images/maskotlar/pikacu2.JPG'
+        '/content/images/maskotlar/pikacu2.webp'
       ],
       glassColor: 'rgba(255, 215, 0, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -323,14 +323,14 @@ export const mascotsData = {
       emoji: '🐭',
       title: 'Koca Kafalı Maskot',
       description: 'Mickey Mouse koca kafalı maskot kostümü ile çocukların doğum günü partilerinde unutulmaz anlar yaşatıyoruz.',
-      heroImage: '/content/images/maskotlar/mickeyvemousemaskotlarvekendikismininherosu.JPG',
+      heroImage: '/content/images/maskotlar/mickeyvemousemaskotlarvekendikismininherosu.webp',
       images: [
-        '/content/images/maskotlar/mickeyvemousemaskotlarvekendikismininherosu.JPG',
-        '/content/images/maskotlar/minniemickey.JPG',
-        '/content/images/maskotlar/minniemickey23.JPG',
-        '/content/images/Kostumlukarakterler/mickeyyeni.jpg',
-        '/content/images/Kostumlukarakterler/minniemickeyyenii.jpg',
-        '/content/images/Kostumlukarakterler/minniemickeyyeniii.jpg'
+        '/content/images/maskotlar/mickeyvemousemaskotlarvekendikismininherosu.webp',
+        '/content/images/maskotlar/minniemickey.webp',
+        '/content/images/maskotlar/minniemickey23.webp',
+        '/content/images/Kostumlukarakterler/mickeyyeni.webp',
+        '/content/images/Kostumlukarakterler/minniemickeyyenii.webp',
+        '/content/images/Kostumlukarakterler/minniemickeyyeniii.webp'
       ],
       glassColor: 'rgba(0, 0, 0, 0.3)',
       borderColor: 'rgba(255, 0, 0, 0.4)',
@@ -352,9 +352,9 @@ export const mascotsData = {
       emoji: '🦁',
       title: 'Orman Kralı',
       description: 'Güçlü aslan maskotu, çocuklara cesaret ve güç veriyor.',
-      heroImage: '/content/images/maskotlar/aslanistanbul1.JPG',
+      heroImage: '/content/images/maskotlar/aslanistanbul1.webp',
       images: [
-        '/content/images/maskotlar/aslanistanbul1.JPG'
+        '/content/images/maskotlar/aslanistanbul1.webp'
       ],
       glassColor: 'rgba(255, 165, 0, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -376,10 +376,10 @@ export const mascotsData = {
       emoji: '🦈',
       title: 'Deniz Canavarı',
       description: 'Baby Shark temalı köpekbalığı maskotu, çocukları eğlendiriyor.',
-      heroImage: '/content/images/maskotlar/köpekbaligi3.JPG',
+      heroImage: '/content/images/maskotlar/köpekbaligi3.webp',
       images: [
-        '/content/images/maskotlar/köpekbaligi3.JPG',
-        '/content/images/maskotlar/kopekbaligi.JPG'
+        '/content/images/maskotlar/köpekbaligi3.webp',
+        '/content/images/maskotlar/kopekbaligi.webp'
       ],
       glassColor: 'rgba(59, 130, 246, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -404,10 +404,10 @@ export const mascotsData = {
       emoji: '🐻',
       title: 'Bal Seven Ayı',
       description: 'Disney\'in sevimli ayısı Winnie The Pooh, koca kafalı maskot olarak çocuklarla buluşuyor.',
-      heroImage: '/content/images/maskotlar/winniethepooh.JPG',
+      heroImage: '/content/images/maskotlar/winniethepooh.webp',
       images: [
-        '/content/images/maskotlar/winniethepooh.JPG',
-        '/content/images/maskotlar/winnethepooh2.JPG'
+        '/content/images/maskotlar/winniethepooh.webp',
+        '/content/images/maskotlar/winnethepooh2.webp'
       ],
       glassColor: 'rgba(255, 165, 0, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -429,11 +429,11 @@ export const mascotsData = {
       emoji: '🐥',
       title: 'Sarı Kanarya',
       description: 'Looney Tunes\'un sevimli karakteri Tweety, koca kafalı maskot olarak partinizde!',
-      heroImage: '/content/images/maskotlar/twetty2.JPG',
+      heroImage: '/content/images/maskotlar/twetty2.webp',
       images: [
-        '/content/images/maskotlar/twetty2.JPG',
-        '/content/images/maskotlar/tweety.JPG',
-        '/content/images/maskotlar/tweetyvesylvester.JPG'
+        '/content/images/maskotlar/twetty2.webp',
+        '/content/images/maskotlar/tweety.webp',
+        '/content/images/maskotlar/tweetyvesylvester.webp'
       ],
       glassColor: 'rgba(255, 215, 0, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -455,10 +455,10 @@ export const mascotsData = {
       emoji: '🦆',
       title: 'Komik Ördek',
       description: 'Looney Tunes\'un komik ördek Daffy Duck, koca kafalı maskot olarak çocukları güldürüyor.',
-      heroImage: '/content/images/maskotlar/daffyduckordek.JPG',
+      heroImage: '/content/images/maskotlar/daffyduckordek.webp',
       images: [
-        '/content/images/maskotlar/daffyduckordek.JPG',
-        '/content/images/maskotlar/daffyduck1.JPG'
+        '/content/images/maskotlar/daffyduckordek.webp',
+        '/content/images/maskotlar/daffyduck1.webp'
       ],
       glassColor: 'rgba(0, 0, 0, 0.3)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -480,9 +480,9 @@ export const mascotsData = {
       emoji: '🐼',
       title: 'Sevimli Panda',
       description: 'Sevimli panda maskotu, çocuklara doğa sevgisi aşılıyor.',
-      heroImage: '/content/images/maskotlar/panda.JPG',
+      heroImage: '/content/images/maskotlar/panda.webp',
       images: [
-        '/content/images/maskotlar/panda.JPG'
+        '/content/images/maskotlar/panda.webp'
       ],
       glassColor: 'rgba(0, 0, 0, 0.3)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -504,9 +504,9 @@ export const mascotsData = {
       emoji: '🐻‍❄️',
       title: 'Beyaz Ayı',
       description: 'Kar ve buz temalı kutup ayısı maskotu, çocuklara kış masalları anlatıyor.',
-      heroImage: '/content/images/maskotlar/kutupayisi.JPG',
+      heroImage: '/content/images/maskotlar/kutupayisi.webp',
       images: [
-        '/content/images/maskotlar/kutupayisi.JPG'
+        '/content/images/maskotlar/kutupayisi.webp'
       ],
       glassColor: 'rgba(240, 248, 255, 0.3)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -528,12 +528,12 @@ export const mascotsData = {
       emoji: '🐻',
       title: 'Maşa Arkadaşları',
       description: 'Çocukların en sevdiği çizgi film karakterleri Maşa ve Koca Ayı, koca kafalı maskot olarak partinizde!',
-      heroImage: '/content/images/maskotlar/kocaaayii.jpeg',
+      heroImage: '/content/images/maskotlar/kocaaayii.webp',
       images: [
-        '/content/images/maskotlar/kocaaayii.jpeg',
-        '/content/images/maskotlar/Masavekocaayi.JPG',
-        '/content/images/maskotlar/masavekocaayi2.JPG',
-        '/content/images/maskotlar/masavekocaayii.JPG'
+        '/content/images/maskotlar/kocaaayii.webp',
+        '/content/images/maskotlar/Masavekocaayi.webp',
+        '/content/images/maskotlar/masavekocaayi2.webp',
+        '/content/images/maskotlar/masavekocaayii.webp'
       ],
       glassColor: 'rgba(139, 69, 19, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',
@@ -555,9 +555,9 @@ export const mascotsData = {
       emoji: '🐰',
       title: 'Sevimli Canavar',
       description: 'Pop kültürün yeni yıldızı Labubu, koca kafalı maskot olarak çocuklarla buluşuyor.',
-      heroImage: '/content/images/maskotlar/labubu.JPG',
+      heroImage: '/content/images/maskotlar/labubu.webp',
       images: [
-        '/content/images/maskotlar/labubu.JPG'
+        '/content/images/maskotlar/labubu.webp'
       ],
       glassColor: 'rgba(255, 182, 193, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',

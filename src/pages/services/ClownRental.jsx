@@ -219,19 +219,19 @@ const ClownRental = () => {
 
   const heroSlides = [
     {
-      src: '/content/images/palyaco/palyaconattiveguleryuz.jpg',
+      src: '/content/images/palyaco/palyaconattiveguleryuz.webp',
       alt: 'Palyaço güler yüzlü animatörler'
     },
     {
-      src: '/content/images/palyaco/palyacoanaherogrupoyunlari.JPG',
+      src: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp',
       alt: 'Palyaço grup oyunları'
     },
     {
-      src: '/content/images/palyaco/palyacokarsoleni.jpeg',
+      src: '/content/images/palyaco/palyacokarsoleni.webp',
       alt: 'Palyaço kar gösterisi'
     },
     {
-      src: '/content/images/palyaco/palyacogrupoyunlari.jpg',
+      src: '/content/images/palyaco/palyacogrupoyunlari.webp',
       alt: 'Palyaço interaktif etkinlik'
     }
   ]
@@ -242,7 +242,7 @@ const ClownRental = () => {
       number: '1',
       title: 'Tanışma ve Karşılama',
       description: 'Palyaço ekibimiz çocuklarla samimi bir karşılama seremonisi ile tanışır',
-      image: '/content/images/palyaco/palyacoonemlifoto.jpg',
+      image: '/content/images/palyaco/palyacoonemlifoto.webp',
       alt: 'Palyaço kiralama İstanbul tanışma seremonisi - Best Event'
     },
     {
@@ -250,7 +250,7 @@ const ClownRental = () => {
       number: '2',
       title: 'Yüz Boyama',
       description: 'Minnie Mouse, Spiderman, kedi, köpek, tavşan, Batman ve daha fazlası. Renkli karakterler yüz boyama ile canlanıyor',
-      image: '/content/images/palyaco/yuzboyamapalyaco.jpg',
+      image: '/content/images/palyaco/yuzboyamapalyaco.webp',
       alt: 'Palyaço etkinliği yüz boyama İstanbul - Best Event'
     },
     {
@@ -258,7 +258,7 @@ const ClownRental = () => {
       number: '3',
       title: 'Eğlenceli Grup Oyunları',
       description: 'Tüm çocukların katıldığı interaktif grup oyunları ve yarışmalar',
-      image: '/content/images/palyaco/palyacogrupoyunlari.jpg',
+      image: '/content/images/palyaco/palyacogrupoyunlari.webp',
       alt: 'Palyaço kiralama grup oyunları İstanbul - Best Event'
     },
     {
@@ -266,7 +266,7 @@ const ClownRental = () => {
       number: '4',
       title: 'Sosis Balon Şekillendirme',
       description: 'Renkli sosis balon ile kedi, köpek, kalp, kılıç yapımı',
-      image: '/content/images/palyaco/palyacososisbalon.jpg',
+      image: '/content/images/palyaco/palyacososisbalon.webp',
       alt: 'Palyaço organizasyonu balon şekillendirme - Best Event'
     },
     {
@@ -274,7 +274,7 @@ const ClownRental = () => {
       number: '5',
       title: 'Palyaçonun Güler Yüzü',
       description: 'Çocukların mutluluğunu yansıtan neşeli anlar',
-      image: '/content/images/palyaco/palyacooguleryuzzafotograf.jpeg',
+      image: '/content/images/palyaco/palyacooguleryuzzafotograf.webp',
       alt: 'Palyaço kiralama fotoğraf çekimi İstanbul - Best Event'
     },
     {
@@ -282,7 +282,7 @@ const ClownRental = () => {
       number: '6',
       title: 'Kar Show\'u Finali',
       description: 'Büyülü kar show gösterisi ile etkinliğin en heyecanlı anı',
-      image: '/content/images/palyaco/palyacokarsoleni.jpeg',
+      image: '/content/images/palyaco/palyacokarsoleni.webp',
       alt: 'Palyaço etkinliği kar show İstanbul - Best Event'
     },
     {
@@ -290,7 +290,7 @@ const ClownRental = () => {
       number: '7',
       title: 'Son Hatıra Fotoğrafı',
       description: 'Unutulmaz günün son fotoğrafı ile duygusal veda',
-      image: '/content/images/palyaco/palyacoonemlifotografa.jpg',
+      image: '/content/images/palyaco/palyacoonemlifotografa.webp',
       alt: 'Palyaço etkinliği veda fotoğrafı İstanbul - Best Event'
     }
   ]

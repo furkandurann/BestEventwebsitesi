@@ -7,42 +7,42 @@ const MusicEvents = () => {
       id: 'trio',
       title: 'Trio Ekibi',
       description: 'Piyano, keman ve çello ile üçlü canlı müzik performansı',
-      image: '/content/images/music/trio.jpg',
+      image: '/content/images/music/trio.webp',
       alt: 'Jazz trio ekibi canlı müzik performansı - Best Event'
     },
     {
       id: 'band',
       title: 'Bando Takımı',
       description: 'Geleneksel bando takımı ile özel günler için unutulmaz performanslar',
-      image: '/content/images/music/bando.jpg',
+      image: '/content/images/music/bando.webp',
       alt: 'Bando takımı etkinlik organizasyonu İstanbul - Best Event'
     },
     {
       id: 'saxophone',
       title: 'Saksafon Dinletisi',
       description: 'Profesyonel saksofoncu ile romantik ve etkileyici dinletiler',
-      image: '/content/images/music/saksafon.jpg',
+      image: '/content/images/music/saksafon.webp',
       alt: 'Saksafon dinletisi canlı müzik - Best Event'
     },
     {
       id: 'pianist',
       title: 'Piyanist',
       description: 'Klasik ve modern piyano resitalleri ile özel anlar',
-      image: '/content/images/music/piyanist.jpg',
+      image: '/content/images/music/piyanist.webp',
       alt: 'Piyanist kiralama İstanbul etkinlik - Best Event'
     },
     {
       id: 'cello',
       title: 'Çello Performansı',
       description: 'Usta çellistlerimiz ile zarif ve duygusal performanslar',
-      image: '/content/images/music/çellist.jpg',
+      image: '/content/images/music/çellist.webp',
       alt: 'Çello performansı canlı müzik - Best Event'
     },
     {
       id: 'bride',
       title: 'Gelin İsteme Müzik',
       description: 'Gelin isteme merasimi için özel müzik düzenlemeleri',
-      image: '/content/images/music/muzikekibi.jpg',
+      image: '/content/images/music/muzikekibi.webp',
       alt: 'Gelin isteme müzik organizasyonu - Best Event'
     }
   ]
@@ -69,7 +69,7 @@ const MusicEvents = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="/content/images/music/muzikekibi.jpg" 
+            src="/content/images/music/muzikekibi.webp" 
             alt="Canlı müzik etkinlikleri İstanbul - Best Event"
             className="w-full h-full object-cover"
           />

@@ -349,13 +349,13 @@ const PalyacoKiralama = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <a 
-            href="tel:+905551234567"
+            href="tel:+905307309009"
             className="bg-white text-red-600 font-bold text-base px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl text-center"
           >
             📞 Hemen Ara
           </a>
           <a 
-            href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+            href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
             className="bg-green-600 hover:bg-green-700 text-white font-bold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-2xl text-center"
           >
             💬 WhatsApp

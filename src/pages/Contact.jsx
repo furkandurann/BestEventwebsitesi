@@ -36,7 +36,7 @@ const Contact = () => {
     const text = `Merhaba Best Event,%0AAd: ${name || '-'}%0ATelefon: ${
       phone || '-'
     }%0AMesaj: ${message || '-'}`
-    window.open(`https://wa.me/905349306799?text=${text}`, '_blank')
+    window.open(`https://wa.me/905307309009?text=${text}`, '_blank')
   }
 
   return (
@@ -60,7 +60,7 @@ const Contact = () => {
           mainEntity: {
             '@type': 'Organization',
             name: 'Best Event',
-            telephone: '+90-534-930-67-99',
+            telephone: '+90-530-730-90-09',
             email: 'besteventturkiye@gmail.com',
             address: {
               '@type': 'PostalAddress',
@@ -98,15 +98,15 @@ const Contact = () => {
 
                 <div className="mt-6 space-y-3">
                   <a
-                    href="tel:05349306799"
+                    href="tel:05307309009"
                     className="flex items-center justify-center gap-2 rounded-full bg-white text-black text-sm font-semibold px-5 py-3 shadow-lg shadow-black/40 hover:bg-white/90 transition-colors"
                   >
                     <span className="text-lg">📞</span>
-                    <span>Hemen Ara: 0534 930 67 99</span>
+                    <span>Hemen Ara: 0530 730 90 09</span>
                   </a>
 
                   <a
-                    href="https://wa.me/905349306799"
+                    href="https://wa.me/905307309009"
                     className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] text-white text-sm font-medium px-5 py-3 shadow-lg shadow-black/40 hover:bg-[#1fb158] transition-colors"
                   >
                     <span className="text-lg">💬</span>
@@ -120,8 +120,8 @@ const Contact = () => {
                   <p className="text-xs font-medium tracking-[0.18em] uppercase text-white/50">
                     Telefon
                   </p>
-                  <a href="tel:05349306799" className="mt-1 inline-block hover:text-white">
-                    +90 534 930 67 99
+                  <a href="tel:05307309009" className="mt-1 inline-block hover:text-white">
+                    +90 530 730 90 09
                   </a>
                 </div>
                 <div>

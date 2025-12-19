@@ -390,7 +390,7 @@ const FullPackageOrganization = () => {
           <p className="text-2xl mb-10 text-white/90">Hayalinizi gerçeğe dönüştürmenin zamanı geldi</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <a
-              href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+              href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-full font-bold text-xl shadow-2xl transition-all"
@@ -398,10 +398,10 @@ const FullPackageOrganization = () => {
               💬 WhatsApp
             </a>
             <a
-              href="tel:+905349306799"
+              href="tel:+905307309009"
               className="bg-white hover:bg-gray-100 text-gray-900 px-12 py-5 rounded-full font-bold text-xl shadow-2xl transition-all"
             >
-              📞 0534 930 67 99
+              📞 0530 730 90 09
             </a>
           </div>
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-4">

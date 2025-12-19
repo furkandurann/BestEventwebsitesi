@@ -165,7 +165,7 @@ function ClownFAQSection({ faqs }) {
             Başka sorularınız mı var?
           </p>
           <a
-            href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+            href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
@@ -299,7 +299,7 @@ const ClownRental = () => {
     <div className="min-h-screen bg-black text-white">
       <Seo
         title="Palyaço Kiralama İstanbul | +5000 Başarılı Etkinlik | Best Event"
-        description="İstanbul'da profesyonel palyaço kiralama hizmeti. Son 2 yılda +5000 etkinlik. Tanışma, yüz boyama, grup oyunları, kar show'u. Hemen rezervasyon: 0534 930 67 99"
+        description="İstanbul'da profesyonel palyaço kiralama hizmeti. Son 2 yılda +5000 etkinlik. Tanışma, yüz boyama, grup oyunları, kar show'u. Hemen rezervasyon: 0530 730 90 09"
         keywords={[
           'palyaço kiralama istanbul',
           'palyaço organizasyonu',
@@ -699,7 +699,7 @@ const ClownRental = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
               {/* WhatsApp Button */}
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -2 }}
@@ -734,7 +734,7 @@ const ClownRental = () => {
 
               {/* Phone Button */}
               <motion.a
-                href="tel:+905349306799"
+                href="tel:+905307309009"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="group relative w-full sm:w-auto"
@@ -759,7 +759,7 @@ const ClownRental = () => {
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
                       }}
                     >
-                      0534 930 67 99
+                      0530 730 90 09
                     </span>
                   </div>
                 </div>

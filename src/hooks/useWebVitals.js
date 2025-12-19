@@ -7,7 +7,7 @@ import { useEffect } from 'react';
  * 
  * Metrikler:
  * - LCP (Largest Contentful Paint)
- * - FID (First Input Delay)
+ * - INP (Interaction to Next Paint) - FID'nin yerine geçti
  * - CLS (Cumulative Layout Shift)
  * - FCP (First Contentful Paint)
  * - TTFB (Time to First Byte)
@@ -27,14 +27,21 @@ import { useEffect } from 'react';
 
 const useWebVitals = (onMetric) => {
   useEffect(() => {
+    // onMetric yoksa veya function değilse hiçbir şey yapma
+    if (!onMetric || typeof onMetric !== 'function') {
+      return;
+    }
+
     // Web Vitals paketi dinamik import
-    import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
+    import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
       // Tüm metrikleri dinle
       onCLS(onMetric);
-      onFID(onMetric);
+      onINP(onMetric);
       onFCP(onMetric);
       onLCP(onMetric);
       onTTFB(onMetric);
+    }).catch((error) => {
+      console.warn('Web Vitals yüklenemedi:', error);
     });
   }, [onMetric]);
 };
@@ -114,7 +121,7 @@ export const saveToLocalStorage = (metric) => {
  * Metriklerin özet raporu
  */
 export const getWebVitalsReport = () => {
-  const metrics = ['CLS', 'FID', 'FCP', 'LCP', 'TTFB'];
+  const metrics = ['CLS', 'INP', 'FCP', 'LCP', 'TTFB'];
   const report = {};
   
   metrics.forEach((name) => {

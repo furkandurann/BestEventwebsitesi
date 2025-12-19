@@ -12,7 +12,7 @@ const WhatsAppButton = () => {
   }
 
   // WhatsApp numarası
-  const phoneNumber = '+905349306799'
+  const phoneNumber = '+905307309009'
   const message = 'Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum'
 
   const handleClick = () => {

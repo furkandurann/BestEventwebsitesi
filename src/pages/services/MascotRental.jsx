@@ -7,7 +7,7 @@ const MascotRental = () => {
   const faqs = [
     {
       question: 'Maskot organizasyon süresi ne kadar?',
-      answer: 'Standart maskot organizasyon 60-90 dakika arasıdır. Kostüm içinde sıcaklık ve yorulma nedeniyle 15-20 dakikalık molalar verilir. Detaylı bilgi için 0534 930 67 99 numarasından bize ulaşabilirsiniz.'
+      answer: 'Standart maskot organizasyon 60-90 dakika arasıdır. Kostüm içinde sıcaklık ve yorulma nedeniyle 15-20 dakikalık molalar verilir. Detaylı bilgi için 0530 730 90 09 numarasından bize ulaşabilirsiniz.'
     },
     {
       question: 'Hangi maskot karakterleri mevcut?',
@@ -27,7 +27,7 @@ const MascotRental = () => {
     },
     {
       question: 'Fiyatlandırma nasıl yapılıyor?',
-      answer: 'Fiyatlandırma maskot tipi, organizasyon süresi ve lokasyona göre değişiklik gösterir. Detaylı fiyat teklifi için 0534 930 67 99 numarasından bize ulaşabilirsiniz.'
+      answer: 'Fiyatlandırma maskot tipi, organizasyon süresi ve lokasyona göre değişiklik gösterir. Detaylı fiyat teklifi için 0530 730 90 09 numarasından bize ulaşabilirsiniz.'
     },
     {
       question: 'Maskotlar çocuklarla nasıl etkileşim kurar?',
@@ -43,7 +43,7 @@ const MascotRental = () => {
     <>
       <Seo
         title="Maskot Kiralama İstanbul | Koca Kafalı Karakterler | Best Event"
-        description="İstanbul'da maskot organizasyon. Hello Kitty, Sonic, Mickey Mouse, Paw Patrol maskot organizasyon. Doğum günü etkinlikleri. ☎ 0534 930 67 99"
+        description="İstanbul'da maskot organizasyon. Hello Kitty, Sonic, Mickey Mouse, Paw Patrol maskot organizasyon. Doğum günü etkinlikleri. ☎ 0530 730 90 09"
         keywords={[
           'maskot organizasyon istanbul',
           'koca kafalı maskot',
@@ -360,7 +360,7 @@ const MascotRental = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+              href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="min-h-[44px] bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-xl font-bold text-xl shadow-2xl transition-all transform hover:scale-105"
@@ -368,10 +368,10 @@ const MascotRental = () => {
               WhatsApp
             </a>
             <a
-              href="tel:+905349306799"
+              href="tel:+905307309009"
               className="min-h-[44px] bg-white hover:bg-gray-100 text-gray-900 px-12 py-5 rounded-xl font-bold text-xl shadow-2xl transition-all transform hover:scale-105"
             >
-              0534 930 67 99
+              0530 730 90 09
             </a>
           </div>
         </div>

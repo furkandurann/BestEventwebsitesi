@@ -80,7 +80,7 @@ const faqs = [
   {
     question: 'Fiyatlar nasıl?',
     answer:
-      'Süre, lokasyon ve katılımcı sayısına göre değişir. 20+ çocuk için ek sanatçı önerilir. Detaylı bilgi için arayabilirsiniz: 0534 930 67 99'
+      'Süre, lokasyon ve katılımcı sayısına göre değişir. 20+ çocuk için ek sanatçı önerilir. Detaylı bilgi için arayabilirsiniz: 0530 730 90 09'
   }
 ]
 
@@ -448,7 +448,7 @@ const FacePainting = () => {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsAppClick('Profesyonel Yüz Boyama', window.location.href)}
@@ -477,7 +477,7 @@ const FacePainting = () => {
               </motion.a>
 
               <motion.a
-                href="tel:+905349306799"
+                href="tel:+905307309009"
                 onClick={() => trackPhoneClick('Profesyonel Yüz Boyama', window.location.href)}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
@@ -497,7 +497,7 @@ const FacePainting = () => {
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
                       }}
                     >
-                      0534 930 67 99
+                      0530 730 90 09
                     </span>
                   </div>
                 </div>

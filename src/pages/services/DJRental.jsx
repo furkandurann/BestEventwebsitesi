@@ -66,16 +66,16 @@ const DJRental = () => {
             <p className="mt-3 text-sm md:text-base text-white/70 max-w-3xl">{hero.description}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 className="inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 text-sm font-semibold shadow-lg hover:shadow-xl transition"
               >
                 💬 WhatsApp ile Rezervasyon
               </a>
               <a
-                href="tel:+905349306799"
+                href="tel:+905307309009"
                 className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
               >
-                📞 0534 930 67 99
+                📞 0530 730 90 09
               </a>
             </div>
 
@@ -160,7 +160,7 @@ const DJRental = () => {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
               <a
-                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-full sm:w-auto"
@@ -183,7 +183,7 @@ const DJRental = () => {
               </a>
 
               <a
-                href="tel:05349306799"
+                href="tel:05307309009"
                 className="group relative w-full sm:w-auto"
               >
                 <div className="relative bg-white text-black rounded-2xl px-8 py-6 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
@@ -191,7 +191,7 @@ const DJRental = () => {
                     <span className="text-lg" role="img" aria-label="phone">📞</span>
                     <div className="text-left">
                       <p className="text-xs uppercase tracking-[0.18em] text-black/60">Telefon</p>
-                      <p className="text-lg font-semibold">0534 930 67 99</p>
+                      <p className="text-lg font-semibold">0530 730 90 09</p>
                     </div>
                   </div>
                 </div>

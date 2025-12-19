@@ -33,7 +33,7 @@ const CharacterDetail = () => {
         <title>{character.name} Organizasyonu İstanbul | Doğum Günü Animatörü | Best Event</title>
         <meta 
           name="description" 
-          content={`İstanbul'da ${character.name} organizasyonu. ${character.description} ☎ 0534 930 67 99`}
+          content={`İstanbul'da ${character.name} organizasyonu. ${character.description} ☎ 0530 730 90 09`}
         />
       </Helmet>
 
@@ -196,7 +196,7 @@ const CharacterDetail = () => {
           {
             eyebrow: "REZERVASYON",
             title: "Hemen Rezervasyon Yapın",
-            body: "Çocuğunuzun doğum gününü unutulmaz kılmak için hemen rezervasyon yapın. Erken rezervasyonlarda özel indirimler mevcuttur. 0534 930 67 99"
+            body: "Çocuğunuzun doğum gününü unutulmaz kılmak için hemen rezervasyon yapın. Erken rezervasyonlarda özel indirimler mevcuttur. 0530 730 90 09"
           }
         ];
 
@@ -279,7 +279,7 @@ const CharacterDetail = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 {/* WhatsApp Button */}
                 <motion.a
-                  href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                  href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
@@ -295,7 +295,7 @@ const CharacterDetail = () => {
 
                 {/* Phone Icon */}
                 <motion.a
-                  href="tel:+905349306799"
+                  href="tel:+905307309009"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-red-500 hover:bg-red-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all"
@@ -308,7 +308,7 @@ const CharacterDetail = () => {
               </div>
 
               <p className="text-base text-gray-400 mt-8" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif', fontWeight: '400' }}>
-                0534 930 67 99
+                0530 730 90 09
               </p>
             </motion.div>
           </div>
@@ -359,7 +359,7 @@ const CharacterDetail = () => {
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
                 <motion.a
-                  href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                  href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02, y: -2 }}
@@ -387,7 +387,7 @@ const CharacterDetail = () => {
               </motion.a>
 
               <motion.a
-                href="tel:+905349306799"
+                href="tel:+905307309009"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="group relative w-full sm:w-auto"
@@ -406,7 +406,7 @@ const CharacterDetail = () => {
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
                       }}
                     >
-                      0534 930 67 99
+                      0530 730 90 09
                     </span>
                   </div>
                 </div>
@@ -765,7 +765,7 @@ const CharacterDetail = () => {
                     <li>✅ Pasta töreni animasyonu</li>
                   </ul>
                   <a
-                    href="tel:+905349306799"
+                    href="tel:+905307309009"
                     className="block text-center bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all"
                   >
                     Hemen Ara
@@ -794,7 +794,7 @@ const CharacterDetail = () => {
                     <li>✅ Ses sistemi</li>
                   </ul>
                   <a
-                    href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                    href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-center bg-white text-purple-600 px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all"
@@ -823,7 +823,7 @@ const CharacterDetail = () => {
                     <li>✅ Sürpriz hediyeler</li>
                   </ul>
                   <a
-                    href="tel:+905349306799"
+                    href="tel:+905307309009"
                     className="block text-center bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all"
                   >
                     Hemen Ara
@@ -838,7 +838,7 @@ const CharacterDetail = () => {
                 className="text-center mt-12"
               >
                 <p className="text-white/90 text-lg" style={{ lineHeight: '1.7' }}>
-                  * Fiyatlar lokasyona ve etkinlik süresine göre değişiklik gösterebilir. Detaylı bilgi için: <strong>0534 930 67 99</strong>
+                  * Fiyatlar lokasyona ve etkinlik süresine göre değişiklik gösterebilir. Detaylı bilgi için: <strong>0530 730 90 09</strong>
                 </p>
               </motion.div>
             </div>

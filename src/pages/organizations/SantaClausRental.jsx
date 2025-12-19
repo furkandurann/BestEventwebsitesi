@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
 import FAQSection from '../../components/FAQSection'
+import SantaClausHeroSlider from '../../components/SantaClausHeroSlider'
 import '../../styles/christmas-theme.css'
 
 const SantaClausRental = () => {
-  const [selectedTab, setSelectedTab] = useState('private')
+  const [selectedTab, setSelectedTab] = useState('standard')
 
   // FAQ Verileri
   const faqs = [
@@ -58,8 +59,8 @@ const SantaClausRental = () => {
   ]
 
   const decorationPhotos = [
-    '/content/images/noelbaba/noelsüslemesi/IMG_0197.webp',
-    '/content/images/noelbaba/noelsüslemesi/WhatsApp Image 2025-12-04 at 23.58.57.jpeg'
+    '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.44.jpeg',
+    '/content/images/noelbaba/noelbabastandart/7BDA73F5-5BE9-419C-AD20-98CB8A679C51.webp'
   ]
 
   return (
@@ -71,37 +72,8 @@ const SantaClausRental = () => {
         ogImage="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg"
       />
 
-      {/* Hero Bölümü - Orijinal Fotoğraf */}
-      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-        {/* Kar Animasyonu - Sadece Hero'da */}
-        <div className="snow-container absolute inset-0 z-[5]">
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="snowflake">❄</div>
-          ))}
-        </div>
-        {/* Arka Plan Görseli - Orijinal (efekt yok) */}
-        <div className="absolute inset-0">
-          <img 
-            src="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg"
-            alt="Noel Baba Kiralama"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40"></div>
-        </div>
-
-        {/* Başlık - Yılbaşı Renkleri + Işıklı */}
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-2" style={{
-            background: 'linear-gradient(135deg, #DC2626 0%, #FCD34D 50%, #16A34A 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 30px rgba(252, 211, 77, 0.8), 0 0 60px rgba(220, 38, 38, 0.6)',
-            filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.8))'
-          }}>
-            Noel Baba Kiralama
-          </h1>
-        </div>
-      </section>
+      {/* Hero Slider - Doğum Günü Organizasyonu Gibi */}
+      <SantaClausHeroSlider />
 
       {/* Kampanya Banner - %25 İndirim */}
       <section className="py-6 bg-gradient-to-r from-red-600 via-green-700 to-red-800">
@@ -119,6 +91,19 @@ const SantaClausRental = () => {
           <div className="flex justify-center mb-12">
             <div className="inline-flex bg-white/20 backdrop-blur-sm rounded-full shadow-2xl p-2 border-2 border-white/30">
               <button
+                onClick={() => setSelectedTab('standard')}
+                className={`px-8 py-4 rounded-full font-bold text-base transition-all duration-300 relative ${
+                  selectedTab === 'standard'
+                    ? 'bg-white text-red-700 shadow-2xl scale-110'
+                    : 'text-white hover:bg-white/10 hover:scale-105'
+                }`}
+              >
+                <span className="relative z-10">🎄 Standart Noel Baba</span>
+                {selectedTab === 'standard' && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-green-700/20 rounded-full blur-xl"></div>
+                )}
+              </button>
+              <button
                 onClick={() => setSelectedTab('private')}
                 className={`px-8 py-4 rounded-full font-bold text-base transition-all duration-300 relative $
 
@@ -133,24 +118,92 @@ const SantaClausRental = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-red-700/20 rounded-full blur-xl"></div>
                 )}
               </button>
-              <button
-                onClick={() => setSelectedTab('standard')}
-                className={`px-8 py-4 rounded-full font-bold text-base transition-all duration-300 relative ${
-                  selectedTab === 'standard'
-                    ? 'bg-white text-red-700 shadow-2xl scale-110'
-                    : 'text-white hover:bg-white/10 hover:scale-105'
-                }`}
-              >
-                <span className="relative z-10">🎄 Standart Noel Baba</span>
-                {selectedTab === 'standard' && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-green-700/20 rounded-full blur-xl"></div>
-                )}
-              </button>
             </div>
           </div>
 
           {/* Paket İçeriği - Apple Standartları */}
           <div className="max-w-6xl mx-auto">
+            {selectedTab === 'standard' && (
+              <div className="space-y-12">
+                {/* Standart Kart */}
+                <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden">
+                  <div className="grid md:grid-cols-2 gap-8 p-8">
+                    {/* Görsel */}
+                    <div>
+                      <img 
+                        src="/content/images/noelbaba/noelbabastandart/noelannestandart.webp"
+                        alt="Standart Noel Baba"
+                        className="w-full h-full object-cover rounded-2xl shadow-xl"
+                      />
+                    </div>
+
+                    {/* İçerik */}
+                    <div className="flex flex-col justify-center">
+                      <div className="inline-block self-start bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-full text-xs font-bold mb-6 shadow-lg">
+                        🎄 STANDART
+                      </div>
+                      
+                      <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                        Standart Noel Baba
+                      </h2>
+                      
+                      <h3 className="text-lg font-medium text-green-600 mb-6">
+                        Neşeli Kutlama
+                      </h3>
+                      
+                      <p className="text-sm text-gray-700 leading-relaxed mb-8">
+                        Çocuklarınızın yüzündeki gülücükleri görmek için ideal paket. 
+                        Profesyonel animatörümüz Noel Baba kostümüyle çocuklarınıza hediyelerini dağıtacak, 
+                        balonlar verecek ve büyülü kar yağdıracak.
+                      </p>
+
+                      <div className="space-y-3">
+                        <div className="flex items-start gap-3">
+                          <span className="text-green-600 text-xl flex-shrink-0">🎅</span>
+                          <span className="text-gray-700 text-sm">Noel Baba karakteri</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <span className="text-green-600 text-xl flex-shrink-0">🎁</span>
+                          <span className="text-gray-700 text-sm">Hediye dağıtımı</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <span className="text-green-600 text-xl flex-shrink-0">🎈</span>
+                          <span className="text-gray-700 text-sm">Balon hediye</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <span className="text-green-600 text-xl flex-shrink-0">❄️</span>
+                          <span className="text-gray-700 text-sm">Kar yağdırma efekti</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <span className="text-green-600 text-xl flex-shrink-0">📸</span>
+                          <span className="text-gray-700 text-sm">Fotoğraf çektirme</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Gallery - Sadece Standart Fotoğraflar */}
+                <div>
+                  <h3 className="text-2xl font-bold text-white text-center mb-8">
+                    📸 Standart Galeri
+                  </h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {standardPhotos.map((photo, index) => (
+                      <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg aspect-square bg-white/10 backdrop-blur-sm">
+                        <img 
+                          src={photo}
+                          alt={`Standart Noel Baba ${index + 1}`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
             {selectedTab === 'private' && (
               <div className="space-y-12">
                 {/* Ana Kart */}
@@ -304,87 +357,6 @@ const SantaClausRental = () => {
                 </div>
               </div>
             )}
-
-            {selectedTab === 'standard' && (
-              <div className="space-y-12">
-                {/* Standart Kart */}
-                <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden">
-                  <div className="grid md:grid-cols-2 gap-8 p-8">
-                    {/* Görsel */}
-                    <div>
-                      <img 
-                        src="/content/images/noelbaba/noelbabastandart/noelannestandart.webp"
-                        alt="Standart Noel Baba"
-                        className="w-full h-full object-cover rounded-2xl shadow-xl"
-                      />
-                    </div>
-
-                    {/* İçerik */}
-                    <div className="flex flex-col justify-center">
-                      <div className="inline-block self-start bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-full text-xs font-bold mb-6 shadow-lg">
-                        🎄 STANDART
-                      </div>
-                      
-                      <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-                        Standart Noel Baba
-                      </h2>
-                      
-                      <h3 className="text-lg font-medium text-green-600 mb-6">
-                        Neşeli Kutlama
-                      </h3>
-                      
-                      <p className="text-sm text-gray-700 leading-relaxed mb-8">
-                        Çocuklarınızın yüzündeki gülücükleri görmek için ideal paket. 
-                        Profesyonel animatörümüz Noel Baba kostümüyle çocuklarınıza hediyelerini dağıtacak, 
-                        balonlar verecek ve büyülü kar yağdıracak.
-                      </p>
-
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-3">
-                          <span className="text-green-600 text-xl flex-shrink-0">🎅</span>
-                          <span className="text-gray-700 text-sm">Noel Baba karakteri</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <span className="text-green-600 text-xl flex-shrink-0">🎁</span>
-                          <span className="text-gray-700 text-sm">Hediye dağıtımı</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <span className="text-green-600 text-xl flex-shrink-0">🎈</span>
-                          <span className="text-gray-700 text-sm">Balon hediye</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <span className="text-green-600 text-xl flex-shrink-0">❄️</span>
-                          <span className="text-gray-700 text-sm">Kar yağdırma efekti</span>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <span className="text-green-600 text-xl flex-shrink-0">📸</span>
-                          <span className="text-gray-700 text-sm">Fotoğraf çektirme</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Gallery - Sadece Standart Fotoğraflar */}
-                <div>
-                  <h3 className="text-2xl font-bold text-white text-center mb-8">
-                    📸 Standart Galeri
-                  </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    {standardPhotos.map((photo, index) => (
-                      <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg aspect-square bg-white/10 backdrop-blur-sm">
-                        <img 
-                          src={photo}
-                          alt={`Standart Noel Baba ${index + 1}`}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>
@@ -409,7 +381,6 @@ const SantaClausRental = () => {
                     src={photo}
                     alt={`Noel Süsleme ${index + 1}`}
                     className="w-full h-64 object-cover rounded-lg shadow-lg"
-                    style={index === 0 ? { objectPosition: 'center 40%' } : {}}
                   />
                 </div>
               ))}
@@ -477,13 +448,13 @@ const SantaClausRental = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="tel:+905551234567"
+              href="tel:+905307309009"
               className="bg-white text-red-600 font-bold text-base px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:scale-105"
             >
               📞 Hemen Ara
             </a>
             <a 
-              href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+              href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-600 hover:bg-green-700 text-white font-bold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-2xl hover:scale-105"

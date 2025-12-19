@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import BirthdayHeroSlider from "../../components/BirthdayHeroSlider";
 
@@ -103,6 +103,103 @@ const reasons = [
   },
 ];
 
+// Caption Arrays - Her slider fotoğrafı için vurucu metinler
+const makeupCaptions = [
+  "KARAKTERİNE HAZIR OL",
+  "PRENSES GİBİ HISSET",
+  "KAHRAMAN OLMA ZAMANI",
+  "HİJYENİK VE GÜVENLİ",
+  "RENKLER VE GLİTTER",
+  "HER YAŞA UYGUN",
+  "PROFESYONEL ELİSİYLE",
+  "CİLT DOSTU BOYALAR",
+  "HAYALLERIN GERÇEK OLDU",
+  "SAHNEYE HAZIR"
+];
+
+const pastaCaptions = [
+  "SAĞLIKLI LEZZET",
+  "KONSEPTE ÖZEL TASARIM"
+];
+
+const konseptCaptions = [
+  "HAYALİNDEKİ TEMA",
+  "KUSURSUZ SAHNE",
+  "BALON KEMERLERİ",
+  "RENKLER VE DETAYLAR",
+  "FOTOĞRAF İÇİN HAZIR",
+  "PROFESYONEL KURULUM",
+  "BACKDROP DÜNYASI",
+  "KONSEPT AKSESUARLAR",
+  "MİSAFİRLER HAYRAN KALACAK",
+  "UNUTULMAZ DEKORASYON"
+];
+
+const bubbleCaptions = [
+  "COŞKUYA HAZIR OL",
+  "BİNLERCE BALONCUK ALTINDA ÇOCUKLARIN ÇIĞLIKLARI",
+  "ÇOK COŞKULU",
+  "DEV BALONCUKLARIN İÇİNDE",
+  "BÜYÜLÜ ANLAR",
+  "HER YAŞA UYGUN EĞLENCE",
+  "RENGARENK KÖPÜKLER",
+  "UNUTULMAZ KARELER",
+  "VİDEOLUK ANLAR",
+  "SAF MUTLULUK"
+];
+
+const palyacoCaptions = [
+  "KAHKAHA ZAMANIDA",
+  "GRUP OYUNLARI",
+  "DANS VE MÜZİK",
+  "GÜLÜCÜKLER",
+  "ÖZEL FOTOĞRAFLAR",
+  "SEVGİ DOLU ANLAR",
+  "SOSİS BALON YAPIMI",
+  "KAR ŞÖLENI",
+  "YÜZ BOYAMA",
+  "RENKLER VE NEŞEler"
+];
+
+const karakterCaptions = [
+  "EN SEVDİĞİN KARAKTER",
+  "PRENSES BURADA",
+  "KAHRAMAN COŞKUSU",
+  "MINNIE İLE DANS",
+  "BATMAN BURADA",
+  "ELSA'NIN DÜNÜASI",
+  "PAMUK PRENSES MASALI",
+  "PAW PATROL MACERASI",
+  "SPIDERMAN ENERJİSİ",
+  "MICKEY İLE EĞLENCE"
+];
+
+const fotoCaptions = [
+  "ÖZEL ANLAR",
+  "VEDA FOTOĞRAFI",
+  "GRUP EĞLENCE",
+  "KONSEPT KARELER",
+  "PROFESYONEL KARE",
+  "DUYGUSAL ANLAR",
+  "MUTLULUK KARELERI",
+  "AİLE FOTOĞRAFLARI",
+  "UNUTULMAZ ANLAR",
+  "YILLARCA HATIRLANACAK"
+];
+
+const sesCaptions = [
+  "ENERJİ YÜKSEK",
+  "PROFESYONEL SES",
+  "DOĞRU MÜZİK",
+  "OYUNLAR İÇİN",
+  "SAHNE DÜZENİ",
+  "MÜZİKLİ AKTİVİTELER",
+  "PASTA SERMONİSİ MÜZİĞİ",
+  "KAR ŞÖLENI SOUNDTRACK",
+  "PARTİ ATMOSFER",
+  "GÖSTERİ MÜZİKLERİ"
+];
+
 const faqs = [
   {
     q: "Paket içeriğini kendi konseptimize göre uyarlayabiliyor musunuz?",
@@ -129,6 +226,16 @@ const faqs = [
 const FullBirthdayOrganization = () => {
   const [openFaq, setOpenFaq] = useState(0);
   
+  // Slider Active Index States
+  const [activeMakeupSlide, setActiveMakeupSlide] = useState(0);
+  const [activePastaSlide, setActivePastaSlide] = useState(0);
+  const [activeKonseptSlide, setActiveKonseptSlide] = useState(0);
+  const [activeBubbleSlide, setActiveBubbleSlide] = useState(0);
+  const [activePalyacoSlide, setActivePalyacoSlide] = useState(0);
+  const [activeKarakterSlide, setActiveKarakterSlide] = useState(0);
+  const [activeFotoSlide, setActiveFotoSlide] = useState(0);
+  const [activeSesSlide, setActiveSesSlide] = useState(0);
+  
   // WhatsApp Form State
   const [formData, setFormData] = useState({
     name: '',
@@ -146,6 +253,15 @@ const FullBirthdayOrganization = () => {
     });
   };
 
+  // Bubble Show - Basit Scroll Tracking
+  const handleBubbleScroll = (e) => {
+    const container = e.target;
+    const scrollLeft = container.scrollLeft;
+    const itemWidth = container.scrollWidth / 10; // 10 foto var
+    const activeIndex = Math.round(scrollLeft / itemWidth);
+    setActiveBubbleSlide(activeIndex);
+  };
+
   const sendWhatsAppMessage = () => {
     const message = `🎉 *Doğum Günü Organizasyonu Talebi*
 
@@ -157,7 +273,7 @@ const FullBirthdayOrganization = () => {
 📋 *Konsept/Notlar:* ${formData.notes || 'Belirtilmedi'}`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/905349306799?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/905307309009?text=${encodedMessage}`, '_blank');
   };
 
   return (
@@ -166,7 +282,7 @@ const FullBirthdayOrganization = () => {
         <title>Doğum Günü Organizasyonu İstanbul | Full Paket Etkinlik - Best Event</title>
         <meta
           name="description"
-          content="İstanbul'da doğum günü organizasyonu: Konsept süsleme, organik pasta, bubble show, sihirbazlık gösterisi, palyaço animasyonu ve profesyonel fotoğraf çekimi. Tüm ilçelerde hizmet. ☎️ 0534 930 67 99"
+          content="İstanbul'da doğum günü organizasyonu: Konsept süsleme, organik pasta, bubble show, sihirbazlık gösterisi, palyaço animasyonu ve profesyonel fotoğraf çekimi. Tüm ilçelerde hizmet. ☎️ 0530 730 90 09"
         />
         <meta name="keywords" content="doğum günü organizasyonu istanbul, çocuk doğum günü organizasyonu, konsept doğum günü, bubble show, sihirbazlık gösterisi, palyaço kiralama, doğum günü pastası" />
         
@@ -189,7 +305,7 @@ const FullBirthdayOrganization = () => {
               "addressLocality": "İstanbul",
               "addressCountry": "TR"
             },
-            "telephone": "+905349306799",
+            "telephone": "+905307309009",
             "priceRange": "$$",
             "areaServed": {
               "@type": "City",
@@ -234,62 +350,94 @@ const FullBirthdayOrganization = () => {
           </div>
           
           <div className="relative">
-            {/* Ana Başlık - H1 for SEO */}
-            <div className="min-h-[50vh] flex items-center justify-center px-6 py-20 md:py-32">
-              <div className="max-w-6xl mx-auto text-center space-y-8">
-                <h1
-                  className="font-bold text-white leading-[1.1]"
-                  style={{ 
-                    fontSize: 'clamp(2.75rem, 7vw, 5rem)', 
-                    letterSpacing: '-0.03em'
+            {/* Apple Minimal Hero Section */}
+            <div className="min-h-[85vh] flex items-center justify-center px-6 py-24 md:py-32">
+              <div className="max-w-5xl mx-auto text-center">
+                {/* Ana Başlık - H1 */}
+                <h1 
+                  className="font-semibold text-white mb-6 md:mb-8"
+                  style={{
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                    fontSize: 'clamp(2.75rem, 7vw, 6rem)',
+                    lineHeight: '1.05',
+                    letterSpacing: '-0.04em',
+                    fontWeight: '700'
                   }}
                 >
                   Doğum Günü Organizasyonu İstanbul
                 </h1>
-                <h2
-                  className="font-medium text-white/90 leading-[1.2]"
-                  style={{ 
-                    fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', 
-                    letterSpacing: '-0.02em'
+
+                {/* Alt Başlık - H2 */}
+                <h2 
+                  className="font-medium text-white/95 mb-8 md:mb-12"
+                  style={{
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                    fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.025em',
+                    fontWeight: '600'
                   }}
                 >
                   Tek Paket. Tek Ekip. Tek Muhattap.
                 </h2>
-              </div>
-            </div>
 
-            {/* Hizmet Listesi */}
-            <div className="px-6 py-16 md:py-20">
-              <div className="max-w-4xl mx-auto text-center">
+                {/* Hizmet Listesi */}
                 <p 
-                  className="text-white/80 leading-relaxed font-light"
-                  style={{ fontSize: 'clamp(1rem, 2.5vw, 1.35rem)' }}
+                  className="text-white/75 mb-16 md:mb-20 px-4"
+                  style={{
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                    fontSize: 'clamp(1rem, 1.85vw, 1.25rem)',
+                    lineHeight: '1.6',
+                    letterSpacing: '-0.011em',
+                    fontWeight: '400'
+                  }}
                 >
-                  Konsept Süsleme • %100 Organik Pasta • Bubble Show • Magic Show • Kostümlü Karakter • Palyaço • Yüz Boyama • Party Box
+                  Konsept Süsleme • %100 Organik Pasta • Bubble Show • Magic Show<br className="hidden sm:block" />
+                  Kostümlü Karakter • Palyaço • Yüz Boyama • Party Box
                 </p>
-              </div>
-            </div>
 
-            {/* Ana Mesaj */}
-            <div className="px-6 py-16 md:py-24">
-              <div className="max-w-3xl mx-auto text-center space-y-8">
-                <p 
-                  className="text-white/95 leading-snug font-medium"
-                  style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)', letterSpacing: '-0.01em' }}
+                {/* AKIŞ BAŞLIYOR - Turuncu Büyük */}
+                <h3 
+                  className="font-bold mb-12 md:mb-16"
+                  style={{
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                    fontSize: 'clamp(2.25rem, 5.5vw, 4.5rem)',
+                    lineHeight: '1.05',
+                    letterSpacing: '-0.035em',
+                    fontWeight: '700',
+                    color: '#FF6B00'
+                  }}
                 >
-                  Doğum günün için gerekli her şey bu pakette
-                </p>
-                
-                {/* CTA Button - Minimal & Action-Oriented */}
-                <a 
-                  href="#rezervasyon"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full text-white/90 hover:text-white text-sm font-medium transition-all duration-300 hover:scale-105"
-                >
-                  <span>Akışa Hazır Ol</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </a>
+                  AKIŞ BAŞLIYOR
+                </h3>
+
+                {/* Akış Açıklaması */}
+                <div className="max-w-3xl mx-auto">
+                  <p 
+                    className="text-white mb-4"
+                    style={{
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                      fontSize: 'clamp(1.25rem, 2.25vw, 1.625rem)',
+                      lineHeight: '1.4',
+                      letterSpacing: '-0.018em',
+                      fontWeight: '500'
+                    }}
+                  >
+                    Best Event olarak her detayı düşündük, planladık, yıllardır yüzlerce defa uyguladık.
+                  </p>
+                  <p 
+                    className="text-white/75"
+                    style={{
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                      fontSize: 'clamp(1rem, 1.65vw, 1.1875rem)',
+                      lineHeight: '1.6',
+                      letterSpacing: '-0.011em',
+                      fontWeight: '400'
+                    }}
+                  >
+                    Tüm aileler halen daha konuşulan unutulmaz doğum günleri yaşattık
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -301,10 +449,28 @@ const FullBirthdayOrganization = () => {
           <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
             {/* Başlık + Slogan */}
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 
+                className="text-white mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.03em',
+                  fontWeight: '700'
+                }}
+              >
                 Profesyonel Makeup & Yüz Boyama
               </h2>
-              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+              <h3 
+                className="text-[#f8b500]"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+                  lineHeight: '1.3',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '500'
+                }}
+              >
                 Karakterine Hazır Ol!
               </h3>
             </div>
@@ -333,7 +499,7 @@ const FullBirthdayOrganization = () => {
                       <img
                         src={`/content/images/profesyonelmakeup/${img}`}
                         alt={`Profesyonel yüz boyama ${idx + 1}`}
-                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        className="w-full h-[450px] md:h-[520px] object-contain"
                         loading="lazy"
                       />
                     </div>
@@ -342,12 +508,58 @@ const FullBirthdayOrganization = () => {
               </div>
             </div>
 
+            {/* Apple Style Açıklama - Slider Altı */}
+            <div className="max-w-4xl mx-auto text-center mb-12">
+              <h4 
+                className="text-white font-semibold mb-3"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.5rem, 3.25vw, 2.125rem)',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.024em',
+                  fontWeight: '600'
+                }}
+              >
+                Her çocuk, hayalindeki karaktere dönüşüyor.
+              </h4>
+              <p 
+                className="text-white/75"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.0625rem, 1.85vw, 1.1875rem)',
+                  lineHeight: '1.6',
+                  letterSpacing: '-0.011em',
+                  fontWeight: '400'
+                }}
+              >
+                Hijyenik malzemeler ve cilt dostu boyalarla profesyonel makyaj. Prenses, kahraman ya da hayvan karakteri. Hayal gücünün sınırı yok.
+              </p>
+            </div>
+
             {/* SEO Açıklama */}
-            <div className="max-w-4xl mx-auto">
-              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <p 
+                className="text-white/85 mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.0625rem, 1.75vw, 1.125rem)',
+                  lineHeight: '1.65',
+                  letterSpacing: '-0.011em',
+                  fontWeight: '400'
+                }}
+              >
                 Profesyonel makeup artistlerimiz ve yüz boyama uzmanlarımız, çocukların en sevdikleri karakterlere dönüşmesini sağlar. Hijyenik, kaliteli ve cilt dostu malzemeler kullanarak, her çocuğa özel ilgi gösteriyoruz.
               </p>
-              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+              <p 
+                className="text-white/70"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)',
+                  lineHeight: '1.7',
+                  letterSpacing: '-0.008em',
+                  fontWeight: '400'
+                }}
+              >
                 Glitter, face painting ve karakter makyajı ile doğum günü partiniz başlar başlamaz çocuklar kendilerini özel hisseder. Prenses, kahraman, hayvan karakterleri ve daha fazlası... Hayal gücünün sınırı yok!
               </p>
             </div>
@@ -358,10 +570,28 @@ const FullBirthdayOrganization = () => {
         <section className="bg-[#050509] border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 
+                className="text-white mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.03em',
+                  fontWeight: '700'
+                }}
+              >
                 %100 Organik Şef Pastası
               </h2>
-              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+              <h3 
+                className="text-[#f8b500]"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+                  lineHeight: '1.3',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '500'
+                }}
+              >
                 Cordon Bleu Şef'ten, Sağlıklı Lezzet
               </h3>
             </div>
@@ -381,7 +611,7 @@ const FullBirthdayOrganization = () => {
                       <img
                         src={`/content/images/fullpaket/${img}`}
                         alt={`Organik pasta ${idx + 1}`}
-                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        className="w-full h-[450px] md:h-[520px] object-contain"
                         loading="lazy"
                       />
                     </div>
@@ -390,11 +620,29 @@ const FullBirthdayOrganization = () => {
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <p 
+                className="text-white/85 mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.0625rem, 1.75vw, 1.125rem)',
+                  lineHeight: '1.65',
+                  letterSpacing: '-0.011em',
+                  fontWeight: '400'
+                }}
+              >
                 Cordon Bleu eğitimi almış şefimiz, her pastayı özel olarak tasarlar ve hazırlar. %100 organik malzemeler kullanılır; ilave şeker, yağ veya krem şanti yoktur. Konseptinize özel tasarım, hem görsel hem de lezzet açısından unutulmaz bir deneyim sunar.
               </p>
-              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+              <p 
+                className="text-white/70"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)',
+                  lineHeight: '1.7',
+                  letterSpacing: '-0.008em',
+                  fontWeight: '400'
+                }}
+              >
                 Elsa'dan Spiderman'e, Safari'den Prenses temasına kadar her konsepte uygun pasta tasarımı yapıyoruz. Sağlıklı, lezzetli ve estetik - tam da aradığınız pasta!
               </p>
             </div>
@@ -405,10 +653,28 @@ const FullBirthdayOrganization = () => {
         <section className="bg-[#0a0a0f] border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 
+                className="text-white mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.03em',
+                  fontWeight: '700'
+                }}
+              >
                 Konsept Doğum Günü & Süsleme
               </h2>
-              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+              <h3 
+                className="text-[#f8b500]"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+                  lineHeight: '1.3',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '500'
+                }}
+              >
                 Hayalindeki Tema, Gerçek Oluyor
               </h3>
             </div>
@@ -436,7 +702,7 @@ const FullBirthdayOrganization = () => {
                       <img
                         src={`/content/images/konseptdogumgunu/${img}`}
                         alt={`Konsept süsleme ${idx + 1}`}
-                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        className="w-full h-[450px] md:h-[520px] object-contain"
                         loading="lazy"
                       />
                     </div>
@@ -445,11 +711,29 @@ const FullBirthdayOrganization = () => {
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <p 
+                className="text-white/85 mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.0625rem, 1.75vw, 1.125rem)',
+                  lineHeight: '1.65',
+                  letterSpacing: '-0.011em',
+                  fontWeight: '400'
+                }}
+              >
                 Elsa, Safari, Wednesday, Spiderman ve daha fazlası! İstediğiniz konsepti detaylarıyla birlikte hayata geçiriyoruz. Balon kemerleri, backdrop, masa düzeni, konsept aksesuarlar ve tema renklerine uygun tüm dekorasyon elementleri profesyonel ekibimiz tarafından kurulur.
               </p>
-              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+              <p 
+                className="text-white/70"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)',
+                  lineHeight: '1.7',
+                  letterSpacing: '-0.008em',
+                  fontWeight: '400'
+                }}
+              >
                 Her detay fotoğraf çekimleri için kusursuz bir sahne yaratır. Misafirleriniz geldiklerinde, tam bir konsept dünyasına adım atacaklar.
               </p>
             </div>
@@ -460,16 +744,35 @@ const FullBirthdayOrganization = () => {
         <section className="bg-[#050509] border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 
+                className="text-white mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.03em',
+                  fontWeight: '700'
+                }}
+              >
                 Bubble Show Gösterisi
               </h2>
-              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+              <h3 
+                className="text-[#f8b500]"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+                  lineHeight: '1.3',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '500'
+                }}
+              >
                 Dev Baloncuklarla Büyülü 30 Dakika
               </h3>
             </div>
 
-            <div className="relative mb-12">
-              <div className="overflow-x-auto scrollbar-hide">
+            {/* Bubble Show - Basit Çözüm: Scroll Event */}
+            <div className="relative mb-6">
+              <div className="overflow-x-auto scrollbar-hide" onScroll={handleBubbleScroll}>
                 <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
                   {[
                     { src: 'bubbleshow/bubbleshowhero.webp', alt: 'Bubble show hero' },
@@ -491,20 +794,56 @@ const FullBirthdayOrganization = () => {
                       <img
                         src={`/content/images/${item.src}`}
                         alt={item.alt}
-                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        className="w-full h-[450px] md:h-[520px] object-contain"
                         loading="lazy"
                       />
                     </div>
                   ))}
                 </div>
               </div>
+              
+              {/* Apple Style Caption Bar */}
+              <div className="mt-6 text-center">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#f8b500]"></div>
+                  <p 
+                    className="text-white/90"
+                    style={{
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                      fontSize: 'clamp(0.75rem, 1.25vw, 0.875rem)',
+                      letterSpacing: '-0.011em',
+                      fontWeight: '500'
+                    }}
+                  >
+                    {bubbleCaptions[activeBubbleSlide]}
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <p 
+                className="text-white/85 mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.0625rem, 1.75vw, 1.125rem)',
+                  lineHeight: '1.65',
+                  letterSpacing: '-0.011em',
+                  fontWeight: '400'
+                }}
+              >
                 30 dakika süren bubble show gösterimizde, dev baloncuklar, sahne efektleri ve çocukların içine girebildiği büyülü anlar var. Profesyonel bubble artist'imiz, müzik eşliğinde görsel bir şölen sunuyor.
               </p>
-              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+              <p 
+                className="text-white/70"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)',
+                  lineHeight: '1.7',
+                  letterSpacing: '-0.008em',
+                  fontWeight: '400'
+                }}
+              >
                 Çocuklar büyük baloncukların içine girer, rengarenk köpüklerle oynar ve unutulmaz kareler için poz verir. Video çekimi için mükemmel bir show!
               </p>
             </div>
@@ -515,10 +854,28 @@ const FullBirthdayOrganization = () => {
         <section className="bg-[#0a0a0f] border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 
+                className="text-white mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.03em',
+                  fontWeight: '700'
+                }}
+              >
                 Palyaço & Animasyon Ekibi
               </h2>
-              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+              <h3 
+                className="text-[#f8b500]"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+                  lineHeight: '1.3',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '500'
+                }}
+              >
                 Oyun, Dans, Kahkaha!
               </h3>
             </div>
@@ -546,7 +903,7 @@ const FullBirthdayOrganization = () => {
                       <img
                         src={`/content/images/palyaco/${img}`}
                         alt={`Palyaço animasyon ${idx + 1}`}
-                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        className="w-full h-[450px] md:h-[520px] object-contain"
                         loading="lazy"
                       />
                     </div>
@@ -555,11 +912,29 @@ const FullBirthdayOrganization = () => {
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <p 
+                className="text-white/85 mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.0625rem, 1.75vw, 1.125rem)',
+                  lineHeight: '1.65',
+                  letterSpacing: '-0.011em',
+                  fontWeight: '400'
+                }}
+              >
                 Profesyonel palyaço ve animatör ekibimiz, etkinlik boyunca grup oyunları, müzikli danslar, kar show'u, konfeti partisi, pinyata ve sosis balon yapımı ile çocukları aktif tutar. Hiçbir çocuk kenarda kalmaz!
               </p>
-              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+              <p 
+                className="text-white/70"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)',
+                  lineHeight: '1.7',
+                  letterSpacing: '-0.008em',
+                  fontWeight: '400'
+                }}
+              >
                 Yaş grubuna özel oyunlar, komik skečler ve sürpriz aktivitelerle dolu bir animasyon programı. Enerjisi yüksek, güvenli ve eğlenceli!
               </p>
             </div>
@@ -570,10 +945,28 @@ const FullBirthdayOrganization = () => {
         <section className="bg-[#050509] border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 
+                className="text-white mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.03em',
+                  fontWeight: '700'
+                }}
+              >
                 Kostümlü Karakter
               </h2>
-              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+              <h3 
+                className="text-[#f8b500]"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+                  lineHeight: '1.3',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '500'
+                }}
+              >
                 En Sevdiğin Karakter Yanında
               </h3>
             </div>
@@ -601,7 +994,7 @@ const FullBirthdayOrganization = () => {
                       <img
                         src={`/content/images/Kostumlukarakterler/${img}`}
                         alt={`Kostümlü karakter ${idx + 1}`}
-                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        className="w-full h-[450px] md:h-[520px] object-contain"
                         loading="lazy"
                       />
                     </div>
@@ -610,11 +1003,29 @@ const FullBirthdayOrganization = () => {
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <p 
+                className="text-white/85 mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.0625rem, 1.75vw, 1.125rem)',
+                  lineHeight: '1.65',
+                  letterSpacing: '-0.011em',
+                  fontWeight: '400'
+                }}
+              >
                 Elsa, Pamuk Prenses, Spiderman, Batman ve daha fazlası! Seçeceğiniz 1 kostümlü karakter, etkinlik boyunca çocuklarla birlikte olur, fotoğraf çeker, dans eder ve özel anlar yaratır.
               </p>
-              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+              <p 
+                className="text-white/70"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)',
+                  lineHeight: '1.7',
+                  letterSpacing: '-0.008em',
+                  fontWeight: '400'
+                }}
+              >
                 Profesyonel kostümler, karaktere uygun davranış ve çocuklarla özel bağ kurma yeteneği ile unutulmaz bir deneyim sunuyoruz.
               </p>
             </div>
@@ -625,10 +1036,28 @@ const FullBirthdayOrganization = () => {
         <section className="bg-[#0a0a0f] border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 
+                className="text-white mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.03em',
+                  fontWeight: '700'
+                }}
+              >
                 Profesyonel Fotoğraf & Video Çekimi
               </h2>
-              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+              <h3 
+                className="text-[#f8b500]"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+                  lineHeight: '1.3',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '500'
+                }}
+              >
                 Unutulmaz Anlar, Sonsuza Dek Kayıt Altında
               </h3>
             </div>
@@ -638,7 +1067,7 @@ const FullBirthdayOrganization = () => {
                 <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
                   {[
                     { src: 'ahunundogumgunu/dogumgunucocugunaozelfotorafcekimleri.jpg', alt: 'Doğum günü çocuğuna özel fotoğraf çekimleri' },
-                    { src: 'ahunundogumgunu/vedafotoğrafı.jpg', alt: 'Veda fotoğrafı' },
+                    { src: 'ahunundogumgunu/vedafotografi.jpg', alt: 'Veda fotoğrafı' },
                     { src: 'ahunundogumgunu/grupoyunları.jpg', alt: 'Grup oyunları fotoğrafları' },
                     { src: 'ahunundogumgunu/konseptdogumgunu.jpg', alt: 'Konsept doğum günü fotoğrafları' },
                     { src: 'ahunundogumgunu/_DSF4779.jpg', alt: 'Profesyonel fotoğraf karesi 1' },
@@ -656,7 +1085,7 @@ const FullBirthdayOrganization = () => {
                       <img
                         src={`/content/images/${item.src}`}
                         alt={item.alt}
-                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        className="w-full h-[450px] md:h-[520px] object-contain"
                         loading="lazy"
                       />
                     </div>
@@ -665,11 +1094,29 @@ const FullBirthdayOrganization = () => {
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <p 
+                className="text-white/85 mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.0625rem, 1.75vw, 1.125rem)',
+                  lineHeight: '1.65',
+                  letterSpacing: '-0.011em',
+                  fontWeight: '400'
+                }}
+              >
                 Profesyonel fotoğraf ve video çekimi hizmeti ile tüm özel anları kaydediyoruz. Her kareden duygular taşar; çocukların mutluluğu, ailenin sevinci ve unutulmaz anlar profesyonel ekipmanlarla ölümsüzleşir.
               </p>
-              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+              <p 
+                className="text-white/70"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)',
+                  lineHeight: '1.7',
+                  letterSpacing: '-0.008em',
+                  fontWeight: '400'
+                }}
+              >
                 Etkinlik sonunda size özel 1 dakikalık unutulmaz doğum günü klibi hazırlıyoruz. Bu anılar, yıllarca izlenecek ve tekrar tekrar hatırlanacak!
               </p>
             </div>
@@ -680,10 +1127,28 @@ const FullBirthdayOrganization = () => {
         <section className="bg-[#050509] border-t border-white/5">
           <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 
+                className="text-white mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.03em',
+                  fontWeight: '700'
+                }}
+              >
                 Party Box Ses Sistemi
               </h2>
-              <h3 className="text-xl md:text-2xl text-[#f8b500] font-light">
+              <h3 
+                className="text-[#f8b500]"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+                  lineHeight: '1.3',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '500'
+                }}
+              >
                 Her Anın Enerjisi, Doğru Müzikle!
               </h3>
             </div>
@@ -711,7 +1176,7 @@ const FullBirthdayOrganization = () => {
                       <img
                         src={`/content/images/${item.src}`}
                         alt={item.alt}
-                        className="w-full h-[450px] md:h-[520px] object-cover"
+                        className="w-full h-[450px] md:h-[520px] object-contain"
                         loading="lazy"
                       />
                     </div>
@@ -720,11 +1185,29 @@ const FullBirthdayOrganization = () => {
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <p className="text-base md:text-lg text-white/85 leading-relaxed mb-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <p 
+                className="text-white/85 mb-4"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(1.0625rem, 1.75vw, 1.125rem)',
+                  lineHeight: '1.65',
+                  letterSpacing: '-0.011em',
+                  fontWeight: '400'
+                }}
+              >
                 Profesyonel party box ses sistemi ve mikrofon ile etkinlik boyunca kaliteli ses deneyimi yaşatıyoruz. Özel playlist hazırlayarak, her anın enerjisini doğru müzikle destekliyoruz.
               </p>
-              <p className="text-sm md:text-base text-white/75 leading-relaxed">
+              <p 
+                className="text-white/70"
+                style={{
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                  fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)',
+                  lineHeight: '1.7',
+                  letterSpacing: '-0.008em',
+                  fontWeight: '400'
+                }}
+              >
                 Karşılamadan vedaya kadar tüm etkinlik boyunca uygun ses seviyesi ve müzik seçimi ile misafirlerinize keyifli bir deneyim sunuyoruz. Oyunlar, danslar ve gösteriler için özel ses efektleri de dahil!
               </p>
             </div>
@@ -906,7 +1389,7 @@ const FullBirthdayOrganization = () => {
                       <img 
                         src={img.src} 
                         alt={img.alt} 
-                        className="w-full h-[400px] md:h-[500px] object-cover" 
+                        className="w-full h-[400px] md:h-[500px] object-contain" 
                         loading="lazy" 
                       />
                     </div>
@@ -929,7 +1412,7 @@ const FullBirthdayOrganization = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="https://wa.me/905349306799"
+                    href="https://wa.me/905307309009"
                     className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm md:text-base font-semibold bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 hover:bg-[#128C7E] transition-all duration-300 hover:scale-105"
                   >
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -939,7 +1422,7 @@ const FullBirthdayOrganization = () => {
                   </a>
                   
                   <a
-                    href="tel:05349306799"
+                    href="tel:05307309009"
                     className="inline-flex items-center justify-center rounded-full px-8 py-3 text-sm md:text-base font-medium border-2 border-[#25D366]/50 text-white hover:bg-[#25D366]/10 transition-colors"
                   >
                     📞 Hemen Ara
@@ -1066,7 +1549,16 @@ const FullBirthdayOrganization = () => {
         {/* SSS */}
         <section className="bg-[#050509] border-t border-white/5">
           <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-6">
+            <h2 
+              className="text-white mb-6"
+              style={{
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif',
+                fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+                lineHeight: '1.2',
+                letterSpacing: '-0.025em',
+                fontWeight: '600'
+              }}
+            >
               Sıkça Sorulan Sorular
             </h2>
 
@@ -1081,7 +1573,16 @@ const FullBirthdayOrganization = () => {
                   className="w-full text-left px-5 md:px-6 py-4 md:py-5 focus:outline-none"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <p className="font-medium text-sm md:text-[15px] text-white">
+                    <p 
+                      className="font-medium text-white"
+                      style={{
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                        fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)',
+                        lineHeight: '1.5',
+                        letterSpacing: '-0.011em',
+                        fontWeight: '500'
+                      }}
+                    >
                       {item.q}
                     </p>
                     <span className="text-lg text-white/70">
@@ -1089,7 +1590,16 @@ const FullBirthdayOrganization = () => {
                     </span>
                   </div>
                   {openFaq === idx && (
-                    <p className="mt-3 text-xs md:text-sm text-white/80 leading-relaxed">
+                    <p 
+                      className="mt-3 text-white/80"
+                      style={{
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
+                        fontSize: 'clamp(0.875rem, 1.35vw, 0.9375rem)',
+                        lineHeight: '1.7',
+                        letterSpacing: '-0.008em',
+                        fontWeight: '400'
+                      }}
+                    >
                       {item.a}
                     </p>
                   )}

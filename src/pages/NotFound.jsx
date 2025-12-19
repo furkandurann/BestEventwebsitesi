@@ -36,10 +36,10 @@ const NotFound = () => {
             Şu an teknik bir sorun yaşanıyor. Bize direkt müşteri iletişim numaramız üzerinden ulaşabilirsiniz:
           </p>
           <a
-            href="tel:05349306799"
+            href="tel:05307309009"
             className="text-yellow-300 text-lg font-bold hover:text-yellow-200 transition-colors mt-2 inline-block"
           >
-            0534 930 67 99 - Best Event
+            0530 730 90 09 - Best Event
           </a>
         </div>
 

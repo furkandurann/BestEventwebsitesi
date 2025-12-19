@@ -195,12 +195,12 @@ const ServiceAreas = () => {
                       </div>
 
                       <div className="flex flex-wrap gap-3">
-                        <a href="tel:+905349306799" className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-black font-semibold hover:-translate-y-0.5 transition-all shadow-lg">
+                        <a href="tel:+905307309009" className="flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-black font-semibold hover:-translate-y-0.5 transition-all shadow-lg">
                           <FaPhone className="text-black/80" />
                           <span>Hemen Ara</span>
                         </a>
                         <a
-                          href="https://wa.me/905349306799"
+                          href="https://wa.me/905307309009"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-2 px-5 py-3 rounded-xl bg-green-500 text-white font-semibold hover:bg-green-400 transition-colors shadow-lg"
@@ -270,12 +270,12 @@ const ServiceAreas = () => {
                 <h2 className="text-2xl md:text-3xl font-semibold">Hangi semtte olursanız olun, yanınızdayız</h2>
                 <p className="text-white/70">Detay verin, aynı gün içinde planlayalım.</p>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  <a href="tel:+905349306799" className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                  <a href="tel:+905307309009" className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:-translate-y-0.5 transition-all flex items-center gap-2">
                     <FaPhone className="text-black/80" />
-                    0534 930 67 99
+                    0530 730 90 09
                   </a>
                   <a
-                    href="https://wa.me/905349306799"
+                    href="https://wa.me/905307309009"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-400 transition-colors flex items-center gap-2"

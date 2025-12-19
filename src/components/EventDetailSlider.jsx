@@ -115,7 +115,7 @@ const EventDetailSlider = ({
                     className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                   >
                     <motion.a
-                      href="tel:+905349306799"
+                      href="tel:+905307309009"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="be-cta-button be-touch-target shadow-2xl hover:shadow-3xl"
@@ -124,7 +124,7 @@ const EventDetailSlider = ({
                     </motion.a>
                     
                     <motion.a
-                      href="https://wa.me/905349306799"
+                      href="https://wa.me/905307309009"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}

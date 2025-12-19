@@ -31,7 +31,7 @@ const birthdayImages = [
   { src: '/content/images/ahunundogumgunu/sihirbazlıkgosterisiilecocuklarıngozundekisaskinlik.jpg', alt: 'Çocuklar için sihirbazlık gösterisi - Best Event' },
   { src: '/content/images/ahunundogumgunu/tavsanveguvercınlıetkilesim.jpg', alt: 'Tavşan ve güvercin gösterisi - Best Event doğum günü' },
   { src: '/content/images/ahunundogumgunu/bubbleshowgosterisi.jpg', alt: 'Bubble show organizasyonu İstanbul - Best Event' },
-  { src: '/content/images/ahunundogumgunu/vedafotoğrafı.jpg', alt: 'Doğum günü veda fotoğrafı - Best Event İstanbul' },
+  { src: '/content/images/ahunundogumgunu/vedafotografi.jpg', alt: 'Doğum günü veda fotoğrafı - Best Event İstanbul' },
 ]
 
 const BirthdayHeroSlider = () => {

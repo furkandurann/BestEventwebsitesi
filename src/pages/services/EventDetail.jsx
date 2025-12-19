@@ -482,13 +482,13 @@ const EventDetail = ({
                 className="bg-white text-purple-600 px-10 md:px-14 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold shadow-2xl hover:shadow-3xl transition-all w-full sm:w-auto"
                 aria-label="İletişime Geç"
               >
-                +90 534 930 67 99
+                +90 530 730 90 09
               </motion.button>
               
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://wa.me/905349306799"
+                href="https://wa.me/905307309009"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-2 border-white text-white px-10 md:px-14 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold hover:bg-white/10 transition-all w-full sm:w-auto text-center"

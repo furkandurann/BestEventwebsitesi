@@ -132,17 +132,17 @@ const SurvivorParkuru = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <motion.a
-                href="tel:+905349306799"
+                href="tel:+905307309009"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-green-600 px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all inline-flex items-center justify-center"
               >
                 <span className="mr-2">📞</span>
-                Hemen Ara: 0534 930 67 99
+                Hemen Ara: 0530 730 90 09
               </motion.a>
               
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -468,17 +468,17 @@ const SurvivorParkuru = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="tel:+905349306799"
+                href="tel:+905307309009"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-green-600 px-12 py-5 rounded-full font-bold text-xl shadow-2xl hover:shadow-3xl transition-all inline-flex items-center justify-center"
               >
                 <span className="mr-2">📞</span>
-                0534 930 67 99
+                0530 730 90 09
               </motion.a>
               
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

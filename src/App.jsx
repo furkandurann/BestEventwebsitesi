@@ -6,6 +6,7 @@ import WhatsAppButton from './components/WhatsAppButton'
 import ScrollToTop from './components/ScrollToTop'
 import Breadcrumb from './components/Breadcrumb'
 import ThemeProvider from './components/ThemeProvider'
+import ErrorBoundary from './components/ErrorBoundary'
 import Loading from './components/Loading'
 import useWebVitals, { logWebVitals } from './hooks/useWebVitals'
 
@@ -99,9 +100,10 @@ function App() {
       <ScrollToTop />
       <Breadcrumb />
       <main>
-        <Suspense fallback={null}>
-          <ThemeProvider>
-            <Routes>
+        <ErrorBoundary>
+          <Suspense fallback={null}>
+            <ThemeProvider>
+              <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hakkimizda" element={<About />} />
         <Route path="/organizasyonlar" element={<Navigate to="/organizasyonlar/cocuk-etkinlikleri" replace />} />
@@ -169,9 +171,10 @@ function App() {
 
         {/* 404 - Sayfa Bulunamadı (en sonda olmalı) */}
         <Route path="*" element={<NotFound />} />
-            </Routes>
-          </ThemeProvider>
-        </Suspense>
+              </Routes>
+            </ThemeProvider>
+          </Suspense>
+        </ErrorBoundary>
       </main>
       <Footer />
       {!hideWhatsAppButton && <WhatsAppButton />}

@@ -124,7 +124,7 @@ const ChildEvents = () => {
             "name": "Fiyatlar ne kadar?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 0534 930 67 99"
+              "text": "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
             }
           },
           {
@@ -389,7 +389,7 @@ const ChildEvents = () => {
                 },
                 {
                   question: "Fiyatlar ne kadar?",
-                  answer: "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 0534 930 67 99"
+                  answer: "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
                 },
                 {
                   question: "Kaç gün önceden rezervasyon yapmalıyım?",
@@ -455,7 +455,7 @@ const ChildEvents = () => {
               {/* CTA Button */}
               <div className="mt-10">
                 <a
-                  href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                  href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"

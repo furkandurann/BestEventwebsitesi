@@ -330,7 +330,7 @@ const ProfessionalMakeup = () => {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-6 justify-center items-center max-w-3xl mx-auto">
               <motion.a
-                href="https://wa.me/905349306799?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
+                href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -2 }}
@@ -358,7 +358,7 @@ const ProfessionalMakeup = () => {
               </motion.a>
 
               <motion.a
-                href="tel:+905349306799"
+                href="tel:+905307309009"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="group relative w-full sm:w-auto"
@@ -377,7 +377,7 @@ const ProfessionalMakeup = () => {
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
                       }}
                     >
-                      0534 930 67 99
+                      0530 730 90 09
                     </span>
                   </div>
                 </div>

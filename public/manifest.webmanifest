@@ -1,0 +1,20 @@
+{
+  "name": "Best Event - Etkinlik Organizasyonu",
+  "short_name": "Best Event",
+  "description": "İstanbul'da profesyonel etkinlik organizasyonu - Çocuk etkinlikleri, doğum günleri, kurumsal organizasyonlar",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050507",
+  "theme_color": "#9333ea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["business", "entertainment"],
+  "lang": "tr",
+  "dir": "ltr"
+}

@@ -120,7 +120,7 @@ const BubbleShow = () => {
         <NarrativeSection
           eyebrow="10+ YIL DENEYİM"
           title="Tüm İstanbul Bubble Show Organizasyonu"
-          body="Best Event olarak İstanbul'un her bölgesinde profesyonel bubble show hizmeti sunuyoruz. Dev sabun köpükleri, LED ışıklar ve çocuk dostu ritmler ile unutulmaz anlar yaratıyoruz. Kadıköy'den Beylikdüzü'ne, Üsküdar'dan Sarıyer'e kadar tüm İstanbul'da hizmetinizdeyiz."
+          body="Best Event olarak İstanbul'un her bölgesinde profesyonel bubble show organizasyonu hizmeti sunuyoruz. Dev sabun köpükleri, LED ışıklar ve çocuk dostu ritmler ile unutulmaz bubble show deneyimleri yaratıyoruz. Kadıköy'den Beylikdüzü'ne, Üsküdar'dan Sarıyer'e kadar tüm İstanbul'da bubble show organizasyonu hizmetinizdeyiz."
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
@@ -134,7 +134,7 @@ const BubbleShow = () => {
         <NarrativeSection
           eyebrow="PROFESYONEL EKİP"
           title="İstanbul'un En İyi Bubble Show Gösterileri"
-          body="10+ yıllık deneyimimiz ve 5000+ başarılı etkinliğimiz ile İstanbul'un en güvenilir bubble show organizasyon firmasıyız. Dev sabun köpükleri (3+ metre çap), renkli LED ışık efektleri ve interaktif deneyimlerle çocuklarınızı büyülüyoruz. Her gösteri 20-40 dakika sürer ve yaş grubuna göre özelleştirilir."
+          body="10+ yıllık deneyimimiz ve 5000+ başarılı etkinlik organizasyonumuz ile İstanbul'un en güvenilir bubble show organizasyon firmasıyız. Dev sabun köpükleri (3+ metre çap), renkli LED ışık efektleri ve interaktif bubble show deneyimleriyle çocuklarınızı büyülüyoruz. Her bubble show gösterisi 20-40 dakika sürer ve yaş grubuna göre özelleştirilir."
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
@@ -189,8 +189,8 @@ const BubbleShow = () => {
         {/* Section 7: Bubble Show ile Doğum Günü Süsleme */}
         <NarrativeSection
           eyebrow="DEKORASYON PAKETİ"
-          title="Bubble Show ile Doğum Günü Süsleme"
-          body="Doğum günü organizasyonu bubble show hizmetimiz, profesyonel süsleme ve dekorasyon ile birlikte sunulur. Balon süslemeleri, masa düzenleme, arka plan panosu ve özel bubble show dekorasyonları ile doğum günü mekanınızı tamamen dönüştürüyoruz. Her yaş grubu için özel tema alternatifleri ve renkli bubble show gösterileri ile doğum günü organizasyonunuz mükemmel olacak."
+          title="Bubble Show ile Doğum Günü Organizasyonu"
+          body="Doğum günü organizasyonu bubble show hizmetimiz, profesyonel süsleme ve dekorasyon ile birlikte sunulur. Balon süslemeleri, masa düzenleme, arka plan panosu ve özel bubble show dekorasyonları ile doğum günü mekanınızı tamamen dönüştürüyoruz. Her yaş grubu için özel tema alternatifleri ve renkli bubble show gösterileri ile doğum günü organizasyonunuz mükemmel olacak. Bubble show ile doğum günü organizasyonu paketimiz, tüm detayları içerir."
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 
@@ -218,7 +218,7 @@ const BubbleShow = () => {
         <NarrativeSection
           eyebrow="KOMPLE HİZMET"
           title="Organizasyon Dahil Bubble Show Doğum Günü"
-          body="Doğum günü organizasyonu bubble show paketimiz ile baştan sona tam organizasyon hizmeti sunuyoruz. Mekan temini, catering, animasyon, bubble show gösterisi, fotoğraf çekimi ve tüm teknik ekipmanlar dahil. Siz sadece gelip eğlenin, gerisi bizden! Her detay profesyonelce planlanır ve doğum günü organizasyonunuz kusursuz gerçekleştirilir. Bubble show ile birlikte yüz boyama, balon şekillendirme ve sihirbazlık gösterileri de eklenebilir."
+          body="Doğum günü organizasyonu bubble show paketimiz ile baştan sona tam organizasyon hizmeti sunuyoruz. Mekan temini, catering, animasyon, bubble show gösterisi, fotoğraf çekimi ve tüm teknik ekipmanlar dahil. Siz sadece gelip eğlenin, gerisi bizden! Her detay profesyonelce planlanır ve bubble show organizasyonunuz kusursuz gerçekleştirilir. Bubble show ile birlikte yüz boyama, balon şekillendirme ve sihirbazlık gösterileri de eklenebilir. Tüm İstanbul'da bubble show organizasyonu için bizi arayın."
         />
         <div className="w-full flex justify-center items-center bg-white py-8">
           <img 

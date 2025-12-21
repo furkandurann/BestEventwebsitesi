@@ -66,10 +66,76 @@ const SantaClausRental = () => {
   return (
     <>
       <Seo 
-        title="🎅 Noel Baba Kiralama İstanbul | Yılbaşı Özel Hizmet - Best Event"
-        description="İstanbul'un en özel Noel Baba kiralama hizmeti. Private ve Standart paketlerle çocuklarınızın rüyalarını gerçeğe dönüştürün. Kar Kızı, hediye dağıtımı, kar yağdırma ve daha fazlası!"
-        keywords="noel baba kiralama istanbul, noel baba, yılbaşı etkinliği, çocuk etkinliği, noel süsleme"
+        title="🎅 Noel Baba Kiralama İstanbul | Yılbaşı Organizasyonu - Best Event"
+        description="İstanbul'un en özel Noel Baba kiralama ve yılbaşı organizasyonu hizmeti. Private ve Standart paketler, profesyonel sahne sanatçısı, Kar Kızı, hediye dağıtımı, kar yağdırma. Kurumsal ve özel etkinlikler için ideal. ☎ 0530 730 90 09"
+        keywords="noel baba kiralama istanbul, noel baba organizasyonu, yılbaşı etkinliği, çocuk etkinliği, noel süsleme, kar kızı, kurumsal yılbaşı, private noel baba, standart noel baba, istanbul noel organizasyonu"
         ogImage="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Noel Baba Kiralama İstanbul",
+            "description": "İstanbul'un en özel Noel Baba kiralama ve yılbaşı organizasyonu hizmeti",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Best Event",
+              "telephone": "+905307309009",
+              "areaServed": {
+                "@type": "City",
+                "name": "İstanbul"
+              }
+            },
+            "serviceType": "Noel Baba Kiralama ve Yılbaşı Organizasyonu",
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Private Noel Baba Paketi",
+                "description": "İstanbul'un tek özel kaftanlı Noel Baba, profesyonel sahne sanatçısı, Kar Kızı, yeni yıl oyunları",
+                "availability": "https://schema.org/InStock"
+              },
+              {
+                "@type": "Offer",
+                "name": "Standart Noel Baba Paketi",
+                "description": "Noel Baba karakteri, hediye dağıtımı, balon hediye, kar yağdırma efekti",
+                "availability": "https://schema.org/InStock"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "name": "Yılbaşı Noel Baba Organizasyonu",
+            "description": "Profesyonel Noel Baba kiralama ve yılbaşı organizasyonu hizmeti",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": {
+              "@type": "Place",
+              "name": "İstanbul",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "İstanbul",
+                "addressCountry": "TR"
+              }
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "Best Event",
+              "url": "https://bestevent.com.tr"
+            }
+          }
+        ]}
       />
 
       {/* Hero Slider - Doğum Günü Organizasyonu Gibi */}

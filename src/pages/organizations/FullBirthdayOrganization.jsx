@@ -381,7 +381,7 @@ const FullBirthdayOrganization = () => {
                   Tek Paket. Tek Ekip. Tek Muhattap.
                 </h2>
 
-                {/* Hizmet Listesi */}
+                {/* ,Etkinlik Listesi */}
                 <p 
                   className="text-white/75 mb-16 md:mb-20 px-4"
                   style={{
@@ -776,13 +776,13 @@ const FullBirthdayOrganization = () => {
                 <div className="flex gap-4 pb-4" style={{ scrollSnapType: 'x mandatory' }}>
                   {[
                     { src: 'bubbleshow/bubbleshowhero.webp', alt: 'Bubble show hero' },
-                    { src: 'ahunundogumgunu/minniebubblegosterisi.jpg', alt: 'Minnie bubble gösterisi' },
+                    { src: 'ahunundogumgunu/minniebubblegosterisi.webp', alt: 'Minnie bubble gösterisi' },
                     { src: 'bubbleshow/bubbleshowslider2.webp', alt: 'Bubble show slider 2' },
-                    { src: 'ahunundogumgunu/anaherobubbleshowgosterisi.jpg', alt: 'Ana hero bubble show gösterisi' },
+                    { src: 'ahunundogumgunu/anaherobubbleshowgosterisi.webp', alt: 'Ana hero bubble show gösterisi' },
                     { src: 'bubbleshow/IMG_1797.webp', alt: 'Bubble show çocuklar' },
-                    { src: 'ahunundogumgunu/heryasauygunbubbleshowpartisi.jpg', alt: 'Her yaşa uygun bubble show partisi' },
+                    { src: 'ahunundogumgunu/heryasauygunbubbleshowpartisi.webp', alt: 'Her yaşa uygun bubble show partisi' },
                     { src: 'bubbleshow/bubbleshowslider3.webp', alt: 'Bubble show slider 3' },
-                    { src: 'ahunundogumgunu/bubbleshowgosterisi.jpg', alt: 'Bubble show gösterisi' },
+                    { src: 'ahunundogumgunu/bubbleshowgosterisi.webp', alt: 'Bubble show gösterisi' },
                     { src: 'bubbleshow/bubbleshowslider5.webp', alt: 'Bubble show slider 5' },
                     { src: 'bubbleshow/bubbleshowslider.webp', alt: 'Bubble show slider 1' }
                   ].map((item, idx) => (

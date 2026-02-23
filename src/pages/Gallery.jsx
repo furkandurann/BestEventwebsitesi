@@ -1,669 +1,564 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
-import { Helmet } from 'react-helmet-async'
 import Seo from '../components/Seo'
+import OptimizedImage from '../components/OptimizedImage'
 
 const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [photoIndex, setPhotoIndex] = useState(0)
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [hoveredCategory, setHoveredCategory] = useState(null)
+  const categoryRefs = useRef({})
 
-  // İstanbul İlçeleri
-  const istanbulIlceleri = [
-    'Adalar', 'Arnavutköy', 'Ataşehir', 'Avcılar', 'Bağcılar', 'Bahçelievler', 'Bakırköy',
-    'Başakşehir', 'Bayrampaşa', 'Beşiktaş', 'Beykoz', 'Beylikdüzü', 'Beyoğlu', 'Büyükçekmece',
-    'Çatalca', 'Çekmeköy', 'Esenler', 'Esenyurt', 'Eyüpsultan', 'Fatih', 'Gaziosmanpaşa',
-    'Güngören', 'Kadıköy', 'Kağıthane', 'Kartal', 'Küçükçekmece', 'Maltepe', 'Pendik',
-    'Sancaktepe', 'Sarıyer', 'Silivri', 'Sultanbeyli', 'Sultangazi', 'Şile', 'Şişli',
-    'Tuzla', 'Ümraniye', 'Üsküdar', 'Zeytinburnu'
-  ]
-
-  // Kategori Açıklamaları (2000+ kelime her biri)
-  const categoryDescriptions = {
+  // Kategoriler ve fotoğraflar
+  const galleryData = {
     karakterler: {
-      title: 'Kostümlü Karakter Kiralama İstanbul - Profesyonel Animasyon Hizmetleri',
-      content: `
-        <h2 class="text-3xl font-bold mb-6 text-gradient">İstanbul'un En Kapsamlı Kostümlü Karakter Kiralama Hizmeti</h2>
-        
-        <p class="text-lg mb-6 leading-relaxed">
-          Best Event olarak, İstanbul genelinde <strong>10 yılı aşkın tecrübemizle</strong> çocukların hayallerini gerçeğe dönüştürüyoruz. 
-          Kostümlü karakter kiralama hizmetimiz, profesyonel ekibimiz ve kaliteli kostümlerimizle sektörde öncü konumdayız. 
-          Elsa'dan Spiderman'e, Mickey Mouse'tan Unicorn'a kadar <strong>50'den fazla farklı karakter seçeneği</strong> sunuyoruz.
-        </p>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Neden Best Event Kostümlü Karakterleri?</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Her doğum günü partisi, çocuklar için unutulmaz bir anı olmalıdır. Biz bu özel günü daha da özel kılmak için 
-          sadece kostüm kiralamakla kalmıyor, <strong>profesyonel animatörlerimizle birlikte tam bir deneyim sunuyoruz</strong>. 
-          Karakterlerimiz sadece görsel olarak değil, tavırları, konuşmaları ve davranışlarıyla da orijinal karakterlerle birebir uyumludur.
-        </p>
-
-        <div class="bg-purple-50 p-6 rounded-xl mb-6">
-          <h4 class="text-xl font-semibold mb-3">Popüler Karakterlerimiz</h4>
-          <ul class="space-y-2">
-            <li>✨ <strong>Elsa ve Anna (Frozen)</strong> - En çok talep edilen kız karakterlerimiz</li>
-            <li>🦸 <strong>Spiderman ve Batman</strong> - Süper kahramanlarla unutulmaz parti</li>
-            <li>🐭 <strong>Mickey ve Minnie Mouse</strong> - Klasik Disney karakterleri</li>
-            <li>🦄 <strong>Unicorn</strong> - Renkli ve büyülü deneyim</li>
-            <li>🐻 <strong>Maşa ve Koca Ayı</strong> - Küçükler için en sevilen karakterler</li>
-            <li>👸 <strong>Pamuk Prenses</strong> - Masalların vazgeçilmezi</li>
-          </ul>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Hizmet Sürecimiz</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Best Event olarak sadece karakter göndermekle kalmıyoruz. Her etkinlik öncesi <strong>detaylı planlama yapıyor</strong>, 
-          çocuğun yaşına, partinin temasına ve mekanın özelliklerine göre özel program hazırlıyoruz. Animatörlerimiz, 
-          çocuk psikolojisi konusunda eğitimli, deneyimli ve güler yüzlü kişilerden oluşuyor.
-        </p>
-
-        <div class="grid md:grid-cols-2 gap-4 mb-6">
-          <div class="bg-blue-50 p-4 rounded-lg">
-            <h5 class="font-semibold mb-2">🎭 Profesyonel Animasyon</h5>
-            <p class="text-sm">Oyunlar, dans, şarkılar ve interaktif etkinliklerle çocukları eğlendiriyoruz</p>
-          </div>
-          <div class="bg-pink-50 p-4 rounded-lg">
-            <h5 class="font-semibold mb-2">📸 Fotoğraf Fırsatları</h5>
-            <p class="text-sm">Her çocukla özel fotoğraf çekimi ve toplu parti fotoğrafları</p>
-          </div>
-          <div class="bg-green-50 p-4 rounded-lg">
-            <h5 class="font-semibold mb-2">🎁 Hediye Dağıtımı</h5>
-            <p class="text-sm">Karakter eşliğinde özel hediye ve pasta kesmesi</p>
-          </div>
-          <div class="bg-yellow-50 p-4 rounded-lg">
-            <h5 class="font-semibold mb-2">⏰ Esnek Süre Seçenekleri</h5>
-            <p class="text-sm">30 dakika, 60 dakika veya özel süre paketleri</p>
-          </div>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Kostüm Kalitemiz</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Kostümlerimiz <strong>yüksek kaliteli kumaşlardan üretilmiş</strong>, hijyenik ve düzenli olarak bakımı yapılan profesyonel kostümlerdir. 
-          Her kullanım sonrası özel temizlik ve dezenfeksiyon işleminden geçirilir. Kostümlerimiz sadece göze hoş gelmekle kalmaz, 
-          aynı zamanda animatörlerin rahat hareket etmesini sağlayacak şekilde tasarlanmıştır.
-        </p>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Referanslarımız ve Deneyimimiz</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          <strong>Vodafone, Koç Holding, Allianz</strong> gibi kurumsal firmaların etkinliklerinde yer aldık. 
-          Binlerce aile bize güvendi ve çocuklarının en özel gününü bizimle paylaştı. Galerimizdeki fotoğraflar, 
-          gerçek etkinliklerden alınmış karelerdir ve hizmet kalitemizin en önemli göstergesidir.
-        </p>
-
-        <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-xl mb-6">
-          <h4 class="text-xl font-semibold mb-3">💜 Müşteri Memnuniyeti</h4>
-          <p class="mb-2">10 yılda <strong>5000+ başarılı etkinlik</strong></p>
-          <p class="mb-2"><strong>%98 müşteri memnuniyeti</strong> oranı</p>
-          <p>Her 10 müşteriden 9'u bizi tekrar tercih ediyor</p>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Fiyatlandırma ve Paketler</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Bütçenize uygun paketler sunuyoruz. Temel paketlerimiz 30 dakikalık karakter ziyareti içerirken, 
-          premium paketlerimizde 60-90 dakikalık show, yüz boyama, balon şişirme ve ek aktiviteler bulunmaktadır. 
-          Kombine paketler ile (örn. 2 karakter + bubble show) indirimli fiyatlardan yararlanabilirsiniz.
-        </p>
-      `
+      title: 'Kostümlü Karakterler',
+      subtitle: 'Masallar gerçek oluyor',
+      description: 'Elsa, Spiderman, Mickey Mouse ve daha fazlası',
+      gradient: 'from-purple-500 to-pink-500',
+      images: [
+        { src: '/content/images/Kostumlukarakterler/elsa.webp', alt: 'Elsa Karakter Kiralama İstanbul' },
+        { src: '/content/images/Kostumlukarakterler/elsaheroo.webp', alt: 'Elsa Frozen İstanbul' },
+        { src: '/content/images/Kostumlukarakterler/pamukprensesyenii.webp', alt: 'Pamuk Prenses Kiralama' },
+        { src: '/content/images/Kostumlukarakterler/pamukprensesyeniii.webp', alt: 'Pamuk Prenses İstanbul' },
+        { src: '/content/images/Kostumlukarakterler/batman.webp', alt: 'Batman Kiralama İstanbul' },
+        { src: '/content/images/Kostumlukarakterler/spidermancosku.webp', alt: 'Spiderman Karakter' },
+        { src: '/content/images/Kostumlukarakterler/spidermann.webp', alt: 'Spiderman İstanbul' },
+        { src: '/content/images/Kostumlukarakterler/minniemause.webp', alt: 'Minnie Mouse Kiralama' },
+        { src: '/content/images/Kostumlukarakterler/minnieyenii.webp', alt: 'Minnie Mouse İstanbul' },
+        { src: '/content/images/Kostumlukarakterler/mickeyyeni.webp', alt: 'Mickey Mouse Kiralama' },
+        { src: '/content/images/Kostumlukarakterler/palyaco.webp', alt: 'Palyaço İstanbul' },
+        { src: '/content/images/Kostumlukarakterler/masakocaayi.webp', alt: 'Maşa Koca Ayı Kiralama' },
+        { src: '/content/images/Kostumlukarakterler/unicornyeniii.webp', alt: 'Unicorn Karakter İstanbul' },
+      ]
     },
     bubbleshow: {
-      title: 'Bubble Show İstanbul - Büyülü Sabun Köpüğü Gösterisi',
-      content: `
-        <h2 class="text-3xl font-bold mb-6 text-gradient">İstanbul'un En Büyülü Bubble Show Deneyimi</h2>
-        
-        <p class="text-lg mb-6 leading-relaxed">
-          Bubble Show, çocukların gözlerinin içine baktığınızda gördüğünüz o masum şaşkınlığı ve sevincidir. 
-          Best Event olarak <strong>profesyonel bubble show sanatçılarımızla</strong> İstanbul genelinde binlerce çocuğu büyüledik. 
-          Dev sabun köpükleri, rengarenk baloncuklar ve interaktif gösterilerimizle unutulmaz anlar yaratıyoruz.
-        </p>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Bubble Show Nedir?</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Bubble show, sadece sabun köpüğü gösterisi değil, <strong>bir sanat formudur</strong>. Özel formüller, profesyonel ekipmanlar 
-          ve deneyimli sanatçılarla gerçekleştirilen bu gösteri, çocukları ve yetişkinleri büyülemeyi başaran nadir etkinliklerden biridir. 
-          Gösterimizde dev köpükler, içine girilebilen balon köpükler, köpük içinde köpükler ve daha birçok büyülü an var.
-        </p>
-
-        <div class="bg-blue-50 p-6 rounded-xl mb-6">
-          <h4 class="text-xl font-semibold mb-3">🫧 Gösterimizde Neler Var?</h4>
-          <ul class="space-y-3">
-            <li><strong>Dev Sabun Köpükleri</strong> - 2-3 metre çapında dev baloncuklar</li>
-            <li><strong>İçine Girilebilen Balon</strong> - Çocuklar dev balonun içine giriyor!</li>
-            <li><strong>Rengarenk Köpükler</strong> - LED ışıklar eşliğinde renkli köpük şöleni</li>
-            <li><strong>Köpük İçinde Köpük</strong> - İnanılmaz tekniklerle oluşturulan balon mucizesi</li>
-            <li><strong>İnteraktif Oyunlar</strong> - Çocukların köpüklerle oynaması</li>
-            <li><strong>Müzik Eşliğinde Gösteri</strong> - Özel müzikler ile senkronize performans</li>
-          </ul>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Profesyonel Ekipmanlarımız</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Bubble show için kullandığımız ekipmanlar <strong>uluslararası standartlarda</strong> profesyonel malzemelerdir. 
-          Özel ithal sabun çözeltilerimiz çocuklar için %100 güvenli, cilt dostu ve alerjik reaksiyon yaratmayan formüllerdir. 
-          Makinelerimiz sessiz çalışır ve profesyonel gösterilerde kullanılan yüksek kaliteli cihazlardır.
-        </p>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Bubble Show Sanatçılarımız</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Ekibimizde <strong>5+ yıl deneyimli</strong> bubble show sanatçıları bulunmaktadır. Her sanatçımız, yüzlerce gösteride 
-          yer almış, çocuk psikolojisi konusunda eğitimlidir. Sadece teknik beceri değil, aynı zamanda sahne karizması ve 
-          çocuklarla iletişim yetenekleri ile de seçilmişlerdir.
-        </p>
-
-        <div class="grid md:grid-cols-3 gap-4 mb-6">
-          <div class="bg-purple-50 p-4 rounded-lg text-center">
-            <div class="text-4xl mb-2">🎪</div>
-            <h5 class="font-semibold mb-2">5000+ Gösteri</h5>
-            <p class="text-sm">Deneyimli sanatçılar</p>
-          </div>
-          <div class="bg-pink-50 p-4 rounded-lg text-center">
-            <div class="text-4xl mb-2">⭐</div>
-            <h5 class="font-semibold mb-2">%100 Güvenli</h5>
-            <p class="text-sm">Cilt dostu formüller</p>
-          </div>
-          <div class="bg-blue-50 p-4 rounded-lg text-center">
-            <div class="text-4xl mb-2">🎭</div>
-            <h5 class="font-semibold mb-2">30-45 Dakika</h5>
-            <p class="text-sm">Kesintisiz eğlence</p>
-          </div>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Hangi Etkinlikler İçin Uygun?</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Bubble show <strong>her yaş grubu için</strong> harika bir etkinliktir. Doğum günleri, okul şenlikleri, 
-          kurumsal etkinlikler, açılış organizasyonları, AVM etkinlikleri, festival ve şenlikler için idealdir. 
-          1 yaşından 99 yaşına herkes bubble show'dan keyif alır!
-        </p>
-
-        <div class="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-xl mb-6">
-          <h4 class="text-xl font-semibold mb-3">🎉 Bubble Show Paketlerimiz</h4>
-          <div class="space-y-2">
-            <p><strong>Temel Paket:</strong> 30 dakika bubble show gösterisi</p>
-            <p><strong>Standart Paket:</strong> 45 dakika gösteri + interaktif oyunlar</p>
-            <p><strong>Premium Paket:</strong> 60 dakika + LED ışıklar + müzik sistemi</p>
-            <p><strong>VIP Paket:</strong> 90 dakika + 2 sanatçı + özel koreografi</p>
-          </div>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Kurumsal Referanslarımız</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          <strong>Vodafone</strong> 23 Nisan etkinliğinde 500+ çocuğa bubble show gösterisi sunduk. 
-          <strong>Koç Holding</strong> yılbaşı partisinde ailelere unutulmaz anlar yaşattık. 
-          <strong>Allianz</strong> çocuk festivalinde günde 1000+ ziyaretçiye gösteri yaptık. 
-          Profesyonelliğimiz ve kalitemiz ile kurumsal firmaların tercihi olduk.
-        </p>
-      `
+      title: 'Bubble Show',
+      subtitle: 'Büyülü anlar',
+      description: 'Dev sabun köpükleri ve sihirli gösteriler',
+      gradient: 'from-blue-400 to-cyan-500',
+      images: [
+        { src: '/content/images/bubbleshow/anabubble.webp', alt: 'Bubble Show İstanbul' },
+        { src: '/content/images/bubbleshow/anabubblee.webp', alt: 'Sabun Köpüğü Gösterisi' },
+        { src: '/content/images/bubbleshow/anabubbleee.webp', alt: 'Bubble Show Organizasyonu' },
+        { src: '/content/images/bubbleshow/bubbleshowhero.webp', alt: 'Profesyonel Bubble Show' },
+        { src: '/content/images/bubbleshow/bubbleshownattive.webp', alt: 'Bubble Show Kiralama' },
+        { src: '/content/images/bubbleshow/bubbleshowslider.webp', alt: 'İstanbul Bubble Show' },
+        { src: '/content/images/bubbleshow/bubbleshowslider2.webp', alt: 'Çocuk Bubble Show' },
+        { src: '/content/images/bubbleshow/bubbleshowslider3.webp', alt: 'Doğum Günü Bubble Show' },
+        { src: '/content/images/bubbleshow/IMG_1748.webp', alt: 'Bubble Show Gösterisi' },
+        { src: '/content/images/bubbleshow/IMG_1797.webp', alt: 'Bubble Sanatçısı İstanbul' },
+      ]
     },
     kurumsal: {
-      title: 'Kurumsal Etkinlik Organizasyonu İstanbul - Profesyonel Hizmet',
-      content: `
-        <h2 class="text-3xl font-bold mb-6 text-gradient">İstanbul'da Kurumsal Etkinlik Organizasyonunda Fark Yaratan İsim</h2>
-        
-        <p class="text-lg mb-6 leading-relaxed">
-          Best Event olarak <strong>kurumsal etkinlik organizasyonunda 10 yıllık deneyimimizle</strong> İstanbul'un önde gelen 
-          firmalarına hizmet veriyoruz. Vodafone'dan Koç Holding'e, Allianz'dan birçok uluslararası firmaya kadar 
-          geniş bir referans portföyüne sahibiz. Açılış organizasyonları, yılbaşı partileri, çocuk şenlikleri, 
-          23 Nisan etkinlikleri ve kurumsal kutlamalarda profesyonel çözümler sunuyoruz.
-        </p>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Kurumsal Etkinlik Deneyimimiz</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Kurumsal etkinlikler, şirketlerin marka imajını güçlendiren, çalışan motivasyonunu artıran ve müşteri ilişkilerini 
-          pekiştiren özel organizasyonlardır. Best Event olarak <strong>her detayı titizlikle planlar</strong>, kurumunuzun 
-          değerlerini yansıtan özgün etkinlikler tasarlarız. 10 kişilik toplantılardan 5000 kişilik festivallere kadar 
-          her ölçekte organizasyon tecrübemiz vardır.
-        </p>
-
-        <div class="bg-blue-50 p-6 rounded-xl mb-6">
-          <h4 class="text-xl font-semibold mb-3">🏢 Kurumsal Hizmetlerimiz</h4>
-          <ul class="space-y-3">
-            <li><strong>Açılış Organizasyonları</strong> - Mağaza, ofis, şube açılışları için özel programlar</li>
-            <li><strong>Çalışan Etkinlikleri</strong> - Team building, yılbaşı, 23 Nisan, bayram kutlamaları</li>
-            <li><strong>Çocuk Şenlikleri</strong> - Şirketlerin çocuklara özel düzenlediği etkinlikler</li>
-            <li><strong>Ürün Lansmanları</strong> - Yeni ürün tanıtım etkinlikleri</li>
-            <li><strong>Fuar ve Festival Organizasyonları</strong> - Büyük ölçekli etkinlik yönetimi</li>
-            <li><strong>VIP Etkinlikler</strong> - Özel davetli organizasyonlar</li>
-          </ul>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Vodafone Etkinliği Başarımız</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          <strong>Vodafone</strong> için düzenlediğimiz 23 Nisan etkinliği, 500'den fazla çocuğun katıldığı büyük bir organizasyondu. 
-          Kostümlü karakterler (Elsa, Spiderman, Mickey Mouse), bubble show, yüz boyama, balon şişirme, trambolil ve daha birçok 
-          aktivite ile çocukları eğlendirdik. Etkinlik boyunca profesyonel fotoğraf çekimi, anında baskı hizmetleri ve 
-          hediye dağıtımı gerçekleştirdik. Vodafone yönetimi etkinlik sonunda bizi tebrik etti ve gelecek yıl için tekrar rezervasyon yaptı.
-        </p>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Koç Holding Yılbaşı Partisi</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          <strong>Koç Holding</strong> çalışanları ve aileleri için düzenlediğimiz yılbaşı partisi unutulmaz geçti. 
-          200+ ailenin katıldığı etkinlikte, çocuklar için ayrı bir eğlence alanı oluşturduk. Noel Baba karakteri ile 
-          hediye dağıtımı, magic show, bubble show ve dans gösterileri ile hem çocukları hem yetişkinleri eğlendirdik. 
-          Profesyonel DJ ekibimiz ile yılbaşı kutlaması yapıldı ve tüm ailelere anı fotoğrafları hediye edildi.
-        </p>
-
-        <div class="grid md:grid-cols-2 gap-4 mb-6">
-          <div class="bg-purple-50 p-4 rounded-lg">
-            <h5 class="font-semibold mb-2">📊 Detaylı Planlama</h5>
-            <p class="text-sm">Etkinlik öncesi 3 haftalık detaylı planlama süreci</p>
-          </div>
-          <div class="bg-pink-50 p-4 rounded-lg">
-            <h5 class="font-semibold mb-2">👥 Profesyonel Ekip</h5>
-            <p class="text-sm">Deneyimli organizatörler ve teknik ekip desteği</p>
-          </div>
-          <div class="bg-green-50 p-4 rounded-lg">
-            <h5 class="font-semibold mb-2">🎯 Hedef Odaklı</h5>
-            <p class="text-sm">Şirketinizin hedeflerine uygun özel konseptler</p>
-          </div>
-          <div class="bg-yellow-50 p-4 rounded-lg">
-            <h5 class="font-semibold mb-2">💯 Tam Destek</h5>
-            <p class="text-sm">Etkinlik öncesi, sırası ve sonrası tam destek</p>
-          </div>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Teknik Ekipman ve Altyapı</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Kurumsal etkinliklerde <strong>profesyonel ses sistemi, ışıklandırma, sahne tasarımı</strong> çok önemlidir. 
-          Kendi ekipmanlarımızla veya ihtiyaca göre kiralama yoluyla en kaliteli teknik altyapıyı sağlıyoruz. 
-          LED ekranlar, projektörler, kablosuz mikrofonlar, profesyonel hoparlörler ve ışık sistemleri ile 
-          etkinliklerinizi görsel ve işitsel olarak mükemmel hale getiriyoruz.
-        </p>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Bütçe Dostu Çözümler</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Her bütçeye uygun paketler sunuyoruz. Küçük ölçekli etkinliklerden dev festivallere kadar 
-          şeffaf fiyatlandırma politikamız ile maliyet kontrolü sağlıyoruz. Teklif aşamasında tüm detayları 
-          netleştiriyor, ek masraf çıkarmıyoruz.
-        </p>
-      `
+      title: 'Kurumsal',
+      subtitle: 'Prestijli etkinlikler',
+      description: 'Vodafone, Koç Holding, Allianz ve daha fazlası',
+      gradient: 'from-slate-600 to-slate-800',
+      images: [
+        { src: '/content/images/Anasayfa/kocholdingkurumsal.webp', alt: 'Koç Holding Kurumsal Etkinlik' },
+        { src: '/content/images/Anasayfa/anasayfascroll/kocholding2.webp', alt: 'Koç Holding Organizasyon' },
+        { src: '/content/images/Anasayfa/vodafonekurumsal.webp', alt: 'Vodafone Kurumsal Etkinlik' },
+        { src: '/content/images/Anasayfa/anasayfascroll/vodafone1.webp', alt: 'Vodafone Organizasyon' },
+        { src: '/content/images/Anasayfa/anasayfascroll/vodafone2.webp', alt: 'Vodafone Etkinlik' },
+        { src: '/content/images/Anasayfa/anasayfascroll/allianz1.webp', alt: 'Allianz Kurumsal Etkinlik' },
+        { src: '/content/images/Anasayfa/anasayfascroll/360selfie.jpeg', alt: '360 Selfie Booth Etkinlik' },
+        { src: '/content/images/Anasayfa/anasayfascroll/360selifee.jpeg', alt: '360 Derece Fotoğraf Deneyimi' },
+      ]
     },
     dans: {
-      title: 'Dans Etkinlikleri İstanbul - Profesyonel Dans Gösterileri',
-      content: `
-        <h2 class="text-3xl font-bold mb-6 text-gradient">İstanbul'un En Profesyonel Dans Ekibi ile Unutulmaz Gösteriler</h2>
-        
-        <p class="text-lg mb-6 leading-relaxed">
-          Best Event olarak <strong>profesyonel dansçılarımızla</strong> İstanbul genelinde dans gösterileri sunuyoruz. 
-          Bale, modern dans, hip-hop, Latin dansları, halk dansları ve daha birçok türde uzman ekibimiz bulunmaktadır. 
-          Doğum günleri, düğünler, açılış organizasyonları, kurumsal etkinlikler ve özel davetler için özel koreografiler hazırlıyoruz.
-        </p>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Dans Gösterisi Türlerimiz</h3>
-        
-        <div class="bg-pink-50 p-6 rounded-xl mb-6">
-          <h4 class="text-xl font-semibold mb-3">💃 Dans Türlerimiz</h4>
-          <ul class="space-y-3">
-            <li><strong>Bale Gösterileri</strong> - Klasik bale ve modern bale performansları</li>
-            <li><strong>Hip-Hop Gösterileri</strong> - Enerjik ve dinamik dans şovları</li>
-            <li><strong>Latin Dansları</strong> - Salsa, bachata, samba gösterileri</li>
-            <li><strong>Modern Dans</strong> - Contemporary ve jazz dans performansları</li>
-            <li><strong>Halk Dansları</strong> - Zeybek, horon ve özel halk oyunları</li>
-            <li><strong>Çocuk Dansları</strong> - Çocuklara özel eğlenceli koreografiler</li>
-          </ul>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Profesyonel Dansçılarımız</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Ekibimizde <strong>profesyonel dans eğitimi almış</strong>, ulusal ve uluslararası yarışmalarda derece yapmış dansçılar bulunmaktadır. 
-          Her dansçımız kendi alanında uzman, sahne tecrübesi yüksek ve çocuklarla çalışma deneyimine sahiptir. 
-          Gösterilerimiz sadece izlemekle kalmaz, izleyenleri de dansa davet eder ve eğlenceli anlar yaratırız.
-        </p>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Özel Koreografi Hizmeti</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          İsterseniz etkinliğinize özel <strong>koreografi hazırlıyoruz</strong>. Düğün dansı, açılış dansı, 
-          doğum günü sürprizi veya kurumsal etkinlik dansı için müziğinizi, temanızı ve isteklerinizi dinleyip 
-          size özel bir dans gösterisi tasarlıyoruz. Provalar yapıyor ve mükemmel bir performans sunuyoruz.
-        </p>
-
-        <div class="grid md:grid-cols-3 gap-4 mb-6">
-          <div class="bg-purple-50 p-4 rounded-lg text-center">
-            <div class="text-4xl mb-2">🏆</div>
-            <h5 class="font-semibold mb-2">Ödüllü Dansçılar</h5>
-            <p class="text-sm">Ulusal/uluslararası dereceli</p>
-          </div>
-          <div class="bg-pink-50 p-4 rounded-lg text-center">
-            <div class="text-4xl mb-2">🎭</div>
-            <h5 class="font-semibold mb-2">1000+ Gösteri</h5>
-            <p class="text-sm">Deneyimli sahne performansı</p>
-          </div>
-          <div class="bg-blue-50 p-4 rounded-lg text-center">
-            <div class="text-4xl mb-2">💫</div>
-            <h5 class="font-semibold mb-2">Özel Koreografi</h5>
-            <p class="text-sm">Size özel dans tasarımı</p>
-          </div>
-        </div>
-
-        <h3 class="text-2xl font-semibold mb-4 mt-8">Dans + Müzik Kombinasyonu</h3>
-        
-        <p class="mb-4 leading-relaxed">
-          Dans gösterilerimizi <strong>canlı müzik</strong> veya <strong>DJ performansı</strong> ile birleştirerek 
-          daha etkileyici bir atmosfer yaratıyoruz. Profesyonel ses sistemi, ışıklandırma ve sahne düzeni ile 
-          konser havasında gösteriler sunuyoruz.
-        </p>
-      `
+      title: 'Dans',
+      subtitle: 'Ritim ve hareket',
+      description: 'Profesyonel dans gösterileri',
+      gradient: 'from-rose-500 to-pink-600',
+      images: [
+        { src: '/content/images/dance/lüksdanskarsilamaekibi.webp', alt: 'Lüks Dans Karşılama Ekibi' },
+        { src: '/content/images/dance/lüksledlidansekibi.webp', alt: 'LED Dans Gösterisi' },
+        { src: '/content/images/dance/oryantal/oryantalistanahero.webp', alt: 'Oryantal Dans Hero' },
+        { src: '/content/images/dance/melekdansci.webp', alt: 'Melek Dansçı Gösterisi' },
+        { src: '/content/images/dance/melekdansekibi.webp', alt: 'Melek Dans Ekibi' },
+        { src: '/content/images/Anasayfa/balletdans.webp', alt: 'Balet Gösterisi İstanbul' },
+        { src: '/content/images/Anasayfa/dansanasayfa2.webp', alt: 'Dans Gösterisi' },
+        { src: '/content/images/Anasayfa/dansanasayfaanagorsel.webp', alt: 'Profesyonel Dans' },
+        { src: '/content/images/Anasayfa/dansgirl.webp', alt: 'Dans Ekibi İstanbul' },
+        { src: '/content/images/dance/dance1.webp', alt: 'Dans Performansı İstanbul' },
+        { src: '/content/images/dance/dansanagorsel1.webp', alt: 'Dans Gösterisi Etkinlik' },
+        { src: '/content/images/dance/dansanagorsel2.webp', alt: 'Dans Ekibi Performans' },
+        { src: '/content/images/dance/zumbadans.webp', alt: 'Zumba Dans Gösterisi' },
+        { src: '/content/images/dance/oryantal/oryantal .webp', alt: 'Oryantal Dans İstanbul' },
+        { src: '/content/images/dance/oryantal/oryantalist1.webp', alt: 'Oryantal Dansçı Gösterisi' },
+        { src: '/content/images/dance/oryantal/oryantalist2.webp', alt: 'Oryantal Dans Performans' },
+      ]
     },
-    // Diğer kategoriler devam ediyor...
+    muzik: {
+      title: 'Müzik',
+      subtitle: 'Canlı performanslar',
+      description: 'DJ, trio, bando ve daha fazlası',
+      gradient: 'from-amber-500 to-orange-600',
+      images: [
+        { src: '/content/images/music/anamusik.webp', alt: 'Müzik Etkinliği İstanbul' },
+        { src: '/content/images/music/bando.webp', alt: 'Bando Ekibi İstanbul' },
+        { src: '/content/images/music/çellist.webp', alt: 'Çellist Kiralama İstanbul' },
+        { src: '/content/images/music/images.webp', alt: 'Canlı Müzik İstanbul' },
+        { src: '/content/images/music/IMG_1744.webp', alt: 'Müzik Gösterisi' },
+        { src: '/content/images/music/IMG_1748.webp', alt: 'Müzik Performansı' },
+        { src: '/content/images/music/musiketkinlikleri.webp', alt: 'Müzik Etkinlikleri Organizasyon' },
+        { src: '/content/images/music/muzikekibi.webp', alt: 'Müzik Ekibi Kiralama' },
+        { src: '/content/images/music/North-Star-Jazz-Trio-London-Jazz-Band-For-Hire.webp', alt: 'Jazz Trio İstanbul' },
+        { src: '/content/images/music/piyanist.webp', alt: 'Piyanist Kiralama İstanbul' },
+        { src: '/content/images/music/saksafon.webp', alt: 'Saksafon Sanatçısı İstanbul' },
+        { src: '/content/images/music/trio.webp', alt: 'Müzik Trio İstanbul' },
+      ]
+    },
+    dogumgunu: {
+      title: 'Doğum Günü',
+      subtitle: 'Özel kutlamalar',
+      description: 'Konsept parti organizasyonları',
+      gradient: 'from-violet-500 to-purple-600',
+      images: [
+        { src: '/content/images/cocukdogumgunu/3cc6171f-7a84-42ce-9592-b7cdeda4a0a8.webp', alt: 'Doğum Günü Organizasyonu' },
+        { src: '/content/images/cocukdogumgunu/4cfdb70b-f05f-41f0-b8d0-99d3a29c8593.webp', alt: 'Çocuk Doğum Günü' },
+        { src: '/content/images/cocukdogumgunu/082041d3-58ff-4b19-81e0-5a6e39d81532.webp', alt: 'Parti Organizasyonu' },
+        { src: '/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp', alt: 'Konsept Doğum Günü' },
+        { src: '/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.webp', alt: 'Doğum Günü Partisi' },
+        { src: '/content/images/IMG_9586.webp', alt: 'Doğum Günü İstanbul' },
+        { src: '/content/images/IMG_9587.webp', alt: 'Parti Süsleme' },
+        { src: '/content/images/IMG_9588.webp', alt: 'Doğum Günü Kutlaması' },
+        { src: '/content/images/IMG_9589.webp', alt: 'Çocuk Partisi' },
+      ]
+    },
+    parti: {
+      title: 'Parti Ekipmanları',
+      subtitle: 'Detaylar önemlidir',
+      description: 'Pamuk şeker, çikolata şelalesi',
+      gradient: 'from-teal-500 to-emerald-600',
+      images: [
+        { src: '/content/images/Parti Ekipmanları/cikolataselalesi.jpeg', alt: 'Çikolata Şelalesi Kiralama' },
+        { src: '/content/images/Parti Ekipmanları/cikolataselalesiistanbul.jpeg', alt: 'Çikolata Şelalesi İstanbul' },
+        { src: '/content/images/Parti Ekipmanları/pamukseker.jpeg', alt: 'Pamuk Şeker Arabası' },
+        { src: '/content/images/Parti Ekipmanları/popcornkalitelihijyenikmalzeme.jpg', alt: 'Popcorn Makinesi' },
+        { src: '/content/images/Parti Ekipmanları/cocukmasasandalyesi.jpg', alt: 'Çocuk Masa Sandalye' },
+        { src: '/content/images/Parti Ekipmanları/uzaycadiri.jpg', alt: 'Uzay Çadırı' },
+        { src: '/content/images/Parti Ekipmanları/limonatakosesi.jpg', alt: 'Limonata Köşesi' },
+        { src: '/content/images/Parti Ekipmanları/tatliarabasi.jpg', alt: 'Tatlı Arabası Kiralama' },
+      ]
+    },
   }
 
-  // Tüm fotoğraflar kategorilere göre organize
-  const galleryImages = {
-    karakterler: [
-      { src: '/content/images/Kostumlukarakterler/elsa.webp', category: 'Kostümlü Karakterler', alt: 'Elsa Karakter Kiralama İstanbul' },
-      { src: '/content/images/Kostumlukarakterler/elsaheroo.webp', category: 'Kostümlü Karakterler', alt: 'Elsa Frozen İstanbul' },
-      { src: '/content/images/Kostumlukarakterler/pamukprensesyenii.webp', category: 'Kostümlü Karakterler', alt: 'Pamuk Prenses Kiralama' },
-      { src: '/content/images/Kostumlukarakterler/pamukprensesyeniii.webp', category: 'Kostümlü Karakterler', alt: 'Pamuk Prenses İstanbul' },
-      { src: '/content/images/Kostumlukarakterler/batman.webp', category: 'Kostümlü Karakterler', alt: 'Batman Kiralama İstanbul' },
-      { src: '/content/images/Kostumlukarakterler/spidermancosku.webp', category: 'Kostümlü Karakterler', alt: 'Spiderman Karakter' },
-      { src: '/content/images/Kostumlukarakterler/spidermann.webp', category: 'Kostümlü Karakterler', alt: 'Spiderman İstanbul' },
-      { src: '/content/images/Kostumlukarakterler/minniemause.webp', category: 'Kostümlü Karakterler', alt: 'Minnie Mouse Kiralama' },
-      { src: '/content/images/Kostumlukarakterler/minnieyenii.webp', category: 'Kostümlü Karakterler', alt: 'Minnie Mouse İstanbul' },
-      { src: '/content/images/Kostumlukarakterler/mickeyyeni.webp', category: 'Kostümlü Karakterler', alt: 'Mickey Mouse Kiralama' },
-      { src: '/content/images/Kostumlukarakterler/palyaco.webp', category: 'Kostümlü Karakterler', alt: 'Palyaço İstanbul' },
-      { src: '/content/images/Kostumlukarakterler/masakocaayi.webp', category: 'Kostümlü Karakterler', alt: 'Maşa Koca Ayı Kiralama' },
-      { src: '/content/images/Kostumlukarakterler/unicornyeniii.webp', category: 'Kostümlü Karakterler', alt: 'Unicorn Karakter İstanbul' },
-    ],
-    bubbleshow: [
-      { src: '/content/images/bubbleshow/anabubble.webp', category: 'Bubble Show', alt: 'Bubble Show İstanbul' },
-      { src: '/content/images/bubbleshow/anabubblee.webp', category: 'Bubble Show', alt: 'Sabun Köpüğü Gösterisi' },
-      { src: '/content/images/bubbleshow/anabubbleee.webp', category: 'Bubble Show', alt: 'Bubble Show Organizasyonu' },
-      { src: '/content/images/bubbleshow/bubbleshowhero.webp', category: 'Bubble Show', alt: 'Profesyonel Bubble Show' },
-      { src: '/content/images/bubbleshow/bubbleshownattive.webp', category: 'Bubble Show', alt: 'Bubble Show Kiralama' },
-      { src: '/content/images/bubbleshow/bubbleshowslider.webp', category: 'Bubble Show', alt: 'İstanbul Bubble Show' },
-      { src: '/content/images/bubbleshow/bubbleshowslider2.webp', category: 'Bubble Show', alt: 'Çocuk Bubble Show' },
-      { src: '/content/images/bubbleshow/bubbleshowslider3.webp', category: 'Bubble Show', alt: 'Doğum Günü Bubble Show' },
-      { src: '/content/images/bubbleshow/IMG_1748.webp', category: 'Bubble Show', alt: 'Bubble Show Gösterisi' },
-      { src: '/content/images/bubbleshow/IMG_1797.webp', category: 'Bubble Show', alt: 'Bubble Sanatçısı İstanbul' },
-    ],
-    kurumsal: [
-      { src: '/content/images/Anasayfa/kocholdingkurumsal.webp', category: 'Kurumsal Etkinlikler', alt: 'Koç Holding Etkinlik' },
-      { src: '/content/images/Anasayfa/vodafonekurumsal.webp', category: 'Kurumsal Etkinlikler', alt: 'Vodafone Organizasyon' },
-      { src: '/content/images/acilisorganizasyonu/IMG_0198.webp', category: 'Kurumsal Etkinlikler', alt: 'Açılış Organizasyonu İstanbul' },
-      { src: '/content/images/acilisorganizasyonu/IMG_1379.webp', category: 'Kurumsal Etkinlikler', alt: 'Mağaza Açılışı' },
-      { src: '/content/images/acilisorganizasyonu/IMG_1380.webp', category: 'Kurumsal Etkinlikler', alt: 'Şube Açılışı' },
-      { src: '/content/images/acilisorganizasyonu/IMG_1382.webp', category: 'Kurumsal Etkinlikler', alt: 'Ofis Açılışı' },
-      { src: '/content/images/acilisorganizasyonu/IMG_1388.webp', category: 'Kurumsal Etkinlikler', alt: 'Kurumsal Parti' },
-      { src: '/content/images/acilisorganizasyonu/IMG_1695.webp', category: 'Kurumsal Etkinlikler', alt: 'Şirket Etkinliği' },
-      { src: '/content/images/acilisorganizasyonu/IMG_1723.webp', category: 'Kurumsal Etkinlikler', alt: 'Yılbaşı Partisi' },
-      { src: '/content/images/acilisorganizasyonu/IMG_1748.webp', category: 'Kurumsal Etkinlikler', alt: '23 Nisan Etkinliği' },
-      { src: '/content/images/acilisorganizasyonu/IMG_1757.webp', category: 'Kurumsal Etkinlikler', alt: 'Çocuk Şenliği' },
-    ],
-    dans: [
-      { src: '/content/images/Anasayfa/balletdans.webp', category: 'Dans Etkinlikleri', alt: 'Balet Gösterisi İstanbul' },
-      { src: '/content/images/Anasayfa/dansanasayfa2.webp', category: 'Dans Etkinlikleri', alt: 'Dans Gösterisi' },
-      { src: '/content/images/Anasayfa/dansanasayfaanagorsel.webp', category: 'Dans Etkinlikleri', alt: 'Profesyonel Dans' },
-      { src: '/content/images/Anasayfa/dansgirl.webp', category: 'Dans Etkinlikleri', alt: 'Dans Ekibi İstanbul' },
-    ],
-    parti: [
-      { src: '/content/images/Parti Ekipmanları/cikolataselalesi.jpeg', category: 'Parti Ekipmanları', alt: 'Çikolata Şelalesi Kiralama' },
-      { src: '/content/images/Parti Ekipmanları/cikolataselalesiistanbul.jpeg', category: 'Parti Ekipmanları', alt: 'Çikolata Şelalesi İstanbul' },
-      { src: '/content/images/Parti Ekipmanları/pamukseker.jpeg', category: 'Parti Ekipmanları', alt: 'Pamuk Şeker Arabası' },
-      { src: '/content/images/Parti Ekipmanları/popcornkalitelihijyenikmalzeme.jpg', category: 'Parti Ekipmanları', alt: 'Popcorn Makinesi' },
-      { src: '/content/images/Parti Ekipmanları/cocukmasasandalyesi.jpg', category: 'Parti Ekipmanları', alt: 'Çocuk Masa Sandalye' },
-      { src: '/content/images/Parti Ekipmanları/uzaycadiri.jpg', category: 'Parti Ekipmanları', alt: 'Uzay Çadırı' },
-      { src: '/content/images/Parti Ekipmanları/limonatakosesi.jpg', category: 'Parti Ekipmanları', alt: 'Limonata Köşesi' },
-      { src: '/content/images/Parti Ekipmanları/tatliarabasi.jpg', category: 'Parti Ekipmanları', alt: 'Tatlı Arabası Kiralama' },
-    ],
-    teknoloji: [
-      { src: '/content/images/bidolu/transformers.webp', category: 'Teknoloji', alt: 'Transformers Robot Kiralama' },
-      { src: '/content/images/bidolu/gezegentanıtım.webp', category: 'Teknoloji', alt: 'Gezegen Tanıtım Etkinliği' },
-      { src: '/content/images/bidolu/karaoke.webp', category: 'Teknoloji', alt: 'Karaoke Etkinliği İstanbul' },
-      { src: '/content/images/bidolu/WhatsApp Image 2025-10-28 at 17.32.37.jpeg', category: 'Teknoloji', alt: 'Teknoloji Etkinliği' },
-      { src: '/content/images/bidolu/WhatsApp Image 2025-10-28 at 17.32.48.jpeg', category: 'Teknoloji', alt: 'VR Etkinliği' },
-      { src: '/content/images/bidolu/WhatsApp Image 2025-10-29 at 14.35.14.jpeg', category: 'Teknoloji', alt: 'Eğlence Teknolojisi' },
-      { src: '/content/images/bidolu/WhatsApp Image 2025-11-01 at 14.39.14.jpeg', category: 'Teknoloji', alt: 'İnteraktif Etkinlik' },
-      { src: '/content/images/bidolu/WhatsApp Image 2025-11-01 at 14.48.29.jpeg', category: 'Teknoloji', alt: 'Dijital Oyun' },
-      { src: '/content/images/bidolu/WhatsApp Image 2025-11-01 at 14.48.30.jpeg', category: 'Teknoloji', alt: 'Teknoloji Gösterisi' },
-      { src: '/content/images/bidolu/WhatsApp Image 2025-11-08 at 17.54.13.jpeg', category: 'Teknoloji', alt: 'Futuristik Etkinlik' },
-    ],
-    dogumgunu: [
-      { src: '/content/images/cocukdogumgunu/3cc6171f-7a84-42ce-9592-b7cdeda4a0a8.webp', category: 'Doğum Günü', alt: 'Doğum Günü Organizasyonu' },
-      { src: '/content/images/cocukdogumgunu/4cfdb70b-f05f-41f0-b8d0-99d3a29c8593.webp', category: 'Doğum Günü', alt: 'Çocuk Doğum Günü' },
-      { src: '/content/images/cocukdogumgunu/082041d3-58ff-4b19-81e0-5a6e39d81532.webp', category: 'Doğum Günü', alt: 'Parti Organizasyonu' },
-      { src: '/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp', category: 'Doğum Günü', alt: 'Konsept Doğum Günü' },
-      { src: '/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.webp', category: 'Doğum Günü', alt: 'Doğum Günü Partisi' },
-      { src: '/content/images/IMG_9586.webp', category: 'Doğum Günü', alt: 'Doğum Günü İstanbul' },
-      { src: '/content/images/IMG_9587.webp', category: 'Doğum Günü', alt: 'Parti Süsleme' },
-      { src: '/content/images/IMG_9588.webp', category: 'Doğum Günü', alt: 'Doğum Günü Kutlaması' },
-      { src: '/content/images/IMG_9589.webp', category: 'Doğum Günü', alt: 'Çocuk Partisi' },
-    ],
-  }
-
-  // Tüm fotoğrafları tek array'de birleştir
-  const allImages = Object.values(galleryImages).flat()
-
-  // Kategori filtreleme
+  // Tüm kategoriler
   const categories = [
-    { id: 'all', name: 'Tümü', count: allImages.length },
-    { id: 'karakterler', name: 'Kostümlü Karakterler', count: galleryImages.karakterler.length },
-    { id: 'bubbleshow', name: 'Bubble Show', count: galleryImages.bubbleshow.length },
-    { id: 'kurumsal', name: 'Kurumsal Etkinlikler', count: galleryImages.kurumsal.length },
-    { id: 'dans', name: 'Dans', count: galleryImages.dans.length },
-    { id: 'parti', name: 'Parti Ekipmanları', count: galleryImages.parti.length },
-    { id: 'teknoloji', name: 'Teknoloji', count: galleryImages.teknoloji.length },
-    { id: 'dogumgunu', name: 'Doğum Günü', count: galleryImages.dogumgunu.length },
+    { id: 'all', name: 'Tümü' },
+    { id: 'karakterler', name: 'Karakterler' },
+    { id: 'bubbleshow', name: 'Bubble Show' },
+    { id: 'kurumsal', name: 'Kurumsal' },
+    { id: 'dans', name: 'Dans' },
+    { id: 'muzik', name: 'Müzik' },
+    { id: 'dogumgunu', name: 'Doğum Günü' },
+    { id: 'parti', name: 'Ekipmanlar' },
   ]
 
-  // Filtrelenmiş fotoğraflar
-  const filteredImages = selectedCategory === 'all' 
-    ? allImages 
-    : galleryImages[selectedCategory] || []
+  // Tüm fotoğrafları birleştir
+  const allImages = Object.entries(galleryData).flatMap(([key, cat]) =>
+    cat.images.map(img => ({ ...img, category: key, categoryTitle: cat.title }))
+  )
 
-  // Lightbox için slides
+  // Filtrelenmiş fotoğraflar
+  const getFilteredImages = () => {
+    if (selectedCategory === 'all') return allImages
+    return galleryData[selectedCategory]?.images.map(img => ({
+      ...img,
+      category: selectedCategory,
+      categoryTitle: galleryData[selectedCategory].title
+    })) || []
+  }
+
+  const filteredImages = getFilteredImages()
   const slides = filteredImages.map(img => ({ src: img.src, alt: img.alt }))
 
-  // Schema markup
-  const imageGallerySchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ImageGallery',
-    'name': 'Best Event Galeri - İstanbul Etkinlik Fotoğrafları',
-    'description': 'Best Event etkinlik organizasyonu fotoğraf galerisi. Kostümlü karakterler, bubble show, dans gösterileri ve kurumsal etkinliklerden kareler.',
-    'image': filteredImages.map(img => ({
-      '@type': 'ImageObject',
-      'url': `https://www.bestevent.com.tr${img.src}`,
-      'name': img.alt,
-      'description': img.category,
-    })),
+  // Scroll to category section
+  const scrollToCategory = (categoryId) => {
+    setSelectedCategory(categoryId)
+    if (categoryId !== 'all' && categoryRefs.current[categoryId]) {
+      categoryRefs.current[categoryId].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
   }
 
   return (
-    <div className="min-h-screen pt-32 pb-20">
-      {/* SEO Component */}
+    <div className="min-h-screen bg-[#fbfbfd]">
       <Seo
-        title="Best Event Galeri | İstanbul Etkinlik Fotoğrafları - 63+ Profesyonel Fotoğraf"
-        description="Best Event etkinlik galeri. Kostümlü karakter kiralama, bubble show, kurumsal etkinlik, dans gösterileri ve doğum günü organizasyonlarından profesyonel fotoğraflar. İstanbul'un tüm ilçelerinde hizmet veriyoruz."
-        keywords={[
-          'etkinlik galeri istanbul',
-          'kostümlü karakter fotoğrafları',
-          'bubble show istanbul',
-          'kurumsal etkinlik fotoğrafları',
-          'doğum günü organizasyonu',
-          'dans gösterisi istanbul',
-          'parti ekipmanları',
-          'etkinlik organizasyonu galeri',
-          'best event galeri'
-        ]}
+        title="Galeri | Best Event İstanbul - Etkinlik Fotoğrafları"
+        description="Best Event etkinlik galeri. Kostümlü karakter, bubble show, dans, müzik ve doğum günü organizasyonlarından profesyonel fotoğraflar."
+        keywords={['etkinlik galeri', 'best event fotoğraflar', 'istanbul organizasyon']}
       />
 
-      {/* Schema Markup */}
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(imageGallerySchema)}
-        </script>
-      </Helmet>
+      {/* Hero Section - Apple Style */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white" />
 
-      <div className="layout-container">
-        {/* Başlık */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-5xl md:text-6xl font-display font-bold text-gradient mb-6">
-            Etkinlik Galeri İstanbul
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-            Etkinliklerimizden unutulmaz anlar. Kostümlü karakterler, bubble show, dans gösterileri ve kurumsal etkinliklerden profesyonel fotoğraflar.
-          </p>
-          <p className="text-gray-500">
-            {filteredImages.length} fotoğraf | İstanbul'un 39 ilçesinde hizmet
-          </p>
-        </motion.div>
-
-        {/* Kategori Filtreleme */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
-              className={`px-6 py-3 rounded-full font-medium transition-all ${
-                selectedCategory === cat.id
-                  ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:shadow-md'
-              }`}
+        <div className="relative max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-center"
+          >
+            <h1
+              className="font-semibold tracking-tight text-[#1d1d1f] mb-6"
+              style={{
+                fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+                lineHeight: 1.05,
+                letterSpacing: '-0.03em'
+              }}
             >
-              {cat.name} ({cat.count})
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Masonry Grid Gallery */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4 mb-16"
-        >
-          {filteredImages.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.05 }}
-              className="break-inside-avoid"
+              Galeri
+            </h1>
+            <p
+              className="text-[#86868b] max-w-2xl mx-auto"
+              style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
+                lineHeight: 1.5,
+                letterSpacing: '-0.01em'
+              }}
             >
-              <div
-                onClick={() => {
-                  setPhotoIndex(index)
-                  setIsOpen(true)
-                }}
-                className="relative overflow-hidden rounded-lg cursor-pointer group shadow-md hover:shadow-xl transition-all duration-300"
+              Her anı özel kılan detaylar
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Category Navigation - Apple Sticky Pills */}
+      <div className="sticky top-16 z-40 bg-[#fbfbfd]/80 backdrop-blur-xl border-b border-gray-200/50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-center gap-2 py-4 overflow-x-auto scrollbar-hide">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => scrollToCategory(cat.id)}
+                className={`
+                  px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap
+                  transition-all duration-300 ease-out
+                  ${selectedCategory === cat.id
+                    ? 'bg-[#1d1d1f] text-white shadow-lg'
+                    : 'bg-white text-[#1d1d1f] hover:bg-gray-100 border border-gray-200'
+                  }
+                `}
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <p className="text-sm font-medium">{image.category}</p>
-                    <p className="text-xs opacity-90">{image.alt}</p>
+                {cat.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-6 py-16">
+        <AnimatePresence mode="wait">
+          {selectedCategory === 'all' ? (
+            /* Category Showcase View */
+            <motion.div
+              key="showcase"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="space-y-32"
+            >
+              {Object.entries(galleryData).map(([key, category], categoryIndex) => (
+                <section
+                  key={key}
+                  ref={el => categoryRefs.current[key] = el}
+                  className="scroll-mt-32"
+                >
+                  {/* Category Header */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-100px' }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-12"
+                  >
+                    <p
+                      className={`text-sm font-semibold uppercase tracking-wider mb-3 bg-gradient-to-r ${category.gradient} bg-clip-text text-transparent`}
+                    >
+                      {category.subtitle}
+                    </p>
+                    <h2
+                      className="text-[#1d1d1f] font-semibold mb-4"
+                      style={{
+                        fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                        letterSpacing: '-0.025em',
+                        lineHeight: 1.1
+                      }}
+                    >
+                      {category.title}
+                    </h2>
+                    <p className="text-[#86868b] text-lg">
+                      {category.description}
+                    </p>
+                  </motion.div>
+
+                  {/* Bento Grid Layout */}
+                  <div className="grid grid-cols-12 gap-4">
+                    {category.images.slice(0, 5).map((image, index) => {
+                      // Apple-style Bento Grid layout
+                      const layouts = [
+                        'col-span-12 md:col-span-8 aspect-[16/10]', // Hero large
+                        'col-span-6 md:col-span-4 aspect-square',   // Square right
+                        'col-span-6 md:col-span-4 aspect-[4/5]',    // Portrait
+                        'col-span-6 md:col-span-4 aspect-square',   // Square
+                        'col-span-6 md:col-span-4 aspect-[4/5]',    // Portrait
+                      ]
+
+                      return (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, margin: '-50px' }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                          className={`${layouts[index]} relative group cursor-pointer`}
+                          onClick={() => {
+                            const globalIndex = allImages.findIndex(img => img.src === image.src)
+                            setPhotoIndex(globalIndex)
+                            setIsOpen(true)
+                          }}
+                        >
+                          <div className="absolute inset-0 rounded-2xl overflow-hidden bg-gray-100">
+                            <OptimizedImage
+                              src={image.src}
+                              alt={image.alt}
+                              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                              loading="lazy"
+                            />
+                            {/* Hover Overlay */}
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+
+                            {/* Zoom Icon */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <div className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                                <svg className="w-5 h-5 text-[#1d1d1f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )
+                    })}
                   </div>
-                </div>
+
+                  {/* View All Button */}
+                  {category.images.length > 5 && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      className="text-center mt-8"
+                    >
+                      <button
+                        onClick={() => setSelectedCategory(key)}
+                        className="inline-flex items-center gap-2 text-[#0066cc] hover:text-[#0055b3] font-medium transition-colors"
+                      >
+                        <span>Tümünü Gör ({category.images.length})</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </motion.div>
+                  )}
+                </section>
+              ))}
+            </motion.div>
+          ) : (
+            /* Single Category Grid View */
+            <motion.div
+              key={selectedCategory}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              {/* Category Header */}
+              <div className="text-center mb-12">
+                <button
+                  onClick={() => setSelectedCategory('all')}
+                  className="inline-flex items-center gap-2 text-[#0066cc] hover:text-[#0055b3] font-medium mb-6 transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                  <span>Tüm Kategoriler</span>
+                </button>
+
+                <p
+                  className={`text-sm font-semibold uppercase tracking-wider mb-3 bg-gradient-to-r ${galleryData[selectedCategory]?.gradient} bg-clip-text text-transparent`}
+                >
+                  {galleryData[selectedCategory]?.subtitle}
+                </p>
+                <h2
+                  className="text-[#1d1d1f] font-semibold mb-4"
+                  style={{
+                    fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                    letterSpacing: '-0.025em',
+                    lineHeight: 1.1
+                  }}
+                >
+                  {galleryData[selectedCategory]?.title}
+                </h2>
+                <p className="text-[#86868b] text-lg">
+                  {filteredImages.length} fotoğraf
+                </p>
+              </div>
+
+              {/* Masonry Grid */}
+              <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+                {filteredImages.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.03 }}
+                    className="break-inside-avoid"
+                  >
+                    <div
+                      onClick={() => {
+                        setPhotoIndex(index)
+                        setIsOpen(true)
+                      }}
+                      className="relative group cursor-pointer rounded-2xl overflow-hidden bg-gray-100"
+                    >
+                      <OptimizedImage
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <p className="text-white text-sm font-medium">{image.alt}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+          )}
+        </AnimatePresence>
+      </main>
 
-        {/* SEO İçerik Bölümü */}
-        {selectedCategory !== 'all' && categoryDescriptions[selectedCategory] && (
+      {/* Stats Section */}
+      <section className="bg-[#f5f5f7] py-20">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl mx-auto mb-16 bg-white p-8 rounded-2xl shadow-lg"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           >
-            <div 
-              className="prose prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: categoryDescriptions[selectedCategory].content }}
-            />
-          </motion.div>
-        )}
-
-        {/* İstanbul İlçeleri Hizmet Bölgesi */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-6xl mx-auto mb-16"
-        >
-          <h2 className="text-4xl font-bold text-center mb-8 text-gradient">
-            İstanbul'da Hizmet Verdiğimiz Bölgeler
-          </h2>
-          
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-2xl shadow-lg mb-8">
-            <p className="text-lg text-center mb-6 leading-relaxed">
-              Best Event olarak <strong>İstanbul'un tüm 39 ilçesinde</strong> profesyonel etkinlik organizasyonu hizmeti veriyoruz. 
-              Kostümlü karakter kiralama, bubble show, dans gösterileri, kurumsal etkinlik ve doğum günü organizasyonlarında 
-              <strong> 10 yılı aşkın tecrübemizle</strong> yanınızdayız.
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
-              {istanbulIlceleri.map((ilce, index) => (
-                <div key={index} className="bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                  <p className="font-medium text-gray-800">{ilce}</p>
+            {[
+              { value: '5000+', label: 'Etkinlik' },
+              { value: '39', label: 'İlçe' },
+              { value: '10+', label: 'Yıl Deneyim' },
+              { value: '%98', label: 'Memnuniyet' },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div
+                  className="text-[#1d1d1f] font-semibold mb-2"
+                  style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+                >
+                  {stat.value}
                 </div>
-              ))}
+                <div className="text-[#86868b] text-sm uppercase tracking-wider">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2
+              className="text-[#1d1d1f] font-semibold mb-6"
+              style={{
+                fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+                letterSpacing: '-0.02em'
+              }}
+            >
+              Etkinliğinizi birlikte planlayalım
+            </h2>
+            <p className="text-[#86868b] text-lg mb-10 max-w-2xl mx-auto">
+              Profesyonel ekibimizle hayalinizdeki etkinliği gerçeğe dönüştürün
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://wa.me/905349306799"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[#1d1d1f] text-white px-8 py-4 rounded-full font-medium hover:bg-[#333] transition-colors"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                WhatsApp ile İletişim
+              </a>
+              <a
+                href="tel:+905349306799"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#1d1d1f] px-8 py-4 rounded-full font-medium border border-gray-200 hover:bg-gray-50 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                0534 930 67 99
+              </a>
             </div>
-          </div>
+          </motion.div>
+        </div>
+      </section>
 
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <h3 className="text-2xl font-bold mb-4">İstanbul Genelinde Profesyonel Hizmet</h3>
-            <p className="mb-4 leading-relaxed">
-              <strong>Kadıköy, Beşiktaş, Şişli, Ataşehir, Ümraniye, Bakırköy, Beylikdüzü, Başakşehir</strong> başta olmak üzere 
-              İstanbul'un her noktasına etkinlik organizasyonu hizmeti sunuyoruz. Profesyonel ekipmanlarımızı ve deneyimli ekibimizi 
-              evinize, ofisinize, bahçenize veya davet mekanınıza getiriyoruz.
-            </p>
+      {/* Lightbox */}
+      <Lightbox
+        open={isOpen}
+        close={() => setIsOpen(false)}
+        slides={selectedCategory === 'all' ? allImages.map(img => ({ src: img.src, alt: img.alt })) : slides}
+        index={photoIndex}
+        styles={{
+          container: { backgroundColor: 'rgba(0, 0, 0, 0.95)' },
+        }}
+      />
 
-            <p className="mb-4 leading-relaxed">
-              <strong>Anadolu yakasında:</strong> Kadıköy, Üsküdar, Maltepe, Kartal, Pendik, Tuzla, Ümraniye, Ataşehir, Çekmeköy, 
-              Sancaktepe, Sultanbeyli ve Beykoz ilçelerinde sıklıkla hizmet veriyoruz.
-            </p>
-
-            <p className="mb-4 leading-relaxed">
-              <strong>Avrupa yakasında:</strong> Beyoğlu, Beşiktaş, Şişli, Kağıthane, Sarıyer, Eyüpsultan, Fatih, Bakırköy, 
-              Bahçelievler, Güngören, Zeytinburnu, Esenler, Bayrampaşa, Gaziosmanpaşa, Sultangazi, Başakşehir, Arnavutköy, 
-              Avcılar, Küçükçekmece, Beylikdüzü, Esenyurt, Büyükçekmece, Çatalca ve Silivri'de etkinlik organizasyonları yapıyoruz.
-            </p>
-
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl mt-6">
-              <h4 className="font-semibold text-lg mb-3">🚗 Ücretsiz Ulaşım Hizmeti</h4>
-              <p className="mb-2">İstanbul'un merkez ilçelerine <strong>ücretsiz ulaşım</strong> sağlıyoruz.</p>
-              <p>Uzak ilçeler için (Şile, Silivri, Çatalca vb.) uygun fiyatlı ulaşım hizmeti sunuyoruz.</p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Lightbox */}
-        <Lightbox
-          open={isOpen}
-          close={() => setIsOpen(false)}
-          slides={slides}
-          index={photoIndex}
-        />
-      </div>
+      {/* Custom Styles */}
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   )
 }

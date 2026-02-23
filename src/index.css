@@ -7,21 +7,31 @@
 @import './styles/kids-product-hero.css';
 @import './styles/standartlardosyasi.css';
 
-/* Self-Hosted Fonts (Optimized) */
-@import '@fontsource/inter/300.css';
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
-
-@import '@fontsource/montserrat/700.css';
-@import '@fontsource/montserrat/800.css';
-@import '@fontsource/montserrat/900.css';
-
-@import '@fontsource/poppins/400.css';
-@import '@fontsource/poppins/500.css';
-@import '@fontsource/poppins/600.css';
-@import '@fontsource/poppins/700.css';
+/* Self-Hosted Fonts - font-display: optional to prevent CLS */
+/* Inter - Latin */
+@font-face { font-family: 'Inter'; font-style: normal; font-display: optional; font-weight: 400; src: url('@fontsource/inter/files/inter-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-display: optional; font-weight: 500; src: url('@fontsource/inter/files/inter-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-display: optional; font-weight: 600; src: url('@fontsource/inter/files/inter-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-display: optional; font-weight: 700; src: url('@fontsource/inter/files/inter-latin-700-normal.woff2') format('woff2'); }
+/* Inter - Latin-ext (Turkish chars) */
+@font-face { font-family: 'Inter'; font-style: normal; font-display: optional; font-weight: 400; src: url('@fontsource/inter/files/inter-latin-ext-400-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Inter'; font-style: normal; font-display: optional; font-weight: 500; src: url('@fontsource/inter/files/inter-latin-ext-500-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Inter'; font-style: normal; font-display: optional; font-weight: 600; src: url('@fontsource/inter/files/inter-latin-ext-600-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Inter'; font-style: normal; font-display: optional; font-weight: 700; src: url('@fontsource/inter/files/inter-latin-ext-700-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+/* Montserrat - Latin + Latin-ext */
+@font-face { font-family: 'Montserrat'; font-style: normal; font-display: optional; font-weight: 700; src: url('@fontsource/montserrat/files/montserrat-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-display: optional; font-weight: 800; src: url('@fontsource/montserrat/files/montserrat-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-display: optional; font-weight: 700; src: url('@fontsource/montserrat/files/montserrat-latin-ext-700-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-display: optional; font-weight: 800; src: url('@fontsource/montserrat/files/montserrat-latin-ext-800-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+/* Poppins - Latin + Latin-ext */
+@font-face { font-family: 'Poppins'; font-style: normal; font-display: optional; font-weight: 400; src: url('@fontsource/poppins/files/poppins-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-display: optional; font-weight: 500; src: url('@fontsource/poppins/files/poppins-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-display: optional; font-weight: 600; src: url('@fontsource/poppins/files/poppins-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-display: optional; font-weight: 700; src: url('@fontsource/poppins/files/poppins-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-display: optional; font-weight: 400; src: url('@fontsource/poppins/files/poppins-latin-ext-400-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Poppins'; font-style: normal; font-display: optional; font-weight: 500; src: url('@fontsource/poppins/files/poppins-latin-ext-500-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Poppins'; font-style: normal; font-display: optional; font-weight: 600; src: url('@fontsource/poppins/files/poppins-latin-ext-600-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: 'Poppins'; font-style: normal; font-display: optional; font-weight: 700; src: url('@fontsource/poppins/files/poppins-latin-ext-700-normal.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
 
 @layer utilities {
   .font-display {
@@ -29,9 +39,31 @@
     font-weight: 700;
     letter-spacing: -0.01em;
   }
-  
+
   .text-gradient {
     @apply bg-gradient-to-r from-purple-600 via-pink-600 to-violet-600 bg-clip-text text-transparent;
+  }
+}
+
+/* Hero Slider Animations (replaces Framer Motion) */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes slideUp {
+    from { opacity: 1; transform: none; }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes scaleIn {
+    from { opacity: 1; transform: none; }
+    to { opacity: 1; transform: none; }
   }
 }
 
@@ -81,29 +113,6 @@
     background-repeat: no-repeat;
     background-color: #000;
   }
-}
-
-/* Swiper Custom Styles */
-.swiper-slide {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transition: opacity 0.5s ease, visibility 0.5s ease !important;
-}
-
-.swiper-slide-active {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Hide content of non-active slides */
-.swiper-slide:not(.swiper-slide-active) * {
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-.swiper-slide-active * {
-  opacity: 1 !important;
-  pointer-events: auto !important;
 }
 
 /* Swiper navigation buttons */

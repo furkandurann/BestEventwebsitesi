@@ -42,21 +42,27 @@ const Contact = () => {
   return (
     <div className="min-h-screen">
       <Seo
-        title="Best Event İletişim | Etkinlik ve Organizasyon Teklif Formu"
-        description="Best Event ile iletişime geçin. Şemsettin Günaltay Caddesi Erenköy/İstanbul adresimiz, telefon ve WhatsApp hattımız üzerinden etkinlik teklifinizi isteyin."
+        title="İletişim | Best Event - İstanbul Etkinlik Organizasyonu | Hemen Teklif Alın"
+        description="Best Event ile iletişime geçin. Şemsettin Günaltay Cad. No:175 Erenköy/İstanbul. WhatsApp: 0530 730 90 09. Çocuk etkinlikleri, kurumsal organizasyonlar, müzik ve dans gösterileri için hızlı teklif alın. Aynı gün dönüş garantisi."
         keywords={[
           'best event iletişim',
-          'etkinlik teklifi',
-          'organizasyon firması telefon',
-          'palyaço kiralama iletişim'
+          'istanbul etkinlik firması iletişim',
+          'etkinlik organizasyonu teklif',
+          'palyaço kiralama iletişim istanbul',
+          'sihirbaz kiralama telefon',
+          'çocuk etkinliği teklif al',
+          'kurumsal etkinlik teklifi',
+          'etkinlik organizasyon whatsapp',
+          'istanbul etkinlik firması telefon',
+          'erenköy etkinlik organizasyonu'
         ]}
         schema={{
           '@context': 'https://schema.org',
           '@type': 'ContactPage',
           name: 'Best Event İletişim',
           description:
-            'Best Event organizasyon ajansı iletişim bilgileri, telefon, e-posta ve adres.',
-          url: 'https://www.bestevent.com.tr/iletisim',
+            'Best Event İstanbul etkinlik organizasyon firması iletişim bilgileri. Telefon, WhatsApp, e-posta ve adres. Hızlı teklif ve aynı gün dönüş.',
+          url: 'https://bestevent.com.tr/iletisim',
           mainEntity: {
             '@type': 'Organization',
             name: 'Best Event',
@@ -65,12 +71,26 @@ const Contact = () => {
             address: {
               '@type': 'PostalAddress',
               streetAddress: 'Şemsettin Günaltay Caddesi No:175',
-              addressLocality: 'Kadıköy',
-              addressRegion: 'İstanbul',
+              addressLocality: 'Erenköy',
+              addressRegion: 'Kadıköy',
+              postalCode: '34738',
               addressCountry: 'TR'
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: 40.9872,
+              longitude: 29.0301
+            },
+            contactPoint: {
+              '@type': 'ContactPoint',
+              telephone: '+90-530-730-90-09',
+              contactType: 'customer service',
+              availableLanguage: ['Turkish', 'English'],
+              areaServed: 'TR'
             }
           }
         }}
+        canonicalPath="/iletisim"
       />
       <section className="bg-[#050509] text-white" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, \"SF Pro Text\", system-ui, sans-serif' }}>
         <div className="max-w-5xl mx-auto px-6 py-16">

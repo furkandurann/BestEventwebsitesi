@@ -2,8 +2,8 @@ import EventDetail from './EventDetail'
 
 const ChocolateFountain = () => {
   const eventData = {
-    title: "İstanbul'da Çikolata Şelalesi Kiralama - Tatlı Eğlence",
-    description: "Etkinlikleriniz için profesyonel çikolata şelalesi kiralama - Kadıköy, Üsküdar, Maltepe ve tüm İstanbul'da lezzetli ve görsel şölen",
+    title: "Istanbul Popcorn Pamuk Şeker Çikolata Şelalesi Konfeti Makinası Osmanlı Macunu Sıcak Çikolata Kiralama ve Organizasyonu",
+    description: "Istanbul'da popcorn, pamuk şeker, çikolata şelalesi, konfeti makinası, osmanlı macunu, sıcak çikolata kiralama ve organizasyon hizmetleri. ☎️ 0530 730 90 09",
     longDescription: `Best Event olarak İstanbul'un her bölgesinde profesyonel çikolata şelalesi kiralama hizmeti sunuyoruz. Tüm ilçelerde doğum günü partileri, düğün organizasyonları, açılış etkinlikleri ve kurumsal toplantılar için lezzetli çikolata şelalesi ile hizmetinizdeyiz.
 
 🍫 Çikolata Şelalesi Nedir?
@@ -107,9 +107,18 @@ const ChocolateFountain = () => {
       }
     ],
     
-    seoKeywords: "çikolata şelalesi istanbul, chocolate fountain kiralama, kadıköy çikolata şelalesi, düğün çikolata, doğum günü tatlı ikram, etkinlik çikolata",
+    seoKeywords: [
+      'istanbul popcorn kiralama',
+      'pamuk şeker organizasyonu',
+      'çikolata şelalesi kiralama',
+      'konfeti makinası kiralama',
+      'osmanlı macunu organizasyonu',
+      'sıcak çikolata kiralama',
+      'istanbul parti ekipmanları'
+    ],
     
     photos: [
+      "/content/images/Parti Ekipmanları/popcornpamukseker.JPG",
       "/content/images/cocukdogumgunu/IMG_0790.JPG",
       "/content/images/cocukdogumgunu/konseptdogumgunu.JPG",
       "/content/images/cocukdogumgunu/c3f9812a-98cb-4f8e-a6c2-fcbda31a6dfd.JPG",

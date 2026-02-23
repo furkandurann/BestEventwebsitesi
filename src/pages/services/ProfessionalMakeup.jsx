@@ -212,6 +212,57 @@ const ProfessionalMakeup = () => {
           </div>
         </section>
 
+        {/* Why Us Section - Peach/Coral Background with White Card */}
+        <section className="py-20 sm:py-24 bg-gradient-to-br from-orange-950 via-black to-pink-950">
+          <div className="max-w-4xl mx-auto px-6">
+            {/* White Card/Frame */}
+            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-2xl">
+              <h2 
+                className="font-extrabold text-gray-900 mb-8"
+                style={{
+                  fontSize: 'clamp(1.75rem, 5vw, 3rem)',
+                  lineHeight: '1.15',
+                  letterSpacing: '-0.025em',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+                }}
+              >
+                Neden İstanbul'un En Çok Tercih Edilen Profesyonel Makyaj Hizmetiyiz?
+              </h2>
+              
+              <div className="space-y-6">
+                <p 
+                  className="text-gray-800 font-medium"
+                  style={{
+                    fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                    lineHeight: '1.5',
+                    letterSpacing: '-0.015em',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                  }}
+                >
+                  <span className="font-bold text-gray-900">Best Event</span>, İstanbul'da yıllardır yüzlerce başarılı etkinliğe imza atmış profesyonel bir organizasyon firmasıdır. 
+                  Gelin makyajından kurumsal etkinliklere kadar, her organizasyonda deneyimli makeup artist kadromuzla güvenle tercih edilir.
+                </p>
+                
+                <p 
+                  className="text-gray-800 font-medium"
+                  style={{
+                    fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                    lineHeight: '1.5',
+                    letterSpacing: '-0.015em',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                  }}
+                >
+                  <span className="font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">Profesyonel Makyaj Organizasyonu ve Kiralama</span> kapsamımız, klasik makyaj anlayışının ötesine geçerek{' '}
+                  <span className="font-bold text-gray-900">İtalya'dan ithal edilen %100 organik mineral pigmentler, at kılından üretilmiş profesyonel fırçalar ve dermatolojik testlerden geçmiş natural ürünler</span>{' '}
+                  ile zenginleştirilmiş özel bir güzellik deneyimi sunar. Profesyonel makyaj kiralama ve organizasyon sürecinde sadece makyaj uygulamakla kalmaz, aynı zamanda{' '}
+                  <span className="font-bold text-gray-900">cilt sağlığını koruyarak uzun süreli kalıcılık</span>{' '}
+                  sağlayan profesyonel bir hizmet sergiler. İtalyan kozmetik mirasından gelen premium formülasyonlar, at kılı fırçaların hassas dokunuşu ve %100 natural içerikli ürünlerimiz bugüne kadar %100 memnuniyetle sunulmuş, misafirlerinize unutulmaz bir güzellik deneyimi yaşatmıştır. İster düğün, ister özel gün makyajı olsun, profesyonel makeup artist kiralama talebinizi deneyimli ekibimizle karşılıyoruz.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Hizmet Kapsamı */}
         <section className="py-16 px-6 bg-gradient-to-b from-[#0c0c0f] to-black border-t border-white/10">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-start">

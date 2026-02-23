@@ -44,7 +44,7 @@ const Karaoke = () => {
           content="1000+ şarkı, profesyonel ekipman ve sunucu ile çocuklara özel karaoke etkinliği. İstanbul genelinde kurulum, ses/ışık ve playlist yönetimi."
         />
         <meta name="keywords" content="karaoke kiralama, çocuk karaoke istanbul, doğum günü karaoke, karaoke etkinliği" />
-        <link rel="canonical" href="https://www.bestevent.com/organizasyonlar/karaoke-etkinligi" />
+        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/karaoke-etkinligi" />
       </Helmet>
 
       <main className="bg-white text-gray-900">

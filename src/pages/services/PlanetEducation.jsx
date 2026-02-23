@@ -51,7 +51,7 @@ const PlanetEducation = () => {
           content="4-14 yaş çocuklar için interaktif gezegen tanıtım etkinliği. Maketler, astronot kostümü, quiz ve uzay görselleriyle okul ve özel etkinliklerde pedagojik uzay atölyesi."
         />
         <meta name="keywords" content="gezegen tanıtım, uzay atölyesi, çocuk astronomi, gezegen eğitimi istanbul, okul etkinliği uzay" />
-        <link rel="canonical" href="https://www.bestevent.com/organizasyonlar/gezegen-tanitim" />
+        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/gezegen-tanitim" />
       </Helmet>
 
       <main className="bg-white text-gray-900">

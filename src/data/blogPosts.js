@@ -1,7 +1,23 @@
-// Blog Posts Data - 31 Blog (19 Etkinlik + 12 Bölge)
+// Blog Posts Data - 32 Blog (20 Etkinlik + 12 Bölge)
 
 export const blogPosts = [
-  // ETKİNLİK BLOĞLARI (19 adet)
+  // ETKİNLİK BLOĞLARI (21 adet)
+  {
+    slug: 'palyaco-gezegeni',
+    title: 'Palyaço Gezegeni: İstanbul\'un En İyi Doğum Günü Organizasyonu - 217 Yorum',
+    excerpt: '6 yıldır İstanbul\'da profesyonel doğum günü organizasyonu, bubble show, sihirbaz gösterileri, kurumsal etkinlikler, kostümlü karakter kiralama, popcorn ve pamuk şeker makinası hizmetleri. 217 memnun müşteri yorumu ile 5.0 yıldız.',
+    category: 'Etkinlik',
+    date: '24 Ocak 2026',
+    image: '/content/images/palyaco/palyaconattiveguleryuz.webp'
+  },
+  {
+    slug: 'istanbul-etkinlik-rehberi',
+    title: 'İstanbul Çocuk Etkinlikleri Rehberi | Organizasyon Kiralama Gösteri 2025',
+    excerpt: 'İstanbul\'da çocuk etkinliği organizasyonu, palyaço kiralama, bubble show gösterisi. 39 semtte hizmet. 10+ yıl deneyim. Sihirbaz, maskot, kostümlü karakter ve profesyonel organizasyon.',
+    category: 'Etkinlik',
+    date: '29 Aralık 2025',
+    image: '/content/images/ahunundogumgunu/bubbleshowgosterisi.webp'
+  },
   {
     slug: 'palyaco-kiralama-istanbul',
     title: 'Palyaço Kiralama İstanbul: Neşe, Sosis Balon ve Kadıköy Trafiği',

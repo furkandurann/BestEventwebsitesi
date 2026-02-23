@@ -62,7 +62,7 @@ const EventDetail = ({
     provider: {
       '@type': 'Organization',
       name: 'Best Event',
-      url: 'https://www.bestevent.com.tr'
+      url: 'https://bestevent.com.tr'
     },
     areaServed: {
       '@type': 'AdministrativeArea',
@@ -73,7 +73,7 @@ const EventDetail = ({
           '@type': 'Offer',
           priceCurrency: 'TRY',
           price: pricing.startingPrice,
-          url: 'https://www.bestevent.com.tr'
+          url: 'https://bestevent.com.tr'
         }
       : undefined
   }

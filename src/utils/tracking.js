@@ -44,20 +44,34 @@ export const trackGA4Event = (eventName, params = {}) => {
 
 /**
  * WhatsApp Click Tracking
- * Google Ads Conversion ID: AW-17782159242
- * (WhatsApp için aynı Phone Click conversion kullanılıyor)
+ * Google Ads Conversion ID: AW-17885091470 (Account 1) & AW-17897032718 (Account 2)
+ * TODO: Google Ads'te WhatsApp conversion action oluşturduktan sonra conversion label'ı ekleyin
+ * Örnek: 'AW-17885091470/AbC123XyZ'
  * @param {string} serviceName - Hizmet adı (örn: "Yüz Boyama")
  * @param {string} pageUrl - Sayfa URL'i
  */
 export const trackWhatsAppClick = (serviceName, pageUrl) => {
-  // Google Ads Conversion - WhatsApp Click (Phone Click ile aynı conversion)
+  // Google Ads Conversion - WhatsApp Click (Account 1)
   if (typeof window !== 'undefined' && window.gtag) {
+    // Account 1: AW-17885091470
     window.gtag('event', 'conversion', {
-      'send_to': 'AW-17782159242/MD1dCKzw2NEbEIrvmJ9C',
+      'send_to': 'AW-17885091470',  // TODO: Conversion label ekleyin: 'AW-17885091470/LABEL'
       'value': 1.0,
-      'currency': 'TRY'
+      'currency': 'TRY',
+      'event_category': 'engagement',
+      'event_label': 'WhatsApp Click'
     })
-    console.log('[Google Ads] WhatsApp Click Conversion tracked')
+    console.log('[Google Ads] WhatsApp Click Conversion tracked (Account 1: AW-17885091470)')
+    
+    // Account 2: AW-17897032718
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-17897032718',  // TODO: Conversion label ekleyin: 'AW-17897032718/LABEL'
+      'value': 1.0,
+      'currency': 'TRY',
+      'event_category': 'engagement',
+      'event_label': 'WhatsApp Click'
+    })
+    console.log('[Google Ads] WhatsApp Click Conversion tracked (Account 2: AW-17897032718)')
   }
 
   // GA4 Event
@@ -72,20 +86,34 @@ export const trackWhatsAppClick = (serviceName, pageUrl) => {
 
 /**
  * Phone Click Tracking (Tıkla ve Ara)
- * Google Ads Conversion ID: AW-17782159242
- * Conversion Label: MD1dCKzw2NEbEIrvmJ9C
+ * Google Ads Conversion ID: AW-17885091470 (Account 1) & AW-17897032718 (Account 2)
+ * TODO: Google Ads'te Phone Click conversion action oluşturduktan sonra conversion label'ı ekleyin
+ * Örnek: 'AW-17885091470/XyZ456AbC'
  * @param {string} serviceName - Hizmet adı
  * @param {string} pageUrl - Sayfa URL'i
  */
 export const trackPhoneClick = (serviceName, pageUrl) => {
   // Google Ads Conversion - Tıkla ve Ara
   if (typeof window !== 'undefined' && window.gtag) {
+    // Account 1: AW-17885091470
     window.gtag('event', 'conversion', {
-      'send_to': 'AW-17782159242/MD1dCKzw2NEbEIrvmJ9C',
+      'send_to': 'AW-17885091470',  // TODO: Conversion label ekleyin: 'AW-17885091470/LABEL'
       'value': 1.0,
-      'currency': 'TRY'
+      'currency': 'TRY',
+      'event_category': 'engagement',
+      'event_label': 'Phone Click'
     })
-    console.log('[Google Ads] Phone Click Conversion tracked')
+    console.log('[Google Ads] Phone Click Conversion tracked (Account 1: AW-17885091470)')
+    
+    // Account 2: AW-17897032718
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-17897032718',  // TODO: Conversion label ekleyin: 'AW-17897032718/LABEL'
+      'value': 1.0,
+      'currency': 'TRY',
+      'event_category': 'engagement',
+      'event_label': 'Phone Click'
+    })
+    console.log('[Google Ads] Phone Click Conversion tracked (Account 2: AW-17897032718)')
   }
 
   // GA4 Event

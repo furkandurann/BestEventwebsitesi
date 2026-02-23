@@ -56,7 +56,7 @@ const Clients = () => {
           name: 'Best Event Referanslar',
           description:
             'Best Event organizasyon ajansının hizmet verdiği kurumsal marka ve kurumların listesi.',
-          url: 'https://www.bestevent.com.tr/referanslar'
+          url: 'https://bestevent.com.tr/referanslar'
         }}
       />
       <div className="layout-container">

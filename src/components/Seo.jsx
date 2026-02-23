@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 
-const SITE_URL = 'https://www.bestevent.com.tr'
+const SITE_URL = 'https://bestevent.com.tr'
 const DEFAULT_IMAGE = '/content/images/slider/konfeti.webp'
 
 const Seo = ({
@@ -17,19 +17,44 @@ const Seo = ({
   const canonical = `${SITE_URL}${canonicalPath || pathname}`
   const keywordString = Array.isArray(keywords) ? keywords.join(', ') : keywords
 
+  // Check if running on test domain - block indexing for test.bestevent.com.tr
+  const isTestDomain = typeof window !== 'undefined' && window.location.hostname === 'test.bestevent.com.tr'
+  const robotsContent = isTestDomain
+    ? 'noindex, nofollow'
+    : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+
+  // GA is loaded in index.html - no duplicate loading needed
+
   return (
     <Helmet>
       {title && <title>{title}</title>}
       {description && <meta name="description" content={description} />}
       {keywordString && <meta name="keywords" content={keywordString} />}
+      
+      {/* SEO Meta Tags */}
+      <meta name="robots" content={robotsContent} />
+      <meta name="theme-color" content="#1e3a8a" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+      <meta httpEquiv="content-language" content="tr" />
       <link rel="canonical" href={canonical} />
+      
+      {/* Hreflang Tags for Language */}
+      <link rel="alternate" hreflang="tr" href={canonical} />
+      <link rel="alternate" hreflang="x-default" href={canonical} />
+
+      {/* Preconnect for Performance */}
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
       {/* Open Graph / Facebook */}
       {title && <meta property="og:title" content={title} />}
       {description && <meta property="og:description" content={description} />}
       <meta property="og:url" content={canonical} />
       <meta property="og:type" content={type} />
+      <meta property="og:site_name" content="BestEvent - İstanbul Etkinlik Organizasyonu" />
       {image && <meta property="og:image" content={`${SITE_URL}${image}`} />}
+      {image && <meta property="og:image:width" content="1200" />}
+      {image && <meta property="og:image:height" content="630" />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

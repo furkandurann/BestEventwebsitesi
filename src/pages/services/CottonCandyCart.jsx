@@ -5,37 +5,49 @@ const CottonCandyCart = () => {
   const services = [
     {
       id: 'chocolate-fountain',
-      title: 'Çikolata Şelalesi',
-      description: 'Etkinlikleriniz için profesyonel çikolata şelalesi kiralama hizmeti',
-      image: '/content/images/çikolataselalesi/hareketlislider6cikolataselalsi.webp',
+      title: 'Çikolata Şelalesi Kiralama',
+      description: 'Etkinlikleriniz için profesyonel çikolata şelalesi kiralama hizmeti. İstanbul genelinde hijyenik ve kaliteli çikolata şelalesi kiralama.',
+      image: '/content/images/Parti Ekipmanları/hareketlislider6cikolataselalsi.webp',
       alt: 'Çikolata şelalesi kiralama İstanbul - Best Event'
     },
     {
       id: 'popcorn',
-      title: 'Popcorn Arabası',
-      description: 'Nostaljik popcorn arabası ile taze mısır patlatma hizmeti',
+      title: 'Popcorn Kiralama',
+      description: 'Nostaljik popcorn arabası kiralama ile taze mısır patlatma hizmeti. Profesyonel popcorn kiralama İstanbul.',
       image: '/content/images/Parti Ekipmanları/hareketlislider7popcorn.jpeg',
       alt: 'Popcorn arabası kiralama İstanbul - Best Event'
     },
     {
       id: 'cotton-candy',
-      title: 'Pamuk Şeker Arabası',
-      description: 'Renkli ve lezzetli pamuk şeker arabası kiralama',
+      title: 'Pamuk Şeker Kiralama',
+      description: 'Renkli ve lezzetli pamuk şeker arabası kiralama hizmeti. İstanbul genelinde pamuk şeker kiralama.',
       image: '/content/images/Parti Ekipmanları/pamukseker.jpeg',
       alt: 'Pamuk şeker arabası kiralama İstanbul - Best Event'
+    },
+    {
+      id: 'sound-system',
+      title: 'Ses Sistemi Kiralama',
+      description: 'Etkinlikleriniz için profesyonel ses sistemi kiralama hizmeti. Kaliteli ses ekipmanları kiralama.',
+      image: '/content/images/music/bando.webp',
+      alt: 'Ses sistemi kiralama İstanbul - Best Event'
     }
   ]
 
   return (
     <div className="min-h-screen bg-black text-white">
       <Seo
-        title="Parti Ekipmanları | Çikolata Şelalesi, Popcorn, Pamuk Şeker"
-        description="Çikolata şelalesi, popcorn arabası ve pamuk şeker arabası kiralama hizmetleri. İstanbul genelinde profesyonel parti ekipmanları."
+        title="Çikolata Şelalesi Kiralama, Popcorn Kiralama, Pamuk Şeker Kiralama İstanbul | Best Event"
+        description="Profesyonel çikolata şelalesi kiralama, popcorn kiralama, pamuk şeker kiralama ve ses sistemi kiralama hizmetleri. İstanbul genelinde hijyenik ve kaliteli parti ekipmanları kiralama."
         keywords={[
           'çikolata şelalesi kiralama',
-          'popcorn arabası',
-          'pamuk şeker arabası',
-          'parti ekipmanları istanbul',
+          'çikolata şelalesi kiralama istanbul',
+          'popcorn kiralama',
+          'popcorn arabası kiralama',
+          'pamuk şeker kiralama',
+          'pamuk şeker arabası kiralama',
+          'ses sistemi kiralama',
+          'ses sistemi kiralama istanbul',
+          'parti ekipmanları kiralama istanbul',
           'etkinlik ikram servisi'
         ]}
         canonicalPath="/hizmetler/pamuk-seker"
@@ -46,12 +58,13 @@ const CottonCandyCart = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="/content/images/Parti Ekipmanları/popcornpamukseekrarabasi.jpeg" 
-            alt="Parti ekipmanları kiralama İstanbul - Best Event"
+            src="/content/images/Parti Ekipmanları/popcornpamukseker.JPG" 
+            alt="Popcorn ve pamuk şeker kiralama İstanbul - Best Event parti ekipmanları"
             className="w-full h-full object-cover"
-            style={{ objectPosition: 'center 30%' }}
+            style={{ objectPosition: 'center 40%' }}
+            loading="eager"
+            fetchpriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
         </div>
 
         {/* Content */}
@@ -186,6 +199,57 @@ const CottonCandyCart = () => {
         </div>
       </section>
 
+      {/* Why Us Section - Pink Background with White Card */}
+      <section className="py-20 sm:py-24 bg-gradient-to-br from-pink-950 via-black to-purple-950">
+        <div className="max-w-4xl mx-auto px-6">
+          {/* White Card/Frame */}
+          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-2xl">
+            <h2 
+              className="font-extrabold text-gray-900 mb-8"
+              style={{
+                fontSize: 'clamp(1.75rem, 5vw, 3rem)',
+                lineHeight: '1.15',
+                letterSpacing: '-0.025em',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+              }}
+            >
+              Neden İstanbul'un En Çok Tercih Edilen Parti Ekipmanları Kiralama Hizmetiyiz?
+            </h2>
+            
+            <div className="space-y-6">
+              <p 
+                className="text-gray-800 font-medium"
+                style={{
+                  fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                  lineHeight: '1.5',
+                  letterSpacing: '-0.015em',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                }}
+              >
+                <span className="font-bold text-gray-900">Best Event</span>, İstanbul'da yıllardır yüzlerce başarılı etkinliğe imza atmış profesyonel bir organizasyon firmasıdır. 
+                Çocuk doğum günlerinden kurumsal etkinliklere kadar, her organizasyonda deneyimli ekibiyle güvenle tercih edilir.
+              </p>
+              
+              <p 
+                className="text-gray-800 font-medium"
+                style={{
+                  fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                  lineHeight: '1.5',
+                  letterSpacing: '-0.015em',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                }}
+              >
+                <span className="font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Parti Ekipmanları Organizasyonu ve Kiralama</span> kapsamımız, klasik ikram anlayışının ötesine geçerek{' '}
+                <span className="font-bold text-gray-900">çikolata şelalesi, popcorn arabası ve pamuk şeker arabası</span>{' '}
+                ile zenginleştirilmiş özel bir etkinlik deneyimi sunar. Profesyonel parti ekipmanları kiralama ve organizasyon sürecinde sadece ikram sunmakla kalmaz, aynı zamanda{' '}
+                <span className="font-bold text-gray-900">nostaljik ve eğlenceli anlar</span>{' '}
+                yaratan profesyonel bir performans sergiler. Hijyenik koşullar, kaliteli malzemeler ve profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, misafirlerinize unutulmaz lezzetler yaşatmıştır. İster doğum günü etkinliği, ister kurumsal organizasyon olsun, parti ekipmanları kiralama talebinizi deneyimli ekibimizle karşılıyoruz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Info Section */}
       <section className="py-20 sm:py-28 px-6 bg-gradient-to-b from-zinc-900 to-black">
         <div className="max-w-5xl mx-auto">
@@ -209,13 +273,16 @@ const CottonCandyCart = () => {
             
             <div className="space-y-4 text-zinc-300" style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', lineHeight: '1.8' }}>
               <p>
-                Etkinliklerinizde profesyonel ikram servisleri ile unutulmaz anlar yaratıyoruz. Çikolata şelalesi, popcorn arabası ve pamuk şeker arabası kiralama hizmetlerimizle her türlü organizasyonunuza değer katmaya hazırız.
+                <strong className="text-white">Çikolata şelalesi kiralama</strong> hizmetimiz ile etkinliklerinize lezzet katın. Profesyonel <strong className="text-white">çikolata şelalesi kiralama İstanbul</strong> genelinde hijyenik koşullarda sunulmaktadır. Çikolata fondue servisi ile misafirlerinize unutulmaz bir deneyim yaşatın.
               </p>
               <p>
-                Doğum günlerinden şirket etkinliklerine, okul festivallerinden özel kutlamalara kadar geniş bir yelpazede hizmet sunuyoruz. Her ekipmanımız hijyenik koşullarda hazırlanır ve profesyonel ekibimiz tarafından sunulur.
+                <strong className="text-white">Popcorn kiralama</strong> ve <strong className="text-white">pamuk şeker kiralama</strong> hizmetlerimiz ile nostaljik lezzetleri etkinliğinize taşıyın. Popcorn arabası kiralama ve pamuk şeker arabası kiralama hizmetlerimiz doğum günü, düğün, nişan, kına gecesi, açılış organizasyonu ve kurumsal etkinliklerde tercih edilmektedir.
+              </p>
+              <p>
+                <strong className="text-white">Ses sistemi kiralama</strong> hizmetimiz ile etkinliklerinizde kaliteli ses deneyimi yaşatın. Profesyonel ses ekipmanları kiralama hizmetimiz ile müzik, konuşma ve sunum ihtiyaçlarınızı karşılıyoruz. DJ ekipmanları ve kablosuz mikrofon sistemleri de hizmetimiz kapsamındadır.
               </p>
               <p className="text-zinc-400">
-                Detaylı bilgi ve rezervasyon için bizimle iletişime geçebilirsiniz. Size özel paketlerimizi ve fiyatlandırmamızı paylaşmaktan mutluluk duyarız.
+                İstanbul genelinde <strong className="text-white">çikolata şelalesi kiralama, popcorn kiralama, pamuk şeker kiralama ve ses sistemi kiralama</strong> için bizimle iletişime geçin. Size özel paketlerimizi ve uygun fiyatlarımızı öğrenin.
               </p>
             </div>
             

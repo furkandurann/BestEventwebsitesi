@@ -1,12 +1,47 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
 import Seo from '../../components/Seo'
 import FAQSection from '../../components/FAQSection'
-import SantaClausHeroSlider from '../../components/SantaClausHeroSlider'
 import '../../styles/christmas-theme.css'
+import 'swiper/css'
+import 'swiper/css/effect-fade'
+import 'swiper/css/pagination'
 
 const SantaClausRental = () => {
   const [selectedTab, setSelectedTab] = useState('standard')
+  
+  // WhatsApp Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    address: '',
+    date: '',
+    time: '',
+    notes: ''
+  })
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const sendWhatsAppMessage = () => {
+    const message = `🎅 *Noel Baba Kiralama Talebi*
+
+📝 *Ad Soyad:* ${formData.name || 'Belirtilmedi'}
+📞 *Telefon:* ${formData.phone || 'Belirtilmedi'}
+📍 *Adres:* ${formData.address || 'Belirtilmedi'}
+📅 *Tarih:* ${formData.date || 'Belirtilmedi'}
+🕐 *Saat:* ${formData.time || 'Belirtilmedi'}
+📋 *Notlar:* ${formData.notes || 'Belirtilmedi'}`
+
+    const encodedMessage = encodeURIComponent(message)
+    window.open(`https://wa.me/905307309009?text=${encodedMessage}`, '_blank')
+  }
 
   // FAQ Verileri
   const faqs = [
@@ -66,9 +101,15 @@ const SantaClausRental = () => {
   return (
     <>
       <Seo 
-        title="🎅 Noel Baba Kiralama İstanbul | Yılbaşı Organizasyonu - Best Event"
-        description="İstanbul'un en özel Noel Baba kiralama ve yılbaşı organizasyonu hizmeti. Private ve Standart paketler, profesyonel sahne sanatçısı, Kar Kızı, hediye dağıtımı, kar yağdırma. Kurumsal ve özel etkinlikler için ideal. ☎ 0530 730 90 09"
-        keywords="noel baba kiralama istanbul, noel baba organizasyonu, yılbaşı etkinliği, çocuk etkinliği, noel süsleme, kar kızı, kurumsal yılbaşı, private noel baba, standart noel baba, istanbul noel organizasyonu"
+        title="Istanbul Noel Baba Gösterisi | Noel Baba Organizasyonu Kiralama ve Etkinliği"
+        description="Istanbul'da noel baba gösterisi, organizasyonu ve kiralama. Noel baba etkinliği için profesyonel hizmet. ☎ 0530 730 90 09"
+        keywords={[
+          'istanbul noel baba gösterisi',
+          'noel baba organizasyonu',
+          'noel baba kiralama',
+          'noel baba etkinliği',
+          'istanbul noel baba'
+        ]}
         ogImage="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg"
         schema={[
           {
@@ -138,8 +179,465 @@ const SantaClausRental = () => {
         ]}
       />
 
-      {/* Hero Slider - Doğum Günü Organizasyonu Gibi */}
-      <SantaClausHeroSlider />
+      {/* Cinematic Hero Slider - Noel Baba */}
+      <div className="relative w-full h-[90vh] overflow-hidden bg-black">
+        {/* Kar Animasyonu */}
+        <div className="snow-container absolute inset-0 z-20 pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="snowflake">❄</div>
+          ))}
+        </div>
+
+        {/* Preload first image */}
+        <link rel="preload" as="image" href="/content/images/noelbaba/noelbabastandart/7BDA73F5-5BE9-419C-AD20-98CB8A679C51.webp" fetchpriority="high" />
+        
+        <Swiper
+          modules={[Autoplay, EffectFade, Pagination]}
+          effect="fade"
+          speed={1200}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
+            waitForTransition: false,
+          }}
+          fadeEffect={{
+            crossFade: true,
+          }}
+          pagination={{
+            clickable: true,
+            dynamicBullets: false,
+          }}
+          loop={true}
+          preloadImages={false}
+          lazy={{
+            loadPrevNext: true,
+            loadPrevNextAmount: 1,
+            loadOnTransitionStart: true,
+          }}
+          className="h-full w-full"
+        >
+          {[
+            { src: '/content/images/noelbaba/noelbabastandart/7BDA73F5-5BE9-419C-AD20-98CB8A679C51.webp', alt: 'Noel Baba kiralama İstanbul - Best Event' },
+            { src: '/content/images/noelbaba/noelbabastandart/8B071122-174A-4DFE-AFBB-E1A5108E1009 2.webp', alt: 'Noel Baba organizasyonu İstanbul - Best Event' },
+            { src: '/content/images/noelbaba/noelbabastandart/noelannestandart.webp', alt: 'Noel Baba ve Kar Kızı - Best Event' },
+          ].map((image, index) => (
+            <SwiperSlide key={index} className="swiper-slide">
+              <div className="absolute inset-0 h-full w-full cinematic-slide">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="absolute inset-0 w-full h-full object-cover cinematic-image"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={index === 0 ? 'high' : 'low'}
+                  width="1920"
+                  height="1080"
+                  decoding={index === 0 ? 'sync' : 'async'}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none" />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Hero Overlay Content */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+          <div className="text-center px-6 max-w-5xl">
+            <h1 
+              className="font-bold text-white mb-6 drop-shadow-2xl"
+              style={{
+                fontSize: 'clamp(2rem, 6vw, 4.5rem)',
+                lineHeight: '1.2',
+                letterSpacing: '-0.02em',
+                fontWeight: '700',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif',
+                textShadow: '0 4px 20px rgba(0,0,0,0.8)'
+              }}
+            >
+              <span className="bg-gradient-to-r from-red-300 via-white to-green-300 bg-clip-text text-transparent">
+                İstanbul'un En Büyülü
+              </span>
+              <br />
+              Noel Baba Organizasyonu
+            </h1>
+            <p 
+              className="text-white/90 mb-8 drop-shadow-lg"
+              style={{
+                fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                lineHeight: '1.6',
+                letterSpacing: '-0.01em',
+                fontWeight: '500',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif',
+                textShadow: '0 2px 10px rgba(0,0,0,0.7)'
+              }}
+            >
+              12 Yıldır Yılbaşı Büyüsünü Yaşatıyoruz
+            </p>
+          </div>
+        </div>
+
+        {/* Kar Animasyonu ve Swiper Styling */}
+        <style>{`
+          /* Kar animasyonu - Daha yoğun */
+          .snow-container {
+            overflow: hidden;
+          }
+
+          .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: clamp(12px, 2.5vw, 24px);
+            animation: fall linear infinite;
+            opacity: 0.9;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+          }
+
+          @keyframes fall {
+            0% {
+              transform: translateY(0) rotate(0deg);
+              opacity: 0.9;
+            }
+            100% {
+              transform: translateY(100vh) rotate(360deg);
+              opacity: 0.3;
+            }
+          }
+
+          .snowflake:nth-child(1) { left: 2%; animation-duration: 11s; animation-delay: 0s; }
+          .snowflake:nth-child(2) { left: 8%; animation-duration: 13s; animation-delay: 0.5s; }
+          .snowflake:nth-child(3) { left: 15%; animation-duration: 9s; animation-delay: 1s; }
+          .snowflake:nth-child(4) { left: 22%; animation-duration: 15s; animation-delay: 0.3s; }
+          .snowflake:nth-child(5) { left: 28%; animation-duration: 10s; animation-delay: 1.5s; }
+          .snowflake:nth-child(6) { left: 35%; animation-duration: 14s; animation-delay: 0.8s; }
+          .snowflake:nth-child(7) { left: 42%; animation-duration: 12s; animation-delay: 1.2s; }
+          .snowflake:nth-child(8) { left: 48%; animation-duration: 16s; animation-delay: 0.2s; }
+          .snowflake:nth-child(9) { left: 55%; animation-duration: 11s; animation-delay: 1.8s; }
+          .snowflake:nth-child(10) { left: 62%; animation-duration: 13s; animation-delay: 0.6s; }
+          .snowflake:nth-child(11) { left: 68%; animation-duration: 9s; animation-delay: 1.4s; }
+          .snowflake:nth-child(12) { left: 75%; animation-duration: 15s; animation-delay: 0.4s; }
+          .snowflake:nth-child(13) { left: 82%; animation-duration: 10s; animation-delay: 1.6s; }
+          .snowflake:nth-child(14) { left: 88%; animation-duration: 14s; animation-delay: 0.9s; }
+          .snowflake:nth-child(15) { left: 95%; animation-duration: 12s; animation-delay: 1.1s; }
+          .snowflake:nth-child(16) { left: 5%; animation-duration: 13s; animation-delay: 0.7s; }
+          .snowflake:nth-child(17) { left: 18%; animation-duration: 11s; animation-delay: 1.3s; }
+          .snowflake:nth-child(18) { left: 45%; animation-duration: 16s; animation-delay: 0.5s; }
+          .snowflake:nth-child(19) { left: 72%; animation-duration: 10s; animation-delay: 1.7s; }
+          .snowflake:nth-child(20) { left: 92%; animation-duration: 14s; animation-delay: 0.1s; }
+
+          /* Swiper pagination */
+          .swiper-pagination {
+            bottom: 2.5rem !important;
+            z-index: 30 !important;
+          }
+          .swiper-pagination-bullet {
+            width: 10px !important;
+            height: 10px !important;
+            background: rgba(255, 255, 255, 0.6) !important;
+            opacity: 1 !important;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          }
+          .swiper-pagination-bullet-active {
+            width: 32px !important;
+            border-radius: 5px !important;
+            background: rgba(255, 255, 255, 1) !important;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4) !important;
+          }
+
+          /* Dramatic Ken Burns effect - GPU optimized */
+          .cinematic-slide {
+            opacity: 1;
+            will-change: transform;
+          }
+          
+          .swiper-slide-active .cinematic-image {
+            animation: dramaticZoom 25s ease-out forwards;
+            transform-origin: center center;
+          }
+          
+          @keyframes dramaticZoom {
+            0% {
+              transform: scale(1) translateZ(0);
+            }
+            100% {
+              transform: scale(1.08) translateZ(0);
+            }
+          }
+          
+          /* Hardware acceleration */
+          .cinematic-image {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+          }
+          
+          /* Smooth transitions */
+          .swiper-slide {
+            transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          }
+        `}</style>
+      </div>
+
+      {/* Brand Impact Section - H1 */}
+      <section className="py-20 sm:py-28 px-6 bg-gradient-to-br from-red-950/40 via-black to-green-950/40 border-y border-white/10">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Ana Başlık - H1 */}
+          <h1
+            className="font-bold mb-8 text-white px-4 text-center"
+            style={{
+              fontSize: 'clamp(1.41rem, 3.74vw, 2.48rem)',
+              lineHeight: '1.35',
+              letterSpacing: '-0.015em',
+              fontWeight: '700',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+            }}
+          >
+            <span style={{ whiteSpace: 'nowrap' }}>
+              İstanbul{' '}
+              <span className="bg-gradient-to-r from-red-400 to-green-400 bg-clip-text text-transparent font-bold">
+                Noel Baba Kiralama
+              </span>
+            </span>
+            {' '}ve Noel Baba Organizasyonu
+          </h1>
+
+          {/* Ana Mesaj */}
+          <p
+            className="text-white mb-12 text-center mx-auto"
+            style={{
+              fontSize: 'clamp(1.125rem, 2.5vw, 1.75rem)',
+              lineHeight: '1.5',
+              letterSpacing: '-0.02em',
+              fontWeight: '600',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+            }}
+          >
+            12 Yıldır Yılbaşı Büyüsünü Yaşatıyoruz
+          </p>
+
+          {/* İstatistikler */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 mb-12">
+            <div>
+              <p
+                style={{
+                  fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                  lineHeight: '1.4',
+                  letterSpacing: '-0.015em',
+                  fontWeight: '500',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif',
+                  color: '#E5E5E5'
+                }}
+              >
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-green-400 font-bold" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>+1000</span>
+                {' '}Noel Baba Etkinliği
+              </p>
+            </div>
+
+            <div className="hidden sm:block w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-transparent" />
+            <div className="block sm:hidden w-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+            <div>
+              <p
+                className="text-white font-bold"
+                style={{
+                  fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                  lineHeight: '1.4',
+                  letterSpacing: '-0.015em',
+                  fontWeight: '700',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                }}
+              >
+                Binlerce{' '}
+                <span
+                  className="bg-gradient-to-r from-red-400 to-green-400 bg-clip-text text-transparent font-bold"
+                  style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
+                >
+                  Mutlu Çocuk
+                </span>
+              </p>
+            </div>
+          </div>
+
+          {/* Ek Hizmetler - Konfeti & Volkan Partisi */}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+              <span className="text-2xl mr-2">🎊</span>
+              <span className="text-white font-semibold" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.125rem)' }}>
+                Konfeti Partisi
+              </span>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
+              <span className="text-2xl mr-2">🌋</span>
+              <span className="text-white font-semibold" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.125rem)' }}>
+                Volkan Partisi
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Neden Biz Section - Kırmızı Arka Plan + Beyaz Çerçeve */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-red-700 via-red-800 to-red-900">
+        <div className="container mx-auto px-4 max-w-4xl">
+          {/* Beyaz Çerçeve */}
+          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
+            <h2
+              className="font-extrabold text-center mb-8"
+              style={{
+                fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
+                lineHeight: '1.3',
+                letterSpacing: '-0.02em',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif',
+                color: '#1a1a1a'
+              }}
+            >
+              Neden İstanbul'da En Çok Tercih Edilen{' '}
+              <span className="bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent">
+                Noel Baba Kiralama
+              </span>{' '}
+              Hizmetiyiz?
+            </h2>
+            <p
+              className="text-gray-800 text-center leading-relaxed"
+              style={{
+                fontSize: 'clamp(1.05rem, 2.2vw, 1.25rem)',
+                lineHeight: '1.9',
+                fontWeight: '500',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+              }}
+            >
+              <strong className="text-red-700 font-bold">Best Event</strong>, İstanbul'da yıllardır yüzlerce başarılı yılbaşı organizasyonuna imza atmış profesyonel bir etkinlik firmasıdır. Noel Baba kiralama hizmetimiz, bugüne kadar <strong className="text-gray-900">tek bir memnuniyetsizlik yaşamadan</strong> sunulmuş; çocuklardan yetişkinlere kadar herkesin yılbaşı ruhunu hissettiği <strong className="text-gray-900">özel bir etkinlik deneyimi</strong> sunar.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Apple-style Slider - Noel Baba Fotoğrafları */}
+      <section className="relative w-full bg-black overflow-hidden pt-4 md:pt-8 pb-8 md:pb-12">
+        <div className="w-full mx-auto px-0">
+          <div 
+            className="relative overflow-x-auto overflow-y-hidden mx-auto"
+            style={{
+              width: '100vw',
+              height: 'clamp(520px, 78vh, 680px)',
+              marginTop: 'clamp(8px, 1vw, 12px)',
+              scrollSnapType: 'x mandatory',
+              scrollBehavior: 'smooth',
+              WebkitOverflowScrolling: 'touch'
+            }}
+          >
+            <div 
+              className="flex h-full gap-10 md:gap-16 user-select-none"
+              style={{ 
+                paddingLeft: 'clamp(2%, 3%, 4%)',
+                paddingRight: 'clamp(10%, 12%, 15%)'
+              }}
+            >
+              {[
+                { src: '/content/images/noelbaba/noelbabastandart/8211BF23-166D-4080-B7CD-AA8C757CDB59 2.webp', alt: 'Noel baba gösterisi organizasyonu' },
+                { src: '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg', alt: 'Noel baba gösterisi istanbul' },
+                { src: '/content/images/noelbaba/noelbabastandart/noelannestandart.webp', alt: 'Istanbul noel baba kiralama' }
+              ].map((image, index) => (
+                <div 
+                  key={index} 
+                  className="flex-none flex items-center justify-center"
+                  style={{ 
+                    width: 'clamp(94%, 96%, 98%)', 
+                    height: '100%',
+                    scrollSnapAlign: 'center'
+                  }}
+                >
+                  <div 
+                    className="relative w-full h-full overflow-hidden"
+                    style={{
+                      borderRadius: 'clamp(40px, 4.5vw, 48px)',
+                      backgroundColor: '#000',
+                      aspectRatio: '4/5'
+                    }}
+                  >
+                    <img 
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover select-none"
+                      style={{
+                        objectPosition: '50% 20%'
+                      }}
+                      draggable="false"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Profesyonel Noel Baba Section - Noel Temalı */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-red-900 via-red-800 to-green-900">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-12">
+            <span className="text-5xl mb-4 block">🌟</span>
+            <h2
+              className="font-bold text-white mb-4"
+              style={{
+                fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
+                lineHeight: '1.3',
+                letterSpacing: '-0.02em',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+              }}
+            >
+              Profesyonel Noel Baba ile Gerçek Bir Yılbaşı Deneyimi
+            </h2>
+            <p className="text-white/80 text-base max-w-2xl mx-auto">
+              Noel Baba karakterlerimiz ile fark yaratan özellikler
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { icon: '🎭', text: 'Gerçekçi ve yüksek kaliteli Noel Baba kostümü kullanır' },
+              { icon: '💬', text: 'Çocuklarla birebir iletişim kurar, sohbet eder' },
+              { icon: '🎁', text: 'Hediye dağıtımı ve fotoğraf çekimlerine eşlik eder' },
+              { icon: '🎪', text: 'Etkinliğin konseptine uygun interaktif bir performans sunar' }
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <span className="text-3xl flex-shrink-0">{item.icon}</span>
+                  <p
+                    className="text-white font-medium"
+                    style={{
+                      fontSize: 'clamp(0.95rem, 2vw, 1.0625rem)',
+                      lineHeight: '1.6',
+                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <p
+              className="text-white/90 italic"
+              style={{
+                fontSize: 'clamp(1rem, 2vw, 1.125rem)',
+                lineHeight: '1.7',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+              }}
+            >
+              Bu yaklaşım sayesinde Noel Baba gösterilerimiz, İstanbul genelinde{' '}
+              <strong className="text-white not-italic">en çok tavsiye edilen yılbaşı etkinliklerinden</strong>{' '}
+              biri olmuştur.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Kampanya Banner - %25 İndirim */}
       <section className="py-6 bg-gradient-to-r from-red-600 via-green-700 to-red-800">
@@ -209,13 +707,13 @@ const SantaClausRental = () => {
                         🎄 STANDART
                       </div>
                       
-                      <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                      <h3 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
                         Standart Noel Baba
-                      </h2>
-                      
-                      <h3 className="text-lg font-medium text-green-600 mb-6">
-                        Neşeli Kutlama
                       </h3>
+                      
+                      <h4 className="text-lg font-medium text-green-600 mb-6">
+                        Neşeli Kutlama
+                      </h4>
                       
                       <p className="text-sm text-gray-700 leading-relaxed mb-8">
                         Çocuklarınızın yüzündeki gülücükleri görmek için ideal paket. 
@@ -291,22 +789,22 @@ const SantaClausRental = () => {
                         ⭐ PREMIUM
                       </div>
                       
-                      <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                      <h3 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
                         Private Noel Baba
-                      </h2>
-                      
-                      <h3 className="text-lg font-medium text-red-600 mb-6">
-                        Kostüm değil Kaftan!
                       </h3>
+                      
+                      <h4 className="text-lg font-medium text-red-600 mb-6">
+                        Kostüm değil Kaftan!
+                      </h4>
                       
                       <p className="text-sm text-gray-700 leading-relaxed mb-8">
                         Yeni yıl tatillerinde Noel Baba ve Kar Kızı'nın size misafir olmasını istiyorsanız — hemen arayın!
                       </p>
 
                       <div className="bg-gradient-to-r from-red-50 to-green-50 rounded-2xl p-6 mb-6">
-                        <h4 className="font-bold text-base text-gray-900 mb-4">
+                        <h5 className="font-bold text-base text-gray-900 mb-4">
                           🎄 Programda sizi neler bekliyor?
-                        </h4>
+                        </h5>
                         <p className="text-sm text-gray-700 leading-relaxed">
                           Yeni yıl karakterleriyle çocuklarınız gerçek bir kış masalına adım atacak. 
                           Noel Baba, Kar Kızı ve yılbaşı kahramanımız; sevilen yeni yıl oyunlarını ve 
@@ -427,54 +925,160 @@ const SantaClausRental = () => {
         </div>
       </section>
 
-      {/* Süsleme Hizmeti - Kırmızı Temalı */}
-      <section className="py-16 bg-gradient-to-b from-red-800 via-green-800 to-red-700">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              🎀 Noel Süsleme Hizmeti
-            </h2>
-            <p className="text-base text-white/80 max-w-2xl mx-auto">
-              Mekanınızı yılbaşı büyüsüyle süsleyin
-            </p>
-          </div>
+      {/* CTA Section - Beyaz Arka Plan */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-white via-slate-50 to-red-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(220,38,38,0.05),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(34,197,94,0.05),transparent_50%)]"></div>
+        
+        <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
+          <h2 
+            className="font-semibold leading-tight mb-8 bg-gradient-to-r from-gray-800 via-red-700 to-green-700 bg-clip-text text-transparent"
+            style={{
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)',
+              lineHeight: '1.3',
+              letterSpacing: '-0.015em',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+            }}
+          >
+            Sizde unutulmaz bir Noel Baba etkinliği yaşamak istiyorsanız hemen iletişime geçin
+          </h2>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-6">
-              {decorationPhotos.map((photo, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                  <img 
-                    src={photo}
-                    alt={`Noel Süsleme ${index + 1}`}
-                    className="w-full h-64 object-cover rounded-lg shadow-lg"
-                  />
-                </div>
-              ))}
+          <a 
+            href="#rezervasyon"
+            className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-red-600/10 backdrop-blur-sm border border-red-600/20 hover:bg-red-600/20 hover:border-red-600/30 transition-all duration-300 group"
+            aria-label="Rezervasyon formuna git"
+          >
+            <svg 
+              className="w-6 h-6 text-red-600 animate-bounce" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2.5} 
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      {/* WhatsApp Form Section */}
+      <section id="rezervasyon" className="bg-gradient-to-br from-red-950 via-black to-green-950 border-t border-white/5">
+        <div className="max-w-3xl mx-auto px-6 py-16 md:py-20">
+          <div className="rounded-3xl bg-gradient-to-br from-[#128C7E] to-[#075E54] border-2 border-[#25D366]/30 px-6 py-6 md:px-7 md:py-7 shadow-[0_20px_60px_rgba(37,211,102,0.25)] relative">
+            <div className="absolute top-4 right-4 flex items-center gap-1.5">
+              <div className="relative">
+                <div className="w-2 h-2 bg-[#25D366] rounded-full"></div>
+                <div className="absolute inset-0 w-2 h-2 bg-[#25D366] rounded-full animate-ping"></div>
+              </div>
+              <span className="text-[10px] text-[#DCF8C6] font-medium">Çevrimiçi</span>
             </div>
 
-            <div className="mt-10 text-center">
-              <p className="text-white/90 text-sm mb-6 max-w-xl mx-auto">
-                Profesyonel ekibimiz, etkinlik alanınızı Noel temalı süslemelerle donatsın.
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-                <div className="text-center">
-                  <div className="text-3xl mb-1">🎄</div>
-                  <div className="text-white text-xs font-medium">Noel Ağacı</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl mb-1">✨</div>
-                  <div className="text-white text-xs font-medium">Işıklandırma</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl mb-1">🎀</div>
-                  <div className="text-white text-xs font-medium">Dekorasyon</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl mb-1">❄️</div>
-                  <div className="text-white text-xs font-medium">Kar Efektleri</div>
-                </div>
+            <div className="flex items-center gap-3 mb-5 pb-5 border-b border-white/20">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+                <svg className="w-7 h-7 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+              </div>
+              <div>
+                <p className="text-white font-semibold text-base">WhatsApp Rezervasyon</p>
               </div>
             </div>
+
+            <p className="text-[#DCF8C6] text-xs mb-6 leading-relaxed">
+              WhatsApp Rezervasyon formunu gönderdiğinizde çevrimiçi rezervasyon sorumlumuza mesaj gelir ve size anında geri dönüş yapılır
+            </p>
+
+            <div className="grid gap-4">
+              <div>
+                <label className="block text-xs text-white/90 font-medium mb-1.5">Ad Soyad</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors"
+                  placeholder="Adınız ve soyadınız"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-xs text-white/90 font-medium mb-1.5">Telefon</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors"
+                  placeholder="+90 5XX XXX XX XX"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-xs text-white/90 font-medium mb-1.5">Etkinlik Adresi</label>
+                <input
+                  type="text"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                  className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors"
+                  placeholder="İlçe, mahalle"
+                />
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs text-white/90 font-medium mb-1.5">Tarih</label>
+                  <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleInputChange}
+                    className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 outline-none focus:border-[#25D366] transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-white/90 font-medium mb-1.5">Saat</label>
+                  <input
+                    type="time"
+                    name="time"
+                    value={formData.time}
+                    onChange={handleInputChange}
+                    className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 outline-none focus:border-[#25D366] transition-colors"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-xs text-white/90 font-medium mb-1.5">Notlar</label>
+                <textarea
+                  rows={3}
+                  name="notes"
+                  value={formData.notes}
+                  onChange={handleInputChange}
+                  className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors resize-none"
+                  placeholder="Örn: Kaç kişilik etkinlik, paket tercihi"
+                />
+              </div>
+            </div>
+            
+            <button
+              type="button"
+              className="mt-5 w-full rounded-xl bg-white text-[#128C7E] font-bold text-sm md:text-base py-3.5 shadow-lg hover:shadow-xl hover:bg-[#DCF8C6] transition-all duration-300 flex items-center justify-center gap-2 group"
+              onClick={sendWhatsAppMessage}
+            >
+              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              WhatsApp'a Gönder ve Anında Yanıt Al
+            </button>
+
+            <p className="text-xs text-center text-[#DCF8C6] mt-4">
+              🔒 Bilgileriniz güvenle saklanır ve sadece rezervasyon için kullanılır
+            </p>
           </div>
         </div>
       </section>
@@ -498,6 +1102,84 @@ const SantaClausRental = () => {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hizmet Bölgeleri */}
+      <section className="py-16 bg-gradient-to-b from-red-900 to-green-900">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              📍 Hizmet Bölgelerimiz
+            </h2>
+            <p className="text-base text-white/80 max-w-2xl mx-auto">
+              İstanbul'un tüm ilçelerinde Noel Baba kiralama hizmeti
+            </p>
+          </div>
+
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+            {/* Avrupa Yakası */}
+            <div className="mb-8">
+              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                Avrupa Yakası
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {['Beyoğlu', 'Beşiktaş', 'Şişli', 'Kadıköy', 'Bakırköy', 'Fatih', 'Sarıyer', 'Kağıthane', 'Eyüpsultan', 'Zeytinburnu', 'Bahçelievler', 'Bağcılar', 'Güngören', 'Esenler', 'Bayrampaşa', 'Gaziosmanpaşa', 'Sultangazi', 'Başakşehir', 'Avcılar', 'Küçükçekmece', 'Beylikdüzü', 'Esenyurt', 'Büyükçekmece', 'Arnavutköy'].map((ilce) => (
+                  <span key={ilce} className="bg-white/20 text-white text-xs px-3 py-1.5 rounded-full">
+                    {ilce}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Anadolu Yakası */}
+            <div>
+              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                Anadolu Yakası
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {['Kadıköy', 'Üsküdar', 'Ataşehir', 'Maltepe', 'Kartal', 'Pendik', 'Tuzla', 'Ümraniye', 'Beykoz', 'Çekmeköy', 'Sancaktepe', 'Sultanbeyli', 'Şile', 'Adalar'].map((ilce) => (
+                  <span key={ilce} className="bg-white/20 text-white text-xs px-3 py-1.5 rounded-full">
+                    {ilce}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Bilgi Notu */}
+            <div className="mt-8 pt-6 border-t border-white/20">
+              <p className="text-white/70 text-sm text-center">
+                Tüm ilçelere ücretsiz ulaşım sağlıyoruz. Özel lokasyonlar için bizimle iletişime geçin.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO İçerik Bölümü */}
+      <section className="py-12 bg-gradient-to-b from-green-900 to-red-800">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8">
+            <h2 className="text-xl font-bold text-white mb-4">
+              İstanbul'da Profesyonel Noel Baba Kiralama
+            </h2>
+            <div className="text-white/80 text-sm leading-relaxed space-y-4">
+              <p>
+                <strong>Best Event</strong> olarak İstanbul genelinde profesyonel Noel Baba kiralama ve yılbaşı organizasyonu hizmeti sunuyoruz.
+                Yılbaşı döneminde çocuklarınızın gözlerindeki ışıltıyı görmek istiyorsanız, doğru adrestesiniz.
+              </p>
+              <p>
+                <strong>Private Noel Baba</strong> paketimiz ile İstanbul'un tek özel kaftanlı Noel Baba'sını etkinliğinize davet edebilirsiniz.
+                Profesyonel sahne sanatçımız, Kar Kızı eşliğinde çocuklarınıza unutulmaz anlar yaşatacak.
+              </p>
+              <p>
+                Kurumsal yılbaşı partileri, okul etkinlikleri, AVM organizasyonları ve özel ev kutlamaları için
+                <strong> Standart</strong> ve <strong>Private</strong> olmak üzere iki farklı paket seçeneğimiz bulunmaktadır.
+              </p>
+            </div>
           </div>
         </div>
       </section>

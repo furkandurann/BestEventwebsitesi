@@ -5,22 +5,36 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Google Analytics 4 - Deferred for better performance -->
+    <!-- Google Analytics 4 & Google Ads - Delayed 3s for Core Web Vitals -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EN6VHX67KW');
 
-      // Google Ads Conversion Tracking
-      gtag('config', 'AW-17782159242');
+      // Delay GA/Ads loading by 3 seconds to not affect LCP/TBT
+      function loadAnalytics() {
+        gtag('js', new Date());
+        gtag('config', 'G-ZHE878D53T');
+        gtag('config', 'GT-NBJ8Z7DX');
+        gtag('config', 'AW-17885091470');
+        gtag('config', 'AW-17897032718');
 
-      // Load GA script after page load
-      window.addEventListener('load', function() {
         var script = document.createElement('script');
         script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-EN6VHX67KW';
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17885091470';
         document.head.appendChild(script);
+      }
+
+      // Load after user interaction or 3 seconds, whichever comes first
+      var analyticsLoaded = false;
+      function triggerAnalytics() {
+        if (!analyticsLoaded) {
+          analyticsLoaded = true;
+          loadAnalytics();
+        }
+      }
+      setTimeout(triggerAnalytics, 3000);
+      ['mousedown', 'touchstart', 'scroll', 'keydown'].forEach(function(e) {
+        document.addEventListener(e, triggerAnalytics, { once: true, passive: true });
       });
     </script>
 
@@ -71,8 +85,11 @@
     <meta name="twitter:image" content="https://bestevent.com.tr/content/images/slider/konfeti.jpg" />
     
     <!-- Contact Info -->
-    <meta name="contact" content="+905349306799" />
+    <meta name="contact" content="+905307309009" />
     <meta name="address" content="Şemsettin Günaltay Caddesi No:175, Erenköy/İstanbul" />
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="NiqNHxpzlQRX_NoEJPuN_JPxmsbgtsZvrjzxAkdP2q0" />
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#9333ea" />
@@ -89,8 +106,7 @@
     
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://wa.me">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- fonts.googleapis.com preconnect kaldırıldı - @fontsource self-hosted kullanılıyor -->
     
     <!-- Prefetch next likely pages for faster navigation -->
     <link rel="prefetch" href="/organizasyonlar" as="document">
@@ -98,22 +114,9 @@
     <link rel="prefetch" href="/iletisim" as="document">
     
     <!-- Preload critical images (hero section) - First slide for LCP optimization -->
-    <link rel="preload" as="image" href="/content/images/Anasayfa/siteanahero.jpg" type="image/jpeg" fetchpriority="high">
-    
-    <!-- Preload critical fonts to prevent FOIT/FOUT -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" as="style">
-    
-    <!-- Load fonts asynchronously with font-display: swap -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap">
-    </noscript>
+    <link rel="preload" as="image" href="/content/images/Anasayfa/siteanahero.webp" type="image/webp" fetchpriority="high">
+
+    <!-- Fonts: @fontsource self-hosted kullanılıyor, Google Fonts kaldırıldı (render-blocking önleme) -->
     
     <!-- Inline Critical CSS (Above the Fold) - Optimized -->
     <style>
@@ -215,8 +218,8 @@
       "@type": "LocalBusiness",
       "name": "Best Event",
       "description": "Profesyonel etkinlik organizasyon şirketi. Çocuk doğum günleri, kurumsal etkinlikler, müzik ve eğlence hizmetleri.",
-      "image": "https://bestevent.com/content/images/slider/konfeti.jpg",
-      "telephone": "+905349306799",
+      "image": "https://bestevent.com.tr/content/images/slider/konfeti.jpg",
+      "telephone": "+905307309009",
       "email": "besteventturkiye@gmail.com",
       "address": {
         "@type": "PostalAddress",
@@ -233,6 +236,52 @@
       },
       "url": "https://bestevent.com.tr",
       "logo": "https://bestevent.com.tr/logo.png",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      "priceRange": "₺₺"
+    }
+    </script>
+    
+    <!-- Schema.org JSON-LD - LocalBusiness (Palyaço Gezegeni) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Palyaço Gezegeni",
+      "description": "6 yıldır profesyonel palyaço, animatör ve çocuk etkinlikleri hizmeti sunuyoruz. Doğum günleri, okul etkinlikleri ve özel organizasyonlar için deneyimli ekibimizle hizmetinizdeyiz.",
+      "telephone": "+905349306799",
+      "email": "galaksipalyaco@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Şemsettin Günaltay Cd. No:160",
+        "addressLocality": "Erenköy",
+        "addressRegion": "İstanbul",
+        "postalCode": "34738",
+        "addressCountry": "TR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.9872,
+        "longitude": 29.0301
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "217"
+      },
+      "url": "https://bestevent.com.tr",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": [

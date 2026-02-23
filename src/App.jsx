@@ -3,11 +3,11 @@ import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import SearchButton from './components/SearchButton'
 import ScrollToTop from './components/ScrollToTop'
 import Breadcrumb from './components/Breadcrumb'
 import ThemeProvider from './components/ThemeProvider'
 import ErrorBoundary from './components/ErrorBoundary'
-import Loading from './components/Loading'
 import useWebVitals, { logWebVitals } from './hooks/useWebVitals'
 
 // Lazy-loaded pages (code splitting)
@@ -71,6 +71,8 @@ const AcilisOrganizasyonu = lazy(() => import('./pages/blog/AcilisOrganizasyonu'
 const PalyacoKiralama = lazy(() => import('./pages/blog/PalyacoKiralama'))
 const SihirbazGosterisi = lazy(() => import('./pages/blog/SihirbazGosterisi'))
 const BubbleShowGosterisi = lazy(() => import('./pages/blog/BubbleShowGosterisi'))
+const IstanbulEtkinlikRehberi = lazy(() => import('./pages/blog/IstanbulEtkinlikRehberi'))
+const PalyacoGezegeni = lazy(() => import('./pages/blog/PalyacoGezegeni'))
 
 // 404 Page (lazy)
 const NotFound = lazy(() => import('./pages/NotFound'))
@@ -114,6 +116,8 @@ function App() {
         <Route path="/hizmet-bolgeleri" element={<ServiceAreas />} />
         <Route path="/organik-pastalar" element={<OrganicCakes />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/palyaco-gezegeni" element={<PalyacoGezegeni />} />
+        <Route path="/blog/istanbul-etkinlik-rehberi" element={<IstanbulEtkinlikRehberi />} />
         <Route path="/blog/acilis-organizasyonu-istanbul" element={<AcilisOrganizasyonu />} />
         <Route path="/blog/palyaco-kiralama-istanbul" element={<PalyacoKiralama />} />
         <Route path="/blog/sihirbaz-gosterisi-istanbul" element={<SihirbazGosterisi />} />
@@ -178,6 +182,7 @@ function App() {
       </main>
       <Footer />
       {!hideWhatsAppButton && <WhatsAppButton />}
+      <SearchButton />
     </div>
   )
 }

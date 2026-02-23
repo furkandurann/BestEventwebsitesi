@@ -27,7 +27,7 @@ const TargetSegments = () => {
         'Kurumsal Kutlamalar'
       ],
       image: '/content/images/kurumsal/kurumsal1.JPG',
-      link: '/organizasyonlar/kurumsal-etkinlik',
+      link: null,
       gradient: 'from-blue-500 to-indigo-500',
       bgGradient: 'from-blue-500/20 to-indigo-500/20'
     },
@@ -41,7 +41,7 @@ const TargetSegments = () => {
         'Özel Kutlamalar'
       ],
       image: '/content/images/yetiskindogumgunu/yetiskin1.JPG',
-      link: '/organizasyonlar/yetiskin-etkinlikleri',
+      link: null,
       gradient: 'from-fuchsia-500 to-pink-500',
       bgGradient: 'from-fuchsia-500/20 to-pink-500/20'
     }
@@ -143,16 +143,25 @@ const TargetSegments = () => {
                   </ul>
 
                   {/* CTA Button */}
-                  <Link
-                    to={segment.link}
-                    className={`block w-full text-center px-6 py-4 rounded-full bg-gradient-to-r ${segment.gradient} text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
-                    style={{ fontSize: 'clamp(0.95rem, 2vw, 1.0625rem)' }}
-                  >
-                    Detaylı Bilgi
-                    <svg className="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                  {segment.link ? (
+                    <Link
+                      to={segment.link}
+                      className={`block w-full text-center px-6 py-4 rounded-full bg-gradient-to-r ${segment.gradient} text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
+                      style={{ fontSize: 'clamp(0.95rem, 2vw, 1.0625rem)' }}
+                    >
+                      Detaylı Bilgi
+                      <svg className="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  ) : (
+                    <div
+                      className={`block w-full text-center px-6 py-4 rounded-full bg-gradient-to-r ${segment.gradient} text-white font-bold shadow-lg opacity-70`}
+                      style={{ fontSize: 'clamp(0.95rem, 2vw, 1.0625rem)' }}
+                    >
+                      Çok Yakında
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>

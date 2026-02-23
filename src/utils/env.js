@@ -5,7 +5,7 @@
 
 // Site Configuration
 export const SITE_CONFIG = {
-  url: import.meta.env.VITE_SITE_URL || 'https://www.bestevent.com.tr',
+  url: import.meta.env.VITE_SITE_URL || 'https://bestevent.com.tr',
   name: import.meta.env.VITE_SITE_NAME || 'Best Event',
   description: import.meta.env.VITE_SITE_DESCRIPTION || 'İstanbul\'da profesyonel etkinlik organizasyonu',
 }

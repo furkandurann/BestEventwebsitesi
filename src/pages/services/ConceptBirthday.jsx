@@ -42,16 +42,16 @@ const ConceptBirthday = () => {
   return (
     <>
       <Seo
-        title="Konsept Doğum Günü Organizasyonu | İstanbul | Best Event"
-        description="İstanbul'da çocuklar için özel konsept doğum günü organizasyonu. Prenses, süper kahraman, unicorn temaları. Profesyonel dekorasyon ve animasyon."
+        title="Konsept Doğum Günü İstanbul | Tema Parti Prenses Barbie Safari"
+        description="Konsept doğum günü İstanbul. Prenses, Barbie, Safari, Spiderman, Wednesday temaları. Profesyonel dekorasyon ve süsleme. ☎ 0530 730 90 09"
         keywords={[
-          'konsept doğum günü',
+          'konsept doğum günü istanbul',
           'tema parti',
-          'çocuk doğum günü istanbul',
           'prenses doğum günü',
           'barbie doğum günü',
-          'süper kahraman doğum günü',
-          'konsept organizasyon istanbul'
+          'safari doğum günü',
+          'spiderman doğum günü',
+          'wednesday doğum günü'
         ]}
         canonicalPath="/organizasyonlar/konsept-dogum-gunu"
         schema={[
@@ -107,7 +107,7 @@ const ConceptBirthday = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-6xl md:text-7xl font-bold text-white mb-4"
           >
-            Konsept Doğum Günü
+            Konsept Doğum Günü İstanbul
           </motion.h1>
           
           <motion.p

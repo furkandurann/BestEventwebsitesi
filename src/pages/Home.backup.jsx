@@ -88,8 +88,8 @@ const Home = () => {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Best Event',
-    url: 'https://www.bestevent.com.tr',
-    logo: 'https://www.bestevent.com.tr/content/images/slider/konfeti.jpg',
+    url: 'https://bestevent.com.tr',
+    logo: 'https://bestevent.com.tr/content/images/slider/konfeti.jpg',
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -106,10 +106,10 @@ const Home = () => {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Best Event',
-    url: 'https://www.bestevent.com.tr',
+    url: 'https://bestevent.com.tr',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://www.bestevent.com.tr/hizmetler?q={search_term_string}',
+      target: 'https://bestevent.com.tr/hizmetler?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   }

@@ -14,14 +14,14 @@ const DanceEvents = () => {
       id: 'luxury-dance',
       title: 'Lüks Dans Karşılama',
       description: 'Özel etkinlikler için lüks dans karşılama ekibi',
-      image: '/content/images/dance/lüksdanskarsilamaekibi.webp',
+      image: '/content/images/dance/melekdansekibi.webp',
       alt: 'Lüks dans karşılama ekibi İstanbul - Best Event'
     },
     {
       id: 'led-dance',
       title: 'LED Dans Gösterisi',
       description: 'Işıltılı LED kostümlerle etkileyici dans performansları',
-      image: '/content/images/dance/lüksledlidansekibi.webp',
+      image: '/content/images/dance/melekdansci.webp',
       alt: 'LED dans gösterisi İstanbul - Best Event'
     },
     {
@@ -42,7 +42,7 @@ const DanceEvents = () => {
       id: 'yoga',
       title: 'Yoga Eğitmeni',
       description: 'Profesyonel yoga eğitmenleri ile etkinliklerinizde huzur',
-      image: '/content/images/dance/yogaegitmeni.webp',
+      image: '/content/images/dance/yogaegitmeni2.webp',
       alt: 'Yoga eğitmeni İstanbul - Best Event'
     }
   ]
@@ -69,7 +69,7 @@ const DanceEvents = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
-            src="/content/images/dance/lüksdanskarsilamaekibi.webp" 
+            src="/content/images/dance/oryantal/oryantalistanahero.webp" 
             alt="Dans gösterileri İstanbul - Best Event"
             className="w-full h-full object-cover"
           />

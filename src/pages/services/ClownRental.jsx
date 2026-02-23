@@ -298,17 +298,14 @@ const ClownRental = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Seo
-        title="Palyaço Kiralama İstanbul | +5000 Başarılı Etkinlik | Best Event"
-        description="İstanbul'da profesyonel palyaço kiralama hizmeti. Son 2 yılda +5000 etkinlik. Tanışma, yüz boyama, grup oyunları, kar show'u. Hemen rezervasyon: 0530 730 90 09"
+        title="Istanbul Palyaço Gösterisi | Palyaço Organizasyonu Kiralama ve Etkinliği"
+        description="Istanbul'da palyaço gösterisi ve organizasyonu. Palyaço kiralama, etkinliği hizmetleri. +5000 başarılı etkinlik. ☎️ 0530 730 90 09"
         keywords={[
-          'palyaço kiralama istanbul',
+          'istanbul palyaço gösterisi',
           'palyaço organizasyonu',
+          'palyaço kiralama',
           'palyaço etkinliği',
-          'çocuk palyaçosu',
-          'doğum günü palyaço',
-          'profesyonel palyaço kiralama',
-          'istanbul palyaço',
-          'palyaço kiralama fiyatları'
+          'istanbul palyaço hizmetleri'
         ]}
         canonicalPath="/organizasyonlar/palyaco-kiralama"
         schema={[
@@ -514,6 +511,57 @@ const ClownRental = () => {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Why Us Section - Orange Background with White Card */}
+      <section className="py-20 sm:py-24 bg-gradient-to-br from-orange-950 via-black to-yellow-950">
+        <div className="max-w-4xl mx-auto px-6">
+          {/* White Card/Frame */}
+          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-2xl">
+            <h2 
+              className="font-extrabold text-gray-900 mb-8"
+              style={{
+                fontSize: 'clamp(1.75rem, 5vw, 3rem)',
+                lineHeight: '1.15',
+                letterSpacing: '-0.025em',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+              }}
+            >
+              Neden İstanbul'un En Çok Tercih Edilen Palyaço Gösterisiyiz?
+            </h2>
+            
+            <div className="space-y-6">
+              <p 
+                className="text-gray-800 font-medium"
+                style={{
+                  fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                  lineHeight: '1.5',
+                  letterSpacing: '-0.015em',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                }}
+              >
+                <span className="font-bold text-gray-900">Best Event</span>, İstanbul'da yıllardır yüzlerce başarılı etkinliğe imza atmış profesyonel bir organizasyon firmasıdır. 
+                Çocuk doğum günlerinden kurumsal etkinliklere kadar, her organizasyonda deneyimli ekibiyle güvenle tercih edilir.
+              </p>
+              
+              <p 
+                className="text-gray-800 font-medium"
+                style={{
+                  fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                  lineHeight: '1.5',
+                  letterSpacing: '-0.015em',
+                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                }}
+              >
+                <span className="font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent">Palyaço Organizasyonu ve Kiralama</span> kapsamımız, klasik palyaço anlayışının ötesine geçerek{' '}
+                <span className="font-bold text-gray-900">grup oyunları, yüz boyama ve interaktif aktiviteler</span>{' '}
+                ile zenginleştirilmiş özel bir etkinlik deneyimi sunar. Profesyonel palyaço kiralama ve organizasyon sürecinde sadece eğlendirmekle kalmaz, aynı zamanda çocukları{' '}
+                <span className="font-bold text-gray-900">aktif katılıma teşvik eden</span>{' '}
+                profesyonel bir performans sergiler. Kar şöleni, konfeti partisi, sosis balon yapımı ve pinyata finali ile profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, çocuklara unutulmaz anlar yaşatmıştır. İster doğum günü etkinliği, ister kurumsal organizasyon olsun, palyaço kiralama talebinizi deneyimli ekibimizle karşılıyoruz.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

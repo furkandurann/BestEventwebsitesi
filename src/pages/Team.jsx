@@ -102,7 +102,7 @@ const Team = () => {
           name: 'Best Event Ekibi',
           description:
             'Best Event organizasyon ajansının kurucu, eğitim, teknik ve sahne ekiplerinden oluşan profesyonel kadrosu.',
-          url: 'https://www.bestevent.com.tr/ekibimiz'
+          url: 'https://bestevent.com.tr/ekibimiz'
         }}
       />
       <div className="layout-container">

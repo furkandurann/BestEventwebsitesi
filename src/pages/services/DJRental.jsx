@@ -43,7 +43,7 @@ const DJRental = () => {
           content="Profesyonel DJ, ses ve ışık sistemiyle doğum günü, okul etkinliği ve partiler için tam paket DJ kiralama. Playlist hazırlığı, miksaj ve anons yönetimi."
         />
         <meta name="keywords" content="dj kiralama istanbul, çocuk partisi dj, dj hizmeti, ses ışık sistemi, dj fiyat" />
-        <link rel="canonical" href="https://www.bestevent.com/organizasyonlar/dj-kiralama" />
+        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/dj-kiralama" />
       </Helmet>
 
       <main className="bg-white text-gray-900">

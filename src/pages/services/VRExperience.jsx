@@ -51,7 +51,7 @@ const VRExperience = () => {
           content="Meta Quest VR gözlükleriyle 8+ yaş çocuklar için güvenli ve gözetmenli sanal gerçeklik deneyimi. İstanbul genelinde kurulum, hijyenik kullanım ve çocuk dostu içerikler."
         />
         <meta name="keywords" content="vr kiralama istanbul, sanal gerçeklik etkinliği, çocuk vr, meta quest kiralama, vr doğum günü" />
-        <link rel="canonical" href="https://www.bestevent.com/organizasyonlar/vr-sanal-gerceklik" />
+        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/vr-sanal-gerceklik" />
       </Helmet>
 
       <main className="bg-white text-gray-900">

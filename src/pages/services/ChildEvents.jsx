@@ -3,8 +3,29 @@ import KidsSection from '../../components/KidsSection'
 import OptimizedImage from '../../components/OptimizedImage'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { kidsSections } from '../../data/kidsSections'
+
+// Breadcrumb Component for SEO
+const Breadcrumb = ({ items }) => (
+  <nav aria-label="Breadcrumb" className="mb-8">
+    <ol itemScope itemType="https://schema.org/BreadcrumbList" className="flex items-center gap-2 text-sm text-gray-600">
+      {items.map((item, index) => (
+        <li key={index} itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
+          {item.href ? (
+            <Link to={item.href} itemProp="item" className="hover:text-amber-600 transition-colors">
+              <span itemProp="name">{item.label}</span>
+            </Link>
+          ) : (
+            <span itemProp="name" className="text-gray-900 font-medium">{item.label}</span>
+          )}
+          <meta itemProp="position" content={String(index + 1)} />
+          {index < items.length - 1 && <span className="text-gray-400">/</span>}
+        </li>
+      ))}
+    </ol>
+  </nav>
+)
 
 // DİĞER HİZMETLER (Split Screen)
 const OTHER_SERVICES = [
@@ -15,27 +36,36 @@ const OTHER_SERVICES = [
   { name: 'Transformers Robot', image: '/content/images/bidolu/transformers.webp', link: '/organizasyonlar/transformers-robot' },
   { name: 'Şişme Oyun Parkları', image: '/content/images/cocukdogumgunu/IMG_0777.webp', link: '/organizasyonlar/sisme-oyun-parki' },
   { name: 'Atölye Etkinlikleri', image: '/content/images/cocukdogumgunu/7dbaca4e-d254-4663-b4bd-b106207970c8.webp', link: '/organizasyonlar/atolye-etkinlikleri' },
-  { name: 'Çikolata Şelalesi', image: '/content/images/bidolu/cikolataselalesikartfoto.webp', link: '/organizasyonlar/cikolata-selalesi' },
+  { name: 'Parti Ekipmanları', image: '/content/images/Parti Ekipmanları/popcornpamukseker.JPG', link: '/hizmetler/pamuk-seker' },
   { name: 'Ateş Gösterisi', image: '/content/images/gosteriler/tesbaz.webp', link: '/organizasyonlar/ates-gosterisi' }
 ]
 
 const ChildEvents = () => {
   const [activeSection, setActiveSection] = useState(0)
 
-  // Scroll observer for progress indicators
+  // Throttled scroll handler using requestAnimationFrame for better performance
   useEffect(() => {
+    let ticking = false
+    
     const handleScroll = () => {
-      const sections = document.querySelectorAll('.full-screen-section')
-      const scrollPos = window.scrollY + window.innerHeight / 2
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sections = document.querySelectorAll('.full-screen-section')
+          const scrollPos = window.scrollY + window.innerHeight / 2
 
-      sections.forEach((section, index) => {
-        const top = section.offsetTop
-        const bottom = top + section.offsetHeight
-        
-        if (scrollPos >= top && scrollPos < bottom) {
-          setActiveSection(index)
-        }
-      })
+          sections.forEach((section, index) => {
+            const top = section.offsetTop
+            const bottom = top + section.offsetHeight
+            
+            if (scrollPos >= top && scrollPos < bottom) {
+              setActiveSection(index)
+            }
+          })
+          
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -44,31 +74,40 @@ const ChildEvents = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Keyboard navigation (↑↓ arrows)
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      if (e.key === 'ArrowDown' && activeSection < kidsSections.length - 1) {
-        const nextSection = document.querySelectorAll('.full-screen-section')[activeSection + 1]
-        nextSection?.scrollIntoView({ behavior: 'smooth' })
-      } else if (e.key === 'ArrowUp' && activeSection > 0) {
-        const prevSection = document.querySelectorAll('.full-screen-section')[activeSection - 1]
-        prevSection?.scrollIntoView({ behavior: 'smooth' })
-      }
+  // Optimized keyboard navigation with useCallback
+  const handleKeyPress = useCallback((e) => {
+    if (e.key === 'ArrowDown' && activeSection < kidsSections.length - 1) {
+      const nextSection = document.querySelectorAll('.full-screen-section')[activeSection + 1]
+      nextSection?.scrollIntoView({ behavior: 'smooth' })
+    } else if (e.key === 'ArrowUp' && activeSection > 0) {
+      const prevSection = document.querySelectorAll('.full-screen-section')[activeSection - 1]
+      prevSection?.scrollIntoView({ behavior: 'smooth' })
     }
-
-    window.addEventListener('keydown', handleKeyPress)
-    return () => window.removeEventListener('keydown', handleKeyPress)
   }, [activeSection])
 
-  const scrollToSection = (index) => {
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress)
+    return () => window.removeEventListener('keydown', handleKeyPress)
+  }, [handleKeyPress])
+
+  // Memoized scroll function
+  const scrollToSection = useCallback((index) => {
     const section = document.querySelectorAll('.full-screen-section')[index]
     section?.scrollIntoView({ behavior: 'smooth' })
-  }
+  }, [])
 
-  const page = {
-    title: 'Çocuk Etkinlikleri | BestEvent',
-    description: 'Çocuk doğum günü, palyaço, bubble ve sihirli gösterilerde profesyonel ekip. Kadıköy\'den Beylikdüzü\'ne, Bodrum ve Antalya\'ya yerinde hizmet.',
-    url: 'https://www.bestevent.com/organizasyonlar/cocuk-etkinlikleri',
+  // Memoize page data to prevent recreating objects on every render
+  const page = useMemo(() => ({
+    title: 'İstanbul Doğum Günü Organizasyonu | Kiralama ve Gösteri',
+    description: 'İstanbul doğum günü organizasyonu, kiralama ve gösteri hizmetleri. Palyaço, sihirbaz, bubble show, kostümlü karakterler. ☎ 0530 730 90 09',
+    keywords: [
+      'istanbul doğum günü organizasyonu',
+      'doğum günü kiralama',
+      'doğum günü gösteri',
+      'istanbul çocuk etkinlikleri',
+      'palyaço kiralama'
+    ],
+    url: 'https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri',
     image: {
       src640: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
       src1280: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
@@ -76,6 +115,71 @@ const ChildEvents = () => {
       src1200: '/content/images/cocukdogumgunu/konseptdogumgunu.webp'
     },
     schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Çocuk Etkinlikleri Hizmetleri",
+        "description": "BestEvent çocuk etkinlikleri hizmet listesi",
+        "itemListElement": kidsSections.map((section, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "item": {
+            "@type": "Service",
+            "name": section.title,
+            "description": section.seo?.description || section.subtitle,
+            "url": `https://www.bestevent.com${section.cta.to}`,
+            "image": `https://www.bestevent.com${section.img}`,
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent"
+            }
+          }
+        }))
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Diğer Çocuk Etkinlik Hizmetleri",
+        "description": "Ek çocuk etkinliği organizasyon hizmetleri",
+        "itemListElement": OTHER_SERVICES.map((service, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "item": {
+            "@type": "Service",
+            "name": service.name,
+            "url": `https://www.bestevent.com${service.link}`,
+            "image": `https://www.bestevent.com${service.image}`,
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent"
+            }
+          }
+        }))
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Ana Sayfa",
+            "item": "https://www.bestevent.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Organizasyonlar",
+            "item": "https://bestevent.com.tr/organizasyonlar"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Çocuk Etkinlikleri",
+            "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri"
+          }
+        ]
+      },
       {
         "@context": "https://schema.org",
         "@type": "Service",
@@ -162,19 +266,65 @@ const ChildEvents = () => {
         ]
       }
     ]
-  }
+  }), [])
 
   return (
     <>
+      {/* Resource hints for better performance */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+      
       <SeoHead
         title={page.title}
         description={page.description}
+        keywords={page.keywords}
         url={page.url}
         image={page.image}
         schema={page.schema}
       />
       
-      <main className="overflow-x-hidden scroll-smooth snap-y snap-mandatory">
+      <main className="overflow-x-hidden scroll-smooth snap-y snap-mandatory pt-16">
+        {/* H1 Main Title - Apple Style Design */}
+        <div className="relative bg-gradient-to-br from-amber-50 via-orange-50 to-purple-50 py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+          {/* Subtle gradient overlay for depth */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
+          
+          <div className="relative max-w-7xl mx-auto text-center">
+            {/* Eyebrow text - uppercase tracking */}
+            <p className="uppercase tracking-[0.3em] text-xs sm:text-sm text-amber-600 mb-4 font-semibold">
+              İSTANBUL'UN EN GÜVENİLİR ETKINLIK ORTAĞI
+            </p>
+            
+            {/* H1 with brand typography standards */}
+            <h1 
+              className="font-display font-bold text-gray-900 mb-6 tracking-tight"
+              style={{ 
+                fontSize: 'clamp(2.25rem, 6vw, 4rem)',
+                lineHeight: '1.2',
+                letterSpacing: '-0.02em'
+              }}
+            >
+              İstanbul Doğum Günü Organizasyonu
+            </h1>
+            
+            {/* Subtitle with responsive sizing */}
+            <p 
+              className="text-gray-600 max-w-4xl mx-auto font-medium"
+              style={{ 
+                fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                lineHeight: '1.7'
+              }}
+            >
+              İstanbul'da profesyonel doğum günü organizasyonu, sihirbaz gösterisi, palyaço kiralama, bubble show ve tüm etkinlik hizmetleri
+            </p>
+            
+            {/* Decorative gradient line */}
+            <div className="mt-8 flex justify-center">
+              <div className="h-1 w-24 bg-gradient-to-r from-amber-400 via-orange-500 to-purple-500 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+
         {/* Progress Indicators - Optimized for Mobile */}
         <div className="fixed right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-3">
           {kidsSections.map((_, index) => (
@@ -231,8 +381,8 @@ const ChildEvents = () => {
                   key={service.link}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="group"
                 >
                   <div className="block cursor-default">

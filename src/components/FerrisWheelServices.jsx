@@ -22,7 +22,7 @@ const FerrisWheelServices = () => {
       icon: '🥂',
       description: 'Şık ve özel kutlamalar',
       gradient: 'from-violet-500 via-purple-500 to-pink-500',
-      link: '/organizasyonlar/dogum-gunu'
+      link: null
     },
     {
       title: 'Müzik Etkinlikleri',
@@ -46,7 +46,7 @@ const FerrisWheelServices = () => {
       icon: '🏢',
       description: 'Firma etkinlikleri ve team building',
       gradient: 'from-teal-500 via-cyan-500 to-blue-500',
-      link: '/organizasyonlar/kurumsal-etkinlik'
+      link: null
     },
     {
       title: 'Açılış',
@@ -126,9 +126,9 @@ const FerrisWheelServices = () => {
         <div className="relative flex items-center justify-center">
           {shouldReduceMotion ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-              {services.map((service, index) => (
-                <Link key={index} to={service.link} className="block">
-                  <div className={`h-full rounded-3xl p-6 text-white shadow-lg bg-gradient-to-br ${service.gradient} transition-transform duration-300 hover:-translate-y-1`}>
+              {services.map((service, index) => {
+                const CardContent = (
+                  <div className={`h-full rounded-3xl p-6 text-white shadow-lg bg-gradient-to-br ${service.gradient} transition-transform duration-300 ${service.link ? 'hover:-translate-y-1' : ''}`}>
                     <div className="text-4xl mb-4">{service.icon}</div>
                     <h3 className="text-2xl font-semibold mb-1">{service.title}</h3>
                     <h4 className="text-lg font-medium text-white/90 mb-3">
@@ -136,8 +136,18 @@ const FerrisWheelServices = () => {
                     </h4>
                     <p className="text-white/80">{service.description}</p>
                   </div>
-                </Link>
-              ))}
+                )
+
+                return service.link ? (
+                  <Link key={index} to={service.link} className="block">
+                    {CardContent}
+                  </Link>
+                ) : (
+                  <div key={index} className="block">
+                    {CardContent}
+                  </div>
+                )
+              })}
             </div>
           ) : (
             <>
@@ -176,15 +186,16 @@ const FerrisWheelServices = () => {
                           transformOrigin: 'center center',
                         }}
                       >
-                        <Link
-                          to={service.link}
-                          className="block"
-                          onClick={() => setIsAutoRotating(false)}
-                        >
-                          <motion.div
-                            className={`relative w-80 h-56 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 ${
-                              isActive ? 'cursor-pointer' : 'cursor-default pointer-events-none'
-                            }`}
+                        {service.link ? (
+                          <Link
+                            to={service.link}
+                            className="block"
+                            onClick={() => setIsAutoRotating(false)}
+                          >
+                            <motion.div
+                              className={`relative w-80 h-56 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 ${
+                                isActive ? 'cursor-pointer' : 'cursor-default pointer-events-none'
+                              }`}
                             style={{
                               background: `linear-gradient(135deg, ${
                                 isActive
@@ -263,7 +274,7 @@ const FerrisWheelServices = () => {
                                 {service.description}
                               </p>
 
-                              {isActive && (
+                              {isActive && service.link && (
                                 <motion.div
                                   initial={{ opacity: 0, y: 10 }}
                                   animate={{ opacity: 1, y: 0 }}
@@ -291,6 +302,87 @@ const FerrisWheelServices = () => {
                             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
                           </motion.div>
                         </Link>
+                        ) : (
+                          <div className="block">
+                            <motion.div
+                              className={`relative w-80 h-56 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 ${
+                                isActive ? 'cursor-default' : 'cursor-default pointer-events-none'
+                              }`}
+                              style={{
+                                background: `linear-gradient(135deg, ${
+                                  isActive
+                                    ? 'rgba(168, 85, 247, 0.95), rgba(236, 72, 153, 0.95)'
+                                    : 'rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.4)'
+                                })`,
+                                boxShadow: isActive
+                                  ? '0 25px 50px -12px rgba(168, 85, 247, 0.5), 0 0 0 4px rgba(251, 191, 36, 0.5), inset 0 0 40px rgba(251, 191, 36, 0.2)'
+                                  : '0 10px 30px -10px rgba(168, 85, 247, 0.3)',
+                                border: isActive ? '2px solid rgba(251, 191, 36, 0.8)' : '2px solid rgba(255, 255, 255, 0.3)',
+                              }}
+                            >
+                              {/* Gold Corner Accents */}
+                              {isActive && (
+                                <>
+                                  <div className="absolute top-3 left-3 w-6 h-6 border-l-4 border-t-4 border-amber-400/80 rounded-tl-lg"></div>
+                                  <div className="absolute top-3 right-3 w-6 h-6 border-r-4 border-t-4 border-amber-400/80 rounded-tr-lg"></div>
+                                  <div className="absolute bottom-3 left-3 w-6 h-6 border-l-4 border-b-4 border-amber-400/80 rounded-bl-lg"></div>
+                                  <div className="absolute bottom-3 right-3 w-6 h-6 border-r-4 border-b-4 border-amber-400/80 rounded-br-lg"></div>
+                                </>
+                              )}
+
+                              {/* Sparkle Effects */}
+                              {isActive && (
+                                <>
+                                  <motion.div
+                                    className="absolute top-6 right-6 w-2 h-2 bg-amber-300 rounded-full"
+                                    animate={{
+                                      scale: [1, 1.5, 1],
+                                      opacity: [0.5, 1, 0.5],
+                                    }}
+                                    transition={{
+                                      duration: 2,
+                                      repeat: Infinity,
+                                      ease: 'easeInOut',
+                                    }}
+                                  />
+                                  <motion.div
+                                    className="absolute bottom-8 left-8 w-1.5 h-1.5 bg-yellow-200 rounded-full"
+                                    animate={{
+                                      scale: [1, 1.8, 1],
+                                      opacity: [0.4, 1, 0.4],
+                                    }}
+                                    transition={{
+                                      duration: 2.5,
+                                      repeat: Infinity,
+                                      ease: 'easeInOut',
+                                      delay: 0.5,
+                                    }}
+                                  />
+                                </>
+                              )}
+
+                              <div className="relative z-10">
+                                <div className="text-6xl mb-4 filter drop-shadow-lg">{service.icon}</div>
+                                <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-lg">
+                                  {service.title}
+                                </h3>
+                                <h4 className="text-xl font-semibold text-white/90 mb-3 drop-shadow-md">
+                                  {service.subtitle}
+                                </h4>
+                                <p
+                                  className={`text-white/80 drop-shadow-md transition-opacity ${
+                                    isActive ? 'opacity-100' : 'opacity-0'
+                                  }`}
+                                >
+                                  {service.description}
+                                </p>
+                              </div>
+
+                              {/* Glass Effect Overlay */}
+                              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+                            </motion.div>
+                          </div>
+                        )}
                       </motion.div>
                     )
                   })}

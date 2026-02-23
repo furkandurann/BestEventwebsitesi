@@ -1,64 +1,38 @@
 import { useState } from 'react';
 
-/**
- * OptimizedImage Component
- * 
- * Core Web Vitals için optimize edilmiş görsel yükleme.
- * 
- * Özellikler:
- * - Lazy loading (varsayılan)
- * - Blur placeholder (yükleme sırasında)
- * - WebP desteği (fallback ile)
- * - Responsive sizing
- * - Error handling
- * 
- * Kullanım:
- * <OptimizedImage 
- *   src="/image.jpg" 
- *   alt="Açıklama" 
- *   className="w-full h-auto"
- * />
- */
-
-const OptimizedImage = ({ 
-  src, 
-  alt, 
-  className = '', 
+const OptimizedImage = ({
+  src,
+  alt,
+  className = '',
   loading = 'lazy',
   aspectRatio,
-  blurDataURL,
   onLoad,
   onError,
-  ...props 
+  ...props
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-
-  const handleLoad = (e) => {
-    setIsLoaded(true);
-    onLoad?.(e);
-  };
 
   const handleError = (e) => {
     setHasError(true);
     onError?.(e);
   };
 
-  // Basitleştirilmiş - Vite otomatik optimize ediyor
-  const sources = null;
+  // Generate WebP and AVIF sources from original src
+  const getImageSources = (originalSrc) => {
+    if (!originalSrc) return null;
 
-  // Aspect ratio wrapper
-  const AspectRatioWrapper = ({ children }) => {
-    if (!aspectRatio) return children;
-    
-    return (
-      <div className="relative overflow-hidden" style={{ aspectRatio }}>
-        {children}
-      </div>
-    );
+    const srcWithoutExt = originalSrc.replace(/\.(jpg|jpeg|png)$/i, '');
+    const extension = originalSrc.match(/\.(jpg|jpeg|png)$/i)?.[1]?.toLowerCase();
+
+    return {
+      avif: extension ? `${srcWithoutExt}.avif` : null,
+      webp: extension ? `${srcWithoutExt}.webp` : null,
+      original: originalSrc
+    };
   };
 
-  // Error fallback
+  const sources = getImageSources(src);
+
   if (hasError) {
     return (
       <div className={`bg-gray-200 flex items-center justify-center ${className}`}>
@@ -69,47 +43,46 @@ const OptimizedImage = ({
     );
   }
 
-  return (
-    <AspectRatioWrapper>
-      {/* Basitleştirilmiş - Vite otomatik optimize ediyor */}
-      <img
-          src={src}
-          alt={alt}
-          loading={loading}
-          onLoad={handleLoad}
-          onError={handleError}
+  const imgElement = (
+    <picture>
+      {sources?.avif && (
+        <source
+          srcSet={sources.avif}
+          type="image/avif"
           sizes={props.sizes}
-          className={`
-            ${className}
-            ${!isLoaded ? 'blur-sm scale-105' : 'blur-0 scale-100'}
-            ${aspectRatio ? 'absolute inset-0 w-full h-full object-cover' : ''}
-            transition-all duration-500 ease-out
-          `}
-          {...props}
         />
-        
-        {/* Blur placeholder (yükleme sırasında) */}
-        {!isLoaded && blurDataURL && (
-          <img
-            src={blurDataURL}
-            alt=""
-            aria-hidden="true"
-            className={`
-              absolute inset-0 w-full h-full object-cover
-              blur-xl scale-110
-              pointer-events-none
-            `}
-          />
-        )}
-      
-      {/* Loading spinner */}
-      {!isLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100/50">
-          <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-        </div>
       )}
-    </AspectRatioWrapper>
+      {sources?.webp && (
+        <source
+          srcSet={sources.webp}
+          type="image/webp"
+          sizes={props.sizes}
+        />
+      )}
+      <img
+        src={sources?.original || src}
+        alt={alt}
+        loading={loading}
+        onLoad={onLoad}
+        onError={handleError}
+        sizes={props.sizes}
+        fetchPriority={props.fetchpriority}
+        decoding={props.decoding || 'async'}
+        className={`${className} ${aspectRatio ? 'absolute inset-0 w-full h-full object-cover' : ''}`}
+        style={props.style}
+      />
+    </picture>
   );
+
+  if (aspectRatio) {
+    return (
+      <div className="relative overflow-hidden" style={{ aspectRatio }}>
+        {imgElement}
+      </div>
+    );
+  }
+
+  return imgElement;
 };
 
 export default OptimizedImage;

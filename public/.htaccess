@@ -8,6 +8,11 @@
   # Base URL
   RewriteBase /
   
+  # Force Non-WWW (WWW → Non-WWW Redirect)
+  # Google Ads ve reklam hesapları için non-www standart
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+  
   # index.html'i direkt geçir
   RewriteRule ^index\.html$ - [L]
   

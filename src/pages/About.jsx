@@ -1,15 +1,42 @@
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 const About = () => {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Hakkımızda - Best Event",
+    "description": "Best Event, 10 yılı aşkın deneyimiyle İstanbul ve Türkiye genelinde profesyonel etkinlik organizasyonu hizmeti sunan güvenilir etkinlik firmasıdır.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Best Event",
+      "url": "https://bestevent.com.tr",
+      "description": "10+ yıllık deneyim, 1000+ başarılı organizasyon ile İstanbul'un önde gelen etkinlik organizasyon firması",
+      "foundingDate": "2014",
+      "areaServed": "Turkey",
+      "slogan": "Etkinliği değil, etkiyi yaratıyoruz"
+    }
+  };
+
   return (
     <main className="bg-black min-h-screen text-white">
-      <Helmet>
-        <title>Hakkımızda | Best Event</title>
-        <meta
-          name="description"
-          content="Best Event, 10 yılı aşkın deneyimiyle Türkiye'nin dört bir yanında markalara ve ailelere unutulmaz etkinlikler tasarlayan profesyonel bir etkinlik stüdyosudur."
-        />
-      </Helmet>
+      <Seo
+        title="Hakkımızda | Best Event - İstanbul Etkinlik Organizasyonu | 10+ Yıllık Deneyim"
+        description="Best Event, 10 yılı aşkın deneyimiyle İstanbul ve Türkiye genelinde profesyonel etkinlik organizasyonu hizmeti sunan güvenilir firma. 1000+ başarılı organizasyon, kurumsal ve bireysel etkinlik çözümleri. Çocuk etkinlikleri, kurumsal organizasyonlar, müzik ve dans gösterileri. ☎ 0534 930 67 99"
+        keywords={[
+          "best event hakkında",
+          "istanbul etkinlik organizasyonu hakkında",
+          "profesyonel etkinlik firması istanbul",
+          "güvenilir etkinlik organizasyon şirketi",
+          "etkinlik organizasyon deneyimi",
+          "kurumsal etkinlik firması istanbul",
+          "çocuk etkinliği organizasyonu",
+          "10 yıllık etkinlik deneyimi",
+          "türkiye etkinlik organizasyonu",
+          "best event kimdir"
+        ]}
+        schema={aboutSchema}
+        canonicalPath="/hakkimizda"
+      />
 
       {/* Hero */}
       <section className="relative px-6 pt-32 pb-20 sm:px-10 lg:px-24">

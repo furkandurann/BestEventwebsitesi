@@ -46,7 +46,7 @@ const TransformersRobot = () => {
           content="İstanbul'da LED ışıklı dev Transformers robot gösterisi. 2.5-3 m boyunda performans, fotoğraf ve dans şovu. AVM açılışı, festival ve doğum günü etkinlikleri için rezervasyon."
         />
         <meta name="keywords" content="transformers robot kiralama, led robot istanbul, dev robot gösterisi, avm açılış robotu" />
-        <link rel="canonical" href="https://www.bestevent.com/organizasyonlar/transformers-robot" />
+        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/transformers-robot" />
       </Helmet>
 
       <main className="bg-white text-gray-900">

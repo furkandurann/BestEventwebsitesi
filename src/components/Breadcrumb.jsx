@@ -8,7 +8,6 @@ const pathToTitle = {
   'organizasyonlar': 'Organizasyonlar',
   'galeri': 'Galeri',
   'iletisim': 'İletişim',
-  'ekibimiz': 'Ekibimiz',
   'referanslar': 'Referanslarımız',
   'hizmet-bolgeleri': 'Hizmet Bölgeleri',
   'organik-pastalar': 'Organik Pastalar',
@@ -77,7 +76,7 @@ const Breadcrumb = () => {
       '@type': 'ListItem',
       'position': index + 1,
       'name': item.name,
-      'item': `https://www.bestevent.com.tr${item.path}`,
+      'item': `https://bestevent.com.tr${item.path}`,
     })),
   }
 

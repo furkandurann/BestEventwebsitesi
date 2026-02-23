@@ -42,17 +42,15 @@ const MascotRental = () => {
   return (
     <>
       <Seo
-        title="Maskot Kiralama İstanbul | Koca Kafalı Karakterler | Best Event"
-        description="İstanbul'da maskot organizasyon. Hello Kitty, Sonic, Mickey Mouse, Paw Patrol maskot organizasyon. Doğum günü etkinlikleri. ☎ 0530 730 90 09"
+        title="Maskot Kiralama İstanbul | Sonic Paw Patrol Hello Kitty Unicorn"
+        description="Maskot kiralama İstanbul. Sonic, Paw Patrol, Hello Kitty, Unicorn, Mickey Mouse ve tüm maskotlar. Kurumsal ve özel etkinlikler. ☎ 0530 730 90 09"
         keywords={[
-          'maskot organizasyon istanbul',
-          'koca kafalı maskot',
-          'hello kitty maskot',
+          'maskot kiralama istanbul',
           'sonic maskot',
-          'mickey mouse maskot',
-          'doğum günü maskotları',
-          'istanbul maskot kiralama',
-          'maskot kiralama fiyatları'
+          'paw patrol maskot',
+          'hello kitty maskot',
+          'unicorn maskot',
+          'mickey mouse maskot'
         ]}
         canonicalPath="/organizasyonlar/maskot-kiralama"
         schema={[
@@ -113,7 +111,7 @@ const MascotRental = () => {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white group-hover:scale-105 transition-transform"
               style={{ fontFamily: 'Poppins, sans-serif', lineHeight: '1.25' }}
             >
-              Kız Çocuk Maskotları
+              Maskot Kiralama İstanbul
             </motion.h1>
           </div>
 

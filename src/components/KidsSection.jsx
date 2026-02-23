@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
+import { memo } from 'react'
 import OptimizedImage from './OptimizedImage'
 
-export default function KidsSection({ 
+const KidsSection = memo(function KidsSection({
   title, 
   subtitle, 
   img, 
@@ -13,7 +14,7 @@ export default function KidsSection({
 
   return (
     <section 
-      className="full-screen-section relative min-h-screen w-full flex items-start justify-center overflow-hidden snap-start snap-always border-b border-white/10"
+      className="full-screen-section relative min-h-[85vh] w-full flex items-start justify-center overflow-hidden snap-start snap-always"
       aria-label={title}
       onClick={() => cta && navigate(cta.to)}
       onKeyDown={(e) => {
@@ -24,7 +25,12 @@ export default function KidsSection({
       }}
       role={cta ? 'button' : undefined}
       tabIndex={cta ? 0 : -1}
-      style={{ cursor: cta ? 'pointer' : 'default' }}
+      style={{
+        borderBottom: '5px solid transparent',
+        borderImage: 'linear-gradient(90deg, rgba(251,191,36,0.5), rgba(249,115,22,0.8), rgba(251,191,36,0.5)) 1',
+        boxShadow: '0 6px 24px rgba(0,0,0,0.2)',
+        cursor: cta ? 'pointer' : 'default'
+      }}
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
@@ -67,7 +73,7 @@ export default function KidsSection({
       {/* Content - Title & Subtitle */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-[27vh] md:mt-[37vh] animate-fade-in">
         {/* Title - Apple Minimal */}
-        <h1 
+        <h2 
           className="font-bold text-white mb-3 leading-tight tracking-tight"
           style={{ 
             textShadow: '0 2px 20px rgba(0,0,0,.45)',
@@ -78,7 +84,7 @@ export default function KidsSection({
           }}
         >
           {title}
-        </h1>
+        </h2>
 
         {/* Subtitle - Tek Cümlelik Slogan */}
         {subtitle && (
@@ -100,27 +106,33 @@ export default function KidsSection({
       {/* CTA - Sağ Alt Köşe (Apple Style) */}
       {cta && (
         <div className="absolute bottom-8 right-8 z-10 animate-fade-in" role="navigation" aria-label="Eylemler">
-          <Link to={cta.to} className="group flex items-center gap-1.5 text-white/90 hover:text-white transition-colors duration-200">
+          <Link 
+            to={cta.to} 
+            className="group flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-3 py-2 rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
+          >
             <span 
               style={{
-                fontSize: 'clamp(.8rem, 1.5vw, 0.9rem)',
-                fontWeight: '400',
-                letterSpacing: '0'
+                fontSize: 'clamp(0.813rem, 1.5vw, 0.875rem)',
+                fontWeight: '500',
+                letterSpacing: '-0.01em'
               }}
             >
               {cta.text}
             </span>
             <svg 
-              className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" 
+              className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
+              strokeWidth={2}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </Link>
         </div>
       )}
     </section>
   )
-}
+})
+
+export default KidsSection

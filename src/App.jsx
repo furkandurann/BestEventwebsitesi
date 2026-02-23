@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import SearchButton from './components/SearchButton'
 import ScrollToTop from './components/ScrollToTop'
 import Breadcrumb from './components/Breadcrumb'
 import ThemeProvider from './components/ThemeProvider'
@@ -181,7 +182,7 @@ function App() {
       </main>
       <Footer />
       {!hideWhatsAppButton && <WhatsAppButton />}
-
+      <SearchButton />
     </div>
   )
 }

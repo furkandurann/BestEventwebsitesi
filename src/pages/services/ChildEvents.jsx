@@ -1,4 +1,4 @@
-import SeoHead from '../../components/SeoHead'
+import Seo from '../../components/Seo'
 import KidsSection from '../../components/KidsSection'
 import OptimizedImage from '../../components/OptimizedImage'
 import { Link } from 'react-router-dom'
@@ -108,12 +108,7 @@ const ChildEvents = () => {
       'palyaço kiralama'
     ],
     url: 'https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri',
-    image: {
-      src640: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
-      src1280: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
-      src1920: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
-      src1200: '/content/images/cocukdogumgunu/konseptdogumgunu.webp'
-    },
+    image: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
     schema: [
       {
         "@context": "https://schema.org",
@@ -127,8 +122,8 @@ const ChildEvents = () => {
             "@type": "Service",
             "name": section.title,
             "description": section.seo?.description || section.subtitle,
-            "url": `https://www.bestevent.com${section.cta.to}`,
-            "image": `https://www.bestevent.com${section.img}`,
+            "url": `https://bestevent.com.tr${section.cta.to}`,
+            "image": `https://bestevent.com.tr${section.img}`,
             "provider": {
               "@type": "LocalBusiness",
               "name": "BestEvent"
@@ -147,8 +142,8 @@ const ChildEvents = () => {
           "item": {
             "@type": "Service",
             "name": service.name,
-            "url": `https://www.bestevent.com${service.link}`,
-            "image": `https://www.bestevent.com${service.image}`,
+            "url": `https://bestevent.com.tr${service.link}`,
+            "image": `https://bestevent.com.tr${service.image}`,
             "provider": {
               "@type": "LocalBusiness",
               "name": "BestEvent"
@@ -164,7 +159,7 @@ const ChildEvents = () => {
             "@type": "ListItem",
             "position": 1,
             "name": "Ana Sayfa",
-            "item": "https://www.bestevent.com"
+            "item": "https://bestevent.com.tr"
           },
           {
             "@type": "ListItem",
@@ -274,11 +269,10 @@ const ChildEvents = () => {
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
       
-      <SeoHead
+      <Seo
         title={page.title}
         description={page.description}
         keywords={page.keywords}
-        url={page.url}
         image={page.image}
         schema={page.schema}
       />
@@ -288,6 +282,15 @@ const ChildEvents = () => {
         <div className="relative bg-gradient-to-br from-amber-50 via-orange-50 to-purple-50 py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
           {/* Subtle gradient overlay for depth */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-transparent"></div>
+
+          {/* Breadcrumb Navigation */}
+          <div className="relative max-w-7xl mx-auto mb-6">
+            <Breadcrumb items={[
+              { label: 'Ana Sayfa', href: '/' },
+              { label: 'Organizasyonlar', href: '/organizasyonlar' },
+              { label: 'Çocuk Etkinlikleri' }
+            ]} />
+          </div>
           
           <div className="relative max-w-7xl mx-auto text-center">
             {/* Eyebrow text - uppercase tracking */}
@@ -385,15 +388,15 @@ const ChildEvents = () => {
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="group"
                 >
-                  <div className="block cursor-default">
-                    <div className="relative aspect-square overflow-hidden rounded-3xl shadow-lg transition-all duration-500">
+                  <Link to={service.link} className="block">
+                    <div className="relative aspect-square overflow-hidden rounded-3xl shadow-lg transition-all duration-500 group-hover:shadow-2xl">
                       {/* Image */}
                       <OptimizedImage
                         src={service.image}
-                        alt={service.name}
+                        alt={`${service.name} - İstanbul çocuk etkinliği`}
                         loading="lazy"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="w-full h-full object-cover transition-transform duration-700"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       {/* Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -404,7 +407,7 @@ const ChildEvents = () => {
                         </h3>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>

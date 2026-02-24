@@ -7,16 +7,47 @@ const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('Tümü')
 
   // Kategori filtreleme
-  const filteredPosts = selectedCategory === 'Tümü' 
-    ? blogPosts 
+  const filteredPosts = selectedCategory === 'Tümü'
+    ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory)
+
+  const blogSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "BestEvent Blog | Çocuk Etkinliği Organizasyon Kiralama Gösteri Rehberi",
+      "description": "İstanbul'da çocuk etkinlikleri, doğum günü organizasyonu, palyaço kiralama, sihirbaz gösterisi, bubble show ve daha fazlası hakkında detaylı rehberler.",
+      "url": "https://bestevent.com.tr/blog",
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": blogPosts.length,
+        "itemListElement": blogPosts.map((post, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "url": `https://bestevent.com.tr/blog/${post.slug}`,
+          "name": post.title
+        }))
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "BestEvent",
+        "url": "https://bestevent.com.tr",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://bestevent.com.tr/content/images/slider/konfeti.webp"
+        }
+      }
+    }
+  ]
 
   return (
     <>
-      <Seo 
-        title="Blog - Etkinlik Organizasyonu Rehberi | Best Event"
-        description="İstanbul'da çocuk etkinlikleri, doğum günü organizasyonu, maskot kiralama ve daha fazlası hakkında detaylı rehberler ve ipuçları."
-        keywords="etkinlik organizasyonu, blog, rehber, istanbul, çocuk etkinlikleri"
+      <Seo
+        title="BestEvent Blog | Çocuk Etkinliği Organizasyon Kiralama Gösteri Rehberi"
+        description="İstanbul'da çocuk etkinlikleri, doğum günü organizasyonu, palyaço kiralama, sihirbaz gösterisi, bubble show, kostümlü karakter ve yüz boyama hakkında detaylı rehberler ve ipuçları."
+        keywords="etkinlik organizasyonu, blog, rehber, istanbul, çocuk etkinlikleri, palyaço kiralama, sihirbaz gösterisi, bubble show, doğum günü organizasyonu, kostümlü karakter, yüz boyama, pamuk şeker"
+        canonicalPath="/blog"
+        schema={blogSchema}
       />
 
       {/* Hero Banner */}

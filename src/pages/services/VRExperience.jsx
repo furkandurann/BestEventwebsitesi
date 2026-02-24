@@ -1,11 +1,14 @@
-import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
+import OptimizedImage from '../../components/OptimizedImage'
+import RelatedServices from '../../components/RelatedServices'
+import Seo from '../../components/Seo'
 
 const VRExperience = () => {
   const hero = {
     title: 'VR Sanal Gerçeklik Deneyimi',
     subtitle: '8+ yaş için güvenli, gözetmenli ve hijyenik VR istasyonları',
     description: 'Meta Quest ile çocuklara özel içerikler, 5-10 dakikalık seanslar ve profesyonel gözetmen desteği.',
-    image: null
+    image: '/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp'
   }
 
   const stats = [
@@ -30,10 +33,10 @@ const VRExperience = () => {
   ]
 
   const photos = [
-    '/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.JPG',
-    '/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.JPG',
-    '/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.JPG',
-    '/content/images/cocukdogumgunu/IMG_0612.JPG',
+    '/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp',
+    '/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.webp',
+    '/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.webp',
+    '/content/images/cocukdogumgunu/IMG_0612.webp',
   ]
 
   const faq = [
@@ -44,19 +47,80 @@ const VRExperience = () => {
 
   return (
     <>
-      <Helmet>
-        <title>VR Sanal Gerçeklik | İstanbul Çocuk VR Deneyimi | Best Event</title>
-        <meta
-          name="description"
-          content="Meta Quest VR gözlükleriyle 8+ yaş çocuklar için güvenli ve gözetmenli sanal gerçeklik deneyimi. İstanbul genelinde kurulum, hijyenik kullanım ve çocuk dostu içerikler."
-        />
-        <meta name="keywords" content="vr kiralama istanbul, sanal gerçeklik etkinliği, çocuk vr, meta quest kiralama, vr doğum günü" />
-        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/vr-sanal-gerceklik" />
-      </Helmet>
+      <Seo
+        title="VR Sanal Gerçeklik Kiralama İstanbul | Çocuk VR - BestEvent"
+        description="İstanbul'da Meta Quest VR gözlükleriyle çocuklara özel sanal gerçeklik deneyimi. Gözetmenli, hijyenik VR etkinliği. 8+ yaş için güvenli."
+        keywords={['vr kiralama istanbul', 'sanal gerçeklik etkinliği', 'çocuk vr deneyimi istanbul', 'meta quest kiralama', 'vr doğum günü', 'sanal gerçeklik organizasyonu istanbul']}
+        image="/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "VR Sanal Gerçeklik Deneyimi İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "telephone": "+905307309009",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "İstanbul",
+                "addressCountry": "TR"
+              }
+            },
+            "serviceType": "VR Sanal Gerçeklik Etkinliği",
+            "areaServed": {
+              "@type": "City",
+              "name": "İstanbul"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
+              { "@type": "ListItem", "position": 3, "name": "VR Sanal Gerçeklik", "item": "https://bestevent.com.tr/organizasyonlar/vr-sanal-gerceklik" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "Hangi yaş için uygun?", "acceptedAnswer": { "@type": "Answer", "text": "8+ yaş ve minimum 1.20m boy. Küçük yaşlar için önerilmez." } },
+              { "@type": "Question", "name": "Seanslar ne kadar?", "acceptedAnswer": { "@type": "Answer", "text": "Her çocuk için 5-10 dk; toplam etkinlik 60-120 dk arası." } },
+              { "@type": "Question", "name": "Hijyen nasıl sağlanıyor?", "acceptedAnswer": { "@type": "Answer", "text": "Tek kullanımlık ped ve her kullanım sonrası dezenfeksiyon." } }
+            ]
+          }
+        ]}
+      />
 
       <main className="bg-white text-gray-900">
-        <section className="relative overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black text-white">
-          <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_20%_20%,#6ee7ff,transparent_25%),radial-gradient(circle_at_80%_0%,#818cf8,transparent_20%)]" />
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 pt-20 pb-2">
+          <ol itemScope itemType="https://schema.org/BreadcrumbList" className="flex items-center gap-2 text-sm text-gray-500">
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
+              <Link to="/" itemProp="item"><span itemProp="name">Ana Sayfa</span></Link><meta itemProp="position" content="1" /><span>/</span>
+            </li>
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
+              <Link to="/organizasyonlar/cocuk-etkinlikleri" itemProp="item"><span itemProp="name">Çocuk Etkinlikleri</span></Link><meta itemProp="position" content="2" /><span>/</span>
+            </li>
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center">
+              <span itemProp="name" className="text-gray-900 font-medium">VR Sanal Gerçeklik</span><meta itemProp="position" content="3" />
+            </li>
+          </ol>
+        </nav>
+
+        <section className="relative overflow-hidden min-h-[65vh] flex items-center bg-black text-white">
+          <div className="absolute inset-0">
+            <OptimizedImage
+              src={hero.image}
+              alt="VR sanal gerçeklik deneyimi etkinliği İstanbul"
+              className="w-full h-full object-cover object-center"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black" />
+          </div>
           <div className="max-w-6xl mx-auto px-6 py-20 md:py-24 relative z-10">
             <p className="uppercase tracking-[0.28em] text-xs text-white/70 mb-4">Teknoloji & Eğlence</p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight tracking-tight text-white">
@@ -152,11 +216,19 @@ const VRExperience = () => {
             <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
               <h2 className="text-2xl font-semibold text-gray-900 tracking-tight">Görseller</h2>
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {photos.map((src, idx) => (
-                  <div key={idx} className="rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100">
-                    <img src={src} alt="VR sanal gerçeklik etkinliği" className="w-full h-52 object-cover" loading="lazy" />
-                  </div>
-                ))}
+                {photos.map((src, idx) => {
+                  const altTexts = [
+                    'VR sanal gerçeklik gözlüğü ile çocuk deneyimi',
+                    'Meta Quest VR etkinliğinde çocuklar',
+                    'VR sanal gerçeklik istasyonu kurulumu',
+                    'Çocuk doğum günü VR etkinliği İstanbul'
+                  ]
+                  return (
+                    <div key={idx} className="rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100">
+                      <OptimizedImage src={src} alt={altTexts[idx] || `VR etkinliği görsel ${idx + 1}`} className="w-full h-52 object-cover" loading="lazy" />
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </section>
@@ -189,6 +261,8 @@ const VRExperience = () => {
             </div>
           </div>
         </section>
+
+        <RelatedServices currentService="vr-sanal-gerceklik" />
       </main>
     </>
   )

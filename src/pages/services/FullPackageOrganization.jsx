@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import Seo from '../../components/Seo'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import NarrativeSection from '../../components/NarrativeSection'
@@ -59,17 +59,85 @@ const FullPackageOrganization = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Full Paket Doğum Günü Organizasyonu | Anahtar Teslim | Best Event</title>
-        <meta
-          name="description"
-          content="Siz sadece gelin eğlenin! Dekorasyon, animatör, catering, show - her şey dahil anahtar teslim doğum günü organizasyonu. İstanbul genelinde profesyonel hizmet."
-        />
-        <meta
-          name="keywords"
-          content="full paket doğum günü, anahtar teslim organizasyon, her şey dahil doğum günü istanbul, profesyonel çocuk etkinliği"
-        />
-      </Helmet>
+      <Seo
+        title="Full Paket Doğum Günü Organizasyonu | Anahtar Teslim | Best Event"
+        description="Siz sadece gelin eğlenin! Dekorasyon, animatör, catering, show - her şey dahil anahtar teslim doğum günü organizasyonu. İstanbul genelinde profesyonel hizmet."
+        keywords={[
+          'full paket doğum günü',
+          'anahtar teslim organizasyon',
+          'her şey dahil doğum günü istanbul',
+          'profesyonel çocuk etkinliği'
+        ]}
+        image="/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp"
+        canonicalPath="/organizasyonlar/full-paket-organizasyon"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Full Paket Doğum Günü Organizasyonu İstanbul",
+            "description": "Siz sadece gelin eğlenin! Dekorasyon, animatör, catering, show - her şey dahil anahtar teslim doğum günü organizasyonu. İstanbul genelinde profesyonel hizmet.",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "url": "https://bestevent.com.tr",
+              "telephone": "+905307309009",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "İstanbul",
+                "addressRegion": "İstanbul",
+                "addressCountry": "TR"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 40.9872,
+                "longitude": 29.0301
+              },
+              "areaServed": [
+                { "@type": "City", "name": "İstanbul" },
+                { "@type": "City", "name": "Kocaeli" },
+                { "@type": "City", "name": "Tekirdağ" }
+              ]
+            },
+            "areaServed": { "@type": "City", "name": "İstanbul" },
+            "serviceType": "Doğum Günü Organizasyonu"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "BestEvent - Full Paket Doğum Günü Organizasyonu",
+            "url": "https://bestevent.com.tr/organizasyonlar/full-paket-organizasyon",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.0",
+              "bestRating": "5",
+              "worstRating": "1",
+              "ratingCount": "217",
+              "reviewCount": "217"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Organizasyonlar", "item": "https://bestevent.com.tr/organizasyonlar" },
+              { "@type": "ListItem", "position": 3, "name": "Full Paket Organizasyon", "item": "https://bestevent.com.tr/organizasyonlar/full-paket-organizasyon" }
+            ]
+          }
+        ]}
+      />
 
       {/* Hero Section - Full Screen */}
       <motion.section
@@ -304,6 +372,23 @@ const FullPackageOrganization = () => {
         title="Profesyonel Ses Sistemi"
         body="Etkinliğiniz için profesyonel ses sistemi ve mikrofon kurulumu. Müzik, anons ve konuşmalar için kristal netliğinde ses kalitesi garantisi. Tüm etkinlik boyunca konuklarınızın her şeyi net bir şekilde duymasını sağlıyoruz."
       />
+
+      {/* Blog Internal Links */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-gray-700 text-lg leading-relaxed">
+            Doğum günü organizasyonu planlarken detaylı rehberimizden faydalanabilirsiniz:{' '}
+            <Link to="/blog/dogum-gunu-organizasyonu-rehberi" className="text-purple-600 hover:text-purple-800 font-semibold underline">
+              Doğum Günü Organizasyonu Rehberi
+            </Link>
+            . Mekan seçimi konusunda da yardıma ihtiyacınız varsa{' '}
+            <Link to="/blog/dogum-gunu-mekan-secimi" className="text-purple-600 hover:text-purple-800 font-semibold underline">
+              Doğum Günü Mekan Seçimi
+            </Link>
+            {' '}yazımızı inceleyebilirsiniz.
+          </p>
+        </div>
+      </section>
 
       {/* Metrics */}
       <section className="py-12 bg-white border-y border-gray-100">

@@ -83,6 +83,16 @@ const serviceRelationships = {
     { name: 'Gezegen Tanıtım', path: '/organizasyonlar/gezegen-tanitim', description: 'Eğitici gezegen gösterisi' },
     { name: 'Şişme Oyun Parkı', path: '/organizasyonlar/sisme-oyun-parki', description: 'Oyun parkları' },
   ],
+  'gezegen-tanitim': [
+    { name: 'VR Sanal Gerçeklik', path: '/organizasyonlar/vr-sanal-gerceklik', description: 'VR deneyimi' },
+    { name: 'Atölye Etkinlikleri', path: '/organizasyonlar/atolye-etkinlikleri', description: 'Yaratıcı atölyeler' },
+    { name: 'Magic Show', path: '/organizasyonlar/magic-show', description: 'Sihir gösterileri' },
+  ],
+  'pamuk-seker': [
+    { name: 'Bubble Show', path: '/organizasyonlar/bubble-show', description: 'Büyülü sabun köpüğü gösterisi' },
+    { name: 'Magic Show', path: '/organizasyonlar/magic-show', description: 'Sihirbazlık gösterileri' },
+    { name: 'Doğum Günü Organizasyonu', path: '/organizasyonlar/dogum-gunu-organizasyonu', description: 'Full paket doğum günü' },
+  ],
   'sisme-oyun-parki': [
     { name: 'Çocuk Masa Sandalye', path: '/organizasyonlar/cocuk-masa-sandalye', description: 'Masa sandalye kiralama' },
     { name: 'Atölye Etkinlikleri', path: '/organizasyonlar/atolye-etkinlikleri', description: 'Eğitici atölyeler' },

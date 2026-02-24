@@ -505,7 +505,14 @@ const AcilisOrganizasyonu = () => {
     </>
   )
 
-  return <BlogDetail>{content}</BlogDetail>
+  return (
+    <BlogDetail
+      relatedServicePath="/organizasyonlar/cocuk-etkinlikleri"
+      relatedServiceName="Çocuk Etkinlikleri"
+    >
+      {content}
+    </BlogDetail>
+  )
 }
 
 export default AcilisOrganizasyonu

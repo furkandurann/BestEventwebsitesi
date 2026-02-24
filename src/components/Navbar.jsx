@@ -1,7 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-const Navbar = () => {
+const services = [
+  { name: 'Çocuk Etkinlikleri', path: '/organizasyonlar/cocuk-etkinlikleri' },
+  { name: 'Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama' },
+  { name: 'Magic Show', path: '/organizasyonlar/magic-show' },
+  { name: 'Bubble Show', path: '/organizasyonlar/bubble-show' },
+  { name: 'Yüz Boyama', path: '/organizasyonlar/yuz-boyama' },
+  { name: 'Kostümlü Karakterler', path: '/organizasyonlar/kostumlu-karakterler' },
+  { name: 'Konsept Doğum Günü', path: '/organizasyonlar/konsept-dogum-gunu' },
+  { name: 'Pamuk Şeker Arabası', path: '/organizasyonlar/pamuk-seker' },
+  { name: 'Kurumsal Etkinlik', path: '/organizasyonlar/muzik-etkinlikleri' },
+  { name: 'Şirket İçi Organizasyon', path: '/organizasyonlar/muzik-etkinlikleri' },
+  { name: 'Dans Etkinlikleri', path: '/organizasyonlar/dans-etkinlikleri' },
+  { name: 'Müzik Etkinlikleri', path: '/organizasyonlar/muzik-etkinlikleri' },
+  { name: 'Hostes Kiralama', path: '/organizasyonlar/hostes-kiralama' },
+]
+
+const Navbar = memo(() => {
   const [scrolled, setScrolled] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -19,22 +35,6 @@ const Navbar = () => {
     setServicesOpen(false)
     setMobileMenuOpen(false)
   }, [location])
-
-  const services = [
-    { name: 'Çocuk Etkinlikleri', path: '/organizasyonlar/cocuk-etkinlikleri' },
-    { name: 'Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama' },
-    { name: 'Magic Show', path: '/organizasyonlar/magic-show' },
-    { name: 'Bubble Show', path: '/organizasyonlar/bubble-show' },
-    { name: 'Yüz Boyama', path: '/organizasyonlar/yuz-boyama' },
-    { name: 'Kostümlü Karakterler', path: '/organizasyonlar/kostumlu-karakterler' },
-    { name: 'Konsept Doğum Günü', path: '/organizasyonlar/konsept-dogum-gunu' },
-    { name: 'Pamuk Şeker Arabası', path: '/organizasyonlar/pamuk-seker' },
-    { name: 'Kurumsal Etkinlik', path: '/organizasyonlar/muzik-etkinlikleri' },
-    { name: 'Şirket İçi Organizasyon', path: '/organizasyonlar/muzik-etkinlikleri' },
-    { name: 'Dans Etkinlikleri', path: '/organizasyonlar/dans-etkinlikleri' },
-    { name: 'Müzik Etkinlikleri', path: '/organizasyonlar/muzik-etkinlikleri' },
-    { name: 'Hostes Kiralama', path: '/organizasyonlar/hostes-kiralama' },
-  ]
 
   return (
     <nav
@@ -112,17 +112,6 @@ const Navbar = () => {
             </div>
 
             <Link
-              to="/referanslar"
-              className={`nav-link text-sm md:text-base ${
-                scrolled
-                  ? 'text-dark hover:text-primary'
-                  : 'text-white hover:text-accent'
-              }`}
-            >
-              Referanslar
-            </Link>
-            
-            <Link
               to="/galeri"
               className={`nav-link text-sm md:text-base ${
                 scrolled
@@ -195,12 +184,6 @@ const Navbar = () => {
               {/* Main Links */}
               <div className="space-y-2 mb-6">
                 <Link
-                  to="/referanslar"
-                  className="block px-4 py-2.5 text-gray-800 font-semibold hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 rounded-md transition-all duration-200"
-                >
-                  Referanslar
-                </Link>
-                <Link
                   to="/galeri"
                   className="block px-4 py-2.5 text-gray-800 font-semibold hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 rounded-md transition-all duration-200"
                 >
@@ -249,6 +232,8 @@ const Navbar = () => {
       </div>
     </nav>
   )
-}
+})
+
+Navbar.displayName = 'Navbar'
 
 export default Navbar

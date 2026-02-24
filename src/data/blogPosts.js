@@ -1,13 +1,14 @@
-// Blog Posts Data - 32 Blog (20 Etkinlik + 12 Bölge)
+// Blog Posts Data - Sadece dosyası olan blog yazıları
 
 export const blogPosts = [
-  // ETKİNLİK BLOĞLARI (21 adet)
+  // MEVCUT ETKİNLİK BLOĞLARI (6 adet)
   {
     slug: 'palyaco-gezegeni',
     title: 'Palyaço Gezegeni: İstanbul\'un En İyi Doğum Günü Organizasyonu - 217 Yorum',
     excerpt: '6 yıldır İstanbul\'da profesyonel doğum günü organizasyonu, bubble show, sihirbaz gösterileri, kurumsal etkinlikler, kostümlü karakter kiralama, popcorn ve pamuk şeker makinası hizmetleri. 217 memnun müşteri yorumu ile 5.0 yıldız.',
     category: 'Etkinlik',
     date: '24 Ocak 2026',
+    dateISO: '2026-01-24',
     image: '/content/images/palyaco/palyaconattiveguleryuz.webp'
   },
   {
@@ -16,6 +17,7 @@ export const blogPosts = [
     excerpt: 'İstanbul\'da çocuk etkinliği organizasyonu, palyaço kiralama, bubble show gösterisi. 39 semtte hizmet. 10+ yıl deneyim. Sihirbaz, maskot, kostümlü karakter ve profesyonel organizasyon.',
     category: 'Etkinlik',
     date: '29 Aralık 2025',
+    dateISO: '2025-12-29',
     image: '/content/images/ahunundogumgunu/bubbleshowgosterisi.webp'
   },
   {
@@ -24,6 +26,7 @@ export const blogPosts = [
     excerpt: 'Palyaço neşesinden peruğundaki renklere, sosis balon şekillerinden Kadıköy maç günü trafiğine kadar palyaço kiralama rehberi. Annelerin oyunlara müdahale etmemesi ve palyaço moralini koruma ipuçları.',
     category: 'Etkinlik',
     date: '6 Aralık 2025',
+    dateISO: '2025-12-06',
     image: '/content/images/palyaco/palyaconattiveguleryuz.webp'
   },
   {
@@ -32,6 +35,7 @@ export const blogPosts = [
     excerpt: 'En unutulmaz bubble show gösterileri, dev balon deneyimleri ve köpük sanatçısının moralini koruma yöntemleri. Teknik gereksinimler, rüzgar faktörü ve profesyonel köpük gösterisi ipuçları.',
     category: 'Etkinlik',
     date: '6 Aralık 2025',
+    dateISO: '2025-12-06',
     image: '/content/images/bubbleshow/bubbleshowhero.webp'
   },
   {
@@ -40,87 +44,8 @@ export const blogPosts = [
     excerpt: 'Unutulmaz sihirbaz anları, Göktürk\'te atlarla sihirbaz etkinlikleri, Sarıyer ulaşım planlaması ve kurumsal etkinlik ipuçları. Sihirbazın moralini koruma ve profesyonel gösteri rehberi.',
     category: 'Etkinlik',
     date: '6 Aralık 2025',
+    dateISO: '2025-12-06',
     image: '/content/images/sihirbaz/sihirbazhero.webp'
-  },
-  {
-    slug: 'kostumlu-karakterler-istanbul',
-    title: 'Kostümlü Karakter Kiralama: Elsa, Batman, Minnie Mouse',
-    excerpt: 'İstanbul\'da kostümlü karakter kiralama hizmetleri. Elsa, Batman, Minnie Mouse ve daha fazlası. Çocuklarınızın sevdiği karakterlerle unutulmaz etkinlikler.',
-    category: 'Etkinlik',
-    date: '8 Kasım 2012',
-    image: '/content/images/Kostumlukarakterler/elsaheroo.webp'
-  },
-  {
-    slug: 'maskot-kiralama-istanbul',
-    title: 'Maskot Kiralama İstanbul: Koca Kafalı Karakterler',
-    excerpt: 'Maskot kiralama hizmetleri ile etkinliklerinize neşe katın. Hello Kitty, Sonic, Mickey Mouse ve daha fazlası. Profesyonel organizasyon ve kaliteli hizmet.',
-    category: 'Etkinlik',
-    date: '14 Şubat 2016',
-    image: '/content/images/maskotlar/helokittyhero.webp'
-  },
-  {
-    slug: 'konsept-dogum-gunu-organizasyonu',
-    title: 'Konsept Doğum Günü Organizasyonu: Tema Partiler',
-    excerpt: 'Konsept doğum günü organizasyonu ile çocuklarınızın hayallerini gerçeğe dönüştürün. Prenses, süper kahraman, orman teması ve daha fazlası. Komple süsleme ve organizasyon.',
-    category: 'Etkinlik',
-    date: '5 Mayıs 2018',
-    image: '/content/images/konseptdogumgunu/pamukprenseskonsept.webp'
-  },
-  {
-    slug: 'muzik-etkinlikleri-istanbul',
-    title: 'Müzik Etkinlikleri İstanbul: DJ ve Canlı Müzik Kiralama',
-    excerpt: 'Müzik etkinlikleri organizasyonu ile partilerinize ritim katın. Profesyonel DJ kiralama, canlı müzik gösterileri ve ses sistemi hizmetleri.',
-    category: 'Etkinlik',
-    date: '20 Temmuz 2021',
-    image: '/content/images/music/muzikfullhero.webp'
-  },
-  {
-    slug: 'dans-gosterileri-istanbul',
-    title: 'Dans Gösterileri İstanbul: Profesyonel Dans Ekipleri',
-    excerpt: 'Dans etkinlikleri ile organizasyonlarınıza dinamizm katın. Bale, modern dans, halk dansları ve özel koreografiler. Profesyonel dansçı kiralama hizmetleri.',
-    category: 'Etkinlik',
-    date: '12 Nisan 2016',
-    image: '/content/images/dance/dansanasayfa2.webp'
-  },
-  {
-    slug: 'noel-baba-kiralama',
-    title: 'Noel Baba Kiralama: Yılbaşı Özel Etkinlik Organizasyonu',
-    excerpt: 'Private ve Standart Noel Baba kiralama paketleri ile yılbaşı etkinliklerinizi büyülü hale getirin. İstanbul\'un tek özel kaftanlı Noel Baba\'sı ile unutulmaz anlar.',
-    category: 'Etkinlik',
-    date: '5 Aralık 2025',
-    image: '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.webp'
-  },
-  {
-    slug: 'yuz-boyama-istanbul',
-    title: 'Yüz Boyama İstanbul: Profesyonel Face Painting',
-    excerpt: 'Yüz boyama hizmetleri ile çocuklarınızı sevdikleri karakterlere dönüştürün. Güvenli boyalar, profesyonel sanatçılar ve yaratıcı tasarımlar.',
-    category: 'Etkinlik',
-    date: '18 Ağustos 2012',
-    image: '/content/images/Kostumlukarakterler/elsacute.webp'
-  },
-  {
-    slug: 'parti-ekipmanlari-kiralama',
-    title: 'Parti Ekipmanları Kiralama: Pamuk Şeker, Patlamış Mısır',
-    excerpt: 'Parti ekipmanları kiralama ile etkinliklerinizi zenginleştirin. Pamuk şeker makinesi, patlamış mısır standı, çikolata şelalesi ve daha fazlası.',
-    category: 'Etkinlik',
-    date: '25 Ekim 2018',
-    image: '/content/images/çikolataselalesi/cikolataselalesi.webp'
-  },
-  {
-    slug: 'vr-deneyimi-kiralama',
-    title: 'VR Deneyimi İstanbul: Sanal Gerçeklik Oyunları',
-    excerpt: 'VR deneyimi kiralama ile çocuklara teknolojinin sınırlarını aşan eğlence sunun. Sanal gerçeklik oyunları ve interaktif deneyimler.',
-    category: 'Etkinlik',
-    date: '7 Ocak 2021',
-    image: '/content/images/Kostumlukarakterler/mickeyyeni.webp'
-  },
-  {
-    slug: 'sisme-parklar-kiralama',
-    title: 'Şişme Parklar İstanbul: Şişme Oyun Parkı Organizasyonu',
-    excerpt: 'Şişme park kiralama ile açık hava etkinliklerinizi eğlenceli hale getirin. Şişme kaydırak, engel parkuru ve survivor oyunları.',
-    category: 'Etkinlik',
-    date: '30 Haziran 2016',
-    image: '/content/images/fullpaket/fullpaketanahero.webp'
   },
   {
     slug: 'acilis-organizasyonu-istanbul',
@@ -128,145 +53,148 @@ export const blogPosts = [
     excerpt: 'Profesyonel açılış organizasyonu rehberi: bando gösterisi, balon uzunlukları, ses sistemi gereksinimleri ve Beylikdüzü-Beşiktaş ulaşım planlaması. Mağaza ve ofis açılışı için komple çözümler.',
     category: 'Etkinlik',
     date: '6 Aralık 2025',
+    dateISO: '2025-12-06',
     image: '/content/images/acilisorganizasyonu/acilisacikgorsell.webp'
   },
-  {
-    slug: 'trio-muzik-gosterisi',
-    title: 'Trio Müzik Gösterisi: Canlı Müzik Performansları',
-    excerpt: 'Trio müzik gösterisi ile etkinliklerinize sanatsal dokunuş katın. Profesyonel müzisyenler, klasik ve modern repertuar, canlı performanslar.',
-    category: 'Etkinlik',
-    date: '16 Mayıs 2021',
-    image: '/content/images/music/muzikfullhero.webp'
-  },
-  {
-    slug: 'bando-gosterisi-istanbul',
-    title: 'Bando Gösterisi İstanbul: Açılış ve Etkinlikler',
-    excerpt: 'Bando gösterisi kiralama ile etkinliklerinizi coşkulu hale getirin. Açılış organizasyonları, kurumsal etkinlikler ve özel günler için bando hizmeti.',
-    category: 'Etkinlik',
-    date: '9 Kasım 2012',
-    image: '/content/images/fullpaket/fullpaketanahero.webp'
-  },
-  {
-    slug: 'susleme-hizmetleri-istanbul',
-    title: 'Süsleme Hizmetleri İstanbul: Etkinlik Dekorasyonu',
-    excerpt: 'Süsleme hizmetleri ile mekanınızı hayalinizdeki temaya göre dekore edin. Balon süsleme, masa düzeni, backdrop ve özel dekorasyon çözümleri.',
-    category: 'Etkinlik',
-    date: '22 Şubat 2016',
-    image: '/content/images/susleme/suslemehero.webp'
-  },
-  {
-    slug: 'balon-susleme-istanbul',
-    title: 'Balon Süsleme İstanbul: Profesyonel Balon Dekorasyonu',
-    excerpt: 'Balon süsleme hizmetleri ile etkinliklerinize renk katın. Balon kemerleri, balon duvarları, helyumlu balonlar ve özel tasarımlar.',
-    category: 'Etkinlik',
-    date: '11 Ağustos 2018',
-    image: '/content/images/Parti Ekipmanları/balloons.webp'
-  },
-  {
-    slug: 'ses-sistemi-kiralama',
-    title: 'Ses Sistemi Kiralama İstanbul: Profesyonel Ses Ekipmanları',
-    excerpt: 'Ses sistemi kiralama ile etkinliklerinizde kristal netlikte ses kalitesi sağlayın. Mikrofon, hoparlör, mixer ve tam donanımlı ses sistemleri.',
-    category: 'Etkinlik',
-    date: '27 Ekim 2021',
-    image: '/content/images/fullpaket/fullpaketanahero.webp'
-  },
 
-  // BÖLGE BLOĞLARI (12 adet)
+  // YENİ BLOG YAZILARI - PALYAÇO (2)
   {
-    slug: 'kadikoy-cocuk-etkinlikleri',
-    title: 'Kadıköy\'de Çocuk Etkinlikleri: Doğum Günü Organizasyonu',
-    excerpt: 'Kadıköy bölgesinde profesyonel çocuk etkinlik hizmetleri. Palyaço, maskot, kostümlü karakter kiralama ve daha fazlası. Komple organizasyon çözümleri.',
-    category: 'Bölge',
-    date: '8 Mayıs 2012',
-    image: '/content/images/cocukdogumgunu/konseptdogumgunistanbul.webp'
-  },
-  {
-    slug: 'besiktas-dogum-gunu-organizasyonu',
-    title: 'Beşiktaş\'ta Doğum Günü Organizasyonu: Etkinlik Kiralama',
-    excerpt: 'Beşiktaş\'ta çocuk doğum günü organizasyonu için tüm hizmetler. Konsept parti, animasyon gösterileri, süsleme ve eğlence paketleri.',
-    category: 'Bölge',
-    date: '14 Kasım 2016',
-    image: '/content/images/fullpaket/fullpaketanahero.webp'
-  },
-  {
-    slug: 'uskudar-etkinlik-hizmetleri',
-    title: 'Üsküdar\'da Etkinlik Hizmetleri: Gösteri ve Organizasyon',
-    excerpt: 'Üsküdar bölgesinde etkinlik organizasyonu ve kiralama hizmetleri. Sihirbaz, bubble show, dans gösterileri ve müzik etkinlikleri.',
-    category: 'Bölge',
-    date: '19 Mart 2018',
-    image: '/content/images/gosteriler/gosterihero.webp'
-  },
-  {
-    slug: 'atasehir-cocuk-partileri',
-    title: 'Ataşehir\'de Çocuk Partileri: Organizasyon Kiralama',
-    excerpt: 'Ataşehir\'de çocuk etkinlikleri ve doğum günü partileri. Maskot kiralama, kostümlü karakterler ve parti ekipmanları ile komple hizmet.',
-    category: 'Bölge',
-    date: '6 Temmuz 2021',
-    image: '/content/images/konseptdogumgunu/pamukprenseskonsept.webp'
-  },
-  {
-    slug: 'maltepe-animasyon-hizmetleri',
-    title: 'Maltepe\'de Animasyon Hizmetleri: Gösteri Organizasyonu',
-    excerpt: 'Maltepe bölgesinde animasyon ve etkinlik hizmetleri. Palyaço gösterileri, yüz boyama, bubble show ve çocuk etkinlikleri.',
-    category: 'Bölge',
-    date: '23 Nisan 2016',
+    slug: 'palyaco-kiz-kulesi-organizasyonu',
+    title: 'Kız Kulesi\'nde Palyaço Organizasyonu: Boğaz\'ın Ortasında Doğum Günü Gösterisi',
+    excerpt: 'Kız Kulesi\'nde çocuk doğum günü palyaço organizasyonu deneyimi. Tekne ile ulaşım, mekan akustiği, palyaço kiralama ve gösteri detayları. İstanbul\'un en özel organizasyon lokasyonunda unutulmaz anlar.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
     image: '/content/images/palyaco/palyaconattiveguleryuz.webp'
   },
   {
-    slug: 'pendik-dogum-gunu',
-    title: 'Pendik\'te Doğum Günü: Etkinlik Kiralama Hizmetleri',
-    excerpt: 'Pendik\'te doğum günü organizasyonu ve etkinlik kiralama. Konsept partiler, süsleme hizmetleri ve eğlence paketleri.',
-    category: 'Bölge',
-    date: '17 Ekim 2012',
-    image: '/content/images/konsepts/konseptdogumgunu.webp'
+    slug: 'palyaco-dogum-gunu-rehberi',
+    title: 'Palyaço Kiralama Rehberi: Doğum Günü Organizasyonu ve Gösteri İpuçları',
+    excerpt: 'A\'dan Z\'ye palyaço kiralama rehberi. Doğum günü organizasyonunda palyaço gösterisi planlama, fiyat bilgisi, yaş gruplarına göre aktiviteler ve İstanbul\'da profesyonel palyaço kiralama ipuçları.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp'
   },
+
+  // YENİ BLOG YAZILARI - SİHİRBAZ (2)
   {
-    slug: 'sisli-cocuk-etkinlikleri',
-    title: 'Şişli\'de Çocuk Etkinlikleri: Gösteri Organizasyonu',
-    excerpt: 'Şişli bölgesinde çocuk etkinlikleri ve organizasyon hizmetleri. Sihirbaz gösterileri, müzik etkinlikleri ve dans performansları.',
-    category: 'Bölge',
-    date: '2 Şubat 2018',
+    slug: 'sihirbaz-gokturk-at-ciftligi',
+    title: 'Göktürk At Çiftliğinde Sihirbaz Gösterisi: Canlı Tavşan ve Güvercin Deneyimi',
+    excerpt: 'Göktürk at çiftliğinde sihirbaz kiralama deneyimi. Canlı tavşan ve güvercin numaraları, doğada sihir gösterisi organizasyonu, açık hava etkinlik ipuçları. İstanbul\'un en doğal gösteri mekanı.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
     image: '/content/images/sihirbaz/sihirbazhero.webp'
   },
   {
-    slug: 'kartal-organizasyon',
-    title: 'Kartal\'da Organizasyon: Etkinlik ve Kiralama Hizmetleri',
-    excerpt: 'Kartal\'da etkinlik organizasyonu ve kiralama hizmetleri. Açılış organizasyonları, kurumsal etkinlikler ve doğum günü partileri.',
-    category: 'Bölge',
-    date: '28 Haziran 2021',
-    image: '/content/images/acilisorganizasyonu/acilisacikgorsell.webp'
+    slug: 'sihirbaz-kiralama-rehberi',
+    title: 'Sihirbaz Kiralama Rehberi: Organizasyon Planlama ve Gösteri Çeşitleri',
+    excerpt: 'Kapsamlı sihirbaz kiralama rehberi. Doğum günü ve kurumsal etkinlik organizasyonlarında sihirbaz gösterisi planlama, numara çeşitleri, fiyat bilgisi ve İstanbul\'da profesyonel sihirbaz kiralama.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/sihirbaz/sihirbazhero.webp'
   },
+
+  // YENİ BLOG YAZILARI - BUBBLE SHOW (2)
   {
-    slug: 'bakirkoy-gosteriler',
-    title: 'Bakırköy\'de Gösteriler: Etkinlik Kiralama',
-    excerpt: 'Bakırköy bölgesinde gösteri ve etkinlik hizmetleri. Bubble show, sihirbaz, palyaço ve müzik etkinlikleri ile profesyonel organizasyon.',
-    category: 'Bölge',
-    date: '15 Aralık 2016',
+    slug: 'bubble-show-ne-kadar-su-harcar',
+    title: 'Bubble Show Ne Kadar Su Harcar? Köpük Gösterisi Teknik Sırları',
+    excerpt: 'Bubble show gösterisinin teknik detayları: ne kadar su harcanır, köpük solüsyonu formülü, maliyet hesabı, çevre dostu mu? 30 dakikalık gösterinin tüm teknik sırları ve organizasyon ipuçları.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
     image: '/content/images/bubbleshow/bubbleshowhero.webp'
   },
   {
-    slug: 'beylikduzu-etkinlik',
-    title: 'Beylikdüzü\'nde Etkinlik: Çocuk Doğum Günü Organizasyonu',
-    excerpt: 'Beylikdüzü\'nde çocuk etkinlikleri ve doğum günü organizasyonu. Maskot kiralama, kostümlü karakterler ve parti hizmetleri.',
-    category: 'Bölge',
-    date: '4 Mayıs 2018',
-    image: '/content/images/maskotlar/helokittyhero.webp'
+    slug: 'bubble-show-kiralama-rehberi',
+    title: 'Bubble Show Kiralama Rehberi: Köpük Gösterisi Organizasyonu A\'dan Z\'ye',
+    excerpt: 'Bubble show kiralama rehberi. Köpük gösterisi organizasyonu planlama, mekan gereksinimleri, iç-dış mekan karşılaştırması, fiyat bilgisi ve İstanbul\'da profesyonel bubble show kiralama.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/bubbleshow/anabubblee.webp'
+  },
+
+  // YENİ BLOG YAZILARI - DOĞUM GÜNÜ (2)
+  {
+    slug: 'dogum-gunu-organizasyonu-rehberi',
+    title: 'Doğum Günü Organizasyonu Rehberi: İstanbul\'da A\'dan Z\'ye Planlama',
+    excerpt: 'İstanbul\'da doğum günü organizasyonu rehberi. Full paket kiralama, gösteri planlaması, konsept seçimi, bütçe hesabı ve organizasyon ipuçları. 10+ yıl deneyimli ekiple unutulmaz kutlama.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp'
   },
   {
-    slug: 'esenyurt-organizasyon',
-    title: 'Esenyurt\'ta Organizasyon: Etkinlik ve Gösteri Hizmetleri',
-    excerpt: 'Esenyurt bölgesinde etkinlik organizasyonu ve gösteri hizmetleri. Dans etkinlikleri, müzik gösterileri ve çocuk partileri.',
-    category: 'Bölge',
-    date: '21 Ocak 2021',
-    image: '/content/images/dance/dansanasayfa2.webp'
+    slug: 'dogum-gunu-mekan-secimi',
+    title: 'Doğum Günü Mekan Seçimi: Ev, Salon, Açık Hava Organizasyonu Karşılaştırması',
+    excerpt: 'Doğum günü organizasyonu için mekan seçimi rehberi. Ev partisi, salon kiralama, açık hava organizasyonu avantaj ve dezavantajları. Her mekan tipine uygun gösteri ve kiralama önerileri.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/fullpaket/fullpaketanahero.webp'
+  },
+
+  // YENİ BLOG YAZILARI - PAMUK ŞEKER (2)
+  {
+    slug: 'pamuk-seker-etkinlik-rehberi',
+    title: 'Pamuk Şeker Kiralama Rehberi: Çikolata Şelalesi ve Popcorn Organizasyonu',
+    excerpt: 'Pamuk şeker, çikolata şelalesi ve popcorn arabası kiralama rehberi. Etkinlik organizasyonunda parti ekipmanları gösterisi, hijyen kuralları ve İstanbul genelinde ikram hizmetleri.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/Parti Ekipmanları/hareketlislider6cikolataselalsi.webp'
   },
   {
-    slug: 'kucukcekmece-kiralama',
-    title: 'Küçükçekmece\'de Kiralama: Etkinlik Organizasyonu',
-    excerpt: 'Küçükçekmece\'de etkinlik kiralama ve organizasyon hizmetleri. Ses sistemi, süsleme, parti ekipmanları ve komple etkinlik paketleri.',
-    category: 'Bölge',
-    date: '10 Eylül 2012',
-    image: '/content/images/susleme/suslemehero.webp'
+    slug: 'pamuk-seker-dogum-gunu-organizasyonu',
+    title: 'Doğum Gününde Pamuk Şeker Organizasyonu: Parti Ekipmanları Kiralama',
+    excerpt: 'Doğum günü organizasyonunda pamuk şeker, popcorn ve çikolata şelalesi kiralama. Çocuk partisinde ikram gösterisi planlama, fiyat bilgisi ve en popüler parti ekipmanları kombinasyonları.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/Parti Ekipmanları/pamukseker.jpeg'
+  },
+
+  // YENİ BLOG YAZILARI - KOSTÜMLÜ KARAKTERLER (2)
+  {
+    slug: 'kostumlu-karakter-kiralama-rehberi',
+    title: 'Kostümlü Karakter Kiralama Rehberi: Elsa, Spiderman, Batman Organizasyonu',
+    excerpt: 'Kostümlü karakter kiralama rehberi. Elsa, Spiderman, Batman ve diğer popüler karakterlerle doğum günü organizasyonu ve gösteri planlama. İstanbul genelinde profesyonel karakter kiralama.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/Kostumlukarakterler/elsaheroo.webp'
+  },
+  {
+    slug: 'kostumlu-karakter-dogum-gunu',
+    title: 'Kostümlü Karakter ile Doğum Günü Organizasyonu: Tema Parti Gösterisi',
+    excerpt: 'Kostümlü karakter ile doğum günü organizasyonu planlama. Tema seçimi, karakter kiralama, süsleme uyumu, gösteri akışı ve İstanbul\'da en popüler kostümlü karakter partileri.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/Kostumlukarakterler/elsacute.webp'
+  },
+
+  // YENİ BLOG YAZILARI - YÜZ BOYAMA (2)
+  {
+    slug: 'yuz-boyama-kiralama-rehberi',
+    title: 'Yüz Boyama Kiralama Rehberi: Profesyonel Face Painting Organizasyonu',
+    excerpt: 'Yüz boyama kiralama rehberi. Profesyonel face painting organizasyonu, güvenli boya seçimi, popüler tasarımlar, etkinlik gösterisi planlama ve İstanbul genelinde yüz boyama hizmetleri.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/Kostumlukarakterler/elsacute.webp'
+  },
+  {
+    slug: 'yuz-boyama-dogum-gunu-organizasyonu',
+    title: 'Doğum Gününde Yüz Boyama Organizasyonu: Çocuk Etkinliği Gösterisi',
+    excerpt: 'Doğum günü organizasyonunda yüz boyama etkinliği. Çocuk partisinde face painting gösterisi planlama, sanatçı kiralama, popüler tasarımlar ve organizasyon ipuçları.',
+    category: 'Etkinlik',
+    date: '24 Şubat 2026',
+    dateISO: '2026-02-24',
+    image: '/content/images/Kostumlukarakterler/elsaheroo.webp'
   }
 ]
 

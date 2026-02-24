@@ -3,7 +3,7 @@ import Seo from '../../components/Seo'
 import { costumedCharactersData } from '../../data/costumedCharactersData'
 import NarrativeSection from '../../components/NarrativeSection'
 import FullBleedHero from '../../components/FullBleedHero'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const faqData = [
   {
@@ -122,6 +122,37 @@ const CostumedCharacters = () => {
                 "text": faq.answer
               }
             }))
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "BestEvent - Kostümlü Karakter Kiralama İstanbul",
+            "url": "https://bestevent.com.tr/organizasyonlar/kostumlu-karakterler",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.0",
+              "bestRating": "5",
+              "worstRating": "1",
+              "ratingCount": "217",
+              "reviewCount": "217"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr"},
+              {"@type": "ListItem", "position": 2, "name": "Organizasyonlar", "item": "https://bestevent.com.tr/organizasyonlar"},
+              {"@type": "ListItem", "position": 3, "name": "Kostümlü Karakterler", "item": "https://bestevent.com.tr/organizasyonlar/kostumlu-karakterler"}
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "BestEvent",
+            "url": "https://bestevent.com.tr",
+            "logo": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
+            "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
           }
         ]}
       />
@@ -289,6 +320,27 @@ const CostumedCharacters = () => {
                   <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Related Blog Posts */}
+        <section className="py-12 bg-white">
+          <div className="max-w-3xl mx-auto px-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">İlgili Blog Yazıları</h2>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/blog/kostumlu-karakter-kiralama-rehberi"
+                className="block bg-gray-50 hover:bg-gray-100 rounded-xl p-5 text-center transition-colors shadow-sm"
+              >
+                <span className="text-purple-700 font-semibold">Kostümlü Karakter Kiralama Rehberi</span>
+              </Link>
+              <Link
+                to="/blog/kostumlu-karakter-dogum-gunu"
+                className="block bg-gray-50 hover:bg-gray-100 rounded-xl p-5 text-center transition-colors shadow-sm"
+              >
+                <span className="text-purple-700 font-semibold">Kostümlü Karakter ile Doğum Günü Organizasyonu</span>
+              </Link>
             </div>
           </div>
         </section>

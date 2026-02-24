@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import Seo from './Seo'
 import { getBlogBySlug } from '../data/blogPosts'
 
-const BlogDetail = ({ children, content }) => {
+const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName, faqData }) => {
   const { slug } = useParams()
   const blog = getBlogBySlug(slug)
 
@@ -19,19 +19,65 @@ const BlogDetail = ({ children, content }) => {
     )
   }
 
+  const schemaArray = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": blog.title,
+      "description": blog.excerpt,
+      "image": `https://bestevent.com.tr${blog.image}`,
+      "datePublished": blog.dateISO || "2026-01-01",
+      "dateModified": blog.dateISO || "2026-01-01",
+      "author": {
+        "@type": "Organization",
+        "name": "BestEvent",
+        "url": "https://bestevent.com.tr"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "BestEvent",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://bestevent.com.tr/content/images/slider/konfeti.webp"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://bestevent.com.tr/blog/${slug}`
+      }
+    }
+  ]
+
+  if (faqData && faqData.length > 0) {
+    schemaArray.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqData.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    })
+  }
+
   return (
     <>
-      <Seo 
+      <Seo
         title={`${blog.title} | Best Event Blog`}
         description={blog.excerpt}
         keywords={`${blog.title}, ${blog.category}, istanbul, etkinlik, organizasyon, kiralama, gösteri`}
-        ogImage={blog.image}
+        image={blog.image}
+        canonicalPath={`/blog/${slug}`}
+        schema={schemaArray}
       />
 
       {/* Hero Banner */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img 
+          <img
             src={blog.image}
             alt={blog.title}
             className="w-full h-full object-cover"
@@ -46,7 +92,7 @@ const BlogDetail = ({ children, content }) => {
                 {blog.category}
               </span>
               <span className="text-white/80 text-sm">
-                📅 {blog.date}
+                {blog.date}
               </span>
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
@@ -63,7 +109,6 @@ const BlogDetail = ({ children, content }) => {
       <article className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            {/* Content */}
             <div>
               {children || content}
             </div>
@@ -81,39 +126,44 @@ const BlogDetail = ({ children, content }) => {
             Profesyonel organizasyon, kiralama ve gösteri hizmetleri için bizimle iletişime geçin.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <a
               href="tel:+905307309009"
               className="bg-white text-red-600 font-bold text-base px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:scale-105"
             >
-              📞 Hemen Ara
+              Hemen Ara
             </a>
-            <a 
+            <a
               href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-600 hover:bg-green-700 text-white font-bold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-2xl hover:scale-105"
             >
-              💬 WhatsApp
+              WhatsApp
             </a>
           </div>
         </div>
       </section>
 
-      {/* Related Posts */}
+      {/* Related Posts & Service */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">
-            İlgili Blog Yazıları
+            İlgili Hizmetler ve Yazılar
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
+            {relatedServicePath && (
+              <Link to={relatedServicePath} className="bg-purple-600 text-white px-5 py-2.5 rounded-full shadow hover:shadow-lg transition-all text-sm font-semibold hover:bg-purple-700">
+                {relatedServiceName} Hizmeti →
+              </Link>
+            )}
             <Link to="/blog" className="bg-white text-gray-700 px-5 py-2.5 rounded-full shadow hover:shadow-lg transition-all text-sm font-semibold hover:bg-gray-100">
               ← Tüm Bloglar
             </Link>
             <Link to="/organizasyonlar/cocuk-etkinlikleri" className="bg-white text-gray-700 px-5 py-2.5 rounded-full shadow hover:shadow-lg transition-all text-sm font-semibold hover:bg-gray-100">
-              🎪 Çocuk Etkinlikleri
+              Çocuk Etkinlikleri
             </Link>
             <Link to="/iletisim" className="bg-red-600 text-white px-5 py-2.5 rounded-full shadow hover:shadow-lg transition-all text-sm font-semibold hover:bg-red-700">
-              📞 İletişim
+              İletişim
             </Link>
           </div>
         </div>

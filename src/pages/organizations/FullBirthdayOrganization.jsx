@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../../components/Seo";
 import BirthdayHeroSlider from "../../components/BirthdayHeroSlider";
+import RelatedServices from "../../components/RelatedServices";
 
 const timeline = [
   {
@@ -278,23 +279,14 @@ const FullBirthdayOrganization = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Istanbul Doğum Günü Organizasyonu | Doğum Günü Gösterisi Kiralama ve Etkinliği</title>
-        <meta
-          name="description"
-          content="Istanbul'da doğum günü organizasyonu ve gösterisi. Doğum günü kiralama, etkinliği hizmetleri. Konsept süsleme, bubble show, sihirbazlık. ☎️ 0530 730 90 09"
-        />
-        <meta name="keywords" content="istanbul doğum günü organizasyonu, doğum günü gösterisi, doğum günü kiralama, doğum günü etkinliği, istanbul doğum günü hizmetleri" />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Doğum Günü Organizasyonu İstanbul | Full Paket Etkinlik" />
-        <meta property="og:description" content="İstanbul'da profesyonel doğum günü organizasyonu. Konsept süsleme, organik pasta, bubble show, sihirbazlık ve daha fazlası tek pakette!" />
-        <meta property="og:image" content="https://bestevent.com.tr/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp" />
-        
-        {/* Schema.org LocalBusiness + Service Markup */}
-        <script type="application/ld+json">
-          {JSON.stringify({
+      <Seo
+        title="Doğum Günü Organizasyonu İstanbul | Full Paket - BestEvent"
+        description="İstanbul'da doğum günü organizasyonu. Konsept süsleme, organik pasta, bubble show, sihirbazlık, palyaço animasyonu tek pakette. ☎ 0530 730 90 09"
+        keywords={['istanbul doğum günü organizasyonu', 'doğum günü gösterisi', 'doğum günü kiralama', 'doğum günü etkinliği', 'istanbul doğum günü hizmetleri', 'full paket doğum günü']}
+        canonicalPath="/organizasyonlar/dogum-gunu-organizasyonu"
+        image="/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp"
+        schema={[
+          {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Best Event - Doğum Günü Organizasyonu",
@@ -330,9 +322,29 @@ const FullBirthdayOrganization = () => {
               "ratingValue": "4.9",
               "reviewCount": "127"
             }
-          })}
-        </script>
-      </Helmet>
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Doğum Günü Organizasyonu", "item": "https://bestevent.com.tr/organizasyonlar/dogum-gunu-organizasyonu" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a
+              }
+            }))
+          }
+        ]}
+      />
 
       <main className="bg-[#050509] text-white">
         {/* CINEMATIK HERO SLIDER */}
@@ -1635,6 +1647,8 @@ const FullBirthdayOrganization = () => {
             </div>
           </div>
         </section>
+
+        <RelatedServices currentService="dogum-gunu-organizasyonu" />
       </main>
     </>
   );

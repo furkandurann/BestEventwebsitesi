@@ -8,7 +8,6 @@ const pathToTitle = {
   'organizasyonlar': 'Organizasyonlar',
   'galeri': 'Galeri',
   'iletisim': 'İletişim',
-  'referanslar': 'Referanslarımız',
   'hizmet-bolgeleri': 'Hizmet Bölgeleri',
   'organik-pastalar': 'Organik Pastalar',
   

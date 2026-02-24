@@ -1,6 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import 'swiper/css'
@@ -9,6 +8,7 @@ import { getCharacterBySlug } from '../../data/costumedCharactersData'
 import { getMascotBySlug } from '../../data/mascotsData'
 import NarrativeSection from '../../components/NarrativeSection'
 import FullBleedHero from '../../components/FullBleedHero'
+import Seo from '../../components/Seo'
 
 const CharacterDetail = () => {
   const { slug } = useParams()
@@ -29,13 +29,31 @@ const CharacterDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{character.name} Organizasyonu İstanbul | Doğum Günü Animatörü | Best Event</title>
-        <meta 
-          name="description" 
-          content={`İstanbul'da ${character.name} organizasyonu. ${character.description} ☎ 0530 730 90 09`}
-        />
-      </Helmet>
+      <Seo
+        title={`${character.name} Kiralama İstanbul | Doğum Günü - BestEvent`}
+        description={`İstanbul'da ${character.name} kostümlü karakter kiralama. Profesyonel animatör, hijyenik kostüm. Doğum günü ve etkinlikler için.`}
+        keywords={[`${character.name.toLowerCase()} kiralama istanbul`, 'kostümlü karakter kiralama', 'doğum günü animatörü istanbul', 'çocuk etkinlik organizasyonu', `${character.name.toLowerCase()} organizasyon`]}
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": `${character.name} Kostümlü Karakter Kiralama İstanbul`,
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BestEvent",
+            "telephone": "+905307309009",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "İstanbul",
+              "addressCountry": "TR"
+            }
+          },
+          "serviceType": "Kostümlü Karakter Organizasyonu",
+          "areaServed": {
+            "@type": "City",
+            "name": "İstanbul"
+          }
+        }}
+      />
 
       {/* Hero Section - Full Screen */}
       <motion.section 

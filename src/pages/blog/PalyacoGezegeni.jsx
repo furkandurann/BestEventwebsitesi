@@ -517,7 +517,14 @@ const PalyacoGezegeni = () => {
     </>
   )
 
-  return <BlogDetail>{content}</BlogDetail>
+  return (
+    <BlogDetail
+      relatedServicePath="/organizasyonlar/palyaco-kiralama"
+      relatedServiceName="Palyaço Kiralama"
+    >
+      {content}
+    </BlogDetail>
+  )
 }
 
 export default PalyacoGezegeni

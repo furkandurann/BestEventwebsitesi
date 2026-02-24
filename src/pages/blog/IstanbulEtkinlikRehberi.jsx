@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import SeoHead from '../../components/SeoHead'
+import Seo from '../../components/Seo'
 import OptimizedImage from '../../components/OptimizedImage'
 import { istanbulEtkinlikHubData } from '../../data/istanbulEtkinlikData'
 
@@ -73,13 +73,13 @@ const IstanbulEtkinlikRehberi = () => {
 
   return (
     <>
-      <SeoHead
+      <Seo
         title={seo.title}
         description={seo.description}
         keywords={seo.keywords}
-        url={seo.url}
-        image={{ src1200: seo.image }}
+        image={seo.image}
         schema={schema}
+        type="article"
       />
 
       <main className="pt-16">

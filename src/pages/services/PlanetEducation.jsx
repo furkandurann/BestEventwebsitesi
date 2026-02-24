@@ -1,5 +1,7 @@
-import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
 import OptimizedImage from '../../components/OptimizedImage'
+import RelatedServices from '../../components/RelatedServices'
+import Seo from '../../components/Seo'
 
 const PlanetEducation = () => {
   const hero = {
@@ -44,22 +46,74 @@ const PlanetEducation = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Gezegen Tanıtım Etkinliği | Çocuklar İçin Uzay Atölyesi | Best Event</title>
-        <meta
-          name="description"
-          content="4-14 yaş çocuklar için interaktif gezegen tanıtım etkinliği. Maketler, astronot kostümü, quiz ve uzay görselleriyle okul ve özel etkinliklerde pedagojik uzay atölyesi."
-        />
-        <meta name="keywords" content="gezegen tanıtım, uzay atölyesi, çocuk astronomi, gezegen eğitimi istanbul, okul etkinliği uzay" />
-        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/gezegen-tanitim" />
-      </Helmet>
+      <Seo
+        title="Gezegen Tanıtım Etkinliği İstanbul | Uzay Atölyesi - BestEvent"
+        description="İstanbul'da 4-14 yaş çocuklar için interaktif gezegen tanıtım etkinliği. Maketler, astronot kostümü, quiz ile pedagojik uzay atölyesi."
+        keywords={['gezegen tanıtım etkinliği istanbul', 'uzay atölyesi çocuk', 'çocuk astronomi etkinliği', 'gezegen eğitimi istanbul', 'okul etkinliği uzay', 'interaktif bilim atölyesi istanbul']}
+        image="/content/images/bidolu/gezegentanıtım.webp"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Gezegen Tanıtım ve Uzay Atölyesi İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "telephone": "+905307309009",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "İstanbul",
+                "addressCountry": "TR"
+              }
+            },
+            "serviceType": "Eğitici Çocuk Etkinliği",
+            "areaServed": {
+              "@type": "City",
+              "name": "İstanbul"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
+              { "@type": "ListItem", "position": 3, "name": "Gezegen Tanıtım", "item": "https://bestevent.com.tr/organizasyonlar/gezegen-tanitim" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "Hangi yaş için?", "acceptedAnswer": { "@type": "Answer", "text": "4-14 yaş; anaokulu, ilkokul, ortaokul seviyelerine göre dil ve içerik uyarlanır." } },
+              { "@type": "Question", "name": "Alan ihtiyacı?", "acceptedAnswer": { "@type": "Answer", "text": "Minimum 4x5 m iç mekan; projektör için yarı karanlık ortam ideal." } },
+              { "@type": "Question", "name": "Kaç kişilik?", "acceptedAnswer": { "@type": "Answer", "text": "10-100 çocuk; kalabalık gruplar için ardışık seans planlanır." } }
+            ]
+          }
+        ]}
+      />
 
       <main className="bg-white text-gray-900">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 pt-20 pb-2">
+          <ol itemScope itemType="https://schema.org/BreadcrumbList" className="flex items-center gap-2 text-sm text-gray-500">
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
+              <Link to="/" itemProp="item"><span itemProp="name">Ana Sayfa</span></Link><meta itemProp="position" content="1" /><span>/</span>
+            </li>
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
+              <Link to="/organizasyonlar/cocuk-etkinlikleri" itemProp="item"><span itemProp="name">Çocuk Etkinlikleri</span></Link><meta itemProp="position" content="2" /><span>/</span>
+            </li>
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center">
+              <span itemProp="name" className="text-gray-900 font-medium">Gezegen Tanıtım</span><meta itemProp="position" content="3" />
+            </li>
+          </ol>
+        </nav>
+
         <section className="relative overflow-hidden min-h-[60vh] flex items-center bg-black text-white">
           <div className="absolute inset-0">
             <OptimizedImage
               src={hero.image}
-              alt="Gezegen tanıtım etkinliği"
+              alt="Gezegen tanıtım uzay atölyesi çocuk etkinliği İstanbul"
               className="w-full h-full object-cover object-center"
               loading="eager"
               fetchpriority="high"
@@ -154,11 +208,19 @@ const PlanetEducation = () => {
             <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
               <h2 className="text-2xl font-semibold text-gray-900 tracking-tight">Görseller</h2>
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {photos.map((src, idx) => (
-                  <div key={idx} className="rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100">
-                    <OptimizedImage src={src} alt="Gezegen tanıtım etkinliği" className="w-full h-52 object-cover" loading="lazy" />
-                  </div>
-                ))}
+                {photos.map((src, idx) => {
+                  const altTexts = [
+                    'Güneş sistemi maketleri ile gezegen tanıtımı',
+                    'Astronot kostümü ile çocuk fotoğrafı',
+                    'İnteraktif uzay atölyesi etkinliği',
+                    'Gezegen eğitimi soru-cevap bölümü'
+                  ]
+                  return (
+                    <div key={idx} className="rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100">
+                      <OptimizedImage src={src} alt={altTexts[idx] || `Uzay atölyesi görsel ${idx + 1}`} className="w-full h-52 object-cover" loading="lazy" width={400} height={208} />
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </section>
@@ -200,6 +262,8 @@ const PlanetEducation = () => {
             </div>
           </div>
         </section>
+
+        <RelatedServices currentService="gezegen-tanitim" />
       </main>
     </>
   )

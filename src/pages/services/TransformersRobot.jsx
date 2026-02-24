@@ -1,5 +1,7 @@
-import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
 import OptimizedImage from '../../components/OptimizedImage'
+import RelatedServices from '../../components/RelatedServices'
+import Seo from '../../components/Seo'
 
 const TransformersRobot = () => {
   const hero = {
@@ -39,22 +41,74 @@ const TransformersRobot = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Transformers Robot Kiralama | LED Robot Gösterisi İstanbul | Best Event</title>
-        <meta
-          name="description"
-          content="İstanbul'da LED ışıklı dev Transformers robot gösterisi. 2.5-3 m boyunda performans, fotoğraf ve dans şovu. AVM açılışı, festival ve doğum günü etkinlikleri için rezervasyon."
-        />
-        <meta name="keywords" content="transformers robot kiralama, led robot istanbul, dev robot gösterisi, avm açılış robotu" />
-        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/transformers-robot" />
-      </Helmet>
+      <Seo
+        title="Transformers Robot Kiralama İstanbul | LED Robot - BestEvent"
+        description="İstanbul'da LED ışıklı dev Transformers robot gösterisi. 2.5-3 m boyunda performans, fotoğraf ve dans şovu. AVM, festival ve doğum günü."
+        keywords={['transformers robot kiralama istanbul', 'led robot gösterisi', 'dev robot kiralama', 'avm açılış robotu istanbul', 'robot performansı kiralama', 'bumblebee optimus prime kiralama']}
+        image="/content/images/bidolu/transformers.webp"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Transformers Robot Kiralama İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "telephone": "+905307309009",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "İstanbul",
+                "addressCountry": "TR"
+              }
+            },
+            "serviceType": "Robot Gösterisi",
+            "areaServed": {
+              "@type": "City",
+              "name": "İstanbul"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
+              { "@type": "ListItem", "position": 3, "name": "Transformers Robot", "item": "https://bestevent.com.tr/organizasyonlar/transformers-robot" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "Robot ne kadar büyük?", "acceptedAnswer": { "@type": "Answer", "text": "2.5-3 metre boyunda LED ışıklı profesyonel performans robotları." } },
+              { "@type": "Question", "name": "Performans süresi ne kadar?", "acceptedAnswer": { "@type": "Answer", "text": "Molalı 60-90 dakika performans. Giydirme 15-20 dakika sürer." } },
+              { "@type": "Question", "name": "İç mekanda kullanılabilir mi?", "acceptedAnswer": { "@type": "Answer", "text": "Evet, minimum 2.8 metre tavan yüksekliği olan iç ve dış mekanlarda kullanılabilir." } }
+            ]
+          }
+        ]}
+      />
 
       <main className="bg-white text-gray-900">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 pt-20 pb-2">
+          <ol itemScope itemType="https://schema.org/BreadcrumbList" className="flex items-center gap-2 text-sm text-gray-500">
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
+              <Link to="/" itemProp="item"><span itemProp="name">Ana Sayfa</span></Link><meta itemProp="position" content="1" /><span>/</span>
+            </li>
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
+              <Link to="/organizasyonlar/cocuk-etkinlikleri" itemProp="item"><span itemProp="name">Çocuk Etkinlikleri</span></Link><meta itemProp="position" content="2" /><span>/</span>
+            </li>
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center">
+              <span itemProp="name" className="text-gray-900 font-medium">Transformers Robot</span><meta itemProp="position" content="3" />
+            </li>
+          </ol>
+        </nav>
+
         <section className="relative overflow-hidden min-h-[65vh] flex items-center bg-black text-white">
           <div className="absolute inset-0">
             <OptimizedImage
               src={hero.image}
-              alt="Transformers robot kiralama"
+              alt="Transformers LED robot kiralama İstanbul etkinlik"
               className="w-full h-full object-cover object-center"
               loading="eager"
               fetchpriority="high"
@@ -155,11 +209,19 @@ const TransformersRobot = () => {
             <div className="max-w-6xl mx-auto px-6 py-14 md:py-16">
               <h2 className="text-2xl font-semibold text-gray-900 tracking-tight">Görseller</h2>
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {photos.map((src, idx) => (
-                  <div key={idx} className="rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100">
-                    <OptimizedImage src={src} alt="Transformers robot etkinliği" className="w-full h-52 object-cover" loading="lazy" />
-                  </div>
-                ))}
+                {photos.map((src, idx) => {
+                  const altTexts = [
+                    'LED ışıklı Transformers robot performansı',
+                    'Dev robot ile çocuk fotoğraf çekimi',
+                    'Transformers robot sahne gösterisi',
+                    'Doğum günü partisinde robot etkileşimi'
+                  ]
+                  return (
+                    <div key={idx} className="rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100">
+                      <OptimizedImage src={src} alt={altTexts[idx] || `Robot etkinliği görsel ${idx + 1}`} className="w-full h-52 object-cover" loading="lazy" width={400} height={208} />
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </section>
@@ -201,6 +263,8 @@ const TransformersRobot = () => {
             </div>
           </div>
         </section>
+
+        <RelatedServices currentService="transformers-robot" />
       </main>
     </>
   )

@@ -276,7 +276,14 @@ const BubbleShowGosterisi = () => {
     </>
   )
 
-  return <BlogDetail>{content}</BlogDetail>
+  return (
+    <BlogDetail
+      relatedServicePath="/organizasyonlar/bubble-show"
+      relatedServiceName="Bubble Show"
+    >
+      {content}
+    </BlogDetail>
+  )
 }
 
 export default BubbleShowGosterisi

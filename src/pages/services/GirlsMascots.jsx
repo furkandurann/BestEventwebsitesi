@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { mascotsData } from '../../data/mascotsData'
 import NarrativeSection from '../../components/NarrativeSection'
 import FullBleedHero from '../../components/FullBleedHero'
+import OptimizedImage from '../../components/OptimizedImage'
+import Seo from '../../components/Seo'
 
 const GirlsMascots = () => {
   const [activeSection, setActiveSection] = useState(0)
@@ -11,25 +12,33 @@ const GirlsMascots = () => {
   // Kız maskotları
   const girlsMascots = mascotsData.girlsMascots
 
-  // Scroll observer for progress indicators
+  // Scroll observer for progress indicators (throttled with rAF)
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('.mascot-hero-section')
-      const scrollPos = window.scrollY + window.innerHeight / 2
+    let ticking = false
 
-      sections.forEach((section, index) => {
-        const top = section.offsetTop
-        const bottom = top + section.offsetHeight
-        
-        if (scrollPos >= top && scrollPos < bottom) {
-          setActiveSection(index)
-        }
-      })
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sections = document.querySelectorAll('.mascot-hero-section')
+          const scrollPos = window.scrollY + window.innerHeight / 2
+
+          sections.forEach((section, index) => {
+            const top = section.offsetTop
+            const bottom = top + section.offsetHeight
+
+            if (scrollPos >= top && scrollPos < bottom) {
+              setActiveSection(index)
+            }
+          })
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
-    
+
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -56,15 +65,55 @@ const GirlsMascots = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Kız Çocuk Maskotları Kiralama İstanbul | Hello Kitty, Kuromi | Best Event</title>
-        <meta 
-          name="description" 
-          content="İstanbul'da kız çocuk maskot organizasyon. Hello Kitty, Kuromi, Unicorn, LOL Bebek maskotları. ☎ 0530 730 90 09" 
-        />
-      </Helmet>
+      <Seo
+        title="Kız Çocuk Maskotları Kiralama İstanbul | BestEvent"
+        description="İstanbul'da kız çocuk maskot organizasyonu. Hello Kitty, Kuromi, Unicorn, LOL Bebek, Minnie Mouse maskot kiralama. Profesyonel ekip."
+        keywords={['kız maskot kiralama istanbul', 'hello kitty maskot', 'kuromi maskot istanbul', 'unicorn maskot kiralama', 'lol bebek maskot', 'minnie mouse maskot istanbul', 'kız çocuk doğum günü maskot']}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Kız Çocuk Maskot Kiralama İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "telephone": "+905307309009",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "İstanbul",
+                "addressCountry": "TR"
+              }
+            },
+            "serviceType": "Maskot Organizasyonu",
+            "areaServed": {
+              "@type": "City",
+              "name": "İstanbul"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
+              { "@type": "ListItem", "position": 3, "name": "Kız Maskotları", "item": "https://bestevent.com.tr/organizasyonlar/kiz-maskotlari" }
+            ]
+          }
+        ]}
+      />
 
       <main className="overflow-x-hidden scroll-smooth snap-y snap-mandatory">
+        {/* SEO H1 - Visible but styled as hero header */}
+        <div className="bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50 py-12 md:py-16 px-4 sm:px-6 lg:px-8 text-center">
+          <p className="uppercase tracking-[0.3em] text-xs sm:text-sm text-pink-600 mb-4 font-semibold">İSTANBUL MASKOT KİRALAMA</p>
+          <h1 className="font-bold text-gray-900 mb-4 tracking-tight" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: '1.2', letterSpacing: '-0.02em', fontFamily: 'Poppins, sans-serif' }}>
+            Kız Çocuk Maskotları Kiralama İstanbul
+          </h1>
+          <p className="text-gray-600 max-w-3xl mx-auto" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', lineHeight: '1.7' }}>
+            Hello Kitty, Kuromi, Unicorn, LOL Bebek, Minnie Mouse ve daha fazlası. Profesyonel maskot kiralama hizmeti.
+          </p>
+        </div>
+
         {/* Progress Indicators */}
         <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-3">
           {girlsMascots.map((_, index) => (
@@ -90,16 +139,20 @@ const GirlsMascots = () => {
             className="mascot-hero-section relative min-h-screen flex items-center justify-center overflow-hidden snap-start"
           >
             {/* Background Image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('${mascot.heroImage}')` }}
-            >
+            <div className="absolute inset-0">
+              <OptimizedImage
+                src={mascot.heroImage}
+                alt={`${mascot.name} maskot kiralama İstanbul`}
+                className="w-full h-full object-cover object-center"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchpriority={index === 0 ? 'high' : undefined}
+              />
               <div className="absolute inset-0 bg-gradient-to-b from-black/15 to-black/5"></div>
             </div>
 
             {/* Content */}
             <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-              <motion.h1
+              <motion.h2
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -115,7 +168,7 @@ const GirlsMascots = () => {
                 }}
               >
                 {mascot.name}
-              </motion.h1>
+              </motion.h2>
             </div>
 
             {/* İncele button - Her section'un sağ alt köşesi */}

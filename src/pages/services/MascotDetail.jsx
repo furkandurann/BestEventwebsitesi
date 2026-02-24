@@ -1,7 +1,7 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { getMascotBySlug } from '../../data/mascotsData'
+import Seo from '../../components/Seo'
 import NarrativeSection from '../../components/NarrativeSection'
 
 const MascotDetail = () => {
@@ -15,13 +15,31 @@ const MascotDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{mascot.name} Maskot Organizasyonu İstanbul | Koca Kafalı | Best Event</title>
-        <meta 
-          name="description" 
-          content={`İstanbul'da ${mascot.name} maskot organizasyonu. ${mascot.description} ☎ 0530 730 90 09`}
-        />
-      </Helmet>
+      <Seo
+        title={`${mascot.name} Maskot Kiralama İstanbul | BestEvent`}
+        description={`İstanbul'da ${mascot.name} koca kafalı maskot kiralama. Profesyonel performans sanatçısı, hijyenik kostüm. Doğum günü ve etkinlikler.`}
+        keywords={[`${mascot.name.toLowerCase()} maskot kiralama istanbul`, 'koca kafalı maskot kiralama', 'maskot organizasyonu istanbul', 'doğum günü maskot', `${mascot.name.toLowerCase()} organizasyon`]}
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": `${mascot.name} Maskot Kiralama İstanbul`,
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BestEvent",
+            "telephone": "+905307309009",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "İstanbul",
+              "addressCountry": "TR"
+            }
+          },
+          "serviceType": "Maskot Organizasyonu",
+          "areaServed": {
+            "@type": "City",
+            "name": "İstanbul"
+          }
+        }}
+      />
 
       {/* Hero Section - Full Screen */}
       <motion.section 

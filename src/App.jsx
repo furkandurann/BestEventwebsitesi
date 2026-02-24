@@ -17,7 +17,6 @@ const Services = lazy(() => import('./pages/Services'))
 const Gallery = lazy(() => import('./pages/Gallery'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Team = lazy(() => import('./pages/Team'))
-const Clients = lazy(() => import('./pages/Clients'))
 const ServiceAreas = lazy(() => import('./pages/ServiceAreas'))
 
 // Service Pages (lazy)
@@ -66,13 +65,29 @@ const OrganicCakes = lazy(() => import('./pages/OrganicCakes'))
 // Blog (lazy)
 const Blog = lazy(() => import('./pages/Blog'))
 
-// Blog Details (lazy)
+// Blog Details (lazy) - Mevcut 6 blog
 const AcilisOrganizasyonu = lazy(() => import('./pages/blog/AcilisOrganizasyonu'))
 const PalyacoKiralama = lazy(() => import('./pages/blog/PalyacoKiralama'))
 const SihirbazGosterisi = lazy(() => import('./pages/blog/SihirbazGosterisi'))
 const BubbleShowGosterisi = lazy(() => import('./pages/blog/BubbleShowGosterisi'))
 const IstanbulEtkinlikRehberi = lazy(() => import('./pages/blog/IstanbulEtkinlikRehberi'))
 const PalyacoGezegeni = lazy(() => import('./pages/blog/PalyacoGezegeni'))
+
+// Blog Details (lazy) - 14 yeni blog yazısı
+const PalyacoKizKulesi = lazy(() => import('./pages/blog/PalyacoKizKulesi'))
+const PalyacoDogumGunuRehberi = lazy(() => import('./pages/blog/PalyacoDogumGunuRehberi'))
+const SihirbazGokturkAtCiftligi = lazy(() => import('./pages/blog/SihirbazGokturkAtCiftligi'))
+const SihirbazKiralamaRehberi = lazy(() => import('./pages/blog/SihirbazKiralamaRehberi'))
+const BubbleShowSuHarcama = lazy(() => import('./pages/blog/BubbleShowSuHarcama'))
+const BubbleShowKiralamaRehberi = lazy(() => import('./pages/blog/BubbleShowKiralamaRehberi'))
+const DogumGunuOrganizasyonuRehberi = lazy(() => import('./pages/blog/DogumGunuOrganizasyonuRehberi'))
+const DogumGunuMekanSecimi = lazy(() => import('./pages/blog/DogumGunuMekanSecimi'))
+const PamukSekerEtkinlikRehberi = lazy(() => import('./pages/blog/PamukSekerEtkinlikRehberi'))
+const PamukSekerDogumGunu = lazy(() => import('./pages/blog/PamukSekerDogumGunu'))
+const KostumluKarakterRehberi = lazy(() => import('./pages/blog/KostumluKarakterRehberi'))
+const KostumluKarakterDogumGunu = lazy(() => import('./pages/blog/KostumluKarakterDogumGunu'))
+const YuzBoyamaRehberi = lazy(() => import('./pages/blog/YuzBoyamaRehberi'))
+const YuzBoyamaDogumGunu = lazy(() => import('./pages/blog/YuzBoyamaDogumGunu'))
 
 // 404 Page (lazy)
 const NotFound = lazy(() => import('./pages/NotFound'))
@@ -112,7 +127,6 @@ function App() {
         <Route path="/galeri" element={<Gallery />} />
         <Route path="/iletisim" element={<Contact />} />
         <Route path="/ekibimiz" element={<Team />} />
-        <Route path="/referanslar" element={<Clients />} />
         <Route path="/hizmet-bolgeleri" element={<ServiceAreas />} />
         <Route path="/organik-pastalar" element={<OrganicCakes />} />
         <Route path="/blog" element={<Blog />} />
@@ -122,7 +136,23 @@ function App() {
         <Route path="/blog/palyaco-kiralama-istanbul" element={<PalyacoKiralama />} />
         <Route path="/blog/sihirbaz-gosterisi-istanbul" element={<SihirbazGosterisi />} />
         <Route path="/blog/bubble-show-istanbul" element={<BubbleShowGosterisi />} />
-        
+
+        {/* Yeni Blog Yazıları (14 adet) */}
+        <Route path="/blog/palyaco-kiz-kulesi-organizasyonu" element={<PalyacoKizKulesi />} />
+        <Route path="/blog/palyaco-dogum-gunu-rehberi" element={<PalyacoDogumGunuRehberi />} />
+        <Route path="/blog/sihirbaz-gokturk-at-ciftligi" element={<SihirbazGokturkAtCiftligi />} />
+        <Route path="/blog/sihirbaz-kiralama-rehberi" element={<SihirbazKiralamaRehberi />} />
+        <Route path="/blog/bubble-show-ne-kadar-su-harcar" element={<BubbleShowSuHarcama />} />
+        <Route path="/blog/bubble-show-kiralama-rehberi" element={<BubbleShowKiralamaRehberi />} />
+        <Route path="/blog/dogum-gunu-organizasyonu-rehberi" element={<DogumGunuOrganizasyonuRehberi />} />
+        <Route path="/blog/dogum-gunu-mekan-secimi" element={<DogumGunuMekanSecimi />} />
+        <Route path="/blog/pamuk-seker-etkinlik-rehberi" element={<PamukSekerEtkinlikRehberi />} />
+        <Route path="/blog/pamuk-seker-dogum-gunu-organizasyonu" element={<PamukSekerDogumGunu />} />
+        <Route path="/blog/kostumlu-karakter-kiralama-rehberi" element={<KostumluKarakterRehberi />} />
+        <Route path="/blog/kostumlu-karakter-dogum-gunu" element={<KostumluKarakterDogumGunu />} />
+        <Route path="/blog/yuz-boyama-kiralama-rehberi" element={<YuzBoyamaRehberi />} />
+        <Route path="/blog/yuz-boyama-dogum-gunu-organizasyonu" element={<YuzBoyamaDogumGunu />} />
+
         {/* Service Routes */}
         <Route path="/organizasyonlar/cocuk-etkinlikleri" element={<ChildEvents />} />
         
@@ -135,6 +165,7 @@ function App() {
         
         <Route path="/organizasyonlar/dogum-gunu-organizasyonu" element={<FullBirthdayOrganization />} />
         <Route path="/organizasyonlar/konsept-dogum-gunu" element={<ConceptBirthday />} />
+        <Route path="/organizasyonlar/full-paket-organizasyon" element={<FullPackageOrganization />} />
         <Route path="/organizasyonlar/pamuk-seker" element={<CottonCandyCart />} />
         <Route path="/organizasyonlar/karaoke-etkinligi" element={<Karaoke />} />
         <Route path="/organizasyonlar/gezegen-tanitim" element={<PlanetEducation />} />

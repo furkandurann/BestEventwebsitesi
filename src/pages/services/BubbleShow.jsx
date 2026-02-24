@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import QuickQuoteForm from '../../components/QuickQuoteForm'
 import ExitIntentPopup from '../../components/ExitIntentPopup'
+import RelatedServices from '../../components/RelatedServices'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 
@@ -162,7 +164,7 @@ const BubbleShow = () => {
   return (
     <>
       <Seo
-        title="Istanbul Bubble Show Gösterisi | Bubble Show Organizasyonu Kiralama ve Etkinliği"
+        title="Bubble Show Gösterisi | Köpük Şov Organizasyonu Kiralama"
         description="Istanbul'da bubble show gösterisi, organizasyonu ve kiralama. Bubble show etkinliği için profesyonel hizmet. ☎ 0530 730 90 09"
         keywords={[
           'istanbul bubble show gösterisi',
@@ -255,6 +257,28 @@ const BubbleShow = () => {
             "contentUrl": "https://bestevent.com.tr/content/images/bubbleshow/anabubblee.webp",
             "description": "İstanbul bubble show gösterisi - dev köpükler",
             "name": "Bubble Show İstanbul"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Bubble Show", "item": "https://bestevent.com.tr/organizasyonlar/bubble-show" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "BestEvent - Bubble Show İstanbul",
+            "url": "https://bestevent.com.tr/organizasyonlar/bubble-show",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.0",
+              "bestRating": "5",
+              "worstRating": "1",
+              "ratingCount": "217",
+              "reviewCount": "217"
+            }
           }
         ]}
       />
@@ -1042,6 +1066,44 @@ const BubbleShow = () => {
           </div>
         </section>
 
+        {/* İlgili Blog Yazıları - Internal Links */}
+        <section className="py-12 px-6 bg-black/40">
+          <div className="max-w-4xl mx-auto">
+            <h3
+              className="text-white/80 font-semibold mb-6 text-center"
+              style={{
+                fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+              }}
+            >
+              İlgili Blog Yazıları
+            </h3>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to="/blog/bubble-show-istanbul"
+                className="text-purple-300 hover:text-purple-200 underline underline-offset-4 decoration-purple-500/40 hover:decoration-purple-400 transition-colors text-sm sm:text-base"
+              >
+                Bubble Show Deneyimlerimiz
+              </Link>
+              <span className="text-white/20 hidden sm:inline">|</span>
+              <Link
+                to="/blog/bubble-show-ne-kadar-su-harcar"
+                className="text-purple-300 hover:text-purple-200 underline underline-offset-4 decoration-purple-500/40 hover:decoration-purple-400 transition-colors text-sm sm:text-base"
+              >
+                Bubble Show Ne Kadar Su Harcar?
+              </Link>
+              <span className="text-white/20 hidden sm:inline">|</span>
+              <Link
+                to="/blog/bubble-show-kiralama-rehberi"
+                className="text-purple-300 hover:text-purple-200 underline underline-offset-4 decoration-purple-500/40 hover:decoration-purple-400 transition-colors text-sm sm:text-base"
+              >
+                Bubble Show Kiralama Rehberi
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <RelatedServices currentService="bubble-show" />
       </main>
 
       {/* Exit Intent Popup */}

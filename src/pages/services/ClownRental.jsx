@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import Seo from '../../components/Seo'
+import RelatedServices from '../../components/RelatedServices'
 
 // Clown FAQ Section Component
 function ClownFAQSection({ faqs }) {
@@ -298,8 +300,8 @@ const ClownRental = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Seo
-        title="Istanbul Palyaço Gösterisi | Palyaço Organizasyonu Kiralama ve Etkinliği"
-        description="Istanbul'da palyaço gösterisi ve organizasyonu. Palyaço kiralama, etkinliği hizmetleri. +5000 başarılı etkinlik. ☎️ 0530 730 90 09"
+        title="Palyaço Gösterisi | Palyaço Organizasyonu Kiralama"
+        description="Istanbul'da palyaço gösterisi ve organizasyonu. Palyaço kiralama, etkinliği hizmetleri. +5000 başarılı etkinlik. ☎ 0530 730 90 09"
         keywords={[
           'istanbul palyaço gösterisi',
           'palyaço organizasyonu',
@@ -308,6 +310,7 @@ const ClownRental = () => {
           'istanbul palyaço hizmetleri'
         ]}
         canonicalPath="/organizasyonlar/palyaco-kiralama"
+        image="/content/images/palyaco/palyacoanaherogrupoyunlari.webp"
         schema={[
           {
             "@context": "https://schema.org",
@@ -316,6 +319,7 @@ const ClownRental = () => {
             "provider": {
               "@type": "LocalBusiness",
               "name": "BestEvent",
+              "telephone": "+905307309009",
               "areaServed": [
                 "Kadıköy", "Üsküdar", "Maltepe", "Ataşehir", "Ümraniye", "Kartal", "Pendik", "Beykoz",
                 "Beşiktaş", "Şişli", "Bakırköy", "Beylikdüzü", "Esenyurt", "Başakşehir", "Sarıyer",
@@ -330,6 +334,14 @@ const ClownRental = () => {
           },
           {
             "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Palyaço Kiralama", "item": "https://bestevent.com.tr/organizasyonlar/palyaco-kiralama" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
             "@type": "FAQPage",
             "mainEntity": faqData.map(faq => ({
               "@type": "Question",
@@ -339,6 +351,28 @@ const ClownRental = () => {
                 "text": faq.answer
               }
             }))
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "BestEvent - Palyaço Kiralama İstanbul",
+            "url": "https://bestevent.com.tr/organizasyonlar/palyaco-kiralama",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.0",
+              "bestRating": "5",
+              "worstRating": "1",
+              "ratingCount": "217",
+              "reviewCount": "217"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "BestEvent",
+            "url": "https://bestevent.com.tr",
+            "logo": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
+            "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
           }
         ]}
       />
@@ -874,6 +908,69 @@ const ClownRental = () => {
         </div>
       </section>
 
+      {/* Related Blog Posts Section */}
+      <section className="py-12 sm:py-16 px-6 bg-black/80 border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <p
+              className="uppercase tracking-[0.2em] text-xs text-purple-400/80 mb-6 font-medium"
+            >
+              İlgili Blog Yazıları
+            </p>
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+              <Link
+                to="/blog/palyaco-kiralama-istanbul"
+                className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/30 rounded-xl px-5 py-3 transition-all duration-300"
+              >
+                <svg className="w-4 h-4 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+                <span
+                  className="text-white/80 hover:text-white text-sm font-medium"
+                  style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}
+                >
+                  Palyaço Kiralama Rehberi
+                </span>
+              </Link>
+              <Link
+                to="/blog/palyaco-kiz-kulesi-organizasyonu"
+                className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/30 rounded-xl px-5 py-3 transition-all duration-300"
+              >
+                <svg className="w-4 h-4 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+                <span
+                  className="text-white/80 hover:text-white text-sm font-medium"
+                  style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}
+                >
+                  Kız Kulesi'nde Palyaço Organizasyonu
+                </span>
+              </Link>
+              <Link
+                to="/blog/palyaco-dogum-gunu-rehberi"
+                className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-400/30 rounded-xl px-5 py-3 transition-all duration-300"
+              >
+                <svg className="w-4 h-4 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+                <span
+                  className="text-white/80 hover:text-white text-sm font-medium"
+                  style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}
+                >
+                  Palyaço Doğum Günü Rehberi
+                </span>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
     </div>
   )
 }
@@ -956,6 +1053,8 @@ function PalyacoCinemaStrip() {
           ))}
         </div>
       </div>
+
+      <RelatedServices currentService="palyaco-kiralama" />
 
       <style>{`
         .scrollbar-hide {

@@ -24,9 +24,9 @@ const __dirname = path.dirname(__filename);
 // Configuration
 const CONFIG = {
   sourceDir: path.join(__dirname, '../public/content/images'),
-  maxWidth: 2000,
-  maxHeight: 2000,
-  webpQuality: 82,
+  maxWidth: 1920,
+  maxHeight: 1080,
+  webpQuality: 80,
   backupFolderName: 'orig_jpg',
   supportedFormats: ['.jpg', '.jpeg', '.png'],
 };

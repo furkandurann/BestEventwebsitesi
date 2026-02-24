@@ -77,7 +77,6 @@ const Footer = () => {
     { name: 'Galeri', path: '/galeri' },
     { name: 'Blog', path: '/blog' },
     { name: 'İletişim', path: '/iletisim' },
-    { name: 'Referanslarımız', path: '/referanslar' },
   ]
 
   return (

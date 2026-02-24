@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
 import MagicShowHeroSlider from '../../components/MagicShowHeroSlider'
 import HorizontalPhotoSlider from '../../components/HorizontalPhotoSlider'
+import RelatedServices from '../../components/RelatedServices'
 
 const MagicShow = () => {
   // WhatsApp Form State
@@ -180,7 +182,7 @@ const MagicShow = () => {
   return (
     <>
       <Seo
-        title="Istanbul Sihirbaz Gösterisi | Sihirbazlık Organizasyonu Kiralama ve Etkinliği"
+        title="Sihirbaz Gösterisi | Sihirbaz Organizasyonu Kiralama"
         description="Istanbul'da sihirbaz gösterisi, organizasyonu ve kiralama. Sihirbazlık etkinliği için profesyonel hizmet. ☎ 0530 730 90 09"
         keywords={[
           'istanbul sihirbaz gösterisi',
@@ -273,6 +275,28 @@ const MagicShow = () => {
             "contentUrl": "https://bestevent.com.tr/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp",
             "description": "İstanbul sihirbaz gösterisi - komedi magic show",
             "name": "Sihirbazlık Gösterisi İstanbul"
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Magic Show", "item": "https://bestevent.com.tr/organizasyonlar/magic-show" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "BestEvent - Sihirbaz Gösterisi İstanbul",
+            "url": "https://bestevent.com.tr/organizasyonlar/magic-show",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.0",
+              "bestRating": "5",
+              "worstRating": "1",
+              "ratingCount": "217",
+              "reviewCount": "217"
+            }
           }
         ]}
       />
@@ -783,6 +807,47 @@ const MagicShow = () => {
           </div>
         </section>
 
+        {/* İlgili Blog Yazıları - Internal Links for SEO */}
+        <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-950 via-black to-indigo-950 border-t border-white/5">
+          <div className="max-w-3xl mx-auto px-6">
+            <h3
+              className="font-semibold text-white/80 mb-6 text-center"
+              style={{
+                fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                letterSpacing: '-0.015em',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+              }}
+            >
+              İlgili Blog Yazıları
+            </h3>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+              <Link
+                to="/blog/sihirbaz-gosterisi-istanbul"
+                className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 decoration-cyan-400/30 hover:decoration-cyan-300/60 transition-colors text-sm sm:text-base"
+                style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}
+              >
+                Sihirbaz Gösterisi Deneyimlerimiz
+              </Link>
+              <span className="hidden sm:inline text-white/20">|</span>
+              <Link
+                to="/blog/sihirbaz-gokturk-at-ciftligi"
+                className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 decoration-cyan-400/30 hover:decoration-cyan-300/60 transition-colors text-sm sm:text-base"
+                style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}
+              >
+                Göktürk At Çiftliğinde Sihirbaz Gösterisi
+              </Link>
+              <span className="hidden sm:inline text-white/20">|</span>
+              <Link
+                to="/blog/sihirbaz-kiralama-rehberi"
+                className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 decoration-cyan-400/30 hover:decoration-cyan-300/60 transition-colors text-sm sm:text-base"
+                style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}
+              >
+                Sihirbaz Kiralama Rehberi
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Final CTA Section - Light White with Subtle Blue */}
         <section className="py-16 md:py-20 bg-gradient-to-br from-white via-slate-50 to-blue-50 relative overflow-hidden">
           {/* Subtle background pattern */}
@@ -1024,6 +1089,7 @@ const MagicShow = () => {
           </div>
         </section>
 
+        <RelatedServices currentService="magic-show" />
       </main>
     </>
   )

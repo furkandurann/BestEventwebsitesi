@@ -1,12 +1,14 @@
-import { Helmet } from 'react-helmet-async'
+import { Link } from 'react-router-dom'
 import OptimizedImage from '../../components/OptimizedImage'
+import RelatedServices from '../../components/RelatedServices'
+import Seo from '../../components/Seo'
 
 const Karaoke = () => {
   const hero = {
     title: 'Karaoke Etkinliği',
     subtitle: '1000+ şarkı, profesyonel ekipman ve sunucu',
     description: 'Doğum günü, okul etkinliği veya parti için çocuklara uygun karaoke set-up: ses sistemi, ekran ve LED ışık.',
-    image: '/content/images/bidolu/karaoke.wepb',
+    image: '/content/images/bidolu/karaoke.webp',
   }
 
   const stats = [
@@ -37,22 +39,74 @@ const Karaoke = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Karaoke Etkinliği | Çocuklara Özel Karaoke Kiralama | Best Event</title>
-        <meta
-          name="description"
-          content="1000+ şarkı, profesyonel ekipman ve sunucu ile çocuklara özel karaoke etkinliği. İstanbul genelinde kurulum, ses/ışık ve playlist yönetimi."
-        />
-        <meta name="keywords" content="karaoke kiralama, çocuk karaoke istanbul, doğum günü karaoke, karaoke etkinliği" />
-        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/karaoke-etkinligi" />
-      </Helmet>
+      <Seo
+        title="Karaoke Etkinliği İstanbul | Çocuk Karaoke Kiralama - BestEvent"
+        description="İstanbul'da çocuklara özel karaoke etkinliği. 1000+ şarkı, profesyonel ses sistemi, sunucu ve LED ışık. Doğum günü ve okul etkinlikleri."
+        keywords={['karaoke kiralama istanbul', 'çocuk karaoke etkinliği', 'doğum günü karaoke', 'karaoke organizasyonu istanbul', 'çocuk partisi karaoke', 'profesyonel karaoke kiralama']}
+        image="/content/images/bidolu/karaoke.webp"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Çocuk Karaoke Etkinliği İstanbul",
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "BestEvent",
+              "telephone": "+905307309009",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "İstanbul",
+                "addressCountry": "TR"
+              }
+            },
+            "serviceType": "Karaoke Etkinliği",
+            "areaServed": {
+              "@type": "City",
+              "name": "İstanbul"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
+              { "@type": "ListItem", "position": 3, "name": "Karaoke Etkinliği", "item": "https://bestevent.com.tr/organizasyonlar/karaoke-etkinligi" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "Kaç yaş için uygun?", "acceptedAnswer": { "@type": "Answer", "text": "4-14 yaş arası çocuklara göre playlist hazırlanır." } },
+              { "@type": "Question", "name": "Kaç mikrofon getiriyorsunuz?", "acceptedAnswer": { "@type": "Answer", "text": "Paketlere göre 2-4 mikrofon; kablolu + kablosuz kombinasyonu." } },
+              { "@type": "Question", "name": "Dış mekanda olur mu?", "acceptedAnswer": { "@type": "Answer", "text": "Hava uygunsa evet; priz ve gölgelik alan önerilir." } }
+            ]
+          }
+        ]}
+      />
 
       <main className="bg-white text-gray-900">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-6 pt-20 pb-2">
+          <ol itemScope itemType="https://schema.org/BreadcrumbList" className="flex items-center gap-2 text-sm text-gray-500">
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
+              <Link to="/" itemProp="item"><span itemProp="name">Ana Sayfa</span></Link><meta itemProp="position" content="1" /><span>/</span>
+            </li>
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center gap-2">
+              <Link to="/organizasyonlar/cocuk-etkinlikleri" itemProp="item"><span itemProp="name">Çocuk Etkinlikleri</span></Link><meta itemProp="position" content="2" /><span>/</span>
+            </li>
+            <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem" className="flex items-center">
+              <span itemProp="name" className="text-gray-900 font-medium">Karaoke Etkinliği</span><meta itemProp="position" content="3" />
+            </li>
+          </ol>
+        </nav>
+
         <section className="relative overflow-hidden min-h-[65vh] flex items-center bg-black text-white">
           <div className="absolute inset-0">
             <OptimizedImage
               src={hero.image}
-              alt="Karaoke etkinliği"
+              alt="Karaoke etkinliği İstanbul çocuk partisi"
               className="w-full h-full object-cover object-center"
               loading="eager"
               fetchpriority="high"
@@ -177,6 +231,8 @@ const Karaoke = () => {
             </div>
           </div>
         </section>
+
+        <RelatedServices currentService="karaoke-etkinligi" />
       </main>
     </>
   )

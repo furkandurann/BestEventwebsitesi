@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
 import RelatedServices from '../../components/RelatedServices'
 import { trackWhatsAppClick, trackPhoneClick, trackServicePageView } from '../../utils/tracking'
@@ -132,6 +133,36 @@ const FacePainting = () => {
                 "text": faq.answer
               }
             }))
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Yüz Boyama", "item": "https://bestevent.com.tr/organizasyonlar/yuz-boyama" }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "BestEvent - Yüz Boyama Kiralama İstanbul",
+            "url": "https://bestevent.com.tr/organizasyonlar/yuz-boyama",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "5.0",
+              "bestRating": "5",
+              "worstRating": "1",
+              "ratingCount": "217",
+              "reviewCount": "217"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "BestEvent",
+            "url": "https://bestevent.com.tr",
+            "logo": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
+            "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
           }
         ]}
       />
@@ -163,7 +194,7 @@ const FacePainting = () => {
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
                 }}
               >
-                profesyonel yüz boyaması
+                Profesyonel Yüz Boyama İstanbul
               </motion.h1>
             </div>
           </div>
@@ -262,11 +293,24 @@ const FacePainting = () => {
               Uygulama Görselleri
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {heroImages.map((src, idx) => (
-                <div key={idx} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                  <img src={src} alt="Yüz boyama görseli" className="w-full h-56 object-cover" loading="lazy" />
-                </div>
-              ))}
+              {heroImages.map((src, idx) => {
+                const altTexts = [
+                  'Profesyonel yüz boyama kelebek tasarımı',
+                  'Çocuk yüz boyama süper kahraman deseni',
+                  'İstanbul yüz boyama doğum günü etkinliği',
+                  'Prenses temalı yüz boyama uygulaması',
+                  'Renkli yüz boyama festival çalışması',
+                  'Glitter detaylı yüz boyama tasarımı',
+                  'Hayvan figürlü çocuk yüz boyama',
+                  'Profesyonel makeup artist yüz boyama',
+                  'Yüz boyama galeri çocuk etkinliği'
+                ]
+                return (
+                  <div key={idx} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                    <img src={src} alt={altTexts[idx] || `Yüz boyama uygulama ${idx + 1}`} className="w-full h-56 object-cover" loading="lazy" />
+                  </div>
+                )
+              })}
             </div>
           </div>
         </section>
@@ -394,6 +438,27 @@ const FacePainting = () => {
                   {area}
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* İlgili Blog Yazıları */}
+        <section className="py-12 px-6 bg-black border-t border-white/10">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-white/60 text-sm font-medium uppercase tracking-[0.2em] mb-4">İlgili Blog Yazıları</h2>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                to="/blog/yuz-boyama-kiralama-rehberi"
+                className="rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white/80 text-sm hover:bg-white/10 hover:text-white transition-colors"
+              >
+                Yüz Boyama Kiralama Rehberi
+              </Link>
+              <Link
+                to="/blog/yuz-boyama-dogum-gunu-organizasyonu"
+                className="rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-white/80 text-sm hover:bg-white/10 hover:text-white transition-colors"
+              >
+                Doğum Gününde Yüz Boyama Organizasyonu
+              </Link>
             </div>
           </div>
         </section>

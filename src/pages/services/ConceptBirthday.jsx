@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
 import NarrativeSection from '../../components/NarrativeSection'
+import RelatedServices from '../../components/RelatedServices'
 
 const ConceptBirthday = () => {
 
@@ -81,6 +82,14 @@ const ConceptBirthday = () => {
                 "text": faq.answer
               }
             }))
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Konsept Doğum Günü", "item": "https://bestevent.com.tr/organizasyonlar/konsept-dogum-gunu" }
+            ]
           }
         ]}
       />
@@ -878,6 +887,8 @@ const ConceptBirthday = () => {
           </div>
         </div>
       </section>
+
+      <RelatedServices currentService="konsept-dogum-gunu" />
     </>
   )
 }

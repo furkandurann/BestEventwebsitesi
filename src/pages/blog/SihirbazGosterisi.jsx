@@ -354,7 +354,14 @@ const SihirbazGosterisi = () => {
     </>
   )
 
-  return <BlogDetail>{content}</BlogDetail>
+  return (
+    <BlogDetail
+      relatedServicePath="/organizasyonlar/magic-show"
+      relatedServiceName="Sihirbaz Gösterisi"
+    >
+      {content}
+    </BlogDetail>
+  )
 }
 
 export default SihirbazGosterisi

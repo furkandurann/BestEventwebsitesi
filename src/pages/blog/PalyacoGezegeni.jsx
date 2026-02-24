@@ -519,6 +519,7 @@ const PalyacoGezegeni = () => {
 
   return (
     <BlogDetail
+      slug="palyaco-gezegeni"
       relatedServicePath="/organizasyonlar/palyaco-kiralama"
       relatedServiceName="Palyaço Kiralama"
     >

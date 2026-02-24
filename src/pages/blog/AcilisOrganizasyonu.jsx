@@ -507,6 +507,7 @@ const AcilisOrganizasyonu = () => {
 
   return (
     <BlogDetail
+      slug="acilis-organizasyonu-istanbul"
       relatedServicePath="/organizasyonlar/cocuk-etkinlikleri"
       relatedServiceName="Çocuk Etkinlikleri"
     >

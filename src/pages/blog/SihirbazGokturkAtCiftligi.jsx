@@ -401,6 +401,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
   return (
     <BlogDetail
+      slug="sihirbaz-gokturk-at-ciftligi"
       relatedServicePath="/organizasyonlar/magic-show"
       relatedServiceName="Sihirbaz Gösterisi"
       faqData={faqData}

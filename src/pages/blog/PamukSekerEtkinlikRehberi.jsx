@@ -404,6 +404,7 @@ const PamukSekerEtkinlikRehberi = () => {
 
   return (
     <BlogDetail
+      slug="pamuk-seker-etkinlik-rehberi"
       faqData={faqData}
       relatedServicePath={relatedServicePath}
       relatedServiceName={relatedServiceName}

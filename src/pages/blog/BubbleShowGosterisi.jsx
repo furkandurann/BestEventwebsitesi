@@ -278,6 +278,7 @@ const BubbleShowGosterisi = () => {
 
   return (
     <BlogDetail
+      slug="bubble-show-istanbul"
       relatedServicePath="/organizasyonlar/bubble-show"
       relatedServiceName="Bubble Show"
     >

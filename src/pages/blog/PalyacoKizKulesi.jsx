@@ -439,6 +439,7 @@ const PalyacoKizKulesi = () => {
 
   return (
     <BlogDetail
+      slug="palyaco-kiz-kulesi-organizasyonu"
       relatedServicePath="/organizasyonlar/palyaco-kiralama"
       relatedServiceName="Palyaço Kiralama"
       faqData={faqData}

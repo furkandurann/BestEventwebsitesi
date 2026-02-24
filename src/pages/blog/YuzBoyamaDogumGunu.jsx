@@ -489,6 +489,7 @@ const YuzBoyamaDogumGunu = () => {
 
   return (
     <BlogDetail
+      slug="yuz-boyama-dogum-gunu-organizasyonu"
       faqData={faqData}
       relatedServicePath={relatedServicePath}
       relatedServiceName={relatedServiceName}

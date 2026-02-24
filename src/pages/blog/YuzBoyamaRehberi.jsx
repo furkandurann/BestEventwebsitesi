@@ -395,6 +395,7 @@ const YuzBoyamaRehberi = () => {
 
   return (
     <BlogDetail
+      slug="yuz-boyama-kiralama-rehberi"
       faqData={faqData}
       relatedServicePath={relatedServicePath}
       relatedServiceName={relatedServiceName}

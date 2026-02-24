@@ -356,6 +356,7 @@ const SihirbazGosterisi = () => {
 
   return (
     <BlogDetail
+      slug="sihirbaz-gosterisi-istanbul"
       relatedServicePath="/organizasyonlar/magic-show"
       relatedServiceName="Sihirbaz Gösterisi"
     >

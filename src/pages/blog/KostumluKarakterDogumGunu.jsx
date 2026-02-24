@@ -512,6 +512,7 @@ const KostumluKarakterDogumGunu = () => {
 
   return (
     <BlogDetail
+      slug="kostumlu-karakter-dogum-gunu"
       faqData={faqData}
       relatedServicePath="/organizasyonlar/kostumlu-karakterler"
       relatedServiceName="Kostümlü Karakterler"

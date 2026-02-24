@@ -404,6 +404,7 @@ const SihirbazKiralamaRehberi = () => {
 
   return (
     <BlogDetail
+      slug="sihirbaz-kiralama-rehberi"
       relatedServicePath={relatedServicePath}
       relatedServiceName={relatedServiceName}
       faqData={faqData}

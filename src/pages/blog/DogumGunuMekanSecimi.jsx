@@ -511,6 +511,7 @@ const DogumGunuMekanSecimi = () => {
 
   return (
     <BlogDetail
+      slug="dogum-gunu-mekan-secimi"
       faqData={faqData}
       relatedServicePath={relatedServicePath}
       relatedServiceName={relatedServiceName}

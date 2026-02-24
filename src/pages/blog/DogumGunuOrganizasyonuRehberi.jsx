@@ -563,6 +563,7 @@ const DogumGunuOrganizasyonuRehberi = () => {
 
   return (
     <BlogDetail
+      slug="dogum-gunu-organizasyonu-rehberi"
       faqData={faqData}
       relatedServicePath={relatedServicePath}
       relatedServiceName={relatedServiceName}

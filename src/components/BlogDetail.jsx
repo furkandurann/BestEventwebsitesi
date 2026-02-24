@@ -2,8 +2,9 @@ import { useParams, Link } from 'react-router-dom'
 import Seo from './Seo'
 import { getBlogBySlug } from '../data/blogPosts'
 
-const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName, faqData }) => {
-  const { slug } = useParams()
+const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName, faqData, slug: slugProp }) => {
+  const params = useParams()
+  const slug = slugProp || params.slug
   const blog = getBlogBySlug(slug)
 
   if (!blog) {

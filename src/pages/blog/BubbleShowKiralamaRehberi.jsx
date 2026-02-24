@@ -363,6 +363,7 @@ const BubbleShowKiralamaRehberi = () => {
 
   return (
     <BlogDetail
+      slug="bubble-show-kiralama-rehberi"
       faqData={faqData}
       relatedServicePath={relatedServicePath}
       relatedServiceName={relatedServiceName}

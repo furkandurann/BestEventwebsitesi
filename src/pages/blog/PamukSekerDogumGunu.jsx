@@ -429,6 +429,7 @@ const PamukSekerDogumGunu = () => {
 
   return (
     <BlogDetail
+      slug="pamuk-seker-dogum-gunu-organizasyonu"
       faqData={faqData}
       relatedServicePath="/organizasyonlar/pamuk-seker"
       relatedServiceName="Pamuk Seker ve Parti Ekipmanlari"

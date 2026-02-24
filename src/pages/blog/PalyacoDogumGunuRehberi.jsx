@@ -452,6 +452,7 @@ const PalyacoDogumGunuRehberi = () => {
 
   return (
     <BlogDetail
+      slug="palyaco-dogum-gunu-rehberi"
       faqData={faqData}
       relatedServicePath="/organizasyonlar/palyaco-kiralama"
       relatedServiceName="Palyaço Kiralama"

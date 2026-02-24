@@ -383,6 +383,7 @@ const KostumluKarakterRehberi = () => {
 
   return (
     <BlogDetail
+      slug="kostumlu-karakter-kiralama-rehberi"
       relatedServicePath="/organizasyonlar/kostumlu-karakterler"
       relatedServiceName="Kostumlu Karakterler"
       faqData={faqData}

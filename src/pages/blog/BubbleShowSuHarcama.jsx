@@ -456,6 +456,7 @@ const BubbleShowSuHarcama = () => {
 
   return (
     <BlogDetail
+      slug="bubble-show-ne-kadar-su-harcar"
       relatedServicePath="/organizasyonlar/bubble-show"
       relatedServiceName="Bubble Show"
       faqData={faqData}

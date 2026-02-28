@@ -2,8 +2,11 @@ import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 import RelatedServices from '../../components/RelatedServices'
 import { trackWhatsAppClick, trackPhoneClick, trackServicePageView } from '../../utils/tracking'
+import DistrictLinksGrid from '../../components/DistrictLinksGrid'
+import RelatedBlogPosts from '../../components/RelatedBlogPosts'
 
 const heroImages = [
   '/content/images/profesyonelmakeup/profesyonelkopyasiistanbul.webp',
@@ -45,12 +48,6 @@ const highlights = [
   }
 ]
 
-const serviceAreas = [
-  'Kadıköy', 'Üsküdar', 'Maltepe', 'Ataşehir',
-  'Şişli', 'Beşiktaş', 'Sarıyer', 'Göktürk',
-  'Beylikdüzü', 'Bakırköy', 'Levent', 'Nişantaşı',
-  'Pendik', 'Kartal', 'Çekmeköy', 'Maslak'
-]
 
 const faqs = [
   {
@@ -91,6 +88,14 @@ const FacePainting = () => {
     trackServicePageView('Profesyonel Yüz Boyama', 'Çocuk Etkinlikleri')
   }, [])
 
+  const serviceSchema = createServiceSchema(
+    'Profesyonel Yüz Boyama | İstanbul Face Painting',
+    'İstanbul\'da profesyonel yüz boyama: FDA onaylı boyalar, 100+ tasarım, hijyen protokolü. Çocuk etkinlikleri, doğum günü ve festivaller için yerinde hizmet.',
+    '/organizasyonlar/yuz-boyama',
+    'Yüz Boyama'
+  )
+  const faqSchema = createFAQSchema(faqs)
+
   return (
     <>
       <Seo
@@ -103,37 +108,19 @@ const FacePainting = () => {
           'fda onaylı yüz boyası',
           'yüz boyama fiyatları',
           'profesyonel yüz boyama',
-          'istanbul face painting'
+          'istanbul face painting',
+          'yüz boyama sanatçısı',
+          'çocuk makyajı',
+          'glitter tattoo',
+          'vücut boyama',
+          'geçici dövme',
+          'festivalde yüz boyama',
+          'doğum gününde yüz boyama'
         ]}
         canonicalPath="/organizasyonlar/yuz-boyama"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Profesyonel Yüz Boyama İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "areaServed": serviceAreas.map(area => area)
-            },
-            "serviceType": "Yüz Boyama",
-            "offers": {
-              "@type": "Offer",
-              "availability": "https://schema.org/InStock"
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -144,24 +131,10 @@ const FacePainting = () => {
           },
           {
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "BestEvent - Yüz Boyama Kiralama İstanbul",
-            "url": "https://bestevent.com.tr/organizasyonlar/yuz-boyama",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5.0",
-              "bestRating": "5",
-              "worstRating": "1",
-              "ratingCount": "217",
-              "reviewCount": "217"
-            }
-          },
-          {
-            "@context": "https://schema.org",
             "@type": "Organization",
             "name": "BestEvent",
             "url": "https://bestevent.com.tr",
-            "logo": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
+            "logo": "https://bestevent.com.tr/logo.png",
             "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
           }
         ]}
@@ -219,7 +192,7 @@ const FacePainting = () => {
                     letterSpacing: '-0.02em'
                   }}
                 >
-                  Önce sağlık, sonra tasarım: En kaliteli boyalar ve fırçalar
+                  İstanbul Yüz Boyama Hizmet Kalitesi: FDA Onaylı Boyalar ve Fırçalar
                 </h2>
 
                 <p
@@ -290,7 +263,7 @@ const FacePainting = () => {
               className="font-bold text-white mb-6"
               style={{ fontSize: 'clamp(1.8rem, 4.5vw, 2.6rem)', letterSpacing: '-0.02em' }}
             >
-              Uygulama Görselleri
+              Yüz Boyama Kiralama Hizmet Görselleri İstanbul
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {heroImages.map((src, idx) => {
@@ -334,10 +307,10 @@ const FacePainting = () => {
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
                   }}
                 >
-                  Partilerinizi renklendiriyoruz
+                  İstanbul Yüz Boyama Kiralama ile Partilerinizi Renklendiriyoruz
                 </h2>
                 <p className="text-white/75" style={{ lineHeight: '1.7', fontSize: '1rem' }}>
-                  İstediğiniz zaman istediğiniz yerde oluyoruz; hijyen protokolüyle hızlı ve şık yüz boyama deneyimi sunuyoruz.
+                  Profesyonel yüz boyama sanatçısı kadromuzla istediğiniz zaman istediğiniz yerde oluyoruz; hijyen protokolüyle hızlı ve şık face painting deneyimi sunuyoruz. Doğum gününde yüz boyama, festivalde yüz boyama, glitter tattoo ve geçici dövme uygulamalarıyla etkinliklerinize renk katıyoruz.
                 </p>
               </motion.div>
 
@@ -383,7 +356,7 @@ const FacePainting = () => {
                 className="font-bold text-white mb-4"
                 style={{ fontSize: 'clamp(1.8rem, 4.5vw, 2.7rem)', letterSpacing: '-0.02em' }}
               >
-                Tema, hız ve hijyen için paket çözümler
+                Yüz Boyama Hizmet Paketleri ve Kiralama Fiyat Seçenekleri
               </h2>
               <p className="text-white/75" style={{ lineHeight: '1.7' }}>
                 Doğum günü, okul festivali, açılış ve kurumsal etkinliklere uygun; 20+ çocuk için ek sanatçı desteği ile beklemeyi azaltıyoruz.
@@ -420,32 +393,16 @@ const FacePainting = () => {
         </section>
 
         {/* Hizmet Bölgeleri */}
-        <section className="py-16 px-6 bg-black border-t border-white/10">
-          <div className="max-w-5xl mx-auto text-center">
-            <h2 className="font-bold text-white mb-4" style={{ fontSize: 'clamp(1.7rem, 4vw, 2.6rem)', letterSpacing: '-0.02em' }}>
-              İstanbul Genelinde Yerinde Hizmet
-            </h2>
-            <p className="text-white/70 mb-8" style={{ lineHeight: '1.6' }}>
-              Tüm ilçelerde adrese geliyoruz; planlama ve ekipman tarafımızdan sağlanır.
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-              {serviceAreas.map((area) => (
-                <div
-                  key={area}
-                  className="rounded-2xl border border-white/20 bg-white/5 text-white py-3 px-3 text-sm font-semibold shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-md"
-                  style={{ letterSpacing: '-0.01em' }}
-                >
-                  {area}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <DistrictLinksGrid
+          lpServiceSlug="profesyonel-yuz-boyama"
+          serviceName="Yüz Boyama"
+          title="İstanbul Genelinde Yerinde Yüz Boyama Hizmeti"
+        />
 
         {/* İlgili Blog Yazıları */}
         <section className="py-12 px-6 bg-black border-t border-white/10">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-white/60 text-sm font-medium uppercase tracking-[0.2em] mb-4">İlgili Blog Yazıları</h2>
+            <p className="text-white/60 text-sm font-medium uppercase tracking-[0.2em] mb-4">İlgili Blog Yazıları</p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 to="/blog/yuz-boyama-kiralama-rehberi"
@@ -498,7 +455,7 @@ const FacePainting = () => {
                 fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
               }}
             >
-              Hemen Rezervasyon Yap
+              İstanbul Yüz Boyama Kiralama Hizmet Rezervasyonu
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 14 }}
@@ -581,7 +538,7 @@ const FacePainting = () => {
               className="font-display font-bold text-gray-900 mb-4"
               style={{ fontSize: 'clamp(1.8rem, 4.5vw, 2.6rem)', lineHeight: '1.2' }}
             >
-              Sıkça Sorulan Sorular
+              Yüz Boyama Kiralama Sık Sorulan Sorular
             </h2>
             <p className="text-gray-600 mb-8" style={{ lineHeight: '1.7' }}>
               Hijyen, ürün seçimi ve hizmet kapsamıyla ilgili merak edilenler.
@@ -604,6 +561,8 @@ const FacePainting = () => {
           </div>
         </section>
       </main>
+
+      <RelatedBlogPosts servicePath="/organizasyonlar/yuz-boyama" />
     </>
   )
 }

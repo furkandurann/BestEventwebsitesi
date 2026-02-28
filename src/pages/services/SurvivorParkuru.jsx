@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
 const SurvivorParkuru = () => {
   const [openFaq, setOpenFaq] = useState(null)
@@ -64,18 +65,13 @@ const SurvivorParkuru = () => {
     }
   ]
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  }
+  const serviceSchema = createServiceSchema(
+    'Çocuklar İçin Survivor Parkuru | İstanbul Survivor Organizasyonu',
+    'İstanbul\'da çocuklar için profesyonel survivor parkuru! 15+ engel, takım yarışmaları, ödüller. Doğum günü ve okul etkinlikleri için survivor kiralama.',
+    '/hizmetler/survivor-parkuru',
+    'Survivor Parkuru Organizasyonu'
+  )
+  const faqSchema = createFAQSchema(faqs)
 
   return (
     <>
@@ -93,6 +89,9 @@ const SurvivorParkuru = () => {
         <meta property="og:type" content="service" />
         <meta property="og:url" content="https://bestevent.com.tr/hizmetler/survivor-parkuru" />
         
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>

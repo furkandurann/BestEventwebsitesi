@@ -12,7 +12,7 @@ export default defineConfig({
     // Image Optimization - Otomatik AVIF/WebP conversion
     ViteImageOptimizer({
       test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
-      exclude: undefined,
+      exclude: /\._/,
       include: undefined,
       includePublic: true,
       logStats: true,
@@ -237,9 +237,14 @@ export default defineConfig({
             return 'utils'
           }
           
-          // Data files (büyük JSON data)
-          if (id.includes('/src/data/')) {
-            return 'data'
+          // Data files - localPages ayrı chunk'ta (1MB+ büyüklüğünde, sadece LocalLandingPage'de lazım)
+          if (id.includes('/src/data/localPages')) {
+            return 'data-local-pages'
+          }
+
+          // Maskot ve karakter data dosyaları (ayrı chunk)
+          if (id.includes('/src/data/mascotsData') || id.includes('/src/data/costumedCharactersData')) {
+            return 'data-characters'
           }
           
           // Components (büyük component'ler ayrı)
@@ -278,7 +283,7 @@ export default defineConfig({
     },
     
     // Chunk size uyarı limiti
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 500,
     
     // CSS code splitting
     cssCodeSplit: true,

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { kidsSections } from '../../data/kidsSections'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
 // Breadcrumb Component for SEO
 const Breadcrumb = ({ items }) => (
@@ -175,91 +176,22 @@ const ChildEvents = () => {
           }
         ]
       },
-      {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Çocuk Etkinlikleri",
-        "provider": {
-          "@type": "LocalBusiness",
-          "name": "BestEvent",
-          "areaServed": [
-            "Kadıköy", "Kartal", "Maltepe", "Göktürk", "Sarıyer", "Beylikdüzü", "Ümraniye", "Çekmeköy", "İstinye", "Maslak", "Üsküdar",
-            "Bodrum", "Yalıkavak", "Antalya"
-          ]
-        },
-        "serviceType": "Çocuk Etkinlikleri",
-        "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" }
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Çocuk etkinlikleri ne kadar sürer?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Çocuk etkinliklerimiz genellikle 1-2 saat arası sürmektedir. Palyaço ve sihirbaz gösterileri 45-60 dakika, bubble show 30-45 dakika, yüz boyama ise çocuk sayısına göre değişkenlik gösterir. İhtiyacınıza göre özel süreler de düzenlenebilir."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Hangi yaş grubu için uygundur?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Çocuk etkinliklerimiz 2-12 yaş arası çocuklar için idealdir. Palyaço ve bubble show 2-8 yaş, sihirbazlık gösterisi 4-12 yaş, kostümlü karakterler tüm yaş grupları için uygundur. Özel yaş grupları için özelleştirilmiş programlar sunuyoruz."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Hangi bölgelere hizmet veriyorsunuz?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "İstanbul'un tüm ilçelerine hizmet veriyoruz. Kadıköy, Kartal, Maltepe, Üsküdar, Beylikdüzü, Sarıyer, Maslak, İstinye başta olmak üzere her bölgeye gidiyoruz. Ayrıca Bodrum, Yalıkavak ve Antalya'da da hizmet vermekteyiz."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Fiyatlar ne kadar?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Kaç gün önceden rezervasyon yapmalıyım?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yoğun sezonlarda (hafta sonları, özel günler) en az 2-3 hafta önceden rezervasyon yapmanızı öneririz. Hafta içi günlerde ise 1 hafta önceden rezervasyon yeterli olabilir. Acil durumlar için de elimizden geleni yaparız."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "İç mekan mı dış mekan mı tercih edilmeli?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Hem iç hem de dış mekanlarda hizmet verebiliyoruz. Palyaço ve sihirbaz gösterileri her iki mekana da uygundur. Bubble show için iç mekan tercih edilir (rüzgar etkilemez). Yüz boyama her ortamda yapılabilir. Mekan önerileri için danışabilirsiniz."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Ekipmanları siz mi getiriyorsunuz?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Evet, tüm ekipmanları biz getiriyoruz. Ses sistemi, müzik, gösterim malzemeleri, yüz boyama boyaları, kostümler - her şey dahildir. Sizin sadece etkinlik alanını sağlamanız yeterlidir. Ekstra ses sistemi gerekirse önceden belirtiniz."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "İptal ve değişiklik politikanız nedir?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Etkinlikten 7 gün öncesine kadar ücretsiz iptal veya tarih değişikliği yapılabilir. 3-7 gün arası %50 ücret, 3 gün ve altında %100 ücret alınır. Hastalık, vefat gibi özel durumlarda esnek davranılır. Detaylar için sözleşme şartlarımızı inceleyebilirsiniz."
-            }
-          }
-        ]
-      }
+      createServiceSchema(
+        'İstanbul Doğum Günü Organizasyonu | Kiralama ve Gösteri',
+        'İstanbul doğum günü organizasyonu, kiralama ve gösteri hizmetleri. Palyaço, sihirbaz, bubble show, kostümlü karakterler.',
+        '/organizasyonlar/cocuk-etkinlikleri',
+        'Çocuk Etkinlikleri'
+      ),
+      createFAQSchema([
+        { question: "Çocuk etkinlikleri ne kadar sürer?", answer: "Çocuk etkinliklerimiz genellikle 1-2 saat arası sürmektedir. Palyaço ve sihirbaz gösterileri 45-60 dakika, bubble show 30-45 dakika, yüz boyama ise çocuk sayısına göre değişkenlik gösterir. İhtiyacınıza göre özel süreler de düzenlenebilir." },
+        { question: "Hangi yaş grubu için uygundur?", answer: "Çocuk etkinliklerimiz 2-12 yaş arası çocuklar için idealdir. Palyaço ve bubble show 2-8 yaş, sihirbazlık gösterisi 4-12 yaş, kostümlü karakterler tüm yaş grupları için uygundur. Özel yaş grupları için özelleştirilmiş programlar sunuyoruz." },
+        { question: "Hangi bölgelere hizmet veriyorsunuz?", answer: "İstanbul'un tüm ilçelerine hizmet veriyoruz. Kadıköy, Kartal, Maltepe, Üsküdar, Beylikdüzü, Sarıyer, Maslak, İstinye başta olmak üzere her bölgeye gidiyoruz. Ayrıca Bodrum, Yalıkavak ve Antalya'da da hizmet vermekteyiz." },
+        { question: "Fiyatlar ne kadar?", answer: "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09" },
+        { question: "Kaç gün önceden rezervasyon yapmalıyım?", answer: "Yoğun sezonlarda (hafta sonları, özel günler) en az 2-3 hafta önceden rezervasyon yapmanızı öneririz. Hafta içi günlerde ise 1 hafta önceden rezervasyon yeterli olabilir. Acil durumlar için de elimizden geleni yaparız." },
+        { question: "İç mekan mı dış mekan mı tercih edilmeli?", answer: "Hem iç hem de dış mekanlarda hizmet verebiliyoruz. Palyaço ve sihirbaz gösterileri her iki mekana da uygundur. Bubble show için iç mekan tercih edilir (rüzgar etkilemez). Yüz boyama her ortamda yapılabilir. Mekan önerileri için danışabilirsiniz." },
+        { question: "Ekipmanları siz mi getiriyorsunuz?", answer: "Evet, tüm ekipmanları biz getiriyoruz. Ses sistemi, müzik, gösterim malzemeleri, yüz boyama boyaları, kostümler - her şey dahildir. Sizin sadece etkinlik alanını sağlamanız yeterlidir. Ekstra ses sistemi gerekirse önceden belirtiniz." },
+        { question: "İptal ve değişiklik politikanız nedir?", answer: "Etkinlikten 7 gün öncesine kadar ücretsiz iptal veya tarih değişikliği yapılabilir. 3-7 gün arası %50 ücret, 3 gün ve altında %100 ücret alınır. Hastalık, vefat gibi özel durumlarda esnek davranılır. Detaylar için sözleşme şartlarımızı inceleyebilirsiniz." }
+      ])
     ]
   }), [])
 

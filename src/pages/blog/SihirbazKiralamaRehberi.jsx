@@ -34,323 +34,323 @@ const SihirbazKiralamaRehberi = () => {
 
   const content = (
     <>
-      {/* Icindekiler */}
+      {/* İçindekiler */}
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-purple-600">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Icindekiler</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#profesyonel-tercih" className="text-purple-600 hover:text-purple-700 font-semibold">1. Sihirbaz Kiralama: Neden Profesyonel Tercih Etmelisiniz?</a></li>
-          <li><a href="#gosteri-cesitleri" className="text-purple-600 hover:text-purple-700 font-semibold">2. Sihirbaz Gosterisi Cesitleri</a></li>
-          <li><a href="#dogum-gunu-akisi" className="text-purple-600 hover:text-purple-700 font-semibold">3. Dogum Gunu Organizasyonunda Sihirbaz Gosterisi Akisi</a></li>
-          <li><a href="#kurumsal-etkinlik" className="text-purple-600 hover:text-purple-700 font-semibold">4. Kurumsal Etkinliklerde Sihirbaz: Profesyonel Dokunu</a></li>
-          <li><a href="#fiyat-faktorleri" className="text-purple-600 hover:text-purple-700 font-semibold">5. Sihirbaz Kiralama Fiyatini Etkileyen Faktorler</a></li>
-          <li><a href="#istanbul-mekanlar" className="text-purple-600 hover:text-purple-700 font-semibold">6. Istanbul'da Sihirbaz Gosterisi Icin En Iyi Mekanlar</a></li>
-          <li><a href="#sss" className="text-purple-600 hover:text-purple-700 font-semibold">7. Sik Sorulan Sorular</a></li>
+          <li><a href="#profesyonel-tercih" className="text-purple-600 hover:text-purple-700 font-semibold">1. Sihirbaz Kiralama Hizmeti: Neden Profesyonel Tercih Etmelisiniz?</a></li>
+          <li><a href="#gosteri-cesitleri" className="text-purple-600 hover:text-purple-700 font-semibold">2. Sihirbaz Gösterisi Çeşitleri ve Kiralama Seçenekleri</a></li>
+          <li><a href="#dogum-gunu-akisi" className="text-purple-600 hover:text-purple-700 font-semibold">3. Doğum Günü Organizasyonunda Sihirbaz Kiralama Gösteri Akışı</a></li>
+          <li><a href="#kurumsal-etkinlik" className="text-purple-600 hover:text-purple-700 font-semibold">4. Kurumsal Sihirbaz Kiralama: İstanbul Profesyonel Hizmet</a></li>
+          <li><a href="#fiyat-faktorleri" className="text-purple-600 hover:text-purple-700 font-semibold">5. Sihirbaz Kiralama Fiyatını Etkileyen Faktörler</a></li>
+          <li><a href="#istanbul-mekanlar" className="text-purple-600 hover:text-purple-700 font-semibold">6. İstanbul'da Sihirbaz Gösterisi İçin En İyi Mekanlar</a></li>
+          <li><a href="#sss" className="text-purple-600 hover:text-purple-700 font-semibold">7. Sihirbaz Kiralama Fiyat ve Hizmet Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
-      {/* Giris */}
+      {/* Giriş */}
       <p className="text-lg text-gray-700 leading-relaxed mb-6">
-        Sihirbaz kiralama, dogum gunu organizasyonlarindan kurumsal etkinliklere kadar her turlu ozel gunde vazgecilmez bir eglence unsuru haline gelmistir. Profesyonel bir sihirbaz gosterisi, izleyicileri buyuleyen illuzyonlar, el cabukluklari ve interaktif performanslarla unutulmaz anlar yaratir. Istanbul'da sihirbaz kiralama talebinin her yil arttigi bu donemde, dogru secim yapmak organizasyonunuzun basarisini dogrudan etkiler. Bu kapsamli rehberde, sihirbaz kiralama surecinden gosteri cesitlerine, fiyat faktorlerinden mekan secimlerine kadar bilmeniz gereken her seyi bulacaksiniz.
+        Sihirbaz kiralama, doğum günü organizasyonlarından kurumsal etkinliklere kadar her türlü özel günde vazgeçilmez bir eğlence unsuru haline gelmiştir. Profesyonel bir sihirbaz gösterisi, izleyicileri büyüleyen illüzyonlar, el çabuklukları ve interaktif performanslarla unutulmaz anlar yaratır. İstanbul'da sihirbaz kiralama talebinin her yıl arttığı bu dönemde, doğru seçim yapmak organizasyonunuzun başarısını doğrudan etkiler. Bu kapsamlı rehberde, sihirbaz kiralama sürecinden gösteri çeşitlerine, fiyat faktörlerinden mekan seçimlerine kadar bilmeniz gereken her şeyi bulacaksınız.
       </p>
 
       <div className="bg-purple-50 border-l-4 border-purple-600 p-6 rounded-lg mb-8">
         <p className="text-gray-800 font-semibold">
-          🎩 <strong>Ipucu:</strong> Profesyonel sihirbaz kiralama, sadece numara yapmak degil; etkinliginizin konseptine uygun, yas grubuna ozel ve interaktif bir gosteri deneyimi sunmaktir. Dogru sihirbaz secimi, organizasyonunuzun en cok konusulan ani olacaktir.
+          🎩 <strong>İpucu:</strong> Profesyonel sihirbaz kiralama, sadece numara yapmak değil; etkinliğinizin konseptine uygun, yaş grubuna özel ve interaktif bir gösteri deneyimi sunmaktır. Doğru sihirbaz seçimi, organizasyonunuzun en çok konuşulan anı olacaktır.
         </p>
       </div>
 
-      {/* Bolum 1 */}
+      {/* Bölüm 1 */}
       <h2 id="profesyonel-tercih" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Sihirbaz Kiralama: Neden Profesyonel Tercih Etmelisiniz?
+        1. Sihirbaz Kiralama Hizmeti: Neden Profesyonel Tercih Etmelisiniz?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
-        Cocuk dogum gunu ya da kurumsal bir organizasyon icin sihirbaz kiralama dusunuyorsaniz, amator ve profesyonel sihirbaz arasindaki fark hayati onem tasir. Profesyonel bir sihirbaz, yillar suren egitim, sahne deneyimi ve cocuk psikolojisi bilgisiyle donatilmistir. Sadece numaralari degil, gosterinin tum atmosferini yonetir.
+        Çocuk doğum günü ya da kurumsal bir organizasyon için sihirbaz kiralama düşünüyorsanız, amatör ve profesyonel sihirbaz arasındaki fark hayati önem taşır. Profesyonel bir sihirbaz, yıllar süren eğitim, sahne deneyimi ve çocuk psikolojisi bilgisiyle donatılmıştır. Sadece numaraları değil, gösterinin tüm atmosferini yönetir.
       </p>
 
       <p className="text-gray-700 leading-relaxed mb-4">
-        Amator bir sihirbaz, teknik olarak bazi numaralari yapabilir ancak sahne hakimiyeti, izleyici kontrolu ve kriz yonetimi konularinda yetersiz kalir. Bir numaranin basarisiz oldugu anda ne yapilacagini bilmek, cocuklarin dikkatini kaybettigi anda plani degistirebilmek ancak profesyonel deneyimle kazanilir. Sihirbaz kiralama surecinde mutlaka referanslari kontrol edin ve mumkunse onceki gosterilerinden video talep edin.
+        Amatör bir sihirbaz, teknik olarak bazı numaraları yapabilir ancak sahne hakimiyeti, izleyici kontrolü ve kriz yönetimi konularında yetersiz kalır. Bir numaranın başarısız olduğu anda ne yapılacağını bilmek, çocukların dikkatini kaybettiği anda planı değiştirebilmek ancak profesyonel deneyimle kazanılır. Sihirbaz kiralama sürecinde mutlaka referansları kontrol edin ve mümkünse önceki gösterilerinden video talep edin.
       </p>
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div className="bg-red-50 rounded-lg p-6 border-l-4 border-red-600">
-          <h4 className="font-bold text-gray-900 mb-3">Amator Sihirbaz Riskleri</h4>
+          <h4 className="font-bold text-gray-900 mb-3">Amatör Sihirbaz Riskleri</h4>
           <ul className="text-gray-700 text-sm space-y-2">
-            <li>• Numara sirasinda teknik hatalar</li>
-            <li>• Cocuklarla iletisim kurma zorlugu</li>
-            <li>• Yedek plan ve B senaryosu eksikligi</li>
-            <li>• Profesyonel ekipman yetersizligi</li>
-            <li>• Gosterinin zamaninda baslamama riski</li>
+            <li>• Numara sırasında teknik hatalar</li>
+            <li>• Çocuklarla iletişim kurma zorluğu</li>
+            <li>• Yedek plan ve B senaryosu eksikliği</li>
+            <li>• Profesyonel ekipman yetersizliği</li>
+            <li>• Gösterinin zamanında başlamama riski</li>
           </ul>
         </div>
 
         <div className="bg-green-50 rounded-lg p-6 border-l-4 border-green-600">
-          <h4 className="font-bold text-gray-900 mb-3">Profesyonel Sihirbaz Avantajlari</h4>
+          <h4 className="font-bold text-gray-900 mb-3">Profesyonel Sihirbaz Avantajları</h4>
           <ul className="text-gray-700 text-sm space-y-2">
-            <li>• 200+ gosteride kanitlanmis deneyim</li>
-            <li>• Cocuk psikolojisi egitimi almis kadro</li>
-            <li>• Her senaryoya hazir B ve C planlari</li>
-            <li>• Ithal, profesyonel sahne ekipmanlari</li>
-            <li>• Sigorta ve sozlesme guvencesi</li>
+            <li>• 200+ gösteride kanıtlanmış deneyim</li>
+            <li>• Çocuk psikolojisi eğitimi almış kadro</li>
+            <li>• Her senaryoya hazır B ve C planları</li>
+            <li>• İthal, profesyonel sahne ekipmanları</li>
+            <li>• Sigorta ve sözleşme güvencesi</li>
           </ul>
         </div>
       </div>
 
       <p className="text-gray-700 leading-relaxed mb-8">
-        Profesyonel sihirbaz kiralama, organizasyonunuzun prestijini arttirir ve davetlilerinizde kalici bir izlenim birakir. <Link to="/blog/sihirbaz-gosterisi-istanbul" className="text-purple-600 hover:text-purple-700 font-semibold underline">Istanbul'daki sihirbaz gosterisi hizmetlerimiz</Link> hakkinda daha fazla bilgi alabilirsiniz.
+        Profesyonel sihirbaz kiralama, organizasyonunuzun prestijini artırır ve davetlilerinizde kalıcı bir izlenim bırakır. <Link to="/blog/sihirbaz-gosterisi-istanbul" className="text-purple-600 hover:text-purple-700 font-semibold underline">İstanbul'daki sihirbaz gösterisi hizmetlerimiz</Link> hakkında daha fazla bilgi alabilirsiniz.
       </p>
 
-      {/* Bolum 2 */}
+      {/* Bölüm 2 */}
       <h2 id="gosteri-cesitleri" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Sihirbaz Gosterisi Cesitleri
+        2. Sihirbaz Gösterisi Çeşitleri ve Kiralama Seçenekleri
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
-        Sihirbaz gosterisi denildiginde aklimiza tek bir format gelse de aslinda pek cok farkli tur vardir. Her gösteri cesidi, farkli ortamlara ve yas gruplarina hitap eder. Organizasyonunuz icin en uygun gosteri turunu secmek, etkinligin basarisi icin kritik oneme sahiptir.
+        Sihirbaz gösterisi denildiğinde aklımıza tek bir format gelse de aslında pek çok farklı tür vardır. Her gösteri çeşidi, farklı ortamlara ve yaş gruplarına hitap eder. Organizasyonunuz için en uygun gösteri türünü seçmek, etkinliğin başarısı için kritik öneme sahiptir.
       </p>
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div className="bg-purple-50 rounded-lg p-6 border-l-4 border-purple-600">
-          <h4 className="font-bold text-gray-900 mb-3">🃏 Close-Up (Yakin Plan) Sihir</h4>
-          <p className="text-gray-700 text-sm mb-2"><strong>Ortam:</strong> Masa basi, kokteyl, kucuk gruplar</p>
-          <p className="text-gray-700 text-sm mb-2"><strong>Mesafe:</strong> 1-2 metre (izleyiciye cok yakin)</p>
-          <p className="text-gray-700 text-sm mb-2"><strong>Numaralar:</strong> Kart sihirleri, madeni para numaralari, yuzuk kaybolma</p>
-          <p className="text-gray-700 text-sm"><strong>Ideal Icin:</strong> Kurumsal yemekler, dugun kokteylleri, ozel davetler</p>
+          <h4 className="font-bold text-gray-900 mb-3">🃏 Close-Up (Yakın Plan) Sihir</h4>
+          <p className="text-gray-700 text-sm mb-2"><strong>Ortam:</strong> Masa başı, kokteyl, küçük gruplar</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>Mesafe:</strong> 1-2 metre (izleyiciye çok yakın)</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>Numaralar:</strong> Kart sihirleri, madeni para numaraları, yüzük kaybolma</p>
+          <p className="text-gray-700 text-sm"><strong>İdeal İçin:</strong> Kurumsal yemekler, düğün kokteylleri, özel davetler</p>
         </div>
 
         <div className="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-600">
           <h4 className="font-bold text-gray-900 mb-3">🎭 Sahne Sihiri (Stage Magic)</h4>
-          <p className="text-gray-700 text-sm mb-2"><strong>Ortam:</strong> Sahne, salon, genis alanlar</p>
-          <p className="text-gray-700 text-sm mb-2"><strong>Izleyici:</strong> 30-500+ kisi</p>
-          <p className="text-gray-700 text-sm mb-2"><strong>Numaralar:</strong> Buyuk illuzyonlar, asistan kaybolma, kutulama numaralari</p>
-          <p className="text-gray-700 text-sm"><strong>Ideal Icin:</strong> Buyuk dogum gunu partileri, kurumsal etkinlikler, festivaller</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>Ortam:</strong> Sahne, salon, geniş alanlar</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>İzleyici:</strong> 30-500+ kişi</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>Numaralar:</strong> Büyük illüzyonlar, asistan kaybolma, kutulama numaraları</p>
+          <p className="text-gray-700 text-sm"><strong>İdeal İçin:</strong> Büyük doğum günü partileri, kurumsal etkinlikler, festivaller</p>
         </div>
 
         <div className="bg-indigo-50 rounded-lg p-6 border-l-4 border-indigo-600">
           <h4 className="font-bold text-gray-900 mb-3">🧠 Mentalizm (Zihin Okuma)</h4>
-          <p className="text-gray-700 text-sm mb-2"><strong>Ortam:</strong> Her turlu mekan</p>
-          <p className="text-gray-700 text-sm mb-2"><strong>Yas Grubu:</strong> 10 yas ve uzeri</p>
-          <p className="text-gray-700 text-sm mb-2"><strong>Numaralar:</strong> Dusunce okuma, tahmin, telekinezi efektleri</p>
-          <p className="text-gray-700 text-sm"><strong>Ideal Icin:</strong> Yetiskin etkinlikleri, sirket toplantilari, ozel geceler</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>Ortam:</strong> Her türlü mekan</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>Yaş Grubu:</strong> 10 yaş ve üzeri</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>Numaralar:</strong> Düşünce okuma, tahmin, telekinezi efektleri</p>
+          <p className="text-gray-700 text-sm"><strong>İdeal İçin:</strong> Yetişkin etkinlikleri, şirket toplantıları, özel geceler</p>
         </div>
 
         <div className="bg-pink-50 rounded-lg p-6 border-l-4 border-pink-600">
-          <h4 className="font-bold text-gray-900 mb-3">🎈 Cocuk Sihiri (Children's Magic)</h4>
-          <p className="text-gray-700 text-sm mb-2"><strong>Ortam:</strong> Ev, kafe, oyun alanlari</p>
-          <p className="text-gray-700 text-sm mb-2"><strong>Yas Grubu:</strong> 4-12 yas</p>
-          <p className="text-gray-700 text-sm mb-2"><strong>Numaralar:</strong> Renkli mendiller, tavsan, interaktif katilimli numaralar</p>
-          <p className="text-gray-700 text-sm"><strong>Ideal Icin:</strong> Dogum gunu organizasyonlari, okul etkinlikleri, bayramlar</p>
+          <h4 className="font-bold text-gray-900 mb-3">🎈 Çocuk Sihiri (Children's Magic)</h4>
+          <p className="text-gray-700 text-sm mb-2"><strong>Ortam:</strong> Ev, kafe, oyun alanları</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>Yaş Grubu:</strong> 4-12 yaş</p>
+          <p className="text-gray-700 text-sm mb-2"><strong>Numaralar:</strong> Renkli mendiller, tavşan, interaktif katılımlı numaralar</p>
+          <p className="text-gray-700 text-sm"><strong>İdeal İçin:</strong> Doğum günü organizasyonları, okul etkinlikleri, bayramlar</p>
         </div>
       </div>
 
       <div className="bg-yellow-50 rounded-lg p-6 border-l-4 border-yellow-600 mb-8">
-        <h4 className="font-bold text-gray-900 mb-3">🌟 Grand Illuzyon</h4>
+        <h4 className="font-bold text-gray-900 mb-3">🌟 Grand İllüzyon</h4>
         <p className="text-gray-700 text-sm mb-2">
-          <strong>Ozellik:</strong> En etkileyici ve gorsel gosterisi turu. Buyuk sahne ekipmanlari, ozel isik sistemleri ve asistan gerektiren kapsamli performanslardir.
+          <strong>Özellik:</strong> En etkileyici ve görsel gösterisi türü. Büyük sahne ekipmanları, özel ışık sistemleri ve asistan gerektiren kapsamlı performanslardır.
         </p>
         <p className="text-gray-700 text-sm mb-2">
-          <strong>Ornekler:</strong> Insanin ikiye bolunmesi, teleportasyon, havada suzulme, buyuk kutulama numaralari
+          <strong>Örnekler:</strong> İnsanın ikiye bölünmesi, teleportasyon, havada süzülme, büyük kutulama numaraları
         </p>
         <p className="text-gray-700 text-sm">
-          <strong>Not:</strong> Grand illuzyon gosterileri ozel sahne kurulumu ve genis alan gerektirir. Fiyatlandirma diger gosteri turlerine gore daha yuksektir.
+          <strong>Not:</strong> Grand illüzyon gösterileri özel sahne kurulumu ve geniş alan gerektirir. Fiyatlandırma diğer gösteri türlerine göre daha yüksektir.
         </p>
       </div>
 
-      {/* Bolum 3 */}
+      {/* Bölüm 3 */}
       <h2 id="dogum-gunu-akisi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Dogum Gunu Organizasyonunda Sihirbaz Gosterisi Akisi
+        3. Doğum Günü Organizasyonunda Sihirbaz Kiralama Gösteri Akışı
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
-        Dogum gunu organizasyonlarinda sihirbaz gosterisi, genellikle 30-45 dakikalik bir sure icerisinde uygulanir. Profesyonel sihirbazlarimiz, yas grubuna ve cocuk sayisina gore gosteri akisini ozellestirir. Iste tipik bir dogum gunu sihirbaz gosterisi programi:
+        Doğum günü organizasyonlarında sihirbaz gösterisi, genellikle 30-45 dakikalık bir süre içerisinde uygulanır. Profesyonel sihirbazlarımız, yaş grubuna ve çocuk sayısına göre gösteri akışını özelleştirir. İşte tipik bir doğum günü sihirbaz gösterisi programı:
       </p>
 
       <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 mb-8 border border-purple-200">
-        <h4 className="font-bold text-gray-900 mb-4 text-xl">🎩 Tipik Sihirbaz Gosterisi Akisi (30-45 dk)</h4>
+        <h4 className="font-bold text-gray-900 mb-4 text-xl">🎩 Tipik Sihirbaz Gösterisi Akışı (30-45 dk)</h4>
 
         <div className="space-y-4 text-gray-700 text-sm">
           <div className="flex gap-3 items-start">
             <span className="font-bold text-purple-600 whitespace-nowrap">0-5 dk:</span>
             <div>
-              <strong>Giris ve Tanisma</strong> — Sihirbaz sahneye cikis yapar, cocuklarla tanisir, "sihirli sozcuk" ogretilebilir. Bu asama cocuklarin dikkatini toplamak ve gosteriye hazirlamak icindir.
+              <strong>Giriş ve Tanışma</strong> — Sihirbaz sahneye çıkış yapar, çocuklarla tanışır, "sihirli sözcük" öğretilebilir. Bu aşama çocukların dikkatini toplamak ve gösteriye hazırlamak içindir.
             </div>
           </div>
           <div className="flex gap-3 items-start">
             <span className="font-bold text-purple-600 whitespace-nowrap">5-15 dk:</span>
             <div>
-              <strong>Interaktif Numaralar</strong> — Cocuklarin katilimiyla yapilan basit ama etkileyici numaralar: renkli mendil gosterisi, sihirli kutu, kaybolma numaralari. Cocuklar sahneye davet edilir.
+              <strong>İnteraktif Numaralar</strong> — Çocukların katılımıyla yapılan basit ama etkileyici numaralar: renkli mendil gösterisi, sihirli kutu, kaybolma numaraları. Çocuklar sahneye davet edilir.
             </div>
           </div>
           <div className="flex gap-3 items-start">
             <span className="font-bold text-purple-600 whitespace-nowrap">15-25 dk:</span>
             <div>
-              <strong>Ana Gosteri</strong> — En sasirtici numaralar bu bolumde yapilir: canli hayvan gosterisi (tavsan, guvercin), buyuk illuzyonlar, kart numaralari. Cocuklarin heyecani doruga cikar.
+              <strong>Ana Gösteri</strong> — En şaşırtıcı numaralar bu bölümde yapılır: canlı hayvan gösterisi (tavşan, güvercin), büyük illüzyonlar, kart numaraları. Çocukların heyecanı doruğa çıkar.
             </div>
           </div>
           <div className="flex gap-3 items-start">
             <span className="font-bold text-purple-600 whitespace-nowrap">25-35 dk:</span>
             <div>
-              <strong>Komedi ve Egitim</strong> — Komik numaralar ve basit sihir ogretimi. Cocuklara evde yapabilecekleri kolay bir numara ogretilir. Bu bolum hem egitici hem eglencelidir.
+              <strong>Komedi ve Eğitim</strong> — Komik numaralar ve basit sihir öğretimi. Çocuklara evde yapabilecekleri kolay bir numara öğretilir. Bu bölüm hem eğitici hem eğlencelidir.
             </div>
           </div>
           <div className="flex gap-3 items-start">
             <span className="font-bold text-purple-600 whitespace-nowrap">35-45 dk:</span>
             <div>
-              <strong>Final ve Kapan</strong> — En buyuk ve etkileyici numara ile gosteri sonlandirilir. Dogum gunu cocugu sahneye cagrilir ve ozel bir numara icin "sihirbaz yardimcisi" olur. Pasta ile koordineli final mumkundur.
+              <strong>Final ve Kapanış</strong> — En büyük ve etkileyici numara ile gösteri sonlandırılır. Doğum günü çocuğu sahneye çağrılır ve özel bir numara için "sihirbaz yardımcısı" olur. Pasta ile koordineli final mümkündür.
             </div>
           </div>
         </div>
       </div>
 
       <div className="bg-blue-50 rounded-lg p-6 mb-8">
-        <h4 className="font-bold text-gray-900 mb-3">📋 Dogum Gunu Organizasyonu Icin Onemli Notlar:</h4>
+        <h4 className="font-bold text-gray-900 mb-3">📋 Doğum Günü Organizasyonu İçin Önemli Notlar:</h4>
         <ul className="space-y-2 text-gray-700 text-sm">
-          <li>• <strong>Zamanlama:</strong> Sihirbaz gosterisini pasta kesiminden once yapin, cocuklarin enerjisi yuksekken</li>
-          <li>• <strong>Mekan:</strong> Sihirbaz icin en az 2x3 metrelik bir alan ayirin</li>
-          <li>• <strong>Isik:</strong> Karanlik ortam gerektiren numaralar icin perde veya karartma hazirlayin</li>
-          <li>• <strong>Oturma:</strong> Cocuklari sihirbazin onunde yarim daire seklinde oturtin</li>
-          <li>• <strong>Sessizlik:</strong> Gösteri sirasinda muzik ve TV kapatilmali</li>
+          <li>• <strong>Zamanlama:</strong> Sihirbaz gösterisini pasta kesiminden önce yapın, çocukların enerjisi yüksekken</li>
+          <li>• <strong>Mekan:</strong> Sihirbaz için en az 2x3 metrelik bir alan ayırın</li>
+          <li>• <strong>Işık:</strong> Karanlık ortam gerektiren numaralar için perde veya karartma hazırlayın</li>
+          <li>• <strong>Oturma:</strong> Çocukları sihirbazın önünde yarım daire şeklinde oturtun</li>
+          <li>• <strong>Sessizlik:</strong> Gösteri sırasında müzik ve TV kapatılmalı</li>
         </ul>
       </div>
 
-      {/* Bolum 4 */}
+      {/* Bölüm 4 */}
       <h2 id="kurumsal-etkinlik" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Kurumsal Etkinliklerde Sihirbaz: Profesyonel Dokunu
+        4. Kurumsal Sihirbaz Kiralama: İstanbul Profesyonel Hizmet
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
-        Kurumsal organizasyonlarda sihirbaz kiralama, son yillarda buyuk bir artis gostermistir. Sirketler, yilbasi partileri, urun lansmanlari, takim motivasyonu etkinlikleri ve musteri odullendirme programlarinda profesyonel sihirbaz gosterisini tercih ediyor. Kurumsal sihirbaz, standart bir gosteriden cok daha fazlasini sunar: marka entegrasyonu.
+        Kurumsal organizasyonlarda sihirbaz kiralama, son yıllarda büyük bir artış göstermiştir. Şirketler, yılbaşı partileri, ürün lansmanları, takım motivasyonu etkinlikleri ve müşteri ödüllendirme programlarında profesyonel sihirbaz gösterisini tercih ediyor. Kurumsal sihirbaz, standart bir gösteriden çok daha fazlasını sunar: marka entegrasyonu.
       </p>
 
       <p className="text-gray-700 leading-relaxed mb-6">
-        Profesyonel kurumsal sihirbazlarimiz, sirketinizin urunlerini, logosunu ve mesajlarini gosteriye entegre eder. Ornegin bir teknoloji sirketi icin yapilan lansmanda, yeni urunun "sihirli bir sekilde" sahnede belirmesi izleyicilerde unutulmaz bir etki birakir. Bu tur ozel organizasyon planlari, musterilerimizle detayli briefingler sonrasinda hazirlanir.
+        Profesyonel kurumsal sihirbazlarımız, şirketinizin ürünlerini, logosunu ve mesajlarını gösteriye entegre eder. Örneğin bir teknoloji şirketi için yapılan lansmanda, yeni ürünün "sihirli bir şekilde" sahnede belirmesi izleyicilerde unutulmaz bir etki bırakır. Bu tür özel organizasyon planları, müşterilerimizle detaylı briefingler sonrasında hazırlanır.
       </p>
 
       <div className="grid md:grid-cols-3 gap-4 mb-8">
         <div className="bg-white border border-gray-200 rounded-lg p-5 text-center">
           <div className="text-3xl mb-3">🏢</div>
-          <h4 className="font-bold text-gray-900 mb-2 text-sm">Sirket Yilbasi Partisi</h4>
-          <p className="text-gray-700 text-xs">Sahne gosterisi + close-up masa arasi sihir. 100-500 kisi icin uygun, ses sistemi dahil.</p>
+          <h4 className="font-bold text-gray-900 mb-2 text-sm">Şirket Yılbaşı Partisi</h4>
+          <p className="text-gray-700 text-xs">Sahne gösterisi + close-up masa arası sihir. 100-500 kişi için uygun, ses sistemi dahil.</p>
         </div>
         <div className="bg-white border border-gray-200 rounded-lg p-5 text-center">
           <div className="text-3xl mb-3">🚀</div>
-          <h4 className="font-bold text-gray-900 mb-2 text-sm">Urun Lansmani</h4>
-          <p className="text-gray-700 text-xs">Marka entegrasyonlu ozel illuzyon. Urunun sahne uzerinde belirmesi, logolu kart numaralari.</p>
+          <h4 className="font-bold text-gray-900 mb-2 text-sm">Ürün Lansmanı</h4>
+          <p className="text-gray-700 text-xs">Marka entegrasyonlu özel illüzyon. Ürünün sahne üzerinde belirmesi, logolu kart numaraları.</p>
         </div>
         <div className="bg-white border border-gray-200 rounded-lg p-5 text-center">
           <div className="text-3xl mb-3">👨‍👩‍👧‍👦</div>
-          <h4 className="font-bold text-gray-900 mb-2 text-sm">Aile Gunu Etkinligi</h4>
-          <p className="text-gray-700 text-xs">Calisanlarin cocuklari icin ozel cocuk sihiri. Balon gosterisi ve yuz boyama ile kombine.</p>
+          <h4 className="font-bold text-gray-900 mb-2 text-sm">Aile Günü Etkinliği</h4>
+          <p className="text-gray-700 text-xs">Çalışanların çocukları için özel çocuk sihiri. Balon gösterisi ve yüz boyama ile kombine.</p>
         </div>
       </div>
 
       <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-6 mb-8 border border-indigo-200">
-        <h4 className="font-bold text-gray-900 mb-3 text-xl">✨ Gercek Hikaye: Teknoloji Sirketi Lansmani — Maslak</h4>
+        <h4 className="font-bold text-gray-900 mb-3 text-xl">✨ Gerçek Hikaye: Teknoloji Şirketi Lansmanı — Maslak</h4>
         <p className="text-gray-700 text-sm mb-4">
-          Istanbul Maslak'taki bir teknoloji sirketi, yeni tablet urunlerinin lansmaninda sihirbaz gosterisi talep etti. Sihirbazimiz, sahne uzerindeki bos kutunun icinden sirketin yeni tabletini "sihirle" cikararak izleyicilere gosterdi. 200 kisinin katildigi etkinlikte salon ayaga kalkti. Sirket yoneticisi "Bu lansman yontemini hic dusunmemistik, muhtesem oldu" dedi. Organizasyon, sosyal medyada 50.000+ goruntulenme aldi.
+          İstanbul Maslak'taki bir teknoloji şirketi, yeni tablet ürünlerinin lansmanında sihirbaz gösterisi talep etti. Sihirbazımız, sahne üzerindeki boş kutunun içinden şirketin yeni tabletini "sihirle" çıkararak izleyicilere gösterdi. 200 kişinin katıldığı etkinlikte salon ayağa kalktı. Şirket yöneticisi "Bu lansman yöntemini hiç düşünmemiştik, muhteşem oldu" dedi. Organizasyon, sosyal medyada 50.000+ görüntülenme aldı.
         </p>
-        <p className="text-gray-600 text-xs italic">— Kurumsal sihirbaz gosterisi, markanizi unutulmaz kilmanin en yaratici yoludur.</p>
+        <p className="text-gray-600 text-xs italic">— Kurumsal sihirbaz gösterisi, markanızı unutulmaz kılmanın en yaratıcı yoludur.</p>
       </div>
 
-      {/* Bolum 5 */}
+      {/* Bölüm 5 */}
       <h2 id="fiyat-faktorleri" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Sihirbaz Kiralama Fiyatini Etkileyen Faktorler
+        5. Sihirbaz Kiralama Fiyatını Etkileyen Faktörler
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
-        Sihirbaz kiralama fiyatlari, pek cok faktore bagli olarak degiskenlik gosterir. Sabit bir fiyat vermek yerine, organizasyonunuzun ihtiyaclarina gore kisisellestirilmis teklif sunuyoruz. Ancak fiyatlandirmayi etkileyen temel faktorleri bilmek, butcenizi planlamaniza yardimci olacaktir.
+        Sihirbaz kiralama fiyatları, pek çok faktöre bağlı olarak değişkenlik gösterir. Sabit bir fiyat vermek yerine, organizasyonunuzun ihtiyaçlarına göre kişiselleştirilmiş teklif sunuyoruz. Ancak fiyatlandırmayı etkileyen temel faktörleri bilmek, bütçenizi planlamanıza yardımcı olacaktır.
       </p>
 
       <div className="space-y-4 mb-8">
         <div className="bg-white border-l-4 border-purple-600 p-6 rounded-lg">
-          <h4 className="font-bold text-gray-900 mb-3">⏱️ Gosteri Suresi</h4>
+          <h4 className="font-bold text-gray-900 mb-3">⏱️ Gösteri Süresi</h4>
           <p className="text-gray-700 text-sm">
-            Standart 30 dakikalik gosteri ile 60 dakikalik genisletilmis gosteri arasinda fiyat farki vardir. Kurumsal etkinliklerde 90 dakikaya kadar uzatilan gosteriler icin ozel fiyatlandirma uygulanir. Gösteri suresi arttikca numara cesitliligi ve hazirlık gereksinimleri de artar.
+            Standart 30 dakikalık gösteri ile 60 dakikalık genişletilmiş gösteri arasında fiyat farkı vardır. Kurumsal etkinliklerde 90 dakikaya kadar uzatılan gösteriler için özel fiyatlandırma uygulanır. Gösteri süresi arttıkça numara çeşitliliği ve hazırlık gereksinimleri de artar.
           </p>
         </div>
 
         <div className="bg-white border-l-4 border-blue-600 p-6 rounded-lg">
-          <h4 className="font-bold text-gray-900 mb-3">🎭 Gosteri Turu</h4>
+          <h4 className="font-bold text-gray-900 mb-3">🎭 Gösteri Türü</h4>
           <p className="text-gray-700 text-sm">
-            Close-up sihir, sahne gosterisi, mentalizm ve grand illuzyon farkli fiyat araligindadir. Canli hayvanli gosteriler, ozel ekipman gerektiren illuzyonlar ve marka entegrasyonlu numaralar ek maliyet olusturabilir. Cocuk sihiri genellikle en uygun fiyatli sihirbaz kiralama secenegidir.
+            Close-up sihir, sahne gösterisi, mentalizm ve grand illüzyon farklı fiyat aralığındadır. Canlı hayvanlı gösteriler, özel ekipman gerektiren illüzyonlar ve marka entegrasyonlu numaralar ek maliyet oluşturabilir. Çocuk sihiri genellikle en uygun fiyatlı sihirbaz kiralama seçeneğidir.
           </p>
         </div>
 
         <div className="bg-white border-l-4 border-green-600 p-6 rounded-lg">
-          <h4 className="font-bold text-gray-900 mb-3">📍 Konum ve Ulasim</h4>
+          <h4 className="font-bold text-gray-900 mb-3">📍 Konum ve Ulaşım</h4>
           <p className="text-gray-700 text-sm">
-            Istanbul ici ulasim mesafesi fiyatlandirmayi etkiler. Merkezi semtlerde (Besiktas, Kadikoy, Sisli) standart fiyat uygulanirken, Silivri, Sile, Tuzla gibi uzak bolgelerde ulasim ucreti eklenebilir. Sehir disi organizasyonlar icin ozel fiyatlandirma yapilir.
+            İstanbul içi ulaşım mesafesi fiyatlandırmayı etkiler. Merkezi semtlerde (Beşiktaş, Kadıköy, Şişli) standart fiyat uygulanırken, Silivri, Şile, Tuzla gibi uzak bölgelerde ulaşım ücreti eklenebilir. Şehir dışı organizasyonlar için özel fiyatlandırma yapılır.
           </p>
         </div>
 
         <div className="bg-white border-l-4 border-orange-600 p-6 rounded-lg">
-          <h4 className="font-bold text-gray-900 mb-3">🔧 Ekipman ve Ozel Istekler</h4>
+          <h4 className="font-bold text-gray-900 mb-3">🔧 Ekipman ve Özel İstekler</h4>
           <p className="text-gray-700 text-sm">
-            Standart gosteriler sihirbazin kendi ekipmaniyla yapilir. Ancak buyuk sahne kurulumu, ozel isik sistemi, duman makinesi, ses sistemi veya canli hayvan temini gibi ek ekipman gereksinimleri fiyati etkiler. Marka entegrasyonu icin ozel malzeme uretimi de ek maliyet olusturur.
+            Standart gösteriler sihirbazın kendi ekipmanıyla yapılır. Ancak büyük sahne kurulumu, özel ışık sistemi, duman makinesi, ses sistemi veya canlı hayvan temini gibi ek ekipman gereksinimleri fiyatı etkiler. Marka entegrasyonu için özel malzeme üretimi de ek maliyet oluşturur.
           </p>
         </div>
       </div>
 
       <div className="bg-purple-50 border-l-4 border-purple-600 p-6 rounded-lg mb-8">
         <p className="text-gray-800 font-semibold">
-          💡 <strong>Tasarruf Ipucu:</strong> Sihirbaz kiralama ile birlikte palyaco, bubble show veya yuz boyama gibi ek hizmetleri kombine paket olarak aldiginizda %15-25 arasi indirim firsati yakalayabilirsiniz. Organizasyon planlamanizda butcenizi en verimli kullanan secenegi birlikte belirleyelim.
+          💡 <strong>Tasarruf İpucu:</strong> Sihirbaz kiralama ile birlikte palyaço, bubble show veya yüz boyama gibi ek hizmetleri kombine paket olarak aldığınızda %15-25 arası indirim fırsatı yakalayabilirsiniz. Organizasyon planlamanızda bütçenizi en verimli kullanan seçeneği birlikte belirleyelim.
         </p>
       </div>
 
-      {/* Bolum 6 */}
+      {/* Bölüm 6 */}
       <h2 id="istanbul-mekanlar" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Istanbul'da Sihirbaz Gosterisi Icin En Iyi Mekanlar
+        6. İstanbul'da Sihirbaz Gösterisi İçin En İyi Mekanlar
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
-        Sihirbaz gosterisinin basarisi, sadece sihirbazin performansina degil, mekan seciminin uygunluguna da baglidir. Kapali ve acik alan gosterileri farkli dinamiklere sahiptir. Istanbul'da organizasyonunuz icin ideal mekani secerken su faktorleri goz onunde bulundurun:
+        Sihirbaz gösterisinin başarısı, sadece sihirbazın performansına değil, mekan seçiminin uygunluğuna da bağlıdır. Kapalı ve açık alan gösterileri farklı dinamiklere sahiptir. İstanbul'da organizasyonunuz için ideal mekanı seçerken şu faktörleri göz önünde bulundurun:
       </p>
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div className="bg-blue-50 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-3">🏠 Kapali Mekan Avantajlari</h4>
+          <h4 className="font-bold text-gray-900 mb-3">🏠 Kapalı Mekan Avantajları</h4>
           <ul className="text-gray-700 text-sm space-y-2">
-            <li>• Isik kontrolu kolay (illuzyonlar icin ideal)</li>
-            <li>• Ses akustigi daha iyi</li>
-            <li>• Hava kosullarindan bagimsiz</li>
-            <li>• Ruzgar, yagmur riski yok</li>
-            <li>• Cocuklarin dikkati dagitmadan odaklanabilmesi</li>
+            <li>• Işık kontrolü kolay (illüzyonlar için ideal)</li>
+            <li>• Ses akustiği daha iyi</li>
+            <li>• Hava koşullarından bağımsız</li>
+            <li>• Rüzgar, yağmur riski yok</li>
+            <li>• Çocukların dikkati dağıtmadan odaklanabilmesi</li>
           </ul>
-          <p className="text-gray-600 text-xs mt-3 italic">Onerilen: Otel salonlari, restoran ozel bolumleri, etkinlik mekanlari</p>
+          <p className="text-gray-600 text-xs mt-3 italic">Önerilen: Otel salonları, restoran özel bölümleri, etkinlik mekanları</p>
         </div>
 
         <div className="bg-green-50 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-3">🌳 Acik Alan Gosterileri</h4>
+          <h4 className="font-bold text-gray-900 mb-3">🌳 Açık Alan Gösterileri</h4>
           <ul className="text-gray-700 text-sm space-y-2">
-            <li>• Genis alan, buyuk izleyici kapasitesi</li>
-            <li>• Doga ile ic ice deneyim</li>
-            <li>• Piroteknik efektler kullanilabilir</li>
-            <li>• Fotograflar icin guzel arka plan</li>
-            <li>• Cocuklar gösteri sonrasi kosa oynayabilir</li>
+            <li>• Geniş alan, büyük izleyici kapasitesi</li>
+            <li>• Doğa ile iç içe deneyim</li>
+            <li>• Piroteknik efektler kullanılabilir</li>
+            <li>• Fotoğraflar için güzel arka plan</li>
+            <li>• Çocuklar gösteri sonrası koşa oynayabilir</li>
           </ul>
-          <p className="text-gray-600 text-xs mt-3 italic">Onerilen: Bahceli mekanlar, ciftlikler, parklar, teras alanlar</p>
+          <p className="text-gray-600 text-xs mt-3 italic">Önerilen: Bahçeli mekanlar, çiftlikler, parklar, teras alanlar</p>
         </div>
       </div>
 
       <p className="text-gray-700 leading-relaxed mb-4">
-        Istanbul'da ozellikle Gokturk bolgesi, dogayla ic ice sihirbaz gosterisi organizasyonlari icin cok tercih edilen bir lokasyondur. At ciftlikleri ve genis bahceleriyle benzersiz bir atmosfer sunar. <Link to="/blog/sihirbaz-gokturk-at-ciftligi" className="text-purple-600 hover:text-purple-700 font-semibold underline">Gokturk at ciftliginde sihirbaz etkinlikleri</Link> hakkindaki yazimizdai detayli bilgi bulabilirsiniz.
+        İstanbul'da özellikle Göktürk bölgesi, doğayla iç içe sihirbaz gösterisi organizasyonları için çok tercih edilen bir lokasyondur. At çiftlikleri ve geniş bahçeleriyle benzersiz bir atmosfer sunar. <Link to="/blog/sihirbaz-gokturk-at-ciftligi" className="text-purple-600 hover:text-purple-700 font-semibold underline">Göktürk at çiftliğinde sihirbaz etkinlikleri</Link> hakkındaki yazımızda detaylı bilgi bulabilirsiniz.
       </p>
 
       <div className="bg-yellow-50 border-l-4 border-yellow-600 p-6 rounded-lg mb-8">
-        <h4 className="font-bold text-gray-900 mb-3">🏙️ Istanbul'da Populer Gosteri Mekanlari:</h4>
+        <h4 className="font-bold text-gray-900 mb-3">🏙️ İstanbul'da Popüler Gösteri Mekanları:</h4>
         <ul className="space-y-2 text-gray-700 text-sm">
-          <li>• <strong>Etiler / Bebek:</strong> Luks restoran ozel salonlari, Bogazici manzarali mekanlar</li>
-          <li>• <strong>Maslak / Levent:</strong> Kurumsal etkinlik salonlari, otel balo salonlari</li>
-          <li>• <strong>Gokturk / Kemerburgaz:</strong> Acik hava ciftlikleri, dogayla ic ice alanlar</li>
-          <li>• <strong>Kadikoy / Moda:</strong> Sahil mekanlari, Anadolu yakasi etkinlik salonlari</li>
-          <li>• <strong>Sariyer / Emirgan:</strong> Tarihi konaklar, Bogaz kiyisi mekanlar</li>
-          <li>• <strong>Basaksehir / Bahcesehir:</strong> Modern site ortak alanlari, cocuk eglence merkezleri</li>
+          <li>• <strong>Etiler / Bebek:</strong> Lüks restoran özel salonları, Boğaziçi manzaralı mekanlar</li>
+          <li>• <strong>Maslak / Levent:</strong> Kurumsal etkinlik salonları, otel balo salonları</li>
+          <li>• <strong>Göktürk / Kemerburgaz:</strong> Açık hava çiftlikleri, doğayla iç içe alanlar</li>
+          <li>• <strong>Kadıköy / Moda:</strong> Sahil mekanları, Anadolu yakası etkinlik salonları</li>
+          <li>• <strong>Sarıyer / Emirgan:</strong> Tarihi konaklar, Boğaz kıyısı mekanlar</li>
+          <li>• <strong>Başakşehir / Bahçeşehir:</strong> Modern site ortak alanları, çocuk eğlence merkezleri</li>
         </ul>
       </div>
 
-      {/* SSS Bolumu */}
+      {/* SSS Bölümü */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Sik Sorulan Sorular (SSS)
+        7. Sihirbaz Kiralama Fiyat ve Hizmet Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">
@@ -364,23 +364,23 @@ const SihirbazKiralamaRehberi = () => {
 
       {/* Hizmet CTA */}
       <div className="bg-purple-50 border border-purple-200 rounded-xl p-8 mb-8">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">🎩 Profesyonel Sihirbaz Gosterisi Hizmetimiz</h3>
+        <h3 className="text-2xl font-bold text-gray-900 mb-4">🎩 İstanbul Profesyonel Sihirbaz Kiralama Gösterisi Hizmeti</h3>
         <p className="text-gray-700 leading-relaxed mb-6">
-          Istanbul genelinde profesyonel sihirbaz kiralama hizmeti sunuyoruz. Dogum gunu organizasyonlarindan kurumsal etkinliklere, okul gosterilerinden festival performanslarina kadar her turlu organizasyon icin deneyimli sihirbaz kadromuz hazir. Gosteri cesitlerimizi inceleyin ve etkinliginize en uygun paketi secin.
+          İstanbul genelinde profesyonel sihirbaz kiralama hizmeti sunuyoruz. Doğum günü organizasyonlarından kurumsal etkinliklere, okul gösterilerinden festival performanslarına kadar her türlü organizasyon için deneyimli sihirbaz kadromuz hazır. Gösteri çeşitlerimizi inceleyin ve etkinliğinize en uygun paketi seçin.
         </p>
         <Link
           to={relatedServicePath}
           className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
         >
-          {relatedServiceName} Hizmetini Incele →
+          {relatedServiceName} Hizmetini İncele →
         </Link>
       </div>
 
       {/* Final CTA */}
       <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">🎩 Istanbul'da En Iyi Sihirbaz Kiralama!</h3>
+        <h3 className="text-2xl font-bold mb-4">🎩 İstanbul'da En İyi Sihirbaz Kiralama Fiyatları!</h3>
         <p className="mb-6 leading-relaxed">
-          Profesyonel sihirbaz kiralama ile organizasyonunuzu unutulmaz kilin. Close-up sihirden sahne gosterisine, cocuk buyusunden kurumsal illuzyonlara kadar her turlu gosteri icin buradayiz. Ucretsiz danismanlik ve kisiye ozel teklif alin!
+          Profesyonel sihirbaz kiralama ile organizasyonunuzu unutulmaz kılın. Close-up sihirden sahne gösterisine, çocuk büyüsünden kurumsal illüzyonlara kadar her türlü gösteri için buradayız. Ücretsiz danışmanlık ve kişiye özel teklif alın!
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <a
@@ -395,7 +395,7 @@ const SihirbazKiralamaRehberi = () => {
             rel="noopener noreferrer"
             className="bg-green-600 hover:bg-green-700 text-white font-bold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-2xl text-center"
           >
-            💬 WhatsApp ile Yazin
+            💬 WhatsApp ile Yazın
           </a>
         </div>
       </div>

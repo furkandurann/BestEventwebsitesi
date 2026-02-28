@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import AdHero from '../../components/AdHero'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import QuickQuoteForm from '../../components/QuickQuoteForm'
 import ExitIntentPopup from '../../components/ExitIntentPopup'
 import RelatedServices from '../../components/RelatedServices'
+import GoogleReviews from '../../components/GoogleReviews'
+import { getReviewsByTags } from '../../data/googleReviews'
+import DistrictLinksGrid from '../../components/DistrictLinksGrid'
+import RelatedBlogPosts from '../../components/RelatedBlogPosts'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 
@@ -161,6 +167,14 @@ const BubbleShow = () => {
     }
   ]
 
+  const serviceSchema = createServiceSchema(
+    'Bubble Show Gösterisi | Köpük Şov Organizasyonu Kiralama',
+    'Istanbul\'da bubble show gösterisi, organizasyonu ve kiralama. Bubble show etkinliği için profesyonel hizmet.',
+    '/organizasyonlar/bubble-show',
+    'Bubble Show Gösterileri ve Köpük Şov Organizasyonu'
+  )
+  const faqSchema = createFAQSchema(faqData)
+
   return (
     <>
       <Seo
@@ -171,11 +185,29 @@ const BubbleShow = () => {
           'bubble show organizasyonu',
           'bubble show kiralama',
           'bubble show etkinliği',
-          'istanbul bubble show'
+          'istanbul bubble show',
+          'köpük gösterisi',
+          'sabun baloncuğu',
+          'dev balon',
+          'foam party',
+          'baloncuk makinesi',
+          'ışıklı balon show',
+          'neon bubble',
+          'interaktif gösteri'
         ]}
         image="/content/images/bubbleshow/anabubblee.webp"
         canonicalPath="/organizasyonlar/bubble-show"
         schema={[
+          serviceSchema,
+          faqSchema,
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Bubble Show", "item": "https://bestevent.com.tr/organizasyonlar/bubble-show" }
+            ]
+          },
           {
             "@context": "https://schema.org",
             "@type": "Organization",
@@ -193,94 +225,13 @@ const BubbleShow = () => {
             "sameAs": [
               "https://www.instagram.com/bestevent"
             ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "BestEvent - Bubble Show Gösterisi",
-            "image": "https://bestevent.com.tr/content/images/bubbleshow/anabubblee.webp",
-            "telephone": "+90-530-730-9009",
-            "priceRange": "$$",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "İstanbul",
-              "addressRegion": "İstanbul",
-              "addressCountry": "TR"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "40.9872",
-              "longitude": "29.0301"
-            },
-            "areaServed": [
-              {"@type": "City", "name": "Kadıköy"},
-              {"@type": "City", "name": "Üsküdar"},
-              {"@type": "City", "name": "Maltepe"},
-              {"@type": "City", "name": "Kartal"},
-              {"@type": "City", "name": "Ataşehir"},
-              {"@type": "City", "name": "İstanbul"}
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Bubble Show İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "areaServed": [
-                "Kadıköy", "Üsküdar", "Maltepe", "Kartal", "Ataşehir", "Pendik", "Erenköy",
-                "Beylikdüzü", "Sarıyer", "Beşiktaş", "Şişli", "Bakırköy", "İstanbul"
-              ]
-            },
-            "serviceType": "Bubble Show Gösterileri ve Köpük Şov Organizasyonu",
-            "offers": {
-              "@type": "Offer",
-              "availability": "https://schema.org/InStock"
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "ImageObject",
-            "contentUrl": "https://bestevent.com.tr/content/images/bubbleshow/anabubblee.webp",
-            "description": "İstanbul bubble show gösterisi - dev köpükler",
-            "name": "Bubble Show İstanbul"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
-              { "@type": "ListItem", "position": 2, "name": "Bubble Show", "item": "https://bestevent.com.tr/organizasyonlar/bubble-show" }
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "BestEvent - Bubble Show İstanbul",
-            "url": "https://bestevent.com.tr/organizasyonlar/bubble-show",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5.0",
-              "bestRating": "5",
-              "worstRating": "1",
-              "ratingCount": "217",
-              "reviewCount": "217"
-            }
           }
         ]}
+      />
+
+      <AdHero
+        title="Bubble Show Kiralama İstanbul"
+        backgroundImage="/content/images/bubbleshow/anabubblee.webp"
       />
 
       <main className="overflow-x-hidden scroll-smooth">
@@ -508,11 +459,11 @@ const BubbleShow = () => {
                   fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
                 }}
               >
-                <span className="font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Bubble Show Organizasyonu ve Kiralama</span> kapsamımız, klasik bubble show anlayışının ötesine geçerek{' '}
-                <span className="font-bold text-gray-900">dev sabun köpükleri ile interaktif deneyim</span>{' '}
-                sunan özel bir sahne etkinliği sunar. Bubble show organizasyonu boyunca sadece izlemekle kalmaz, aynı zamanda çocukların{' '}
+                <span className="font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Bubble Show Organizasyonu ve Kiralama</span> kapsamımız, klasik köpük gösterisi anlayışının ötesine geçerek{' '}
+                <span className="font-bold text-gray-900">dev balon ve sabun baloncuğu ile interaktif gösteri</span>{' '}
+                sunan özel bir sahne etkinliği sunar. Profesyonel baloncuk makinesi ve foam party ekipmanlarıyla çocukların{' '}
                 <span className="font-bold text-gray-900">içine girebildiği dev balonlar</span>{' '}
-                ile eğlenceli bir performans sergiler. Profesyonel bubble show kiralama ve etkinliği hizmetimiz ile renkli LED ışık efektleri, köpük tünelleri ve müzik eşliğinde profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, çocuklara unutulmaz anlar yaşatmıştır. İster doğum günü etkinliği, ister kurumsal organizasyon olsun, bubble show kiralama talebinizi profesyonel ekibimizle karşılıyoruz.
+                ile eğlenceli bir performans sergiler. Işıklı balon show ve neon bubble efektleri, köpük tünelleri ve müzik eşliğinde profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, çocuklara unutulmaz anlar yaşatmıştır. İster doğum günü etkinliği, ister kurumsal organizasyon olsun, bubble show kiralama talebinizi profesyonel ekibimizle karşılıyoruz.
               </p>
               </div>
             </div>
@@ -1023,48 +974,11 @@ const BubbleShow = () => {
         </section>
 
         {/* Hizmet Bölgeleri Section */}
-        <section className="py-20 bg-gradient-to-br from-purple-900 to-pink-900">
-          <div className="max-w-5xl mx-auto px-4">
-            <h2 
-              className="font-bold text-white mb-12 text-center"
-              style={{
-                fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-                lineHeight: '1.35',
-                letterSpacing: '-0.015em',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              Hangi Bölgelerde Bubble Show Hizmeti Veriyoruz?
-            </h2>
-
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
-              {[
-                'Kadıköy', 'Erenköy', 'Üsküdar', 'Maltepe', 'Kartal', 'Ataşehir',
-                'Pendik', 'Beylikdüzü', 'Sarıyer', 'Beşiktaş', 'Şişli', 'Bakırköy',
-                'Beykoz', 'Çekmeköy', 'Sultanbeyli', 'Tuzla', 'Sancaktepe', 'Ümraniye'
-              ].map((region, index) => (
-                <div 
-                  key={index}
-                  className="bg-white/10 backdrop-blur-lg rounded-lg p-4 text-center text-white font-medium hover:bg-white/20 transition-all"
-                >
-                  {region}
-                </div>
-              ))}
-            </div>
-
-            <p 
-              className="text-white/90 text-center leading-relaxed"
-              style={{
-                fontSize: 'clamp(1rem, 2vw, 1.125rem)',
-                lineHeight: '1.7',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-              }}
-            >
-              İstanbul'un tüm ilçelerine profesyonel bubble show ve köpük şov gösterileri hizmeti sunuyoruz. 
-              Listelenmemiş bir bölgede misiniz? Bizimle iletişime geçin, size yardımcı olalım!
-            </p>
-          </div>
-        </section>
+        <DistrictLinksGrid
+          lpServiceSlug="bubble-show-kiralama"
+          serviceName="Bubble Show"
+          title="Hangi Bölgelerde Bubble Show Hizmeti Veriyoruz?"
+        />
 
         {/* İlgili Blog Yazıları - Internal Links */}
         <section className="py-12 px-6 bg-black/40">
@@ -1103,7 +1017,12 @@ const BubbleShow = () => {
           </div>
         </section>
 
+        {/* Google Müşteri Yorumları */}
+        <GoogleReviews reviews={getReviewsByTags(['bubbleshow', 'genel'])} title="Bubble Show Müşteri Yorumları" />
+
         <RelatedServices currentService="bubble-show" />
+
+        <RelatedBlogPosts servicePath="/organizasyonlar/bubble-show" />
       </main>
 
       {/* Exit Intent Popup */}

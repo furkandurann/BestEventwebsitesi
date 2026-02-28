@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import OptimizedImage from '../../components/OptimizedImage'
 import RelatedServices from '../../components/RelatedServices'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
 const TransformersRobot = () => {
   const hero = {
@@ -39,6 +40,18 @@ const TransformersRobot = () => {
     '/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.webp',
   ]
 
+  const serviceSchema = createServiceSchema(
+    'Transformers Robot Kiralama İstanbul',
+    'İstanbul\'da LED ışıklı dev Transformers robot gösterisi. 2.5-3 m boyunda performans, fotoğraf ve dans şovu. AVM, festival ve doğum günü.',
+    '/organizasyonlar/transformers-robot',
+    'Robot Gösterisi'
+  )
+  const faqSchema = createFAQSchema([
+    { question: 'Robot ne kadar büyük?', answer: '2.5-3 metre boyunda LED ışıklı profesyonel performans robotları.' },
+    { question: 'Performans süresi ne kadar?', answer: 'Molalı 60-90 dakika performans. Giydirme 15-20 dakika sürer.' },
+    { question: 'İç mekanda kullanılabilir mi?', answer: 'Evet, minimum 2.8 metre tavan yüksekliği olan iç ve dış mekanlarda kullanılabilir.' }
+  ])
+
   return (
     <>
       <Seo
@@ -47,26 +60,8 @@ const TransformersRobot = () => {
         keywords={['transformers robot kiralama istanbul', 'led robot gösterisi', 'dev robot kiralama', 'avm açılış robotu istanbul', 'robot performansı kiralama', 'bumblebee optimus prime kiralama']}
         image="/content/images/bidolu/transformers.webp"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Transformers Robot Kiralama İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "telephone": "+905307309009",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "İstanbul",
-                "addressCountry": "TR"
-              }
-            },
-            "serviceType": "Robot Gösterisi",
-            "areaServed": {
-              "@type": "City",
-              "name": "İstanbul"
-            }
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -74,15 +69,6 @@ const TransformersRobot = () => {
               { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
               { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
               { "@type": "ListItem", "position": 3, "name": "Transformers Robot", "item": "https://bestevent.com.tr/organizasyonlar/transformers-robot" }
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              { "@type": "Question", "name": "Robot ne kadar büyük?", "acceptedAnswer": { "@type": "Answer", "text": "2.5-3 metre boyunda LED ışıklı profesyonel performans robotları." } },
-              { "@type": "Question", "name": "Performans süresi ne kadar?", "acceptedAnswer": { "@type": "Answer", "text": "Molalı 60-90 dakika performans. Giydirme 15-20 dakika sürer." } },
-              { "@type": "Question", "name": "İç mekanda kullanılabilir mi?", "acceptedAnswer": { "@type": "Answer", "text": "Evet, minimum 2.8 metre tavan yüksekliği olan iç ve dış mekanlarda kullanılabilir." } }
             ]
           }
         ]}

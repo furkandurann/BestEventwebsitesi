@@ -4,6 +4,8 @@ const KidsTableChairs = () => {
   const eventData = {
     title: "İstanbul'da Renkli Çocuk Masa Sandalye Kiralama",
     description: "Çocuk etkinlikleri için güvenli ve renkli masa sandalye kiralama - Kadıköy, Üsküdar, Maltepe ve tüm İstanbul'da hijyenik çocuk mobilyaları",
+    canonicalPath: "/organizasyonlar/cocuk-masa-sandalye",
+    serviceType: "Çocuk Mobilya Kiralama",
     longDescription: `Best Event olarak İstanbul'un her bölgesinde profesyonel çocuk masa sandalye kiralama hizmeti sunuyoruz. Tüm ilçelerde doğum günü partileri, okul etkinlikleri, açılış organizasyonları ve çocuk festivalleri için güvenli, renkli ve hijyenik çocuk mobilyaları ile hizmetinizdeyiz.
 
 🪑 Çocuk Masa Sandalye Kiralama Nedir?

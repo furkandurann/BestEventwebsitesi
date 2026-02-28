@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { blogPosts } from '../src/data/blogPosts.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -24,31 +25,12 @@ const staticPages = [
   { url: '/blog', priority: 0.8, changefreq: 'weekly' },
 ]
 
-// Blog sayfaları
-const blogPages = [
-  // Mevcut 6 blog
-  { url: '/blog/acilis-organizasyonu-istanbul', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/palyaco-kiralama-istanbul', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/sihirbaz-gosterisi-istanbul', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/bubble-show-istanbul', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/palyaco-gezegeni', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/istanbul-etkinlik-rehberi', priority: 0.7, changefreq: 'monthly' },
-  // Yeni 14 blog
-  { url: '/blog/palyaco-kiz-kulesi-organizasyonu', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/palyaco-dogum-gunu-rehberi', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/sihirbaz-gokturk-at-ciftligi', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/sihirbaz-kiralama-rehberi', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/bubble-show-ne-kadar-su-harcar', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/bubble-show-kiralama-rehberi', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/dogum-gunu-organizasyonu-rehberi', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/dogum-gunu-mekan-secimi', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/pamuk-seker-etkinlik-rehberi', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/pamuk-seker-dogum-gunu-organizasyonu', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/kostumlu-karakter-kiralama-rehberi', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/kostumlu-karakter-dogum-gunu', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/yuz-boyama-kiralama-rehberi', priority: 0.7, changefreq: 'monthly' },
-  { url: '/blog/yuz-boyama-dogum-gunu-organizasyonu', priority: 0.7, changefreq: 'monthly' },
-]
+// Blog sayfaları - blogPosts.js'den dinamik olarak okunuyor
+const blogPages = blogPosts.map(post => ({
+  url: `/blog/${post.slug}`,
+  priority: 0.7,
+  changefreq: 'monthly'
+}))
 
 // Hizmet sayfaları (otomatik priority hesaplama)
 const servicePages = [
@@ -149,6 +131,30 @@ const mascotPages = [
   'halloween-maskot-istanbul',
 ].map(slug => ({ url: `/maskot/${slug}`, priority: 0.6, changefreq: 'monthly' }))
 
+// ─── Local Landing Pages (Semt Bazlı Hizmet Sayfaları - Programmatic SEO) ───
+const localDistricts = [
+  'kadikoy', 'besiktas', 'sisli', 'bakirkoy', 'atasehir',
+  'uskudar', 'maltepe', 'kartal', 'pendik', 'umraniye',
+  'beylikduzu', 'sariyer', 'fatih', 'eyupsultan', 'beyoglu',
+  'basaksehir', 'kucukcekmece', 'tuzla', 'cekmekoy', 'zeytinburnu',
+  'maslak', 'esenyurt'
+]
+const localServices = [
+  'palyaco-kiralama', 'bubble-show-kiralama', 'sihirbaz-kiralama',
+  'dogum-gunu-organizasyonu', 'pamuk-seker-arabasi-kiralama',
+  'profesyonel-yuz-boyama', 'popcorn-arabasi-kiralama'
+]
+const localLandingPages = []
+localDistricts.forEach(district => {
+  localServices.forEach(service => {
+    localLandingPages.push({
+      url: `/organizasyonlar/${service}/${district}`,
+      priority: 0.8,
+      changefreq: 'weekly'
+    })
+  })
+})
+
 // Kategori bazlı priority ve changefreq
 const categoryConfig = {
   main: { priority: 0.9, changefreq: 'weekly' },
@@ -197,6 +203,9 @@ function generateSitemap() {
   // Maskot detay sayfaları
   mascotPages.forEach(page => { xml += buildUrlEntry(page) })
 
+  // Local Landing Pages (Semt bazlı)
+  localLandingPages.forEach(page => { xml += buildUrlEntry(page) })
+
   xml += '</urlset>\n'
 
   return xml
@@ -214,7 +223,7 @@ function writeSitemap() {
 
   fs.writeFileSync(sitemapPath, sitemapContent, 'utf-8')
 
-  const totalUrls = staticPages.length + servicePages.length + blogPages.length + characterPages.length + mascotPages.length
+  const totalUrls = staticPages.length + servicePages.length + blogPages.length + characterPages.length + mascotPages.length + localLandingPages.length
   console.log('Sitemap generated successfully!')
   console.log(`Location: ${sitemapPath}`)
   console.log(`Total URLs: ${totalUrls}`)

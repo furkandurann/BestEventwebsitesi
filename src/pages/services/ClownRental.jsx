@@ -5,7 +5,13 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import AdHero from '../../components/AdHero'
 import RelatedServices from '../../components/RelatedServices'
+import GoogleReviews from '../../components/GoogleReviews'
+import { getReviewsByTags } from '../../data/googleReviews'
+import DistrictLinksGrid from '../../components/DistrictLinksGrid'
+import RelatedBlogPosts from '../../components/RelatedBlogPosts'
 
 // Clown FAQ Section Component
 function ClownFAQSection({ faqs }) {
@@ -297,6 +303,14 @@ const ClownRental = () => {
     }
   ]
 
+  const serviceSchema = createServiceSchema(
+    'Palyaço Gösterisi | Palyaço Organizasyonu Kiralama',
+    'Istanbul\'da palyaço gösterisi ve organizasyonu. Palyaço kiralama, etkinliği hizmetleri. +5000 başarılı etkinlik.',
+    '/organizasyonlar/palyaco-kiralama',
+    'Palyaço Kiralama'
+  )
+  const faqSchema = createFAQSchema(faqData)
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Seo
@@ -307,31 +321,21 @@ const ClownRental = () => {
           'palyaço organizasyonu',
           'palyaço kiralama',
           'palyaço etkinliği',
-          'istanbul palyaço hizmetleri'
+          'istanbul palyaço hizmetleri',
+          'animatör',
+          'çocuk eğlencesi',
+          'sosis balon',
+          'balon süsleme',
+          'doğum günü animasyonu',
+          'parti animatörü',
+          'yüz boyama',
+          'çocuk partisi'
         ]}
         canonicalPath="/organizasyonlar/palyaco-kiralama"
         image="/content/images/palyaco/palyacoanaherogrupoyunlari.webp"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Palyaço Kiralama İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "telephone": "+905307309009",
-              "areaServed": [
-                "Kadıköy", "Üsküdar", "Maltepe", "Ataşehir", "Ümraniye", "Kartal", "Pendik", "Beykoz",
-                "Beşiktaş", "Şişli", "Bakırköy", "Beylikdüzü", "Esenyurt", "Başakşehir", "Sarıyer",
-                "Fatih", "Beyoğlu", "Kağıthane", "Güngören", "Bahçelievler", "İstanbul"
-              ]
-            },
-            "serviceType": "Palyaço Kiralama",
-            "offers": {
-              "@type": "Offer",
-              "availability": "https://schema.org/InStock"
-            }
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -339,32 +343,6 @@ const ClownRental = () => {
               { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
               { "@type": "ListItem", "position": 2, "name": "Palyaço Kiralama", "item": "https://bestevent.com.tr/organizasyonlar/palyaco-kiralama" }
             ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "BestEvent - Palyaço Kiralama İstanbul",
-            "url": "https://bestevent.com.tr/organizasyonlar/palyaco-kiralama",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5.0",
-              "bestRating": "5",
-              "worstRating": "1",
-              "ratingCount": "217",
-              "reviewCount": "217"
-            }
           },
           {
             "@context": "https://schema.org",
@@ -376,7 +354,12 @@ const ClownRental = () => {
           }
         ]}
       />
-      
+
+      <AdHero
+        title="Palyaço Kiralama İstanbul"
+        backgroundImage="/content/images/palyaco/palyacoanaherogrupoyunlari.webp"
+      />
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-black py-12 md:py-16">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black pointer-events-none" />
@@ -590,9 +573,9 @@ const ClownRental = () => {
               >
                 <span className="font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent">Palyaço Organizasyonu ve Kiralama</span> kapsamımız, klasik palyaço anlayışının ötesine geçerek{' '}
                 <span className="font-bold text-gray-900">grup oyunları, yüz boyama ve interaktif aktiviteler</span>{' '}
-                ile zenginleştirilmiş özel bir etkinlik deneyimi sunar. Profesyonel palyaço kiralama ve organizasyon sürecinde sadece eğlendirmekle kalmaz, aynı zamanda çocukları{' '}
+                ile zenginleştirilmiş özel bir çocuk eğlencesi deneyimi sunar. Deneyimli parti animatörü kadromuz, doğum günü animasyonu sürecinde sadece eğlendirmekle kalmaz, aynı zamanda çocukları{' '}
                 <span className="font-bold text-gray-900">aktif katılıma teşvik eden</span>{' '}
-                profesyonel bir performans sergiler. Kar şöleni, konfeti partisi, sosis balon yapımı ve pinyata finali ile profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, çocuklara unutulmaz anlar yaşatmıştır. İster doğum günü etkinliği, ister kurumsal organizasyon olsun, palyaço kiralama talebinizi deneyimli ekibimizle karşılıyoruz.
+                profesyonel bir performans sergiler. Kar şöleni, konfeti partisi, sosis balon yapımı, balon süsleme ve pinyata finali ile profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, her çocuk partisinde unutulmaz anlar yaşatmıştır. İster doğum günü etkinliği, ister kurumsal organizasyon olsun, palyaço ve animatör kiralama talebinizi deneyimli ekibimizle karşılıyoruz.
               </p>
             </div>
           </div>
@@ -855,56 +838,28 @@ const ClownRental = () => {
       <ClownFAQSection faqs={faqData} />
 
       {/* Service Areas Section */}
-      <section className="py-16 sm:py-20 px-6 bg-gradient-to-br from-purple-950/30 to-pink-950/30 border-t border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+      <DistrictLinksGrid
+        lpServiceSlug="palyaco-kiralama"
+        serviceName="Palyaço Kiralama"
+        title="İstanbul'da Palyaço Kiralama Hizmet Bölgelerimiz"
+      />
+
+      {/* Antalya & Tatil Bölgeleri */}
+      <section className="py-8 px-6 bg-black/60">
+        <div className="max-w-5xl mx-auto text-center">
+          <p
+            className="leading-relaxed"
+            style={{
+              fontSize: 'clamp(1rem, 1.9vw, 1.0625rem)',
+              lineHeight: '1.7',
+              color: '#9CA3AF',
+              fontWeight: '500',
+              letterSpacing: '-0.01em',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+            }}
           >
-            <h2 
-              className="font-bold text-white mb-6"
-              style={{
-                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                letterSpacing: '-0.02em',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              İstanbul'da Hizmet Bölgelerimiz
-            </h2>
-            
-            <div className="max-w-5xl mx-auto text-center space-y-4">
-              <p 
-                className="leading-relaxed"
-                style={{ 
-                  fontSize: 'clamp(1.0625rem, 2vw, 1.1875rem)', 
-                  lineHeight: '1.7',
-                  color: '#E5E5E5',
-                  fontWeight: '500',
-                  letterSpacing: '-0.01em',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                }}
-              >
-                İstanbul'un her bölgesinde profesyonel palyaço kiralama hizmeti sunuyoruz: 
-                <strong className="text-white"> Kadıköy, Üsküdar, Maltepe, Ataşehir, Ümraniye, Kartal, Pendik, Beykoz, Beşiktaş, Şişli, Bakırköy, Beylikdüzü, Esenyurt, Başakşehir, Sarıyer, Fatih, Beyoğlu, Kağıthane, Güngören, Bahçelievler</strong> ve İstanbul'un tüm ilçelerinde yanınızdayız.
-              </p>
-              <p 
-                className="leading-relaxed"
-                style={{ 
-                  fontSize: 'clamp(1rem, 1.9vw, 1.0625rem)', 
-                  lineHeight: '1.7',
-                  color: '#9CA3AF',
-                  fontWeight: '500',
-                  letterSpacing: '-0.01em',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                }}
-              >
-                Ayrıca <strong className="text-white">Antalya</strong> ve yaz sezonunda <strong className="text-white">Bodrum, Çeşme, Alanya, Side</strong> gibi tatil bölgelerinde de hizmet vermekteyiz.
-              </p>
-            </div>
-          </motion.div>
+            Ayrıca <strong className="text-white">Antalya</strong> ve yaz sezonunda <strong className="text-white">Bodrum, Çeşme, Alanya, Side</strong> gibi tatil bölgelerinde de hizmet vermekteyiz.
+          </p>
         </div>
       </section>
 
@@ -970,6 +925,8 @@ const ClownRental = () => {
           </motion.div>
         </div>
       </section>
+
+      <RelatedBlogPosts servicePath="/organizasyonlar/palyaco-kiralama" />
 
     </div>
   )
@@ -1053,6 +1010,9 @@ function PalyacoCinemaStrip() {
           ))}
         </div>
       </div>
+
+      {/* Google Müşteri Yorumları */}
+      <GoogleReviews reviews={getReviewsByTags(['palyaco', 'genel'])} title="Palyaço Kiralama Müşteri Yorumları" />
 
       <RelatedServices currentService="palyaco-kiralama" />
 

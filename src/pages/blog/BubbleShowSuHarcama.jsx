@@ -38,14 +38,14 @@ const BubbleShowSuHarcama = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-blue-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#nedir" className="text-blue-600 hover:text-blue-700 font-semibold">1. Bubble Show Nedir? Köpük Gösterisinin Bilimi</a></li>
-          <li><a href="#su-tuketimi" className="text-blue-600 hover:text-blue-700 font-semibold">2. 30 Dakikalık Gösteride Ne Kadar Su Harcanır?</a></li>
-          <li><a href="#solusyon-formulu" className="text-blue-600 hover:text-blue-700 font-semibold">3. Köpük Solüsyonu Formülü: Su + Gliserin + Özel Sabun</a></li>
-          <li><a href="#dev-balon" className="text-blue-600 hover:text-blue-700 font-semibold">4. Dev Balon İçin Gereken Solüsyon Miktarı</a></li>
-          <li><a href="#ic-dis-mekan" className="text-blue-600 hover:text-blue-700 font-semibold">5. İç Mekan vs Dış Mekan: Su Tüketimi Farkı</a></li>
-          <li><a href="#cevre-dostu" className="text-blue-600 hover:text-blue-700 font-semibold">6. Çevre Dostu mu? Biyolojik Parçalanabilirlik</a></li>
-          <li><a href="#maliyet" className="text-blue-600 hover:text-blue-700 font-semibold">7. Maliyet Hesabı: Bir Gösterinin Gerçek Maliyeti</a></li>
-          <li><a href="#sss" className="text-blue-600 hover:text-blue-700 font-semibold">8. Sık Sorulan Sorular</a></li>
+          <li><a href="#nedir" className="text-blue-600 hover:text-blue-700 font-semibold">1. Bubble Show Kiralama Hizmeti: Köpük Gösterisinin Bilimi</a></li>
+          <li><a href="#su-tuketimi" className="text-blue-600 hover:text-blue-700 font-semibold">2. Bubble Show Organizasyonunda 30 Dakikada Ne Kadar Su Harcanır?</a></li>
+          <li><a href="#solusyon-formulu" className="text-blue-600 hover:text-blue-700 font-semibold">3. Bubble Show Kiralama Solüsyon Formülü: Su + Gliserin + Özel Sabun</a></li>
+          <li><a href="#dev-balon" className="text-blue-600 hover:text-blue-700 font-semibold">4. Bubble Show Organizasyonu: Dev Balon İçin Gereken Solüsyon Miktarı</a></li>
+          <li><a href="#ic-dis-mekan" className="text-blue-600 hover:text-blue-700 font-semibold">5. İstanbul'da İç Mekan vs Dış Mekan Bubble Show: Su Tüketimi Farkı</a></li>
+          <li><a href="#cevre-dostu" className="text-blue-600 hover:text-blue-700 font-semibold">6. Bubble Show Kiralama Hizmeti Çevre Dostu mu?</a></li>
+          <li><a href="#maliyet" className="text-blue-600 hover:text-blue-700 font-semibold">7. Bubble Show Kiralama Fiyat ve Maliyet Hesabı</a></li>
+          <li><a href="#sss" className="text-blue-600 hover:text-blue-700 font-semibold">8. Bubble Show Organizasyonu Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -62,7 +62,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* Bölüm 1 */}
       <h2 id="nedir" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Bubble Show Nedir? Köpük Gösterisinin Bilimi
+        1. Bubble Show Kiralama Hizmeti: Köpük Gösterisinin Bilimi
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -99,7 +99,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* Bölüm 2 */}
       <h2 id="su-tuketimi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. 30 Dakikalık Gösteride Ne Kadar Su Harcanır?
+        2. Bubble Show Organizasyonunda 30 Dakikada Ne Kadar Su Harcanır?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -170,7 +170,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* Bölüm 3 */}
       <h2 id="solusyon-formulu" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Köpük Solüsyonu Formülü: Su + Gliserin + Özel Sabun
+        3. Bubble Show Kiralama Solüsyon Formülü: Su + Gliserin + Özel Sabun
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -228,7 +228,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* Bölüm 4 */}
       <h2 id="dev-balon" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Dev Balon İçin Gereken Solüsyon Miktarı
+        4. Bubble Show Organizasyonu: Dev Balon İçin Gereken Solüsyon Miktarı
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -264,7 +264,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* Bölüm 5 */}
       <h2 id="ic-dis-mekan" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. İç Mekan vs Dış Mekan: Su Tüketimi Farkı
+        5. İstanbul'da İç Mekan vs Dış Mekan Bubble Show: Su Tüketimi Farkı
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -336,7 +336,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* Bölüm 6 */}
       <h2 id="cevre-dostu" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Çevre Dostu mu? Biyolojik Parçalanabilirlik
+        6. Bubble Show Kiralama Hizmeti Çevre Dostu mu?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -373,7 +373,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* Bölüm 7 */}
       <h2 id="maliyet" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Maliyet Hesabı: Bir Gösterinin Gerçek Maliyeti
+        7. Bubble Show Kiralama Fiyat ve Maliyet Hesabı
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -414,7 +414,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* SSS */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        8. Sık Sorulan Sorular
+        8. Bubble Show Organizasyonu Sık Sorulan Sorular
       </h2>
       <div className="space-y-4 mb-12">
         {faqData.map((faq, index) => (
@@ -427,7 +427,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* Service CTA */}
       <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 my-8 text-center">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">Profesyonel Bubble Show Hizmeti</h3>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">İstanbul'da Profesyonel Bubble Show Kiralama Hizmeti</h3>
         <p className="text-gray-700 mb-4">
           BestEvent'in uzman sanatçılarıyla güvenli, eğlenceli ve unutulmaz bir köpük gösterisi organizasyonu planlayın. İç mekan ve dış mekan seçenekleri, kombine paketler ve uygun fiyatlarla hizmetinizdeyiz.
         </p>
@@ -438,7 +438,7 @@ const BubbleShowSuHarcama = () => {
 
       {/* Sonuç CTA */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">🫧 Profesyonel Bubble Show ile Fark Yaratın!</h3>
+        <h3 className="text-2xl font-bold mb-4">🫧 İstanbul'da Bubble Show Kiralama Organizasyonu ile Fark Yaratın!</h3>
         <p className="mb-6 leading-relaxed">
           Çocuklarınızın doğum gününde veya özel etkinliğinizde profesyonel bir köpük gösterisi yaşatmak ister misiniz? BestEvent olarak güvenli solüsyon, deneyimli sanatçılar ve eksiksiz organizasyon hizmeti sunuyoruz. Bubble show kiralama, gösteri planlaması ve kombine paketler hakkında bilgi almak için hemen bize ulaşın!
         </p>

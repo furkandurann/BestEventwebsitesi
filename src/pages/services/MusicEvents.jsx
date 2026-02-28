@@ -1,7 +1,15 @@
 import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
+import { createServiceSchema } from '../../utils/schemaHelpers'
 
 const MusicEvents = () => {
+  const serviceSchema = createServiceSchema(
+    'Müzik Etkinlikleri | Canlı Müzik ve Performans Hizmetleri',
+    'Trio ekibi, bando takımı, saksafon dinletisi, piyanist ve çello performanslarıyla etkinliklerinize değer katan profesyonel canlı müzik organizasyonları.',
+    '/hizmetler/muzik-etkinlikleri',
+    'Canlı Müzik Organizasyonu'
+  )
+
   const services = [
     {
       id: 'trio',
@@ -62,6 +70,7 @@ const MusicEvents = () => {
           'etkinlik müziği'
         ]}
         canonicalPath="/hizmetler/muzik-etkinlikleri"
+        schema={[serviceSchema]}
       />
       
       {/* Hero Section with Background Image */}

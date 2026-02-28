@@ -38,13 +38,13 @@ const DogumGunuMekanSecimi = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-pink-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#neden-onemli" className="text-pink-600 hover:text-pink-700 font-semibold">1. Doğum Günü Mekan Seçimi Neden Önemli?</a></li>
-          <li><a href="#ev-partisi" className="text-pink-600 hover:text-pink-700 font-semibold">2. Ev Partisi: Avantajlar ve Dezavantajlar</a></li>
-          <li><a href="#parti-salonu" className="text-pink-600 hover:text-pink-700 font-semibold">3. Parti Salonu Kiralama: Profesyonel Ortam</a></li>
-          <li><a href="#acik-hava" className="text-pink-600 hover:text-pink-700 font-semibold">4. Açık Hava Organizasyonu: Park ve Bahçe Partileri</a></li>
-          <li><a href="#gosteri-onerileri" className="text-pink-600 hover:text-pink-700 font-semibold">5. Her Mekan Tipine Uygun Gösteri Önerileri</a></li>
-          <li><a href="#kontrol-listesi" className="text-pink-600 hover:text-pink-700 font-semibold">6. Mekan Seçimi Kontrol Listesi</a></li>
-          <li><a href="#sss" className="text-pink-600 hover:text-pink-700 font-semibold">7. Sık Sorulan Sorular</a></li>
+          <li><a href="#neden-onemli" className="text-pink-600 hover:text-pink-700 font-semibold">1. Doğum Günü Organizasyonu Mekan Seçimi Neden Önemli?</a></li>
+          <li><a href="#ev-partisi" className="text-pink-600 hover:text-pink-700 font-semibold">2. Doğum Günü Organizasyonu Ev Partisi: Avantajlar ve Dezavantajlar</a></li>
+          <li><a href="#parti-salonu" className="text-pink-600 hover:text-pink-700 font-semibold">3. İstanbul'da Parti Salonu Kiralama: Profesyonel Organizasyon Ortamı</a></li>
+          <li><a href="#acik-hava" className="text-pink-600 hover:text-pink-700 font-semibold">4. Açık Hava Doğum Günü Organizasyonu: Park ve Bahçe Partileri</a></li>
+          <li><a href="#gosteri-onerileri" className="text-pink-600 hover:text-pink-700 font-semibold">5. Doğum Günü Organizasyonu: Her Mekan İçin Gösteri Hizmeti Önerileri</a></li>
+          <li><a href="#kontrol-listesi" className="text-pink-600 hover:text-pink-700 font-semibold">6. Doğum Günü Mekan Kiralama Kontrol Listesi</a></li>
+          <li><a href="#sss" className="text-pink-600 hover:text-pink-700 font-semibold">7. Doğum Günü Organizasyonu Fiyat ve Hizmet Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -61,7 +61,7 @@ const DogumGunuMekanSecimi = () => {
 
       {/* Bölüm 1 */}
       <h2 id="neden-onemli" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Doğum Günü Mekan Seçimi Neden Önemli?
+        1. Doğum Günü Organizasyonu Mekan Seçimi Neden Önemli?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -114,7 +114,7 @@ const DogumGunuMekanSecimi = () => {
 
       {/* Bölüm 2 */}
       <h2 id="ev-partisi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Ev Partisi: Avantajlar ve Dezavantajlar
+        2. Doğum Günü Organizasyonu Ev Partisi: Avantajlar ve Dezavantajlar
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -157,7 +157,7 @@ const DogumGunuMekanSecimi = () => {
 
       {/* Bölüm 3 */}
       <h2 id="parti-salonu" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Parti Salonu Kiralama: Profesyonel Ortam
+        3. İstanbul'da Parti Salonu Kiralama: Profesyonel Organizasyon Ortamı
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -216,7 +216,7 @@ const DogumGunuMekanSecimi = () => {
 
       {/* Bölüm 4 */}
       <h2 id="acik-hava" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Açık Hava Organizasyonu: Park ve Bahçe Partileri
+        4. Açık Hava Doğum Günü Organizasyonu: Park ve Bahçe Partileri
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -266,7 +266,7 @@ const DogumGunuMekanSecimi = () => {
       {/* Karşılaştırma Tablosu */}
       <div className="bg-white rounded-xl border border-gray-200 overflow-hidden mb-8 shadow-sm">
         <div className="bg-pink-600 text-white p-4">
-          <h3 className="text-xl font-bold text-center">Mekan Karşılaştırma Tablosu</h3>
+          <h3 className="text-xl font-bold text-center">Doğum Günü Organizasyonu Mekan Kiralama Karşılaştırma Tablosu</h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -345,7 +345,7 @@ const DogumGunuMekanSecimi = () => {
 
       {/* Bölüm 5 */}
       <h2 id="gosteri-onerileri" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Her Mekan Tipine Uygun Gösteri Önerileri
+        5. Doğum Günü Organizasyonu: Her Mekan İçin Gösteri Hizmeti Önerileri
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -372,7 +372,7 @@ const DogumGunuMekanSecimi = () => {
           <ul className="space-y-2 text-gray-700 text-sm">
             <li>• <strong>Sihirbaz Gösterisi:</strong> Sahne alanı ve ses sistemi sayesinde büyük illüzyonlar yapılabilir. Tavşan numarası, kaybolma illüzyonları, interaktif sihir ideal ortamını bulur.</li>
             <li>• <strong>DJ + Dans Partisi:</strong> Profesyonel ses sistemi ile çocuk diskosü düzenlenebilir.</li>
-            <li>• <strong>Kostümlü Karakter:</strong> Sahne arkası hazırlık alanı sayesinde süpriz giriş yapılabilir.</li>
+            <li>• <strong>Kostümlü Karakter:</strong> Sahne arkası hazırlık alanı sayesinde sürpriz giriş yapılabilir.</li>
             <li>• <strong>Kombine Gösteri:</strong> Palyaço + sihirbaz + bubble show gibi kapsamlı organizasyon programları salon ortamında en iyi sonucu verir.</li>
           </ul>
         </div>
@@ -392,7 +392,7 @@ const DogumGunuMekanSecimi = () => {
 
       {/* Bölüm 6 */}
       <h2 id="kontrol-listesi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Mekan Seçimi Kontrol Listesi
+        6. Doğum Günü Mekan Kiralama Kontrol Listesi
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -471,7 +471,7 @@ const DogumGunuMekanSecimi = () => {
 
       {/* Bölüm 7 - SSS */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Sık Sorulan Sorular (SSS)
+        7. Doğum Günü Organizasyonu Fiyat ve Hizmet Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">
@@ -485,7 +485,7 @@ const DogumGunuMekanSecimi = () => {
 
       {/* Sonuç CTA */}
       <div className="bg-gradient-to-r from-pink-600 to-pink-700 text-white rounded-lg p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">🎂 Doğum Günü Mekanınızı Seçtiniz mi? Hemen Planlayalım!</h3>
+        <h3 className="text-2xl font-bold mb-4">🎂 İstanbul'da Doğum Günü Organizasyonu Mekan Kiralama Hizmeti!</h3>
         <p className="mb-6 leading-relaxed">
           Ev, salon veya açık hava, hangi mekanı seçerseniz seçin, profesyonel organizasyon desteği ile çocuğunuzun doğum gününü unutulmaz kılabilirsiniz. Palyaço, sihirbaz, bubble show ve daha fazla gösteri seçeneği ile mekanınıza uygun en iyi programı birlikte oluşturalım.
         </p>

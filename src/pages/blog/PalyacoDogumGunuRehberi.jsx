@@ -4,48 +4,48 @@ import BlogDetail from '../../components/BlogDetail'
 const PalyacoDogumGunuRehberi = () => {
   const faqData = [
     {
-      question: "Palyaco kac saat onceden gelir?",
-      answer: "Profesyonel palyacolar genellikle etkinlik baslama saatinden 30-45 dakika once mekanда hazir olur. Bu sure icerisinde kostum giyimi, ekipman kontrolu ve mekan tanimasini gerceklestirir. Istanbul trafigini hesaba katarak yola erken cikarlar. Ozellikle hafta sonu ve yaz aylari gibi yogun donemlerde 1 saat onceden hareket etmeleri onerilir."
+      question: "Palyaço kaç saat önceden gelir?",
+      answer: "Profesyonel palyaçolar genellikle etkinlik başlama saatinden 30-45 dakika önce mekanda hazır olur. Bu süre içerisinde kostüm giyimi, ekipman kontrolü ve mekan tanımasını gerçekleştirir. İstanbul trafiğini hesaba katarak yola erken çıkarlar. Özellikle hafta sonu ve yaz ayları gibi yoğun dönemlerde 1 saat önceden hareket etmeleri önerilir."
     },
     {
-      question: "Dogum gunu pastasi kesimi sirasinda palyaco ne yapar?",
-      answer: "Pasta kesimi sirasinda palyaco aktif bir rol ustlenir. Once tum cocuklari pasta etrafinda toplar, dogum gunu sarkisini enerjik bir sekilde soyletir ve konfeti atma gibi surprizler yapar. Pasta kesildikten sonra cocuklarin pasta sirasinda duzeni saglar. Bu sirada balon sekilleri yaparak beklemeyi eglenceli hale getirir."
+      question: "Doğum günü pastası kesimi sırasında palyaço ne yapar?",
+      answer: "Pasta kesimi sırasında palyaço aktif bir rol üstlenir. Önce tüm çocukları pasta etrafında toplar, doğum günü şarkısını enerjik bir şekilde söyletir ve konfeti atma gibi sürprizler yapar. Pasta kesildikten sonra çocukların pasta sırasında düzeni sağlar. Bu sırada balon şekilleri yaparak beklemeyi eğlenceli hale getirir."
     },
     {
-      question: "Palyaco ile birlikte hangi ek hizmetler alinabilir?",
-      answer: "Palyaco hizmetinin yaninda sihirbaz gosterisi, bubble show, yuz boyama, sosis balon gosterisi, muzikli dans oyunlari ve karakter maskot kiralama gibi ek hizmetler alinabilir. Kombine paketlerde fiyat avantaji saglanir. En populer kombinasyonlar palyaco + sihirbaz ve palyaco + bubble show paketleridir."
+      question: "Palyaço ile birlikte hangi ek hizmetler alınabilir?",
+      answer: "Palyaço hizmetinin yanında sihirbaz gösterisi, bubble show, yüz boyama, sosis balon gösterisi, müzikli dans oyunları ve karakter maskot kiralama gibi ek hizmetler alınabilir. Kombine paketlerde fiyat avantajı sağlanır. En popüler kombinasyonlar palyaço + sihirbaz ve palyaço + bubble show paketleridir."
     },
     {
-      question: "Kapali alanda palyaco gosterisi yapilabilir mi?",
-      answer: "Evet, palyaco gosterisi kapali alanlarda rahatlika yapilabilir. Minimum 4x4 metre alan yeterlidir. Kapali alanlarda ses sistemi daha etkili calisir ve cocuklarin dikkati daha kolay toplanir. Ancak cok kucuk alanlarda bazi hareketli oyunlar sinirlandirilabilir. Salon yuksekligi en az 2.5 metre olmalidir."
+      question: "Kapalı alanda palyaço gösterisi yapılabilir mi?",
+      answer: "Evet, palyaço gösterisi kapalı alanlarda rahatlıkla yapılabilir. Minimum 4x4 metre alan yeterlidir. Kapalı alanlarda ses sistemi daha etkili çalışır ve çocukların dikkati daha kolay toplanır. Ancak çok küçük alanlarda bazı hareketli oyunlar sınırlandırılabilir. Salon yüksekliği en az 2.5 metre olmalıdır."
     },
     {
-      question: "Palyaco kostumu cocuklari korkutur mu?",
-      answer: "Profesyonel palyacolar cocuk psikolojisi egitimi almis kisilerdir ve ilk tanismada yavas yavas yaklasarak cocuklarin guvenini kazanir. 2-3 yas arasi cocuklarda hafif cekingenlik normal olup genellikle ilk 5 dakika icerisinde asilir. Palyacomuz renkli ama abartisiz makyaj kullanir, dev peruk yerine sevimli sapkalar tercih edebilir. Eger cocugunuzun ozel bir korkusu varsa onceden bilgilendirmeniz yeterlidir."
+      question: "Palyaço kostümü çocukları korkutur mu?",
+      answer: "Profesyonel palyaçolar çocuk psikolojisi eğitimi almış kişilerdir ve ilk tanışmada yavaş yavaş yaklaşarak çocukların güvenini kazanır. 2-3 yaş arası çocuklarda hafif çekingenlik normal olup genellikle ilk 5 dakika içerisinde aşılır. Palyaçomuz renkli ama abartısız makyaj kullanır, dev peruk yerine sevimli şapkalar tercih edebilir. Eğer çocuğunuzun özel bir korkusu varsa önceden bilgilendirmeniz yeterlidir."
     },
     {
-      question: "Iptal durumunda ne olur?",
-      answer: "Etkinlikten 48 saat oncesine kadar yapilan iptallerde ucret iadesi yapilir. 24-48 saat arasi iptallerde %50 kesinti uygulanir. 24 saatten kisa surede yapilan iptallerde iade yapilamamaktadir. Hava kosullari nedeniyle yapilan iptallerde tarih degisikligi ucretsiz olarak saglanir. Pandemi gibi mucbir sebep durumlarinda tam iade garantisi verilir."
+      question: "İptal durumunda ne olur?",
+      answer: "Etkinlikten 48 saat öncesine kadar yapılan iptallerde ücret iadesi yapılır. 24-48 saat arası iptallerde %50 kesinti uygulanır. 24 saatten kısa sürede yapılan iptallerde iade yapılamamaktadır. Hava koşulları nedeniyle yapılan iptallerde tarih değişikliği ücretsiz olarak sağlanır. Pandemi gibi mücbir sebep durumlarında tam iade garantisi verilir."
     }
   ]
 
   const content = (
     <>
-      {/* Icindekiler */}
+      {/* İçindekiler */}
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-red-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#neden-onemli" className="text-red-600 hover:text-red-700 font-semibold">1. Palyaço Kiralama Neden Önemli?</a></li>
-          <li><a href="#yas-gruplari" className="text-red-600 hover:text-red-700 font-semibold">2. Yaş Gruplarına Göre Palyaço Aktiviteleri</a></li>
-          <li><a href="#profesyonel-vs-amator" className="text-red-600 hover:text-red-700 font-semibold">3. Profesyonel vs Amatör Palyaço: Farkı Nereden Anlarsınız?</a></li>
-          <li><a href="#gosteri-akisi" className="text-red-600 hover:text-red-700 font-semibold">4. Doğum Günü Organizasyonunda Palyaço Gösterisi Akışı</a></li>
-          <li><a href="#fiyat-faktorleri" className="text-red-600 hover:text-red-700 font-semibold">5. Palyaço Kiralama Fiyatını Etkileyen Faktörler</a></li>
-          <li><a href="#istanbul-hizmet" className="text-red-600 hover:text-red-700 font-semibold">6. İstanbul'un Her Semtinde Palyaço Hizmeti</a></li>
-          <li><a href="#sss" className="text-red-600 hover:text-red-700 font-semibold">7. Sık Sorulan Sorular</a></li>
+          <li><a href="#neden-onemli" className="text-red-600 hover:text-red-700 font-semibold">1. Doğum Günü Palyaço Kiralama Neden Önemli?</a></li>
+          <li><a href="#yas-gruplari" className="text-red-600 hover:text-red-700 font-semibold">2. Palyaço Kiralama Hizmeti: Yaş Gruplarına Göre Aktiviteler</a></li>
+          <li><a href="#profesyonel-vs-amator" className="text-red-600 hover:text-red-700 font-semibold">3. Profesyonel Palyaço Kiralama ve Amatör Farkı</a></li>
+          <li><a href="#gosteri-akisi" className="text-red-600 hover:text-red-700 font-semibold">4. Doğum Günü Organizasyonu Palyaço Kiralama Gösterisi Akışı</a></li>
+          <li><a href="#fiyat-faktorleri" className="text-red-600 hover:text-red-700 font-semibold">5. İstanbul Palyaço Kiralama Fiyatını Etkileyen Faktörler</a></li>
+          <li><a href="#istanbul-hizmet" className="text-red-600 hover:text-red-700 font-semibold">6. İstanbul'un Her Semtinde Palyaço Kiralama Organizasyonu</a></li>
+          <li><a href="#sss" className="text-red-600 hover:text-red-700 font-semibold">7. Doğum Günü Palyaço Kiralama Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
-      {/* Giris */}
+      {/* Giriş */}
       <p className="text-lg text-gray-700 leading-relaxed mb-6">
         Çocuğunuzun doğum günü organizasyonu için palyaço kiralama, partinin en eğlenceli ve unutulmaz kısmını oluşturur. Profesyonel bir palyaço gösterisi, çocukların gülümsemesini sağlamakla kalmaz; onları aktif olarak eğlenceye dahil eder, sosyal becerilerini geliştirir ve doğum gününü yıllar sonra bile hatırlanacak bir deneyime dönüştürür. Bu kapsamlı rehberde, doğum günü organizasyonunuzda palyaço kiralama sürecinin her aşamasını detaylı şekilde ele alacağız. Daha önce hazırladığımız <Link to="/blog/palyaco-kiralama-istanbul" className="text-red-600 hover:text-red-700 font-semibold underline">İstanbul'da Palyaço Kiralama</Link> yazımızda genel bilgileri paylaşmıştık; bu yazıda ise özellikle doğum günü organizasyonlarına odaklanıyoruz.
       </p>
@@ -56,9 +56,9 @@ const PalyacoDogumGunuRehberi = () => {
         </p>
       </div>
 
-      {/* Bolum 1 */}
+      {/* Bölüm 1 */}
       <h2 id="neden-onemli" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Palyaço Kiralama Neden Önemli?
+        1. Doğum Günü Palyaço Kiralama Neden Önemli?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -105,9 +105,9 @@ const PalyacoDogumGunuRehberi = () => {
         </div>
       </div>
 
-      {/* Bolum 2 */}
+      {/* Bölüm 2 */}
       <h2 id="yas-gruplari" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Yaş Gruplarına Göre Palyaço Aktiviteleri
+        2. Palyaço Kiralama Hizmeti: Yaş Gruplarına Göre Aktiviteler
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -155,9 +155,9 @@ const PalyacoDogumGunuRehberi = () => {
         </div>
       </div>
 
-      {/* Bolum 3 */}
+      {/* Bölüm 3 */}
       <h2 id="profesyonel-vs-amator" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Profesyonel vs Amatör Palyaço: Farkı Nereden Anlarsınız?
+        3. Profesyonel Palyaço Kiralama ve Amatör Farkı Nereden Anlarsınız?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -203,9 +203,9 @@ const PalyacoDogumGunuRehberi = () => {
         </ol>
       </div>
 
-      {/* Bolum 4 */}
+      {/* Bölüm 4 */}
       <h2 id="gosteri-akisi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Doğum Günü Organizasyonunda Palyaço Gösterisi Akışı
+        4. Doğum Günü Organizasyonu Palyaço Kiralama Gösterisi Akışı
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -274,7 +274,7 @@ const PalyacoDogumGunuRehberi = () => {
         </div>
       </div>
 
-      {/* Gercek Hikaye */}
+      {/* Gerçek Hikaye */}
       <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-lg p-6 mb-8 border border-orange-200">
         <h4 className="font-bold text-gray-900 mb-3 text-xl">🎉 Gerçek Hikaye: Ataşehir'de 6 Yaş Doğum Günü</h4>
         <p className="text-gray-700 text-sm mb-4">
@@ -285,9 +285,9 @@ const PalyacoDogumGunuRehberi = () => {
         </p>
       </div>
 
-      {/* Bolum 5 */}
+      {/* Bölüm 5 */}
       <h2 id="fiyat-faktorleri" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Palyaço Kiralama Fiyatını Etkileyen Faktörler
+        5. İstanbul Palyaço Kiralama Fiyatını Etkileyen Faktörler
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -343,9 +343,9 @@ const PalyacoDogumGunuRehberi = () => {
         </ul>
       </div>
 
-      {/* Bolum 6 */}
+      {/* Bölüm 6 */}
       <h2 id="istanbul-hizmet" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. İstanbul'un Her Semtinde Palyaço Hizmeti
+        6. İstanbul'un Her Semtinde Palyaço Kiralama Organizasyonu
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -398,7 +398,7 @@ const PalyacoDogumGunuRehberi = () => {
 
       {/* SSS */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Sık Sorulan Sorular (SSS)
+        7. Doğum Günü Palyaço Kiralama Fiyat ve Hizmet Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">
@@ -412,7 +412,7 @@ const PalyacoDogumGunuRehberi = () => {
 
       {/* Service CTA */}
       <div className="bg-red-50 border border-red-200 rounded-lg p-8 mb-8 text-center">
-        <h3 className="text-2xl font-bold text-gray-900 mb-4">Profesyonel Palyaço Kiralama Hizmeti</h3>
+        <h3 className="text-2xl font-bold text-gray-900 mb-4">İstanbul Profesyonel Palyaço Kiralama Hizmeti</h3>
         <p className="text-gray-700 mb-6 leading-relaxed">
           Doğum günü organizasyonunuz için deneyimli ve güvenilir palyaço kadromuzla tanışın. İstanbul genelinde hizmet veren ekibimiz, çocuğunuzun özel gününü unutulmaz kılmak için hazır.
         </p>

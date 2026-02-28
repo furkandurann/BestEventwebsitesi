@@ -4,6 +4,8 @@ const FireShow = () => {
   const eventData = {
     title: "İstanbul'da Profesyonel Ateş Gösterisi - Fire Show",
     description: "Etkinlikleriniz için etkileyici ateş gösterisi - Kadıköy, Üsküdar, Maltepe ve tüm İstanbul'da profesyonel fire show performansları",
+    canonicalPath: "/organizasyonlar/ates-gosterisi",
+    serviceType: "Ateş Gösterisi",
     longDescription: `Best Event olarak İstanbul'un her bölgesinde profesyonel ateş gösterisi sunuyoruz. Tüm ilçelerde düğün organizasyonları, açılış etkinlikleri, kurumsal toplantılar ve özel geceler için göz alıcı ateş performansları ile hizmetinizdeyiz.
 
 🔥 Ateş Gösterisi Nedir?

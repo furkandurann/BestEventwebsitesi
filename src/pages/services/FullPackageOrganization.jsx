@@ -1,11 +1,17 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import NarrativeSection from '../../components/NarrativeSection'
+import GoogleReviews from '../../components/GoogleReviews'
+import { getReviewsByTags } from '../../data/googleReviews'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
+import DistrictLinksGrid from '../../components/DistrictLinksGrid'
+import RelatedBlogPosts from '../../components/RelatedBlogPosts'
+import RelatedServices from '../../components/RelatedServices'
 
 const FullPackageOrganization = () => {
   const faqs = [
@@ -52,81 +58,39 @@ const FullPackageOrganization = () => {
     { icon: '🎤', text: 'Ses Sistemi' }
   ]
 
-  const regions = [
-    'Kadıköy', 'Beşiktaş', 'Şişli', 'Beylikdüzü', 'Üsküdar', 'Maltepe', 'Kartal', 'Ataşehir',
-    'Pendik', 'Sarıyer', 'Beyoğlu', 'Fatih', 'Başakşehir', 'Esenyurt', 'Bakırköy', 've daha fazlası...'
-  ]
+
+  const serviceSchema = createServiceSchema(
+    'Doğum Günü Organizasyonu İstanbul | Anahtar Teslim',
+    'Siz sadece gelin eğlenin! Dekorasyon, animatör, catering, show - her şey dahil anahtar teslim doğum günü organizasyonu. İstanbul genelinde profesyonel hizmet.',
+    '/organizasyonlar/full-paket-organizasyon',
+    'Doğum Günü Organizasyonu'
+  )
+  const faqSchema = createFAQSchema(faqs)
 
   return (
     <>
       <Seo
-        title="Full Paket Doğum Günü Organizasyonu | Anahtar Teslim | Best Event"
+        title="Doğum Günü Organizasyonu İstanbul | Anahtar Teslim | Best Event"
         description="Siz sadece gelin eğlenin! Dekorasyon, animatör, catering, show - her şey dahil anahtar teslim doğum günü organizasyonu. İstanbul genelinde profesyonel hizmet."
         keywords={[
           'full paket doğum günü',
           'anahtar teslim organizasyon',
           'her şey dahil doğum günü istanbul',
-          'profesyonel çocuk etkinliği'
+          'profesyonel çocuk etkinliği',
+          'çocuk partisi',
+          'kutlama organizasyonu',
+          'yaş günü',
+          'parti planlama',
+          'doğum günü süsleme',
+          'balon dekorasyon',
+          'tema parti',
+          'konsept doğum günü'
         ]}
         image="/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp"
         canonicalPath="/organizasyonlar/full-paket-organizasyon"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Full Paket Doğum Günü Organizasyonu İstanbul",
-            "description": "Siz sadece gelin eğlenin! Dekorasyon, animatör, catering, show - her şey dahil anahtar teslim doğum günü organizasyonu. İstanbul genelinde profesyonel hizmet.",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "url": "https://bestevent.com.tr",
-              "telephone": "+905307309009",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "İstanbul",
-                "addressRegion": "İstanbul",
-                "addressCountry": "TR"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 40.9872,
-                "longitude": 29.0301
-              },
-              "areaServed": [
-                { "@type": "City", "name": "İstanbul" },
-                { "@type": "City", "name": "Kocaeli" },
-                { "@type": "City", "name": "Tekirdağ" }
-              ]
-            },
-            "areaServed": { "@type": "City", "name": "İstanbul" },
-            "serviceType": "Doğum Günü Organizasyonu"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "BestEvent - Full Paket Doğum Günü Organizasyonu",
-            "url": "https://bestevent.com.tr/organizasyonlar/full-paket-organizasyon",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5.0",
-              "bestRating": "5",
-              "worstRating": "1",
-              "ratingCount": "217",
-              "reviewCount": "217"
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -183,7 +147,7 @@ const FullPackageOrganization = () => {
             className="text-5xl md:text-6xl lg:text-7xl font-bold text-white"
             style={{ fontFamily: 'Poppins, sans-serif', lineHeight: '1.25' }}
           >
-            Doğum Günü Organizasyonu
+            Doğum Günü Organizasyonu İstanbul
           </motion.h1>
         </div>
 
@@ -217,7 +181,7 @@ const FullPackageOrganization = () => {
               <span className="inline-block w-3 h-3 bg-yellow-300 rounded-full animate-pulse shadow-lg shadow-yellow-500/50" />
               <span className="inline-block w-3 h-3 bg-green-300 rounded-full animate-pulse animation-delay-100 shadow-lg shadow-green-500/50" />
               <span className="inline-block w-3 h-3 bg-blue-300 rounded-full animate-pulse animation-delay-200 shadow-lg shadow-blue-500/50" />
-              <span className="mx-2">DOĞUM GÜNÜ ORGANİZASYON PAKETİ</span>
+              <span className="mx-2">İstanbul Doğum Günü Organizasyon Paketi</span>
               <span className="inline-block w-3 h-3 bg-blue-300 rounded-full animate-pulse animation-delay-200 shadow-lg shadow-blue-500/50" />
               <span className="inline-block w-3 h-3 bg-green-300 rounded-full animate-pulse animation-delay-100 shadow-lg shadow-green-500/50" />
               <span className="inline-block w-3 h-3 bg-yellow-300 rounded-full animate-pulse shadow-lg shadow-yellow-500/50" />
@@ -266,7 +230,7 @@ const FullPackageOrganization = () => {
       </div>
       <NarrativeSection
         title="Konsept Doğum Günü & Süsleme"
-        body="Seçeceğiniz tema ile doğum gününüz unutulmaz bir hale gelecek, aradan yıllar geçse bile fotoğraf albümünüzde bu yaş günü unutulmaz yaş günü olarak hatırlanacak; MineCraft, Sonic, Unicorn, Süper Kahramanlar ve çok daha fazlası. Best Event olarak İstanbul'da 10+ yıldır profesyonel konsept doğum günü organizasyonu hizmeti sunuyoruz. Çocuğunuzun hayal ettiği temayı gerçeğe dönüştürüyor, özel süsleme ve profesyonel fotoğraf çekimi ile her anı ölümsüzleştiriyoruz."
+        body="Seçeceğiniz tema parti konsepti ile çocuk partisi ve yaş günü kutlamanız unutulmaz bir hale gelecek, aradan yıllar geçse bile fotoğraf albümünüzde bu kutlama organizasyonu unutulmaz olarak hatırlanacak; MineCraft, Sonic, Unicorn, Süper Kahramanlar ve çok daha fazlası. Best Event olarak İstanbul'da 10+ yıldır profesyonel konsept doğum günü organizasyonu ve parti planlama hizmeti sunuyoruz. Çocuğunuzun hayal ettiği temayı gerçeğe dönüştürüyor, doğum günü süsleme, balon dekorasyon ve profesyonel fotoğraf çekimi ile her anı ölümsüzleştiriyoruz."
       />
 
       {/* Pasta */}
@@ -418,10 +382,13 @@ const FullPackageOrganization = () => {
         </div>
       </section>
 
+      {/* Google Müşteri Yorumları */}
+      <GoogleReviews reviews={getReviewsByTags(['dogumgunu', 'genel'])} title="Doğum Günü Organizasyonu Müşteri Yorumları" />
+
       {/* FAQ */}
       <section className="py-20 bg-black">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-white mb-12 text-center">Sıkça Sorulan Sorular</h2>
+          <h2 className="text-4xl font-bold text-white mb-12 text-center">Doğum Günü Organizasyonu Sık Sorulan Sorular</h2>
           <div className="space-y-6">
             {faqs.map((item, idx) => (
               <motion.div
@@ -441,36 +408,17 @@ const FullPackageOrganization = () => {
       </section>
 
       {/* Regions */}
-      <section className="py-20 bg-black">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Poppins, sans-serif', lineHeight: '1.25' }}>
-            Hizmet Bölgelerimiz
-          </h2>
-          <p className="text-xl text-white mb-8" style={{ lineHeight: '1.7' }}>
-            İstanbul genelinde full paket organizasyon hizmeti
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {regions.map((area, idx) => (
-              <motion.div
-                key={area}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.03 }}
-                className="py-3 px-4 bg-gray-900 text-white rounded-lg font-medium"
-              >
-                {area}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <DistrictLinksGrid
+        lpServiceSlug="dogum-gunu-organizasyonu"
+        serviceName="Doğum Günü Organizasyonu"
+        title="Doğum Günü Organizasyonu İstanbul Hizmet Bölgelerimiz"
+      />
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-pink-600 via-rose-500 to-orange-500">
         <div className="max-w-4xl mx-auto px-4 text-center text-white">
           <h2 className="text-5xl font-bold mb-6" style={{ fontFamily: 'Poppins, sans-serif', lineHeight: '1.25' }}>
-            Hemen Rezervasyon Yapın!
+            Doğum Günü Organizasyonu İstanbul - Hemen Rezervasyon Yapın!
           </h2>
           <p className="text-2xl mb-10 text-white/90">Hayalinizi gerçeğe dönüştürmenin zamanı geldi</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
@@ -503,6 +451,9 @@ const FullPackageOrganization = () => {
           </p>
         </div>
       </section>
+
+      <RelatedServices currentService="dogum-gunu" />
+      <RelatedBlogPosts servicePath="/organizasyonlar/full-paket-organizasyon" />
     </>
   )
 }

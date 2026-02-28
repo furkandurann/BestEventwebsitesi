@@ -7,11 +7,11 @@ const BubbleShowGosterisi = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-cyan-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#nedir" className="text-cyan-600 hover:text-cyan-700 font-semibold">1. Bubble Show Nedir?</a></li>
-          <li><a href="#unutulmaz-anlar" className="text-cyan-600 hover:text-cyan-700 font-semibold">2. En Unutulmaz Bubble Show Gösterisi</a></li>
-          <li><a href="#moral" className="text-cyan-600 hover:text-cyan-700 font-semibold">3. Bubble Show Sanatçısının Morali Bozulmamalı</a></li>
-          <li><a href="#teknik" className="text-cyan-600 hover:text-cyan-700 font-semibold">4. Bubble Show Teknik Gereksinimleri</a></li>
-          <li><a href="#sss" className="text-cyan-600 hover:text-cyan-700 font-semibold">5. Sık Sorulan Sorular</a></li>
+          <li><a href="#nedir" className="text-cyan-600 hover:text-cyan-700 font-semibold">1. Bubble Show Kiralama Hizmeti Nedir?</a></li>
+          <li><a href="#unutulmaz-anlar" className="text-cyan-600 hover:text-cyan-700 font-semibold">2. İstanbul'da En Unutulmaz Bubble Show Organizasyonu Anları</a></li>
+          <li><a href="#moral" className="text-cyan-600 hover:text-cyan-700 font-semibold">3. Bubble Show Kiralama Öncesi Sanatçı Morali Neden Önemli?</a></li>
+          <li><a href="#teknik" className="text-cyan-600 hover:text-cyan-700 font-semibold">4. Bubble Show Kiralama Teknik Gereksinimleri ve Fiyat Etkenleri</a></li>
+          <li><a href="#sss" className="text-cyan-600 hover:text-cyan-700 font-semibold">5. Bubble Show Kiralama Fiyat ve Hizmet Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -28,7 +28,7 @@ const BubbleShowGosterisi = () => {
 
       {/* Bölüm 1 */}
       <h2 id="nedir" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Bubble Show Nedir?
+        1. Bubble Show Kiralama Hizmeti Nedir?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -67,7 +67,7 @@ const BubbleShowGosterisi = () => {
 
       {/* Bölüm 2 */}
       <h2 id="unutulmaz-anlar" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. En Unutulmaz Bubble Show Gösterisi
+        2. İstanbul'da En Unutulmaz Bubble Show Organizasyonu Anları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -102,7 +102,7 @@ const BubbleShowGosterisi = () => {
 
       {/* Bölüm 3 */}
       <h2 id="moral" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Bubble Show Sanatçısının Morali Bozulmamalı
+        3. Bubble Show Kiralama Öncesi Sanatçı Morali Neden Önemli?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -149,7 +149,7 @@ const BubbleShowGosterisi = () => {
 
       {/* Bölüm 4 */}
       <h2 id="teknik" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Bubble Show Teknik Gereksinimleri
+        4. Bubble Show Kiralama Teknik Gereksinimleri ve Fiyat Etkenleri
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -205,7 +205,7 @@ const BubbleShowGosterisi = () => {
 
       {/* Bölüm 5 */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Sık Sorulan Sorular (SSS)
+        5. Bubble Show Kiralama Fiyat ve Hizmet Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">
@@ -254,7 +254,7 @@ const BubbleShowGosterisi = () => {
 
       {/* Sonuç */}
       <div className="bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-lg p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">🫧 İstanbul'da En İyi Bubble Show!</h3>
+        <h3 className="text-2xl font-bold mb-4">🫧 İstanbul'da En İyi Bubble Show Kiralama Hizmeti!</h3>
         <p className="mb-6 leading-relaxed">
           Profesyonel bubble show kiralama ile çocuklarınıza büyülü bir köpük dünyası yaşatın. Dev balonlardan renkli köpük bulutlarına, unutulmaz anlardan eğlenceli oyunlara kadar her şey dahil!
         </p>

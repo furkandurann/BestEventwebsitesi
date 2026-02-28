@@ -35,11 +35,11 @@ const KostumluKarakterDogumGunu = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-indigo-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#tema-parti-nedir" className="text-indigo-600 hover:text-indigo-700 font-semibold">1. Tema Parti Nedir? Kostümlü Karakter ile Fark Yaratın</a></li>
-          <li><a href="#populer-temalar" className="text-indigo-600 hover:text-indigo-700 font-semibold">2. En Popüler Doğum Günü Temaları</a></li>
-          <li><a href="#susleme-uyumu" className="text-indigo-600 hover:text-indigo-700 font-semibold">3. Kostümlü Karakter + Süsleme Uyumu</a></li>
-          <li><a href="#gosteri-akisi" className="text-indigo-600 hover:text-indigo-700 font-semibold">4. Gösteri Akışı: Karakterin Sürpriz Girişinden Vedaya</a></li>
-          <li><a href="#hizmet-kombinasyonu" className="text-indigo-600 hover:text-indigo-700 font-semibold">5. Kostümlü Karakter + Diğer Hizmetler Kombinasyonu</a></li>
+          <li><a href="#tema-parti-nedir" className="text-indigo-600 hover:text-indigo-700 font-semibold">1. Tema Parti Nedir? Kostümlü Karakter Kiralama ile Fark Yaratın</a></li>
+          <li><a href="#populer-temalar" className="text-indigo-600 hover:text-indigo-700 font-semibold">2. İstanbul'da En Popüler Doğum Günü Tema Organizasyonları</a></li>
+          <li><a href="#susleme-uyumu" className="text-indigo-600 hover:text-indigo-700 font-semibold">3. Kostümlü Karakter Kiralama + Süsleme Uyumu</a></li>
+          <li><a href="#gosteri-akisi" className="text-indigo-600 hover:text-indigo-700 font-semibold">4. Gösteri Akışı ve Organizasyon: Karakterin Sürpriz Girişinden Vedaya</a></li>
+          <li><a href="#hizmet-kombinasyonu" className="text-indigo-600 hover:text-indigo-700 font-semibold">5. Kostümlü Karakter Kiralama + Diğer Hizmet Kombinasyonları ve Fiyat Avantajları</a></li>
           <li><a href="#checklist" className="text-indigo-600 hover:text-indigo-700 font-semibold">6. Tema Parti Organizasyonu Checklist</a></li>
           <li><a href="#sss" className="text-indigo-600 hover:text-indigo-700 font-semibold">7. Sık Sorulan Sorular</a></li>
         </ul>
@@ -58,7 +58,7 @@ const KostumluKarakterDogumGunu = () => {
 
       {/* Bölüm 1 */}
       <h2 id="tema-parti-nedir" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Tema Parti Nedir? Kostümlü Karakter ile Fark Yaratın
+        1. Tema Parti Nedir? Kostümlü Karakter Kiralama ile Fark Yaratın
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -109,7 +109,7 @@ const KostumluKarakterDogumGunu = () => {
 
       {/* Bölüm 2 */}
       <h2 id="populer-temalar" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. En Popüler Doğum Günü Temaları
+        2. İstanbul'da En Popüler Doğum Günü Tema Organizasyonları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -170,7 +170,7 @@ const KostumluKarakterDogumGunu = () => {
 
       {/* Bölüm 3 */}
       <h2 id="susleme-uyumu" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Kostümlü Karakter + Süsleme Uyumu
+        3. Kostümlü Karakter Kiralama + Süsleme Uyumu
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -207,7 +207,7 @@ const KostumluKarakterDogumGunu = () => {
 
       {/* Bölüm 4 */}
       <h2 id="gosteri-akisi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Gösteri Akışı: Karakterin Sürpriz Girişinden Vedaya
+        4. Gösteri Akışı ve Organizasyon: Karakterin Sürpriz Girişinden Vedaya
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -278,7 +278,7 @@ const KostumluKarakterDogumGunu = () => {
 
       {/* Bölüm 5 */}
       <h2 id="hizmet-kombinasyonu" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Kostümlü Karakter + Diğer Hizmetler Kombinasyonu
+        5. Kostümlü Karakter Kiralama + Diğer Hizmet Kombinasyonları ve Fiyat Avantajları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">

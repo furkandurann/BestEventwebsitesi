@@ -7,14 +7,14 @@ const PalyacoKiralama = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-red-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#palyaco-nesesi" className="text-red-600 hover:text-red-700 font-semibold">1. Palyaço Neşesi: Etkinliğe Nasıl Enerji Katar?</a></li>
-          <li><a href="#peruk-renkleri" className="text-red-600 hover:text-red-700 font-semibold">2. Palyaçonun Peruğundaki Renkler</a></li>
-          <li><a href="#yolda-hissediyor" className="text-red-600 hover:text-red-700 font-semibold">3. Palyaço Yolda Neler Hissediyor?</a></li>
-          <li><a href="#sosis-balon" className="text-red-600 hover:text-red-700 font-semibold">4. Sosis Balon Şekilleri</a></li>
-          <li><a href="#kadikoy-trafik" className="text-red-600 hover:text-red-700 font-semibold">5. Kadıköy'de Maç Günleri Trafik Olur mu?</a></li>
-          <li><a href="#anneler-mudahale" className="text-red-600 hover:text-red-700 font-semibold">6. Annelerin Oyunlara Müdahale Etmemesi Gerekir</a></li>
-          <li><a href="#moral" className="text-red-600 hover:text-red-700 font-semibold">7. Palyaçonun Morali Bozulmamalı</a></li>
-          <li><a href="#sss" className="text-red-600 hover:text-red-700 font-semibold">8. Sık Sorulan Sorular</a></li>
+          <li><a href="#palyaco-nesesi" className="text-red-600 hover:text-red-700 font-semibold">1. İstanbul Palyaço Kiralama: Etkinliğe Nasıl Enerji Katar?</a></li>
+          <li><a href="#peruk-renkleri" className="text-red-600 hover:text-red-700 font-semibold">2. Palyaço Kiralama Hizmeti: Peruk Renkleri ve Çocuklara Etkisi</a></li>
+          <li><a href="#yolda-hissediyor" className="text-red-600 hover:text-red-700 font-semibold">3. İstanbul'da Palyaço Organizasyonu: Yolda Neler Yaşanır?</a></li>
+          <li><a href="#sosis-balon" className="text-red-600 hover:text-red-700 font-semibold">4. Palyaço Kiralama Fiyatına Dahil Sosis Balon Şekilleri</a></li>
+          <li><a href="#kadikoy-trafik" className="text-red-600 hover:text-red-700 font-semibold">5. Kadıköy Palyaço Kiralama: Maç Günleri Trafik ve Organizasyon</a></li>
+          <li><a href="#anneler-mudahale" className="text-red-600 hover:text-red-700 font-semibold">6. Doğum Günü Palyaço Organizasyonunda Ebeveyn Rehberi</a></li>
+          <li><a href="#moral" className="text-red-600 hover:text-red-700 font-semibold">7. Profesyonel Palyaço Kiralama Hizmetinde Atmosfer Nasıl Korunur?</a></li>
+          <li><a href="#sss" className="text-red-600 hover:text-red-700 font-semibold">8. Palyaço Kiralama Fiyat ve Hizmet Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -31,7 +31,7 @@ const PalyacoKiralama = () => {
 
       {/* Bölüm 1 */}
       <h2 id="palyaco-nesesi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Palyaço Neşesi: Etkinliğe Nasıl Enerji Katar?
+        1. İstanbul Palyaço Kiralama: Etkinliğe Nasıl Enerji Katar?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -84,7 +84,7 @@ const PalyacoKiralama = () => {
 
       {/* Bölüm 2 */}
       <h2 id="peruk-renkleri" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Palyaçonun Peruğundaki Renkler: Çocuklarda Ne Uyandırır?
+        2. Palyaço Kiralama Hizmeti: Peruk Renkleri ve Çocuklara Etkisi
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -123,7 +123,7 @@ const PalyacoKiralama = () => {
 
       {/* Bölüm 3 */}
       <h2 id="yolda-hissediyor" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Palyaço Yolda Neler Hissediyor? (Backstage Hikayesi)
+        3. İstanbul'da Palyaço Organizasyonu: Yolda Neler Yaşanır?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -161,7 +161,7 @@ const PalyacoKiralama = () => {
 
       {/* Bölüm 4 */}
       <h2 id="sosis-balon" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Sosis Balon Şekilleri: En Popüler Tasarımlar
+        4. Palyaço Kiralama Fiyatına Dahil Sosis Balon Şekilleri
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -208,7 +208,7 @@ const PalyacoKiralama = () => {
 
       {/* Bölüm 5 */}
       <h2 id="kadikoy-trafik" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Kadıköy'de Maç Günleri Trafik Olur mu?
+        5. Kadıköy Palyaço Kiralama: Maç Günleri Trafik ve Organizasyon
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -240,7 +240,7 @@ const PalyacoKiralama = () => {
 
       {/* Bölüm 6 */}
       <h2 id="anneler-mudahale" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Doğum Günlerinde Annelerin Oyunlara Müdahale Etmemesi Gerekir
+        6. Doğum Günü Palyaço Organizasyonunda Ebeveyn Rehberi
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -269,7 +269,7 @@ const PalyacoKiralama = () => {
 
       {/* Bölüm 7 */}
       <h2 id="moral" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Palyaçonun Morali Bozulmamalı: Atmosfer Nasıl Korunur?
+        7. Profesyonel Palyaço Kiralama Hizmetinde Atmosfer Nasıl Korunur?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -301,7 +301,7 @@ const PalyacoKiralama = () => {
 
       {/* Bölüm 8 */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        8. Sık Sorulan Sorular (SSS)
+        8. Palyaço Kiralama Fiyat ve Hizmet Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">

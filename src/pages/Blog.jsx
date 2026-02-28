@@ -1,15 +1,20 @@
 import { useState } from 'react'
 import Seo from '../components/Seo'
 import BlogCard from '../components/BlogCard'
-import { blogPosts } from '../data/blogPosts'
+import { blogPosts, subCategories } from '../data/blogPosts'
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('Tümü')
+  const [activeSubCategory, setActiveSubCategory] = useState('all')
 
-  // Kategori filtreleme
-  const filteredPosts = selectedCategory === 'Tümü'
+  // Kategori filtreleme (ana kategori + alt kategori)
+  const categoryFiltered = selectedCategory === 'Tümü'
     ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory)
+
+  const filteredPosts = activeSubCategory === 'all'
+    ? categoryFiltered
+    : categoryFiltered.filter(post => post.subCategory === activeSubCategory)
 
   const blogSchema = [
     {
@@ -69,7 +74,10 @@ const Blog = () => {
             {['Tümü', 'Etkinlik', 'Bölge'].map((category) => (
               <button
                 key={category}
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => {
+                  setSelectedCategory(category)
+                  setActiveSubCategory('all')
+                }}
                 className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
                   selectedCategory === category
                     ? 'bg-red-600 text-white shadow-lg scale-105'
@@ -82,6 +90,28 @@ const Blog = () => {
                 {category === 'Bölge' && ` (${blogPosts.filter(p => p.category === 'Bölge').length})`}
               </button>
             ))}
+          </div>
+
+          {/* Alt Kategori Filtreleri */}
+          <div className="mt-4 flex md:flex-wrap md:justify-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            {subCategories.map((sub) => {
+              const count = sub.key === 'all'
+                ? categoryFiltered.length
+                : categoryFiltered.filter(p => p.subCategory === sub.key).length
+              return (
+                <button
+                  key={sub.key}
+                  onClick={() => setActiveSubCategory(sub.key)}
+                  className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    activeSubCategory === sub.key
+                      ? 'bg-red-600 text-white shadow-md scale-105'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {sub.label} ({count})
+                </button>
+              )
+            })}
           </div>
         </div>
       </section>

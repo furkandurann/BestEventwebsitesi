@@ -7,15 +7,15 @@ const PalyacoGezegeni = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-purple-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#hakkimizda" className="text-purple-600 hover:text-purple-700 font-semibold">1. Palyaço Gezegeni Hakkında: 6 Yıllık Güven</a></li>
-          <li><a href="#dogum-gunu" className="text-purple-600 hover:text-purple-700 font-semibold">2. Profesyonel Doğum Günü Organizasyonu</a></li>
-          <li><a href="#bubble-show" className="text-purple-600 hover:text-purple-700 font-semibold">3. Bubble Show Gösterileri</a></li>
-          <li><a href="#sihirbaz" className="text-purple-600 hover:text-purple-700 font-semibold">4. Sihirbaz Gösterileri ve Magic Show</a></li>
-          <li><a href="#kurumsal" className="text-purple-600 hover:text-purple-700 font-semibold">5. Kurumsal Etkinlik Hizmetleri</a></li>
-          <li><a href="#kostumlu-karakterler" className="text-purple-600 hover:text-purple-700 font-semibold">6. Kostümlü Karakter Kiralama</a></li>
-          <li><a href="#parti-ekipmanlari" className="text-purple-600 hover:text-purple-700 font-semibold">7. Parti Ekipmanları: Popcorn ve Pamuk Şeker Makinası</a></li>
-          <li><a href="#yorumlar" className="text-purple-600 hover:text-purple-700 font-semibold">8. 217 Memnun Müşteri Yorumu</a></li>
-          <li><a href="#sss" className="text-purple-600 hover:text-purple-700 font-semibold">9. Sık Sorulan Sorular</a></li>
+          <li><a href="#hakkimizda" className="text-purple-600 hover:text-purple-700 font-semibold">1. Palyaço Gezegeni Organizasyon Hizmeti: 6 Yıllık Güven</a></li>
+          <li><a href="#dogum-gunu" className="text-purple-600 hover:text-purple-700 font-semibold">2. İstanbul Doğum Günü Organizasyonu ve Palyaço Kiralama Fiyatları</a></li>
+          <li><a href="#bubble-show" className="text-purple-600 hover:text-purple-700 font-semibold">3. Bubble Show Kiralama İstanbul</a></li>
+          <li><a href="#sihirbaz" className="text-purple-600 hover:text-purple-700 font-semibold">4. İstanbul Sihirbaz Kiralama Hizmeti</a></li>
+          <li><a href="#kurumsal" className="text-purple-600 hover:text-purple-700 font-semibold">5. Kurumsal Etkinlik Organizasyonu Kiralama</a></li>
+          <li><a href="#kostumlu-karakterler" className="text-purple-600 hover:text-purple-700 font-semibold">6. İstanbul Kostümlü Karakter Kiralama Fiyatları</a></li>
+          <li><a href="#parti-ekipmanlari" className="text-purple-600 hover:text-purple-700 font-semibold">7. Parti Ekipmanı Kiralama Fiyatları</a></li>
+          <li><a href="#yorumlar" className="text-purple-600 hover:text-purple-700 font-semibold">8. Palyaço Gezegeni Organizasyon Hizmeti: 217 Müşteri Yorumu</a></li>
+          <li><a href="#sss" className="text-purple-600 hover:text-purple-700 font-semibold">9. Palyaço Kiralama ve Organizasyon Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -32,7 +32,7 @@ const PalyacoGezegeni = () => {
 
       {/* Bölüm 1 */}
       <h2 id="hakkimizda" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Palyaço Gezegeni Hakkında: 6 Yıllık Güven ve Tecrübe
+        1. Palyaço Gezegeni Organizasyon Hizmeti: 6 Yıllık Güven ve Tecrübe
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -47,7 +47,7 @@ const PalyacoGezegeni = () => {
       </p>
 
       <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 mb-8 border border-purple-200">
-        <h3 className="font-bold text-gray-900 mb-4 text-xl">🏆 Neden Palyaço Gezegeni?</h3>
+        <h3 className="font-bold text-gray-900 mb-4 text-xl">🏆 Neden Palyaço Gezegeni Organizasyon Hizmeti?</h3>
         
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-white rounded-lg p-4 border border-gray-200">
@@ -94,7 +94,7 @@ const PalyacoGezegeni = () => {
 
       {/* Bölüm 2 */}
       <h2 id="dogum-gunu" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Profesyonel Doğum Günü Organizasyonu İstanbul
+        2. İstanbul Doğum Günü Organizasyonu ve Palyaço Kiralama Fiyatları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -102,7 +102,7 @@ const PalyacoGezegeni = () => {
       </p>
 
       <div className="space-y-4 mb-8">
-        <h3 className="text-2xl font-bold text-gray-900">🎉 Doğum Günü Paketlerimiz</h3>
+        <h3 className="text-2xl font-bold text-gray-900">🎉 Doğum Günü Organizasyonu Kiralama Paketlerimiz</h3>
 
         <div className="bg-pink-50 rounded-lg p-6 border-l-4 border-pink-500">
           <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
@@ -160,7 +160,7 @@ const PalyacoGezegeni = () => {
 
       {/* Bölüm 3 */}
       <h2 id="bubble-show" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Bubble Show Gösterileri: Büyülü Köpük Dünyası
+        3. Bubble Show Kiralama İstanbul: Büyülü Köpük Gösterisi Fiyatları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -170,7 +170,7 @@ const PalyacoGezegeni = () => {
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div className="bg-white border border-gray-200 rounded-lg p-6">
           <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <span className="text-2xl">✨</span> LED Bubble Show
+            <span className="text-2xl">✨</span> LED Bubble Show Kiralama
           </h3>
           <p className="text-gray-700 text-sm mb-2"><strong>Özellik:</strong> Işıklı köpükler, karanlık ortamda görsellık</p>
           <p className="text-gray-700 text-sm mb-2"><strong>Süre:</strong> 20-30 dakika</p>
@@ -179,7 +179,7 @@ const PalyacoGezegeni = () => {
 
         <div className="bg-white border border-gray-200 rounded-lg p-6">
           <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <span className="text-2xl">🫧</span> Klasik Bubble Show
+            <span className="text-2xl">🫧</span> Klasik Bubble Show Organizasyonu
           </h3>
           <p className="text-gray-700 text-sm mb-2"><strong>Özellik:</strong> Dev köpükler, çocukları içine alan balonlar</p>
           <p className="text-gray-700 text-sm mb-2"><strong>Süre:</strong> 15-20 dakika</p>
@@ -199,7 +199,7 @@ const PalyacoGezegeni = () => {
 
       {/* Bölüm 4 */}
       <h2 id="sihirbaz" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Sihirbaz Gösterileri ve Magic Show İstanbul
+        4. İstanbul Sihirbaz Kiralama Hizmeti ve Magic Show Fiyatları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -207,7 +207,7 @@ const PalyacoGezegeni = () => {
       </p>
 
       <div className="space-y-4 mb-8">
-        <h3 className="text-2xl font-bold text-gray-900">🎩 Sihirbaz Gösterisi Paketleri</h3>
+        <h3 className="text-2xl font-bold text-gray-900">🎩 Sihirbaz Kiralama Organizasyon Paketleri</h3>
 
         <div className="bg-indigo-50 rounded-lg p-6 border-l-4 border-indigo-600">
           <h4 className="font-bold text-gray-900 mb-3">🐰 Klasik Magic Show (30 Dakika)</h4>
@@ -233,7 +233,7 @@ const PalyacoGezegeni = () => {
 
       {/* Bölüm 5 */}
       <h2 id="kurumsal" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Kurumsal Etkinlik Organizasyonu ve Şirket Partileri
+        5. Kurumsal Etkinlik Organizasyonu Kiralama Hizmetleri İstanbul
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -242,21 +242,21 @@ const PalyacoGezegeni = () => {
 
       <div className="grid md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 className="font-bold text-gray-900 mb-3">🏢 Şirket Etkinlikleri</h3>
+          <h3 className="font-bold text-gray-900 mb-3">🏢 Şirket Etkinliği Organizasyonu</h3>
           <p className="text-gray-700 text-sm">
             Yılbaşı partileri, çalışan çocukları için organizasyonlar, ofis kutlamaları
           </p>
         </div>
 
         <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 className="font-bold text-gray-900 mb-3">🎪 Açılış Organizasyonları</h3>
+          <h3 className="font-bold text-gray-900 mb-3">🎪 Açılış Organizasyonu Kiralama</h3>
           <p className="text-gray-700 text-sm">
             Mağaza açılışları, lansman etkinlikleri, tanıtım organizasyonları
           </p>
         </div>
 
         <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h3 className="font-bold text-gray-900 mb-3">🎉 Çocuk Şenlikleri</h3>
+          <h3 className="font-bold text-gray-900 mb-3">🎉 Çocuk Şenliği Organizasyonu</h3>
           <p className="text-gray-700 text-sm">
             Okullar, AVM'ler, belediyeler için büyük çaplı etkinlikler
           </p>
@@ -281,7 +281,7 @@ const PalyacoGezegeni = () => {
 
       {/* Bölüm 6 */}
       <h2 id="kostumlu-karakterler" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Kostümlü Karakter Kiralama: 50+ Karakter Seçeneği
+        6. İstanbul Kostümlü Karakter Kiralama Fiyatları: 50+ Karakter
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -290,7 +290,7 @@ const PalyacoGezegeni = () => {
 
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div className="bg-pink-50 rounded-lg p-6 border-l-4 border-pink-500">
-          <h3 className="text-xl font-bold text-gray-900 mb-3">👸 Kız Çocukları İçin</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">👸 Kız Çocukları İçin Karakter Kiralama</h3>
           <ul className="space-y-1 text-gray-700 text-sm">
             <li>• Elsa & Anna (Frozen)</li>
             <li>• Minnie Mouse</li>
@@ -302,7 +302,7 @@ const PalyacoGezegeni = () => {
         </div>
 
         <div className="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-500">
-          <h3 className="text-xl font-bold text-gray-900 mb-3">🦸 Erkek Çocukları İçin</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">🦸 Erkek Çocukları İçin Karakter Kiralama</h3>
           <ul className="space-y-1 text-gray-700 text-sm">
             <li>• Spider-Man</li>
             <li>• Batman</li>
@@ -316,7 +316,7 @@ const PalyacoGezegeni = () => {
 
       {/* Bölüm 7 */}
       <h2 id="parti-ekipmanlari" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Parti Ekipmanları: Popcorn Makinası ve Pamuk Şeker Makinası Kiralama
+        7. Parti Ekipmanı Kiralama Fiyatları: Popcorn ve Pamuk Şeker Makinası
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -324,7 +324,7 @@ const PalyacoGezegeni = () => {
       </p>
 
       <div className="space-y-4 mb-8">
-        <h3 className="text-2xl font-bold text-gray-900">🍿 Popcorn Makinası Kiralama</h3>
+        <h3 className="text-2xl font-bold text-gray-900">🍿 İstanbul Popcorn Makinası Kiralama Hizmeti</h3>
 
         <div className="bg-orange-50 rounded-lg p-6 border-l-4 border-orange-500">
           <h4 className="font-bold text-gray-900 mb-3">Paketimize Dahil:</h4>
@@ -337,7 +337,7 @@ const PalyacoGezegeni = () => {
           </ul>
         </div>
 
-        <h3 className="text-2xl font-bold text-gray-900 mt-6">🍬 Pamuk Şeker Makinası Kiralama</h3>
+        <h3 className="text-2xl font-bold text-gray-900 mt-6">🍬 İstanbul Pamuk Şeker Makinası Kiralama Hizmeti</h3>
 
         <div className="bg-pink-50 rounded-lg p-6 border-l-4 border-pink-500">
           <h4 className="font-bold text-gray-900 mb-3">Paketimize Dahil:</h4>
@@ -353,7 +353,7 @@ const PalyacoGezegeni = () => {
 
       {/* Bölüm 8 */}
       <h2 id="yorumlar" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        8. 217 Memnun Müşteri Yorumu: Palyaço Gezegeni Google Değerlendirmeleri
+        8. Palyaço Gezegeni Organizasyon Hizmeti: 217 Müşteri Yorumu
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -419,7 +419,7 @@ const PalyacoGezegeni = () => {
 
       {/* Bölüm 9 */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        9. Sık Sorulan Sorular (SSS)
+        9. Palyaço Kiralama ve Organizasyon Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">

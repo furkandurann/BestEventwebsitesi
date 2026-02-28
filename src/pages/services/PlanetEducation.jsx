@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import OptimizedImage from '../../components/OptimizedImage'
 import RelatedServices from '../../components/RelatedServices'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
 const PlanetEducation = () => {
   const hero = {
@@ -44,6 +45,14 @@ const PlanetEducation = () => {
     { q: 'Kaç kişilik?', a: '10-100 çocuk; kalabalık gruplar için ardışık seans planlanır.' },
   ]
 
+  const serviceSchema = createServiceSchema(
+    'Gezegen Tanıtım Etkinliği İstanbul | Uzay Atölyesi',
+    'İstanbul\'da 4-14 yaş çocuklar için interaktif gezegen tanıtım etkinliği. Maketler, astronot kostümü, quiz ile pedagojik uzay atölyesi.',
+    '/organizasyonlar/gezegen-tanitim',
+    'Eğitici Çocuk Etkinliği'
+  )
+  const faqSchema = createFAQSchema(faq.map(f => ({ question: f.q, answer: f.a })))
+
   return (
     <>
       <Seo
@@ -52,26 +61,8 @@ const PlanetEducation = () => {
         keywords={['gezegen tanıtım etkinliği istanbul', 'uzay atölyesi çocuk', 'çocuk astronomi etkinliği', 'gezegen eğitimi istanbul', 'okul etkinliği uzay', 'interaktif bilim atölyesi istanbul']}
         image="/content/images/bidolu/gezegentanıtım.webp"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Gezegen Tanıtım ve Uzay Atölyesi İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "telephone": "+905307309009",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "İstanbul",
-                "addressCountry": "TR"
-              }
-            },
-            "serviceType": "Eğitici Çocuk Etkinliği",
-            "areaServed": {
-              "@type": "City",
-              "name": "İstanbul"
-            }
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -79,15 +70,6 @@ const PlanetEducation = () => {
               { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
               { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
               { "@type": "ListItem", "position": 3, "name": "Gezegen Tanıtım", "item": "https://bestevent.com.tr/organizasyonlar/gezegen-tanitim" }
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              { "@type": "Question", "name": "Hangi yaş için?", "acceptedAnswer": { "@type": "Answer", "text": "4-14 yaş; anaokulu, ilkokul, ortaokul seviyelerine göre dil ve içerik uyarlanır." } },
-              { "@type": "Question", "name": "Alan ihtiyacı?", "acceptedAnswer": { "@type": "Answer", "text": "Minimum 4x5 m iç mekan; projektör için yarı karanlık ortam ideal." } },
-              { "@type": "Question", "name": "Kaç kişilik?", "acceptedAnswer": { "@type": "Answer", "text": "10-100 çocuk; kalabalık gruplar için ardışık seans planlanır." } }
             ]
           }
         ]}

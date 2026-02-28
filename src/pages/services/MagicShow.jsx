@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import AdHero from '../../components/AdHero'
 import MagicShowHeroSlider from '../../components/MagicShowHeroSlider'
 import HorizontalPhotoSlider from '../../components/HorizontalPhotoSlider'
 import RelatedServices from '../../components/RelatedServices'
+import GoogleReviews from '../../components/GoogleReviews'
+import { getReviewsByTags } from '../../data/googleReviews'
+import DistrictLinksGrid from '../../components/DistrictLinksGrid'
+import RelatedBlogPosts from '../../components/RelatedBlogPosts'
 
 const MagicShow = () => {
   // WhatsApp Form State
@@ -179,6 +185,14 @@ const MagicShow = () => {
     }
   ]
 
+  const serviceSchema = createServiceSchema(
+    'Sihirbaz Gösterisi | Sihirbaz Organizasyonu Kiralama',
+    'Istanbul\'da sihirbaz gösterisi, organizasyonu ve kiralama. Sihirbazlık etkinliği için profesyonel hizmet.',
+    '/organizasyonlar/magic-show',
+    'Sihirbaz Gösterileri ve Magic Show Organizasyonu'
+  )
+  const faqSchema = createFAQSchema(faqData)
+
   return (
     <>
       <Seo
@@ -189,11 +203,29 @@ const MagicShow = () => {
           'sihirbazlık organizasyonu',
           'sihirbaz kiralama',
           'sihirbazlık etkinliği',
-          'istanbul sihirbaz'
+          'istanbul sihirbaz',
+          'illüzyonist',
+          'sahne gösterisi',
+          'sihir numaraları',
+          'kart hilesi',
+          'tavşan şapka',
+          'yakın plan sihirbazlık',
+          'masa başı sihir',
+          'çocuk gösterisi'
         ]}
         image="/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp"
         canonicalPath="/organizasyonlar/magic-show"
         schema={[
+          serviceSchema,
+          faqSchema,
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
+              { "@type": "ListItem", "position": 2, "name": "Magic Show", "item": "https://bestevent.com.tr/organizasyonlar/magic-show" }
+            ]
+          },
           {
             "@context": "https://schema.org",
             "@type": "Organization",
@@ -211,94 +243,13 @@ const MagicShow = () => {
             "sameAs": [
               "https://www.instagram.com/bestevent"
             ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "BestEvent - Sihirbaz Kiralama",
-            "image": "https://bestevent.com.tr/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp",
-            "telephone": "+90-530-730-9009",
-            "priceRange": "$$",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "İstanbul",
-              "addressRegion": "İstanbul",
-              "addressCountry": "TR"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "40.9872",
-              "longitude": "29.0301"
-            },
-            "areaServed": [
-              {"@type": "City", "name": "Kadıköy"},
-              {"@type": "City", "name": "Üsküdar"},
-              {"@type": "City", "name": "Maltepe"},
-              {"@type": "City", "name": "Kartal"},
-              {"@type": "City", "name": "Ataşehir"},
-              {"@type": "City", "name": "İstanbul"}
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Sihirbaz Kiralama İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "areaServed": [
-                "Kadıköy", "Üsküdar", "Maltepe", "Kartal", "Ataşehir", "Pendik", "Erenköy",
-                "Beylikdüzü", "Sarıyer", "Beşiktaş", "Şişli", "Bakırköy", "İstanbul"
-              ]
-            },
-            "serviceType": "Sihirbaz Gösterileri ve Magic Show Organizasyonu",
-            "offers": {
-              "@type": "Offer",
-              "availability": "https://schema.org/InStock"
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "ImageObject",
-            "contentUrl": "https://bestevent.com.tr/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp",
-            "description": "İstanbul sihirbaz gösterisi - komedi magic show",
-            "name": "Sihirbazlık Gösterisi İstanbul"
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
-              { "@type": "ListItem", "position": 2, "name": "Magic Show", "item": "https://bestevent.com.tr/organizasyonlar/magic-show" }
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "BestEvent - Sihirbaz Gösterisi İstanbul",
-            "url": "https://bestevent.com.tr/organizasyonlar/magic-show",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5.0",
-              "bestRating": "5",
-              "worstRating": "1",
-              "ratingCount": "217",
-              "reviewCount": "217"
-            }
           }
         ]}
+      />
+
+      <AdHero
+        title="Sihirbaz Kiralama İstanbul"
+        backgroundImage="/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp"
       />
 
       <main className="overflow-x-hidden scroll-smooth">
@@ -493,10 +444,10 @@ const MagicShow = () => {
                   }}
                 >
                   <span className="font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Magic Show</span> gösterimiz, klasik sihirbazlık anlayışının ötesine geçerek{' '}
-                  <span className="font-bold text-gray-900">sihirbazlık gösterisi ile komedi show'u</span>{' '}
-                  birleştiren özel bir sahne deneyimi sunar. Gösteri boyunca sadece şaşırtmakla kalmaz, aynı zamanda çocukları ve aileleri{' '}
+                  <span className="font-bold text-gray-900">sahne gösterisi ile komedi show'u</span>{' '}
+                  birleştiren özel bir çocuk gösterisi deneyimi sunar. Deneyimli illüzyonist kadromuz, sihir numaraları ve kart hilesi performanslarıyla sadece şaşırtmakla kalmaz, aynı zamanda çocukları ve aileleri{' '}
                   <span className="font-bold text-gray-900">kahkahaya boğan</span>{' '}
-                  eğlenceli bir performans sergiler. Canlı tavşanlı ve güvercinli interaktif sihirbazlık gösterileri, profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, çocuklara unutulmaz anlar yaşatmıştır.
+                  eğlenceli bir performans sergiler. Tavşan şapka numarası, yakın plan sihirbazlık ve masa başı sihir gösterileri, profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, çocuklara unutulmaz anlar yaşatmıştır.
                 </p>
               </div>
             </div>
@@ -1046,50 +997,18 @@ const MagicShow = () => {
         </section>
 
         {/* Hizmet Bölgeleri Section */}
-        <section className="py-20 bg-gradient-to-br from-blue-900 to-indigo-900">
-          <div className="max-w-5xl mx-auto px-4">
-            <h2 
-              className="font-bold text-white mb-12 text-center"
-              style={{
-                fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-                lineHeight: '1.35',
-                letterSpacing: '-0.015em',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              Hangi Bölgelerde Sihirbaz Kiralama Hizmeti Veriyoruz?
-            </h2>
+        <DistrictLinksGrid
+          lpServiceSlug="sihirbaz-kiralama"
+          serviceName="Sihirbaz Kiralama"
+          title="Hangi Bölgelerde Sihirbaz Kiralama Hizmeti Veriyoruz?"
+        />
 
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
-              {[
-                'Kadıköy', 'Erenköy', 'Üsküdar', 'Maltepe', 'Kartal', 'Ataşehir',
-                'Pendik', 'Beylikdüzü', 'Sarıyer', 'Beşiktaş', 'Şişli', 'Bakırköy',
-                'Beykoz', 'Çekmeköy', 'Sultanbeyli', 'Tuzla', 'Sancaktepe', 'Ümraniye'
-              ].map((region, index) => (
-                <div 
-                  key={index}
-                  className="bg-white/10 backdrop-blur-lg rounded-lg p-4 text-center text-white font-medium hover:bg-white/20 transition-all"
-                >
-                  {region}
-                </div>
-              ))}
-            </div>
-
-            <p 
-              className="text-white/90 text-center leading-relaxed"
-              style={{
-                fontSize: 'clamp(1rem, 2vw, 1.125rem)',
-                lineHeight: '1.7',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-              }}
-            >
-              İstanbul'un tüm ilçelerine profesyonel sihirbaz kiralama ve sihirbaz gösterileri hizmeti sunuyoruz. 
-              Listelenmemiş bir bölgede misiniz? Bizimle iletişime geçin, size yardımcı olalım!
-            </p>
-          </div>
-        </section>
+        {/* Google Müşteri Yorumları */}
+        <GoogleReviews reviews={getReviewsByTags(['sihirbaz', 'genel'])} title="Sihirbaz Kiralama Müşteri Yorumları" />
 
         <RelatedServices currentService="magic-show" />
+
+        <RelatedBlogPosts servicePath="/organizasyonlar/magic-show" />
       </main>
     </>
   )

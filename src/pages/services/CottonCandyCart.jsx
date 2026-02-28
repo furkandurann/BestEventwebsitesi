@@ -2,7 +2,13 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import AdHero from '../../components/AdHero'
 import RelatedServices from '../../components/RelatedServices'
+import GoogleReviews from '../../components/GoogleReviews'
+import { getReviewsByTags } from '../../data/googleReviews'
+import DistrictLinksGrid from '../../components/DistrictLinksGrid'
+import RelatedBlogPosts from '../../components/RelatedBlogPosts'
 
 const CottonCandyCart = () => {
   const [openFaq, setOpenFaq] = useState(0)
@@ -65,6 +71,14 @@ const CottonCandyCart = () => {
     }
   ]
 
+  const serviceSchema = createServiceSchema(
+    'Çikolata Şelalesi, Popcorn, Pamuk Şeker Kiralama',
+    'İstanbul\'da pamuk şeker, çikolata şelalesi ve popcorn arabası kiralama. Doğum günü, düğün ve kurumsal etkinlikler için hijyenik ikram servisi.',
+    '/organizasyonlar/pamuk-seker',
+    'Parti Ekipmanları Kiralama'
+  )
+  const faqSchema = createFAQSchema(faqs)
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Seo
@@ -80,35 +94,21 @@ const CottonCandyCart = () => {
           'ses sistemi kiralama',
           'ses sistemi kiralama istanbul',
           'parti ekipmanları kiralama istanbul',
-          'etkinlik ikram servisi'
+          'etkinlik ikram servisi',
+          'pamuk şeker makinesi',
+          'şeker ipi',
+          'renkli pamuk şeker',
+          'pamuk şeker standı',
+          'nostalji lezzet',
+          'pamuk şeker arabası kiralama',
+          'etkinlik ikramı',
+          'şenlik arabası'
         ]}
         canonicalPath="/organizasyonlar/pamuk-seker"
         image="/content/images/Parti Ekipmanları/hareketlislider6cikolataselalsi.webp"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Pamuk Şeker & Parti Ekipmanları Kiralama İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "telephone": "+905307309009",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "İstanbul",
-                "addressCountry": "TR"
-              }
-            },
-            "serviceType": "Parti Ekipmanları Kiralama",
-            "areaServed": {
-              "@type": "City",
-              "name": "İstanbul"
-            },
-            "offers": {
-              "@type": "Offer",
-              "availability": "https://schema.org/InStock"
-            }
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -119,39 +119,19 @@ const CottonCandyCart = () => {
           },
           {
             "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "BestEvent - Pamuk Şeker ve Parti Ekipmanları İstanbul",
-            "url": "https://bestevent.com.tr/organizasyonlar/pamuk-seker",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5.0",
-              "bestRating": "5",
-              "worstRating": "1",
-              "ratingCount": "217",
-              "reviewCount": "217"
-            }
-          },
-          {
-            "@context": "https://schema.org",
             "@type": "Organization",
             "name": "BestEvent",
             "url": "https://bestevent.com.tr",
-            "logo": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
+            "logo": "https://bestevent.com.tr/logo.png",
             "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
           }
         ]}
+      />
+
+      <AdHero
+        title="Pamuk Şeker Arabası Kiralama İstanbul"
+        backgroundImage="/content/images/Parti Ekipmanları/popcornpamukseker.JPG"
+        subtitle="İstanbul'un Her Semtine Kiralama Hizmeti"
       />
 
       {/* Hero Section with Background Image */}
@@ -246,7 +226,7 @@ const CottonCandyCart = () => {
                 fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
               }}
             >
-              İkram Seçeneklerimiz
+              Parti Ekipmanları Kiralama Hizmet Seçeneklerimiz İstanbul
             </h2>
             <p
               className="text-zinc-300 max-w-3xl mx-auto"
@@ -390,7 +370,7 @@ const CottonCandyCart = () => {
                 letterSpacing: '-0.025em'
               }}
             >
-              Merak Ettikleriniz
+              Pamuk Şeker Kiralama Sık Sorulan Sorular
             </h2>
           </motion.div>
 
@@ -455,7 +435,7 @@ const CottonCandyCart = () => {
                 <strong className="text-white">Çikolata şelalesi kiralama</strong> hizmetimiz ile etkinliklerinize lezzet katın. Profesyonel <strong className="text-white">çikolata şelalesi kiralama İstanbul</strong> genelinde hijyenik koşullarda sunulmaktadır. Çikolata fondue servisi ile misafirlerinize unutulmaz bir deneyim yaşatın.
               </p>
               <p>
-                <strong className="text-white">Popcorn kiralama</strong> ve <strong className="text-white">pamuk şeker kiralama</strong> hizmetlerimiz ile nostaljik lezzetleri etkinliğinize taşıyın. Popcorn arabası kiralama ve pamuk şeker arabası kiralama hizmetlerimiz doğum günü, düğün, nişan, kına gecesi, açılış organizasyonu ve kurumsal etkinliklerde tercih edilmektedir.
+                <strong className="text-white">Popcorn kiralama</strong> ve <strong className="text-white">pamuk şeker kiralama</strong> hizmetlerimiz ile nostalji lezzet deneyimini etkinliğinize taşıyın. Profesyonel pamuk şeker makinesi ile renkli pamuk şeker yapımı, pamuk şeker standı ve şenlik arabası kiralama hizmetlerimiz doğum günü, düğün, nişan, kına gecesi, açılış organizasyonu ve kurumsal etkinliklerde tercih edilmektedir. Şeker ipi olarak da bilinen pamuk şekerin büyülü yapım süreci, her etkinlik ikramı arasında en çok ilgi çeken gösteri olmaya devam etmektedir.
               </p>
               <p>
                 <strong className="text-white">Ses sistemi kiralama</strong> hizmetimiz ile etkinliklerinizde kaliteli ses deneyimi yaşatın. Profesyonel ses ekipmanları kiralama hizmetimiz ile müzik, konuşma ve sunum ihtiyaçlarınızı karşılıyoruz. DJ ekipmanları ve kablosuz mikrofon sistemleri de hizmetimiz kapsamındadır.
@@ -492,42 +472,22 @@ const CottonCandyCart = () => {
       </section>
 
       {/* Service Areas Section */}
-      <section className="py-16 sm:py-20 px-6 bg-gradient-to-br from-pink-950/30 to-purple-950/30 border-t border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h3
-              className="font-bold text-white mb-6"
-              style={{
-                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                letterSpacing: '-0.02em'
-              }}
-            >
-              Hizmet Bölgelerimiz
-            </h3>
+      <DistrictLinksGrid
+        lpServiceSlug="pamuk-seker-arabasi-kiralama"
+        serviceName="Pamuk Şeker Arabası Kiralama"
+        title="Hizmet Bölgelerimiz"
+      />
 
-            <div className="max-w-5xl mx-auto text-center space-y-4">
-              <p
-                className="text-zinc-300 leading-relaxed"
-                style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', lineHeight: '1.8' }}
-              >
-                İstanbul'un her bölgesinde profesyonel parti ekipmanları kiralama hizmeti sunuyoruz:
-                <strong className="text-white"> Kadıköy, Kartal, Maltepe, Sarıyer, Göktürk, Beylikdüzü, Ümraniye, Çekmeköy, İstinye, Maslak, Üsküdar, Şişli, Beşiktaş, Bakırköy</strong> ve İstanbul'un tüm ilçelerinde yanınızdayız.
-              </p>
-              <p
-                className="text-zinc-300 leading-relaxed"
-                style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', lineHeight: '1.8' }}
-              >
-                <strong className="text-white">Antalya</strong>'da yıl boyunca kesintisiz hizmet vermekteyiz. Ayrıca yaz sezonunda:
-                <strong className="text-white"> Bodrum, Yalıkavak, Turgutreis, Gümüşlük, Belek, Alanya, Side</strong> ve çevre tatil bölgelerinde etkinliklerinizi unutulmaz kılmak için buradayız.
-              </p>
-            </div>
-          </motion.div>
+      {/* Antalya & Tatil Bölgeleri */}
+      <section className="py-8 px-6 bg-black/60">
+        <div className="max-w-5xl mx-auto text-center">
+          <p
+            className="text-zinc-300 leading-relaxed"
+            style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', lineHeight: '1.8' }}
+          >
+            <strong className="text-white">Antalya</strong>'da yıl boyunca kesintisiz hizmet vermekteyiz. Ayrıca yaz sezonunda:
+            <strong className="text-white"> Bodrum, Yalıkavak, Turgutreis, Gümüşlük, Belek, Alanya, Side</strong> ve çevre tatil bölgelerinde etkinliklerinizi unutulmaz kılmak için buradayız.
+          </p>
         </div>
       </section>
 
@@ -557,7 +517,12 @@ const CottonCandyCart = () => {
         </div>
       </section>
 
+      {/* Google Müşteri Yorumları */}
+      <GoogleReviews reviews={getReviewsByTags(['pamukseker', 'genel'])} title="Pamuk Şeker & Popcorn Müşteri Yorumları" />
+
       <RelatedServices currentService="pamuk-seker" />
+
+      <RelatedBlogPosts servicePath="/organizasyonlar/pamuk-seker" />
     </div>
   )
 }

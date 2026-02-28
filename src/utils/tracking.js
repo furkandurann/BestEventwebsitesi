@@ -267,7 +267,7 @@ KULLANIM ÖRNEĞİ:
 
 3. Event handler'larda kullanın:
    <a 
-     href="https://wa.me/905349306799" 
+     href="https://wa.me/905307309009" 
      onClick={() => trackWhatsAppClick('Yüz Boyama', window.location.href)}
    >
      WhatsApp

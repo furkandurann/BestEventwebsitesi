@@ -1,7 +1,15 @@
 import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
+import { createServiceSchema } from '../../utils/schemaHelpers'
 
 const DanceEvents = () => {
+  const serviceSchema = createServiceSchema(
+    'Dans Etkinlikleri | Profesyonel Dans Gösterileri',
+    'Oryantal dans, LED dans, lüks karşılama ekibi, zumba ve modern dans gösterileriyle etkinliklerinize renk katıyoruz.',
+    '/hizmetler/dans-etkinlikleri',
+    'Dans Gösterisi Organizasyonu'
+  )
+
   const services = [
     {
       id: 'oriental',
@@ -62,6 +70,7 @@ const DanceEvents = () => {
           'yoga eğitmeni'
         ]}
         canonicalPath="/hizmetler/dans-etkinlikleri"
+        schema={[serviceSchema]}
       />
       
       {/* Hero Section with Background Image */}

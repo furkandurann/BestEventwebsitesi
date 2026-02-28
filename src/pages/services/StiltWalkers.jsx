@@ -4,6 +4,8 @@ const StiltWalkers = () => {
   const eventData = {
     title: "İstanbul'da Tahtabacak Gösterisi - Uzun Bacaklı Karakterler",
     description: "Etkinlikleriniz için profesyonel tahtabacak gösterisi - Kadıköy, Üsküdar, Maltepe ve tüm İstanbul'da etkileyici stilt walkers performansları",
+    canonicalPath: "/organizasyonlar/tahtabacak",
+    serviceType: "Tahtabacak Gösterisi",
     longDescription: `Best Event olarak İstanbul'un her bölgesinde profesyonel tahtabacak gösterileri sunuyoruz. Tüm ilçelerde festival organizasyonları, açılış etkinlikleri, sokak şenlikleri ve kurumsal etkinlikler için etkileyici tahtabacak performansları ile hizmetinizdeyiz.
 
 🦒 Tahtabacak Gösterisi Nedir?

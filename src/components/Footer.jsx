@@ -73,9 +73,11 @@ const Footer = () => {
 
   const quickLinks = [
     { name: 'Hakkımızda', path: '/hakkimizda' },
+    { name: 'Ekibimiz', path: '/ekibimiz' },
     { name: 'Hizmet Bölgeleri', path: '/hizmet-bolgeleri' },
     { name: 'Galeri', path: '/galeri' },
     { name: 'Blog', path: '/blog' },
+    { name: 'Organik Pastalar', path: '/organik-pastalar' },
     { name: 'İletişim', path: '/iletisim' },
   ]
 
@@ -244,6 +246,37 @@ const Footer = () => {
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* Bölgesel Hizmetler */}
+          <div>
+            <h4 className="text-xl font-semibold mb-6">Bölgesel Hizmetler</h4>
+            <ul className="space-y-3">
+              {[
+                { name: 'Kadıköy Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/kadikoy' },
+                { name: 'Beşiktaş Sihirbaz Kiralama', path: '/organizasyonlar/sihirbaz-kiralama/besiktas' },
+                { name: 'Ataşehir Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/atasehir' },
+                { name: 'Üsküdar Doğum Günü Org.', path: '/organizasyonlar/dogum-gunu-organizasyonu/uskudar' },
+                { name: 'Şişli Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/sisli' },
+                { name: 'Bakırköy Yüz Boyama', path: '/organizasyonlar/profesyonel-yuz-boyama/bakirkoy' },
+                { name: 'Beylikdüzü Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/beylikduzu' },
+                { name: 'Maltepe Sihirbaz Kiralama', path: '/organizasyonlar/sihirbaz-kiralama/maltepe' },
+                { name: 'Pendik Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/pendik' },
+                { name: 'Ümraniye Doğum Günü Org.', path: '/organizasyonlar/dogum-gunu-organizasyonu/umraniye' },
+                { name: 'Kartal Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/kartal' },
+                { name: 'Sarıyer Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/sariyer' },
+              ].map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="nav-link text-gray-600 hover:text-primary flex items-center group"
+                  >
+                    <span className="mr-2 group-hover:mr-3 transition-standard">›</span>
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Contact Info */}

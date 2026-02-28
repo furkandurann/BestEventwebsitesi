@@ -7,13 +7,13 @@ const SihirbazGosterisi = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-purple-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#nedir" className="text-purple-600 hover:text-purple-700 font-semibold">1. Sihirbaz Gösterisi Nedir?</a></li>
-          <li><a href="#unutulmaz-anlar" className="text-purple-600 hover:text-purple-700 font-semibold">2. En Unutulmaz Sihirbaz Anları</a></li>
-          <li><a href="#moral" className="text-purple-600 hover:text-purple-700 font-semibold">3. Sihirbazın Morali Bozulmamalı</a></li>
-          <li><a href="#gokturk" className="text-purple-600 hover:text-purple-700 font-semibold">4. Göktürk'te Atlarla Sihirbaz Etkinlikleri</a></li>
-          <li><a href="#kurumsal" className="text-purple-600 hover:text-purple-700 font-semibold">5. Kurumsal Çocuk Etkinliğinde Sihirbaz</a></li>
-          <li><a href="#sariyer" className="text-purple-600 hover:text-purple-700 font-semibold">6. Sarıyer'e Ulaşım: Etkinlik Öncesi Planlama</a></li>
-          <li><a href="#sss" className="text-purple-600 hover:text-purple-700 font-semibold">7. Sık Sorulan Sorular</a></li>
+          <li><a href="#nedir" className="text-purple-600 hover:text-purple-700 font-semibold">1. Sihirbaz Kiralama Hizmeti: Profesyonel Gösteri Nedir?</a></li>
+          <li><a href="#unutulmaz-anlar" className="text-purple-600 hover:text-purple-700 font-semibold">2. Sihirbaz Kiralama ile Unutulmaz Gösteri Anları</a></li>
+          <li><a href="#moral" className="text-purple-600 hover:text-purple-700 font-semibold">3. Sihirbaz Gösterisi Organizasyonu: Atmosfer Nasıl Korunur?</a></li>
+          <li><a href="#gokturk" className="text-purple-600 hover:text-purple-700 font-semibold">4. Göktürk Sihirbaz Kiralama: At Çiftliği Organizasyonu</a></li>
+          <li><a href="#kurumsal" className="text-purple-600 hover:text-purple-700 font-semibold">5. Kurumsal Sihirbaz Kiralama Hizmeti: Çocuk Etkinlikleri</a></li>
+          <li><a href="#sariyer" className="text-purple-600 hover:text-purple-700 font-semibold">6. İstanbul Sarıyer Sihirbaz Kiralama: Ulaşım ve Fiyat Rehberi</a></li>
+          <li><a href="#sss" className="text-purple-600 hover:text-purple-700 font-semibold">7. Sihirbaz Kiralama Fiyat ve Hizmet Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -30,7 +30,7 @@ const SihirbazGosterisi = () => {
 
       {/* Bölüm 1 */}
       <h2 id="nedir" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Sihirbaz Gösterisi Nedir?
+        1. Sihirbaz Kiralama Hizmeti: Profesyonel Gösteri Nedir?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -69,7 +69,7 @@ const SihirbazGosterisi = () => {
 
       {/* Bölüm 2 */}
       <h2 id="unutulmaz-anlar" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. En Unutulmaz Sihirbaz Anları
+        2. Sihirbaz Kiralama ile Unutulmaz Gösteri Anları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -104,7 +104,7 @@ const SihirbazGosterisi = () => {
 
       {/* Bölüm 3 */}
       <h2 id="moral" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Sihirbazın Morali Bozulmamalı: Atmosfer Nasıl Korunur?
+        3. Sihirbaz Gösterisi Organizasyonu: Atmosfer Nasıl Korunur?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -151,7 +151,7 @@ const SihirbazGosterisi = () => {
 
       {/* Bölüm 4 */}
       <h2 id="gokturk" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Göktürk'te Atlarla Sihirbaz Etkinlikleri: Benzersiz Deneyim
+        4. Göktürk Sihirbaz Kiralama: At Çiftliği Organizasyonu
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -193,7 +193,7 @@ const SihirbazGosterisi = () => {
 
       {/* Bölüm 5 */}
       <h2 id="kurumsal" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Kurumsal Çocuk Etkinliğinde Sihirbaz: Profesyonel Yaklaşım
+        5. Kurumsal Sihirbaz Kiralama Hizmeti: Çocuk Etkinlikleri
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -244,7 +244,7 @@ const SihirbazGosterisi = () => {
 
       {/* Bölüm 6 */}
       <h2 id="sariyer" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Sarıyer'e Ulaşım: Etkinlik Öncesi Planlama
+        6. İstanbul Sarıyer Sihirbaz Kiralama: Ulaşım ve Fiyat Rehberi
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -290,7 +290,7 @@ const SihirbazGosterisi = () => {
 
       {/* Bölüm 7 */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Sık Sorulan Sorular (SSS)
+        7. Sihirbaz Kiralama Fiyat ve Hizmet Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">
@@ -332,7 +332,7 @@ const SihirbazGosterisi = () => {
 
       {/* Sonuç */}
       <div className="bg-gradient-to-r from-purple-600 to-indigo-700 text-white rounded-lg p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">🎩 İstanbul'da En İyi Sihirbaz Gösterisi!</h3>
+        <h3 className="text-2xl font-bold mb-4">🎩 İstanbul Sihirbaz Kiralama: En İyi Gösteri Hizmeti!</h3>
         <p className="mb-6 leading-relaxed">
           Profesyonel sihirbaz kiralama ile çocuklarınıza büyülü bir deneyim yaşatın. Unutulmaz numaralardan Göktürk'teki özel etkinliklere, kurumsal gösterilerden Sarıyer'e kadar her yerdeyiz!
         </p>

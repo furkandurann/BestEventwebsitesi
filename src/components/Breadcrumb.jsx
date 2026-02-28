@@ -44,6 +44,35 @@ const pathToTitle = {
   'dans-etkinlikleri': 'Dans Etkinlikleri',
   'dansci-kiralama': 'Dansçı Kiralama',
   'hostes-kiralama': 'Hostes Kiralama',
+
+  // Local Landing Page - Hizmet Slug'ları
+  'bubble-show-kiralama': 'Bubble Show Kiralama',
+  'sihirbaz-kiralama': 'Sihirbaz Kiralama',
+  'pamuk-seker-arabasi-kiralama': 'Pamuk Şeker Arabası Kiralama',
+  'profesyonel-yuz-boyama': 'Profesyonel Yüz Boyama',
+  'popcorn-arabasi-kiralama': 'Popcorn Arabası Kiralama',
+
+  // İstanbul Semtleri
+  'kadikoy': 'Kadıköy',
+  'besiktas': 'Beşiktaş',
+  'sisli': 'Şişli',
+  'bakirkoy': 'Bakırköy',
+  'atasehir': 'Ataşehir',
+  'uskudar': 'Üsküdar',
+  'maltepe': 'Maltepe',
+  'kartal': 'Kartal',
+  'pendik': 'Pendik',
+  'umraniye': 'Ümraniye',
+  'beylikduzu': 'Beylikdüzü',
+  'sariyer': 'Sarıyer',
+  'fatih': 'Fatih',
+  'eyupsultan': 'Eyüpsultan',
+  'beyoglu': 'Beyoğlu',
+  'basaksehir': 'Başakşehir',
+  'kucukcekmece': 'Küçükçekmece',
+  'tuzla': 'Tuzla',
+  'cekmekoy': 'Çekmeköy',
+  'zeytinburnu': 'Zeytinburnu',
 }
 
 const Breadcrumb = () => {
@@ -88,25 +117,25 @@ const Breadcrumb = () => {
         </script>
       </Helmet>
 
-      {/* Breadcrumb UI - Şık Minimal Design */}
-      <nav 
-        aria-label="Breadcrumb" 
-        className="bg-white border-b border-gray-100 shadow-sm"
+      {/* Breadcrumb UI - Kompakt */}
+      <nav
+        aria-label="Breadcrumb"
+        className="bg-white/80 backdrop-blur-sm border-b border-gray-100"
       >
-        <div className="layout-container py-4">
-          <ol className="flex items-center space-x-1 text-sm overflow-x-auto">
+        <div className="layout-container py-1.5">
+          <ol className="flex items-center text-xs overflow-x-auto">
             {breadcrumbItems.map((item, index) => {
               const isLast = index === breadcrumbItems.length - 1
 
               return (
-                <li key={item.path} className="flex items-center group">
+                <li key={item.path} className="flex items-center">
                   {index > 0 && (
-                    <span className="text-gray-300 mx-2 select-none">/</span>
+                    <span className="text-gray-300 mx-1 select-none">/</span>
                   )}
-                  
+
                   {isLast ? (
-                    <span 
-                      className="text-gray-900 font-semibold whitespace-nowrap px-3 py-1.5 rounded-md bg-gray-50"
+                    <span
+                      className="text-gray-700 font-medium whitespace-nowrap px-1.5 py-0.5"
                       aria-current="page"
                     >
                       {item.name}
@@ -114,7 +143,7 @@ const Breadcrumb = () => {
                   ) : (
                     <Link
                       to={item.path}
-                      className="text-gray-600 hover:text-primary hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap px-3 py-1.5 rounded-md hover:bg-gray-50 hover:shadow-sm"
+                      className="text-gray-400 hover:text-primary transition-colors duration-200 whitespace-nowrap px-1.5 py-0.5"
                     >
                       {item.name}
                     </Link>

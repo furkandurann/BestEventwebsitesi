@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
 const MascotRental = () => {
   // FAQ
@@ -39,6 +40,14 @@ const MascotRental = () => {
     }
   ]
 
+  const serviceSchema = createServiceSchema(
+    'Maskot Kiralama İstanbul',
+    'Maskot kiralama İstanbul. Sonic, Paw Patrol, Hello Kitty, Unicorn, Mickey Mouse ve tüm maskotlar. Kurumsal ve özel etkinlikler.',
+    '/organizasyonlar/maskot-kiralama',
+    'Maskot Kiralama'
+  )
+  const faqSchema = createFAQSchema(faqs)
+
   return (
     <>
       <Seo
@@ -54,33 +63,8 @@ const MascotRental = () => {
         ]}
         canonicalPath="/organizasyonlar/maskot-kiralama"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Maskot Kiralama İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "areaServed": ["Kadıköy", "Beşiktaş", "Şişli", "Bakırköy", "Üsküdar", "Maltepe", "Kartal", "Ataşehir", "Pendik", "Sarıyer", "Beyoğlu", "Fatih", "Başakşehir", "Küçükçekmece", "Esenyurt", "İstanbul"]
-            },
-            "serviceType": "Maskot Kiralama",
-            "offers": {
-              "@type": "Offer",
-              "availability": "https://schema.org/InStock"
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          }
+          serviceSchema,
+          faqSchema
         ]}
       />
 

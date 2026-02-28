@@ -136,10 +136,10 @@ const IstanbulEtkinlikRehberi = () => {
               className="text-center mb-12"
             >
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Hizmetlerimiz
+                İstanbul'da Kiralama ve Organizasyon Hizmetlerimiz
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                İstanbul genelinde sunduğumuz profesyonel çocuk etkinliği hizmetleri
+                İstanbul genelinde sunduğumuz profesyonel çocuk etkinliği kiralama ve organizasyon hizmetleri
               </p>
             </motion.div>
 
@@ -199,10 +199,10 @@ const IstanbulEtkinlikRehberi = () => {
               className="text-center mb-12"
             >
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                İstanbul'da Hizmet Verdiğimiz Semtler
+                İstanbul'da Kiralama ve Organizasyon Hizmeti Verdiğimiz Semtler
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                İstanbul'un her köşesinde profesyonel çocuk etkinliği organizasyonu
+                İstanbul'un her köşesinde profesyonel çocuk etkinliği organizasyonu ve kiralama hizmeti
               </p>
             </motion.div>
 
@@ -253,7 +253,7 @@ const IstanbulEtkinlikRehberi = () => {
               className="text-center mb-12"
             >
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Profesyonel Etkinlik Hazırlığının Perde Arkası
+                Profesyonel Organizasyon ve Kiralama Hizmetinin Perde Arkası
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 10+ yıllık deneyimimizle her detayı titizlikle planlıyoruz
@@ -270,7 +270,7 @@ const IstanbulEtkinlikRehberi = () => {
               >
                 <h3 className="font-display text-2xl font-bold text-gray-900 mb-4 flex items-center">
                   <span className="text-4xl mr-3">🎪</span>
-                  Palyaço Hazırlık Süreci
+                  Palyaço Kiralama Hazırlık Süreci
                 </h3>
                 <p className="text-gray-700 mb-4 leading-relaxed">
                   Profesyonel palyaço ekibimiz etkinlikten 2 saat önce hazırlığa başlar. Kostümlerimiz Rusya'dan özel olarak diktirilen, UV ışığında parlayan premium kumaşlardan üretilir. Her palyaço, çocuk psikolojisi eğitimi almış deneyimli sanatçılardır.
@@ -292,7 +292,7 @@ const IstanbulEtkinlikRehberi = () => {
               >
                 <h3 className="font-display text-2xl font-bold text-gray-900 mb-4 flex items-center">
                   <span className="text-4xl mr-3">🎩</span>
-                  Sihirbaz Ekipman Deposu
+                  Sihirbaz Kiralama Ekipman Deposu
                 </h3>
                 <p className="text-gray-700 mb-4 leading-relaxed">
                   Sihirbazlık malzemelerimiz Amerika ve İngiltere'den ithal profesyonel magic ekipmanlarıdır. Her sihirbazımız minimum 5 yıl sahne deneyimine sahiptir ve yılda 200+ gösteride performans sergiler.
@@ -316,7 +316,7 @@ const IstanbulEtkinlikRehberi = () => {
               >
                 <h3 className="font-display text-2xl font-bold text-gray-900 mb-4 flex items-center">
                   <span className="text-4xl mr-3">🫧</span>
-                  Bubble Show Köpük Sırrı
+                  Bubble Show Kiralama: Köpük Sırrı
                 </h3>
                 <p className="text-gray-700 mb-4 leading-relaxed">
                   Bubble show köpüğümüz özel formüllü, çevre dostu, toksik olmayan bir karışımdır. İçeriği: %40 distile su, %30 gliserin (farmasötik kalite), %25 organik sabun bazı ve %5 guar gam (doğal kıvam verici). Formula İtalyan bubble show şampiyonlarından lisanslanmıştır.
@@ -338,7 +338,7 @@ const IstanbulEtkinlikRehberi = () => {
               >
                 <h3 className="font-display text-2xl font-bold text-gray-900 mb-4 flex items-center">
                   <span className="text-4xl mr-3">👗</span>
-                  Rusya'dan Özel Kostümler
+                  Kostümlü Karakter Kiralama: Rusya'dan Özel Kostümler
                 </h3>
                 <p className="text-gray-700 mb-4 leading-relaxed">
                   Maskot ve karakter kostümlerimiz Moskova'daki özel atölyede diktiriliyor. Rus kostüm sanatçıları dünya çapında tanınan kaliteleri sayesinde tercihimizdir. Her kostüm 3-4 ay süren el işçiliği ile üretilir.
@@ -364,7 +364,7 @@ const IstanbulEtkinlikRehberi = () => {
               className="mb-12"
             >
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-6 text-center">
-                Organizasyon Süreci: Aramadan Etkinliğe
+                Organizasyon ve Kiralama Süreci: Aramadan Etkinliğe
               </h2>
               <p className="text-lg text-gray-700 max-w-4xl mx-auto leading-relaxed mb-6">
                 İstanbul genelinde yıllık 1500+ etkinlik deneyimimizle süreci mükemmelleştirdik. İlk aramadan etkinlik sonrasına kadar her adım profesyonelce planlanır.
@@ -399,7 +399,7 @@ const IstanbulEtkinlikRehberi = () => {
 
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="font-display text-2xl font-bold text-gray-900 mb-6">
-                İstanbul Trafik Planlaması ve Lojistik Uzmanlığımız
+                İstanbul Organizasyon Lojistiği: Trafik Planlaması ve Hizmet Uzmanlığımız
               </h3>
               <p className="text-gray-700 mb-4 leading-relaxed">
                 İstanbul'un trafik dinamiğini 10 yıldır analiz ediyoruz. Her semt için en uygun varış saati, alternatif rotalar ve acil durum planları database'imizde kayıtlı. Kadıköy'den Sarıyer'e, Maltepe'den Başakşehir'e her bölge için özel lojistik stratejimiz var.
@@ -424,10 +424,10 @@ const IstanbulEtkinlikRehberi = () => {
               className="text-center mb-12"
             >
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Sıkça Sorulan Sorular
+                İstanbul Çocuk Etkinliği Kiralama: Sıkça Sorulan Sorular
               </h2>
               <p className="text-lg text-gray-600">
-                İstanbul'da çocuk etkinliği hakkında merak edilenler
+                İstanbul'da çocuk etkinliği kiralama ve organizasyon hakkında merak edilenler
               </p>
             </motion.div>
 

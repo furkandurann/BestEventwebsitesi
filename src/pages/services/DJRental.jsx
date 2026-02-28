@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
 const DJRental = () => {
   const hero = {
@@ -34,6 +35,14 @@ const DJRental = () => {
     { q: 'Dış mekanda olur mu?', a: 'Uygun elektrik ve hava koşulu varsa dış mekanda da kurulum yapılır.' }
   ]
 
+  const serviceSchema = createServiceSchema(
+    'DJ Kiralama | Profesyonel DJ ve Ses-Işık Sistemi',
+    'Profesyonel DJ, ses ve ışık sistemiyle doğum günü, okul etkinliği ve partiler için tam paket DJ kiralama. Playlist hazırlığı, miksaj ve anons yönetimi.',
+    '/organizasyonlar/dj-kiralama',
+    'DJ Kiralama'
+  )
+  const faqSchema = createFAQSchema(faq.map(f => ({ question: f.q, answer: f.a })))
+
   return (
     <>
       <Helmet>
@@ -44,6 +53,12 @@ const DJRental = () => {
         />
         <meta name="keywords" content="dj kiralama istanbul, çocuk partisi dj, dj hizmeti, ses ışık sistemi, dj fiyat" />
         <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/dj-kiralama" />
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
       </Helmet>
 
       <main className="bg-white text-gray-900">

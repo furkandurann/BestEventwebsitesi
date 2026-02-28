@@ -34,14 +34,14 @@ const SihirbazGokturkAtCiftligi = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-purple-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#gokturk-mekan" className="text-purple-600 hover:text-purple-700 font-semibold">1. Göktürk At Çiftliği: Doğanın İçinde Büyülü Bir Mekan</a></li>
-          <li><a href="#canli-tavsan" className="text-purple-600 hover:text-purple-700 font-semibold">2. Canlı Tavşan Numarası: Şapkadan Çıkan Sürpriz</a></li>
-          <li><a href="#canli-guvercin" className="text-purple-600 hover:text-purple-700 font-semibold">3. Canlı Güvercin Gösterisi: Ellerden Uçuşan Büyü</a></li>
-          <li><a href="#kombinasyon" className="text-purple-600 hover:text-purple-700 font-semibold">4. At Çiftliği + Sihirbaz Kombinasyonu: Eşsiz Deneyim</a></li>
-          <li><a href="#acik-hava-ipuclari" className="text-purple-600 hover:text-purple-700 font-semibold">5. Açık Hava Sihirbaz Gösterisi İpuçları</a></li>
-          <li><a href="#organizasyon-planlama" className="text-purple-600 hover:text-purple-700 font-semibold">6. Organizasyon Planlaması: Göktürk'e Ulaşım ve Lojistik</a></li>
-          <li><a href="#gercek-deneyim" className="text-purple-600 hover:text-purple-700 font-semibold">7. Gerçek Deneyim: At Çiftliğinde Sihirli Doğum Günü</a></li>
-          <li><a href="#sss" className="text-purple-600 hover:text-purple-700 font-semibold">8. Sık Sorulan Sorular</a></li>
+          <li><a href="#gokturk-mekan" className="text-purple-600 hover:text-purple-700 font-semibold">1. Göktürk Sihirbaz Kiralama: At Çiftliği Mekan ve Organizasyon</a></li>
+          <li><a href="#canli-tavsan" className="text-purple-600 hover:text-purple-700 font-semibold">2. Sihirbaz Kiralama Gösterisi: Canlı Tavşan Numarası</a></li>
+          <li><a href="#canli-guvercin" className="text-purple-600 hover:text-purple-700 font-semibold">3. Sihirbaz Gösterisi Hizmeti: Canlı Güvercin Organizasyonu</a></li>
+          <li><a href="#kombinasyon" className="text-purple-600 hover:text-purple-700 font-semibold">4. At Çiftliği Sihirbaz Kiralama: Eşsiz Organizasyon Deneyimi</a></li>
+          <li><a href="#acik-hava-ipuclari" className="text-purple-600 hover:text-purple-700 font-semibold">5. Açık Hava Sihirbaz Kiralama Organizasyonu İpuçları</a></li>
+          <li><a href="#organizasyon-planlama" className="text-purple-600 hover:text-purple-700 font-semibold">6. Göktürk Sihirbaz Organizasyonu: Ulaşım ve Fiyat Rehberi</a></li>
+          <li><a href="#gercek-deneyim" className="text-purple-600 hover:text-purple-700 font-semibold">7. Sihirbaz Kiralama Deneyimi: At Çiftliğinde Doğum Günü Organizasyonu</a></li>
+          <li><a href="#sss" className="text-purple-600 hover:text-purple-700 font-semibold">8. Sihirbaz Kiralama Fiyat ve Organizasyon Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -58,7 +58,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* Bölüm 1 */}
       <h2 id="gokturk-mekan" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Göktürk At Çiftliği: Doğanın İçinde Büyülü Bir Mekan
+        1. Göktürk Sihirbaz Kiralama: At Çiftliği Mekan ve Organizasyon
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -87,7 +87,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* Bölüm 2 */}
       <h2 id="canli-tavsan" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Canlı Tavşan Numarası: Şapkadan Çıkan Sürpriz
+        2. Sihirbaz Kiralama Gösterisi: Canlı Tavşan Numarası
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -130,7 +130,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* Bölüm 3 */}
       <h2 id="canli-guvercin" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Canlı Güvercin Gösterisi: Ellerden Uçuşan Büyü
+        3. Sihirbaz Gösterisi Hizmeti: Canlı Güvercin Organizasyonu
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -158,7 +158,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* Bölüm 4 */}
       <h2 id="kombinasyon" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. At Çiftliği + Sihirbaz Kombinasyonu: Eşsiz Deneyim
+        4. At Çiftliği Sihirbaz Kiralama: Eşsiz Organizasyon Deneyimi
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -211,7 +211,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* Bölüm 5 */}
       <h2 id="acik-hava-ipuclari" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Açık Hava Sihirbaz Gösterisi İpuçları
+        5. Açık Hava Sihirbaz Kiralama Organizasyonu İpuçları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -261,7 +261,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* Bölüm 6 */}
       <h2 id="organizasyon-planlama" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Organizasyon Planlaması: Göktürk'e Ulaşım ve Lojistik
+        6. Göktürk Sihirbaz Organizasyonu: Ulaşım ve Fiyat Rehberi
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -311,7 +311,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* Bölüm 7 */}
       <h2 id="gercek-deneyim" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Gerçek Deneyim: At Çiftliğinde Sihirli Doğum Günü
+        7. Sihirbaz Kiralama Deneyimi: At Çiftliğinde Doğum Günü Organizasyonu
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -347,7 +347,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* SSS */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        8. Sık Sorulan Sorular
+        8. Sihirbaz Kiralama Fiyat ve Organizasyon Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">
@@ -361,7 +361,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* Service CTA */}
       <div className="bg-purple-50 border border-purple-200 rounded-xl p-6 my-8 text-center">
-        <h3 className="text-2xl font-bold text-gray-900 mb-3">Profesyonel Sihirbaz Kiralama Hizmeti</h3>
+        <h3 className="text-2xl font-bold text-gray-900 mb-3">Göktürk Profesyonel Sihirbaz Kiralama Hizmeti ve Fiyatları</h3>
         <p className="text-gray-700 mb-4">
           Canlı tavşan ve güvercin numaraları, interaktif illüzyonlar ve açık hava gösterileri ile profesyonel sihirbaz organizasyonu için hemen bilgi alın.
         </p>
@@ -375,7 +375,7 @@ const SihirbazGokturkAtCiftligi = () => {
 
       {/* Sonuç CTA */}
       <div className="bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">🎩 Göktürk At Çiftliğinde Unutulmaz Sihirbaz Gösterisi!</h3>
+        <h3 className="text-2xl font-bold mb-4">🎩 Göktürk Sihirbaz Kiralama: At Çiftliği Organizasyon Fiyatları!</h3>
         <p className="mb-6 leading-relaxed">
           Profesyonel sihirbaz kiralama ile çocuklarınıza doğanın içinde büyülü bir gösteri deneyimi yaşatın. Canlı tavşan ve güvercin numaraları, at binme heyecanı ve açık hava organizasyonu ile eşsiz bir etkinlik planlayın!
         </p>

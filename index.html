@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
+    <!-- Polyfill for .at() - needed for react-snap prerendering (Chromium 78) -->
+    <script>if(!Array.prototype.at){Object.defineProperty(Array.prototype,'at',{value:function(n){n=Math.trunc(n)||0;if(n<0)n+=this.length;if(n<0||n>=this.length)return undefined;return this[n]},writable:true,configurable:true});Object.defineProperty(String.prototype,'at',{value:function(n){n=Math.trunc(n)||0;if(n<0)n+=this.length;if(n<0||n>=this.length)return undefined;return this[n]},writable:true,configurable:true});}</script>
+
     <!-- Google Analytics 4 & Google Ads - Delayed 3s for Core Web Vitals -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -58,35 +61,37 @@
     </noscript>
     -->
     
-    <!-- Primary Meta Tags -->
-    <meta name="description" content="Best Event - İstanbul'da profesyonel etkinlik organizasyonu. Çocuk doğum günü, palyaço kiralama, DJ, müzisyen, bubble show, kostümlü karakterler ve daha fazlası! 10+ yıllık tecrübe ile hizmetinizdeyiz." />
+    <!-- Primary Meta Tags (fallback - React Helmet overrides per page) -->
+    <meta name="description" content="İstanbul'da doğum günü organizasyonu, palyaço, sihirbaz, bubble show ve kostümlü karakter kiralama. 10+ yıl deneyim, 5000+ etkinlik. ☎ 0534 930 67 99" />
     <meta name="keywords" content="etkinlik organizasyonu istanbul, çocuk doğum günü, palyaço kiralama istanbul, DJ kiralama, müzisyen kiralama, bubble show, kostümlü karakter, magic show, yüz boyama, erenköy etkinlik, kadıköy organizasyon" />
     <meta name="author" content="Best Event" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="language" content="Turkish" />
     <meta name="geo.region" content="TR-34" />
     <meta name="geo.placename" content="Erenköy, İstanbul" />
     <meta name="geo.position" content="40.9872;29.0301" />
-    
+    <meta name="ICBM" content="40.9872, 29.0301" />
+    <link rel="canonical" href="https://bestevent.com.tr/" />
+    <link rel="alternate" hreflang="tr" href="https://bestevent.com.tr/" />
+    <link rel="alternate" hreflang="x-default" href="https://bestevent.com.tr/" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bestevent.com.tr/" />
-    <meta property="og:title" content="Best Event - Etkinlik Organizasyonu | İstanbul" />
+    <meta property="og:title" content="İstanbul Etkinlik Organizasyonu | Doğum Günü | Sihirbaz Palyaço Bubble Show Kiralama" />
     <meta property="og:description" content="Hayalinizdeki etkinliği gerçeğe dönüştürüyoruz! Çocuk etkinlikleri, doğum günleri, müzik ve eğlence. 10+ yıllık tecrübe." />
     <meta property="og:image" content="https://bestevent.com.tr/content/images/slider/konfeti.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="tr_TR" />
     <meta property="og:site_name" content="Best Event" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://bestevent.com.tr/" />
-    <meta name="twitter:title" content="Best Event - Etkinlik Organizasyonu | İstanbul" />
+    <meta name="twitter:title" content="İstanbul Etkinlik Organizasyonu | Doğum Günü | Sihirbaz Palyaço Bubble Show Kiralama" />
     <meta name="twitter:description" content="Hayalinizdeki etkinliği gerçeğe dönüştürüyoruz! Çocuk etkinlikleri, doğum günleri, müzik ve eğlence." />
     <meta name="twitter:image" content="https://bestevent.com.tr/content/images/slider/konfeti.jpg" />
-    
-    <!-- Contact Info -->
-    <meta name="contact" content="+905307309009" />
-    <meta name="address" content="Şemsettin Günaltay Caddesi No:175, Erenköy/İstanbul" />
     
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="NiqNHxpzlQRX_NoEJPuN_JPxmsbgtsZvrjzxAkdP2q0" />
@@ -114,7 +119,7 @@
     <link rel="prefetch" href="/iletisim" as="document">
     
     <!-- Preload critical images (hero section) - First slide for LCP optimization -->
-    <link rel="preload" as="image" href="/content/images/Anasayfa/siteanahero.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/content/images/Anasayfa/siteanahero.webp" type="image/webp" fetchpriority="high" imagesrcset="/content/images/Anasayfa/siteanahero.webp 1920w" imagesizes="100vw">
 
     <!-- Fonts: @fontsource self-hosted kullanılıyor, Google Fonts kaldırıldı (render-blocking önleme) -->
     
@@ -150,6 +155,11 @@
         color: #ffffff;
         line-height: 1.6;
         overflow-x: hidden;
+      }
+
+      /* Reserve space for fixed mobile CTA bar to prevent CLS */
+      @media (max-width: 767px) {
+        body { padding-bottom: 56px; }
       }
       
       /* Prevent FOUT & CLS */
@@ -209,7 +219,7 @@
       }
     </style>
     
-    <title>Best Event - Hayalinizdeki Etkinlik Burada Başlıyor! | İstanbul Etkinlik Organizasyonu</title>
+    <title>İstanbul Etkinlik Organizasyonu | Doğum Günü Organizasyonu | Sihirbaz Palyaço Bubble Show Kiralama</title>
     
     <!-- Schema.org JSON-LD - LocalBusiness -->
     <script type="application/ld+json">

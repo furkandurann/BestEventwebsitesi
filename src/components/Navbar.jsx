@@ -49,7 +49,7 @@ const Navbar = memo(() => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="logo-lockup font-display hover:scale-105 transition-transform">
-              <span 
+              <span
                 className={`${scrolled ? 'text-gradient' : 'text-white drop-shadow-lg'} logo-glow`}
                 style={{
                   textShadow: '0 0 15px rgba(255, 200, 80, 0.4), 0 0 30px rgba(255, 160, 50, 0.3), 0 0 45px rgba(255, 120, 30, 0.2)',
@@ -123,6 +123,17 @@ const Navbar = memo(() => {
             </Link>
             
             <Link
+              to="/blog"
+              className={`nav-link text-sm md:text-base ${
+                scrolled
+                  ? 'text-dark hover:text-primary'
+                  : 'text-white hover:text-accent'
+              }`}
+            >
+              Blog
+            </Link>
+
+            <Link
               to="/hakkimizda"
               className={`nav-link text-sm md:text-base ${
                 scrolled
@@ -132,7 +143,7 @@ const Navbar = memo(() => {
             >
               Hakkımızda
             </Link>
-            
+
             <Link
               to="/iletisim"
               className={`nav-link text-sm md:text-base ${
@@ -143,6 +154,23 @@ const Navbar = memo(() => {
             >
               İletişim
             </Link>
+
+            {/* Telefon Numarası - Sağ Üst Gold */}
+            <a
+              href="tel:+905307309009"
+              className="ml-auto flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-xs lg:text-sm transition-all duration-300 hover:scale-105 border-2 border-amber-500/60 shadow-lg whitespace-nowrap"
+              style={{
+                background: 'linear-gradient(135deg, #b8860b 0%, #daa520 25%, #ffd700 50%, #daa520 75%, #b8860b 100%)',
+                color: '#1a0f00',
+                textShadow: '0 1px 2px rgba(255,215,0,0.3)',
+                boxShadow: '0 0 15px rgba(218,165,32,0.3), 0 0 30px rgba(218,165,32,0.15), inset 0 1px 0 rgba(255,255,255,0.3)'
+              }}
+            >
+              <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              Hemen Ara
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -190,6 +218,12 @@ const Navbar = memo(() => {
                   Görseller
                 </Link>
                 <Link
+                  to="/blog"
+                  className="block px-4 py-2.5 text-gray-800 font-semibold hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 rounded-md transition-all duration-200"
+                >
+                  Blog
+                </Link>
+                <Link
                   to="/hakkimizda"
                   className="block px-4 py-2.5 text-gray-800 font-semibold hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 rounded-md transition-all duration-200"
                 >
@@ -206,7 +240,7 @@ const Navbar = memo(() => {
               {/* Contact Buttons */}
               <div className="space-y-3 pt-4 border-t border-gray-200">
                 <a
-                  href="https://wa.me/905349306799?text=Merhaba, Best Event hakkında bilgi almak istiyorum"
+                  href="https://wa.me/905307309009?text=Merhaba, Best Event hakkında bilgi almak istiyorum"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3 px-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-bold shadow-md hover:shadow-lg transition-all duration-200"
@@ -217,13 +251,13 @@ const Navbar = memo(() => {
                   WhatsApp İletişim
                 </a>
                 <a
-                  href="tel:+905349306799"
+                  href="tel:+905307309009"
                   className="flex items-center justify-center gap-2 w-full py-3 px-6 bg-gradient-to-r from-amber-500 to-yellow-600 text-white rounded-lg font-bold shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
                   </svg>
-                  0534 930 67 99
+                  Hemen Ara
                 </a>
               </div>
             </div>

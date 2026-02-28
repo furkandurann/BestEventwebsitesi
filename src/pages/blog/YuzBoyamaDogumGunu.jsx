@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const YuzBoyamaDogumGunu = () => {
   const faqData = [
     {
-      question: 'Dogum gününde yüz boyama ne kadar sürer?',
+      question: 'Doğum gününde yüz boyama ne kadar sürer?',
       answer: 'Profesyonel yüz boyama organizasyonunda her çocuk için ortalama 5-10 dakika süre ayrılır. Basit tasarımlar (yıldız, kalp, kelebek) 3-5 dakikada tamamlanırken, detaylı çalışmalar (ejderha, süper kahraman maskesi, prenses tacı) 10-15 dakika sürebilir. 15-20 çocukluk bir doğum günü partisi için genellikle 1-1,5 saatlik bir yüz boyama seansı planlanması önerilir. Ekibimiz hızlı ve profesyonel çalışarak tüm çocukların sırasının gelmesini sağlar.'
     },
     {
@@ -38,12 +38,12 @@ const YuzBoyamaDogumGunu = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-teal-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#neden-vazgecilmez" className="text-teal-600 hover:text-teal-700 font-semibold">1. Doğum Gününde Yüz Boyama: Neden Vazgeçilmez?</a></li>
-          <li><a href="#yas-gruplari" className="text-teal-600 hover:text-teal-700 font-semibold">2. Yaş Gruplarına Göre Yüz Boyama Tasarımları</a></li>
+          <li><a href="#neden-vazgecilmez" className="text-teal-600 hover:text-teal-700 font-semibold">1. Doğum Günü Organizasyonunda Yüz Boyama Kiralama: Neden Vazgeçilmez?</a></li>
+          <li><a href="#yas-gruplari" className="text-teal-600 hover:text-teal-700 font-semibold">2. Yaş Gruplarına Göre Yüz Boyama Tasarımları ve Organizasyon Önerileri</a></li>
           <li><a href="#zamanlama" className="text-teal-600 hover:text-teal-700 font-semibold">3. Doğum Günü Programında Yüz Boyama Zamanlaması</a></li>
-          <li><a href="#tema-partisi" className="text-teal-600 hover:text-teal-700 font-semibold">4. Tema Partisine Uygun Yüz Boyama</a></li>
-          <li><a href="#mekan-duzeni" className="text-teal-600 hover:text-teal-700 font-semibold">5. Yüz Boyama Köşesi Oluşturma: Mekan Düzeni</a></li>
-          <li><a href="#ebeveyn-bilgileri" className="text-teal-600 hover:text-teal-700 font-semibold">6. Ebeveynler İçin Pratik Bilgiler</a></li>
+          <li><a href="#tema-partisi" className="text-teal-600 hover:text-teal-700 font-semibold">4. Tema Partisi Organizasyonuna Uygun Yüz Boyama Kiralama</a></li>
+          <li><a href="#mekan-duzeni" className="text-teal-600 hover:text-teal-700 font-semibold">5. Yüz Boyama Köşesi Oluşturma: İstanbul'da Mekan Düzeni</a></li>
+          <li><a href="#ebeveyn-bilgileri" className="text-teal-600 hover:text-teal-700 font-semibold">6. Ebeveynler İçin Pratik Bilgiler ve Fiyat Rehberi</a></li>
           <li><a href="#sss" className="text-teal-600 hover:text-teal-700 font-semibold">7. Sık Sorulan Sorular</a></li>
         </ul>
       </div>
@@ -61,7 +61,7 @@ const YuzBoyamaDogumGunu = () => {
 
       {/* Bölüm 1 */}
       <h2 id="neden-vazgecilmez" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Doğum Gününde Yüz Boyama: Neden Vazgeçilmez?
+        1. Doğum Günü Organizasyonunda Yüz Boyama Kiralama: Neden Vazgeçilmez?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -97,7 +97,7 @@ const YuzBoyamaDogumGunu = () => {
 
       {/* Bölüm 2 */}
       <h2 id="yas-gruplari" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Yaş Gruplarına Göre Yüz Boyama Tasarımları
+        2. Yaş Gruplarına Göre Yüz Boyama Tasarımları ve Organizasyon Önerileri
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -226,7 +226,7 @@ const YuzBoyamaDogumGunu = () => {
 
       {/* Bölüm 4 */}
       <h2 id="tema-partisi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Tema Partisine Uygun Yüz Boyama
+        4. Tema Partisi Organizasyonuna Uygun Yüz Boyama Kiralama
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -293,7 +293,7 @@ const YuzBoyamaDogumGunu = () => {
 
       {/* Bölüm 5 */}
       <h2 id="mekan-duzeni" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Yüz Boyama Köşesi Oluşturma: Mekan Düzeni
+        5. Yüz Boyama Köşesi Oluşturma: İstanbul'da Mekan Düzeni
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -368,7 +368,7 @@ const YuzBoyamaDogumGunu = () => {
 
       {/* Bölüm 6 */}
       <h2 id="ebeveyn-bilgileri" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Ebeveynler İçin Pratik Bilgiler
+        6. Ebeveynler İçin Pratik Bilgiler ve Fiyat Rehberi
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">

@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
-const EventDetail = ({ 
-  title, 
-  description, 
+const EventDetail = ({
+  title,
+  description,
   longDescription,
   features = [],
   photos = [],
@@ -12,7 +13,9 @@ const EventDetail = ({
   faqs = [],
   reviews = [],
   seoKeywords = "",
-  compactImageSections = false
+  compactImageSections = false,
+  canonicalPath = "",
+  serviceType = "Etkinlik Organizasyonu"
 }) => {
   const navigate = useNavigate()
 
@@ -34,17 +37,7 @@ const EventDetail = ({
     : null
 
   const faqSchema = faqs.length
-    ? {
-        '@type': 'FAQPage',
-        mainEntity: faqs.map((faq) => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer
-          }
-        }))
-      }
+    ? createFAQSchema(faqs)
     : null
 
   const reviewSchema = reviews.length
@@ -55,28 +48,30 @@ const EventDetail = ({
       }
     : null
 
-  const serviceSchema = {
-    '@type': 'Service',
-    name: title,
-    description,
-    provider: {
-      '@type': 'Organization',
-      name: 'Best Event',
-      url: 'https://bestevent.com.tr'
-    },
-    areaServed: {
-      '@type': 'AdministrativeArea',
-      name: 'İstanbul'
-    },
-    offers: pricing
-      ? {
-          '@type': 'Offer',
-          priceCurrency: 'TRY',
-          price: pricing.startingPrice,
+  const serviceSchema = canonicalPath
+    ? createServiceSchema(title, description, canonicalPath, serviceType)
+    : {
+        '@type': 'Service',
+        name: title,
+        description,
+        provider: {
+          '@type': 'Organization',
+          name: 'Best Event',
           url: 'https://bestevent.com.tr'
-        }
-      : undefined
-  }
+        },
+        areaServed: {
+          '@type': 'AdministrativeArea',
+          name: 'İstanbul'
+        },
+        offers: pricing
+          ? {
+              '@type': 'Offer',
+              priceCurrency: 'TRY',
+              price: pricing.startingPrice,
+              url: 'https://bestevent.com.tr'
+            }
+          : undefined
+      }
 
   const schemaGraph = [serviceSchema]
   if (faqSchema) schemaGraph.push(faqSchema)

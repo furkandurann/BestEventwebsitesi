@@ -5,6 +5,7 @@ import NarrativeSection from '../../components/NarrativeSection'
 import FullBleedHero from '../../components/FullBleedHero'
 import OptimizedImage from '../../components/OptimizedImage'
 import Seo from '../../components/Seo'
+import { createServiceSchema } from '../../utils/schemaHelpers'
 
 const GirlsMascots = () => {
   const [activeSection, setActiveSection] = useState(0)
@@ -63,6 +64,13 @@ const GirlsMascots = () => {
     section?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const serviceSchema = createServiceSchema(
+    'Kız Çocuk Maskotları Kiralama İstanbul',
+    'İstanbul\'da kız çocuk maskot organizasyonu. Hello Kitty, Kuromi, Unicorn, LOL Bebek, Minnie Mouse maskot kiralama. Profesyonel ekip.',
+    '/organizasyonlar/kiz-maskotlari',
+    'Maskot Organizasyonu'
+  )
+
   return (
     <>
       <Seo
@@ -70,26 +78,7 @@ const GirlsMascots = () => {
         description="İstanbul'da kız çocuk maskot organizasyonu. Hello Kitty, Kuromi, Unicorn, LOL Bebek, Minnie Mouse maskot kiralama. Profesyonel ekip."
         keywords={['kız maskot kiralama istanbul', 'hello kitty maskot', 'kuromi maskot istanbul', 'unicorn maskot kiralama', 'lol bebek maskot', 'minnie mouse maskot istanbul', 'kız çocuk doğum günü maskot']}
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Kız Çocuk Maskot Kiralama İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "telephone": "+905307309009",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "İstanbul",
-                "addressCountry": "TR"
-              }
-            },
-            "serviceType": "Maskot Organizasyonu",
-            "areaServed": {
-              "@type": "City",
-              "name": "İstanbul"
-            }
-          },
+          serviceSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",

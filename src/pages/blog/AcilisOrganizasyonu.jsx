@@ -7,14 +7,14 @@ const AcilisOrganizasyonu = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-red-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#nedir" className="text-red-600 hover:text-red-700 font-semibold">1. Açılış Organizasyonu Nedir?</a></li>
-          <li><a href="#balon-susleme" className="text-red-600 hover:text-red-700 font-semibold">2. Açılış Balon Süslemesi: Kaç Metre, Kaç Renk?</a></li>
-          <li><a href="#ses-sistemi" className="text-red-600 hover:text-red-700 font-semibold">3. Açılışta Ses Sistemi Önemli mi?</a></li>
-          <li><a href="#susleme-detaylari" className="text-red-600 hover:text-red-700 font-semibold">4. Süsleminin Detayları Fiyata Yansır mı?</a></li>
-          <li><a href="#bando-gosterisi" className="text-red-600 hover:text-red-700 font-semibold">5. Bando Gösterisi + Kurdeleli Açılış</a></li>
-          <li><a href="#beylikduzu-hikaye" className="text-red-600 hover:text-red-700 font-semibold">6. Beylikdüzü'ne Giderken Yolda Kaldık: Acil Durum Planı</a></li>
-          <li><a href="#besiktas-ornek" className="text-red-600 hover:text-red-700 font-semibold">7. Beşiktaş Kurumsal Etkinlik Örneği</a></li>
-          <li><a href="#sss" className="text-red-600 hover:text-red-700 font-semibold">8. Sık Sorulan Sorular</a></li>
+          <li><a href="#nedir" className="text-red-600 hover:text-red-700 font-semibold">1. Açılış Organizasyonu Nedir? İstanbul Kiralama Hizmeti</a></li>
+          <li><a href="#balon-susleme" className="text-red-600 hover:text-red-700 font-semibold">2. Açılış Organizasyonu Balon Süsleme Kiralama: Fiyat ve Renk</a></li>
+          <li><a href="#ses-sistemi" className="text-red-600 hover:text-red-700 font-semibold">3. Açılış Organizasyonu Ses Sistemi Kiralama Hizmeti</a></li>
+          <li><a href="#susleme-detaylari" className="text-red-600 hover:text-red-700 font-semibold">4. Açılış Organizasyonu Süsleme Fiyatları</a></li>
+          <li><a href="#bando-gosterisi" className="text-red-600 hover:text-red-700 font-semibold">5. Açılış Organizasyonu Bando Gösterisi Kiralama</a></li>
+          <li><a href="#beylikduzu-hikaye" className="text-red-600 hover:text-red-700 font-semibold">6. İstanbul Açılış Organizasyonu: Beylikdüzü Acil Durum Planı</a></li>
+          <li><a href="#besiktas-ornek" className="text-red-600 hover:text-red-700 font-semibold">7. Beşiktaş Açılış Organizasyonu Kiralama: Kurumsal Etkinlik</a></li>
+          <li><a href="#sss" className="text-red-600 hover:text-red-700 font-semibold">8. Açılış Organizasyonu Kiralama Fiyat Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -31,7 +31,7 @@ const AcilisOrganizasyonu = () => {
 
       {/* Bölüm 1 */}
       <h2 id="nedir" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Açılış Organizasyonu Nedir?
+        1. Açılış Organizasyonu Nedir? İstanbul Kiralama Hizmeti
       </h2>
       
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -47,7 +47,7 @@ const AcilisOrganizasyonu = () => {
       </ul>
 
       <div className="bg-gray-100 rounded-lg p-6 mb-8">
-        <h3 className="text-xl font-bold text-gray-900 mb-3">📍 İstanbul'da Popüler Açılış Bölgeleri:</h3>
+        <h3 className="text-xl font-bold text-gray-900 mb-3">📍 İstanbul Açılış Organizasyonu Hizmeti Verilen Bölgeler:</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <h4 className="font-semibold text-gray-800 mb-2">Avrupa Yakası:</h4>
@@ -72,14 +72,14 @@ const AcilisOrganizasyonu = () => {
 
       {/* Bölüm 2 */}
       <h2 id="balon-susleme" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Açılış Balon Süslemesi: Kaç Metre Balon Yapabiliriz? Kaç Renk Kullanılır?
+        2. Açılış Organizasyonu Balon Süsleme Kiralama: Fiyat ve Renk Seçenekleri
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
         Balon süsleme, açılış organizasyonunun en dikkat çekici unsurlarından biri. Peki kaç metre balon kemeri yapabilirsiniz ve kaç renk kullanmalısınız?
       </p>
 
-      <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">🎈 Balon Kemeri Uzunlukları:</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">🎈 Açılış Organizasyonu Balon Kemeri Kiralama Uzunlukları:</h3>
 
       <div className="overflow-x-auto mb-6">
         <table className="min-w-full bg-white border border-gray-300 rounded-lg">
@@ -114,7 +114,7 @@ const AcilisOrganizasyonu = () => {
         </table>
       </div>
 
-      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🎨 Kaç Renk Balon Kullanılır?</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🎨 Açılış Balon Süsleme Fiyatı: Kaç Renk Kullanılır?</h3>
 
       <p className="text-gray-700 leading-relaxed mb-4">
         Renk seçimi markanızın kimliğine bağlı:
@@ -150,7 +150,7 @@ const AcilisOrganizasyonu = () => {
 
       {/* Bölüm 3 */}
       <h2 id="ses-sistemi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Açılışta Ses Sistemi Önemli mi?
+        3. Açılış Organizasyonu Ses Sistemi Kiralama Hizmeti
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -183,7 +183,7 @@ const AcilisOrganizasyonu = () => {
         </div>
       </div>
 
-      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🔊 Hangi Ses Sistemi Hangi Etkinlikte Kullanılır?</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🔊 Açılış Organizasyonu İçin Ses Sistemi Kiralama Fiyatları</h3>
 
       <div className="space-y-4 mb-8">
         <div className="bg-white border border-gray-200 rounded-lg p-6">
@@ -213,7 +213,7 @@ const AcilisOrganizasyonu = () => {
 
       {/* Bölüm 4 */}
       <h2 id="susleme-detaylari" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Süsleminin Detayları Fiyata Yansır mı?
+        4. Açılış Organizasyonu Süsleme Fiyatları: Detaylar ve Maliyet
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -277,14 +277,14 @@ const AcilisOrganizasyonu = () => {
 
       {/* Bölüm 5 */}
       <h2 id="bando-gosterisi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Bando Gösterisi + Kurdeleli Açılış
+        5. Açılış Organizasyonu Bando Gösterisi Kiralama ve Kurdeleli Açılış
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
         Bando gösterisi, açılış organizasyonuna enerji katan en coşkulu unsur. Trompet, davul ve diğer enstrümanlarla çalınan marşlar, dikkat çeker ve kalabalık toplar.
       </p>
 
-      <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">🎺 Bando Gösterisi Nasıl Planlanır?</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">🎺 Açılış Bando Kiralama Organizasyonu Nasıl Planlanır?</h3>
 
       <div className="space-y-4 mb-8">
         <div className="bg-white border-l-4 border-red-600 p-6 rounded-lg">
@@ -334,7 +334,7 @@ const AcilisOrganizasyonu = () => {
 
       {/* Bölüm 6 */}
       <h2 id="beylikduzu-hikaye" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Beylikdüzü'ne Giderken Yolda Kaldık: Acil Durum Planı
+        6. İstanbul Açılış Organizasyonu: Beylikdüzü Acil Durum Planı
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -350,7 +350,7 @@ const AcilisOrganizasyonu = () => {
         </p>
       </div>
 
-      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🚨 Açılış Organizasyonunda Acil Durum Planı:</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🚨 Açılış Organizasyonu Hizmetinde Acil Durum Planı:</h3>
 
       <div className="space-y-4 mb-8">
         <div className="bg-white border border-gray-200 rounded-lg p-6">
@@ -377,7 +377,7 @@ const AcilisOrganizasyonu = () => {
 
       {/* Bölüm 7 */}
       <h2 id="besiktas-ornek" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Beşiktaş Kurumsal Etkinlik Örneği: BJK Plaza Çevresi Açılış
+        7. Beşiktaş Açılış Organizasyonu Kiralama: BJK Plaza Kurumsal Etkinlik
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -416,7 +416,7 @@ const AcilisOrganizasyonu = () => {
         </div>
       </div>
 
-      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🏢 Beşiktaş'ta Açılış Yaparken Dikkat Edilecekler:</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🏢 Beşiktaş Açılış Organizasyonu Kiralama İpuçları:</h3>
 
       <ul className="space-y-3 text-gray-700 mb-8">
         <li className="flex items-start gap-3">
@@ -441,7 +441,7 @@ const AcilisOrganizasyonu = () => {
 
       {/* Bölüm 8 */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        8. Sık Sorulan Sorular (SSS)
+        8. Açılış Organizasyonu Kiralama Fiyat Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">
@@ -483,7 +483,7 @@ const AcilisOrganizasyonu = () => {
 
       {/* Sonuç */}
       <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">🎉 Açılış Organizasyonunuz Başarılı Olsun!</h3>
+        <h3 className="text-2xl font-bold mb-4">🎉 İstanbul Açılış Organizasyonu Kiralama Hizmeti!</h3>
         <p className="mb-6 leading-relaxed">
           İstanbul'da unutulmaz bir açılış etkinliği için profesyonel destek alın. Balon süslemesinden bando gösterisine, ses sisteminden kurdeleli açılışa kadar tüm detayları biz halledelim.
         </p>

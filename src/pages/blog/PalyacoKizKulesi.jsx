@@ -34,13 +34,13 @@ const PalyacoKizKulesi = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-red-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#kiz-kulesi-nedir" className="text-red-600 hover:text-red-700 font-semibold">1. Kız Kulesi Nedir? Neden Özel Bir Mekan?</a></li>
-          <li><a href="#ulasim-tekne" className="text-red-600 hover:text-red-700 font-semibold">2. Kız Kulesi'ne Ulaşım: Tekne ile Organizasyon Planlaması</a></li>
-          <li><a href="#akustik-alan" className="text-red-600 hover:text-red-700 font-semibold">3. Mekanın Akustiği ve Alan Sınırlamaları</a></li>
-          <li><a href="#palyaco-gosterisi" className="text-red-600 hover:text-red-700 font-semibold">4. Palyaço Gösterisi: Kız Kulesi'ne Özel Aktiviteler</a></li>
-          <li><a href="#checklist" className="text-red-600 hover:text-red-700 font-semibold">5. Organizasyon Checklist: Ekipman ve Lojistik</a></li>
-          <li><a href="#gercek-deneyim" className="text-red-600 hover:text-red-700 font-semibold">6. Gerçek Deneyim: Boğaz'ın Ortasında Doğum Günü</a></li>
-          <li><a href="#sss" className="text-red-600 hover:text-red-700 font-semibold">7. Sık Sorulan Sorular</a></li>
+          <li><a href="#kiz-kulesi-nedir" className="text-red-600 hover:text-red-700 font-semibold">1. Kız Kulesi'nde Palyaço Kiralama Organizasyonu: Neden Özel?</a></li>
+          <li><a href="#ulasim-tekne" className="text-red-600 hover:text-red-700 font-semibold">2. Kız Kulesi Palyaço Organizasyonu: Tekne ile Ulaşım</a></li>
+          <li><a href="#akustik-alan" className="text-red-600 hover:text-red-700 font-semibold">3. Palyaço Gösterisi İçin Mekan Akustiği ve Organizasyon</a></li>
+          <li><a href="#palyaco-gosterisi" className="text-red-600 hover:text-red-700 font-semibold">4. Kız Kulesi Palyaço Kiralama Hizmeti: Özel Aktiviteler</a></li>
+          <li><a href="#checklist" className="text-red-600 hover:text-red-700 font-semibold">5. Palyaço Kiralama Organizasyonu: Ekipman ve Lojistik</a></li>
+          <li><a href="#gercek-deneyim" className="text-red-600 hover:text-red-700 font-semibold">6. Kız Kulesi Doğum Günü Organizasyonu: Gerçek Deneyim</a></li>
+          <li><a href="#sss" className="text-red-600 hover:text-red-700 font-semibold">7. Kız Kulesi Palyaço Kiralama Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -58,7 +58,7 @@ const PalyacoKizKulesi = () => {
 
       {/* Bölüm 1 */}
       <h2 id="kiz-kulesi-nedir" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Kız Kulesi Nedir? Neden Özel Bir Mekan?
+        1. Kız Kulesi'nde Palyaço Kiralama Organizasyonu: Neden Özel?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -90,7 +90,7 @@ const PalyacoKizKulesi = () => {
 
       {/* Bölüm 2 */}
       <h2 id="ulasim-tekne" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Kız Kulesi'ne Ulaşım: Tekne ile Organizasyon Planlaması
+        2. Kız Kulesi Palyaço Organizasyonu: Tekne ile Ulaşım Planlaması
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -133,7 +133,7 @@ const PalyacoKizKulesi = () => {
 
       {/* Bölüm 3 */}
       <h2 id="akustik-alan" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Mekanın Akustiği ve Alan Sınırlamaları
+        3. Palyaço Gösterisi İçin Mekan Akustiği ve Organizasyon Detayları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -168,7 +168,7 @@ const PalyacoKizKulesi = () => {
 
       {/* Bölüm 4 */}
       <h2 id="palyaco-gosterisi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Palyaço Gösterisi: Kız Kulesi'ne Özel Aktiviteler
+        4. Kız Kulesi Palyaço Kiralama Hizmeti: Özel Aktiviteler
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -222,7 +222,7 @@ const PalyacoKizKulesi = () => {
 
       {/* Bölüm 5 */}
       <h2 id="checklist" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Organizasyon Checklist: Ekipman ve Lojistik
+        5. Palyaço Kiralama Organizasyonu: Ekipman ve Lojistik Checklist
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -341,7 +341,7 @@ const PalyacoKizKulesi = () => {
 
       {/* Bölüm 6 - Gerçek Hikaye */}
       <h2 id="gercek-deneyim" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Gerçek Deneyim: Boğaz'ın Ortasında Doğum Günü
+        6. Kız Kulesi Doğum Günü Organizasyonu: Gerçek Kiralama Deneyimi
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -396,7 +396,7 @@ const PalyacoKizKulesi = () => {
 
       {/* Bölüm 7 - SSS */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Sık Sorulan Sorular
+        7. Kız Kulesi Palyaço Kiralama Fiyat ve Organizasyon Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">
@@ -410,7 +410,7 @@ const PalyacoKizKulesi = () => {
 
       {/* Service CTA */}
       <div className="bg-red-50 border border-red-200 rounded-xl p-6 my-8 text-center">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">Profesyonel Palyaço Kiralama Hizmeti</h3>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">İstanbul Profesyonel Palyaço Kiralama Hizmeti</h3>
         <p className="text-gray-700 mb-4">
           Kız Kulesi'nden salon organizasyonlarına kadar her mekanda profesyonel palyaço gösterisi. Sosis balon, yüz boyama, interaktif oyunlar ve sihir numaraları dahil komple kiralama paketi.
         </p>
@@ -421,7 +421,7 @@ const PalyacoKizKulesi = () => {
 
       {/* Sonuç CTA */}
       <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">Kız Kulesi'nde Unutulmaz Bir Organizasyon!</h3>
+        <h3 className="text-2xl font-bold mb-4">Kız Kulesi Palyaço Kiralama ile Unutulmaz Organizasyon!</h3>
         <p className="mb-6 leading-relaxed">
           Boğaz'ın ortasında, İstanbul'un en ikonik mekanında çocuğunuz için masalsı bir doğum günü gösterisi düzenleyin. Profesyonel palyaço kiralama, deniz temalı aktiviteler, tekne transferi ve tam lojistik destek ile hayalinizdeki organizasyonu gerçeğe dönüştürüyoruz. Siz sadece kutlamaya odaklanın, gerisini biz halledelim.
         </p>

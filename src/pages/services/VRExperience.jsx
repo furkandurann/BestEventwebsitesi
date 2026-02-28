@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import OptimizedImage from '../../components/OptimizedImage'
 import RelatedServices from '../../components/RelatedServices'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
 const VRExperience = () => {
   const hero = {
@@ -45,6 +46,14 @@ const VRExperience = () => {
     { q: 'Hijyen nasıl sağlanıyor?', a: 'Tek kullanımlık ped ve her kullanım sonrası dezenfeksiyon.' },
   ]
 
+  const serviceSchema = createServiceSchema(
+    'VR Sanal Gerçeklik Kiralama İstanbul',
+    'İstanbul\'da Meta Quest VR gözlükleriyle çocuklara özel sanal gerçeklik deneyimi. Gözetmenli, hijyenik VR etkinliği. 8+ yaş için güvenli.',
+    '/organizasyonlar/vr-sanal-gerceklik',
+    'VR Sanal Gerçeklik Etkinliği'
+  )
+  const faqSchema = createFAQSchema(faq.map(f => ({ question: f.q, answer: f.a })))
+
   return (
     <>
       <Seo
@@ -53,26 +62,8 @@ const VRExperience = () => {
         keywords={['vr kiralama istanbul', 'sanal gerçeklik etkinliği', 'çocuk vr deneyimi istanbul', 'meta quest kiralama', 'vr doğum günü', 'sanal gerçeklik organizasyonu istanbul']}
         image="/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "VR Sanal Gerçeklik Deneyimi İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "telephone": "+905307309009",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "İstanbul",
-                "addressCountry": "TR"
-              }
-            },
-            "serviceType": "VR Sanal Gerçeklik Etkinliği",
-            "areaServed": {
-              "@type": "City",
-              "name": "İstanbul"
-            }
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -80,15 +71,6 @@ const VRExperience = () => {
               { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
               { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
               { "@type": "ListItem", "position": 3, "name": "VR Sanal Gerçeklik", "item": "https://bestevent.com.tr/organizasyonlar/vr-sanal-gerceklik" }
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              { "@type": "Question", "name": "Hangi yaş için uygun?", "acceptedAnswer": { "@type": "Answer", "text": "8+ yaş ve minimum 1.20m boy. Küçük yaşlar için önerilmez." } },
-              { "@type": "Question", "name": "Seanslar ne kadar?", "acceptedAnswer": { "@type": "Answer", "text": "Her çocuk için 5-10 dk; toplam etkinlik 60-120 dk arası." } },
-              { "@type": "Question", "name": "Hijyen nasıl sağlanıyor?", "acceptedAnswer": { "@type": "Answer", "text": "Tek kullanımlık ped ve her kullanım sonrası dezenfeksiyon." } }
             ]
           }
         ]}

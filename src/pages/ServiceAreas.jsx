@@ -25,69 +25,84 @@ const ServiceAreas = () => {
     { name: 'Trio Band', link: '/organizasyonlar/trio-ekibi', icon: '🎵' },
   ]
 
+  // LP slug mapping: service page link -> local landing page service slug
+  const lpServiceMap = {
+    '/organizasyonlar/palyaco-kiralama': 'palyaco-kiralama',
+    '/organizasyonlar/magic-show': 'sihirbaz-kiralama',
+    '/organizasyonlar/yuz-boyama': 'profesyonel-yuz-boyama',
+    '/organizasyonlar/bubble-show': 'bubble-show-kiralama',
+    '/organizasyonlar/konsept-dogum-gunu': 'dogum-gunu-organizasyonu',
+  }
+
   const istanbulAreas = [
     {
-      name: 'Kadıköy',
+      name: 'Kadıköy', slug: 'kadikoy',
       description: 'Kadıköy, Moda, Fenerbahçe, Caddebostan, Acıbadem, Koşuyolu bölgelerinde profesyonel etkinlik organizasyonu. Sahil şeridindeki açık hava etkinliklerinden kapalı mekan organizasyonlarına geniş hizmet yelpazesi.',
       stats: 'Son 12 ayda 150+ etkinlik',
       highlight: ['Çocuk Etkinlikleri', 'Düğün Organizasyonları', 'Kurumsal Etkinlikler']
     },
     {
-      name: 'Üsküdar',
+      name: 'Üsküdar', slug: 'uskudar',
       description: 'Üsküdar, Kuzguncuk, Çengelköy, Altunizade, Acıbadem bölgelerinde etkinlik hizmeti. Boğaz manzaralı mekanlara özel organizasyonlar ve geleneksel etkinlikler.',
       stats: '100+ başarılı organizasyon',
       highlight: ['Boğaz Manzaralı Etkinlikler', 'Kültürel Organizasyonlar', 'Müzik Gösterileri']
     },
     {
-      name: 'Maltepe',
+      name: 'Maltepe', slug: 'maltepe',
       description: 'Maltepe, Cevizli, Küçükyalı, Bağlarbaşı, İdealtepe bölgelerinde hizmet. Maltepe sahil şeridi açık hava etkinlikleri ve park organizasyonlarında uzman kadro.',
       stats: '80+ sahil etkinliği',
       highlight: ['Sahil Organizasyonları', 'Park Etkinlikleri', 'Çocuk Şenlikleri']
     },
     {
-      name: 'Ataşehir',
+      name: 'Ataşehir', slug: 'atasehir',
       description: 'Ataşehir, Küçükbakkalköy, Barbaros bölgelerinde kurumsal ve özel etkinlik hizmetleri. Modern mekanlar ve alışveriş merkezlerinde organizasyon deneyimi.',
       stats: '70+ kurumsal etkinlik',
       highlight: ['AVM Etkinlikleri', 'Kurumsal Organizasyonlar', 'Açılış Törenleri']
     },
     {
-      name: 'Beşiktaş',
+      name: 'Beşiktaş', slug: 'besiktas',
       description: 'Beşiktaş, Ortaköy, Bebek, Arnavutköy, Etiler, Levent, Nişantaşı bölgelerinde lüks etkinlik organizasyonları. Boğaz kıyısı ve prestijli mekanlarda özel hizmet.',
       stats: '90+ prestijli etkinlik',
       highlight: ['Lüks Düğünler', 'Gala Geceleri', 'VIP Organizasyonlar']
     },
     {
-      name: 'Şişli',
+      name: 'Şişli', slug: 'sisli',
       description: 'Şişli, Mecidiyeköy, Gayrettepe, Bomonti, Osmanbey, Feriköy bölgelerinde etkinlik hizmeti. İş merkezleri ve otel organizasyonlarında geniş deneyim.',
       stats: '110+ otel etkinliği',
       highlight: ['Otel Etkinlikleri', 'İş Merkezleri', 'Kongre Organizasyonları']
     },
     {
-      name: 'Bakırköy',
+      name: 'Bakırköy', slug: 'bakirkoy',
       description: 'Bakırköy, Ataköy, Yeşilköy, Florya bölgelerinde çocuk ve kurumsal etkinlikler. Sahil şeridi ve yeşil alanlar için özel organizasyonlar.',
       stats: '95+ başarılı etkinlik',
       highlight: ['Sahil Etkinlikleri', 'Park Organizasyonları', 'Doğum Günleri']
     },
     {
-      name: 'Beylikdüzü',
+      name: 'Beylikdüzü', slug: 'beylikduzu',
       description: 'Beylikdüzü, Esenyurt, Avcılar bölgelerinde geniş çaplı etkinlik hizmetleri. Site içi organizasyonlar ve toplu etkinlikler konusunda uzman.',
       stats: '120+ site etkinliği',
       highlight: ['Site Şenlikleri', 'Belediye Etkinlikleri', 'Festival Organizasyonları']
     },
     {
-      name: 'Başakşehir',
+      name: 'Başakşehir', slug: 'basaksehir',
       description: 'Başakşehir, Bağcılar, Küçükçekmece bölgelerinde profesyonel etkinlik organizasyonu. Geniş açık alanlar ve toplu etkinlik deneyimi.',
       stats: '75+ toplu etkinlik',
       highlight: ['Mahalle Şenlikleri', 'Açık Hava Etkinlikleri', 'Çocuk Festivalleri']
     },
     {
-      name: 'Sarıyer',
+      name: 'Sarıyer', slug: 'sariyer',
       description: 'Sarıyer, Maslak, Tarabya, Emirgan, İstinye, Yeniköy bölgelerinde prestijli etkinlik hizmetleri. Boğaz kıyısı lüks mekanlarda organizasyon.',
       stats: '60+ boğaz etkinliği',
       highlight: ['Boğaz Kıyısı Etkinlikler', 'Lüks Organizasyonlar', 'Özel Davetler']
     }
   ]
 
+  // Districts with LP data get linked, others stay as text
+  const districtSlugMap = {
+    'Kartal': 'kartal', 'Pendik': 'pendik', 'Tuzla': 'tuzla',
+    'Ümraniye': 'umraniye', 'Çekmeköy': 'cekmekoy',
+    'Zeytinburnu': 'zeytinburnu', 'Fatih': 'fatih', 'Eyüpsultan': 'eyupsultan'
+  }
   const otherIstanbulAreas = [
     'Kartal', 'Pendik', 'Tuzla', 'Gebze', 'Ümraniye', 'Çekmeköy', 'Sancaktepe',
     'Beykoz', 'Şile', 'Ağva', 'Zeytinburnu', 'Fatih', 'Eyüpsultan', 'Sultangazi',
@@ -182,16 +197,23 @@ const ServiceAreas = () => {
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {services.map((service, idx) => (
-                          <Link
-                            key={idx}
-                            to={service.link}
-                            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/8 border border-white/15 hover:border-white/35 transition-colors"
-                          >
-                            <span className="text-xl">{service.icon}</span>
-                            <span className="text-white text-sm">{service.name}</span>
-                          </Link>
-                        ))}
+                        {services.map((service, idx) => {
+                          const lpSlug = lpServiceMap[service.link]
+                          const linkTo = lpSlug && area.slug
+                            ? `/organizasyonlar/${lpSlug}/${area.slug}`
+                            : service.link
+
+                          return (
+                            <Link
+                              key={idx}
+                              to={linkTo}
+                              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/8 border border-white/15 hover:border-white/35 transition-colors"
+                            >
+                              <span className="text-xl">{service.icon}</span>
+                              <span className="text-white text-sm">{service.name}</span>
+                            </Link>
+                          )
+                        })}
                       </div>
 
                       <div className="flex flex-wrap gap-3">
@@ -222,11 +244,22 @@ const ServiceAreas = () => {
                 Aşağıdaki semtlerde de tüm etkinlik hizmetlerimizi sunuyoruz.
               </p>
               <div className="flex flex-wrap gap-2 justify-center">
-                {otherIstanbulAreas.map((area, index) => (
-                  <span key={index} className="px-3 py-1 rounded-full bg-white/12 border border-white/18 text-sm text-white">
-                    {area}
-                  </span>
-                ))}
+                {otherIstanbulAreas.map((area, index) => {
+                  const slug = districtSlugMap[area]
+                  return slug ? (
+                    <Link
+                      key={index}
+                      to={`/organizasyonlar/palyaco-kiralama/${slug}`}
+                      className="px-3 py-1 rounded-full bg-white/12 border border-white/18 text-sm text-white hover:bg-white/20 hover:border-white/30 transition-colors"
+                    >
+                      {area}
+                    </Link>
+                  ) : (
+                    <span key={index} className="px-3 py-1 rounded-full bg-white/12 border border-white/18 text-sm text-white">
+                      {area}
+                    </span>
+                  )
+                })}
               </div>
             </div>
 

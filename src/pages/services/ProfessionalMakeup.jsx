@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
 const heroImages = [
   '/content/images/profesyonelmakeup/profesyonelmakeupistanbul.webp',
@@ -57,6 +58,14 @@ const serviceAreas = [
 ]
 
 const ProfessionalMakeup = () => {
+  const serviceSchema = createServiceSchema(
+    'Profesyonel Makyaj | İstanbul Makeup Artist',
+    'İstanbul\'da profesyonel makyaj: gelin, davet, kurumsal etkinlik ve fotoğraf çekimi için sertifikalı makeup artist kadrosu. Premium ürünler, hijyenik uygulama.',
+    '/organizasyonlar/profesyonel-makyaj',
+    'Profesyonel Makyaj'
+  )
+  const faqSchema = createFAQSchema(faqs)
+
   return (
     <>
       <Seo
@@ -74,33 +83,8 @@ const ProfessionalMakeup = () => {
         ]}
         canonicalPath="/organizasyonlar/profesyonel-makyaj"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Profesyonel Makyaj İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "areaServed": serviceAreas.map(area => area)
-            },
-            "serviceType": "Profesyonel Makyaj",
-            "offers": {
-              "@type": "Offer",
-              "availability": "https://schema.org/InStock"
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          }
+          serviceSchema,
+          faqSchema
         ]}
       />
 

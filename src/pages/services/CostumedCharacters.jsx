@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import AdHero from '../../components/AdHero'
 import { costumedCharactersData } from '../../data/costumedCharactersData'
 import NarrativeSection from '../../components/NarrativeSection'
 import FullBleedHero from '../../components/FullBleedHero'
 import { useNavigate, Link } from 'react-router-dom'
+import DistrictLinksGrid from '../../components/DistrictLinksGrid'
+import RelatedBlogPosts from '../../components/RelatedBlogPosts'
+import RelatedServices from '../../components/RelatedServices'
 
 const faqData = [
   {
@@ -81,6 +86,14 @@ const CostumedCharacters = () => {
     section?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const serviceSchema = createServiceSchema(
+    'Kostümlü Karakter Kiralama İstanbul',
+    'Kostümlü karakter kiralama İstanbul. Elsa, Pamuk Prenses, Spiderman, Batman, Minnie Mouse, Mickey Mouse, Paw Patrol animasyonu.',
+    '/organizasyonlar/kostumlu-karakterler',
+    'Kostümlü Karakter Kiralama'
+  )
+  const faqSchema = createFAQSchema(faqData)
+
   return (
     <>
       <Seo
@@ -92,51 +105,19 @@ const CostumedCharacters = () => {
           'spiderman kiralama',
           'batman kiralama',
           'prenses kiralama',
-          'minnie mouse kiralama'
+          'minnie mouse kiralama',
+          'karakter kiralama',
+          'kostümlü animatör',
+          'süper kahraman kiralama',
+          'Disney karakter',
+          'çizgi film kahramanı',
+          'cosplay etkinlik',
+          'maskot animasyonu'
         ]}
         canonicalPath="/organizasyonlar/kostumlu-karakterler"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Kostümlü Karakterler Kiralama İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "areaServed": ["Kadıköy", "Üsküdar", "Ataşehir", "Maltepe", "Kartal", "Şişli", "Beşiktaş", "Beyoğlu", "Bakırköy", "Başakşehir", "Sarıyer", "Esenyurt", "İstanbul"]
-            },
-            "serviceType": "Kostümlü Karakter Kiralama",
-            "offers": {
-              "@type": "Offer",
-              "availability": "https://schema.org/InStock"
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqData.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "BestEvent - Kostümlü Karakter Kiralama İstanbul",
-            "url": "https://bestevent.com.tr/organizasyonlar/kostumlu-karakterler",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5.0",
-              "bestRating": "5",
-              "worstRating": "1",
-              "ratingCount": "217",
-              "reviewCount": "217"
-            }
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -151,10 +132,16 @@ const CostumedCharacters = () => {
             "@type": "Organization",
             "name": "BestEvent",
             "url": "https://bestevent.com.tr",
-            "logo": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
+            "logo": "https://bestevent.com.tr/logo.png",
             "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
           }
         ]}
+      />
+
+      <AdHero
+        title="Kostümlü Karakter Kiralama İstanbul"
+        backgroundImage="/content/images/Kostumlukarakterler/elsaheroo.webp"
+        subtitle="Elsa, Spiderman, Batman, Minnie Mouse — İstanbul'un Her Semtine Gönderim"
       />
 
       <main className="overflow-x-hidden scroll-smooth snap-y snap-mandatory">
@@ -297,7 +284,7 @@ const CostumedCharacters = () => {
         <NarrativeSection
           eyebrow="GENIŞ PORTFÖY"
           title="Her Çocuğun Favorisi Burada"
-          body="Prenseslerden süper kahramanlara, çizgi film karakterlerinden maskot kiralama seçeneklerine kadar geniş bir portföyümüz var. Elsa, Pamuk Prenses, Minnie Mouse, Spiderman, Batman, Sonic ve daha fazlası. İsteğinize özel karakterler de temin edebiliriz."
+          body="Prenses kiralama ve süper kahraman kiralama seçeneklerinden Disney karakter ve çizgi film kahramanı kostümlerine kadar geniş bir portföyümüz var. Kostümlü animatör kadromuzla Elsa, Pamuk Prenses, Minnie Mouse, Spiderman, Batman, Sonic ve daha fazlası. Cosplay etkinlik ve maskot animasyonu için de isteğinize özel karakterler temin edebiliriz."
         />
         <FullBleedHero
           media={{ type: 'image', src: '/content/images/Kostumlukarakterler/pamuksprenseshero.webp', alt: 'İstanbul Pamuk Prenses kiralama' }}
@@ -309,7 +296,7 @@ const CostumedCharacters = () => {
         {/* FAQ Section */}
         <section className="py-20 bg-gradient-to-br from-yellow-100 via-orange-100 to-pink-100">
           <div className="max-w-3xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Sıkça Sorulan Sorular</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Kostümlü Karakter Kiralama Sık Sorulan Sorular</h2>
             <div className="space-y-6">
               {faqData.map((faq, index) => (
                 <div
@@ -327,7 +314,7 @@ const CostumedCharacters = () => {
         {/* Related Blog Posts */}
         <section className="py-12 bg-white">
           <div className="max-w-3xl mx-auto px-4">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">İlgili Blog Yazıları</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Kostümlü Karakter Kiralama İstanbul İlgili Blog Yazıları</h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/blog/kostumlu-karakter-kiralama-rehberi"
@@ -348,7 +335,7 @@ const CostumedCharacters = () => {
         {/* Final CTA */}
         <section className="py-20 bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500">
           <div className="max-w-4xl mx-auto px-4 text-center text-white">
-            <h2 className="text-5xl font-bold mb-6">Hemen Rezervasyon Yapın!</h2>
+            <h2 className="text-5xl font-bold mb-6">Kostümlü Karakter Kiralama Organizasyon Rezervasyonu</h2>
             <p className="text-2xl mb-10 text-white/90">Çocuğunuzun hayalindeki karakterle unutulmaz anlar yaratın</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -369,6 +356,10 @@ const CostumedCharacters = () => {
             </div>
           </div>
         </section>
+
+        <RelatedServices currentService="kostumlu-karakterler" />
+        <DistrictLinksGrid lpServiceSlug="palyaco-kiralama" serviceName="Kostümlü Karakter" />
+        <RelatedBlogPosts servicePath="/organizasyonlar/kostumlu-karakterler" />
       </main>
     </>
   )

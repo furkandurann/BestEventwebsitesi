@@ -1,81 +1,50 @@
-import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 
-// Tüm fotoğraflar - WebP öncelikli
 const slides = [
-  '/content/images/ahunundogumgunu/konseptdogumgunu.jpg',
-  '/content/images/ahunundogumgunu/_DSF4662.webp',
-  '/content/images/ahunundogumgunu/_DSF4735.webp',
-  '/content/images/ahunundogumgunu/_DSF4779.webp',
-  '/content/images/ahunundogumgunu/_DSF4827.webp',
-  '/content/images/ahunundogumgunu/_DSF4904.webp',
-  '/content/images/ahunundogumgunu/_DSF4912.webp',
-  '/content/images/ahunundogumgunu/_DSF4940.webp',
-  '/content/images/ahunundogumgunu/_DSF4953.webp',
-  '/content/images/ahunundogumgunu/_DSF4958.webp',
-  '/content/images/ahunundogumgunu/_DSF4968.webp',
-  '/content/images/ahunundogumgunu/_DSF4996.webp',
-  '/content/images/ahunundogumgunu/_DSF5019.webp',
-  '/content/images/ahunundogumgunu/_DSF5078.webp',
-  '/content/images/ahunundogumgunu/_DSF5125.webp',
-  '/content/images/ahunundogumgunu/_DSF5236.webp',
-  '/content/images/ahunundogumgunu/_DSF5285.webp',
-  '/content/images/ahunundogumgunu/_DSF6002.webp',
-  '/content/images/ahunundogumgunu/_DSF6181.webp',
-  '/content/images/ahunundogumgunu/_DSF6401.webp',
-  '/content/images/ahunundogumgunu/2.webp',
-  '/content/images/ahunundogumgunu/4.webp',
-  '/content/images/ahunundogumgunu/18.webp',
-  '/content/images/ahunundogumgunu/19.webp',
-  '/content/images/ahunundogumgunu/22.webp',
-  '/content/images/ahunundogumgunu/24.webp',
-  '/content/images/ahunundogumgunu/31.webp',
-  '/content/images/ahunundogumgunu/anaherobubbleshowgosterisi.jpg',
-  '/content/images/ahunundogumgunu/bubbleshowgosterisi.webp',
-  '/content/images/ahunundogumgunu/canlıguvercingosterisi.webp',
-  '/content/images/ahunundogumgunu/canlıguvercinileilktemas.webp',
-  '/content/images/ahunundogumgunu/dogumgunucocugunaozelfotorafcekimleri.webp',
-  '/content/images/ahunundogumgunu/grupoyunları.webp',
-  '/content/images/ahunundogumgunu/heryasauygunbubbleshowpartisi.webp',
-  '/content/images/ahunundogumgunu/ilktemas.jpg',
-  '/content/images/ahunundogumgunu/inanılmazsihirbazlıkgosterileri.webp',
-  '/content/images/ahunundogumgunu/minniebubblegosterisi.jpg',
-  '/content/images/ahunundogumgunu/sihirbazlıkgosterisiilecocuklarıngozundekisaskinlik.webp',
-  '/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp',
-  '/content/images/ahunundogumgunu/tavsanveguvercınleetkilesim.webp',
-  '/content/images/ahunundogumgunu/vedafotografi.jpg',
+  '/profesyoneldogumgunucekimleri/dogumgunuonemlı1.webp',
+  '/profesyoneldogumgunucekimleri/_DSF8233.webp',
+  '/profesyoneldogumgunucekimleri/anaherodogumgunu.webp',
+  '/profesyoneldogumgunucekimleri/_DSF7022.webp',
+  '/profesyoneldogumgunucekimleri/_DSF7051.webp',
+  '/profesyoneldogumgunucekimleri/_DSF7167.webp',
 ]
 
 const BirthdayHeroSlider = () => {
   return (
-    <div className="relative w-full h-[90vh] overflow-hidden bg-black">
-      <Swiper
-        modules={[Autoplay, EffectFade]}
-        effect="fade"
-        speed={1000}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        className="h-full w-full"
-      >
-        {slides.map((src, index) => (
-          <SwiperSlide key={index}>
-            <div className="w-full h-full">
-              <img
-                src={src}
-                alt={`Doğum günü organizasyonu ${index + 1}`}
-                className="w-full h-full object-cover"
-                loading={index === 0 ? 'eager' : 'lazy'}
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div className="bg-[#050509] px-4 md:px-8 lg:px-12 pt-4 md:pt-8">
+      <div className="relative w-full h-[75vh] md:h-[85vh] rounded-3xl overflow-hidden shadow-[0_8px_60px_rgba(0,0,0,0.7)] border border-white/[0.08]" style={{ contain: 'layout style paint' }}>
+        <Swiper
+          modules={[Autoplay, EffectFade]}
+          effect="fade"
+          speed={1200}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          className="h-full w-full"
+        >
+          {slides.map((src, index) => (
+            <SwiperSlide key={index}>
+              <div className="w-full h-full">
+                <img
+                  src={src}
+                  alt={`Profesyonel doğum günü organizasyonu İstanbul ${index + 1}`}
+                  className="w-full h-full object-cover"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={index === 0 ? 'high' : 'auto'}
+                  width={1920}
+                  height={1080}
+                  decoding={index === 0 ? 'sync' : 'async'}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   )
 }

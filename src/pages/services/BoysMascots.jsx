@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { mascotsData } from '../../data/mascotsData'
 import Seo from '../../components/Seo'
+import { createServiceSchema } from '../../utils/schemaHelpers'
 
 const BoysMascots = () => {
   const [activeSection, setActiveSection] = useState(0)
@@ -52,6 +53,13 @@ const BoysMascots = () => {
     section?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const serviceSchema = createServiceSchema(
+    'Erkek Çocuk Maskotları Kiralama İstanbul',
+    'İstanbul\'da erkek çocuk maskot organizasyon. Sonic, Super Mario, Paw Patrol, Mickey Mouse maskotları. Kadıköy, Üsküdar, Ataşehir, Maltepe ve tüm İstanbul\'da hizmet.',
+    '/organizasyonlar/erkek-maskotlari',
+    'Erkek Maskot Kiralama'
+  )
+
   return (
     <>
       <Seo
@@ -67,22 +75,7 @@ const BoysMascots = () => {
           'erkek çocuk maskotları'
         ]}
         canonicalPath="/organizasyonlar/erkek-maskotlari"
-        schema={{
-          '@context': 'https://schema.org',
-          '@type': 'Service',
-          'name': 'Erkek Çocuk Maskotları Kiralama',
-          'provider': {
-            '@type': 'LocalBusiness',
-            'name': 'Best Event',
-            'telephone': '+90-530-730-90-09'
-          },
-          'areaServed': {
-            '@type': 'City',
-            'name': 'İstanbul'
-          },
-          'serviceType': 'Erkek Maskot Kiralama',
-          'description': 'Sonic, Super Mario, Paw Patrol, Mickey Mouse ve daha fazla erkek çocuk maskotu kiralama hizmeti.'
-        }}
+        schema={[serviceSchema]}
       />
 
       <main className="overflow-x-hidden scroll-smooth snap-y snap-mandatory">

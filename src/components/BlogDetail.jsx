@@ -1,6 +1,23 @@
 import { useParams, Link } from 'react-router-dom'
 import Seo from './Seo'
 import { getBlogBySlug } from '../data/blogPosts'
+import PillarLink from './PillarLink'
+import SiloNavigation from './SiloNavigation'
+
+// Pillar service path → İsim eşleştirmesi
+const pillarServiceNames = {
+  '/organizasyonlar/palyaco-kiralama': 'Palyaço Kiralama',
+  '/organizasyonlar/magic-show': 'Sihirbaz Gösterisi',
+  '/organizasyonlar/bubble-show': 'Bubble Show',
+  '/organizasyonlar/yuz-boyama': 'Yüz Boyama',
+  '/organizasyonlar/kostumlu-karakterler': 'Kostümlü Karakterler',
+  '/organizasyonlar/maskot-kiralama': 'Maskot Kiralama',
+  '/organizasyonlar/pamuk-seker': 'Pamuk Şeker',
+  '/organizasyonlar/full-paket-organizasyon': 'Doğum Günü Organizasyonu',
+  '/organizasyonlar/cocuk-etkinlikleri': 'Çocuk Etkinlikleri',
+  '/organizasyonlar/noel-baba-kiralama': 'Noel Baba Kiralama',
+  '/organizasyonlar/dogum-gunu-organizasyonu': 'Doğum Günü Organizasyonu'
+}
 
 const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName, faqData, slug: slugProp }) => {
   const params = useParams()
@@ -39,7 +56,7 @@ const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName,
         "name": "BestEvent",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://bestevent.com.tr/content/images/slider/konfeti.webp"
+          "url": "https://bestevent.com.tr/logo.png"
         }
       },
       "mainEntityOfPage": {
@@ -82,6 +99,11 @@ const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName,
             src={blog.image}
             alt={blog.title}
             className="w-full h-full object-cover"
+            width={1200}
+            height={630}
+            loading="eager"
+            fetchpriority="high"
+            decoding="sync"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
@@ -113,6 +135,21 @@ const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName,
             <div>
               {children || content}
             </div>
+
+            {/* Pillar Service Link - Blog yazısını pillar sayfasına bağla */}
+            {blog.pillarService && (
+              <PillarLink
+                servicePath={blog.pillarService}
+                serviceName={pillarServiceNames[blog.pillarService] || relatedServiceName || 'Hizmet'}
+              />
+            )}
+
+            {/* Silo Navigation - Aynı konudaki diğer blog yazıları */}
+            <SiloNavigation
+              currentSlug={slug}
+              subCategory={blog.subCategory}
+              relatedBlogSlugs={blog.relatedBlogs}
+            />
           </div>
         </div>
       </article>

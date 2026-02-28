@@ -4,6 +4,8 @@ const Juggler = () => {
   const eventData = {
     title: "İstanbul'da Profesyonel Jonklör Gösterisi",
     description: "Etkinlikleriniz için profesyonel jonklör ve hokkabaz gösterisi - Kadıköy, Üsküdar, Maltepe ve tüm İstanbul'da göz alıcı jonglörlük performansları",
+    canonicalPath: "/organizasyonlar/jonklor",
+    serviceType: "Jonklör Gösterisi",
     longDescription: `Best Event olarak İstanbul'un her bölgesinde profesyonel jonklör gösterileri sunuyoruz. Tüm ilçelerde doğum günü partileri, açılış organizasyonları, kurumsal etkinlikler ve festival şenlikleri için etkileyici jonglörlük performansları ile hizmetinizdeyiz.
 
 🤹 Jonklör Gösterisi Nedir?

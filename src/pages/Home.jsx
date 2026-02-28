@@ -3,6 +3,9 @@ import { useState, useRef, useEffect } from 'react'
 import HeroSlider from '../components/HeroSlider'
 import Seo from '../components/Seo'
 import OptimizedImage from '../components/OptimizedImage'
+import GoogleReviews from '../components/GoogleReviews'
+import { googleReviews } from '../data/googleReviews'
+import { blogPosts } from '../data/blogPosts'
 
 const Home = () => {
   const localBusinessSchema = {
@@ -12,7 +15,7 @@ const Home = () => {
     image: 'https://bestevent.com.tr/content/images/slider/konfeti.webp',
     '@id': 'https://bestevent.com.tr',
     url: 'https://bestevent.com.tr',
-    telephone: '+905349306799',
+    telephone: '+905307309009',
     priceRange: '₺₺',
     address: {
       '@type': 'PostalAddress',
@@ -104,7 +107,7 @@ const Home = () => {
         name: 'Etkinlik rezervasyonu için kaç gün önceden haber vermem gerekir?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Etkinlik rezervasyonu için en az 1 hafta önceden haber vermenizi öneririz. Ancak acil durumlar için de elimizden geleni yaparız. 0534 930 67 99 numarasından bize ulaşabilirsiniz.'
+          text: 'Etkinlik rezervasyonu için en az 1 hafta önceden haber vermenizi öneririz. Ancak acil durumlar için de elimizden geleni yaparız. 0530 730 90 09 numarasından bize ulaşabilirsiniz.'
         }
       },
       {
@@ -112,7 +115,7 @@ const Home = () => {
         name: 'Fiyat teklifleri nasıl alınır?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'WhatsApp üzerinden 0534 930 67 99 numarasından veya iletişim formumuzu doldurarak ücretsiz fiyat teklifi alabilirsiniz. Etkinlik detaylarınızı paylaştığınızda size özel teklif hazırlıyoruz.'
+          text: 'WhatsApp üzerinden 0530 730 90 09 numarasından veya iletişim formumuzu doldurarak ücretsiz fiyat teklifi alabilirsiniz. Etkinlik detaylarınızı paylaştığınızda size özel teklif hazırlıyoruz.'
         }
       },
       {
@@ -130,7 +133,7 @@ const Home = () => {
     <main className="wall-bg wall-grain text-white">
       <Seo
         title="İstanbul Etkinlik Organizasyonu | Best Event | Palyaço, Sihirbaz"
-        description="İstanbul'da profesyonel etkinlik organizasyonu. Palyaço kiralama, sihirbaz, kostümlü karakterler (Elsa, Pamuk Prenses, Spiderman), konsept doğum günü, kurumsal etkinlikler, canlı müzik ve dans gösterileri. Kadıköy, Üsküdar, Ataşehir ve tüm İstanbul'da hizmet. ☎ 0534 930 67 99"
+        description="İstanbul'da profesyonel etkinlik organizasyonu. Palyaço kiralama, sihirbaz, kostümlü karakterler (Elsa, Pamuk Prenses, Spiderman), konsept doğum günü, kurumsal etkinlikler, canlı müzik ve dans gösterileri. Kadıköy, Üsküdar, Ataşehir ve tüm İstanbul'da hizmet. ☎ 0530 730 90 09"
         keywords={[
           'istanbul etkinlik organizasyonu',
           'palyaço kiralama istanbul',
@@ -311,6 +314,65 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Google Müşteri Yorumları */}
+      <GoogleReviews reviews={googleReviews} title="Müşterilerimiz Ne Diyor?" />
+
+      {/* Bölgesel Hizmetlerimiz */}
+      <section className="py-16 sm:py-20 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/5 via-transparent to-purple-900/5 pointer-events-none" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <p className="uppercase tracking-[0.25em] text-xs text-purple-400 mb-4 font-semibold text-center">
+            Bölgesel Hizmetler
+          </p>
+          <h2
+            className="font-bold text-white text-center mb-4"
+            style={{
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+              letterSpacing: '-0.02em',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+            }}
+          >
+            İstanbul'un Her Bölgesinde Yanınızdayız
+          </h2>
+          <p className="text-center text-white/60 mb-10 max-w-2xl mx-auto" style={{ lineHeight: '1.7' }}>
+            20 ilçede profesyonel çocuk etkinlikleri ve organizasyon hizmetleri
+          </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-8">
+            {[
+              { name: 'Kadıköy Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/kadikoy' },
+              { name: 'Beşiktaş Sihirbaz Kiralama', path: '/organizasyonlar/sihirbaz-kiralama/besiktas' },
+              { name: 'Ataşehir Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/atasehir' },
+              { name: 'Şişli Doğum Günü Org.', path: '/organizasyonlar/dogum-gunu-organizasyonu/sisli' },
+              { name: 'Üsküdar Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/uskudar' },
+              { name: 'Beylikdüzü Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/beylikduzu' },
+              { name: 'Bakırköy Yüz Boyama', path: '/organizasyonlar/profesyonel-yuz-boyama/bakirkoy' },
+              { name: 'Maltepe Sihirbaz Kiralama', path: '/organizasyonlar/sihirbaz-kiralama/maltepe' },
+            ].map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="block px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-center text-sm font-medium text-white/80 hover:text-white hover:border-purple-500/30 hover:bg-purple-500/10 transition-all duration-200"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              to="/hizmet-bolgeleri"
+              className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors"
+            >
+              Tüm Hizmet Bölgelerimizi Görün
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA - Brand Standard Design */}
       <section className="pt-24 pb-28 bg-black/90 relative">
         {/* Bottom Gradient */}
@@ -329,7 +391,7 @@ const Home = () => {
 
           {/* WhatsApp CTA - Brand Standard */}
           <a
-            href="https://wa.me/905349306799?text=Merhaba, Best Event hakkında bilgi almak istiyorum"
+            href="https://wa.me/905307309009?text=Merhaba, Best Event hakkında bilgi almak istiyorum"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-3 min-h-[44px] bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-10 py-4 font-bold shadow-2xl hover:shadow-[0_0_40px_rgba(34,197,94,0.4)] transition-all duration-300 hover:scale-105"
@@ -343,16 +405,80 @@ const Home = () => {
 
           {/* Alternative Contact Method */}
           <div className="mt-8">
-            <p className="text-gray-400 text-sm mb-4">veya</p>
+            <p className="text-gray-400 text-sm mb-2">veya</p>
+            <p className="text-amber-400 text-xs font-bold tracking-wider uppercase mb-2">Hemen Ara</p>
             <a
-              href="tel:+905349306799"
+              href="tel:+905307309009"
               className="inline-flex items-center justify-center gap-2 min-h-[44px] bg-white/10 hover:bg-white/20 text-white border-2 border-white/30 hover:border-white/50 rounded-full px-8 py-3 font-semibold transition-all duration-300"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
               </svg>
-              0534 930 67 99
+              0530 730 90 09
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Yazıları Section - Internal Linking & Crawl Depth */}
+      <section className="py-20 px-6 bg-gradient-to-b from-zinc-900 to-black">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2
+              className="font-bold text-white mb-4"
+              style={{
+                fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+                letterSpacing: '-0.02em',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+              }}
+            >
+              Blog Yazılarımız
+            </h2>
+            <p className="text-white/60 max-w-2xl mx-auto" style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)' }}>
+              Etkinlik organizasyonu, karakter kiralama ve doğum günü planlama rehberleri
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {blogPosts.slice(0, 6).map((blog) => (
+              <Link
+                key={blog.slug}
+                to={`/blog/${blog.slug}`}
+                className="group block rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={blog.image}
+                    alt={blog.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xs font-medium px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">
+                      {blog.subCategory === 'palyaco' ? 'Palyaço' : blog.subCategory === 'sihirbaz' ? 'Sihirbaz' : blog.subCategory === 'bubble-show' ? 'Bubble Show' : blog.subCategory === 'dogum-gunu' ? 'Doğum Günü' : blog.subCategory === 'karakter' ? 'Karakterler' : blog.category}
+                    </span>
+                    {blog.readTime && (
+                      <span className="text-xs text-white/40">{blog.readTime} dk</span>
+                    )}
+                  </div>
+                  <h3 className="text-base font-semibold text-white/90 group-hover:text-white line-clamp-2">
+                    {blog.title}
+                  </h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white/10 text-white hover:bg-white/15 border border-white/10 hover:border-white/20 transition-all duration-200 font-semibold"
+            >
+              Tüm Blog Yazılarını Gör
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>

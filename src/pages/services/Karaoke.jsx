@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import OptimizedImage from '../../components/OptimizedImage'
 import RelatedServices from '../../components/RelatedServices'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 
 const Karaoke = () => {
   const hero = {
@@ -37,6 +38,14 @@ const Karaoke = () => {
     { q: 'Dış mekanda olur mu?', a: 'Hava uygunsa evet; priz ve gölgelik alan önerilir.' },
   ]
 
+  const serviceSchema = createServiceSchema(
+    'Karaoke Etkinliği İstanbul | Çocuk Karaoke Kiralama',
+    'İstanbul\'da çocuklara özel karaoke etkinliği. 1000+ şarkı, profesyonel ses sistemi, sunucu ve LED ışık. Doğum günü ve okul etkinlikleri.',
+    '/organizasyonlar/karaoke-etkinligi',
+    'Karaoke Etkinliği'
+  )
+  const faqSchema = createFAQSchema(faq.map(f => ({ question: f.q, answer: f.a })))
+
   return (
     <>
       <Seo
@@ -45,26 +54,8 @@ const Karaoke = () => {
         keywords={['karaoke kiralama istanbul', 'çocuk karaoke etkinliği', 'doğum günü karaoke', 'karaoke organizasyonu istanbul', 'çocuk partisi karaoke', 'profesyonel karaoke kiralama']}
         image="/content/images/bidolu/karaoke.webp"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Çocuk Karaoke Etkinliği İstanbul",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "telephone": "+905307309009",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "İstanbul",
-                "addressCountry": "TR"
-              }
-            },
-            "serviceType": "Karaoke Etkinliği",
-            "areaServed": {
-              "@type": "City",
-              "name": "İstanbul"
-            }
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -72,15 +63,6 @@ const Karaoke = () => {
               { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
               { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
               { "@type": "ListItem", "position": 3, "name": "Karaoke Etkinliği", "item": "https://bestevent.com.tr/organizasyonlar/karaoke-etkinligi" }
-            ]
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              { "@type": "Question", "name": "Kaç yaş için uygun?", "acceptedAnswer": { "@type": "Answer", "text": "4-14 yaş arası çocuklara göre playlist hazırlanır." } },
-              { "@type": "Question", "name": "Kaç mikrofon getiriyorsunuz?", "acceptedAnswer": { "@type": "Answer", "text": "Paketlere göre 2-4 mikrofon; kablolu + kablosuz kombinasyonu." } },
-              { "@type": "Question", "name": "Dış mekanda olur mu?", "acceptedAnswer": { "@type": "Answer", "text": "Hava uygunsa evet; priz ve gölgelik alan önerilir." } }
             ]
           }
         ]}

@@ -1,12 +1,10 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules'
+import { Autoplay, EffectFade } from 'swiper/modules'
 import { Link } from 'react-router-dom'
 import OptimizedImage from './OptimizedImage'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
 
 const slides = [
   {
@@ -58,6 +56,9 @@ const SlideContent = ({ slide, index, isMobile }) => {
           loading={index === 0 ? 'eager' : 'lazy'}
           fetchpriority={index === 0 ? 'high' : 'auto'}
           sizes="100vw"
+          width={1920}
+          height={1080}
+          decoding={index === 0 ? 'sync' : 'async'}
           style={index === 0 ? { objectPosition: '40% center' } : undefined}
         />
       )}
@@ -114,9 +115,9 @@ const HeroSlider = () => {
   }, [])
 
   return (
-    <div className="relative h-[80vh] md:h-screen w-full">
+    <div className="relative h-[80vh] md:h-screen w-full" style={{ contain: 'layout style paint' }}>
       <Swiper
-        modules={[Autoplay, EffectFade, Pagination, Navigation]}
+        modules={[Autoplay, EffectFade]}
         effect="fade"
         speed={1500}
         autoplay={{
@@ -124,11 +125,6 @@ const HeroSlider = () => {
           disableOnInteraction: false,
           pauseOnMouseEnter: false,
         }}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true,
-        }}
-        navigation
         loop={false}
         preloadImages={false}
         lazy={{

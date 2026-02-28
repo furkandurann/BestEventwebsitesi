@@ -4,6 +4,8 @@ const InflatableParks = () => {
   const eventData = {
     title: "İstanbul'da Şişme Oyun Parkı Kiralama - Şişme Şatolar",
     description: "Çocuk etkinlikleri için güvenli şişme oyun parkı ve şato kiralama - Kadıköy, Üsküdar, Maltepe ve tüm İstanbul'da profesyonel şişme parklar",
+    canonicalPath: "/organizasyonlar/sisme-oyun-parki",
+    serviceType: "Şişme Oyun Parkı Kiralama",
     longDescription: `Best Event olarak İstanbul'un her bölgesinde profesyonel şişme oyun parkı kiralama hizmeti sunuyoruz. Tüm ilçelerde doğum günü partileri, okul etkinlikleri, festival organizasyonları ve çocuk şenlikleri için güvenli, renkli ve eğlenceli şişme oyun parkları ile hizmetinizdeyiz.
 
 🏰 Şişme Oyun Parkı Nedir?

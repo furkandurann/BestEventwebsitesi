@@ -56,22 +56,22 @@ const YuzBoyamaRehberi = () => {
         </h3>
         <nav className="space-y-2">
           <a href="#yuz-boyama-nedir" className="block text-teal-600 hover:text-teal-700 font-medium transition-colors">
-            1. Yüz Boyama Nedir? Profesyonel Face Painting Sanatı
+            1. Yüz Boyama Kiralama Hizmeti Nedir? Profesyonel Face Painting Sanatı
           </a>
           <a href="#guvenli-boya-secimi" className="block text-teal-600 hover:text-teal-700 font-medium transition-colors">
             2. Güvenli Boya Seçimi: Çocuk Cildine Uygun Ürünler
           </a>
           <a href="#populer-tasarimlar" className="block text-teal-600 hover:text-teal-700 font-medium transition-colors">
-            3. En Popüler Yüz Boyama Tasarımları
+            3. En Popüler Yüz Boyama Tasarımları ve Organizasyon Fikirleri
           </a>
           <a href="#sanatci-kiralama" className="block text-teal-600 hover:text-teal-700 font-medium transition-colors">
-            4. Yüz Boyama Sanatçısı Kiralama: Nelere Dikkat Etmeli?
+            4. Yüz Boyama Sanatçısı Kiralama: Fiyat ve Dikkat Edilmesi Gerekenler
           </a>
           <a href="#etkinlik-planlamasi" className="block text-teal-600 hover:text-teal-700 font-medium transition-colors">
-            5. Etkinlik Planlaması: Kaç Çocuk, Kaç Dakika?
+            5. İstanbul'da Yüz Boyama Organizasyonu Planlaması: Kaç Çocuk, Kaç Dakika?
           </a>
           <a href="#hizmet-kombinasyonu" className="block text-teal-600 hover:text-teal-700 font-medium transition-colors">
-            6. Yüz Boyama + Diğer Hizmetler Kombinasyonu
+            6. Yüz Boyama Kiralama + Diğer Hizmet Kombinasyonları
           </a>
           <a href="#sss" className="block text-teal-600 hover:text-teal-700 font-medium transition-colors">
             7. Sık Sorulan Sorular
@@ -102,7 +102,7 @@ const YuzBoyamaRehberi = () => {
       {/* Bölüm 1: Yüz Boyama Nedir? */}
       <section id="yuz-boyama-nedir" className="mb-12">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-teal-100">
-          1. Yüz Boyama Nedir? Profesyonel Face Painting Sanatı
+          1. Yüz Boyama Kiralama Hizmeti Nedir? Profesyonel Face Painting Sanatı
         </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           Yüz boyama (face painting), insan yüzüne özel boyalarla yapılan geçici sanatsal uygulamadır. Binlerce yıllık geçmişe
@@ -155,7 +155,7 @@ const YuzBoyamaRehberi = () => {
       {/* Bölüm 3: Popüler Tasarımlar */}
       <section id="populer-tasarimlar" className="mb-12">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-teal-100">
-          3. En Popüler Yüz Boyama Tasarımları
+          3. En Popüler Yüz Boyama Tasarımları ve Organizasyon Fikirleri
         </h2>
         <p className="text-gray-700 leading-relaxed mb-6">
           Profesyonel sanatçılarımız 100'den fazla farklı tasarım repertuarına sahiptir. İşte organizasyonlarda en çok
@@ -205,7 +205,7 @@ const YuzBoyamaRehberi = () => {
       {/* Bölüm 4: Sanatçı Kiralama */}
       <section id="sanatci-kiralama" className="mb-12">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-teal-100">
-          4. Yüz Boyama Sanatçısı Kiralama: Nelere Dikkat Etmeli?
+          4. Yüz Boyama Sanatçısı Kiralama: Fiyat ve Dikkat Edilmesi Gerekenler
         </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           Yüz boyama sanatçısı kiralama süreci, başarılı bir organizasyonun temel taşlarından biridir. Doğru sanatçıyı
@@ -234,7 +234,7 @@ const YuzBoyamaRehberi = () => {
       {/* Bölüm 5: Etkinlik Planlaması */}
       <section id="etkinlik-planlamasi" className="mb-12">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-teal-100">
-          5. Etkinlik Planlaması: Kaç Çocuk, Kaç Dakika?
+          5. İstanbul'da Yüz Boyama Organizasyonu Planlaması: Kaç Çocuk, Kaç Dakika?
         </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           Başarılı bir yüz boyama organizasyonu için doğru zamanlama ve kapasite planlaması şart. <strong>Zaman hesaplaması:</strong> Basit
@@ -280,7 +280,7 @@ const YuzBoyamaRehberi = () => {
       {/* Bölüm 6: Hizmet Kombinasyonu */}
       <section id="hizmet-kombinasyonu" className="mb-12">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-teal-100">
-          6. Yüz Boyama + Diğer Hizmetler Kombinasyonu
+          6. Yüz Boyama Kiralama + Diğer Hizmet Kombinasyonları
         </h2>
         <p className="text-gray-700 leading-relaxed mb-4">
           Yüz boyama tek başına harika bir aktivite olsa da, diğer eğlence hizmetleriyle birleştiğinde etkinliğin etkisi

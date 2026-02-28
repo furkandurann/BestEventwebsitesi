@@ -38,13 +38,13 @@ const BubbleShowKiralamaRehberi = () => {
       <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-blue-600">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
         <ul className="space-y-2">
-          <li><a href="#bubble-show-nedir" className="text-blue-600 hover:text-blue-700 font-semibold">1. Bubble Show Nedir? Köpük Gösterisinin Büyüsü</a></li>
-          <li><a href="#kiralama-dikkat" className="text-blue-600 hover:text-blue-700 font-semibold">2. Bubble Show Kiralama: Nelere Dikkat Etmelisiniz?</a></li>
-          <li><a href="#ic-dis-mekan" className="text-blue-600 hover:text-blue-700 font-semibold">3. İç Mekan vs Dış Mekan Bubble Show Karşılaştırması</a></li>
-          <li><a href="#gosteri-akisi" className="text-blue-600 hover:text-blue-700 font-semibold">4. Bubble Show Gösterisi Akışı: 30 Dakikalık Program</a></li>
-          <li><a href="#mekan-gereksinimleri" className="text-blue-600 hover:text-blue-700 font-semibold">5. Mekan Gereksinimleri ve Hazırlık</a></li>
-          <li><a href="#kombine-paketler" className="text-blue-600 hover:text-blue-700 font-semibold">6. Bubble Show + Diğer Hizmetler: Kombine Paketler</a></li>
-          <li><a href="#sss" className="text-blue-600 hover:text-blue-700 font-semibold">7. Sık Sorulan Sorular</a></li>
+          <li><a href="#bubble-show-nedir" className="text-blue-600 hover:text-blue-700 font-semibold">1. Bubble Show Kiralama Hizmeti Nedir? Köpük Gösterisinin Büyüsü</a></li>
+          <li><a href="#kiralama-dikkat" className="text-blue-600 hover:text-blue-700 font-semibold">2. Bubble Show Kiralama Fiyat ve Hizmet: Nelere Dikkat Etmelisiniz?</a></li>
+          <li><a href="#ic-dis-mekan" className="text-blue-600 hover:text-blue-700 font-semibold">3. İstanbul'da İç Mekan vs Dış Mekan Bubble Show Organizasyonu</a></li>
+          <li><a href="#gosteri-akisi" className="text-blue-600 hover:text-blue-700 font-semibold">4. Bubble Show Kiralama Gösterisi Akışı: 30 Dakikalık Program</a></li>
+          <li><a href="#mekan-gereksinimleri" className="text-blue-600 hover:text-blue-700 font-semibold">5. Bubble Show Organizasyonu Mekan Gereksinimleri ve Hazırlık</a></li>
+          <li><a href="#kombine-paketler" className="text-blue-600 hover:text-blue-700 font-semibold">6. Bubble Show Kiralama + Diğer Hizmetler: Kombine Paket Fiyatları</a></li>
+          <li><a href="#sss" className="text-blue-600 hover:text-blue-700 font-semibold">7. Bubble Show Kiralama Fiyat ve Hizmet Sık Sorulan Sorular</a></li>
         </ul>
       </div>
 
@@ -61,7 +61,7 @@ const BubbleShowKiralamaRehberi = () => {
 
       {/* Bölüm 1 */}
       <h2 id="bubble-show-nedir" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Bubble Show Nedir? Köpük Gösterisinin Büyüsü
+        1. Bubble Show Kiralama Hizmeti Nedir? Köpük Gösterisinin Büyüsü
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -101,7 +101,7 @@ const BubbleShowKiralamaRehberi = () => {
 
       {/* Bölüm 2 */}
       <h2 id="kiralama-dikkat" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Bubble Show Kiralama: Nelere Dikkat Etmelisiniz?
+        2. Bubble Show Kiralama Fiyat ve Hizmet: Nelere Dikkat Etmelisiniz?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -137,7 +137,7 @@ const BubbleShowKiralamaRehberi = () => {
 
       {/* Bölüm 3 */}
       <h2 id="ic-dis-mekan" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. İç Mekan vs Dış Mekan Bubble Show Karşılaştırması
+        3. İstanbul'da İç Mekan vs Dış Mekan Bubble Show Organizasyonu
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -175,7 +175,7 @@ const BubbleShowKiralamaRehberi = () => {
 
       {/* Bölüm 4 */}
       <h2 id="gosteri-akisi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Bubble Show Gösterisi Akışı: 30 Dakikalık Program
+        4. Bubble Show Kiralama Gösterisi Akışı: 30 Dakikalık Program
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -222,7 +222,7 @@ const BubbleShowKiralamaRehberi = () => {
 
       {/* Bölüm 5 */}
       <h2 id="mekan-gereksinimleri" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Mekan Gereksinimleri ve Hazırlık
+        5. Bubble Show Organizasyonu Mekan Gereksinimleri ve Hazırlık
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -269,7 +269,7 @@ const BubbleShowKiralamaRehberi = () => {
 
       {/* Bölüm 6 */}
       <h2 id="kombine-paketler" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. Bubble Show + Diğer Hizmetler: Kombine Paketler
+        6. Bubble Show Kiralama + Diğer Hizmetler: Kombine Paket Fiyatları
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -307,7 +307,7 @@ const BubbleShowKiralamaRehberi = () => {
 
       {/* Hizmet CTA Kutusu */}
       <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 my-8 text-center">
-        <h3 className="text-2xl font-bold text-gray-900 mb-3">Profesyonel Bubble Show Hizmeti</h3>
+        <h3 className="text-2xl font-bold text-gray-900 mb-3">İstanbul'da Profesyonel Bubble Show Kiralama Hizmeti</h3>
         <p className="text-gray-700 mb-4">
           İstanbul genelinde profesyonel bubble show kiralama ve köpük gösterisi organizasyonu için hizmet sayfamızı inceleyin.
         </p>
@@ -321,7 +321,7 @@ const BubbleShowKiralamaRehberi = () => {
 
       {/* Bölüm 7 - SSS */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Sık Sorulan Sorular (SSS)
+        7. Bubble Show Kiralama Fiyat ve Hizmet Sık Sorulan Sorular
       </h2>
 
       <div className="space-y-4 mb-12">
@@ -337,7 +337,7 @@ const BubbleShowKiralamaRehberi = () => {
 
       {/* Final CTA */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">🫧 İstanbul'da Profesyonel Bubble Show Kiralama!</h3>
+        <h3 className="text-2xl font-bold mb-4">🫧 İstanbul'da Bubble Show Kiralama Fiyat ve Organizasyon Hizmeti!</h3>
         <p className="mb-6 leading-relaxed">
           Çocuğunuzun doğum gününü veya özel gününüzü unutulmaz kılmak için profesyonel bubble show gösterisi organizasyonu yapıyoruz. Dev balonlardan dumanlı köpüklere, interaktif oyunlardan muhteşem finallere kadar tüm detaylar bizde. Hemen bizi arayın, ücretsiz bilgi ve fiyat teklifi alın!
         </p>

@@ -4,6 +4,8 @@ const WorkshopActivities = () => {
   const eventData = {
     title: "İstanbul'da Çocuk Atölye Etkinlikleri - Yaratıcı Workshoplar",
     description: "Çocuklar için eğitici ve eğlenceli atölye etkinlikleri - Kadıköy, Üsküdar, Maltepe ve tüm İstanbul'da profesyonel workshop organizasyonu",
+    canonicalPath: "/organizasyonlar/atolye-etkinlikleri",
+    serviceType: "Çocuk Atölye Etkinlikleri",
     longDescription: `Best Event olarak İstanbul'un her bölgesinde profesyonel çocuk atölye etkinlikleri sunuyoruz. Tüm ilçelerde doğum günü partileri, okul etkinlikleri, karne günleri ve çocuk festivalleri için eğitici, yaratıcı ve eğlenceli atölye programları ile hizmetinizdeyiz.
 
 🎨 Çocuk Atölye Etkinliği Nedir?

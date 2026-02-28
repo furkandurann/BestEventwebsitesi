@@ -3,7 +3,6 @@ import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
-import SearchButton from './components/SearchButton'
 import ScrollToTop from './components/ScrollToTop'
 import Breadcrumb from './components/Breadcrumb'
 import ThemeProvider from './components/ThemeProvider'
@@ -62,6 +61,10 @@ const SantaClausRental = lazy(() => import('./pages/organizations/SantaClausRent
 // Organik Pastalar (lazy)
 const OrganicCakes = lazy(() => import('./pages/OrganicCakes'))
 
+// Gizlilik & Kullanım Koşulları (lazy)
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const TermsOfUse = lazy(() => import('./pages/TermsOfUse'))
+
 // Blog (lazy)
 const Blog = lazy(() => import('./pages/Blog'))
 
@@ -88,6 +91,63 @@ const KostumluKarakterRehberi = lazy(() => import('./pages/blog/KostumluKarakter
 const KostumluKarakterDogumGunu = lazy(() => import('./pages/blog/KostumluKarakterDogumGunu'))
 const YuzBoyamaRehberi = lazy(() => import('./pages/blog/YuzBoyamaRehberi'))
 const YuzBoyamaDogumGunu = lazy(() => import('./pages/blog/YuzBoyamaDogumGunu'))
+const MaltepePalyacoKiralama = lazy(() => import('./pages/blog/MaltepePalyacoKiralama'))
+const KartalPalyacoKiralama = lazy(() => import('./pages/blog/KartalPalyacoKiralama'))
+const MaltepeSihirbazKiralama = lazy(() => import('./pages/blog/MaltepeSihirbazKiralama'))
+const KartalSihirbazKiralama = lazy(() => import('./pages/blog/KartalSihirbazKiralama'))
+const KadikoyBesiktasAtasehirBubbleShowKiralama = lazy(() => import('./pages/blog/KadikoyBesiktasAtasehirBubbleShowKiralama'))
+const SisliPalyacoKiralama = lazy(() => import('./pages/blog/SisliPalyacoKiralama'))
+const BakirkoyPalyacoKiralama = lazy(() => import('./pages/blog/BakirkoyPalyacoKiralama'))
+const BesiktasAtasehirPamukSekerArabasiKiralama = lazy(() => import('./pages/blog/BesiktasAtasehirPamukSekerArabasiKiralama'))
+const UmraniyeBeylikduzuBakirkoySariyerDogumGunuOrganizasyonu = lazy(() => import('./pages/blog/UmraniyeBeylikduzuBakirkoySariyerDogumGunuOrganizasyonu'))
+// Blog Details (lazy) - 15 yeni karakter & maskot blogları
+const ElsaKiralamaDogumGunu = lazy(() => import('./pages/blog/ElsaKiralamaDogumGunu'))
+const SpidermanKiralamaCocukPartisi = lazy(() => import('./pages/blog/SpidermanKiralamaCocukPartisi'))
+const BatmanKiralamaOrganizasyon = lazy(() => import('./pages/blog/BatmanKiralamaOrganizasyon'))
+const MinnieMouseMickeyMouseParti = lazy(() => import('./pages/blog/MinnieMouseMickeyMouseParti'))
+const PamukPrensesTemaPart = lazy(() => import('./pages/blog/PamukPrensesTemaPart'))
+const PawPatrolCocukEtkinligi = lazy(() => import('./pages/blog/PawPatrolCocukEtkinligi'))
+const PikachuPokemonParti = lazy(() => import('./pages/blog/PikachuPokemonParti'))
+const UnicornTemaliDogumGunu = lazy(() => import('./pages/blog/UnicornTemaliDogumGunu'))
+const HelloKittyMaskotKiralama = lazy(() => import('./pages/blog/HelloKittyMaskotKiralama'))
+const SonicMaskotParti = lazy(() => import('./pages/blog/SonicMaskotParti'))
+const LolBebekTemaParti = lazy(() => import('./pages/blog/LolBebekTemaParti'))
+const SuperMarioCocukOrganizasyonu = lazy(() => import('./pages/blog/SuperMarioCocukOrganizasyonu'))
+const MasaKocaAyiEtkinlik = lazy(() => import('./pages/blog/MasaKocaAyiEtkinlik'))
+const NoelBabaYilbasiOrganizasyonu = lazy(() => import('./pages/blog/NoelBabaYilbasiOrganizasyonu'))
+const DenizKiziTemaParti = lazy(() => import('./pages/blog/DenizKiziTemaParti'))
+
+// Blog Details (lazy) - 20 yeni SEO blog yazısı
+const EvdeDogumGunuOrganizasyonu = lazy(() => import('./pages/blog/EvdeDogumGunuOrganizasyonu'))
+const YasaGoreDogumGunuKonsepti = lazy(() => import('./pages/blog/YasaGoreDogumGunuKonsepti'))
+const SiteIcindeDogumGunu12Kritik = lazy(() => import('./pages/blog/SiteIcindeDogumGunu12Kritik'))
+const PalyacoMuSihirbazMi = lazy(() => import('./pages/blog/PalyacoMuSihirbazMi'))
+const DogumGunuOrganizasyonu10Hata = lazy(() => import('./pages/blog/DogumGunuOrganizasyonu10Hata'))
+const ApartmanBahcesindeDogumGunu = lazy(() => import('./pages/blog/ApartmanBahcesindeDogumGunu'))
+const CocukDogumGunuGuvenlikHijyen = lazy(() => import('./pages/blog/CocukDogumGunuGuvenlikHijyen'))
+const MiniDiskoMuBubbleShowMu = lazy(() => import('./pages/blog/MiniDiskoMuBubbleShowMu'))
+const YirmiFarkliDogumGunuKonsepti = lazy(() => import('./pages/blog/YirmiFarkliDogumGunuKonsepti'))
+const EvdeDogumGunuMaliyeti = lazy(() => import('./pages/blog/EvdeDogumGunuMaliyeti'))
+const AnimasyonEkibiSecimi = lazy(() => import('./pages/blog/AnimasyonEkibiSecimi'))
+const IstanbulPopulerCocukPartiTemalar = lazy(() => import('./pages/blog/IstanbulPopulerCocukPartiTemalar'))
+const FotografciGerekliMi = lazy(() => import('./pages/blog/FotografciGerekliMi'))
+const AcikAlanKapaliMekan = lazy(() => import('./pages/blog/AcikAlanKapaliMekan'))
+const KurumsalCocukFestivalleri = lazy(() => import('./pages/blog/KurumsalCocukFestivalleri'))
+const CocukPartisi2026Trendleri = lazy(() => import('./pages/blog/CocukPartisi2026Trendleri'))
+const AvrupaYakasiUlasimRehberi = lazy(() => import('./pages/blog/AvrupaYakasiUlasimRehberi'))
+const AnadoluYakasiUlasimRehberi = lazy(() => import('./pages/blog/AnadoluYakasiUlasimRehberi'))
+const TopluTasimaEtkinlikUlasim = lazy(() => import('./pages/blog/TopluTasimaEtkinlikUlasim'))
+const MarmarayMetroEtkinlikErisim = lazy(() => import('./pages/blog/MarmarayMetroEtkinlikErisim'))
+
+// Blog Details (lazy) - 5 Ramazan etkinlik blogları
+const MaltepeRamazanEtkinligi = lazy(() => import('./pages/blog/MaltepeRamazanEtkinligi'))
+const EyupsultanRamazanEtkinligi = lazy(() => import('./pages/blog/EyupsultanRamazanEtkinligi'))
+const KartalRamazanEtkinligi = lazy(() => import('./pages/blog/KartalRamazanEtkinligi'))
+const UskudarRamazanEtkinligi = lazy(() => import('./pages/blog/UskudarRamazanEtkinligi'))
+const IstanbulRamazanCocukEtkinlikleri = lazy(() => import('./pages/blog/IstanbulRamazanCocukEtkinlikleri'))
+
+// Local Landing Pages (Semt bazlı hizmet sayfaları - Programmatic SEO)
+const LocalLandingPage = lazy(() => import('./pages/local/LocalLandingPage'))
 
 // 404 Page (lazy)
 const NotFound = lazy(() => import('./pages/NotFound'))
@@ -108,8 +168,7 @@ function App() {
     // }
   });
 
-  // WhatsApp butonunu gösterme/gizleme kontrolü
-  const hideWhatsAppButton = location.pathname === '/organizasyonlar/cocuk-etkinlikleri'
+  // WhatsApp butonu tüm sayfalarda görünsün
 
   return (
     <div className="App">
@@ -118,7 +177,12 @@ function App() {
       <Breadcrumb />
       <main>
         <ErrorBoundary>
-          <Suspense fallback={null}>
+          <Suspense fallback={
+            <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 40, height: 40, border: '3px solid rgba(147,51,234,0.2)', borderTopColor: '#9333ea', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+              <style>{`@keyframes spin { to { transform: rotate(360deg) } }`}</style>
+            </div>
+          }>
             <ThemeProvider>
               <Routes>
         <Route path="/" element={<Home />} />
@@ -129,6 +193,8 @@ function App() {
         <Route path="/ekibimiz" element={<Team />} />
         <Route path="/hizmet-bolgeleri" element={<ServiceAreas />} />
         <Route path="/organik-pastalar" element={<OrganicCakes />} />
+        <Route path="/gizlilik" element={<PrivacyPolicy />} />
+        <Route path="/kullanim-kosullari" element={<TermsOfUse />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/palyaco-gezegeni" element={<PalyacoGezegeni />} />
         <Route path="/blog/istanbul-etkinlik-rehberi" element={<IstanbulEtkinlikRehberi />} />
@@ -152,6 +218,60 @@ function App() {
         <Route path="/blog/kostumlu-karakter-dogum-gunu" element={<KostumluKarakterDogumGunu />} />
         <Route path="/blog/yuz-boyama-kiralama-rehberi" element={<YuzBoyamaRehberi />} />
         <Route path="/blog/yuz-boyama-dogum-gunu-organizasyonu" element={<YuzBoyamaDogumGunu />} />
+        <Route path="/blog/maltepe-palyaco-kiralama" element={<MaltepePalyacoKiralama />} />
+        <Route path="/blog/kartal-palyaco-kiralama" element={<KartalPalyacoKiralama />} />
+        <Route path="/blog/maltepe-sihirbaz-kiralama" element={<MaltepeSihirbazKiralama />} />
+        <Route path="/blog/kartal-sihirbaz-kiralama" element={<KartalSihirbazKiralama />} />
+        <Route path="/blog/kadikoy-besiktas-atasehir-bubble-show-kiralama" element={<KadikoyBesiktasAtasehirBubbleShowKiralama />} />
+        <Route path="/blog/sisli-palyaco-kiralama" element={<SisliPalyacoKiralama />} />
+        <Route path="/blog/bakirkoy-palyaco-kiralama" element={<BakirkoyPalyacoKiralama />} />
+        <Route path="/blog/besiktas-atasehir-pamuk-seker-arabasi-kiralama" element={<BesiktasAtasehirPamukSekerArabasiKiralama />} />
+        <Route path="/blog/umraniye-beylikduzu-bakirkoy-sariyer-dogum-gunu-organizasyonu" element={<UmraniyeBeylikduzuBakirkoySariyerDogumGunuOrganizasyonu />} />
+        {/* Yeni karakter & maskot blogları (15 adet) */}
+        <Route path="/blog/elsa-kiralama-dogum-gunu" element={<ElsaKiralamaDogumGunu />} />
+        <Route path="/blog/spiderman-kiralama-cocuk-partisi" element={<SpidermanKiralamaCocukPartisi />} />
+        <Route path="/blog/batman-kiralama-organizasyon" element={<BatmanKiralamaOrganizasyon />} />
+        <Route path="/blog/minnie-mouse-mickey-mouse-parti" element={<MinnieMouseMickeyMouseParti />} />
+        <Route path="/blog/pamuk-prenses-tema-parti" element={<PamukPrensesTemaPart />} />
+        <Route path="/blog/paw-patrol-cocuk-etkinligi" element={<PawPatrolCocukEtkinligi />} />
+        <Route path="/blog/pikachu-pokemon-parti" element={<PikachuPokemonParti />} />
+        <Route path="/blog/unicorn-temali-dogum-gunu" element={<UnicornTemaliDogumGunu />} />
+        <Route path="/blog/hello-kitty-maskot-kiralama" element={<HelloKittyMaskotKiralama />} />
+        <Route path="/blog/sonic-maskot-parti" element={<SonicMaskotParti />} />
+        <Route path="/blog/lol-bebek-tema-parti" element={<LolBebekTemaParti />} />
+        <Route path="/blog/super-mario-cocuk-organizasyonu" element={<SuperMarioCocukOrganizasyonu />} />
+        <Route path="/blog/masa-koca-ayi-etkinlik" element={<MasaKocaAyiEtkinlik />} />
+        <Route path="/blog/noel-baba-yilbasi-organizasyonu" element={<NoelBabaYilbasiOrganizasyonu />} />
+        <Route path="/blog/deniz-kizi-tema-parti" element={<DenizKiziTemaParti />} />
+
+        {/* 20 Yeni SEO Blog Yazıları */}
+        <Route path="/blog/evde-dogum-gunu-organizasyonu" element={<EvdeDogumGunuOrganizasyonu />} />
+        <Route path="/blog/yasa-gore-dogum-gunu-konsepti" element={<YasaGoreDogumGunuKonsepti />} />
+        <Route path="/blog/site-icinde-dogum-gunu-12-kritik" element={<SiteIcindeDogumGunu12Kritik />} />
+        <Route path="/blog/palyaco-mu-sihirbaz-mi" element={<PalyacoMuSihirbazMi />} />
+        <Route path="/blog/dogum-gunu-organizasyonu-10-hata" element={<DogumGunuOrganizasyonu10Hata />} />
+        <Route path="/blog/apartman-bahcesinde-dogum-gunu" element={<ApartmanBahcesindeDogumGunu />} />
+        <Route path="/blog/cocuk-dogum-gunu-guvenlik-hijyen" element={<CocukDogumGunuGuvenlikHijyen />} />
+        <Route path="/blog/mini-disko-mu-bubble-show-mu" element={<MiniDiskoMuBubbleShowMu />} />
+        <Route path="/blog/20-farkli-dogum-gunu-konsepti" element={<YirmiFarkliDogumGunuKonsepti />} />
+        <Route path="/blog/evde-dogum-gunu-maliyeti" element={<EvdeDogumGunuMaliyeti />} />
+        <Route path="/blog/animasyon-ekibi-secimi" element={<AnimasyonEkibiSecimi />} />
+        <Route path="/blog/istanbul-populer-cocuk-parti-temalari" element={<IstanbulPopulerCocukPartiTemalar />} />
+        <Route path="/blog/fotografci-gerekli-mi" element={<FotografciGerekliMi />} />
+        <Route path="/blog/acik-alan-kapali-mekan" element={<AcikAlanKapaliMekan />} />
+        <Route path="/blog/kurumsal-cocuk-festivalleri" element={<KurumsalCocukFestivalleri />} />
+        <Route path="/blog/cocuk-partisi-2026-trendleri" element={<CocukPartisi2026Trendleri />} />
+        <Route path="/blog/avrupa-yakasi-ulasim-rehberi" element={<AvrupaYakasiUlasimRehberi />} />
+        <Route path="/blog/anadolu-yakasi-ulasim-rehberi" element={<AnadoluYakasiUlasimRehberi />} />
+        <Route path="/blog/toplu-tasima-etkinlik-ulasim" element={<TopluTasimaEtkinlikUlasim />} />
+        <Route path="/blog/marmaray-metro-etkinlik-erisim" element={<MarmarayMetroEtkinlikErisim />} />
+
+        {/* Ramazan Etkinlik Blogları (5 adet) */}
+        <Route path="/blog/maltepe-ramazan-palyaco-sihirbaz" element={<MaltepeRamazanEtkinligi />} />
+        <Route path="/blog/eyupsultan-ramazan-palyaco-sihirbaz" element={<EyupsultanRamazanEtkinligi />} />
+        <Route path="/blog/kartal-ramazan-palyaco-sihirbaz" element={<KartalRamazanEtkinligi />} />
+        <Route path="/blog/uskudar-ramazan-palyaco-sihirbaz" element={<UskudarRamazanEtkinligi />} />
+        <Route path="/blog/istanbul-ramazan-cocuk-etkinlikleri" element={<IstanbulRamazanCocukEtkinlikleri />} />
 
         {/* Service Routes */}
         <Route path="/organizasyonlar/cocuk-etkinlikleri" element={<ChildEvents />} />
@@ -204,6 +324,9 @@ function App() {
         <Route path="/karakter/:slug" element={<CharacterDetail />} />
         <Route path="/maskot/:slug" element={<MascotDetail />} />
 
+        {/* Local Landing Pages - Semt Bazlı Hizmet Sayfaları (Programmatic SEO) */}
+        <Route path="/organizasyonlar/:service/:district" element={<LocalLandingPage />} />
+
         {/* 404 - Sayfa Bulunamadı (en sonda olmalı) */}
         <Route path="*" element={<NotFound />} />
               </Routes>
@@ -212,8 +335,7 @@ function App() {
         </ErrorBoundary>
       </main>
       <Footer />
-      {!hideWhatsAppButton && <WhatsAppButton />}
-      <SearchButton />
+      <WhatsAppButton />
     </div>
   )
 }

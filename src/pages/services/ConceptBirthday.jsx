@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
+import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 import NarrativeSection from '../../components/NarrativeSection'
 import RelatedServices from '../../components/RelatedServices'
 
@@ -40,6 +41,14 @@ const ConceptBirthday = () => {
     }
   ]
 
+  const serviceSchema = createServiceSchema(
+    'Konsept Doğum Günü İstanbul | Tema Parti',
+    'Konsept doğum günü İstanbul. Prenses, Barbie, Safari, Spiderman, Wednesday temaları. Profesyonel dekorasyon ve süsleme.',
+    '/organizasyonlar/konsept-dogum-gunu',
+    'Konsept Doğum Günü Organizasyonu'
+  )
+  const faqSchema = createFAQSchema(faqs)
+
   return (
     <>
       <Seo
@@ -56,33 +65,8 @@ const ConceptBirthday = () => {
         ]}
         canonicalPath="/organizasyonlar/konsept-dogum-gunu"
         schema={[
-          {
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Konsept Doğum Günü Organizasyonu",
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "BestEvent",
-              "areaServed": ["Kadıköy", "Beşiktaş", "Şişli", "Bakırköy", "Üsküdar", "Maltepe", "Kartal", "Ataşehir", "Pendik", "Sarıyer", "Beyoğlu", "Fatih", "Başakşehir", "Küçükçekmece", "Esenyurt", "İstanbul"]
-            },
-            "serviceType": "Konsept Doğum Günü Organizasyonu",
-            "offers": {
-              "@type": "Offer",
-              "availability": "https://schema.org/InStock"
-            }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          },
+          serviceSchema,
+          faqSchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",

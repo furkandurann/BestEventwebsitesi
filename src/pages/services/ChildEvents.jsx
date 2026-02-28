@@ -37,7 +37,7 @@ const OTHER_SERVICES = [
   { name: 'Transformers Robot', image: '/content/images/bidolu/transformers.webp', link: '/organizasyonlar/transformers-robot' },
   { name: 'Şişme Oyun Parkları', image: '/content/images/cocukdogumgunu/IMG_0777.webp', link: '/organizasyonlar/sisme-oyun-parki' },
   { name: 'Atölye Etkinlikleri', image: '/content/images/cocukdogumgunu/7dbaca4e-d254-4663-b4bd-b106207970c8.webp', link: '/organizasyonlar/atolye-etkinlikleri' },
-  { name: 'Parti Ekipmanları', image: '/content/images/Parti Ekipmanları/popcornpamukseker.JPG', link: '/hizmetler/pamuk-seker' },
+  { name: 'Parti Ekipmanları', image: '/content/images/Parti Ekipmanları/popcornpamukseker.webp', link: '/hizmetler/pamuk-seker' },
   { name: 'Ateş Gösterisi', image: '/content/images/gosteriler/tesbaz.webp', link: '/organizasyonlar/ates-gosterisi' }
 ]
 

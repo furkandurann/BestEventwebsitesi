@@ -77,10 +77,14 @@ const DanceEvents = () => {
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img 
-            src="/content/images/dance/oryantal/oryantalistanahero.webp" 
+          <img
+            src="/content/images/dance/oryantal/oryantalistanahero.webp"
             alt="Dans gösterileri İstanbul - Best Event"
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            loading="eager"
+            width={1200}
+            height={800}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
         </div>
@@ -179,6 +183,8 @@ const DanceEvents = () => {
                       src={service.image}
                       alt={service.alt}
                       loading="lazy"
+                      width={400}
+                      height={300}
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                       style={
                         service.id === 'yoga'

@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate-sitemap && vite build && npm run fix-webp-names && npm run postbuild",
+    "build": "npm run generate-sitemap && vite build && npm run fix-webp-names",
     "build:production": "npm run deploy-check && npm run build && npm run verify-build",
-    "postbuild": "react-snap",
+    "postbuild": "react-snap && node scripts/inject-font-preload.cjs",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "fix-webp-names": "node scripts/fix-webp-names.js",
     "verify-build": "node scripts/verify-build.js",

@@ -175,6 +175,8 @@ const CharacterDetail = () => {
                 alt={`${character.name} kiralama İstanbul - organizasyon`}
                 className="object-contain max-h-[80vh] w-auto"
                 loading="lazy"
+                width={800}
+                height={600}
               />
             </div>
           )}
@@ -232,6 +234,8 @@ const CharacterDetail = () => {
                 alt={`${character.name} organizasyon İstanbul - etkinlik`}
                 className="object-contain max-h-[80vh] w-auto"
                 loading="lazy"
+                width={800}
+                height={600}
               />
             </div>
           )}
@@ -283,6 +287,8 @@ const CharacterDetail = () => {
                 alt={`${character.name} doğum günü İstanbul`}
                 className="object-contain max-h-[80vh] w-auto"
                 loading="lazy"
+                width={800}
+                height={600}
               />
             </div>
           )}
@@ -411,6 +417,9 @@ const CharacterDetail = () => {
                     src={image}
                     alt={`${character.name} organizasyon İstanbul - ${section.title}`}
                     className="object-contain max-h-[80vh] w-auto"
+                    loading="lazy"
+                    width={800}
+                    height={600}
                   />
                 </div>
               </div>
@@ -678,6 +687,8 @@ const CharacterDetail = () => {
                         alt={`${rel.name} kiralama İstanbul`}
                         className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
+                        width={400}
+                        height={256}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -787,7 +798,7 @@ const CharacterDetail = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <img src="/content/images/palyaco/palyacogrupoyunlari.webp" alt="Palyaço Kiralama Grup Oyunları İstanbul" className="w-full h-64 object-cover" loading="lazy" />
+                  <img src="/content/images/palyaco/palyacogrupoyunlari.webp" alt="Palyaço Kiralama Grup Oyunları İstanbul" className="w-full h-64 object-cover" loading="lazy" width={600} height={256} />
                   <div className="p-6">
                     <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Poppins, sans-serif', background: 'linear-gradient(to right, #9333ea, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Grup Oyunları</h3>
                     <p className="text-gray-700 mb-4" style={{ lineHeight: '1.7' }}>
@@ -803,7 +814,7 @@ const CharacterDetail = () => {
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <img src="/content/images/palyaco/palyaconattive3yuzboyamasi.webp" alt="Palyaço Yüz Boyama İstanbul" className="w-full h-64 object-cover" loading="lazy" />
+                  <img src="/content/images/palyaco/palyaconattive3yuzboyamasi.webp" alt="Palyaço Yüz Boyama İstanbul" className="w-full h-64 object-cover" loading="lazy" width={600} height={256} />
                   <div className="p-6">
                     <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Poppins, sans-serif', background: 'linear-gradient(to right, #9333ea, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Yüz Boyama</h3>
                     <p className="text-gray-700 mb-4" style={{ lineHeight: '1.7' }}>
@@ -819,7 +830,7 @@ const CharacterDetail = () => {
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <img src="/content/images/palyaco/palyaconattive1.webp" alt="Palyaço Sosis Balon İstanbul" className="w-full h-64 object-cover" loading="lazy" />
+                  <img src="/content/images/palyaco/palyaconattive1.webp" alt="Palyaço Sosis Balon İstanbul" className="w-full h-64 object-cover" loading="lazy" width={600} height={256} />
                   <div className="p-6">
                     <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Poppins, sans-serif', background: 'linear-gradient(to right, #9333ea, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Sosis Balon Şekillendirme</h3>
                     <p className="text-gray-700 mb-4" style={{ lineHeight: '1.7' }}>
@@ -835,7 +846,7 @@ const CharacterDetail = () => {
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <img src="/content/images/palyaco/palyacoonemlifotografguleryız.webp" alt="Palyaço Güler Yüz İstanbul" className="w-full h-64 object-cover" loading="lazy" />
+                  <img src="/content/images/palyaco/palyacoonemlifotografguleryız.webp" alt="Palyaço Güler Yüz İstanbul" className="w-full h-64 object-cover" loading="lazy" width={600} height={256} />
                   <div className="p-6">
                     <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Poppins, sans-serif', background: 'linear-gradient(to right, #9333ea, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Palyaço Organizasyon</h3>
                     <p className="text-gray-700 mb-4" style={{ lineHeight: '1.7' }}>

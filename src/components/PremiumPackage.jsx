@@ -133,7 +133,7 @@ const PremiumPackage = () => {
             className="relative h-[70vh] rounded-3xl overflow-hidden shadow-2xl"
           >
             <img
-              src="/content/images/konseptdogumgunu/konseptdogumgunu.JPG"
+              src="/content/images/konseptdogumgunu/00aa36db-4945-4850-8907-9fea1e1687cc.webp"
               alt="Best Event - Premium Paket Organizasyon"
               className="w-full h-full object-cover"
             />

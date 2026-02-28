@@ -150,6 +150,9 @@ const FacePainting = () => {
                 alt="Profesyonel yüz boyama uygulaması"
                 className="w-full h-full object-cover"
                 loading="eager"
+                fetchPriority="high"
+                width={1200}
+                height={800}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/60" />
               <div className="absolute inset-0 border border-white/10 rounded-[28px]" />
@@ -280,7 +283,7 @@ const FacePainting = () => {
                 ]
                 return (
                   <div key={idx} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                    <img src={src} alt={altTexts[idx] || `Yüz boyama uygulama ${idx + 1}`} className="w-full h-56 object-cover" loading="lazy" />
+                    <img src={src} alt={altTexts[idx] || `Yüz boyama uygulama ${idx + 1}`} className="w-full h-56 object-cover" loading="lazy" width={400} height={224} />
                   </div>
                 )
               })}
@@ -326,7 +329,7 @@ const FacePainting = () => {
                   >
                     {item.img && (
                       <div className="w-20 h-20 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
-                        <img src={item.img} alt={item.title} className="w-full h-full object-cover" loading="lazy" />
+                        <img src={item.img} alt={item.title} className="w-full h-full object-cover" loading="lazy" width={80} height={80} />
                       </div>
                     )}
                     <div className="flex-1">

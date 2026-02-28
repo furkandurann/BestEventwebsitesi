@@ -112,12 +112,12 @@ Her ateş gösterisi 15-20 dakika sürer ve karanlıkta en etkileyicidir. Dış 
     seoKeywords: "ateş gösterisi istanbul, fire show, yangın showu, kadıköy fire show, düğün ateş gösterisi, açılış ateş performansı, profesyonel fire show",
     
     photos: [
-      "/content/images/cocukdogumgunu/66a266b0-ef8f-4a4a-9e3e-39c657157777.JPG",
-      "/content/images/cocukdogumgunu/556fe6ff-e557-4b33-b59d-16b1690624ac.JPG",
-      "/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.JPG",
-      "/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.JPG",
-      "/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.JPG",
-      "/content/images/cocukdogumgunu/IMG_0612.JPG"
+      "/content/images/cocukdogumgunu/082041d3-58ff-4b19-81e0-5a6e39d81532.webp",
+      "/content/images/cocukdogumgunu/556fe6ff-e557-4b33-b59d-16b1690624ac.webp",
+      "/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.webp",
+      "/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp",
+      "/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.webp",
+      "/content/images/cocukdogumgunu/IMG_0612.webp"
     ]
   }
 

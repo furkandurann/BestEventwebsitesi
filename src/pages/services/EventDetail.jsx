@@ -127,6 +127,8 @@ const EventDetail = ({
                           src={contentPhotos[Math.floor(idx / 2)]}
                           alt={`${title} - Görsel ${Math.floor(idx / 2) + 1}`}
                           loading="lazy"
+                          width={800}
+                          height={600}
                           className={`h-auto w-full object-cover ${compactImageSections ? 'max-w-4xl' : 'max-w-full'}`}
                           style={{
                             boxShadow: 'inset 0 0 40px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05)'

@@ -87,7 +87,7 @@
     key: 'pamuk-seker',
     title: 'Parti Ekipmanları',
     subtitle: 'Etkinliğinizin tatlı durağı.',
-    img: '/content/images/Parti Ekipmanları/hareketlislider7popcorn.jpeg',
+    img: '/content/images/Parti Ekipmanları/hareketlislider7popcorn.webp',
     alt: 'pamuk şeker arabası kiralama istanbul etkinlik catering',
     cta: { text: 'Detayları Keşfet', to: '/organizasyonlar/pamuk-seker' },
     seo: {
@@ -111,7 +111,7 @@
     key: 'noel-baba-kiralama',
     title: 'Noel Baba Kiralama',
     subtitle: 'Yılbaşı büyüsünü yaşatın.',
-    img: '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg',
+    img: '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.webp',
     alt: 'noel baba kiralama istanbul yılbaşı özel private standart paket',
     cta: { text: 'Detayları Keşfet', to: '/organizasyonlar/noel-baba-kiralama' },
     seo: {

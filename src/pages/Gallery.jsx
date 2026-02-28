@@ -65,8 +65,8 @@ const Gallery = () => {
         { src: '/content/images/Anasayfa/anasayfascroll/vodafone1.webp', alt: 'Vodafone Organizasyon' },
         { src: '/content/images/Anasayfa/anasayfascroll/vodafone2.webp', alt: 'Vodafone Etkinlik' },
         { src: '/content/images/Anasayfa/anasayfascroll/allianz1.webp', alt: 'Allianz Kurumsal Etkinlik' },
-        { src: '/content/images/Anasayfa/anasayfascroll/360selfie.jpeg', alt: '360 Selfie Booth Etkinlik' },
-        { src: '/content/images/Anasayfa/anasayfascroll/360selifee.jpeg', alt: '360 Derece Fotoğraf Deneyimi' },
+        { src: '/content/images/Anasayfa/anasayfascroll/360selfie.webp', alt: '360 Selfie Booth Etkinlik' },
+        { src: '/content/images/Anasayfa/anasayfascroll/360selifee.webp', alt: '360 Derece Fotoğraf Deneyimi' },
       ]
     },
     dans: {
@@ -136,14 +136,14 @@ const Gallery = () => {
       description: 'Pamuk şeker, çikolata şelalesi',
       gradient: 'from-teal-500 to-emerald-600',
       images: [
-        { src: '/content/images/Parti Ekipmanları/cikolataselalesi.jpeg', alt: 'Çikolata Şelalesi Kiralama' },
-        { src: '/content/images/Parti Ekipmanları/cikolataselalesiistanbul.jpeg', alt: 'Çikolata Şelalesi İstanbul' },
-        { src: '/content/images/Parti Ekipmanları/pamukseker.jpeg', alt: 'Pamuk Şeker Arabası' },
-        { src: '/content/images/Parti Ekipmanları/popcornkalitelihijyenikmalzeme.jpg', alt: 'Popcorn Makinesi' },
-        { src: '/content/images/Parti Ekipmanları/cocukmasasandalyesi.jpg', alt: 'Çocuk Masa Sandalye' },
-        { src: '/content/images/Parti Ekipmanları/uzaycadiri.jpg', alt: 'Uzay Çadırı' },
-        { src: '/content/images/Parti Ekipmanları/limonatakosesi.jpg', alt: 'Limonata Köşesi' },
-        { src: '/content/images/Parti Ekipmanları/tatliarabasi.jpg', alt: 'Tatlı Arabası Kiralama' },
+        { src: '/content/images/Parti Ekipmanları/cikolataselalesi.webp', alt: 'Çikolata Şelalesi Kiralama' },
+        { src: '/content/images/Parti Ekipmanları/cikolataselalesiistanbul.webp', alt: 'Çikolata Şelalesi İstanbul' },
+        { src: '/content/images/Parti Ekipmanları/pamukseker.webp', alt: 'Pamuk Şeker Arabası' },
+        { src: '/content/images/Parti Ekipmanları/popcornkalitelihijyenikmalzeme.webp', alt: 'Popcorn Makinesi' },
+        { src: '/content/images/Parti Ekipmanları/cocukmasasandalyesi.webp', alt: 'Çocuk Masa Sandalye' },
+        { src: '/content/images/Parti Ekipmanları/uzaycadiri.webp', alt: 'Uzay Çadırı' },
+        { src: '/content/images/Parti Ekipmanları/limonatakosesi.webp', alt: 'Limonata Köşesi' },
+        { src: '/content/images/Parti Ekipmanları/tatliarabasi.webp', alt: 'Tatlı Arabası Kiralama' },
       ]
     },
   }

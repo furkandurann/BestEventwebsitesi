@@ -7,8 +7,8 @@ import 'swiper/css/pagination'
 // Sadece dikey format fotoğraflar (portrait orientation)
 const santaImages = [
   { src: '/content/images/noelbaba/noelbabastandart/8211BF23-166D-4080-B7CD-AA8C757CDB59 2.webp', alt: 'Noel Baba kiralama İstanbul - Best Event', position: 'center 30%' },
-  { src: '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.44.jpeg', alt: 'Private Noel Baba organizasyonu İstanbul - Best Event', position: 'center 35%' },
-  { src: '/content/images/noelbaba/noelbabastandart/8B071122-174A-4DFE-AFBB-E1A5108E1009 2.jpg', alt: 'Noel Baba organizasyonu İstanbul - Best Event', position: 'center 25%' },
+  { src: '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.44.webp', alt: 'Private Noel Baba organizasyonu İstanbul - Best Event', position: 'center 35%' },
+  { src: '/content/images/noelbaba/noelbabastandart/8B071122-174A-4DFE-AFBB-E1A5108E1009 2.webp', alt: 'Noel Baba organizasyonu İstanbul - Best Event', position: 'center 25%' },
 ]
 
 const SantaClausHeroSlider = () => {

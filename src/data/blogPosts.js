@@ -385,7 +385,7 @@ export const blogPosts = [
     readTime: 6,
     date: '24 Şubat 2026',
     dateISO: '2026-02-24',
-    image: '/content/images/Parti Ekipmanları/pamukseker.jpeg'
+    image: '/content/images/Parti Ekipmanları/pamukseker.webp'
   },
   {
     slug: 'besiktas-atasehir-pamuk-seker-arabasi-kiralama',
@@ -402,7 +402,7 @@ export const blogPosts = [
     readTime: 5,
     date: '25 Şubat 2026',
     dateISO: '2026-02-25',
-    image: '/content/images/Parti Ekipmanları/pamukseker.jpeg'
+    image: '/content/images/Parti Ekipmanları/pamukseker.webp'
   },
 
   // ===== KOSTÜMLÜ KARAKTER CLUSTER =====

@@ -122,21 +122,6 @@
     </image:image>
   </url>
   
-  <!-- Referanslar Görselleri -->
-  <url>
-    <loc>https://bestevent.com.tr/referanslar</loc>
-    <image:image>
-      <image:loc>https://bestevent.com.tr/content/images/Anasayfa/kocholdingkurumsal.jpg</image:loc>
-      <image:title>Koç Holding Kurumsal Etkinlik</image:title>
-      <image:caption>Kurumsal etkinlik organizasyonu referansları</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://bestevent.com.tr/content/images/Anasayfa/vodafonekurumsal.jpeg</image:loc>
-      <image:title>Vodafone Kurumsal Etkinlik</image:title>
-      <image:caption>Vodafone etkinlik organizasyonu</image:caption>
-    </image:image>
-  </url>
-  
   <!-- VR Deneyimi Görselleri -->
   <url>
     <loc>https://bestevent.com.tr/organizasyonlar/vr-sanal-gerceklik</loc>

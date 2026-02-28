@@ -386,10 +386,14 @@ const MagicShow = () => {
                         aspectRatio: '4/5'
                       }}
                     >
-                      <img 
+                      <img
                         src={image.src}
                         alt={image.alt}
                         className="w-full h-full object-cover select-none"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        fetchPriority={index === 0 ? 'high' : undefined}
+                        width={960}
+                        height={1200}
                         style={{
                           objectPosition: '50% 20%'
                         }}
@@ -473,16 +477,22 @@ const MagicShow = () => {
             {/* Photos Grid - Two Magicians Side by Side */}
             <div className="grid md:grid-cols-2 gap-8 mb-12" style={{ maxWidth: '1200px', margin: '0 auto' }}>
               {/* Gülben Photo */}
-              <img 
-                src="/content/images/sihirbaz/gulbenergensihirbaz.JPG"
+              <img
+                src="/content/images/sihirbaz/gulbenergensihirbaz.webp"
                 alt="Gülben Ergen ile sihirbaz gösterisi"
+                loading="lazy"
+                width={600}
+                height={400}
                 className="w-full rounded-3xl shadow-2xl"
               />
               
               {/* Magic Show & Comedy Photo */}
-              <img 
+              <img
                 src="/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp"
                 alt="Sihirbazlık gösterisi ve komedi show"
+                loading="lazy"
+                width={600}
+                height={400}
                 className="w-full rounded-3xl shadow-2xl"
               />
             </div>
@@ -602,27 +612,36 @@ const MagicShow = () => {
             <div className="grid md:grid-cols-3 gap-6 mb-16 items-center" style={{ maxWidth: '1200px', margin: '0 auto 4rem' }}>
               {/* Photo 1: Çocukların gözündeki şaşkınlık */}
               <div className="overflow-hidden rounded-2xl border-2 border-cyan-500/30 shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                <img 
+                <img
                   src="/content/images/ahunundogumgunu/sihirbazlıkgosterisiilecocuklarıngozundekisaskinlik.webp"
                   alt="Sihirbazlık gösterisi ile çocukların gözündeki şaşkınlık"
+                  loading="lazy"
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
               </div>
               
               {/* Photo 2: Tavşan ve güvercin etkileşimi (CENTER SPOTLIGHT) */}
               <div className="overflow-hidden rounded-xl border-4 border-cyan-400/60 shadow-2xl shadow-cyan-400/30 hover:shadow-cyan-400/60 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                <img 
+                <img
                   src="/content/images/ahunundogumgunu/tavsanveguvercınleetkilesim.webp"
                   alt="Tavşan ve güvercin ile etkileşim"
+                  loading="lazy"
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
               </div>
 
               {/* Photo 3: Güvercin ile ilk temas */}
               <div className="overflow-hidden rounded-2xl border-2 border-cyan-500/30 shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                <img 
+                <img
                   src="/content/images/ahunundogumgunu/canlıguvercinileilktemas.webp"
                   alt="Çocukların güvercin ile ilk teması"
+                  loading="lazy"
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
               </div>

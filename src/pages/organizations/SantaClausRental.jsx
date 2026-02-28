@@ -81,20 +81,20 @@ const SantaClausRental = () => {
 
   // Fotoğraf Galerisi
   const privatePhotos = [
-    '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.44.jpeg',
-    '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg',
-    '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45 (1).jpeg'
+    '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.44.webp',
+    '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.webp',
+    '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45 (1).webp'
   ]
 
   const standardPhotos = [
     '/content/images/noelbaba/noelbabastandart/noelannestandart.webp',
     '/content/images/noelbaba/noelbabastandart/7BDA73F5-5BE9-419C-AD20-98CB8A679C51.webp',
-    '/content/images/noelbaba/noelbabastandart/8B071122-174A-4DFE-AFBB-E1A5108E1009 2.jpg',
-    '/content/images/noelbaba/noelbabastandart/8211BF23-166D-4080-B7CD-AA8C757CDB59 2.jpg'
+    '/content/images/noelbaba/noelbabastandart/8B071122-174A-4DFE-AFBB-E1A5108E1009 2.webp',
+    '/content/images/noelbaba/noelbabastandart/8211BF23-166D-4080-B7CD-AA8C757CDB59 2.webp'
   ]
 
   const decorationPhotos = [
-    '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.44.jpeg',
+    '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.44.webp',
     '/content/images/noelbaba/noelbabastandart/7BDA73F5-5BE9-419C-AD20-98CB8A679C51.webp'
   ]
 
@@ -110,7 +110,7 @@ const SantaClausRental = () => {
           'noel baba etkinliği',
           'istanbul noel baba'
         ]}
-        ogImage="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg"
+        ogImage="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.webp"
         schema={[
           {
             "@context": "https://schema.org",
@@ -536,7 +536,7 @@ const SantaClausRental = () => {
             >
               {[
                 { src: '/content/images/noelbaba/noelbabastandart/8211BF23-166D-4080-B7CD-AA8C757CDB59 2.webp', alt: 'Noel baba gösterisi organizasyonu' },
-                { src: '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg', alt: 'Noel baba gösterisi istanbul' },
+                { src: '/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.webp', alt: 'Noel baba gösterisi istanbul' },
                 { src: '/content/images/noelbaba/noelbabastandart/noelannestandart.webp', alt: 'Istanbul noel baba kiralama' }
               ].map((image, index) => (
                 <div 
@@ -776,7 +776,7 @@ const SantaClausRental = () => {
                     {/* Görsel */}
                     <div>
                       <img 
-                        src="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.jpeg"
+                        src="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.45.webp"
                         alt="Private Noel Baba"
                         className="w-full h-full object-cover rounded-2xl shadow-xl"
                         style={{ objectPosition: '40% center' }}

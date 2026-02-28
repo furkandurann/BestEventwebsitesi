@@ -120,13 +120,13 @@ const ChocolateFountain = () => {
     ],
     
     photos: [
-      "/content/images/Parti Ekipmanları/popcornpamukseker.JPG",
-      "/content/images/cocukdogumgunu/IMG_0790.JPG",
-      "/content/images/cocukdogumgunu/konseptdogumgunu.JPG",
-      "/content/images/cocukdogumgunu/c3f9812a-98cb-4f8e-a6c2-fcbda31a6dfd.JPG",
-      "/content/images/cocukdogumgunu/IMG_0612.JPG",
-      "/content/images/cocukdogumgunu/IMG_0787.JPG",
-      "/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.JPG"
+      "/content/images/Parti Ekipmanları/popcornpamukseker.webp",
+      "/content/images/cocukdogumgunu/IMG_0790.webp",
+      "/content/images/cocukdogumgunu/konseptdogumgunu.webp",
+      "/content/images/cocukdogumgunu/c3f9812a-98cb-4f8e-a6c2-fcbda31a6dfd.webp",
+      "/content/images/cocukdogumgunu/IMG_0612.webp",
+      "/content/images/cocukdogumgunu/IMG_0787.webp",
+      "/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.webp"
     ]
   }
 

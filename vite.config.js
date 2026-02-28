@@ -237,9 +237,10 @@ export default defineConfig({
             return 'utils'
           }
           
-          // Data files - localPages ayrı chunk'ta (1MB+ büyüklüğünde, sadece LocalLandingPage'de lazım)
-          if (id.includes('/src/data/localPages')) {
-            return 'data-local-pages'
+          // Local content chunks - her hizmet ayrı chunk (dynamic import ile lazy load)
+          if (id.includes('/src/data/localContent-')) {
+            const match = id.match(/localContent-([^.]+)/)
+            if (match) return `localContent-${match[1]}`
           }
 
           // Maskot ve karakter data dosyaları (ayrı chunk)

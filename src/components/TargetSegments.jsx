@@ -12,7 +12,7 @@ const TargetSegments = () => {
         'Bubble & Sihir Gösterileri',
         'Kostümlü Karakterler'
       ],
-      image: '/content/images/cocukdogumgunu/konseptdogumgunu.JPG',
+      image: '/content/images/cocukdogumgunu/konseptdogumgunu.webp',
       link: '/organizasyonlar/cocuk-etkinlikleri',
       gradient: 'from-amber-500 to-orange-500',
       bgGradient: 'from-amber-500/20 to-orange-500/20'
@@ -26,7 +26,7 @@ const TargetSegments = () => {
         'Açılış Organizasyonu',
         'Kurumsal Kutlamalar'
       ],
-      image: '/content/images/kurumsal/kurumsal1.JPG',
+      image: '/content/images/kurumsal/061a8dec-ed17-44bb-a6b6-7e26347e9def.webp',
       link: null,
       gradient: 'from-blue-500 to-indigo-500',
       bgGradient: 'from-blue-500/20 to-indigo-500/20'
@@ -40,7 +40,7 @@ const TargetSegments = () => {
         'Bekarlığa Veda',
         'Özel Kutlamalar'
       ],
-      image: '/content/images/yetiskindogumgunu/yetiskin1.JPG',
+      image: '/content/images/yetiskindogumgunu/AE9136E8-CE8B-4F2F-AAEB-6A2688F729FC.webp',
       link: null,
       gradient: 'from-fuchsia-500 to-pink-500',
       bgGradient: 'from-fuchsia-500/20 to-pink-500/20'

@@ -100,6 +100,8 @@ const VRExperience = () => {
               className="w-full h-full object-cover object-center"
               loading="eager"
               fetchpriority="high"
+              width={1200}
+              height={800}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black" />
           </div>
@@ -207,7 +209,7 @@ const VRExperience = () => {
                   ]
                   return (
                     <div key={idx} className="rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100">
-                      <OptimizedImage src={src} alt={altTexts[idx] || `VR etkinliği görsel ${idx + 1}`} className="w-full h-52 object-cover" loading="lazy" />
+                      <OptimizedImage src={src} alt={altTexts[idx] || `VR etkinliği görsel ${idx + 1}`} className="w-full h-52 object-cover" loading="lazy" width={400} height={208} />
                     </div>
                   )
                 })}

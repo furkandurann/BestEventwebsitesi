@@ -25,14 +25,14 @@ const CottonCandyCart = () => {
       id: 'popcorn',
       title: 'Popcorn Kiralama',
       description: 'Nostaljik popcorn arabası kiralama ile taze mısır patlatma hizmeti. Profesyonel popcorn kiralama İstanbul.',
-      image: '/content/images/Parti Ekipmanları/hareketlislider7popcorn.jpeg',
+      image: '/content/images/Parti Ekipmanları/hareketlislider7popcorn.webp',
       alt: 'Popcorn arabası kiralama İstanbul - Best Event'
     },
     {
       id: 'cotton-candy',
       title: 'Pamuk Şeker Kiralama',
       description: 'Renkli ve lezzetli pamuk şeker arabası kiralama hizmeti. İstanbul genelinde pamuk şeker kiralama.',
-      image: '/content/images/Parti Ekipmanları/pamukseker.jpeg',
+      image: '/content/images/Parti Ekipmanları/pamukseker.webp',
       alt: 'Pamuk şeker arabası kiralama İstanbul - Best Event'
     },
     {
@@ -130,7 +130,7 @@ const CottonCandyCart = () => {
 
       <AdHero
         title="Pamuk Şeker Arabası Kiralama İstanbul"
-        backgroundImage="/content/images/Parti Ekipmanları/popcornpamukseker.JPG"
+        backgroundImage="/content/images/Parti Ekipmanları/popcornpamukseker.webp"
         subtitle="İstanbul'un Her Semtine Kiralama Hizmeti"
       />
 
@@ -139,12 +139,14 @@ const CottonCandyCart = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/content/images/Parti Ekipmanları/popcornpamukseker.JPG"
+            src="/content/images/Parti Ekipmanları/popcornpamukseker.webp"
             alt="Pamuk şeker ve popcorn arabası kiralama İstanbul parti ekipmanları"
             className="w-full h-full object-cover"
             style={{ objectPosition: 'center 40%' }}
             loading="eager"
             fetchpriority="high"
+            width={1200}
+            height={800}
           />
         </div>
 
@@ -260,6 +262,8 @@ const CottonCandyCart = () => {
                       src={service.image}
                       alt={service.alt}
                       loading="lazy"
+                      width={600}
+                      height={450}
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                     />
                   </div>

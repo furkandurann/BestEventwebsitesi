@@ -112,12 +112,12 @@ Her masa sandalye seti etkinlik süresince kiralanır ve sonrasında tarafımız
     seoKeywords: "çocuk masa sandalye kiralama istanbul, renkli masa sandalye, doğum günü masa sandalye, kadıköy çocuk mobilya, okul etkinliği masa kiralama",
     
     photos: [
-      "/content/images/cocukdogumgunu/IMG_0790.JPG",
-      "/content/images/cocukdogumgunu/IMG_0784.JPG",
-      "/content/images/cocukdogumgunu/IMG_0787.JPG",
-      "/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.JPG",
-      "/content/images/cocukdogumgunu/c3f9812a-98cb-4f8e-a6c2-fcbda31a6dfd.JPG",
-      "/content/images/cocukdogumgunu/konseptdogumgunu.JPG"
+      "/content/images/cocukdogumgunu/IMG_0790.webp",
+      "/content/images/cocukdogumgunu/082041d3-58ff-4b19-81e0-5a6e39d81532.webp",
+      "/content/images/cocukdogumgunu/IMG_0787.webp",
+      "/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.webp",
+      "/content/images/cocukdogumgunu/c3f9812a-98cb-4f8e-a6c2-fcbda31a6dfd.webp",
+      "/content/images/cocukdogumgunu/konseptdogumgunu.webp"
     ]
   }
 

@@ -20,10 +20,16 @@ const AdHero = ({
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Sabit arka plan görseli */}
-      <div
-        className="absolute inset-0 bg-cover bg-center md:bg-fixed"
-        style={{ backgroundImage: `url('${backgroundImage}')` }}
+      {/* Hero görseli - img element ile LCP ve WebP optimizasyonu */}
+      <img
+        src={backgroundImage}
+        alt={title}
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+        width={1920}
+        height={1080}
+        className="absolute inset-0 w-full h-full object-cover"
       />
 
       {/* Koyu overlay — alt kısımda güçlü fade-out geçişi */}

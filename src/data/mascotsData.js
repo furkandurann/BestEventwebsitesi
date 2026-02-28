@@ -1151,9 +1151,9 @@ export const mascotsData = {
       emoji: '🎃',
       title: 'Balkabağı',
       description: 'Halloween temalı balkabağı maskotu, özel günlerde korkunç eğlence yaratıyor.',
-      heroImage: '/content/images/maskotlar/halloween1 .JPG',
+      heroImage: '/content/images/maskotlar/halloween1 .webp',
       images: [
-        '/content/images/maskotlar/halloween1 .JPG'
+        '/content/images/maskotlar/halloween1 .webp'
       ],
       glassColor: 'rgba(255, 140, 0, 0.25)',
       borderColor: 'rgba(255, 255, 255, 0.3)',

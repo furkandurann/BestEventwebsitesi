@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
 import GoogleReviews from '../../components/GoogleReviews'
 import { getReviewsByTags } from '../../data/googleReviews'
-import { getDistrict, getService, getLocalContent, getServicesForDistrict, districts } from '../../data/localPages'
+import { getDistrict, getService, getLocalContentAsync, getServicesForDistrict, districts } from '../../data/localPages'
 import { createLocalBusinessSchema } from '../../utils/schemaHelpers'
 
 // ─── Heading Varyant Helpers ────────────────────────────
@@ -648,10 +648,35 @@ function OtherServicesSection({ districtSlug, districtName, currentServiceSlug }
 // ═══════════════════════════════════════════════════════════
 const LocalLandingPage = () => {
   const { service: serviceSlug, district: districtSlug } = useParams()
+  const [content, setContent] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   const district = getDistrict(districtSlug)
   const service = getService(serviceSlug)
-  const content = getLocalContent(districtSlug, serviceSlug)
+
+  useEffect(() => {
+    if (!district || !service) {
+      setLoading(false)
+      return
+    }
+    let cancelled = false
+    getLocalContentAsync(districtSlug, serviceSlug).then(data => {
+      if (!cancelled) {
+        setContent(data)
+        setLoading(false)
+      }
+    })
+    return () => { cancelled = true }
+  }, [districtSlug, serviceSlug, district, service])
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
+        <div className="animate-pulse text-gray-400">Yükleniyor...</div>
+      </div>
+    )
+  }
 
   // Geçersiz semt veya hizmet → 404
   if (!district || !service || !content) {

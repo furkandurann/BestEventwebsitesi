@@ -123,6 +123,8 @@ const MascotDetail = () => {
                   alt={`${mascot.name} maskot kiralama İstanbul - organizasyon`}
                   className="w-full h-auto rounded-lg"
                   loading="lazy"
+                  width={1200}
+                  height={800}
                   style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05)' }}
                 />
               </div>
@@ -182,6 +184,8 @@ const MascotDetail = () => {
                   alt={`${mascot.name} maskot organizasyon İstanbul - etkinlik`}
                   className="w-full h-auto rounded-lg"
                   loading="lazy"
+                  width={1200}
+                  height={800}
                   style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05)' }}
                 />
               </div>
@@ -236,6 +240,8 @@ const MascotDetail = () => {
                   alt={`${mascot.name} maskot doğum günü İstanbul`}
                   className="w-full h-auto rounded-lg"
                   loading="lazy"
+                  width={1200}
+                  height={800}
                   style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05)' }}
                 />
               </div>
@@ -339,6 +345,9 @@ const MascotDetail = () => {
                       src={image}
                       alt={`${mascot.name} maskot organizasyon İstanbul - ${section.title}`}
                       className="w-full h-auto rounded-lg"
+                      loading="lazy"
+                      width={1200}
+                      height={800}
                       style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05)' }}
                     />
                   </div>
@@ -460,6 +469,8 @@ const MascotDetail = () => {
                         alt={`${rel.name} maskot kiralama İstanbul`}
                         className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
+                        width={400}
+                        height={256}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-6">

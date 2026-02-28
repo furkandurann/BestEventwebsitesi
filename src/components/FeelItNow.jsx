@@ -41,7 +41,7 @@ const FeelItNow = () => {
           className="relative w-full h-[70vh] lg:h-[80vh] rounded-3xl overflow-hidden shadow-2xl"
         >
           <img
-            src="/content/images/fullpaket/fullpaket1.JPG"
+            src="/content/images/fullpaket/5268218d-92fa-4764-8cd9-79f21d5324f7.webp"
             alt="Best Event - Etkinlik Atmosferi"
             className="w-full h-full object-cover"
           />

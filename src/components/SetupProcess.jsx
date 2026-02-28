@@ -124,7 +124,7 @@ const SetupProcess = () => {
         className="relative h-[70vh] overflow-hidden"
       >
         <img
-          src="/content/images/cocukdogumgunu/konseptdogumgunu.JPG"
+          src="/content/images/cocukdogumgunu/konseptdogumgunu.webp"
           alt="Best Event - Etkinlik Anları"
           className="w-full h-full object-cover"
         />

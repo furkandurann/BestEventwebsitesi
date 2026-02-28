@@ -98,6 +98,9 @@ const ProfessionalMakeup = () => {
                 alt="Profesyonel makyaj uygulaması"
                 className="w-full h-full object-cover"
                 loading="eager"
+                fetchpriority="high"
+                width={1200}
+                height={800}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/60" />
               <div className="absolute inset-0 border border-white/10 rounded-[28px]" />
@@ -138,6 +141,8 @@ const ProfessionalMakeup = () => {
                     alt="Profesyonel makyaj görseli"
                     className="w-full h-56 object-cover"
                     loading="lazy"
+                    width={400}
+                    height={224}
                     style={idx === 4 ? { transform: 'translateY(-15%)', objectPosition: 'center' } : undefined}
                   />
                 </div>

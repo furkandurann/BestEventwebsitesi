@@ -112,12 +112,12 @@ Her tahtabacak performansı 60-90 dakika sürer ve kostüm ağırlığı nedeniy
     seoKeywords: "tahtabacak istanbul, stilt walkers, uzun bacak gösterisi, kadıköy tahtabacak, festival tahtabacak, sokak performansı istanbul, dev karakter",
     
     photos: [
-      "/content/images/cocukdogumgunu/IMG_0784.JPG",
-      "/content/images/cocukdogumgunu/IMG_0777.JPG",
-      "/content/images/cocukdogumgunu/palyacokiralamakartal.JPG",
-      "/content/images/cocukdogumgunu/elsakiralamaistanbul.JPG",
-      "/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.JPG",
-      "/content/images/cocukdogumgunu/IMG_0612.JPG"
+      "/content/images/cocukdogumgunu/082041d3-58ff-4b19-81e0-5a6e39d81532.webp",
+      "/content/images/cocukdogumgunu/IMG_0777.webp",
+      "/content/images/cocukdogumgunu/palyacokiralamakartal.webp",
+      "/content/images/cocukdogumgunu/3cc6171f-7a84-42ce-9592-b7cdeda4a0a8.webp",
+      "/content/images/cocukdogumgunu/8923162f-025e-41a5-8014-5738212c4172.webp",
+      "/content/images/cocukdogumgunu/IMG_0612.webp"
     ]
   }
 

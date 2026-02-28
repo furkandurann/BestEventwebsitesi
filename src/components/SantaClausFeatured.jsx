@@ -41,7 +41,7 @@ const SantaClausFeatured = () => {
             {/* Görsel */}
             <div className="relative h-80 rounded-lg overflow-hidden mb-6">
               <img 
-                src="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.44.jpeg"
+                src="/content/images/noelbaba/privatenoelbaba/WhatsApp Image 2025-12-05 at 12.05.44.webp"
                 alt="Private Noel Baba"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />

@@ -253,6 +253,9 @@ const BubbleShow = () => {
                     alt={slide.alt}
                     className="w-full h-full object-cover object-center"
                     loading={idx === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={idx === 0 ? 'high' : undefined}
+                    width={1200}
+                    height={800}
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/80" />
                 </div>
@@ -405,10 +408,13 @@ const BubbleShow = () => {
                         aspectRatio: '4/5'
                       }}
                     >
-                      <img 
+                      <img
                         src={image}
                         alt={`Bubble Show Gösterisi ${index + 1}`}
                         className="w-full h-full object-contain select-none"
+                        loading="lazy"
+                        width={960}
+                        height={1200}
                         draggable="false"
                       />
                     </div>
@@ -488,15 +494,21 @@ const BubbleShow = () => {
 
             {/* Photos Grid - Two Side by Side */}
             <div className="grid md:grid-cols-2 gap-8 mb-12" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-              <img 
+              <img
                 src="/content/images/bubbleshow/anabubble.webp"
                 alt="Dev sabun köpükleri gösterisi"
+                loading="lazy"
+                width={600}
+                height={400}
                 className="w-full rounded-3xl shadow-2xl"
               />
               
-              <img 
+              <img
                 src="/content/images/bubbleshow/bubbleshowslider3.webp"
                 alt="İnteraktif bubble show deneyimi"
+                loading="lazy"
+                width={600}
+                height={400}
                 className="w-full rounded-3xl shadow-2xl"
               />
             </div>
@@ -615,25 +627,34 @@ const BubbleShow = () => {
             {/* Photos Grid - 3 Interactive Photos */}
             <div className="grid md:grid-cols-3 gap-6 mb-16 items-center" style={{ maxWidth: '1200px', margin: '0 auto 4rem' }}>
               <div className="overflow-hidden rounded-2xl border-2 border-pink-500/30 shadow-lg hover:shadow-pink-500/50 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                <img 
+                <img
                   src="/content/images/ahunundogumgunu/bubbleshowgosterisi.webp"
                   alt="Bubble show interaktif deneyim"
+                  loading="lazy"
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
               </div>
               
               <div className="overflow-hidden rounded-xl border-4 border-pink-400/60 shadow-2xl shadow-pink-400/30 hover:shadow-pink-400/60 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                <img 
+                <img
                   src="/content/images/bubbleshow/bubbleshowslider5.webp"
                   alt="Çocuklar bubble show ile eğleniyor"
+                  loading="lazy"
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
               </div>
 
               <div className="overflow-hidden rounded-2xl border-2 border-pink-500/30 shadow-lg hover:shadow-pink-500/50 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-                <img 
+                <img
                   src="/content/images/ahunundogumgunu/anaherobubbleshowgosterisi.webp"
                   alt="Dev köpükler ile çocuklar"
+                  loading="lazy"
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
               </div>

@@ -427,6 +427,9 @@ const ClownRental = () => {
                     alt={slide.alt}
                     className="w-full h-full object-cover"
                     loading={idx === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={idx === 0 ? 'high' : undefined}
+                    width={1200}
+                    height={800}
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/25 to-black/55" />
                   <div className="absolute bottom-6 left-6 right-6 text-white drop-shadow-lg">
@@ -647,6 +650,8 @@ const ClownRental = () => {
                       src={step.image}
                       alt={step.alt}
                       loading="lazy"
+                      width={800}
+                      height={600}
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                     />
                   </div>
@@ -1004,6 +1009,9 @@ function PalyacoCinemaStrip() {
               <img
                 src={`/content/images/palyaco/${item.file}`}
                 alt={item.alt}
+                loading="lazy"
+                width={450}
+                height={288}
                 className="h-72 w-[450px] object-cover rounded-2xl brightness-[1.15] contrast-[1.08] saturate-[1.1]"
               />
             </div>

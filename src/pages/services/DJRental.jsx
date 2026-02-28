@@ -6,7 +6,7 @@ const DJRental = () => {
     title: 'DJ Kiralama',
     subtitle: 'Profesyonel DJ, ses ve ışık sistemi',
     description: 'Doğum günü, okul etkinliği veya parti için miksaj, playlist, anons ve sahne ışıklarıyla tam paket DJ hizmeti.',
-    image: '/content/images/music/musiketkinlikleri.JPG'
+    image: '/content/images/music/musiketkinlikleri.webp'
   }
 
   const stats = [
@@ -69,6 +69,9 @@ const DJRental = () => {
               alt="DJ kiralama"
               className="w-full h-full object-cover object-center"
               loading="eager"
+              fetchPriority="high"
+              width={1200}
+              height={800}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black" />
           </div>

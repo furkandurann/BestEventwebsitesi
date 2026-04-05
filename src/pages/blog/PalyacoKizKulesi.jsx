@@ -20,7 +20,7 @@ const PalyacoKizKulesi = () => {
     },
     {
       question: 'Kız Kulesi palyaço organizasyonu fiyatı nedir?',
-      answer: 'Kız Kulesi organizasyonu, standart palyaço kiralama fiyatına ek olarak tekne transferi, mekan izin ücretleri ve özel lojistik maliyetlerini içerir. Bu nedenle fiyat, organizasyonun kapsamına ve kişi sayısına göre değişir. Detaylı ve kişiye özel fiyat teklifi almak için 0530 730 90 09 numarasını arayabilir veya WhatsApp üzerinden ulaşabilirsiniz.'
+      answer: 'Kız Kulesi organizasyonu, standart palyaço kiralama fiyatına ek olarak tekne transferi, mekan izin ücretleri ve özel lojistik maliyetlerini içerir. Bu nedenle fiyat, organizasyonun kapsamına ve kişi sayısına göre değişir. Detaylı ve kişiye özel fiyat teklifi almak için 05307309009 numarasını arayabilir veya WhatsApp üzerinden ulaşabilirsiniz.'
     },
     {
       question: 'Ekipmanlar (balon, müzik) tekneyle mi taşınır?',

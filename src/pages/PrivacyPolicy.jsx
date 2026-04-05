@@ -91,7 +91,7 @@ const PrivacyPolicy = () => {
                   Gizlilik politikamız hakkında sorularınız için bizimle iletişime geçebilirsiniz:
                 </p>
                 <p className="text-gray-600 mt-2">
-                  <strong>Telefon:</strong> 0530 730 90 09<br />
+                  <strong>Telefon:</strong> 05307309009<br />
                   <strong>E-posta:</strong> info@bestevent.com.tr<br />
                   <strong>Web:</strong> bestevent.com.tr
                 </p>

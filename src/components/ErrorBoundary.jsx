@@ -1,4 +1,9 @@
 import React from 'react'
+import {
+  clearChunkRecoveryFlag,
+  isRecoverableChunkError,
+  recoverFromChunkErrorOnce,
+} from '../utils/chunkRecovery'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -12,10 +17,16 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     console.error('Error Boundary yakaladı:', error, errorInfo)
+
+    if (isRecoverableChunkError(error)) {
+      recoverFromChunkErrorOnce()
+    }
   }
 
   render() {
     if (this.state.hasError) {
+      const isChunkError = isRecoverableChunkError(this.state.error)
+
       return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-black to-pink-900">
           <div className="max-w-md w-full mx-4 text-center">
@@ -41,19 +52,27 @@ class ErrorBoundary extends React.Component {
               </h1>
               
               <p className="text-white/80 mb-8">
-                Sayfa yüklenirken beklenmeyen bir hata oluştu. Lütfen sayfayı yenileyin veya ana sayfaya dönün.
+                {isChunkError
+                  ? 'Sayfanın yeni sürümü yüklenirken önbellek çakışması oluştu. Lütfen sayfayı yenileyin.'
+                  : 'Sayfa yüklenirken beklenmeyen bir hata oluştu. Lütfen sayfayı yenileyin veya ana sayfaya dönün.'}
               </p>
               
               <div className="space-y-3">
                 <button
-                  onClick={() => window.location.reload()}
+                  onClick={() => {
+                    clearChunkRecoveryFlag()
+                    window.location.reload()
+                  }}
                   className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300"
                 >
                   Sayfayı Yenile
                 </button>
                 
                 <button
-                  onClick={() => window.location.href = '/'}
+                  onClick={() => {
+                    clearChunkRecoveryFlag()
+                    window.location.href = '/'
+                  }}
                   className="w-full px-6 py-3 bg-white/20 text-white font-semibold rounded-lg hover:bg-white/30 transition-all duration-300"
                 >
                   Ana Sayfaya Dön

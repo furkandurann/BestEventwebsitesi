@@ -4,7 +4,7 @@
 export const istanbulEtkinlikHubData = {
   seo: {
     title: "İstanbul Çocuk Etkinlikleri Rehberi | Organizasyon Kiralama Gösteri 2025",
-    description: "İstanbul'da çocuk etkinliği organizasyonu, palyaço kiralama, bubble show gösterisi. 39 semtte hizmet. 10+ yıl deneyim. ☎ 0530 730 90 09",
+    description: "İstanbul'da çocuk etkinliği organizasyonu, palyaço kiralama, bubble show gösterisi. 39 semtte hizmet. 10+ yıl deneyim. ☎ 05307309009",
     keywords: [
       "istanbul çocuk etkinlikleri",
       "etkinlik organizasyonu istanbul",
@@ -42,8 +42,8 @@ export const istanbulEtkinlikHubData = {
       slug: "palyaco-kiralama",
       kisa: "Renkli kostümler ve neşeli gösterilerle çocuklarınızı eğlendiren profesyonel palyaço hizmetimiz.",
       detay: "Palyaço kiralama hizmetimiz, çocuk doğum günleri ve özel etkinlikler için en popüler seçeneklerimizden biri. Profesyonel palyaçolarımız balon katlama, mimik gösterileri ve interaktif oyunlarla çocukları eğlendirir. Her yaş grubuna uygun program hazırlıyoruz.",
-      link: "/hizmetler/palyaco-kiralama",
-      gorsel: "/content/images/palyaco/palyaco1.webp",
+      link: "/organizasyonlar/palyaco-kiralama",
+      gorsel: "/content/images/palyaco/palyacooo.webp",
       fiyatBaslangic: "1,500₺"
     },
     {
@@ -52,7 +52,7 @@ export const istanbulEtkinlikHubData = {
       slug: "sihirbaz-gosterisi",
       kisa: "Çocukların hayal dünyasını genişleten profesyonel sihirbaz gösterisi ve illüzyon numaraları.",
       detay: "Sihirbaz gösterisi hizmetimiz çocukların merak duygusunu besler ve hayal güçlerini geliştirir. Profesyonel sihirbazlarımız 15+ yıllık sahne tecrübesiyle unutulmaz anlar yaşatır.",
-      link: "/hizmetler/sihirbaz-gosterisi",
+      link: "/organizasyonlar/magic-show",
       gorsel: "/content/images/sihirbaz/sihirbazhero.webp",
       fiyatBaslangic: "2,000₺"
     },
@@ -62,8 +62,8 @@ export const istanbulEtkinlikHubData = {
       slug: "bubble-show",
       kisa: "Büyülü baloncuklar dünyasında görsel bir şölen sunan bubble show gösterisi.",
       detay: "Bubble show gösterisi, özellikle 2-8 yaş arası çocukların en sevdiği etkinliklerden biri. Dev baloncuklar, rengarenk köpük formasyonları ve çocukların içine girebileceği özel baloncuklarla görsel bir şölen sunuyoruz.",
-      link: "/hizmetler/bubble-show",
-      gorsel: "/content/images/bubbleshow/bubble1.webp",
+      link: "/organizasyonlar/bubble-show",
+      gorsel: "/content/images/bubbleshow/anabubble.webp",
       fiyatBaslangic: "1,200₺"
     }
   ],
@@ -75,7 +75,7 @@ export const istanbulEtkinlikHubData = {
       slug: "kadikoy",
       ozellik: "Moda sahili ve geniş parklar",
       kisa: "Kadıköy'ün Moda sahili, Fenerbahçe parkı ve geniş sosyal alanları açık hava etkinlikleri için ideal.",
-      link: "/istanbul/kadikoy-cocuk-etkinlikleri"
+      link: "/organizasyonlar/palyaco-kiralama/kadikoy"
     },
     {
       id: 2,
@@ -83,7 +83,7 @@ export const istanbulEtkinlikHubData = {
       slug: "atasehir",
       ozellik: "Modern site yapıları",
       kisa: "Ataşehir'in modern site mimarisi ve geniş sosyal tesisleri organizasyon kolaylığı sağlar.",
-      link: "/istanbul/atasehir-cocuk-etkinlikleri"
+      link: "/organizasyonlar/palyaco-kiralama/atasehir"
     }
   ],
 
@@ -97,7 +97,7 @@ export const istanbulEtkinlikHubData = {
   cta: {
     baslik: "Hemen Rezervasyon Yapın",
     aciklama: "İstanbul'un her köşesinde profesyonel çocuk etkinliği hizmeti için bizimle iletişime geçin.",
-    telefon: "0530 730 90 09",
+    telefon: "+905307309009",
     whatsapp: "https://wa.me/905307309009"
   }
 };

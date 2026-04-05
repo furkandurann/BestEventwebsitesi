@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
+import { generateSrcSet } from '../utils/responsiveImage'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 
@@ -45,9 +46,17 @@ const ServiceHeroSlider = ({
       >
         {images.map((image, index) => (
           <SwiperSlide key={index} className="relative h-full w-full">
-            <div
-              className="absolute inset-0 bg-cover bg-center hero-image-mobile-wide"
-              style={{ backgroundImage: `url('${image}')` }}
+            <img
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              src={image}
+              srcSet={generateSrcSet(image)}
+              sizes="100vw"
+              alt={title || ''}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' : 'auto'}
+              decoding={index === 0 ? 'sync' : 'async'}
+              width={1920}
+              height={1080}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/60" />
           </SwiperSlide>

@@ -2,10 +2,10 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const themeMap = [
-  { test: /hizmetler\/cocuk|palyaco|bubble|yuz-boyama|kostumlu/i, theme: 'theme-kids' },
-  { test: /hizmetler\/kurumsal|sirket|hostes|organizasyon/i, theme: 'theme-corporate' },
-  { test: /hizmetler\/muzik|dj|sahne|ses-isik/i, theme: 'theme-music' },
-  { test: /hizmetler\/yetiskin|dogum-gunu|party/i, theme: 'theme-adult' },
+  { test: /(?:hizmetler|organizasyonlar)\/(cocuk|palyaco|bubble|yuz-boyama|kostumlu|maskot|konsept|dogum-gunu|sihirbaz|magic-show|pamuk-seker|cocuk-etkinlikleri)/i, theme: 'theme-kids' },
+  { test: /(?:hizmetler|organizasyonlar)\/(kurumsal|sirket|hostes|organizasyon|acilis)/i, theme: 'theme-corporate' },
+  { test: /(?:hizmetler|organizasyonlar)\/(muzik|dj|sahne|ses-isik|dans|dansci)/i, theme: 'theme-music' },
+  { test: /(?:hizmetler|organizasyonlar)\/(yetiskin|dogum-gunu|party)/i, theme: 'theme-adult' },
 ]
 
 export default function ThemeProvider({ children }) {

@@ -37,7 +37,7 @@ const OTHER_SERVICES = [
   { name: 'Transformers Robot', image: '/content/images/bidolu/transformers.webp', link: '/organizasyonlar/transformers-robot' },
   { name: 'Şişme Oyun Parkları', image: '/content/images/cocukdogumgunu/IMG_0777.webp', link: '/organizasyonlar/sisme-oyun-parki' },
   { name: 'Atölye Etkinlikleri', image: '/content/images/cocukdogumgunu/7dbaca4e-d254-4663-b4bd-b106207970c8.webp', link: '/organizasyonlar/atolye-etkinlikleri' },
-  { name: 'Parti Ekipmanları', image: '/content/images/Parti Ekipmanları/popcornpamukseker.webp', link: '/hizmetler/pamuk-seker' },
+  { name: 'Parti Ekipmanları', image: '/content/images/Parti Ekipmanları/popcornpamukseker.webp', link: '/organizasyonlar/pamuk-seker' },
   { name: 'Ateş Gösterisi', image: '/content/images/gosteriler/tesbaz.webp', link: '/organizasyonlar/ates-gosterisi' }
 ]
 
@@ -99,8 +99,8 @@ const ChildEvents = () => {
 
   // Memoize page data to prevent recreating objects on every render
   const page = useMemo(() => ({
-    title: 'İstanbul Doğum Günü Organizasyonu | Kiralama ve Gösteri',
-    description: 'İstanbul doğum günü organizasyonu, kiralama ve gösteri hizmetleri. Palyaço, sihirbaz, bubble show, kostümlü karakterler. ☎ 0530 730 90 09',
+    title: 'Doğum Günü, Konsept, Palyaço, Sihirbaz, Bubble Show Kiralama',
+    description: 'İstanbul doğum günü organizasyonu, konsept doğum günü, palyaço, sihirbaz ve bubble show kiralama hizmetleri. ☎ 05307309009',
     keywords: [
       'istanbul doğum günü organizasyonu',
       'doğum günü kiralama',
@@ -177,8 +177,8 @@ const ChildEvents = () => {
         ]
       },
       createServiceSchema(
-        'İstanbul Doğum Günü Organizasyonu | Kiralama ve Gösteri',
-        'İstanbul doğum günü organizasyonu, kiralama ve gösteri hizmetleri. Palyaço, sihirbaz, bubble show, kostümlü karakterler.',
+        'Doğum Günü, Konsept, Palyaço, Sihirbaz, Bubble Show Kiralama',
+        'İstanbul doğum günü organizasyonu, konsept doğum günü, palyaço, sihirbaz ve bubble show kiralama hizmetleri.',
         '/organizasyonlar/cocuk-etkinlikleri',
         'Çocuk Etkinlikleri'
       ),
@@ -186,7 +186,7 @@ const ChildEvents = () => {
         { question: "Çocuk etkinlikleri ne kadar sürer?", answer: "Çocuk etkinliklerimiz genellikle 1-2 saat arası sürmektedir. Palyaço ve sihirbaz gösterileri 45-60 dakika, bubble show 30-45 dakika, yüz boyama ise çocuk sayısına göre değişkenlik gösterir. İhtiyacınıza göre özel süreler de düzenlenebilir." },
         { question: "Hangi yaş grubu için uygundur?", answer: "Çocuk etkinliklerimiz 2-12 yaş arası çocuklar için idealdir. Palyaço ve bubble show 2-8 yaş, sihirbazlık gösterisi 4-12 yaş, kostümlü karakterler tüm yaş grupları için uygundur. Özel yaş grupları için özelleştirilmiş programlar sunuyoruz." },
         { question: "Hangi bölgelere hizmet veriyorsunuz?", answer: "İstanbul'un tüm ilçelerine hizmet veriyoruz. Kadıköy, Kartal, Maltepe, Üsküdar, Beylikdüzü, Sarıyer, Maslak, İstinye başta olmak üzere her bölgeye gidiyoruz. Ayrıca Bodrum, Yalıkavak ve Antalya'da da hizmet vermekteyiz." },
-        { question: "Fiyatlar ne kadar?", answer: "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09" },
+        { question: "Fiyatlar ne kadar?", answer: "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 05307309009" },
         { question: "Kaç gün önceden rezervasyon yapmalıyım?", answer: "Yoğun sezonlarda (hafta sonları, özel günler) en az 2-3 hafta önceden rezervasyon yapmanızı öneririz. Hafta içi günlerde ise 1 hafta önceden rezervasyon yeterli olabilir. Acil durumlar için de elimizden geleni yaparız." },
         { question: "İç mekan mı dış mekan mı tercih edilmeli?", answer: "Hem iç hem de dış mekanlarda hizmet verebiliyoruz. Palyaço ve sihirbaz gösterileri her iki mekana da uygundur. Bubble show için iç mekan tercih edilir (rüzgar etkilemez). Yüz boyama her ortamda yapılabilir. Mekan önerileri için danışabilirsiniz." },
         { question: "Ekipmanları siz mi getiriyorsunuz?", answer: "Evet, tüm ekipmanları biz getiriyoruz. Ses sistemi, müzik, gösterim malzemeleri, yüz boyama boyaları, kostümler - her şey dahildir. Sizin sadece etkinlik alanını sağlamanız yeterlidir. Ekstra ses sistemi gerekirse önceden belirtiniz." },
@@ -205,6 +205,7 @@ const ChildEvents = () => {
         title={page.title}
         description={page.description}
         keywords={page.keywords}
+        canonicalPath="/organizasyonlar/cocuk-etkinlikleri"
         image={page.image}
         schema={page.schema}
       />
@@ -239,7 +240,7 @@ const ChildEvents = () => {
                 letterSpacing: '-0.02em'
               }}
             >
-              İstanbul Doğum Günü Organizasyonu
+              Doğum Günü Organizasyonu, Palyaço, Sihirbaz, Bubble Show ve Konsept Doğum Günü
             </h1>
             
             {/* Subtitle with responsive sizing */}
@@ -334,9 +335,9 @@ const ChildEvents = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                       {/* Content */}
                       <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                        <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
+                        <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
                           {service.name}
-                        </h3>
+                        </h2>
                       </div>
                     </div>
                   </Link>
@@ -474,7 +475,7 @@ const ChildEvents = () => {
                 },
                 {
                   question: "Fiyatlar ne kadar?",
-                  answer: "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
+                  answer: "Fiyatlarımız etkinlik türüne, süresine ve lokasyona göre değişiklik gösterir. Palyaço kiralama 1500₺'den, sihirbaz gösterisi 2000₺'den, bubble show 1200₺'den başlamaktadır. Detaylı fiyat bilgisi için bizi arayın: 05307309009"
                 },
                 {
                   question: "Kaç gün önceden rezervasyon yapmalıyım?",

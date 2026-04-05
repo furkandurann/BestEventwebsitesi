@@ -17,9 +17,4 @@ const app = (
   </React.StrictMode>
 )
 
-// react-snap prerendering: hydrate if HTML already rendered, otherwise create fresh
-if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrateRoot(rootElement, app)
-} else {
-  ReactDOM.createRoot(rootElement).render(app)
-}
+ReactDOM.createRoot(rootElement).render(app)

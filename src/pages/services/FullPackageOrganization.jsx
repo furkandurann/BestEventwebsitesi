@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
-import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import { createServiceSchema, createFAQSchema, createImageObjectSchema } from '../../utils/schemaHelpers'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
 import NarrativeSection from '../../components/NarrativeSection'
@@ -12,6 +12,8 @@ import 'swiper/css/effect-fade'
 import DistrictLinksGrid from '../../components/DistrictLinksGrid'
 import RelatedBlogPosts from '../../components/RelatedBlogPosts'
 import RelatedServices from '../../components/RelatedServices'
+import { generateSrcSet } from '../../utils/responsiveImage'
+import TrustSection from '../../components/TrustSection'
 
 const FullPackageOrganization = () => {
   const faqs = [
@@ -66,6 +68,11 @@ const FullPackageOrganization = () => {
     'Doğum Günü Organizasyonu'
   )
   const faqSchema = createFAQSchema(faqs)
+  const imageGallerySchema = createImageObjectSchema([
+    { src: '/content/images/fullpaket/fullpaketanahero.webp', alt: 'Full paket doğum günü organizasyonu İstanbul' },
+    { src: '/content/images/fullpaket/elsaheroo.webp', alt: 'Elsa kostümlü karakter full paket organizasyon' },
+    { src: '/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp', alt: 'Konsept doğum günü süsleme' },
+  ])
 
   return (
     <>
@@ -91,6 +98,7 @@ const FullPackageOrganization = () => {
         schema={[
           serviceSchema,
           faqSchema,
+          imageGallerySchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -123,14 +131,20 @@ const FullPackageOrganization = () => {
             loop
             className="h-full w-full bg-black"
           >
-            {heroSlides.map((img, index) => (
+            {heroSlides.map((slide, index) => (
               <SwiperSlide key={index} className="relative h-full w-full bg-black">
-                <div
-                  className={`absolute inset-0 bg-cover ${index === 0 ? '' : 'bg-center'}`}
-                  style={{
-                    backgroundImage: `url('${img}')`,
-                    backgroundPosition: index === 0 ? 'center 70%' : undefined
-                  }}
+                <img
+                  src={slide}
+                  srcSet={generateSrcSet(slide)}
+                  sizes="100vw"
+                  alt={`Doğum günü organizasyonu İstanbul - görsel ${index + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={index === 0 ? { objectPosition: 'center 70%' } : undefined}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  fetchPriority={index === 0 ? 'high' : 'auto'}
+                  decoding="async"
+                  width={1200}
+                  height={800}
                 />
               </SwiperSlide>
             ))}
@@ -167,55 +181,131 @@ const FullPackageOrganization = () => {
         </motion.div>
       </motion.section>
 
-      {/* Paket özet banner */}
-      <section className="py-12 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="max-w-6xl mx-auto px-4 relative z-10">
+      {/* Tek Paket Text Section - Apple Style */}
+      <section className="relative overflow-hidden bg-black py-12 md:py-16">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black pointer-events-none" />
+
+        <div className="relative max-w-6xl mx-auto px-6">
+          <div className="text-center mb-10 md:mb-12">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="uppercase tracking-[0.3em] text-xs sm:text-sm text-orange-300 mb-4 font-medium"
+            >
+              Doğum Günü Organizasyonu
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="font-bold text-white mb-3"
+              style={{
+                fontSize: 'clamp(2.25rem, 5.5vw, 4rem)',
+                lineHeight: '1.1',
+                letterSpacing: '-0.025em',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+              }}
+            >
+              Tek Paket. Tek Ekip. Tek Muhatap.
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-white/80 max-w-3xl mx-auto"
+              style={{
+                fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
+                lineHeight: '1.6',
+                letterSpacing: '-0.01em',
+                fontWeight: '500',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+              }}
+            >
+              Best Event olarak her detayı düşündük. Konsept süsleme, organik pasta, bubble show, sihirbazlık, kostümlü karakter, palyaço, yüz boyama ve profesyonel ses sistemi — hepsi tek pakette.
+            </motion.p>
+          </div>
+
+          {/* Badge Items */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-3 mb-10"
+          >
+            {badgeItems.map((item, idx) => (
+              <span
+                key={item.text}
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-5 py-2.5 text-white/90 text-sm font-medium"
+              >
+                <span className="text-lg">{item.icon}</span>
+                {item.text}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
             className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 flex items-center justify-center gap-3">
-              <span className="inline-block w-3 h-3 bg-yellow-300 rounded-full animate-pulse shadow-lg shadow-yellow-500/50" />
-              <span className="inline-block w-3 h-3 bg-green-300 rounded-full animate-pulse animation-delay-100 shadow-lg shadow-green-500/50" />
-              <span className="inline-block w-3 h-3 bg-blue-300 rounded-full animate-pulse animation-delay-200 shadow-lg shadow-blue-500/50" />
-              <span className="mx-2">İstanbul Doğum Günü Organizasyon Paketi</span>
-              <span className="inline-block w-3 h-3 bg-blue-300 rounded-full animate-pulse animation-delay-200 shadow-lg shadow-blue-500/50" />
-              <span className="inline-block w-3 h-3 bg-green-300 rounded-full animate-pulse animation-delay-100 shadow-lg shadow-green-500/50" />
-              <span className="inline-block w-3 h-3 bg-yellow-300 rounded-full animate-pulse shadow-lg shadow-yellow-500/50" />
-            </h2>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              {badgeItems.map((item, idx) => (
-                <motion.div
-                  key={item.text}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border-2 border-white/30 hover:bg-white/30 transition-all"
-                >
-                  <div className="text-3xl mb-2">{item.icon}</div>
-                  <p className="text-white font-semibold text-sm">{item.text}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="flex flex-col items-center">
-              <p className="text-white font-bold mb-2 text-lg">Detaylar Aşağıda 👇</p>
-              <div className="flex flex-col gap-1">
-                {[0, 0.2, 0.4].map((delay) => (
-                  <motion.div
-                    key={delay}
-                    animate={{ opacity: [0.3, 1, 0.3] }}
-                    transition={{ duration: 1, repeat: Infinity, delay }}
-                    className="w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-t-[20px] border-t-white/80"
-                  />
-                ))}
-              </div>
-            </motion.div>
+            <a
+              href="https://wa.me/905307309009?text=Merhaba%20Do%C4%9Fum%20g%C3%BCn%C3%BC%20organizasyonu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              style={{
+                fontSize: 'clamp(1rem, 2vw, 1.125rem)',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+              }}
+            >
+              Hemen Bilgi Al
+            </a>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Ara Slider - ClownRental Style */}
+      <section className="relative overflow-hidden bg-black py-12 md:py-16">
+        <div className="relative max-w-6xl mx-auto px-6">
+          <Swiper
+            modules={[Autoplay]}
+            loop
+            centeredSlides
+            autoplay={{ delay: 4500, disableOnInteraction: false }}
+            speed={900}
+            spaceBetween={18}
+            slidesPerView={1.05}
+            breakpoints={{
+              768: { slidesPerView: 1.15 },
+              1024: { slidesPerView: 1.35 }
+            }}
+            className="h-[60vh] sm:h-[65vh] md:h-[68vh]"
+          >
+            {heroSlides.map((slide, idx) => (
+              <SwiperSlide key={idx}>
+                <div className="relative h-full w-full overflow-hidden rounded-[28px] border border-white/15 bg-white/5 shadow-2xl">
+                  <img
+                    src={slide}
+                    srcSet={generateSrcSet(slide)}
+                    sizes="100vw"
+                    alt={`Doğum günü organizasyonu - görsel ${idx + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    width={1200}
+                    height={800}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/25 to-black/55" />
+                  <div className="absolute bottom-6 left-6 right-6 text-white drop-shadow-lg">
+                    <p className="text-sm uppercase tracking-[0.25em] text-white/80 mb-2">Doğum Günü Organizasyonu</p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </section>
 
@@ -223,8 +313,14 @@ const FullPackageOrganization = () => {
       <div className="max-w-7xl mx-auto">
         <img
           src="/content/images/fullpaket/konseptnattive.webp"
+          srcSet={generateSrcSet("/content/images/fullpaket/konseptnattive.webp")}
+          sizes="(max-width: 1024px) 100vw, 800px"
           alt="Konsept doğum günü süsleme - İstanbul"
           className="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={600}
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
         />
       </div>
@@ -237,8 +333,14 @@ const FullPackageOrganization = () => {
       <div className="max-w-7xl mx-auto">
         <img
           src="/content/images/fullpaket/pastanattivee1.webp"
+          srcSet={generateSrcSet("/content/images/fullpaket/pastanattivee1.webp")}
+          sizes="(max-width: 1024px) 100vw, 800px"
           alt="Konsept pasta - Le Cordon Bleu kalitesi"
           className="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={600}
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
         />
       </div>
@@ -251,8 +353,14 @@ const FullPackageOrganization = () => {
       <div className="max-w-7xl mx-auto">
         <img
           src="/content/images/fullpaket/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp"
+          srcSet={generateSrcSet("/content/images/fullpaket/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp")}
+          sizes="(max-width: 1024px) 100vw, 800px"
           alt="Profesyonel yüz boyama - İstanbul"
           className="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={600}
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
         />
       </div>
@@ -266,8 +374,14 @@ const FullPackageOrganization = () => {
       <div className="max-w-7xl mx-auto">
         <img
           src="/content/images/fullpaket/sihirbaznattive.webp"
+          srcSet={generateSrcSet("/content/images/fullpaket/sihirbaznattive.webp")}
+          sizes="(max-width: 1024px) 100vw, 800px"
           alt="Sihirbazlık gösterisi - İstanbul"
           className="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={600}
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
         />
       </div>
@@ -280,8 +394,14 @@ const FullPackageOrganization = () => {
       <div className="max-w-7xl mx-auto">
         <img
           src="/content/images/fullpaket/bubbleshownattive2.webp"
+          srcSet={generateSrcSet("/content/images/fullpaket/bubbleshownattive2.webp")}
+          sizes="(max-width: 1024px) 100vw, 800px"
           alt="Bubble Show - İstanbul"
           className="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={600}
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
         />
       </div>
@@ -294,8 +414,14 @@ const FullPackageOrganization = () => {
       <div className="max-w-7xl mx-auto">
         <img
           src="/content/images/palyaco/palyacoanaherogrupoyunlari.webp"
+          srcSet={generateSrcSet("/content/images/palyaco/palyacoanaherogrupoyunlari.webp")}
+          sizes="(max-width: 1024px) 100vw, 800px"
           alt="Palyaço ve animasyon - İstanbul"
           className="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={600}
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
         />
       </div>
@@ -308,8 +434,14 @@ const FullPackageOrganization = () => {
       <div className="max-w-7xl mx-auto">
         <img
           src="/content/images/fullpaket/elsaheroo.webp"
+          srcSet={generateSrcSet("/content/images/fullpaket/elsaheroo.webp")}
+          sizes="(max-width: 1024px) 100vw, 800px"
           alt="Kostümlü karakter - İstanbul"
           className="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={600}
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
         />
       </div>
@@ -322,8 +454,14 @@ const FullPackageOrganization = () => {
       <div className="max-w-7xl mx-auto">
         <img
           src="/content/images/fullpaket/68978382-5a6b-414b-875c-06b29db251fc.webp"
+          srcSet={generateSrcSet("/content/images/fullpaket/68978382-5a6b-414b-875c-06b29db251fc.webp")}
+          sizes="(max-width: 1024px) 100vw, 800px"
           alt="Ek hizmetler - Popcorn arabası"
           className="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+          width={800}
+          height={600}
           style={{ maxHeight: '90vh', objectFit: 'contain', display: 'block' }}
         />
       </div>
@@ -382,6 +520,8 @@ const FullPackageOrganization = () => {
         </div>
       </section>
 
+      <TrustSection />
+
       {/* Google Müşteri Yorumları */}
       <GoogleReviews reviews={getReviewsByTags(['dogumgunu', 'genel'])} title="Doğum Günü Organizasyonu Müşteri Yorumları" />
 
@@ -434,7 +574,7 @@ const FullPackageOrganization = () => {
               href="tel:+905307309009"
               className="bg-white hover:bg-gray-100 text-gray-900 px-12 py-5 rounded-full font-bold text-xl shadow-2xl transition-all"
             >
-              📞 0530 730 90 09
+              📞 05307309009
             </a>
           </div>
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-4">

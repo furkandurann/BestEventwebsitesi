@@ -1,11 +1,30 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Seo from '../components/Seo'
 import BlogCard from '../components/BlogCard'
-import { blogPosts, subCategories } from '../data/blogPosts'
+import { getBlogIndexData } from '../data/blogPosts.async'
 
 const Blog = () => {
+  const [blogPosts, setBlogPosts] = useState([])
+  const [subCategories, setSubCategories] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const [selectedCategory, setSelectedCategory] = useState('Tümü')
   const [activeSubCategory, setActiveSubCategory] = useState('all')
+
+  useEffect(() => {
+    let isMounted = true
+
+    getBlogIndexData().then(({ blogPosts: posts, subCategories: categories }) => {
+      if (!isMounted) return
+
+      setBlogPosts(posts)
+      setSubCategories(categories)
+      setIsLoading(false)
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   // Kategori filtreleme (ana kategori + alt kategori)
   const categoryFiltered = selectedCategory === 'Tümü'
@@ -119,14 +138,31 @@ const Blog = () => {
       {/* Blog Grid - People Dergisi Stili */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
-              <BlogCard key={post.slug} {...post} />
-            ))}
-          </div>
+          {!isLoading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredPosts.map((post) => (
+                <BlogCard key={post.slug} {...post} />
+              ))}
+            </div>
+          )}
+
+          {isLoading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <div key={index} className="animate-pulse rounded-2xl border border-gray-100 bg-gray-50 p-4">
+                  <div className="aspect-[16/10] rounded-xl bg-gray-200" />
+                  <div className="mt-4 h-4 w-24 rounded bg-gray-200" />
+                  <div className="mt-3 h-6 w-full rounded bg-gray-200" />
+                  <div className="mt-2 h-6 w-4/5 rounded bg-gray-200" />
+                  <div className="mt-4 h-4 w-full rounded bg-gray-200" />
+                  <div className="mt-2 h-4 w-3/4 rounded bg-gray-200" />
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Boş Durum */}
-          {filteredPosts.length === 0 && (
+          {!isLoading && filteredPosts.length === 0 && (
             <div className="text-center py-16">
               <p className="text-gray-500 text-lg">Bu kategoride henüz blog yazısı bulunmuyor.</p>
             </div>

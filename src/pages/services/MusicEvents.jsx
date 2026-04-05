@@ -6,7 +6,7 @@ const MusicEvents = () => {
   const serviceSchema = createServiceSchema(
     'Müzik Etkinlikleri | Canlı Müzik ve Performans Hizmetleri',
     'Trio ekibi, bando takımı, saksafon dinletisi, piyanist ve çello performanslarıyla etkinliklerinize değer katan profesyonel canlı müzik organizasyonları.',
-    '/hizmetler/muzik-etkinlikleri',
+    '/organizasyonlar/muzik-etkinlikleri',
     'Canlı Müzik Organizasyonu'
   )
 
@@ -69,7 +69,7 @@ const MusicEvents = () => {
           'çello performansı',
           'etkinlik müziği'
         ]}
-        canonicalPath="/hizmetler/muzik-etkinlikleri"
+        canonicalPath="/organizasyonlar/muzik-etkinlikleri"
         schema={[serviceSchema]}
       />
       

@@ -124,10 +124,10 @@ const Gallery = () => {
         { src: '/content/images/cocukdogumgunu/082041d3-58ff-4b19-81e0-5a6e39d81532.webp', alt: 'Parti Organizasyonu' },
         { src: '/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp', alt: 'Konsept Doğum Günü' },
         { src: '/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.webp', alt: 'Doğum Günü Partisi' },
-        { src: '/content/images/IMG_9586.webp', alt: 'Doğum Günü İstanbul' },
-        { src: '/content/images/IMG_9587.webp', alt: 'Parti Süsleme' },
-        { src: '/content/images/IMG_9588.webp', alt: 'Doğum Günü Kutlaması' },
-        { src: '/content/images/IMG_9589.webp', alt: 'Çocuk Partisi' },
+        { src: '/content/images/cocukdogumgunu/IMG_0612.webp', alt: 'Doğum Günü İstanbul' },
+        { src: '/content/images/cocukdogumgunu/IMG_0777.webp', alt: 'Parti Süsleme' },
+        { src: '/content/images/cocukdogumgunu/IMG_0787.webp', alt: 'Doğum Günü Kutlaması' },
+        { src: '/content/images/cocukdogumgunu/IMG_0790.webp', alt: 'Çocuk Partisi' },
       ]
     },
     parti: {
@@ -531,7 +531,7 @@ const Gallery = () => {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                0530 730 90 09
+                05307309009
               </a>
             </div>
           </motion.div>

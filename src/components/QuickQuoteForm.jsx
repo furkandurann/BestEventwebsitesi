@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { trackGA4Event } from '../utils/tracking';
+import { trackFormSubmit, trackPhoneClick } from '../utils/tracking';
 
 const QuickQuoteForm = ({ service = '', className = '' }) => {
   const [formData, setFormData] = useState({
@@ -82,7 +82,7 @@ const QuickQuoteForm = ({ service = '', className = '' }) => {
 
 _Bu mesaj web sitesi teklif formundan otomatik oluşturulmuştur._`;
 
-    const whatsappNumber = '905307309009';
+    const whatsappNumber = '+905307309009';
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     
     window.open(url, '_blank');
@@ -98,24 +98,7 @@ _Bu mesaj web sitesi teklif formundan otomatik oluşturulmuştur._`;
     setIsSubmitting(true);
 
     // Track form submission
-    trackGA4Event('form_submit', {
-      form_name: 'quick_quote',
-      service: formData.service,
-      event_category: 'lead_generation',
-      event_label: 'Quick Quote Form',
-      value: 100
-    });
-
-    // Track Google Ads conversion (if available)
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-17885091470', // TODO: Add conversion label when available
-        'value': 100.0,
-        'currency': 'TRY',
-        'event_category': 'form',
-        'event_label': 'Quick Quote Submit'
-      });
-    }
+    trackFormSubmit('Quick Quote Form', formData.service);
 
     // Send to WhatsApp
     sendToWhatsApp();
@@ -282,17 +265,11 @@ _Bu mesaj web sitesi teklif formundan otomatik oluşturulmuştur._`;
         <div className="text-center text-sm text-gray-600 font-body">
           veya hemen ara:{' '}
           <a 
-            href="tel:05307309009" 
+            href="tel:+905307309009" 
             className="font-semibold text-primary hover:text-secondary transition-colors"
-            onClick={() => {
-              trackGA4Event('phone_click', {
-                source: 'quick_quote_form',
-                event_category: 'engagement',
-                event_label: 'Alternative Phone Click'
-              });
-            }}
+            onClick={() => trackPhoneClick('Quick Quote Form', window.location.href)}
           >
-            0530 730 90 09
+            05307309009
           </a>
         </div>
       </form>

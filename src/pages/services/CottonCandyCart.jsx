@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
 import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
 import AdHero from '../../components/AdHero'
+import LocationHeroShowcase from '../../components/LocationHeroShowcase'
 import RelatedServices from '../../components/RelatedServices'
 import GoogleReviews from '../../components/GoogleReviews'
 import { getReviewsByTags } from '../../data/googleReviews'
 import DistrictLinksGrid from '../../components/DistrictLinksGrid'
 import RelatedBlogPosts from '../../components/RelatedBlogPosts'
+import DeferredContentAccordion from '../../components/DeferredContentAccordion'
 
 const CottonCandyCart = () => {
   const [openFaq, setOpenFaq] = useState(0)
@@ -19,30 +21,39 @@ const CottonCandyCart = () => {
       title: 'Çikolata Şelalesi Kiralama',
       description: 'Etkinlikleriniz için profesyonel çikolata şelalesi kiralama hizmeti. İstanbul genelinde hijyenik ve kaliteli çikolata şelalesi kiralama.',
       image: '/content/images/Parti Ekipmanları/hareketlislider6cikolataselalsi.webp',
-      alt: 'Çikolata şelalesi kiralama İstanbul - Best Event'
+      alt: 'Çikolata şelalesi kiralama İstanbul - Best Event',
+      href: '/organizasyonlar/cikolata-selalesi'
     },
     {
       id: 'popcorn',
       title: 'Popcorn Kiralama',
       description: 'Nostaljik popcorn arabası kiralama ile taze mısır patlatma hizmeti. Profesyonel popcorn kiralama İstanbul.',
       image: '/content/images/Parti Ekipmanları/hareketlislider7popcorn.webp',
-      alt: 'Popcorn arabası kiralama İstanbul - Best Event'
+      alt: 'Popcorn arabası kiralama İstanbul - Best Event',
+      href: '/hizmet-detay/popcorn-arabasi-kiralama'
     },
     {
       id: 'cotton-candy',
       title: 'Pamuk Şeker Kiralama',
       description: 'Renkli ve lezzetli pamuk şeker arabası kiralama hizmeti. İstanbul genelinde pamuk şeker kiralama.',
       image: '/content/images/Parti Ekipmanları/pamukseker.webp',
-      alt: 'Pamuk şeker arabası kiralama İstanbul - Best Event'
+      alt: 'Pamuk şeker arabası kiralama İstanbul - Best Event',
+      href: '/organizasyonlar/pamuk-seker'
     },
     {
       id: 'sound-system',
       title: 'Ses Sistemi Kiralama',
       description: 'Etkinlikleriniz için profesyonel ses sistemi kiralama hizmeti. Kaliteli ses ekipmanları kiralama.',
       image: '/content/images/music/bando.webp',
-      alt: 'Ses sistemi kiralama İstanbul - Best Event'
+      alt: 'Ses sistemi kiralama İstanbul - Best Event',
+      href: '/hizmet-detay/party-box-ses-sistemi-kiralama'
     }
   ]
+
+  const showcaseSlides = services.map((service) => ({
+    src: service.image,
+    alt: service.alt
+  }))
 
   const faqs = [
     {
@@ -67,7 +78,7 @@ const CottonCandyCart = () => {
     },
     {
       question: 'Ne kadar önceden rezervasyon yapmalıyım?',
-      answer: 'Hafta sonu etkinlikleri için en az 1 hafta önceden, yoğun dönemlerde 2 hafta önceden rezervasyon yapmanızı öneriyoruz. Detaylı bilgi için bizi arayın: 0530 730 90 09'
+      answer: 'Hafta sonu etkinlikleri için en az 1 hafta önceden, yoğun dönemlerde 2 hafta önceden rezervasyon yapmanızı öneriyoruz. Detaylı bilgi için bizi arayın: 05307309009'
     }
   ]
 
@@ -83,7 +94,7 @@ const CottonCandyCart = () => {
     <div className="min-h-screen bg-black text-white">
       <Seo
         title="Çikolata Şelalesi, Popcorn, Pamuk Şeker Kiralama | Best Event"
-        description="İstanbul'da pamuk şeker, çikolata şelalesi ve popcorn arabası kiralama. Doğum günü, düğün ve kurumsal etkinlikler için hijyenik ikram servisi. ☎ 0530 730 90 09"
+        description="İstanbul'da pamuk şeker, çikolata şelalesi ve popcorn arabası kiralama. Doğum günü, düğün ve kurumsal etkinlikler için hijyenik ikram servisi. ☎ 05307309009"
         keywords={[
           'çikolata şelalesi kiralama',
           'çikolata şelalesi kiralama istanbul',
@@ -123,7 +134,13 @@ const CottonCandyCart = () => {
             "name": "BestEvent",
             "url": "https://bestevent.com.tr",
             "logo": "https://bestevent.com.tr/logo.png",
-            "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
+            "sameAs": [
+              "https://www.instagram.com/besteventorganizasyon/",
+              "https://www.instagram.com/palyacogezegenii/",
+              "https://www.facebook.com/besteventorganizasyon",
+              "https://www.linkedin.com/company/besteventorganizasyon",
+              "https://g.co/kgs/bestevent"
+            ]
           }
         ]}
       />
@@ -134,75 +151,11 @@ const CottonCandyCart = () => {
         subtitle="İstanbul'un Her Semtine Kiralama Hizmeti"
       />
 
-      {/* Hero Section with Background Image */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="/content/images/Parti Ekipmanları/popcornpamukseker.webp"
-            alt="Pamuk şeker ve popcorn arabası kiralama İstanbul parti ekipmanları"
-            className="w-full h-full object-cover"
-            style={{ objectPosition: 'center 40%' }}
-            loading="eager"
-            fetchpriority="high"
-            width={1200}
-            height={800}
-          />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24 pb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1
-              className="font-bold text-white mb-6"
-              style={{
-                fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-                lineHeight: '1.1',
-                letterSpacing: '-0.025em',
-                fontWeight: '700',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              Pamuk Şeker & Parti Ekipmanları Kiralama İstanbul
-            </h1>
-            <p
-              className="text-white/90 max-w-3xl mx-auto"
-              style={{
-                fontSize: 'clamp(1.125rem, 2vw, 1.375rem)',
-                lineHeight: '1.5',
-                letterSpacing: '-0.015em',
-                fontWeight: '500',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-              }}
-            >
-              Çikolata şelalesi, popcorn ve pamuk şeker arabası ile<br />
-              etkinliklerinize lezzet katıyoruz
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a
-                href="https://wa.me/905307309009?text=Merhaba%20Parti%20ekipmanları%20kiralama%20hakkında%20bilgi%20almak%20istiyorum"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-white text-black px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300"
-                style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1rem)' }}
-              >
-                💬 WhatsApp ile Rezervasyon
-              </a>
-              <a
-                href="tel:+905307309009"
-                className="inline-flex items-center border border-white/30 text-white px-6 py-3 rounded-full font-semibold hover:bg-white/10 transition"
-                style={{ fontSize: 'clamp(0.875rem, 1.5vw, 1rem)' }}
-              >
-                📞 0530 730 90 09
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <LocationHeroShowcase
+        title="Pamuk Şeker Arabası Kiralama İstanbul"
+        description="Pamuk şekerden popcorn standına, çikolata şelalesinden servis düzenine; etkinliğinize tatlı ikramları tek kurulumda getiriyoruz."
+        slides={showcaseSlides}
+      />
 
       {/* Services Grid */}
       <section className="py-20 sm:py-28 px-6 bg-gradient-to-b from-black to-zinc-900">
@@ -255,7 +208,10 @@ const CottonCandyCart = () => {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="group"
               >
-                <div className="relative rounded-2xl overflow-hidden bg-zinc-900/50 backdrop-blur-sm border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500">
+                <Link
+                  to={service.href}
+                  className="block relative rounded-2xl overflow-hidden bg-zinc-900/50 backdrop-blur-sm border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500"
+                >
                   {/* Image */}
                   <div className="aspect-[4/3] w-full bg-black/60 overflow-hidden">
                     <img
@@ -294,8 +250,11 @@ const CottonCandyCart = () => {
                     >
                       {service.description}
                     </p>
+                    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-pink-300/75">
+                      Detayı Aç
+                    </p>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -468,7 +427,7 @@ const CottonCandyCart = () => {
                 className="inline-flex items-center border border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all duration-300"
                 style={{ fontSize: 'clamp(1rem, 2vw, 1.125rem)' }}
               >
-                📞 0530 730 90 09
+                📞 05307309009
               </a>
             </div>
           </motion.div>
@@ -523,6 +482,8 @@ const CottonCandyCart = () => {
 
       {/* Google Müşteri Yorumları */}
       <GoogleReviews reviews={getReviewsByTags(['pamukseker', 'genel'])} title="Pamuk Şeker & Popcorn Müşteri Yorumları" />
+
+      <DeferredContentAccordion serviceKey="pamuk-seker" />
 
       <RelatedServices currentService="pamuk-seker" />
 

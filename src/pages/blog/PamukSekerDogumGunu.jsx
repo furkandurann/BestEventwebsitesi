@@ -412,7 +412,7 @@ const PamukSekerDogumGunu = () => {
             href="tel:+905307309009"
             className="bg-white text-orange-600 font-bold text-base px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl text-center"
           >
-            +90 530 730 90 09
+            05307309009
           </a>
           <a
             href="https://wa.me/905307309009?text=Merhaba%20Do%C4%9Fum%20g%C3%BCn%C3%BC%20parti%20ekipmanlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum"

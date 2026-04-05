@@ -889,7 +889,7 @@ const MiniDiskoMuBubbleShowMu = () => {
           Cocuklarinizin yas grubu, mekaninizin ozellikleri ve butcenize gore size ozel bir etkinlik programi olusturalim. Uzman ekibimiz sizi dinleyerek en yuksek etkilesim puanini alacaginiz kombinasyonu onerir.
         </p>
         <a
-          href="https://wa.me/905528772855?text=Merhaba%2C%20mini%20disko%20ve%20bubble%20show%20kombinasyonu%20hakkinda%20bilgi%20almak%20istiyorum."
+          href="https://wa.me/905307309009?text=Merhaba%2C%20mini%20disko%20ve%20bubble%20show%20kombinasyonu%20hakkinda%20bilgi%20almak%20istiyorum."
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-white text-indigo-700 font-bold px-8 py-4 rounded-xl text-lg hover:bg-indigo-50 transition-colors shadow-lg"

@@ -356,7 +356,7 @@ const DogumGunuOrganizasyonu10Hata = () => {
               Full Paket Organizasyon
             </Link>
             <a
-              href="https://wa.me/905528772588?text=Merhaba,%20do%C4%9Fum%20g%C3%BCn%C3%BC%20organizasyonu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+              href="https://wa.me/905307309009?text=Merhaba,%20do%C4%9Fum%20g%C3%BCn%C3%BC%20organizasyonu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-green-500 text-white font-bold px-8 py-4 rounded-xl hover:bg-green-600 transition-colors text-lg shadow-lg"

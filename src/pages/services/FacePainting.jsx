@@ -78,7 +78,7 @@ const faqs = [
   {
     question: 'Fiyatlar nasıl?',
     answer:
-      'Süre, lokasyon ve katılımcı sayısına göre değişir. 20+ çocuk için ek sanatçı önerilir. Detaylı bilgi için arayabilirsiniz: 0530 730 90 09'
+      'Süre, lokasyon ve katılımcı sayısına göre değişir. 20+ çocuk için ek sanatçı önerilir. Detaylı bilgi için arayabilirsiniz: 05307309009'
   }
 ]
 
@@ -135,7 +135,13 @@ const FacePainting = () => {
             "name": "BestEvent",
             "url": "https://bestevent.com.tr",
             "logo": "https://bestevent.com.tr/logo.png",
-            "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
+            "sameAs": [
+              "https://www.instagram.com/besteventorganizasyon/",
+              "https://www.instagram.com/palyacogezegenii/",
+              "https://www.facebook.com/besteventorganizasyon",
+              "https://www.linkedin.com/company/besteventorganizasyon",
+              "https://g.co/kgs/bestevent"
+            ]
           }
         ]}
       />
@@ -395,6 +401,65 @@ const FacePainting = () => {
           </div>
         </section>
 
+        <section className="py-16 px-6 bg-[#09090d] border-t border-white/10">
+          <div className="max-w-5xl mx-auto">
+            <div className="max-w-3xl">
+              <p className="uppercase tracking-[0.28em] text-xs text-orange-300 mb-3 font-medium">Stratejik Akış</p>
+              <h2
+                className="font-bold text-white mb-4"
+                style={{ fontSize: 'clamp(1.8rem, 4.5vw, 2.8rem)', letterSpacing: '-0.02em', lineHeight: '1.15' }}
+              >
+                Yüz Boyamada Yeni URL Açmıyor, Doğru Kombinasyonları Öne Çıkarıyoruz
+              </h2>
+              <p className="text-white/75 leading-relaxed">
+                Bu sayfadaki kutular kalite ve operasyon sinyali taşıyor; ayrı landing page olmaktan çok ana hizmeti güçlendiriyor. Bu yüzden yüz boyamayı en sık birlikte alınan organizasyonlarla ve karar aşamasındaki rehber içeriklerle bağlıyoruz.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-5 mt-10">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <p className="text-xs uppercase tracking-[0.24em] text-white/50 mb-3">Birlikte Alınan Hizmetler</p>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { to: '/organizasyonlar/palyaco-kiralama', label: 'Palyaço Kiralama' },
+                    { to: '/organizasyonlar/bubble-show', label: 'Bubble Show' },
+                    { to: '/organizasyonlar/kostumlu-karakterler', label: 'Kostümlü Karakterler' },
+                    { to: '/organizasyonlar/dogum-gunu-organizasyonu', label: 'Doğum Günü Organizasyonu' }
+                  ].map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <p className="text-xs uppercase tracking-[0.24em] text-white/50 mb-3">Karar Aşaması İçerikleri</p>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { to: '/blog/yuz-boyama-kiralama-rehberi', label: 'Kiralama Rehberi' },
+                    { to: '/blog/yuz-boyama-dogum-gunu-organizasyonu', label: 'Doğum Günü Senaryosu' },
+                    { to: '/blog/palyaco-kiralama-fiyatlari', label: 'Palyaço Fiyatları' },
+                    { to: '/blog/bubble-show-fiyatlari', label: 'Bubble Show Fiyatları' }
+                  ].map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white/85 hover:bg-white/10 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Hizmet Bölgeleri */}
         <DistrictLinksGrid
           lpServiceSlug="profesyonel-yuz-boyama"
@@ -522,7 +587,7 @@ const FacePainting = () => {
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
                       }}
                     >
-                      0530 730 90 09
+                      05307309009
                     </span>
                   </div>
                 </div>

@@ -662,7 +662,7 @@ const PalyacoMuSihirbazMi = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/905528881058"
+            href="https://wa.me/905307309009"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-orange-600 px-8 py-3 rounded-xl font-bold hover:bg-orange-50 transition-colors text-lg"
@@ -670,7 +670,7 @@ const PalyacoMuSihirbazMi = () => {
             WhatsApp ile Bilgi Alın
           </a>
           <a
-            href="tel:+905528881058"
+            href="tel:+905307309009"
             className="bg-white/20 text-white px-8 py-3 rounded-xl font-bold hover:bg-white/30 transition-colors text-lg border border-white/40"
           >
             Hemen Arayın

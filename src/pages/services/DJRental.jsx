@@ -1,5 +1,5 @@
-import { Helmet } from 'react-helmet-async'
 import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import Seo from '../../components/Seo'
 
 const DJRental = () => {
   const hero = {
@@ -45,21 +45,14 @@ const DJRental = () => {
 
   return (
     <>
-      <Helmet>
-        <title>DJ Kiralama | Profesyonel DJ ve Ses-Işık Sistemi | Best Event</title>
-        <meta
-          name="description"
-          content="Profesyonel DJ, ses ve ışık sistemiyle doğum günü, okul etkinliği ve partiler için tam paket DJ kiralama. Playlist hazırlığı, miksaj ve anons yönetimi."
-        />
-        <meta name="keywords" content="dj kiralama istanbul, çocuk partisi dj, dj hizmeti, ses ışık sistemi, dj fiyat" />
-        <link rel="canonical" href="https://bestevent.com.tr/organizasyonlar/dj-kiralama" />
-        <script type="application/ld+json">
-          {JSON.stringify(serviceSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
+      <Seo
+        title="DJ Kiralama | Profesyonel DJ ve Ses-Işık Sistemi | Best Event"
+        description="Profesyonel DJ, ses ve ışık sistemiyle doğum günü, okul etkinliği ve partiler için tam paket DJ kiralama. Playlist hazırlığı, miksaj ve anons yönetimi."
+        keywords="dj kiralama istanbul, çocuk partisi dj, dj hizmeti, ses ışık sistemi, dj fiyat"
+        canonicalPath="/organizasyonlar/dj-kiralama"
+        type="service"
+        schema={[serviceSchema, faqSchema]}
+      />
 
       <main className="bg-white text-gray-900">
         <section className="relative overflow-hidden min-h-[65vh] flex items-center bg-black text-white">
@@ -93,7 +86,7 @@ const DJRental = () => {
                 href="tel:+905307309009"
                 className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
               >
-                📞 0530 730 90 09
+                📞 05307309009
               </a>
             </div>
 
@@ -201,7 +194,7 @@ const DJRental = () => {
               </a>
 
               <a
-                href="tel:05307309009"
+                href="tel:+905307309009"
                 className="group relative w-full sm:w-auto"
               >
                 <div className="relative bg-white text-black rounded-2xl px-8 py-6 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
@@ -209,7 +202,7 @@ const DJRental = () => {
                     <span className="text-lg" role="img" aria-label="phone">📞</span>
                     <div className="text-left">
                       <p className="text-xs uppercase tracking-[0.18em] text-black/60">Telefon</p>
-                      <p className="text-lg font-semibold">0530 730 90 09</p>
+                      <p className="text-lg font-semibold">05307309009</p>
                     </div>
                   </div>
                 </div>

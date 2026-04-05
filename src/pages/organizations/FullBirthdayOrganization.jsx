@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import Seo from "../../components/Seo";
-import { createServiceSchema } from "../../utils/schemaHelpers";
+import { createServiceSchema, createImageObjectSchema } from "../../utils/schemaHelpers";
 import AdHero from "../../components/AdHero";
-import BirthdayHeroSlider from "../../components/BirthdayHeroSlider";
 import RelatedServices from "../../components/RelatedServices";
+import DeferredContentAccordion from "../../components/DeferredContentAccordion";
+import TrustSection from "../../components/TrustSection";
+import RelatedBlogPosts from "../../components/RelatedBlogPosts";
+import { generateSrcSet } from "../../utils/responsiveImage";
+import { trackFormSubmit } from "../../utils/tracking";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
@@ -27,35 +33,60 @@ const font = {
   text: 'Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif',
 };
 
-/* ── Mini Slider Bileşeni ── */
-const MiniSlider = ({ images, height = "h-[400px] md:h-[500px]" }) => (
-  <Swiper
-    modules={[Autoplay, Pagination]}
-    autoplay={{ delay: 3500, disableOnInteraction: false }}
-    pagination={{ clickable: true, dynamicBullets: true }}
-    loop={true}
-    className={`w-full rounded-2xl overflow-hidden ${height}`}
-  >
-    {images.map((img, i) => (
-      <SwiperSlide key={i}>
-        <img
-          src={img.src}
-          alt={img.alt}
-          className="w-full h-full object-cover"
-          loading="lazy"
-          width={1200}
-          height={800}
-          decoding="async"
-        />
-      </SwiperSlide>
-    ))}
-  </Swiper>
-);
+const heroSlides = [
+  { src: '/profesyoneldogumgunucekimleri/anaherodogumgunu.webp', alt: 'Profesyonel doğum günü organizasyonu' },
+  { src: '/profesyoneldogumgunucekimleri/dogumgunuonemlı1.webp', alt: 'Doğum günü özel anlar' },
+  { src: '/profesyoneldogumgunucekimleri/_DSF8233.webp', alt: 'Doğum günü kutlaması İstanbul' },
+  { src: '/profesyoneldogumgunucekimleri/_DSF7332_1.webp', alt: 'Doğum günü partisi profesyonel çekim' },
+  { src: '/profesyoneldogumgunucekimleri/_DSF7022.webp', alt: 'Çocuk doğum günü kutlaması' },
+  { src: '/profesyoneldogumgunucekimleri/_DSF7051.webp', alt: 'Doğum günü eğlencesi' },
+  { src: '/profesyoneldogumgunucekimleri/_DSF7167.webp', alt: 'Doğum günü organizasyonu detay' },
+];
+
+/* ── Service Gallery Bileşeni (native yatay scroll + otomatik geçiş) ── */
+const ServiceGallery = ({ images }) => {
+  const scrollRef = useRef(null);
+  const idxRef = useRef(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const container = scrollRef.current;
+      if (!container || !container.children.length) return;
+      idxRef.current = (idxRef.current + 1) % container.children.length;
+      const child = container.children[idxRef.current];
+      if (child) container.scrollTo({ left: child.offsetLeft - container.offsetLeft, behavior: 'smooth' });
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div
+      ref={scrollRef}
+      className="flex gap-3 overflow-x-auto snap-x snap-mandatory rounded-2xl"
+      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+    >
+      <style>{`.service-gallery-scroll::-webkit-scrollbar { display: none; }`}</style>
+      {images.map((img, i) => (
+        <div key={i} className="flex-none w-[85%] sm:w-[48%] snap-start">
+          <img
+            src={img.src}
+            srcSet={generateSrcSet(img.src)}
+            sizes="(max-width: 768px) 85vw, 48vw"
+            alt={img.alt}
+            className="w-full aspect-[3/2] object-cover object-center rounded-xl"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 /* ── Çerçeveli Ara Slider ── */
 const BreathSlider = ({ images }) => (
   <div className="bg-[#050509] px-4 md:px-8 lg:px-12 py-6 md:py-10">
-    <div className="relative w-full h-[50vh] md:h-[60vh] rounded-3xl overflow-hidden shadow-[0_8px_50px_rgba(0,0,0,0.6)] border border-white/[0.08]">
+    <div className="relative w-full h-[35vh] sm:h-[45vh] md:h-[60vh] rounded-3xl overflow-hidden shadow-[0_8px_50px_rgba(0,0,0,0.6)] border border-white/[0.08]">
       <Swiper
         modules={[Autoplay, EffectFade]}
         effect="fade"
@@ -68,9 +99,14 @@ const BreathSlider = ({ images }) => (
           <SwiperSlide key={i}>
             <img
               src={img.src}
+              srcSet={generateSrcSet(img.src)}
+              sizes="100vw"
               alt={img.alt}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
               loading="lazy"
+              width={1920}
+              height={1080}
+              decoding="async"
             />
           </SwiperSlide>
         ))}
@@ -102,9 +138,17 @@ const FullBirthdayOrganization = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", address: "", date: "", time: "", notes: "" });
   const serviceSchema = createServiceSchema("Doğum Günü Organizasyonu", "İstanbul'da profesyonel doğum günü organizasyonu. Konsept süsleme, organik pasta, bubble show, sihirbazlık, palyaço animasyonu tek pakette.", "/organizasyonlar/dogum-gunu-organizasyonu");
 
+  const imageGallerySchema = createImageObjectSchema([
+    { src: '/profesyoneldogumgunucekimleri/winnithepohkonseptkapak.webp', alt: 'Kişiye özel tema ve süsleme doğum günü organizasyonu' },
+    { src: '/profesyoneldogumgunucekimleri/gumudıscoorganizasyonu.webp', alt: 'Gümüş disco partisi çocuk doğum günü' },
+    { src: '/content/images/Kostumlukarakterler/elsaheroo.webp', alt: 'Kostümlü karakter Elsa doğum günü animasyonu' },
+    { src: '/profesyoneldogumgunucekimleri/bubbleshowgosterisi.webp', alt: 'Bubble show gösterisi çocuk partisi' },
+  ])
+
   const handleInputChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const sendWhatsAppMessage = () => {
+    trackFormSubmit("Full Birthday Organization WhatsApp Form", "dogum-gunu-organizasyonu");
     const msg = `🎉 *Doğum Günü Organizasyonu Talebi*\n\n📝 *Ad Soyad:* ${formData.name || "Belirtilmedi"}\n📞 *Telefon:* ${formData.phone || "Belirtilmedi"}\n📍 *Adres:* ${formData.address || "Belirtilmedi"}\n📅 *Tarih:* ${formData.date || "Belirtilmedi"}\n🕐 *Saat:* ${formData.time || "Belirtilmedi"}\n📋 *Konsept/Notlar:* ${formData.notes || "Belirtilmedi"}`;
     window.open(`https://wa.me/905307309009?text=${encodeURIComponent(msg)}`, "_blank");
   };
@@ -113,12 +157,13 @@ const FullBirthdayOrganization = () => {
     <>
       <Seo
         title="Doğum Günü Organizasyonu İstanbul | Full Paket - BestEvent"
-        description="İstanbul'da doğum günü organizasyonu. Konsept süsleme, organik pasta, bubble show, sihirbazlık, palyaço animasyonu tek pakette. ☎ 0530 730 90 09"
+        description="İstanbul'da doğum günü organizasyonu. Konsept süsleme, organik pasta, bubble show, sihirbazlık, palyaço animasyonu tek pakette. ☎ 05307309009"
         keywords={["istanbul doğum günü organizasyonu", "doğum günü gösterisi", "doğum günü kiralama", "doğum günü etkinliği", "istanbul doğum günü hizmetleri", "full paket doğum günü"]}
         canonicalPath="/organizasyonlar/dogum-gunu-organizasyonu"
         image="/profesyoneldogumgunucekimleri/anaherodogumgunu.webp"
         schema={[
           serviceSchema,
+          imageGallerySchema,
           {
             "@context": "https://schema.org", "@type": "LocalBusiness",
             name: "Best Event - Doğum Günü Organizasyonu",
@@ -145,65 +190,198 @@ const FullBirthdayOrganization = () => {
 
       <AdHero
         title="Doğum Günü Organizasyonu İstanbul"
-        backgroundImage="/profesyoneldogumgunucekimleri/anaherodogumgunu.webp"
+        backgroundImage="/profesyoneldogumgunucekimleri/winniethepoohkonseptdogumgunu.jpg"
+        overlay={false}
+        imagePosition="center 30%"
       />
 
       <main className="bg-[#050509] text-white">
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           1. HERO SLIDER — Dikkat yakala
+           1. HERO KARUSEL — İstanbul'un Her Yerindeyiz
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <BirthdayHeroSlider />
+        <section className="relative overflow-hidden bg-black py-12 md:py-16">
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black pointer-events-none" />
 
+          <div className="relative max-w-6xl mx-auto px-6">
+            <div className="text-center mb-10 md:mb-12">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="uppercase tracking-[0.3em] text-xs sm:text-sm text-orange-300 mb-4 font-medium"
+              >
+                İstanbul'un Her Yerindeyiz
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="font-bold text-white mb-3"
+                style={{
+                  fontSize: 'clamp(2.25rem, 5.5vw, 4rem)',
+                  lineHeight: '1.1',
+                  letterSpacing: '-0.025em',
+                  fontFamily: font.display
+                }}
+              >
+                Doğum Günü Organizasyonu İstanbul
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="text-white/80 max-w-3xl mx-auto"
+                style={{
+                  fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
+                  lineHeight: '1.6',
+                  letterSpacing: '-0.01em',
+                  fontWeight: '500',
+                  fontFamily: font.text
+                }}
+              >
+                Konsept süslemeden organik pastaya, bubble show'dan sihirbazlığa — her şey tek pakette.
+              </motion.p>
+            </div>
+
+            <Swiper
+              modules={[Autoplay]}
+              loop
+              centeredSlides
+              autoplay={{ delay: 4500, disableOnInteraction: false }}
+              speed={900}
+              spaceBetween={18}
+              slidesPerView={1.05}
+              breakpoints={{
+                768: { slidesPerView: 1.15 },
+                1024: { slidesPerView: 1.35 }
+              }}
+              className="h-[60vh] sm:h-[65vh] md:h-[68vh]"
+            >
+              {heroSlides.map((slide, idx) => (
+                <SwiperSlide key={idx}>
+                  <div className="relative h-full w-full overflow-hidden rounded-[28px] border border-white/15 bg-white/5 shadow-2xl">
+                    <img
+                      src={slide.src}
+                      srcSet={generateSrcSet(slide.src)}
+                      sizes="(max-width: 768px) 95vw, (max-width: 1024px) 85vw, 75vw"
+                      alt={slide.alt}
+                      className="w-full h-full object-cover"
+                      loading={idx === 0 ? 'eager' : 'lazy'}
+                      fetchPriority={idx === 0 ? 'high' : undefined}
+                      decoding="async"
+                      width={1200}
+                      height={800}
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-6 left-6 right-6 text-white drop-shadow-lg">
+                      <p className="text-sm uppercase tracking-[0.25em] text-white/80 mb-2">Doğum Günü Organizasyonu</p>
+                      <p className="text-lg font-semibold" style={{ letterSpacing: '-0.01em' }}>
+                        {slide.alt}
+                      </p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </section>
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           2. VAAT — Ne sunuyoruz?
+           2b. BRAND IMPACT — Tek Paket Tek Muhatap
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-[#050509] to-[#0a0a10] pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.06] pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,122,24,0.35), transparent 40%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.12), transparent 35%)" }} />
-
-          <div className="relative max-w-5xl mx-auto px-6 py-28 md:py-40 text-center">
-            <h1
-              className="font-bold text-white mb-6"
-              style={{ fontFamily: font.display, fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)", lineHeight: 1.05, letterSpacing: "-0.04em" }}
+        <section className="py-20 sm:py-28 px-6 bg-gradient-to-br from-purple-950/40 via-black to-pink-950/40 border-y border-white/10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
             >
-              Doğum Günü Organizasyonu
-            </h1>
+              <h2
+                className="font-bold mb-8 text-white px-4 text-center"
+                style={{
+                  fontSize: 'clamp(1.41rem, 3.74vw, 2.48rem)',
+                  lineHeight: '1.35',
+                  letterSpacing: '-0.015em',
+                  fontWeight: '700',
+                  fontFamily: font.display
+                }}
+              >
+                <span style={{ whiteSpace: 'nowrap' }}>
+                  Tek Paket.{' '}
+                  <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent font-bold">
+                    Tek Ekip.
+                  </span>
+                </span>
+                {' '}Tek Muhatap.
+              </h2>
 
-            <h2
-              className="font-semibold text-white/90 mb-10"
-              style={{ fontFamily: font.display, fontSize: "clamp(1.35rem, 3.2vw, 2.25rem)", lineHeight: 1.2, letterSpacing: "-0.025em" }}
-            >
-              Tek Paket. Tek Ekip. Tek Muhatap.
-            </h2>
+              <p
+                className="text-white mb-12 text-center mx-auto"
+                style={{
+                  fontSize: 'clamp(1.125rem, 2.5vw, 1.75rem)',
+                  lineHeight: '1.5',
+                  letterSpacing: '-0.02em',
+                  fontWeight: '600',
+                  fontFamily: font.display
+                }}
+              >
+                12 Yıldır Hayalleri Gerçeğe Dönüştürüyoruz
+              </p>
 
-            <p className="text-white/80 mb-6 max-w-3xl mx-auto" style={{ fontFamily: font.text, fontSize: "clamp(1.05rem, 1.8vw, 1.3rem)", lineHeight: 1.75 }}>
-              Best Event olarak her detayı düşündük, planladık, yüzlerce defa uyguladık. Konsept süslemeden organik pastaya, bubble show'dan sihirbazlık gösterisine, yüz boyamadan profesyonel fotoğraf çekimine kadar — her şey tek pakette.
-            </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
+                <div>
+                  <p
+                    style={{
+                      fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                      lineHeight: '1.4',
+                      letterSpacing: '-0.015em',
+                      fontWeight: '500',
+                      fontFamily: font.text,
+                      color: '#E5E5E5'
+                    }}
+                  >
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>+5000</span>
+                    {' '}Organizasyon
+                  </p>
+                </div>
 
-            <p className="text-white/60 mb-14 max-w-2xl mx-auto" style={{ fontFamily: font.text, fontSize: "clamp(0.95rem, 1.4vw, 1.05rem)", lineHeight: 1.65 }}>
-              Konsept Süsleme · Organik Pasta · Bubble Show · Sihirbazlık · Kostümlü Karakter · Palyaço · Yüz Boyama · Party Box Ses Sistemi
-            </p>
+                <div className="hidden sm:block w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-transparent" />
+                <div className="block sm:hidden w-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
-            <a
-              href="#rezervasyon"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-10 py-4 font-bold shadow-2xl hover:shadow-[0_0_40px_rgba(34,197,94,0.4)] transition-all duration-300 hover:scale-105"
-              style={{ fontSize: "clamp(1rem, 2vw, 1.125rem)" }}
-            >
-              <WhatsAppIcon />
-              Hemen Bilgi Al
-            </a>
+                <div>
+                  <p
+                    className="text-white font-bold"
+                    style={{
+                      fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+                      lineHeight: '1.4',
+                      letterSpacing: '-0.015em',
+                      fontWeight: '700',
+                      fontFamily: font.text
+                    }}
+                  >
+                    Binlerce{' '}
+                    <span
+                      className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent font-bold"
+                      style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
+                    >
+                      Mutlu Aile
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-           3. AKIŞ — 3 saatte neler olur?
+           3. AKIŞ — 3 saatte neler olur? (Yatay Swiper Kartları)
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section className="bg-[#0a0a0f] border-t border-white/5">
-          <div className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-            <div className="text-center mb-16">
+        <section className="bg-[#0a0a0f] border-t border-white/5 py-20 md:py-28 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-12 md:mb-16">
               <p className="uppercase tracking-[0.25em] text-xs text-[#FF6B00] mb-4 font-semibold">Etkinlik Akışı</p>
               <h2 className="font-bold text-white mb-4" style={{ fontFamily: font.display, fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1.1, letterSpacing: "-0.035em" }}>
                 3 Saatte Neler Olur?
@@ -213,37 +391,55 @@ const FullBirthdayOrganization = () => {
               </p>
             </div>
 
-            <div className="space-y-6 max-w-3xl mx-auto">
+            <div
+              className="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+            >
               {[
-                { time: "0–40 dk", title: "Karşılama + Yüz Boyama", desc: "Çocuklar karakterlerle tanışır, profesyonel yüz boyama ile parti havasına girer. Aileler rahatça yerleşir." },
-                { time: "40–80 dk", title: "Oyunlar + Danslar", desc: "Yaş grubuna göre seçilen grup oyunları, müzikli aktiviteler ve yarışmalarla enerji yükselir. Hiçbir çocuk kenarda kalmaz." },
-                { time: "80–100 dk", title: "Pasta Seremonisi", desc: "Konsept pastayla mumlar üflenir, aile fotoğrafları çekilir. Işıklar, müzik ve konfetilerle duygusal bir an." },
-                { time: "100–130 dk", title: "Bubble Show – 30 dk", desc: "Dev baloncukların içine giren çocuklar, rengarenk köpükler ve sahne efektleri. Videoluk anlar garanti." },
-                { time: "130–160 dk", title: "Sihirbazlık – 30 dk", desc: "Tavşan, güvercin ve interaktif numaralarla dolu komedi ağırlıklı bir şov. Çocuklar gösterinin parçası olur." },
-                { time: "160–180 dk", title: "Final + Veda", desc: "Pinyata, sosis balon dağıtımı, toplu fotoğraf ve güçlü bir finalle etkinlik tamamlanır." },
-              ].map((step, i) => (
-                <div key={i} className="flex gap-5 items-start group">
-                  <div className="flex-shrink-0 w-20 md:w-24 text-right pt-1">
-                    <span className="text-xs font-bold text-[#FF6B00] tracking-wider">{step.time}</span>
+                { num: 1, title: "Kişiye Özel Tema & Süsleme", desc: "Balon kemeri, backdrop, masa düzeni ve tema renkleri tek dosyada planlanır; kurulum misafir gelmeden tamamlanır.", img: "/content/images/konsepts/barbiekonseptdogumgunu.webp", href: "/hizmet-detay/kisiye-ozel-tema-ve-susleme" },
+                { num: 2, title: "Yüz Boyama, Glitter & Play Doh", desc: "Hızlı yüz boyama, glitter detayları ve küçük yaş grubu için play doh köşesiyle bekleme anları bile eğlenceye dönüşür.", img: "/content/images/profesyonelmakeup/profesyonelyuzboyamasianafoto.webp", href: "/hizmet-detay/yuz-boyama-glitter-ve-play-doh-kosesi" },
+                { num: 3, title: "Gümüş Disco Partisi", desc: "Işıklar, dans ve enerji dolu bir parti deneyimi. Çocuklar sahnenin yıldızı olur.", img: "/content/images/fullpaket/hareketlislider4sinirsizoyun.webp", href: "/hizmet-detay/gumus-disco-partisi" },
+                { num: 4, title: "Kostümlü Animatörler", desc: "Elsa, Spiderman ve benzeri karakterler karşılama, fotoğraf ve mini sahne anlarında çocuklarla birebir temas kurar.", img: "/content/images/Kostumlukarakterler/elsaheroo.webp", href: "/hizmet-detay/kostumlu-animatorlerle-karsilama" },
+                { num: 5, title: "Konsept Doğum Günü Pastası", desc: "%100 organik, Cordon Bleu şefinden temaya özel tasarım pasta.", img: "/content/images/fullpaket/pastanattivee1.webp", href: "/hizmet-detay/konsept-dogum-gunu-pastasi" },
+                { num: 6, title: "Grup Oyunları & Konfeti Partisi", desc: "Çuval yarışı, halat çekme, ringo, sandalye kapmaca, deve-cüce, konfeti ve kar show finali tek akışta birleşir.", img: "/content/images/slider/konfeti.webp", href: "/hizmet-detay/grup-oyunlari-konfeti-ve-kar-show" },
+                { num: 7, title: "Sihirbazlık Gösterisi", desc: "İllüzyon, kart numaraları, sandalye-masa uçurma ve tavşan-güvercin sürprizleriyle tempolu sihir akışı kurulur.", img: "/content/images/fullpaket/sihirbaznattive.webp", href: "/hizmet-detay/sahne-illuzyonlari-ve-final-numaralari" },
+                { num: 8, title: "Bubble Show Partisi", desc: "Dev baloncukların içine girilen, çocuk katılımının yüksek olduğu ve finali ışıkla güçlenen özel bubble show akışı.", img: "/content/images/ahunundogumgunu/bubbleshowgosterisi.webp", href: "/hizmet-detay/dogum-gununde-bubble-show-partisi" },
+                { num: 9, title: "Profesyonel Fotoğraf Çekimi", desc: "Duygusal anları, kahkahaları ve vedaları profesyonel karelerle ölümsüzleştiriyoruz.", img: "/content/images/ahunundogumgunu/vedafotografi.webp", href: "/hizmet-detay/dogum-gunu-fotograf-cekimi" },
+              ].map((card) => (
+                <Link key={card.num} to={card.href} className="flex-none w-[80%] sm:w-[45%] lg:w-[30%] snap-start group rounded-2xl overflow-hidden bg-zinc-900/50 border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500 block">
+                  <div className="relative w-full overflow-hidden">
+                    <img
+                      src={card.img}
+                      srcSet={generateSrcSet(card.img)}
+                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 45vw, 30vw"
+                      alt={card.title}
+                      className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute top-3 left-3 z-10 w-9 h-9 rounded-full bg-gradient-to-r from-[#FF6B00] to-[#f8b500] flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                      {card.num}
+                    </div>
                   </div>
-                  <div className="relative flex-shrink-0 flex flex-col items-center">
-                    <div className="w-3 h-3 rounded-full bg-[#FF6B00] border-2 border-[#0a0a0f] z-10" />
-                    {i < 5 && <div className="w-px flex-1 bg-white/10 mt-1" />}
-                  </div>
-                  <div className="pb-8">
-                    <h3 className="text-white font-semibold text-lg md:text-xl mb-1.5" style={{ fontFamily: font.display, letterSpacing: "-0.02em" }}>
-                      {step.title}
+                  <div className="p-5">
+                    <p className="uppercase tracking-[0.2em] text-[10px] text-[#FF6B00]/70 mb-2 font-semibold">Etkinlik Akışı</p>
+                    <h3 className="text-white font-bold text-base md:text-lg mb-2" style={{ fontFamily: font.display, letterSpacing: "-0.02em", lineHeight: 1.2 }}>
+                      {card.title}
                     </h3>
-                    <p className="text-white/70 text-sm md:text-base leading-relaxed" style={{ fontFamily: font.text, lineHeight: 1.7 }}>
-                      {step.desc}
+                    <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: font.text }}>
+                      {card.desc}
+                    </p>
+                    <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#f8b500]/85">
+                      Detayı Aç
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </section>
 
+        <TrustSection />
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            4. HİZMETLER — Her biri detaylı, araya slider & nefes görselleri
@@ -277,10 +473,10 @@ const FullBirthdayOrganization = () => {
                 </p>
               </div>
               <div className="order-1 md:order-2">
-                <MiniSlider images={[
-                  { src: "/content/images/konseptdogumgunu/karkonsept.webp", alt: "Kar konsept doğum günü süslemesi İstanbul" },
-                  { src: "/content/images/konseptdogumgunu/karkonsept2.webp", alt: "Konsept doğum günü dekorasyonu İstanbul" },
-                  { src: "/content/images/konseptdogumgunu/kirazkonsept.webp", alt: "Kiraz konsept doğum günü süslemesi" },
+                <ServiceGallery images={[
+                  { src: "/content/images/konsepts/barbiekonseptdogumgunu.webp", alt: "Barbie konsept doğum günü süslemesi İstanbul" },
+                  { src: "/content/images/konsepts/denizkizidogumgunu.webp", alt: "Deniz kızı konsept doğum günü dekorasyonu İstanbul" },
+                  { src: "/content/images/konsepts/galatasaraykonseptdogumgunu.webp", alt: "Galatasaray konsept doğum günü süslemesi" },
                   { src: "/content/images/fullpaket/konseptnattive.webp", alt: "Profesyonel konsept süsleme organizasyonu" },
                 ]} />
               </div>
@@ -302,7 +498,7 @@ const FullBirthdayOrganization = () => {
           <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
-                <MiniSlider images={[
+                <ServiceGallery images={[
                   { src: "/content/images/fullpaket/pastanattivee1.webp", alt: "Organik şef pastası doğum günü İstanbul" },
                   { src: "/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp", alt: "Konsept doğum günü pastası organizasyon" },
                 ]} />
@@ -341,7 +537,7 @@ const FullBirthdayOrganization = () => {
                 </p>
               </div>
               <div className="order-1 md:order-2">
-                <MiniSlider images={[
+                <ServiceGallery images={[
                   { src: "/content/images/bubbleshow/bubbleshowhero.webp", alt: "Bubble show gösterisi İstanbul doğum günü" },
                   { src: "/content/images/bubbleshow/bubbleshowslider2.webp", alt: "Bubble show çocuk etkinliği İstanbul" },
                   { src: "/content/images/ahunundogumgunu/bubbleshowgosterisi.webp", alt: "Doğum günü bubble show performansı" },
@@ -366,7 +562,7 @@ const FullBirthdayOrganization = () => {
           <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
-                <MiniSlider images={[
+                <ServiceGallery images={[
                   { src: "/content/images/fullpaket/hareketlislider6osterilersihirbazhero.webp", alt: "Sihirbazlık gösterisi doğum günü İstanbul" },
                   { src: "/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp", alt: "Sihirbaz komedi show çocuk etkinliği" },
                   { src: "/content/images/ahunundogumgunu/inanılmazsihirbazlıkgosterileri.webp", alt: "İnanılmaz sihirbazlık gösterileri İstanbul" },
@@ -406,7 +602,7 @@ const FullBirthdayOrganization = () => {
                 </p>
               </div>
               <div className="order-1 md:order-2">
-                <MiniSlider images={[
+                <ServiceGallery images={[
                   { src: "/content/images/palyaco/palyacoanaherogrupoyunlari.webp", alt: "Palyaço grup oyunları doğum günü İstanbul" },
                   { src: "/content/images/palyaco/palyacogrupoyunlari.webp", alt: "Çocuk animasyon etkinliği İstanbul" },
                   { src: "/content/images/palyaco/palyaconattiveguleryuz.webp", alt: "Profesyonel palyaço kiralama İstanbul" },
@@ -430,7 +626,7 @@ const FullBirthdayOrganization = () => {
           <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
-                <MiniSlider images={[
+                <ServiceGallery images={[
                   { src: "/content/images/Kostumlukarakterler/elsaheroo.webp", alt: "Elsa kostümlü karakter kiralama İstanbul" },
                   { src: "/content/images/Kostumlukarakterler/pamuksprenseshero.webp", alt: "Pamuk Prenses karakter kiralama doğum günü" },
                   { src: "/content/images/Kostumlukarakterler/spidermanonemli.webp", alt: "Spiderman karakter kiralama İstanbul" },
@@ -470,7 +666,7 @@ const FullBirthdayOrganization = () => {
                 </p>
               </div>
               <div className="order-1 md:order-2">
-                <MiniSlider images={[
+                <ServiceGallery images={[
                   { src: "/content/images/profesyonelmakeup/istanbulprofesyonelyuzboyasietkinligibakirkoy.webp", alt: "Profesyonel yüz boyama İstanbul doğum günü" },
                   { src: "/content/images/profesyonelmakeup/profesyonelyuzboyamasianafoto.webp", alt: "Çocuk yüz boyama etkinliği İstanbul" },
                   { src: "/content/images/profesyonelmakeup/profesyonelmakeupistanbul.webp", alt: "Profesyonel makyaj ve yüz boyama İstanbul" },
@@ -494,7 +690,7 @@ const FullBirthdayOrganization = () => {
           <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
-                <MiniSlider images={[
+                <ServiceGallery images={[
                   { src: "/content/images/fullpaket/hareketlislider7popcorn.webp", alt: "Party box ses sistemi doğum günü İstanbul" },
                   { src: "/content/images/fullpaket/hareketlislider3yeni.webp", alt: "Etkinlik kurulumu ses sistemi organizasyon" },
                   { src: "/content/images/fullpaket/hareketlisliderfotograf4.webp", alt: "Profesyonel etkinlik ses ve sahne düzeni" },
@@ -589,7 +785,17 @@ const FullBirthdayOrganization = () => {
                 { src: "/profesyoneldogumgunucekimleri/_DSF8233.webp", alt: "Profesyonel parti fotoğraf çekimi" },
               ].map((img, i) => (
                 <div key={i} className="rounded-xl overflow-hidden border border-white/[0.08]">
-                  <img src={img.src} alt={img.alt} className="w-full aspect-[4/3] object-cover hover:scale-[1.03] transition-transform duration-500" loading="lazy" />
+                  <img
+                    src={img.src}
+                    srcSet={generateSrcSet(img.src)}
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                    alt={img.alt}
+                    className="w-full aspect-[4/3] object-cover hover:scale-[1.03] transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={600}
+                  />
                 </div>
               ))}
             </div>
@@ -700,6 +906,10 @@ const FullBirthdayOrganization = () => {
             </div>
           </div>
         </section>
+
+        <DeferredContentAccordion serviceKey="dogum-gunu-organizasyonu" />
+
+        <RelatedBlogPosts servicePath="/organizasyonlar/dogum-gunu-organizasyonu" />
 
         <RelatedServices currentService="dogum-gunu-organizasyonu" />
       </main>

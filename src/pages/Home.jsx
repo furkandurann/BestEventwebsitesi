@@ -5,7 +5,6 @@ import Seo from '../components/Seo'
 import OptimizedImage from '../components/OptimizedImage'
 import GoogleReviews from '../components/GoogleReviews'
 import { googleReviews } from '../data/googleReviews'
-import { blogPosts } from '../data/blogPosts'
 
 const Home = () => {
   const localBusinessSchema = {
@@ -36,7 +35,13 @@ const Home = () => {
       opens: '09:00',
       closes: '22:00'
     },
-    sameAs: ['https://instagram.com/palyacogezegenii'],
+    sameAs: [
+      'https://www.instagram.com/besteventorganizasyon/',
+      'https://www.instagram.com/palyacogezegenii/',
+      'https://www.facebook.com/besteventorganizasyon',
+      'https://www.linkedin.com/company/besteventorganizasyon',
+      'https://g.co/kgs/bestevent'
+    ],
     areaServed: [
       'Kadıköy',
       'Üsküdar',
@@ -61,13 +66,19 @@ const Home = () => {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+90-534-930-67-99',
+        telephone: '+905307309009',
         contactType: 'customer service',
         areaServed: 'TR',
         availableLanguage: ['Turkish', 'English']
       }
     ],
-    sameAs: ['https://instagram.com/palyacogezegenii']
+    sameAs: [
+      'https://www.instagram.com/besteventorganizasyon/',
+      'https://www.instagram.com/palyacogezegenii/',
+      'https://www.facebook.com/besteventorganizasyon',
+      'https://www.linkedin.com/company/besteventorganizasyon',
+      'https://g.co/kgs/bestevent'
+    ]
   }
 
   const websiteSchema = {
@@ -107,7 +118,7 @@ const Home = () => {
         name: 'Etkinlik rezervasyonu için kaç gün önceden haber vermem gerekir?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Etkinlik rezervasyonu için en az 1 hafta önceden haber vermenizi öneririz. Ancak acil durumlar için de elimizden geleni yaparız. 0530 730 90 09 numarasından bize ulaşabilirsiniz.'
+          text: 'Etkinlik rezervasyonu için en az 1 hafta önceden haber vermenizi öneririz. Ancak acil durumlar için de elimizden geleni yaparız. 05307309009 numarasından bize ulaşabilirsiniz.'
         }
       },
       {
@@ -115,7 +126,7 @@ const Home = () => {
         name: 'Fiyat teklifleri nasıl alınır?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'WhatsApp üzerinden 0530 730 90 09 numarasından veya iletişim formumuzu doldurarak ücretsiz fiyat teklifi alabilirsiniz. Etkinlik detaylarınızı paylaştığınızda size özel teklif hazırlıyoruz.'
+          text: 'WhatsApp üzerinden 05307309009 numarasından veya iletişim formumuzu doldurarak ücretsiz fiyat teklifi alabilirsiniz. Etkinlik detaylarınızı paylaştığınızda size özel teklif hazırlıyoruz.'
         }
       },
       {
@@ -132,8 +143,8 @@ const Home = () => {
   return (
     <main className="wall-bg wall-grain text-white">
       <Seo
-        title="İstanbul Etkinlik Organizasyonu | Best Event | Palyaço, Sihirbaz"
-        description="İstanbul'da profesyonel etkinlik organizasyonu. Palyaço kiralama, sihirbaz, kostümlü karakterler (Elsa, Pamuk Prenses, Spiderman), konsept doğum günü, kurumsal etkinlikler, canlı müzik ve dans gösterileri. Kadıköy, Üsküdar, Ataşehir ve tüm İstanbul'da hizmet. ☎ 0530 730 90 09"
+        title="Best Event | İstanbul Etkinlik ve Organizasyon Hizmetleri"
+        description="İstanbul'da palyaço kiralama, sihirbaz, kostümlü karakterler (Elsa, Pamuk Prenses, Spiderman), konsept doğum günü, kurumsal etkinlikler, canlı müzik ve dans gösterileri. Kadıköy, Üsküdar, Ataşehir ve tüm İstanbul'da hizmet. ☎ 05307309009"
         keywords={[
           'istanbul etkinlik organizasyonu',
           'palyaço kiralama istanbul',
@@ -196,8 +207,8 @@ const Home = () => {
             ve bunu her gün yapıyoruz
           </p>
 
-          {/* 4 kart */}
-          <div className="mt-[6.25rem] md:mt-[8.75rem] grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Hizmet kartlari */}
+          <div className="mt-[6.25rem] md:mt-[8.75rem] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <CardImage
               title="Çocuk Etkinlikleri"
               desc="Konsept doğum günleri, palyaço, sihirbaz, bubble show, kostümlü karakterler."
@@ -212,6 +223,15 @@ const Home = () => {
               desc="Lansman, gala, festival ve premium sahne prodüksiyonları."
               img="/content/images/referanslar/sencard.webp"
               altText="İstanbul kurumsal etkinlik organizasyonu - Lansman, gala ve festival etkinlikleri - Best Event"
+              loading="lazy"
+            />
+            <CardImage
+              title="Açılış Lansman Organizasyonu"
+              desc="Balon süsleme, ses sistemi, bistro kurulumu, hostes karşılama, flama bayrak ve kurdele kesimi."
+              cta="Sayfayı İncele"
+              to="/organizasyonlar/acilis-organizasyonu"
+              img="/content/images/acilisorganizasyonu/IMG_1388.webp"
+              altText="ÇiçekSepeti açılış organizasyonu - balon süsleme, ses sistemi, bistro, hostes ve kurdele kesimi hizmetleri"
               loading="lazy"
             />
             <CardImage
@@ -341,13 +361,13 @@ const Home = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-8">
             {[
               { name: 'Kadıköy Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/kadikoy' },
-              { name: 'Beşiktaş Sihirbaz Kiralama', path: '/organizasyonlar/sihirbaz-kiralama/besiktas' },
-              { name: 'Ataşehir Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/atasehir' },
+              { name: 'Beşiktaş Sihirbaz Kiralama', path: '/organizasyonlar/magic-show/besiktas' },
+              { name: 'Ataşehir Bubble Show', path: '/organizasyonlar/bubble-show/atasehir' },
               { name: 'Şişli Doğum Günü Org.', path: '/organizasyonlar/dogum-gunu-organizasyonu/sisli' },
               { name: 'Üsküdar Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/uskudar' },
-              { name: 'Beylikdüzü Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/beylikduzu' },
-              { name: 'Bakırköy Yüz Boyama', path: '/organizasyonlar/profesyonel-yuz-boyama/bakirkoy' },
-              { name: 'Maltepe Sihirbaz Kiralama', path: '/organizasyonlar/sihirbaz-kiralama/maltepe' },
+              { name: 'Beylikdüzü Bubble Show', path: '/organizasyonlar/bubble-show/beylikduzu' },
+              { name: 'Bakırköy Yüz Boyama', path: '/organizasyonlar/yuz-boyama/bakirkoy' },
+              { name: 'Maltepe Sihirbaz Kiralama', path: '/organizasyonlar/magic-show/maltepe' },
             ].map((item) => (
               <Link
                 key={item.path}
@@ -414,74 +434,12 @@ const Home = () => {
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
               </svg>
-              0530 730 90 09
+              05307309009
             </a>
           </div>
         </div>
       </section>
 
-      {/* Blog Yazıları Section - Internal Linking & Crawl Depth */}
-      <section className="py-20 px-6 bg-gradient-to-b from-zinc-900 to-black">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2
-              className="font-bold text-white mb-4"
-              style={{
-                fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)',
-                letterSpacing: '-0.02em',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              Blog Yazılarımız
-            </h2>
-            <p className="text-white/60 max-w-2xl mx-auto" style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)' }}>
-              Etkinlik organizasyonu, karakter kiralama ve doğum günü planlama rehberleri
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogPosts.slice(0, 6).map((blog) => (
-              <Link
-                key={blog.slug}
-                to={`/blog/${blog.slug}`}
-                className="group block rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300"
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={blog.image}
-                    alt={blog.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-medium px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">
-                      {blog.subCategory === 'palyaco' ? 'Palyaço' : blog.subCategory === 'sihirbaz' ? 'Sihirbaz' : blog.subCategory === 'bubble-show' ? 'Bubble Show' : blog.subCategory === 'dogum-gunu' ? 'Doğum Günü' : blog.subCategory === 'karakter' ? 'Karakterler' : blog.category}
-                    </span>
-                    {blog.readTime && (
-                      <span className="text-xs text-white/40">{blog.readTime} dk</span>
-                    )}
-                  </div>
-                  <h3 className="text-base font-semibold text-white/90 group-hover:text-white line-clamp-2">
-                    {blog.title}
-                  </h3>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/blog"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white/10 text-white hover:bg-white/15 border border-white/10 hover:border-white/20 transition-all duration-200 font-semibold"
-            >
-              Tüm Blog Yazılarını Gör
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
     </main>
   )
 }

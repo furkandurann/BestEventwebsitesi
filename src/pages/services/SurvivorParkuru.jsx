@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import Seo from '../../components/Seo'
 
 const SurvivorParkuru = () => {
   const [openFaq, setOpenFaq] = useState(null)
@@ -68,34 +68,21 @@ const SurvivorParkuru = () => {
   const serviceSchema = createServiceSchema(
     'Çocuklar İçin Survivor Parkuru | İstanbul Survivor Organizasyonu',
     'İstanbul\'da çocuklar için profesyonel survivor parkuru! 15+ engel, takım yarışmaları, ödüller. Doğum günü ve okul etkinlikleri için survivor kiralama.',
-    '/hizmetler/survivor-parkuru',
+    '/organizasyonlar/survivor-parkuru',
     'Survivor Parkuru Organizasyonu'
   )
   const faqSchema = createFAQSchema(faqs)
 
   return (
     <>
-      <Helmet>
-        <title>Çocuklar İçin Survivor Parkuru | İstanbul En İyi Survivor Organizasyonu | Best Event</title>
-        <meta 
-          name="description" 
-          content="İstanbul'da çocuklar için profesyonel survivor parkuru! 15+ engel, takım yarışmaları, ödüller. Doğum günü ve okul etkinlikleri için survivor kiralama." 
-        />
-        <meta name="keywords" content="survivor parkuru, çocuk survivor, survivor kiralama istanbul, survivor etkinliği, macera parkuru" />
-        <link rel="canonical" href="https://bestevent.com.tr/hizmetler/survivor-parkuru" />
-        
-        <meta property="og:title" content="Çocuklar İçin Survivor Parkuru | Best Event Istanbul" />
-        <meta property="og:description" content="15+ engel ile profesyonel survivor parkuru! Çocuklarınız macera dolu bir deneyim yaşasın." />
-        <meta property="og:type" content="service" />
-        <meta property="og:url" content="https://bestevent.com.tr/hizmetler/survivor-parkuru" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify(serviceSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
+      <Seo
+        title="Çocuklar İçin Survivor Parkuru | İstanbul En İyi Survivor Organizasyonu | Best Event"
+        description="İstanbul'da çocuklar için profesyonel survivor parkuru! 15+ engel, takım yarışmaları, ödüller. Doğum günü ve okul etkinlikleri için survivor kiralama."
+        keywords="survivor parkuru, çocuk survivor, survivor kiralama istanbul, survivor etkinliği, macera parkuru"
+        canonicalPath="/organizasyonlar/survivor-parkuru"
+        type="service"
+        schema={[serviceSchema, faqSchema]}
+      />
 
       {/* Hero Section */}
       <section className="relative min-h-screen bg-gradient-to-r from-green-600 to-blue-600 flex items-center overflow-hidden">
@@ -137,7 +124,7 @@ const SurvivorParkuru = () => {
                 className="bg-white text-green-600 px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all inline-flex items-center justify-center"
               >
                 <span className="mr-2">📞</span>
-                Hemen Ara: 0530 730 90 09
+                Hemen Ara: 05307309009
               </motion.a>
               
               <motion.a
@@ -473,7 +460,7 @@ const SurvivorParkuru = () => {
                 className="bg-white text-green-600 px-12 py-5 rounded-full font-bold text-xl shadow-2xl hover:shadow-3xl transition-all inline-flex items-center justify-center"
               >
                 <span className="mr-2">📞</span>
-                0530 730 90 09
+                05307309009
               </motion.a>
               
               <motion.a

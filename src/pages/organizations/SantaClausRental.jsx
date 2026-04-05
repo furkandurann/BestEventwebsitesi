@@ -102,7 +102,7 @@ const SantaClausRental = () => {
     <>
       <Seo 
         title="Istanbul Noel Baba Gösterisi | Noel Baba Organizasyonu Kiralama ve Etkinliği"
-        description="Istanbul'da noel baba gösterisi, organizasyonu ve kiralama. Noel baba etkinliği için profesyonel hizmet. ☎ 0530 730 90 09"
+        description="Istanbul'da noel baba gösterisi, organizasyonu ve kiralama. Noel baba etkinliği için profesyonel hizmet. ☎ 05307309009"
         keywords={[
           'istanbul noel baba gösterisi',
           'noel baba organizasyonu',

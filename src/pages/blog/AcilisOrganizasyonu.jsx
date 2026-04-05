@@ -1,506 +1,343 @@
+import { Link } from 'react-router-dom'
 import BlogDetail from '../../components/BlogDetail'
 
 const AcilisOrganizasyonu = () => {
+  const faqData = [
+    {
+      question: 'Açılış organizasyonu için hangi hizmetleri birlikte sunuyorsunuz?',
+      answer: 'Balon süsleme, ses sistemi, bistro masa kurulumu, hostes karşılama, flama bayrak süslemesi, kurdele kesimi, karşılama akışı ve etkinlik koordinasyonunu tek plan altında sunuyoruz.'
+    },
+    {
+      question: 'Balon süsleme ve flama bayrak çalışması marka renklerine göre hazırlanabilir mi?',
+      answer: 'Evet. Açılış organizasyonu tasarımını marka renklerinize, cephe genişliğine ve mekanın indoor veya outdoor kullanımına göre planlıyoruz. Görsel bütünlük için genellikle iki veya üç ana renk öneriyoruz.'
+    },
+    {
+      question: 'Ses sistemi sadece müzik için mi kurulur?',
+      answer: 'Hayır. Ses sistemi kurulumunu konuşmaların net duyulması, fon müziği, mikrofon kullanımı ve kurdele kesimi sırasında kontrollü bir akış sağlamak için planlıyoruz.'
+    },
+    {
+      question: 'Hostes karşılama ekibi açılışta ne yapar?',
+      answer: 'Hostes ekibi misafir yönlendirme, girişte karşılama, davetli akışı, broşür veya hediye dağıtımı ve kurdele kesimi öncesi alan düzeninin korunmasına destek verir.'
+    },
+    {
+      question: 'Açılış lansman organizasyonu kaç gün önceden planlanmalı?',
+      answer: 'Standart mağaza ve showroom açılışlarında ideal planlama süresi en az 7-10 gün, AVM ve plaza açılışlarında ise izin ve operasyon yönetimi nedeniyle 2-3 haftadır.'
+    }
+  ]
+
+  const serviceHighlights = [
+    {
+      title: 'Balon Süsleme',
+      description: 'Giriş kemeri, fotoğraf alanı, kapı çerçevesi ve mağaza önü kompozisyonlarını markaya uygun renk planıyla kuruyoruz.'
+    },
+    {
+      title: 'Ses Sistemi',
+      description: 'Mikrofon, hoparlör ve fon müziği akışını açılış konuşması, duyuru ve kurdele kesimi için hazır hale getiriyoruz.'
+    },
+    {
+      title: 'Bistro Kurulumu',
+      description: 'Misafir bekleme ve ikram alanı için şık bistro masa yerleşimi yapıyor, akışı kalabalığı yormayacak şekilde kurguluyoruz.'
+    },
+    {
+      title: 'Hostes Karşılama',
+      description: 'Girişte yönlendirme, davetli karşılama ve protokol düzenini deneyimli ekip ile yönetiyoruz.'
+    },
+    {
+      title: 'Flama Bayrak',
+      description: 'Cadde görünürlüğünü artıran flama bayrak ve cephe süslemeleriyle açılışı uzaktan fark edilir hale getiriyoruz.'
+    },
+    {
+      title: 'Kurdele Kesimi',
+      description: 'Konuşma, geri sayım, fotoğraf anı ve kesim sırasını aksatmadan yönetip marka için güçlü bir ilk kare oluşturuyoruz.'
+    }
+  ]
+
+  const relatedArticles = [
+    {
+      title: 'Kurumsal Lansman Organizasyonu Nasıl Planlanır?',
+      path: '/blog/kurumsal-lansman-organizasyonu-nasil-planlanir',
+      description: 'Lansman günü akışı, hedef kitle planlaması ve sahne düzeni hakkında detaylı rehber.'
+    },
+    {
+      title: 'Açılış Organizasyonu Maliyeti Nasıl Hesaplanır?',
+      path: '/blog/acilis-organizasyonu-maliyeti-hesaplama',
+      description: 'Balon, ses, ekip ve lojistik kalemlerini bütçe tarafında nasıl okumak gerektiğini anlatır.'
+    },
+    {
+      title: 'AVM Açılış Organizasyonunda Dikkat Edilmesi Gerekenler',
+      path: '/blog/avm-acilis-organizasyonu-dikkat-edilecekler',
+      description: 'AVM içi ses, güvenlik, kurulum saati ve ziyaretçi akışı için pratik kontrol listesi sunar.'
+    },
+    {
+      title: 'Kurumsal Etkinlik Bütçesi Nasıl Planlanır?',
+      path: '/blog/kurumsal-etkinlik-butcesi-planlama',
+      description: 'Kurumsal etkinliklerde dekorasyon, teknik ekipman ve ekip bütçesini dengeleme yöntemleri.'
+    }
+  ]
+
   const content = (
     <>
-      {/* İçindekiler */}
-      <div className="bg-gray-50 rounded-xl p-6 mb-8 border-l-4 border-red-600">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">İçindekiler</h2>
-        <ul className="space-y-2">
-          <li><a href="#nedir" className="text-red-600 hover:text-red-700 font-semibold">1. Açılış Organizasyonu Nedir? İstanbul Kiralama Hizmeti</a></li>
-          <li><a href="#balon-susleme" className="text-red-600 hover:text-red-700 font-semibold">2. Açılış Organizasyonu Balon Süsleme Kiralama: Fiyat ve Renk</a></li>
-          <li><a href="#ses-sistemi" className="text-red-600 hover:text-red-700 font-semibold">3. Açılış Organizasyonu Ses Sistemi Kiralama Hizmeti</a></li>
-          <li><a href="#susleme-detaylari" className="text-red-600 hover:text-red-700 font-semibold">4. Açılış Organizasyonu Süsleme Fiyatları</a></li>
-          <li><a href="#bando-gosterisi" className="text-red-600 hover:text-red-700 font-semibold">5. Açılış Organizasyonu Bando Gösterisi Kiralama</a></li>
-          <li><a href="#beylikduzu-hikaye" className="text-red-600 hover:text-red-700 font-semibold">6. İstanbul Açılış Organizasyonu: Beylikdüzü Acil Durum Planı</a></li>
-          <li><a href="#besiktas-ornek" className="text-red-600 hover:text-red-700 font-semibold">7. Beşiktaş Açılış Organizasyonu Kiralama: Kurumsal Etkinlik</a></li>
-          <li><a href="#sss" className="text-red-600 hover:text-red-700 font-semibold">8. Açılış Organizasyonu Kiralama Fiyat Sık Sorulan Sorular</a></li>
-        </ul>
-      </div>
-
-      {/* Giriş */}
-      <p className="text-lg text-gray-700 leading-relaxed mb-6">
-        İstanbul'da bir işletme açmak heyecan verici ama aynı zamanda stresli bir süreç. Mağazanızın, restoranınızın, ofisinizin veya showroom'unuzun açılışını unutulmaz kılmak için profesyonel bir <strong>açılış organizasyonu</strong> şart. Bu rehberde, açılış etkinliklerinde en çok merak edilen konuları, gerçek senaryolarla ve uzman ipuçlarıyla ele alacağız.
-      </p>
-
-      <div className="bg-red-50 border-l-4 border-red-600 p-6 rounded-lg mb-8">
-        <p className="text-gray-800 font-semibold">
-          💡 <strong>İpucu:</strong> Açılış organizasyonunda başarının sırrı detaylarda gizli. Balon süslemesinden ses sistemine, bando gösterisinden kurdeleli açılışa kadar her unsur, markanızın ilk izlenimini belirler.
+      <div className="bg-stone-50 rounded-2xl p-6 md:p-8 mb-8 border border-stone-200">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-red-700 mb-3">
+          Açılış ve Lansman Planı
         </p>
-      </div>
-
-      {/* Bölüm 1 */}
-      <h2 id="nedir" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        1. Açılış Organizasyonu Nedir? İstanbul Kiralama Hizmeti
-      </h2>
-      
-      <p className="text-gray-700 leading-relaxed mb-4">
-        Açılış organizasyonu, bir işletmenin ilk günü müşterilere, basına ve paydaşlara tanıtıldığı özel bir etkinliktir. Bu etkinlik, markanızın kimliğini yansıtır ve ilk izlenim oluşturur. İstanbul'da açılış organizasyonları genellikle şu unsurları içerir:
-      </p>
-
-      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6 ml-4">
-        <li><strong>Balon Süsleme:</strong> Giriş kemeri, backdrop, tavan süslemeleri</li>
-        <li><strong>Bando Gösterisi:</strong> Coşkulu müzik performansı</li>
-        <li><strong>Kurdeleli Açılış:</strong> Sembolik kesim töreni</li>
-        <li><strong>Ses Sistemi Kiralama:</strong> Konuşmalar ve müzik için</li>
-        <li><strong>İkram & Catering:</strong> Konuklara sunulan yiyecek-içecek</li>
-      </ul>
-
-      <div className="bg-gray-100 rounded-lg p-6 mb-8">
-        <h3 className="text-xl font-bold text-gray-900 mb-3">📍 İstanbul Açılış Organizasyonu Hizmeti Verilen Bölgeler:</h3>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Avrupa Yakası:</h4>
-            <ul className="text-gray-700 space-y-1 text-sm">
-              <li>• Beşiktaş (BJK Plaza çevresi)</li>
-              <li>• Şişli (AVM'ler)</li>
-              <li>• Beylikdüzü (yeni iş merkezleri)</li>
-              <li>• Bakırköy (ticaret merkezi)</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Anadolu Yakası:</h4>
-            <ul className="text-gray-700 space-y-1 text-sm">
-              <li>• Kadıköy (Moda, Bahariye)</li>
-              <li>• Ataşehir (plaza bölgesi)</li>
-              <li>• Maltepe (sahil)</li>
-              <li>• Pendik (sanayi & ticaret)</li>
-            </ul>
-          </div>
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Düzenli, sade ve dönüşüm odaklı bir açılış akışı
+        </h2>
+        <p className="text-gray-700 leading-relaxed mb-6">
+          Açılış günü yalnızca kalabalık toplamak için değil, markanızın ilk izlenimini net vermek için tasarlanmalı. Bu yüzden balon süsleme, ses sistemi, bistro yerleşimi, hostes karşılama, flama bayrak süslemesi ve kurdele kesimini tek bir akış içinde planlıyoruz.
+        </p>
+        <div className="grid md:grid-cols-2 gap-4 text-sm">
+          <a href="#kapsam" className="rounded-xl bg-white px-4 py-3 border border-stone-200 text-gray-700 hover:border-red-300 hover:text-red-700 transition-colors">1. Hizmet kapsamı</a>
+          <a href="#dekor" className="rounded-xl bg-white px-4 py-3 border border-stone-200 text-gray-700 hover:border-red-300 hover:text-red-700 transition-colors">2. Balon ve flama tasarımı</a>
+          <a href="#teknik" className="rounded-xl bg-white px-4 py-3 border border-stone-200 text-gray-700 hover:border-red-300 hover:text-red-700 transition-colors">3. Ses sistemi, bistro ve hostes</a>
+          <a href="#kurdele" className="rounded-xl bg-white px-4 py-3 border border-stone-200 text-gray-700 hover:border-red-300 hover:text-red-700 transition-colors">4. Kurdele kesimi senaryosu</a>
+          <a href="#paketler" className="rounded-xl bg-white px-4 py-3 border border-stone-200 text-gray-700 hover:border-red-300 hover:text-red-700 transition-colors">5. Mekana göre çözüm önerileri</a>
+          <a href="#ilgili-bloglar" className="rounded-xl bg-white px-4 py-3 border border-stone-200 text-gray-700 hover:border-red-300 hover:text-red-700 transition-colors">6. İlgili blog yazıları</a>
         </div>
       </div>
 
-      {/* Bölüm 2 */}
-      <h2 id="balon-susleme" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        2. Açılış Organizasyonu Balon Süsleme Kiralama: Fiyat ve Renk Seçenekleri
+      <p className="text-lg text-gray-700 leading-relaxed mb-8">
+        Mağaza açılışı, showroom lansmanı, plaza girişi ya da cadde üzeri yeni şube duyurusu fark etmeksizin iyi bir <strong>açılış organizasyonu</strong> ziyaretçiyi yormayan, net ve profesyonel bir akış ister. Best Event olarak İstanbul genelinde kurduğumuz açılışlarda görsel etkiyi operasyon disipliniyle birleştiriyoruz.
+      </p>
+
+      <div className="bg-red-50 border border-red-100 rounded-2xl p-6 mb-10">
+        <p className="text-gray-800 leading-relaxed">
+          En çok talep edilen kombinasyon: <strong>balon süsleme + ses sistemi + bistro + hostes karşılama + flama bayrak + kurdele kesimi</strong>. Bu set, hem cadde görünürlüğünü artırır hem de içeride düzenli bir karşılama alanı oluşturur.
+        </p>
+      </div>
+
+      <h2 id="kapsam" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
+        Açılış organizasyonu ve balon süsleme hizmetimiz neleri kapsar?
+      </h2>
+
+      <p className="text-gray-700 leading-relaxed mb-6">
+        Açılış günü birbiriyle uyumlu hareket etmesi gereken birçok kalem vardır. Tasarımı ayrı, teknik kurulumları ayrı ve misafir yönetimini ayrı ele almak yerine tüm süreci tek senaryoda planlamak daha doğru sonuç verir. Aşağıdaki yapı, 2026 kullanıcı beklentilerine uygun biçimde sade, anlaşılır ve hızlı taranabilir bir kurgu sunar.
+      </p>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        {serviceHighlights.map((item) => (
+          <div key={item.title} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p className="text-sm leading-6 text-gray-700">{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 id="dekor" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
+        Balon süsleme, flama bayrak ve giriş görünürlüğü
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-4">
-        Balon süsleme, açılış organizasyonunun en dikkat çekici unsurlarından biri. Peki kaç metre balon kemeri yapabilirsiniz ve kaç renk kullanmalısınız?
+        Açılış organizasyonunda en güçlü ilk temas cephede başlar. Balon kemeri, kapı çerçevesi, mağaza önü kolon süslemeleri ve flama bayraklar; yoldan geçen kişiye burada yeni bir hareket olduğunu saniyeler içinde anlatır. Ancak bu alan ne kadar dikkat çekici olursa olsun, karmaşık görünmemelidir.
       </p>
 
-      <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">🎈 Açılış Organizasyonu Balon Kemeri Kiralama Uzunlukları:</h3>
-
-      <div className="overflow-x-auto mb-6">
-        <table className="min-w-full bg-white border border-gray-300 rounded-lg">
-          <thead className="bg-red-600 text-white">
+      <div className="overflow-x-auto mb-8">
+        <table className="min-w-full bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <thead className="bg-gray-900 text-white">
             <tr>
-              <th className="py-3 px-4 text-left">Mekan Boyutu</th>
-              <th className="py-3 px-4 text-left">Önerilen Uzunluk</th>
-              <th className="py-3 px-4 text-left">Balon Sayısı</th>
-              <th className="py-3 px-4 text-left">Renk Sayısı</th>
+              <th className="py-3 px-4 text-left">Mekan Tipi</th>
+              <th className="py-3 px-4 text-left">Önerilen Balon Uygulaması</th>
+              <th className="py-3 px-4 text-left">Flama Bayrak</th>
+              <th className="py-3 px-4 text-left">Renk Planı</th>
             </tr>
           </thead>
           <tbody className="text-gray-700">
             <tr className="border-b">
-              <td className="py-3 px-4">Küçük Mağaza (30-50 m²)</td>
-              <td className="py-3 px-4">3-5 metre</td>
-              <td className="py-3 px-4">~100-150 adet</td>
-              <td className="py-3 px-4">2-3 renk</td>
+              <td className="py-3 px-4">Cadde mağazası</td>
+              <td className="py-3 px-4">Kapı kemeri + yan kolon</td>
+              <td className="py-3 px-4">3-6 adet</td>
+              <td className="py-3 px-4">2 ana renk + 1 vurgu</td>
             </tr>
             <tr className="border-b bg-gray-50">
-              <td className="py-3 px-4">Orta Mekan (50-150 m²)</td>
-              <td className="py-3 px-4">5-10 metre</td>
-              <td className="py-3 px-4">~200-400 adet</td>
-              <td className="py-3 px-4">3-4 renk</td>
+              <td className="py-3 px-4">Showroom veya ofis</td>
+              <td className="py-3 px-4">Minimal kemer + fotoğraf köşesi</td>
+              <td className="py-3 px-4">2-4 adet</td>
+              <td className="py-3 px-4">Kurumsal tonlar</td>
             </tr>
             <tr>
-              <td className="py-3 px-4">Büyük AVM Mağazası (150+ m²)</td>
-              <td className="py-3 px-4">10-20 metre</td>
-              <td className="py-3 px-4">~500-800 adet</td>
-              <td className="py-3 px-4">4-5 renk</td>
+              <td className="py-3 px-4">AVM / plaza girişi</td>
+              <td className="py-3 px-4">Geniş giriş kemeri + yönlendirme noktası</td>
+              <td className="py-3 px-4">6+ adet</td>
+              <td className="py-3 px-4">Marka renklerine göre kontrollü set</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🎨 Açılış Balon Süsleme Fiyatı: Kaç Renk Kullanılır?</h3>
-
-      <p className="text-gray-700 leading-relaxed mb-4">
-        Renk seçimi markanızın kimliğine bağlı:
-      </p>
-
-      <div className="grid md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-600">
-          <h4 className="font-bold text-gray-900 mb-3">✅ 2-3 Renk (Minimalist)</h4>
-          <p className="text-gray-700 text-sm mb-2">Premium markalara uygun. Örnek:</p>
-          <ul className="text-gray-700 text-sm space-y-1">
-            <li>• Siyah + Altın (lüks mağaza)</li>
-            <li>• Beyaz + Gümüş (modern ofis)</li>
-            <li>• Lacivert + Krem (kurumsal)</li>
-          </ul>
-        </div>
-
-        <div className="bg-green-50 rounded-lg p-6 border-l-4 border-green-600">
-          <h4 className="font-bold text-gray-900 mb-3">✅ 4-5 Renk (Canlı)</h4>
-          <p className="text-gray-700 text-sm mb-2">Çocuk mağazaları, restoranlar için. Örnek:</p>
-          <ul className="text-gray-700 text-sm space-y-1">
-            <li>• Kırmızı + Sarı + Mavi + Yeşil</li>
-            <li>• Pembe + Mor + Turuncu + Beyaz</li>
-            <li>• Gökkuşağı renkleri (çocuk)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="bg-yellow-50 border-l-4 border-yellow-600 p-6 rounded-lg mb-8">
-        <p className="text-gray-800">
-          ⚠️ <strong>Dikkat:</strong> Aşırı renkli (6+ renk) balon süsleme karmaşık görünür. Markanızın renk paletine uygun 2-4 renk seçin.
-        </p>
-      </div>
-
-      {/* Bölüm 3 */}
-      <h2 id="ses-sistemi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        3. Açılış Organizasyonu Ses Sistemi Kiralama Hizmeti
-      </h2>
-
-      <p className="text-gray-700 leading-relaxed mb-6">
-        <strong>Kesinlikle!</strong> Ses sistemi, açılış organizasyonunun en kritik unsurlarından biri. İşte neden:
-      </p>
-
-      <div className="space-y-4 mb-8">
-        <div className="flex gap-4 items-start">
-          <div className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">1</div>
-          <div>
-            <h4 className="font-bold text-gray-900 mb-2">Konuşmaların Duyulması</h4>
-            <p className="text-gray-700 text-sm">Açılış konuşması, teşekkür, marka hikayesi... Herkesin duyması gerekir.</p>
-          </div>
-        </div>
-
-        <div className="flex gap-4 items-start">
-          <div className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">2</div>
-          <div>
-            <h4 className="font-bold text-gray-900 mb-2">Bando Gösterisi Desteği</h4>
-            <p className="text-gray-700 text-sm">Bando müziği için ses sistemi şart. Davul, trompet sesleri amplifikasyon gerektirir.</p>
-          </div>
-        </div>
-
-        <div className="flex gap-4 items-start">
-          <div className="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold">3</div>
-          <div>
-            <h4 className="font-bold text-gray-900 mb-2">Atmosfer Müziği</h4>
-            <p className="text-gray-700 text-sm">Arka planda çalan müzik, etkinliğe enerji katar.</p>
-          </div>
-        </div>
-      </div>
-
-      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🔊 Açılış Organizasyonu İçin Ses Sistemi Kiralama Fiyatları</h3>
-
-      <div className="space-y-4 mb-8">
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span className="text-2xl">🎤</span> Küçük Açılış (30-50 kişi)
-          </h4>
-          <p className="text-gray-700 text-sm mb-2"><strong>Sistem:</strong> Portatif hoparlör (örn: JBL PartyBox 310)</p>
-          <p className="text-gray-700 text-sm"><strong>Özellikler:</strong> Kablosuz mikrofon, Bluetooth bağlantı</p>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span className="text-2xl">🎵</span> Orta Açılış (50-150 kişi)
-          </h4>
-          <p className="text-gray-700 text-sm mb-2"><strong>Sistem:</strong> Profesyonel hoparlör seti (2x aktif hoparlör + mikser)</p>
-          <p className="text-gray-700 text-sm"><strong>Özellikler:</strong> 2 kablosuz mikrofon, yedek mikrofon</p>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            <span className="text-2xl">🎺</span> Büyük Açılış (150+ kişi + Bando)
-          </h4>
-          <p className="text-gray-700 text-sm mb-2"><strong>Sistem:</strong> Line array hoparlörler + sahne monitörleri + karıştırıcı</p>
-          <p className="text-gray-700 text-sm"><strong>Özellikler:</strong> 4+ mikrofon, bando enstrüman girişleri</p>
-        </div>
-      </div>
-
-      {/* Bölüm 4 */}
-      <h2 id="susleme-detaylari" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        4. Açılış Organizasyonu Süsleme Fiyatları: Detaylar ve Maliyet
-      </h2>
-
-      <p className="text-gray-700 leading-relaxed mb-6">
-        <strong>Evet, kesinlikle!</strong> Süsleme detayları fiyatı doğrudan etkiler. İşte fiyat farkı yaratan unsurlar:
-      </p>
-
-      <div className="space-y-6 mb-8">
-        <div className="bg-gray-50 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <span className="text-2xl">🎈</span> Balon Türü
-          </h4>
+      <div className="grid md:grid-cols-2 gap-6 mb-10">
+        <div className="rounded-2xl bg-emerald-50 border border-emerald-100 p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Doğru yaklaşım</h3>
           <ul className="space-y-2 text-gray-700">
-            <li className="flex justify-between items-center border-b pb-2">
-              <span>Standart latex balon</span>
-              <span className="font-semibold">Ekonomik</span>
-            </li>
-            <li className="flex justify-between items-center border-b pb-2">
-              <span>Krom (metalik) balon</span>
-              <span className="font-semibold">+30%</span>
-            </li>
-            <li className="flex justify-between items-center">
-              <span>Folyo (harf/rakam) balon</span>
-              <span className="font-semibold">+50%</span>
-            </li>
+            <li>2 veya 3 ana renkle net bir cephe tasarımı kurmak</li>
+            <li>Balon süslemeyi giriş fotoğraflarını güçlendirecek şekilde yerleştirmek</li>
+            <li>Flama bayrakları araç ve yaya akışına göre görünür aksa koymak</li>
           </ul>
         </div>
-
-        <div className="bg-gray-50 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-            <span className="text-2xl">🎀</span> Ek Süsleme Unsurları
-          </h4>
+        <div className="rounded-2xl bg-amber-50 border border-amber-100 p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Kaçınılması gerekenler</h3>
           <ul className="space-y-2 text-gray-700">
-            <li className="flex items-start gap-2">
-              <span className="text-red-600 font-bold">✓</span>
-              <span><strong>Backdrop (fotoğraf duvarı):</strong> +40-60% fiyat artışı</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-red-600 font-bold">✓</span>
-              <span><strong>LED ışıklandırma:</strong> +25-35%</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-red-600 font-bold">✓</span>
-              <span><strong>Özel yapım kemer:</strong> +30-50%</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-red-600 font-bold">✓</span>
-              <span><strong>Çiçek aranjmanları:</strong> +20-40%</span>
-            </li>
+            <li>6 veya daha fazla renk kullanıp cepheyi yorucu hale getirmek</li>
+            <li>Kapı girişini daraltan aşırı yoğun balon kurulumu yapmak</li>
+            <li>Flama bayrakları fotoğraf alanını kapatacak düzensizlikte yerleştirmek</li>
           </ul>
         </div>
       </div>
 
-      <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-lg mb-8">
-        <h4 className="font-bold text-gray-900 mb-3">💰 Bütçe Optimizasyonu İpuçları:</h4>
-        <ul className="space-y-2 text-gray-700 text-sm">
-          <li>• <strong>Öncelik belirleyin:</strong> Giriş kemeri + kurdeleli açılış mutlaka olsun, diğerleri opsiyonel.</li>
-          <li>• <strong>Renk sınırlayın:</strong> 2-3 renk hem şık hem ekonomik.</li>
-          <li>• <strong>Paket alın:</strong> Balon + bando + ses sistemi paketi %15-20 daha uygun.</li>
-        </ul>
-      </div>
-
-      {/* Bölüm 5 */}
-      <h2 id="bando-gosterisi" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        5. Açılış Organizasyonu Bando Gösterisi Kiralama ve Kurdeleli Açılış
+      <h2 id="teknik" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
+        Ses sistemi, bistro kurulumu ve hostes karşılama
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
-        Bando gösterisi, açılış organizasyonuna enerji katan en coşkulu unsur. Trompet, davul ve diğer enstrümanlarla çalınan marşlar, dikkat çeker ve kalabalık toplar.
+        Açılış organizasyonunda dekor tek başına yeterli değildir. Sesin net duyulması, misafirlerin rahatça bekleyebilmesi ve girişte doğru yönlendirme yapılması deneyimin kalitesini doğrudan etkiler. Bu nedenle teknik ve operasyon tarafını dekor kadar ciddiye alıyoruz.
       </p>
 
-      <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-4">🎺 Açılış Bando Kiralama Organizasyonu Nasıl Planlanır?</h3>
-
-      <div className="space-y-4 mb-8">
-        <div className="bg-white border-l-4 border-red-600 p-6 rounded-lg">
-          <h4 className="font-bold text-gray-900 mb-2">1️⃣ Bando Tipi Seçin</h4>
-          <ul className="text-gray-700 space-y-1 text-sm">
-            <li>• <strong>Mini bando (3-5 kişi):</strong> Küçük açılışlar için ideal</li>
-            <li>• <strong>Standart bando (8-12 kişi):</strong> Orta ölçekli etkinlikler</li>
-            <li>• <strong>Tam bando (15+ kişi):</strong> Büyük AVM, plaza açılışları</li>
-          </ul>
+      <div className="grid md:grid-cols-3 gap-5 mb-10">
+        <div className="rounded-2xl border border-gray-200 p-6 bg-white">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Ses Sistemi</h3>
+          <p className="text-sm text-gray-700 leading-6">
+            Mikrofonlu konuşmalar, fon müziği ve kurdele kesimi anonsları için mekan büyüklüğüne uygun hoparlör ve mikser kurgusu oluşturuyoruz.
+          </p>
         </div>
-
-        <div className="bg-white border-l-4 border-green-600 p-6 rounded-lg">
-          <h4 className="font-bold text-gray-900 mb-2">2️⃣ Kurdeleli Açılış Saati Belirleyin</h4>
-          <p className="text-gray-700 text-sm mb-2">Bando gösterisi, kurdeleli açılıştan 10-15 dakika önce başlamalı:</p>
-          <ul className="text-gray-700 space-y-1 text-sm">
-            <li>• <strong>14:00-14:15:</strong> Bando gösterisi (dikkat çeker)</li>
-            <li>• <strong>14:15-14:20:</strong> Açılış konuşması</li>
-            <li>• <strong>14:20:</strong> Kurdeleli açılış (sembolik kesim)</li>
-            <li>• <strong>14:25-15:00:</strong> İkram & gezinti</li>
-          </ul>
+        <div className="rounded-2xl border border-gray-200 p-6 bg-white">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Bistro</h3>
+          <p className="text-sm text-gray-700 leading-6">
+            Davetlilerin ayakta rahatça sohbet edebileceği bistro yerleşimi ile ikram alanını sıkışık değil akışkan hale getiriyoruz.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-gray-200 p-6 bg-white">
+          <h3 className="text-lg font-bold text-gray-900 mb-2">Hostes</h3>
+          <p className="text-sm text-gray-700 leading-6">
+            Girişte karşılama, yönlendirme, promosyon dağıtımı ve protokol akışını hostes ekibi ile destekliyoruz.
+          </p>
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-6 mb-8 border border-red-200">
-        <h4 className="font-bold text-gray-900 mb-3 text-xl">🎊 Kurdeleli Açılış İpuçları:</h4>
-        <ul className="space-y-2 text-gray-700">
-          <li className="flex items-start gap-2">
-            <span className="text-2xl">🎀</span>
-            <div>
-              <strong>Kurdele rengi markanıza uygun olsun:</strong> Kırmızı (klasik), altın (premium), marka rengi (özel)
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-2xl">✂️</span>
-            <div>
-              <strong>Makas seçimi:</strong> Büyük, simgesel makas kullanın (fotoğraflarda iyi durur)
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <span className="text-2xl">📸</span>
-            <div>
-              <strong>Fotoğrafçı hazır olsun:</strong> Kesim anı, en önemli fotoğraf
-            </div>
-          </li>
-        </ul>
+      <div className="rounded-2xl bg-gray-50 border border-gray-200 p-6 mb-10">
+        <h3 className="text-xl font-bold text-gray-900 mb-4">Örnek açılış akışı</h3>
+        <ol className="space-y-3 text-gray-700">
+          <li><strong>Kurulum:</strong> Balon süsleme, flama bayrak, ses sistemi ve bistro alanı etkinlikten önce tamamlanır.</li>
+          <li><strong>Karşılama:</strong> Hostes ekibi girişte misafiri karşılar, yönlendirir ve akışı toplar.</li>
+          <li><strong>Bekleme alanı:</strong> Fon müziği eşliğinde bistro çevresinde kontrollü bir toplanma sağlanır.</li>
+          <li><strong>Anons:</strong> Mikrofonla kısa konuşma ve marka mesajı verilir.</li>
+          <li><strong>Kurdele kesimi:</strong> Fotoğraf ekibi hazırken kesim anı yönetilir.</li>
+          <li><strong>Serbest dolaşım:</strong> Misafirler mağaza veya etkinlik alanına rahatça dağılır.</li>
+        </ol>
       </div>
 
-      {/* Bölüm 6 */}
-      <h2 id="beylikduzu-hikaye" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        6. İstanbul Açılış Organizasyonu: Beylikdüzü Acil Durum Planı
+      <h2 id="kurdele" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
+        Kurdele kesimi ve lansman anı nasıl güçlü görünür?
       </h2>
 
       <p className="text-gray-700 leading-relaxed mb-6">
-        Gerçek bir hikaye: Beylikdüzü'nde büyük bir mağaza açılışına giderken ekip aracımız yolda arıza yaptı. Açılış saatine 1 saat vardı. İşte o gün öğrendiklerimiz:
+        Kurdele kesimi açılış organizasyonunun en çok fotoğraflanan anıdır. Bu yüzden birkaç saniyelik bu bölümü tesadüfe bırakmıyoruz. Kurdele yüksekliği, konuşma süresi, misafir dizilimi ve arka plan görseli önceden belirlenirse sahne çok daha profesyonel görünür.
       </p>
 
-      <div className="bg-yellow-50 border-l-4 border-yellow-600 p-6 rounded-lg mb-6">
-        <h4 className="font-bold text-gray-900 mb-3">⚠️ Acil Durum Senaryosu:</h4>
-        <p className="text-gray-700 text-sm mb-4">
-          <strong>Sorun:</strong> E-5'te trafik + araç arızası<br />
-          <strong>Çözüm:</strong> Yedek ekip devreye girdi, malzemeler 2. araçla taşındı<br />
-          <strong>Sonuç:</strong> Açılış sadece 20 dakika gecikti, müşteri memnun kaldı
+      <div className="grid md:grid-cols-2 gap-6 mb-10">
+        <div className="rounded-2xl bg-white border border-gray-200 p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Fotoğraf için doğru set</h3>
+          <ul className="space-y-2 text-gray-700">
+            <li>Kurdele arkasında boş değil düzenli bir balon arka plan bırakmak</li>
+            <li>Kesim alanını hostes yönlendirmesiyle gereksiz kalabalıktan arındırmak</li>
+            <li>Makas, kurdele ve marka görünürlüğünü aynı kareye almak</li>
+          </ul>
+        </div>
+        <div className="rounded-2xl bg-white border border-gray-200 p-6">
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Operasyon için doğru set</h3>
+          <ul className="space-y-2 text-gray-700">
+            <li>Anonsu 1-2 dakikayı geçirmemek</li>
+            <li>Ses sisteminde yedek mikrofon bulundurmak</li>
+            <li>Kesim sonrasında misafiri direkt girişe veya ikram alanına yönlendirmek</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="paketler" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
+        Mekana göre açılış lansman organizasyonu önerileri
+      </h2>
+
+      <div className="grid lg:grid-cols-3 gap-5 mb-10">
+        <div className="rounded-2xl bg-white border border-gray-200 p-6">
+          <p className="text-xs uppercase tracking-[0.16em] text-red-700 font-semibold mb-2">Cadde Mağazası</p>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Hızlı ve görünür kurulum</h3>
+          <p className="text-gray-700 text-sm leading-6">
+            Balon kemeri, flama bayrak, tek mikrofonlu ses sistemi ve iki bistro masa ile düşük alanda güçlü bir ilk izlenim kurulabilir.
+          </p>
+        </div>
+        <div className="rounded-2xl bg-white border border-gray-200 p-6">
+          <p className="text-xs uppercase tracking-[0.16em] text-red-700 font-semibold mb-2">Showroom / Ofis</p>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Daha kurumsal ve temiz görünüm</h3>
+          <p className="text-gray-700 text-sm leading-6">
+            Minimal balon tasarımı, kontrollü bistro alanı, hostes karşılama ve kısa konuşma akışı ile yorucu olmayan prestijli bir atmosfer oluşturulur.
+          </p>
+        </div>
+        <div className="rounded-2xl bg-white border border-gray-200 p-6">
+          <p className="text-xs uppercase tracking-[0.16em] text-red-700 font-semibold mb-2">AVM / Plaza</p>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">Kalabalık yönetimi odaklı çözüm</h3>
+          <p className="text-gray-700 text-sm leading-6">
+            Geniş giriş balonları, yönlendirme hostesleri, güçlü ses sistemi ve net kurdele kesimi planı ile yüksek sirkülasyon kontrollü hale getirilir.
+          </p>
+        </div>
+      </div>
+
+      <div className="rounded-2xl bg-gradient-to-r from-gray-900 to-red-900 text-white p-8 mb-12">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+          Açılış organizasyonunda amacımız gösteriş değil, düzenli etki
+        </h2>
+        <p className="leading-relaxed text-white/90 mb-6">
+          Kullanıcıyı yormayan bir akış, doğru renk kullanımı ve düzenli operasyon markanızın ilk gün performansını güçlendirir. Açılış günü yalnızca süsleme değil, aynı zamanda yönlendirme ve tempo yönetimidir.
         </p>
-      </div>
-
-      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🚨 Açılış Organizasyonu Hizmetinde Acil Durum Planı:</h3>
-
-      <div className="space-y-4 mb-8">
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-3">1. Yedek Ekip & Araç</h4>
-          <p className="text-gray-700 text-sm">
-            Profesyonel organizasyon firmalarında her zaman yedek ekip ve araç hazır bekler. Bizde de öyle: Ana ekip + yedek ekip sistemi.
-          </p>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-3">2. Erken Kurulum</h4>
-          <p className="text-gray-700 text-sm">
-            Açılıştan 3-4 saat önce kurulumu tamamlayın. Böylece küçük aksaklıklar için zaman kalır.
-          </p>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-3">3. Trafik Hesaplama (İstanbul Özel)</h4>
-          <p className="text-gray-700 text-sm mb-2"><strong>Beylikdüzü:</strong> Hafta içi sabah/akşam E-5 trafik yoğun → 1 saat ekstra süre</p>
-          <p className="text-gray-700 text-sm mb-2"><strong>Kadıköy:</strong> Maç günleri (Fenerbahçe) trafik çok yoğun → 2 saat ekstra</p>
-          <p className="text-gray-700 text-sm"><strong>Beşiktaş:</strong> Maç günleri (BJK) erişim zor → Alternatif yol planı</p>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a
+            href="tel:+905307309009"
+            className="bg-white text-red-700 font-bold text-base px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl text-center"
+          >
+            Hemen Ara
+          </a>
+          <a
+            href="https://wa.me/905307309009?text=Merhaba, acilis organizasyonu ve balon susleme hizmeti icin bilgi almak istiyorum"
+            className="bg-green-600 hover:bg-green-700 text-white font-bold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-2xl text-center"
+          >
+            WhatsApp'tan Yaz
+          </a>
         </div>
       </div>
 
-      {/* Bölüm 7 */}
-      <h2 id="besiktas-ornek" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        7. Beşiktaş Açılış Organizasyonu Kiralama: BJK Plaza Kurumsal Etkinlik
-      </h2>
-
-      <p className="text-gray-700 leading-relaxed mb-6">
-        Beşiktaş, İstanbul'un en prestijli iş bölgelerinden biri. BJK Plaza çevresinde bir ofis açılışı için gerçek bir organizasyon örneği:
-      </p>
-
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-8 border border-blue-200">
-        <h4 className="font-bold text-gray-900 mb-4 text-xl">📍 Proje: Kurumsal Hukuk Ofisi Açılışı - Beşiktaş</h4>
-        
-        <div className="grid md:grid-cols-2 gap-6 mb-4">
-          <div>
-            <h5 className="font-semibold text-gray-800 mb-2">📋 Talep:</h5>
-            <ul className="text-gray-700 text-sm space-y-1">
-              <li>• Kurumsal, ciddi atmosfer</li>
-              <li>• 80 kişi (avukatlar, müşteriler)</li>
-              <li>• Açılış konuşması + ikram</li>
-            </ul>
-          </div>
-          <div>
-            <h5 className="font-semibold text-gray-800 mb-2">✅ Çözümümüz:</h5>
-            <ul className="text-gray-700 text-sm space-y-1">
-              <li>• Lacivert + Altın balon süsleme</li>
-              <li>• Mini bando (5 kişi, klasik marşlar)</li>
-              <li>• Profesyonel ses sistemi</li>
-              <li>• Kurdeleli açılış (altın kurdele)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-lg p-4">
-          <h5 className="font-semibold text-gray-800 mb-2">💬 Müşteri Geri Bildirimi:</h5>
-          <p className="text-gray-700 text-sm italic">
-            "Beşiktaş gibi prestijli bir bölgede, profesyonel bir açılış yaptık. Ekip çok disiplinli ve zamanında çalıştı. Balon süsleme minimalist ama şıktı, bando gösterisi tam istediğimiz gibiydi. Müşterilerimiz çok etkilendi."
-          </p>
-          <p className="text-gray-600 text-xs mt-2">— Av. Mehmet K., Hukuk Ofisi Sahibi</p>
-        </div>
-      </div>
-
-      <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🏢 Beşiktaş Açılış Organizasyonu Kiralama İpuçları:</h3>
-
-      <ul className="space-y-3 text-gray-700 mb-8">
-        <li className="flex items-start gap-3">
-          <span className="text-red-600 text-xl">•</span>
-          <div>
-            <strong>Park sorunu:</strong> Ekip aracı için önceden park yeri ayırtın (valet park veya özel alan)
-          </div>
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="text-red-600 text-xl">•</span>
-          <div>
-            <strong>Maç günleri:</strong> Beşiktaş maçları (Vodafone Park) trafik çok yoğun → Maç saatlerini kontrol edin
-          </div>
-        </li>
-        <li className="flex items-start gap-3">
-          <span className="text-red-600 text-xl">•</span>
-          <div>
-            <strong>Gürültü izni:</strong> Açık alanda bando gösterisi için izin gerekebilir
-          </div>
-        </li>
-      </ul>
-
-      {/* Bölüm 8 */}
       <h2 id="sss" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-        8. Açılış Organizasyonu Kiralama Fiyat Sık Sorulan Sorular
+        Sık sorulan sorular
       </h2>
 
       <div className="space-y-4 mb-12">
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-2">❓ Açılış organizasyonu kaç gün önceden planlanmalı?</h4>
-          <p className="text-gray-700 text-sm">
-            İdeal süre 2-4 hafta. Ancak acil durumlar için 1 hafta önceden de organize edebiliriz. Bando ve ses sistemi için erken rezervasyon önemli.
-          </p>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-2">❓ Balon süsleme ne kadar süre dayanır?</h4>
-          <p className="text-gray-700 text-sm">
-            Helyumlu balonlar 8-12 saat, hava dolu balonlar (kemer) 2-3 gün dayanır. Açılış günü için helyumlu, sonraki günler için hava dolu önerilir.
-          </p>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-2">❓ Ses sistemi sadece konuşma için mi yeterli?</h4>
-          <p className="text-gray-700 text-sm">
-            Hayır. Ses sistemi hem konuşmalar hem bando gösterisi hem de arka plan müziği için kullanılır. Çok amaçlı bir sistem kiralayın.
-          </p>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-2">❓ Açılışta ikram yapmalı mıyım?</h4>
-          <p className="text-gray-700 text-sm">
-            Evet, tavsiye edilir. Basit ikramlar: çay, kahve, kurabiye yeterli. Büyük açılışlarda catering (sandviç, tatlı) eklenebilir.
-          </p>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <h4 className="font-bold text-gray-900 mb-2">❓ Kurumsal etkinlikte bando gösterisi uygun mu?</h4>
-          <p className="text-gray-700 text-sm">
-            Evet! Ancak türünü iyi seçin: Mini bando (3-5 kişi) + klasik marşlar kurumsal etkinlikler için idealdir. Aşırı coşkulu davul gösterileri yerine, zarif bir performans tercih edin.
-          </p>
-        </div>
+        {faqData.map((item) => (
+          <div key={item.question} className="rounded-2xl border border-gray-200 bg-white p-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">{item.question}</h3>
+            <p className="text-gray-700 leading-7">{item.answer}</p>
+          </div>
+        ))}
       </div>
 
-      {/* Sonuç */}
-      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg p-8 mb-8">
-        <h3 className="text-2xl font-bold mb-4">🎉 İstanbul Açılış Organizasyonu Kiralama Hizmeti!</h3>
-        <p className="mb-6 leading-relaxed">
-          İstanbul'da unutulmaz bir açılış etkinliği için profesyonel destek alın. Balon süslemesinden bando gösterisine, ses sisteminden kurdeleli açılışa kadar tüm detayları biz halledelim.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <a 
-            href="tel:+905307309009"
-            className="bg-white text-red-600 font-bold text-base px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl text-center"
+      <h2 id="ilgili-bloglar" className="text-3xl font-bold text-gray-900 mt-12 mb-6">
+        İlgili blog yazıları
+      </h2>
+
+      <p className="text-gray-700 leading-relaxed mb-6">
+        Açılış ve lansman planlamasını daha derin okumak isterseniz aşağıdaki içerikler bu sayfayı tamamlar. Özellikle bütçe, AVM açılışı ve kurumsal lansman tarafında ek bağlam sağlar.
+      </p>
+
+      <div className="grid md:grid-cols-2 gap-4">
+        {relatedArticles.map((article) => (
+          <Link
+            key={article.path}
+            to={article.path}
+            className="group rounded-2xl border border-gray-200 bg-white p-6 hover:border-red-300 hover:shadow-md transition-all duration-200"
           >
-            📞 Hemen Ara
-          </a>
-          <a 
-            href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"
-            className="bg-green-600 hover:bg-green-700 text-white font-bold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-2xl text-center"
-          >
-            💬 WhatsApp
-          </a>
-        </div>
+            <h3 className="text-lg font-bold text-gray-900 group-hover:text-red-700 mb-2">
+              {article.title}
+            </h3>
+            <p className="text-sm text-gray-700 leading-6 mb-3">{article.description}</p>
+            <span className="text-sm font-semibold text-red-700">Yazıyı Oku</span>
+          </Link>
+        ))}
       </div>
     </>
   )
@@ -508,8 +345,9 @@ const AcilisOrganizasyonu = () => {
   return (
     <BlogDetail
       slug="acilis-organizasyonu-istanbul"
-      relatedServicePath="/organizasyonlar/cocuk-etkinlikleri"
-      relatedServiceName="Çocuk Etkinlikleri"
+      relatedServicePath="/organizasyonlar/acilis-organizasyonu"
+      relatedServiceName="Açılış Organizasyonu"
+      faqData={faqData}
     >
       {content}
     </BlogDetail>

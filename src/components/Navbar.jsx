@@ -11,6 +11,7 @@ const services = [
   { name: 'Konsept Doğum Günü', path: '/organizasyonlar/konsept-dogum-gunu' },
   { name: 'Pamuk Şeker Arabası', path: '/organizasyonlar/pamuk-seker' },
   { name: 'Kurumsal Etkinlik', path: '/organizasyonlar/muzik-etkinlikleri' },
+  { name: 'Açılış Organizasyonu', path: '/organizasyonlar/acilis-organizasyonu' },
   { name: 'Şirket İçi Organizasyon', path: '/organizasyonlar/muzik-etkinlikleri' },
   { name: 'Dans Etkinlikleri', path: '/organizasyonlar/dans-etkinlikleri' },
   { name: 'Müzik Etkinlikleri', path: '/organizasyonlar/muzik-etkinlikleri' },
@@ -47,7 +48,15 @@ const Navbar = memo(() => {
       <div className="layout-container relative">
         <div className="flex justify-start items-center gap-8 lg:gap-12">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-3">
+            <img
+              src="/favicon-192.png"
+              alt="Best Event simge logo"
+              className="w-9 h-9 md:w-10 md:h-10 object-contain rounded-full shadow-[0_0_18px_rgba(255,184,0,0.22)]"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
             <div className="logo-lockup font-display hover:scale-105 transition-transform">
               <span
                 className={`${scrolled ? 'text-gradient' : 'text-white drop-shadow-lg'} logo-glow`}
@@ -134,6 +143,17 @@ const Navbar = memo(() => {
             </Link>
 
             <Link
+              to="/vaka-analizi"
+              className={`nav-link text-sm md:text-base ${
+                scrolled
+                  ? 'text-dark hover:text-primary'
+                  : 'text-white hover:text-accent'
+              }`}
+            >
+              Referanslar
+            </Link>
+
+            <Link
               to="/hakkimizda"
               className={`nav-link text-sm md:text-base ${
                 scrolled
@@ -142,6 +162,17 @@ const Navbar = memo(() => {
               }`}
             >
               Hakkımızda
+            </Link>
+
+            <Link
+              to="/is-ilanlari"
+              className={`nav-link text-sm md:text-base ${
+                scrolled
+                  ? 'text-dark hover:text-primary'
+                  : 'text-white hover:text-accent'
+              }`}
+            >
+              İş İlanları
             </Link>
 
             <Link
@@ -224,10 +255,22 @@ const Navbar = memo(() => {
                   Blog
                 </Link>
                 <Link
+                  to="/vaka-analizi"
+                  className="block px-4 py-2.5 text-gray-800 font-semibold hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 rounded-md transition-all duration-200"
+                >
+                  Referanslar
+                </Link>
+                <Link
                   to="/hakkimizda"
                   className="block px-4 py-2.5 text-gray-800 font-semibold hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 rounded-md transition-all duration-200"
                 >
                   Hakkımızda
+                </Link>
+                <Link
+                  to="/is-ilanlari"
+                  className="block px-4 py-2.5 text-gray-800 font-semibold hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 rounded-md transition-all duration-200"
+                >
+                  İş İlanları
                 </Link>
                 <Link
                   to="/iletisim"

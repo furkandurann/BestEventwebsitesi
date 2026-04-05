@@ -1,15 +1,21 @@
-import { useState, useEffect } from 'react'
+import { Suspense, lazy, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
-import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import { createServiceSchema, createFAQSchema, createImageObjectSchema } from '../../utils/schemaHelpers'
 import AdHero from '../../components/AdHero'
-import MagicShowHeroSlider from '../../components/MagicShowHeroSlider'
-import HorizontalPhotoSlider from '../../components/HorizontalPhotoSlider'
-import RelatedServices from '../../components/RelatedServices'
-import GoogleReviews from '../../components/GoogleReviews'
+import LocationHeroShowcase from '../../components/LocationHeroShowcase'
+import DeferredContentAccordion from '../../components/DeferredContentAccordion'
 import { getReviewsByTags } from '../../data/googleReviews'
-import DistrictLinksGrid from '../../components/DistrictLinksGrid'
-import RelatedBlogPosts from '../../components/RelatedBlogPosts'
+import { generateSrcSet } from '../../utils/responsiveImage'
+import { trackFormSubmit } from '../../utils/tracking'
+import LazySection from '../../components/LazySection'
+import QuickServiceQuote from '../../components/QuickServiceQuote'
+
+const RelatedServices = lazy(() => import('../../components/RelatedServices'))
+const TrustSection = lazy(() => import('../../components/TrustSection'))
+const GoogleReviews = lazy(() => import('../../components/GoogleReviews'))
+const DistrictLinksGrid = lazy(() => import('../../components/DistrictLinksGrid'))
+const RelatedBlogPosts = lazy(() => import('../../components/RelatedBlogPosts'))
 
 const MagicShow = () => {
   // WhatsApp Form State
@@ -17,6 +23,7 @@ const MagicShow = () => {
     name: '',
     phone: '',
     address: '',
+    guestCount: '',
     date: '',
     time: '',
     notes: ''
@@ -30,23 +37,14 @@ const MagicShow = () => {
   }
 
   const sendWhatsAppMessage = () => {
-    // Google Ads Conversion Tracking
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-162-567-1131/magic-show-whatsapp',
-        'value': 1.0,
-        'currency': 'TRY',
-        'event_callback': () => {
-          console.log('Magic Show WhatsApp conversion tracked')
-        }
-      })
-    }
+    trackFormSubmit('Magic Show WhatsApp Form', 'magic-show')
 
     const message = `🎭 *Sihirbaz Gösterisi Talebi*
 
 📝 *Ad Soyad:* ${formData.name || 'Belirtilmedi'}
 📞 *Telefon:* ${formData.phone || 'Belirtilmedi'}
 📍 *Adres:* ${formData.address || 'Belirtilmedi'}
+👥 *Kişi Sayısı:* ${formData.guestCount || 'Belirtilmedi'}
 📅 *Tarih:* ${formData.date || 'Belirtilmedi'}
 🕐 *Saat:* ${formData.time || 'Belirtilmedi'}
 📋 *Notlar:* ${formData.notes || 'Belirtilmedi'}`
@@ -55,99 +53,47 @@ const MagicShow = () => {
     window.open(`https://wa.me/905307309009?text=${encodedMessage}`, '_blank')
   }
 
-  // Product Showcase Images (Apple-style)
-  const showcaseImages = [
-    { src: '/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp', alt: 'Sihirbaz gösterisi organizasyonu' },
-    { src: '/content/images/sihirbaz/sihirbazhero.webp', alt: 'Sihirbaz gösterisi istanbul' },
-    { src: '/content/images/ahunundogumgunu/inanılmazsihirbazlıkgosterileri.webp', alt: 'Istanbul sihirbaz kiralama' },
-    { src: '/content/images/ahunundogumgunu/canlıguvercinileilktemas.webp', alt: 'Sihirbazlık etkinliği' },
-    { src: '/content/images/ahunundogumgunu/ilktemas.webp', alt: 'Istanbul sihirbaz gösterisi' }
-  ]
-
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
-  const [isDragging, setIsDragging] = useState(false)
-  const [dragStart, setDragStart] = useState(0)
-  const [dragOffset, setDragOffset] = useState(0)
-
-  // Auto-slide functionality with play/pause
-  useEffect(() => {
-    if (!isPlaying || isDragging) return
-    
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % showcaseImages.length)
-    }, 5000)
-
-    return () => clearInterval(timer)
-  }, [showcaseImages.length, isPlaying, isDragging])
-
-  // Enhanced drag handlers for mouse and touch
-  const handleDragStart = (e) => {
-    // Only prevent default for touch, not mouse
-    if (e.type.includes('touch')) {
-      e.preventDefault()
+  const heroShowcaseSlides = [
+    {
+      src: '/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp',
+      alt: 'Kart numaraları ile yakın plan sihirbaz gösterisi İstanbul',
+      tag: 'Kart Numaraları',
+      title: 'Yakın plan kart numaraları ve şaşkınlık anları',
+      description: 'Kart numaraları, çocukların sihri göz hizasında yaşadığı bölüm olur; sahne uzakta kalmaz, herkes kendini numaranın içindeymiş gibi hisseder.',
+      href: '/hizmet-detay/kart-numaralari-ve-yakin-plan-sihir'
+    },
+    {
+      src: '/content/images/sihirbaz/sihirbazhero.webp',
+      alt: 'Sahne illüzyonları ile sihirbaz kiralama İstanbul',
+      tag: 'İllüzyon',
+      title: 'Büyük sahne illüzyonları ve final etkisi',
+      description: 'Işık, tempo ve sahne hakimiyetiyle kurulan illüzyon akışı; doğum günü ve kurumsal etkinliklerde güçlü açılış ve final ritmi oluşturur.',
+      href: '/hizmet-detay/sahne-illuzyonlari-ve-final-numaralari'
+    },
+    {
+      src: '/content/images/ahunundogumgunu/inanılmazsihirbazlıkgosterileri.webp',
+      alt: 'Sandalye ve masa uçurma sihir numarası İstanbul',
+      tag: 'Uçurma Numarası',
+      title: 'Sandalye ve masa uçurma ile yüksek gerilim',
+      description: 'Sandalye ve masa uçurma numaraları sahne enerjisini anında yükseltir; çocuklar klasik sihir değil büyük illüzyon izlediklerini hisseder.',
+      href: '/hizmet-detay/sandalye-ve-masa-ucurma-sihir-numarasi'
+    },
+    {
+      src: '/content/images/ahunundogumgunu/canlıguvercinileilktemas.webp',
+      alt: 'Güvercinli sihirbaz gösterisi İstanbul',
+      tag: 'Güvercin Numaraları',
+      title: 'Canlı güvercinle ilk temas ve sürpriz etki',
+      description: 'Güvercinli sihir numaraları çocukların dikkatini ilk saniyede toplar; görsel hafızada kalan zarif ve güçlü bir sahne hissi bırakır.',
+      href: '/hizmet-detay/canli-guvercinli-sihirbaz-gosterisi'
+    },
+    {
+      src: '/content/images/ahunundogumgunu/ilktemas.webp',
+      alt: 'Tavşanlı sihirbaz kiralama gösterisi İstanbul',
+      tag: 'Tavşan Sürprizi',
+      title: 'Tavşanlı klasik numaralara modern yorum',
+      description: 'Tavşanlı final anları, ailelerin en çok fotoğrafladığı bölüm olur ve sihirbaz gösterisine hem nostaljik hem premium bir dokunuş ekler.',
+      href: '/hizmet-detay/tavsanli-sihirbaz-gosterisi'
     }
-    setIsDragging(true)
-    const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX
-    setDragStart(clientX)
-    setDragOffset(0)
-  }
-
-  const handleDragMove = (e) => {
-    if (!isDragging) return
-    // Only prevent default for touch
-    if (e.type.includes('touch')) {
-      e.preventDefault()
-    }
-    const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX
-    const offset = clientX - dragStart
-    setDragOffset(offset)
-  }
-
-  const handleDragEnd = (e) => {
-    if (!isDragging) return
-    // Only prevent default for touch
-    if (e.type.includes('touch')) {
-      e.preventDefault()
-    }
-    setIsDragging(false)
-    
-    // Threshold for slide change (100px)
-    if (Math.abs(dragOffset) > 100) {
-      if (dragOffset > 0 && currentSlide > 0) {
-        // Dragged right -> go to previous slide
-        setCurrentSlide(prev => prev - 1)
-      } else if (dragOffset < 0 && currentSlide < showcaseImages.length - 1) {
-        // Dragged left -> go to next slide
-        setCurrentSlide(prev => prev + 1)
-      }
-    }
-    
-    setDragOffset(0)
-  }
-
-  // Slider 1: Sihirbazlık Gösterileri
-  const slider1Images = [
-    { src: '/content/images/sihirbaz/sihirbazhero.webp', alt: 'Profesyonel sihirbaz kiralama İstanbul' },
-    { src: '/content/images/sihirbaz/IMG_3293.webp', alt: 'Sihirbaz gösterileri İstanbul' },
-    { src: '/content/images/sihirbaz/IMG_4800.webp', alt: 'Magic show organizasyonu' },
-    { src: '/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp', alt: 'Komedi ve sihirbazlık gösterisi' },
-  ]
-
-  // Slider 2: İnteraktif Gösteriler
-  const slider2Images = [
-    { src: '/content/images/ahunundogumgunu/sihirbazlıkgosterisiilecocuklarıngozundekisaskinlik.webp', alt: 'İnteraktif sihirbaz gösterisi çocuklar' },
-    { src: '/content/images/ahunundogumgunu/ilktemas.webp', alt: 'Sihirbaz ile ilk temas' },
-    { src: '/content/images/ahunundogumgunu/inanılmazsihirbazlıkgosterileri.webp', alt: 'İnanılmaz sihirbazlık gösterileri' },
-    { src: '/content/images/sihirbaz/IMG_3293.webp', alt: 'Çocuklarla interaktif sihir' },
-  ]
-
-  // Slider 3: Canlı Hayvanlar
-  const slider3Images = [
-    { src: '/content/images/ahunundogumgunu/canlıguvercinileilktemas.webp', alt: 'Canlı güvercin ile sihir gösterisi' },
-    { src: '/content/images/ahunundogumgunu/tavsanveguvercınleetkilesim.webp', alt: 'Tavşan ve güvercin etkileşimi' },
-    { src: '/content/images/ahunundogumgunu/canlıguvercingosterisi.webp', alt: 'Canlı güvercin sihir numaraları' },
-    { src: '/content/images/ahunundogumgunu/31.webp', alt: 'Hayvan sihirleri' },
   ]
 
   const faqData = [
@@ -173,7 +119,7 @@ const MagicShow = () => {
     },
     {
       question: "Sihirbaz kiralama fiyatları nedir?",
-      answer: "Fiyatlarımız gösteri süresine, katılımcı sayısına ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
+      answer: "Fiyatlarımız gösteri süresine, katılımcı sayısına ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 05307309009"
     },
     {
       question: "Sihirbaz gösterileri ile birlikte başka hizmetler alabilir miyiz?",
@@ -193,11 +139,15 @@ const MagicShow = () => {
   )
   const faqSchema = createFAQSchema(faqData)
 
+  const imageGallerySchema = createImageObjectSchema([
+    { src: '/content/images/sihirbaz/sihirbazhero.webp', alt: 'Sihirbazlık gösterisi İstanbul' },
+  ])
+
   return (
     <>
       <Seo
         title="Sihirbaz Gösterisi | Sihirbaz Organizasyonu Kiralama"
-        description="Istanbul'da sihirbaz gösterisi, organizasyonu ve kiralama. Sihirbazlık etkinliği için profesyonel hizmet. ☎ 0530 730 90 09"
+        description="Istanbul'da sihirbaz gösterisi, organizasyonu ve kiralama. Sihirbazlık etkinliği için profesyonel hizmet. ☎ 05307309009"
         keywords={[
           'istanbul sihirbaz gösterisi',
           'sihirbazlık organizasyonu',
@@ -218,6 +168,7 @@ const MagicShow = () => {
         schema={[
           serviceSchema,
           faqSchema,
+          imageGallerySchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -235,13 +186,17 @@ const MagicShow = () => {
             "logo": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
             "contactPoint": {
               "@type": "ContactPoint",
-              "telephone": "+90-530-730-9009",
+              "telephone": "+905307309009",
               "contactType": "Rezervasyon",
               "areaServed": "TR",
               "availableLanguage": ["Turkish", "English"]
             },
             "sameAs": [
-              "https://www.instagram.com/bestevent"
+              "https://www.instagram.com/besteventorganizasyon/",
+              "https://www.instagram.com/palyacogezegenii/",
+              "https://www.facebook.com/besteventorganizasyon",
+              "https://www.linkedin.com/company/besteventorganizasyon",
+              "https://g.co/kgs/bestevent"
             ]
           }
         ]}
@@ -250,162 +205,36 @@ const MagicShow = () => {
       <AdHero
         title="Sihirbaz Kiralama İstanbul"
         backgroundImage="/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp"
+        subtitle="45 dakikalık sihirbazlık gösterisi, tüm İstanbul'da planlı kurulum ve sahne akışı"
+        primaryLabel="WhatsApp’tan Hızlı Fiyat Al"
+        whatsappMessage="Merhaba, sihirbaz kiralama için tarih + ilçe + kişi sayısı paylaşarak hızlı fiyat almak istiyorum."
+        quickFacts={[
+          '45 dakika sihirbazlık gösterisi',
+          'Tüm İstanbul’a hizmet veriyoruz',
+          'Tarih + ilçe + kişi sayısı gönder, hızlı fiyat al',
+        ]}
+        ctaNote="Sihirbaz kiralama fiyatı için tarih, ilçe ve kişi sayısını iletmeniz yeterli."
+      />
+
+      <QuickServiceQuote
+        eyebrow="Hızlı Teklif Akışı"
+        title="Sihirbaz kiralama için net ve hızlı fiyat dönüşü"
+        description="Sihirbazlık gösterisi standart akışta 45 dakika planlanır. Doğum günü, okul etkinliği ve kurumsal organizasyonlar için tüm İstanbul'a hizmet veriyoruz. Tarih, ilçe ve kişi sayısını paylaştığınızda ekip hızlı teklif döner."
+        bullets={[
+          '45 dakika gösteri',
+          'Doğum günü ve kurumsal etkinlikler',
+          'Tüm İstanbul',
+        ]}
+        whatsappText="Merhaba, sihirbaz kiralama için tarih + ilçe + kişi sayısı paylaşarak hızlı fiyat almak istiyorum."
       />
 
       <main className="overflow-x-hidden scroll-smooth">
-        {/* Hero Slider */}
-        <MagicShowHeroSlider />
-
-        {/* Brand Impact Section - H1 + Slogan */}
-        <section className="py-20 sm:py-28 px-6 bg-gradient-to-br from-blue-950/40 via-black to-cyan-950/40 border-y border-white/10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="animate-fade-in">
-              {/* H1 SEO Başlık */}
-              <h1 
-                className="font-bold mb-8 text-white px-4 text-center"
-                style={{
-                  fontSize: 'clamp(2rem, 6vw, 3.5rem)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-                }}
-              >
-                İstanbul'da Profesyonel{' '}
-                <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-bold">
-                  Sihirbazlık Gösterisi
-                </span>
-                {' '}ve Sihirbaz Kiralama
-              </h1>
-
-              <p 
-                className="text-white mb-12 text-center mx-auto"
-                style={{
-                  fontSize: 'clamp(1.125rem, 2.5vw, 1.75rem)',
-                  lineHeight: '1.5',
-                  letterSpacing: '-0.02em',
-                  fontWeight: '600',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-                }}
-              >
-                10+ Yıldır Sihirli Anlar Yaratıyoruz
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
-                <div>
-                  <p 
-                    style={{
-                      fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-                      lineHeight: '1.4',
-                      letterSpacing: '-0.015em',
-                      fontWeight: '500',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif',
-                      color: '#E5E5E5'
-                    }}
-                  >
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 font-bold" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>+5000</span>
-                    {' '}Gösteri
-                  </p>
-                </div>
-
-                <div className="hidden sm:block w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-transparent" />
-                <div className="block sm:hidden w-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-
-                <div>
-                  <p 
-                    className="text-white font-bold"
-                    style={{
-                      fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-                      lineHeight: '1.4',
-                      letterSpacing: '-0.015em',
-                      fontWeight: '700',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                    }}
-                  >
-                    Binlerce{' '}
-                    <span 
-                      className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-bold"
-                      style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
-                    >
-                      Büyülenmiş Çocuk
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Apple iPhone "Pixel Perfect" Style - Full Screen Cards */}
-        <section className="relative w-full bg-black overflow-hidden pt-4 md:pt-8 pb-8 md:pb-12">
-          <div className="w-full mx-auto px-0">
-            {/* Slider Container - Full Screen Portrait Cards */}
-            <div 
-              className="relative overflow-x-auto overflow-y-hidden mx-auto"
-              style={{
-                width: '100vw',
-                height: 'clamp(520px, 78vh, 680px)',
-                marginTop: 'clamp(8px, 1vw, 12px)',
-                scrollSnapType: 'x mandatory',
-                scrollBehavior: 'smooth',
-                WebkitOverflowScrolling: 'touch'
-              }}
-              onMouseEnter={() => setIsPlaying(false)}
-              onMouseLeave={() => setIsPlaying(true)}
-            >
-              {/* Slides Track - Right Peek Only */}
-              <div 
-                className="flex h-full gap-10 md:gap-16 user-select-none"
-                style={{ 
-                  paddingLeft: 'clamp(2%, 3%, 4%)',
-                  paddingRight: 'clamp(10%, 12%, 15%)'
-                }}
-                onMouseDown={handleDragStart}
-                onMouseMove={handleDragMove}
-                onMouseUp={handleDragEnd}
-                onMouseLeave={handleDragEnd}
-                onTouchStart={handleDragStart}
-                onTouchMove={handleDragMove}
-                onTouchEnd={handleDragEnd}
-              >
-                {showcaseImages.map((image, index) => (
-                  <div 
-                    key={index} 
-                    className="flex-none flex items-center justify-center"
-                    style={{ 
-                      width: 'clamp(94%, 96%, 98%)', 
-                      height: '100%',
-                      scrollSnapAlign: 'center'
-                    }}
-                  >
-                    {/* Large Portrait Card - FULL BLEED */}
-                    <div 
-                      className="relative w-full h-full overflow-hidden"
-                      style={{
-                        borderRadius: 'clamp(40px, 4.5vw, 48px)',
-                        backgroundColor: '#000',
-                        aspectRatio: '4/5'
-                      }}
-                    >
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full h-full object-cover select-none"
-                        loading={index === 0 ? 'eager' : 'lazy'}
-                        fetchPriority={index === 0 ? 'high' : undefined}
-                        width={960}
-                        height={1200}
-                        style={{
-                          objectPosition: '50% 20%'
-                        }}
-                        draggable="false"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <LocationHeroShowcase
+          title="Sihirbaz Kiralama İstanbul"
+          description="Sahne numaralarından çocuk katılımlı illüzyonlara, yakın plan sihirbazlıktan final şovuna; tüm akış tek gösteride birleşiyor."
+          slides={heroShowcaseSlides}
+          eyebrow="İstanbul Sihirbaz Gösterisi"
+        />
 
         {/* Why Us Section - Navy Background with White Card */}
         <section className="py-20 sm:py-24 bg-gradient-to-br from-blue-950 via-black to-indigo-950">
@@ -479,8 +308,11 @@ const MagicShow = () => {
               {/* Gülben Photo */}
               <img
                 src="/content/images/sihirbaz/gulbenergensihirbaz.webp"
+                srcSet={generateSrcSet("/content/images/sihirbaz/gulbenergensihirbaz.webp")}
+                sizes="(max-width: 1024px) 100vw, 800px"
                 alt="Gülben Ergen ile sihirbaz gösterisi"
                 loading="lazy"
+                decoding="async"
                 width={600}
                 height={400}
                 className="w-full rounded-3xl shadow-2xl"
@@ -489,8 +321,11 @@ const MagicShow = () => {
               {/* Magic Show & Comedy Photo */}
               <img
                 src="/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp"
+                srcSet={generateSrcSet("/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp")}
+                sizes="(max-width: 1024px) 100vw, 800px"
                 alt="Sihirbazlık gösterisi ve komedi show"
                 loading="lazy"
+                decoding="async"
                 width={600}
                 height={400}
                 className="w-full rounded-3xl shadow-2xl"
@@ -614,8 +449,11 @@ const MagicShow = () => {
               <div className="overflow-hidden rounded-2xl border-2 border-cyan-500/30 shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 <img
                   src="/content/images/ahunundogumgunu/sihirbazlıkgosterisiilecocuklarıngozundekisaskinlik.webp"
+                  srcSet={generateSrcSet("/content/images/ahunundogumgunu/sihirbazlıkgosterisiilecocuklarıngozundekisaskinlik.webp")}
+                  sizes="(max-width: 1024px) 100vw, 800px"
                   alt="Sihirbazlık gösterisi ile çocukların gözündeki şaşkınlık"
                   loading="lazy"
+                  decoding="async"
                   width={400}
                   height={400}
                   className="w-full h-full object-cover"
@@ -626,8 +464,11 @@ const MagicShow = () => {
               <div className="overflow-hidden rounded-xl border-4 border-cyan-400/60 shadow-2xl shadow-cyan-400/30 hover:shadow-cyan-400/60 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 <img
                   src="/content/images/ahunundogumgunu/tavsanveguvercınleetkilesim.webp"
+                  srcSet={generateSrcSet("/content/images/ahunundogumgunu/tavsanveguvercınleetkilesim.webp")}
+                  sizes="(max-width: 1024px) 100vw, 800px"
                   alt="Tavşan ve güvercin ile etkileşim"
                   loading="lazy"
+                  decoding="async"
                   width={400}
                   height={400}
                   className="w-full h-full object-cover"
@@ -638,8 +479,11 @@ const MagicShow = () => {
               <div className="overflow-hidden rounded-2xl border-2 border-cyan-500/30 shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 <img
                   src="/content/images/ahunundogumgunu/canlıguvercinileilktemas.webp"
+                  srcSet={generateSrcSet("/content/images/ahunundogumgunu/canlıguvercinileilktemas.webp")}
+                  sizes="(max-width: 1024px) 100vw, 800px"
                   alt="Çocukların güvercin ile ilk teması"
                   loading="lazy"
+                  decoding="async"
                   width={400}
                   height={400}
                   className="w-full h-full object-cover"
@@ -888,7 +732,7 @@ const MagicShow = () => {
 
               {/* Bilgi Mesajı - Direkt Form Üstünde */}
               <p className="text-[#DCF8C6] text-xs mb-6 leading-relaxed">
-                WhatsApp Rezervasyon formunu gönderdiğinizde çevrimiçi rezervasyon sorumlumuza mesaj gelir ve size anında geri dönüş yapılır
+                Tarih + ilçe + kişi sayısı bilgilerinizi gönderdiğinizde çevrimiçi rezervasyon sorumlumuza mesaj gider ve size hızlı fiyat dönüşü yapılır.
               </p>
 
               <div className="grid gap-4">
@@ -925,6 +769,18 @@ const MagicShow = () => {
                     onChange={handleInputChange}
                     className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors"
                     placeholder="İlçe, mahalle"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs text-white/90 font-medium mb-1.5">Kişi Sayısı</label>
+                  <input
+                    type="text"
+                    name="guestCount"
+                    value={formData.guestCount}
+                    onChange={handleInputChange}
+                    className="w-full rounded-xl bg-white/95 border-2 border-transparent px-4 py-2.5 text-sm text-gray-900 placeholder-gray-500 outline-none focus:border-[#25D366] transition-colors"
+                    placeholder="Örn: 15 çocuk, 25 davetli"
                   />
                 </div>
                 
@@ -982,6 +838,12 @@ const MagicShow = () => {
           </div>
         </section>
 
+        <LazySection minHeight={180}>
+          <Suspense fallback={<div style={{ minHeight: 180 }} />}>
+            <TrustSection />
+          </Suspense>
+        </LazySection>
+
         {/* FAQ Section */}
         <section className="py-20 bg-gradient-to-br from-blue-100 via-cyan-100 to-sky-100">
           <div className="max-w-3xl mx-auto px-4">
@@ -1016,18 +878,40 @@ const MagicShow = () => {
         </section>
 
         {/* Hizmet Bölgeleri Section */}
-        <DistrictLinksGrid
-          lpServiceSlug="sihirbaz-kiralama"
-          serviceName="Sihirbaz Kiralama"
-          title="Hangi Bölgelerde Sihirbaz Kiralama Hizmeti Veriyoruz?"
-        />
+        <LazySection minHeight={240}>
+          <Suspense fallback={<div style={{ minHeight: 240 }} />}>
+            <DistrictLinksGrid
+              lpServiceSlug="sihirbaz-kiralama"
+              serviceName="Sihirbaz Kiralama"
+              title="Hangi Bölgelerde Sihirbaz Kiralama Hizmeti Veriyoruz?"
+            />
+          </Suspense>
+        </LazySection>
 
         {/* Google Müşteri Yorumları */}
-        <GoogleReviews reviews={getReviewsByTags(['sihirbaz', 'genel'])} title="Sihirbaz Kiralama Müşteri Yorumları" />
+        <LazySection minHeight={240}>
+          <Suspense fallback={<div style={{ minHeight: 240 }} />}>
+            <GoogleReviews reviews={getReviewsByTags(['sihirbaz', 'genel'])} title="Sihirbaz Kiralama Müşteri Yorumları" />
+          </Suspense>
+        </LazySection>
 
-        <RelatedServices currentService="magic-show" />
+        <LazySection minHeight={280}>
+          <Suspense fallback={<div style={{ minHeight: 280 }} />}>
+            <DeferredContentAccordion serviceKey="magic-show" />
+          </Suspense>
+        </LazySection>
 
-        <RelatedBlogPosts servicePath="/organizasyonlar/magic-show" />
+        <LazySection minHeight={220}>
+          <Suspense fallback={<div style={{ minHeight: 220 }} />}>
+            <RelatedServices currentService="magic-show" />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight={220}>
+          <Suspense fallback={<div style={{ minHeight: 220 }} />}>
+            <RelatedBlogPosts servicePath="/organizasyonlar/magic-show" />
+          </Suspense>
+        </LazySection>
       </main>
     </>
   )

@@ -8,6 +8,7 @@ const pathToTitle = {
   'organizasyonlar': 'Organizasyonlar',
   'galeri': 'Galeri',
   'iletisim': 'İletişim',
+  'is-ilanlari': 'İş İlanları',
   'hizmet-bolgeleri': 'Hizmet Bölgeleri',
   'organik-pastalar': 'Organik Pastalar',
   
@@ -44,6 +45,10 @@ const pathToTitle = {
   'dans-etkinlikleri': 'Dans Etkinlikleri',
   'dansci-kiralama': 'Dansçı Kiralama',
   'hostes-kiralama': 'Hostes Kiralama',
+  'palyaco-is-ilani': 'Palyaço İş İlanı',
+  'animator-is-ilani': 'Animatör İş İlanı',
+  'maskot-is-ilani': 'Maskot İş İlanı',
+  'oyun-ablasi-abisi-is-ilani': 'Oyun Ablası / Abisi İş İlanı',
 
   // Local Landing Page - Hizmet Slug'ları
   'bubble-show-kiralama': 'Bubble Show Kiralama',

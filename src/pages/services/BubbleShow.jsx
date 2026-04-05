@@ -1,19 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
-import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import { createServiceSchema, createFAQSchema, createImageObjectSchema } from '../../utils/schemaHelpers'
 import AdHero from '../../components/AdHero'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, EffectFade } from 'swiper/modules'
-import QuickQuoteForm from '../../components/QuickQuoteForm'
+import LocationHeroShowcase from '../../components/LocationHeroShowcase'
+import HorizontalPhotoSlider from '../../components/HorizontalPhotoSlider'
 import ExitIntentPopup from '../../components/ExitIntentPopup'
 import RelatedServices from '../../components/RelatedServices'
+import TrustSection from '../../components/TrustSection'
 import GoogleReviews from '../../components/GoogleReviews'
 import { getReviewsByTags } from '../../data/googleReviews'
 import DistrictLinksGrid from '../../components/DistrictLinksGrid'
 import RelatedBlogPosts from '../../components/RelatedBlogPosts'
-import 'swiper/css'
-import 'swiper/css/effect-fade'
+import DeferredContentAccordion from '../../components/DeferredContentAccordion'
+import { generateSrcSet } from '../../utils/responsiveImage'
+import { trackFormSubmit } from '../../utils/tracking'
 
 const BubbleShow = () => {
   // WhatsApp Form State
@@ -34,17 +35,7 @@ const BubbleShow = () => {
   }
 
   const sendWhatsAppMessage = () => {
-    // Google Ads Conversion Tracking
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-162-567-1131/bubble-show-whatsapp',
-        'value': 1.0,
-        'currency': 'TRY',
-        'event_callback': () => {
-          console.log('Bubble Show WhatsApp conversion tracked')
-        }
-      })
-    }
+    trackFormSubmit('Bubble Show WhatsApp Form', 'bubble-show')
 
     const message = `🫧 *Bubble Show Gösterisi Talebi*
 
@@ -59,77 +50,69 @@ const BubbleShow = () => {
     window.open(`https://wa.me/905307309009?text=${encodedMessage}`, '_blank')
   }
 
-  // Product Showcase Images (Apple-style)
-  const showcaseImages = [
-    '/content/images/bubbleshow/anabubblee.webp',
-    '/content/images/bubbleshow/bubbleshowslider2.webp',
-    '/content/images/bubbleshow/bubbleshowslider3.webp',
-    '/content/images/bubbleshow/bubbleshowslider5.webp',
-    '/content/images/bubbleshow/anabubbleee.webp'
+  const heroShowcaseSlides = [
+    {
+      src: '/content/images/bubbleshow/anabubblee.webp',
+      alt: 'Bubble show gösterisi İstanbul sahne girişi',
+      tag: 'Bubble Show Sahnesi',
+      title: 'Dev sabun balonlarıyla açılış etkisi',
+      description: 'Bubble show açılışında kullanılan büyük sabun balonları, çocuk etkinliğine ilk saniyeden itibaren görsel hareket ve yüksek merak duygusu kazandırır.',
+      href: '/hizmet-detay/dev-sabun-balonlari-acilis-gosterisi'
+    },
+    {
+      src: '/content/images/bubbleshow/bubbleshowslider2.webp',
+      alt: 'Köpük şov organizasyonu İstanbul',
+      tag: 'Sabun Balonları',
+      title: 'Işığı yakalayan saydam balon katmanları',
+      description: 'Farklı boyuttaki sabun balonları ışıkla birleştiğinde sahnede fotoğraf değeri yüksek, estetik ve akıcı bir show görünümü oluşur.'
+    },
+    {
+      src: '/content/images/bubbleshow/bubbleshowslider3.webp',
+      alt: 'Dev balon gösterisi İstanbul çocuk etkinliği',
+      tag: 'Dev Balon Deneyimi',
+      title: 'Çocukların içine girebildiği dev balon anı',
+      description: 'Dev balon deneyimi bubble show kiralama sayfasında en çok merak edilen bölümlerden biridir; çocuklar gösterinin merkezine geçer ve içerikle doğrudan etkileşime girer.',
+      href: '/hizmet-detay/cocuklarin-icine-girebildigi-dev-balon-deneyimi'
+    },
+    {
+      src: '/content/images/bubbleshow/bubbleshowslider5.webp',
+      alt: 'İnteraktif bubble show İstanbul',
+      tag: 'İnteraktif Bubble Show',
+      title: 'Seyirden katılıma geçen canlı oyun akışı',
+      description: 'İnteraktif bubble show akışı köpük patlatma, ritim takibi ve kısa sahne görevleriyle çocukların enerjisini sürekli canlı tutar.'
+    },
+    {
+      src: '/content/images/bubbleshow/anabubbleee.webp',
+      alt: 'LED ışıklı bubble show kiralama İstanbul',
+      tag: 'LED ve Müzik',
+      title: 'Müzik eşliğinde ışıklı bubble show finali',
+      description: 'LED ışıklar ve ritimli müzikle desteklenen final bölümü, bubble show organizasyonunu hem görsel hem video açısından daha güçlü bir içerik alanına dönüştürür.',
+      href: '/hizmet-detay/isikli-bubble-show-finali'
+    }
   ]
 
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
-  const [isDragging, setIsDragging] = useState(false)
-  const [dragStart, setDragStart] = useState(0)
-  const [dragOffset, setDragOffset] = useState(0)
+  // Slider 1: Dev Balon Gösterileri
+  const slider1Images = [
+    { src: '/content/images/bubbleshow/bubbleshowhero.webp', alt: 'Dev balon gösterisi İstanbul' },
+    { src: '/content/images/bubbleshow/anabubble.webp', alt: 'Dev sabun köpükleri gösterisi' },
+    { src: '/content/images/bubbleshow/bubbleshowslider3.webp', alt: 'Dev balonlar çocuk partisi' },
+    { src: '/content/images/bubbleshow/bubbleshowslideranahero.webp', alt: 'Bubble show dev balon performansı' },
+  ]
 
-  // Auto-slide functionality with play/pause
-  useEffect(() => {
-    if (!isPlaying || isDragging) return
-    
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % showcaseImages.length)
-    }, 5000)
+  // Slider 2: Işıklı & Neon Bubble Show
+  const slider2Images = [
+    { src: '/content/images/bubbleshow/bubbleshownattive.webp', alt: 'Işıklı bubble show gösterisi' },
+    { src: '/content/images/bubbleshow/bubbleshowslider5.webp', alt: 'Neon köpük şov' },
+    { src: '/content/images/bubbleshow/anabubblee.webp', alt: 'LED ışıklı balon show' },
+    { src: '/content/images/bubbleshow/anabubbleee.webp', alt: 'Renkli bubble show performansı' },
+  ]
 
-    return () => clearInterval(timer)
-  }, [showcaseImages.length, isPlaying, isDragging])
-
-  // Enhanced drag handlers for mouse and touch
-  const handleDragStart = (e) => {
-    if (e.type.includes('touch')) {
-      e.preventDefault()
-    }
-    setIsDragging(true)
-    const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX
-    setDragStart(clientX)
-    setDragOffset(0)
-  }
-
-  const handleDragMove = (e) => {
-    if (!isDragging) return
-    if (e.type.includes('touch')) {
-      e.preventDefault()
-    }
-    const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX
-    const offset = clientX - dragStart
-    setDragOffset(offset)
-  }
-
-  const handleDragEnd = (e) => {
-    if (!isDragging) return
-    if (e.type.includes('touch')) {
-      e.preventDefault()
-    }
-    setIsDragging(false)
-    
-    // Threshold for slide change (100px)
-    if (Math.abs(dragOffset) > 100) {
-      if (dragOffset > 0 && currentSlide > 0) {
-        setCurrentSlide(prev => prev - 1)
-      } else if (dragOffset < 0 && currentSlide < showcaseImages.length - 1) {
-        setCurrentSlide(prev => prev + 1)
-      }
-    }
-    
-    setDragOffset(0)
-  }
-
-  const heroSlides = [
-    { src: '/content/images/bubbleshow/anabubblee.webp', alt: 'Istanbul bubble show gösterisi organizasyonu' },
-    { src: '/content/images/bubbleshow/bubbleshowslider2.webp', alt: 'Bubble show gösterisi istanbul' },
-    { src: '/content/images/bubbleshow/bubbleshowslider3.webp', alt: 'Istanbul bubble show kiralama' },
-    { src: '/content/images/bubbleshow/bubbleshowslider5.webp', alt: 'Bubble show etkinliği' }
+  // Slider 3: İnteraktif Çocuk Katılımı
+  const slider3Images = [
+    { src: '/content/images/ahunundogumgunu/bubbleshowgosterisi.webp', alt: 'Çocuklarla interaktif bubble show' },
+    { src: '/content/images/ahunundogumgunu/anaherobubbleshowgosterisi.webp', alt: 'Çocuklar dev balonun içinde' },
+    { src: '/content/images/bubbleshow/IMG_3293.webp', alt: 'Bubble show çocuk etkileşimi' },
+    { src: '/content/images/bubbleshow/IMG_1748.webp', alt: 'Köpük gösterisi çocuk katılımı' },
   ]
 
   const faqData = [
@@ -155,7 +138,7 @@ const BubbleShow = () => {
     },
     {
       question: "Bubble show fiyatları nedir?",
-      answer: "Fiyatlarımız gösteri süresine, mekan tipine ve katılımcı sayısına göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
+      answer: "Fiyatlarımız gösteri süresine, mekan tipine ve katılımcı sayısına göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 05307309009"
     },
     {
       question: "Bubble show ile birlikte başka hizmetler alabilir miyiz?",
@@ -168,18 +151,23 @@ const BubbleShow = () => {
   ]
 
   const serviceSchema = createServiceSchema(
-    'Bubble Show Gösterisi | Köpük Şov Organizasyonu Kiralama',
+    'Bubble Show Gösterisi | Bubble Show Organizasyonu Kiralama',
     'Istanbul\'da bubble show gösterisi, organizasyonu ve kiralama. Bubble show etkinliği için profesyonel hizmet.',
     '/organizasyonlar/bubble-show',
     'Bubble Show Gösterileri ve Köpük Şov Organizasyonu'
   )
   const faqSchema = createFAQSchema(faqData)
 
+  const imageGallerySchema = createImageObjectSchema([
+    { src: '/content/images/bubbleshow/bubbleshowslider2.webp', alt: 'Bubble show gösterisi İstanbul' },
+    { src: '/content/images/ahunundogumgunu/bubbleshowgosterisi.webp', alt: 'Çocuk doğum günü bubble show partisi' },
+  ])
+
   return (
     <>
       <Seo
-        title="Bubble Show Gösterisi | Köpük Şov Organizasyonu Kiralama"
-        description="Istanbul'da bubble show gösterisi, organizasyonu ve kiralama. Bubble show etkinliği için profesyonel hizmet. ☎ 0530 730 90 09"
+        title="Bubble Show Gösterisi | Bubble Show Organizasyonu Kiralama"
+        description="Istanbul'da bubble show gösterisi, organizasyonu ve kiralama. Bubble show etkinliği için profesyonel hizmet. ☎ 05307309009"
         keywords={[
           'istanbul bubble show gösterisi',
           'bubble show organizasyonu',
@@ -200,6 +188,7 @@ const BubbleShow = () => {
         schema={[
           serviceSchema,
           faqSchema,
+          imageGallerySchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -217,13 +206,17 @@ const BubbleShow = () => {
             "logo": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
             "contactPoint": {
               "@type": "ContactPoint",
-              "telephone": "+90-530-730-9009",
+              "telephone": "+905307309009",
               "contactType": "Rezervasyon",
               "areaServed": "TR",
               "availableLanguage": ["Turkish", "English"]
             },
             "sameAs": [
-              "https://www.instagram.com/bestevent"
+              "https://www.instagram.com/besteventorganizasyon/",
+              "https://www.instagram.com/palyacogezegenii/",
+              "https://www.facebook.com/besteventorganizasyon",
+              "https://www.linkedin.com/company/besteventorganizasyon",
+              "https://g.co/kgs/bestevent"
             ]
           }
         ]}
@@ -235,202 +228,19 @@ const BubbleShow = () => {
       />
 
       <main className="overflow-x-hidden scroll-smooth">
-        {/* Hero Slider */}
-        <section className="relative overflow-hidden bg-black min-h-[65vh] md:min-h-[72vh] max-h-[820px] flex items-center">
-          <Swiper
-            modules={[Autoplay, EffectFade]}
-            effect="fade"
-            loop
-            autoplay={{ delay: 5500, disableOnInteraction: false }}
-            speed={1200}
-            className="absolute inset-0 h-full w-full"
-          >
-            {heroSlides.map((slide, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="relative h-full w-full overflow-hidden">
-                  <img
-                    src={slide.src}
-                    alt={slide.alt}
-                    className="w-full h-full object-cover object-center"
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                    fetchPriority={idx === 0 ? 'high' : undefined}
-                    width={1200}
-                    height={800}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/80" />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center py-16 sm:py-20 md:py-24">
-            <h1
-              className="font-bold text-white animate-fade-in"
-              style={{
-                fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                lineHeight: '1.1',
-                letterSpacing: '-0.025em',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              Bubble Show Gösterisi
-            </h1>
-          </div>
-        </section>
-
-        {/* Brand Impact Section - H1 + Slogan */}
-        <section className="py-20 sm:py-28 px-6 bg-gradient-to-br from-purple-950/40 via-black to-pink-950/40 border-y border-white/10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="animate-fade-in">
-              {/* H1 SEO Başlık */}
-              <h2 
-                className="font-bold mb-8 text-white px-4 text-center"
-                style={{
-                  fontSize: 'clamp(2rem, 6vw, 3.5rem)',
-                  lineHeight: '1.2',
-                  letterSpacing: '-0.02em',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-                }}
-              >
-                İstanbul'da Profesyonel{' '}
-                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-bold">
-                  Bubble Show Gösterisi
-                </span>
-                {' '}ve Köpük Şov Kiralama
-              </h2>
-
-              <p 
-                className="text-white mb-12 text-center mx-auto"
-                style={{
-                  fontSize: 'clamp(1.125rem, 2.5vw, 1.75rem)',
-                  lineHeight: '1.5',
-                  letterSpacing: '-0.02em',
-                  fontWeight: '600',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-                }}
-              >
-                10+ Yıldır Renkli ve Büyülü Anlar Yaratıyoruz
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
-                <div>
-                  <p 
-                    style={{
-                      fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-                      lineHeight: '1.4',
-                      letterSpacing: '-0.015em',
-                      fontWeight: '500',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif',
-                      color: '#E5E5E5'
-                    }}
-                  >
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>+5000</span>
-                    {' '}Gösteri
-                  </p>
-                </div>
-
-                <div className="hidden sm:block w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-transparent" />
-                <div className="block sm:hidden w-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-
-                <div>
-                  <p 
-                    className="text-white font-bold"
-                    style={{
-                      fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-                      lineHeight: '1.4',
-                      letterSpacing: '-0.015em',
-                      fontWeight: '700',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                    }}
-                  >
-                    Binlerce{' '}
-                    <span 
-                      className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-bold"
-                      style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
-                    >
-                      Mutlu Çocuk
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Apple iPhone "Pixel Perfect" Style - Full Screen Cards */}
-        <section className="relative w-full bg-black overflow-hidden pt-4 md:pt-8 pb-8 md:pb-12">
-          <div className="w-full mx-auto px-0">
-            {/* Slider Container - Full Screen Portrait Cards */}
-            <div 
-              className="relative overflow-x-auto overflow-y-hidden mx-auto"
-              style={{
-                width: '100vw',
-                height: 'clamp(520px, 78vh, 680px)',
-                marginTop: 'clamp(8px, 1vw, 12px)',
-                scrollSnapType: 'x mandatory',
-                scrollBehavior: 'smooth',
-                WebkitOverflowScrolling: 'touch'
-              }}
-              onMouseEnter={() => setIsPlaying(false)}
-              onMouseLeave={() => setIsPlaying(true)}
-            >
-              {/* Slides Track - Right Peek Only */}
-              <div 
-                className="flex h-full gap-10 md:gap-16 user-select-none"
-                style={{ 
-                  paddingLeft: 'clamp(2%, 3%, 4%)',
-                  paddingRight: 'clamp(10%, 12%, 15%)'
-                }}
-                onMouseDown={handleDragStart}
-                onMouseMove={handleDragMove}
-                onMouseUp={handleDragEnd}
-                onMouseLeave={handleDragEnd}
-                onTouchStart={handleDragStart}
-                onTouchMove={handleDragMove}
-                onTouchEnd={handleDragEnd}
-              >
-                {showcaseImages.map((image, index) => (
-                  <div 
-                    key={index} 
-                    className="flex-none flex items-center justify-center"
-                    style={{ 
-                      width: 'clamp(94%, 96%, 98%)', 
-                      height: '100%',
-                      scrollSnapAlign: 'center'
-                    }}
-                  >
-                    {/* Large Portrait Card - FULL BLEED */}
-                    <div 
-                      className="relative w-full h-full overflow-hidden"
-                      style={{
-                        borderRadius: 'clamp(40px, 4.5vw, 48px)',
-                        backgroundColor: '#000',
-                        aspectRatio: '4/5'
-                      }}
-                    >
-                      <img
-                        src={image}
-                        alt={`Bubble Show Gösterisi ${index + 1}`}
-                        className="w-full h-full object-contain select-none"
-                        loading="lazy"
-                        width={960}
-                        height={1200}
-                        draggable="false"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <LocationHeroShowcase
+          title="Bubble Show İstanbul"
+          description="Dev sabun balonlarından ışıklı sahne anlarına, interaktif oyunlardan final fotoğraflarına; bubble show akışı tek kurguda ilerliyor."
+          slides={heroShowcaseSlides}
+          eyebrow="İstanbul Bubble Show Gösterisi"
+        />
 
         {/* Why Us Section - Purple Background with White Card */}
         <section className="py-20 sm:py-24 bg-gradient-to-br from-purple-950 via-black to-pink-950">
           <div className="max-w-4xl mx-auto px-6">
             {/* White Card/Frame */}
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-2xl">
-              <h2 
+              <h2
                 className="font-extrabold text-gray-900 mb-8"
                 style={{
                   fontSize: 'clamp(1.75rem, 5vw, 3rem)',
@@ -441,9 +251,9 @@ const BubbleShow = () => {
               >
                 Neden İstanbul'un En Çok Tercih Edilen Bubble Show Gösterisiyiz?
               </h2>
-              
+
               <div className="space-y-6">
-                <p 
+                <p
                   className="text-gray-800 font-medium"
                   style={{
                     fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -452,36 +262,42 @@ const BubbleShow = () => {
                     fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
                   }}
                 >
-                  <span className="font-bold text-gray-900">Best Event</span>, İstanbul'da yıllardır yüzlerce başarılı etkinliğe imza atmış profesyonel bir organizasyon firmasıdır. 
+                  <span className="font-bold text-gray-900">Best Event</span>, İstanbul'da yıllardır yüzlerce başarılı etkinliğe imza atmış profesyonel bir organizasyon firmasıdır.
                   Çocuk doğum günlerinden kurumsal etkinliklere kadar, her organizasyonda deneyimli ekibiyle güvenle tercih edilir.
                 </p>
-                
-              <p 
-                className="text-gray-800 font-medium"
-                style={{
-                  fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                  lineHeight: '1.5',
-                  letterSpacing: '-0.015em',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                }}
-              >
-                <span className="font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Bubble Show Organizasyonu ve Kiralama</span> kapsamımız, klasik köpük gösterisi anlayışının ötesine geçerek{' '}
-                <span className="font-bold text-gray-900">dev balon ve sabun baloncuğu ile interaktif gösteri</span>{' '}
-                sunan özel bir sahne etkinliği sunar. Profesyonel baloncuk makinesi ve foam party ekipmanlarıyla çocukların{' '}
-                <span className="font-bold text-gray-900">içine girebildiği dev balonlar</span>{' '}
-                ile eğlenceli bir performans sergiler. Işıklı balon show ve neon bubble efektleri, köpük tünelleri ve müzik eşliğinde profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, çocuklara unutulmaz anlar yaşatmıştır. İster doğum günü etkinliği, ister kurumsal organizasyon olsun, bubble show kiralama talebinizi profesyonel ekibimizle karşılıyoruz.
-              </p>
+
+                <p
+                  className="text-gray-800 font-medium"
+                  style={{
+                    fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                    lineHeight: '1.5',
+                    letterSpacing: '-0.015em',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                  }}
+                >
+                  <span className="font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Bubble Show Organizasyonu ve Kiralama</span> kapsamımız, klasik köpük gösterisi anlayışının ötesine geçerek{' '}
+                  <span className="font-bold text-gray-900">dev balon ve sabun baloncuğu ile interaktif gösteri</span>{' '}
+                  sunan özel bir sahne etkinliği sunar. Profesyonel baloncuk makinesi ve foam party ekipmanlarıyla çocukların{' '}
+                  <span className="font-bold text-gray-900">içine girebildiği dev balonlar</span>{' '}
+                  ile eğlenceli bir performans sergiler. Işıklı balon show ve neon bubble efektleri, köpük tünelleri ve müzik eşliğinde profesyonel sunumla birleşerek bugüne kadar %100 memnuniyetle sunulmuş, çocuklara unutulmaz anlar yaşatmıştır. İster doğum günü etkinliği, ister kurumsal organizasyon olsun, bubble show kiralama talebinizi profesyonel ekibimizle karşılıyoruz.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-20 sm:py-24 bg-gradient-to-br from-purple-950 via-black to-pink-950">
-          <div className="max-w-5xl mx-auto px-6">
-            {/* Heading */}
-            <h2 
-              className="font-extrabold text-white mb-10 text-center"
+        {/* Tematik Slider 1: Dev Balon Gösterileri */}
+        <HorizontalPhotoSlider images={slider1Images} title="Dev Balon Gösterileri" />
+
+        {/* Features Section - Modern Card Grid */}
+        <section className="py-20 sm:py-28 bg-gradient-to-br from-purple-950 via-black to-pink-950 relative overflow-hidden">
+          {/* Ambient glow effects */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <h2
+              className="font-extrabold text-white mb-6 text-center"
               style={{
                 fontSize: 'clamp(1.75rem, 5vw, 3rem)',
                 lineHeight: '1.15',
@@ -491,128 +307,140 @@ const BubbleShow = () => {
             >
               Bubble Show Gösterimizin Özellikleri
             </h2>
+            <p
+              className="text-white/60 text-center mb-16 max-w-2xl mx-auto"
+              style={{
+                fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+                lineHeight: '1.6',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+              }}
+            >
+              Her detayı özenle planlanmış, profesyonel bir bubble show deneyimi
+            </p>
 
-            {/* Photos Grid - Two Side by Side */}
-            <div className="grid md:grid-cols-2 gap-8 mb-12" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-              <img
-                src="/content/images/bubbleshow/anabubble.webp"
-                alt="Dev sabun köpükleri gösterisi"
-                loading="lazy"
-                width={600}
-                height={400}
-                className="w-full rounded-3xl shadow-2xl"
-              />
-              
-              <img
-                src="/content/images/bubbleshow/bubbleshowslider3.webp"
-                alt="İnteraktif bubble show deneyimi"
-                loading="lazy"
-                width={600}
-                height={400}
-                className="w-full rounded-3xl shadow-2xl"
-              />
-            </div>
-
-            {/* Features List */}
-            <div className="max-w-3xl mx-auto">
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <span className="text-pink-400 text-2xl flex-shrink-0">✓</span>
-                  <p 
-                    className="text-white font-medium"
-                    style={{
-                      fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                      lineHeight: '1.5',
-                      letterSpacing: '-0.015em',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                    }}
-                  >
-                    3+ metre çapında dev sabun köpükleri
-                  </p>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <span className="text-pink-400 text-2xl flex-shrink-0">✓</span>
-                  <p 
-                    className="text-white font-medium"
-                    style={{
-                      fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                      lineHeight: '1.5',
-                      letterSpacing: '-0.015em',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                    }}
-                  >
-                    Çocukların içine girebileceği dev balonlar
-                  </p>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <span className="text-pink-400 text-2xl flex-shrink-0">✓</span>
-                  <p 
-                    className="text-white font-medium"
-                    style={{
-                      fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                      lineHeight: '1.5',
-                      letterSpacing: '-0.015em',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                    }}
-                  >
-                    Renkli LED ışık efektleri ve müzik eşliğinde gösteri
-                  </p>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <span className="text-pink-400 text-2xl flex-shrink-0">✓</span>
-                  <p 
-                    className="text-white font-medium"
-                    style={{
-                      fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                      lineHeight: '1.5',
-                      letterSpacing: '-0.015em',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                    }}
-                  >
-                    Çocuk dostu, toksik olmayan FDA onaylı köpük solüsyonları
-                  </p>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <span className="text-pink-400 text-2xl flex-shrink-0">✓</span>
-                  <p 
-                    className="text-white font-medium"
-                    style={{
-                      fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                      lineHeight: '1.5',
-                      letterSpacing: '-0.015em',
-                      fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                    }}
-                  >
-                    2-12 yaş her yaş grubu için özel aktiviteler
+            {/* Bento Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {/* Card 1 - Large */}
+              <div className="md:col-span-2 lg:col-span-2 group relative rounded-3xl p-8 sm:p-10 overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(236,72,153,0.1) 100%)', border: '1px solid rgba(168,85,247,0.2)' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/25">
+                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <circle cx="12" cy="12" r="9" />
+                      <circle cx="12" cy="12" r="5" strokeDasharray="2 2" />
+                      <path d="M12 3c0 3-2 5-2 9s2 6 2 9" />
+                    </svg>
+                  </div>
+                  <h3 className="text-white font-bold text-xl sm:text-2xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
+                    3+ Metre Dev Sabun Köpükleri
+                  </h3>
+                  <p className="text-white/70 text-base sm:text-lg leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
+                    Profesyonel ekipmanlarımız ile 3 metreden büyük dev sabun köpükleri oluşturuyoruz. Gökyüzüne yükselen devasa balonlar, etkinliğinize büyülü bir atmosfer katıyor.
                   </p>
                 </div>
               </div>
 
-              {/* Closing Statement */}
-              <p 
-                className="text-white/90 text-center mt-10"
-                style={{
-                  fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                  lineHeight: '1.5',
-                  letterSpacing: '-0.015em',
-                  fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                }}
-              >
-                Bu özellikleri sayesinde gösterimiz, <span className="font-bold text-white">İstanbul genelinde en çok tavsiye edilen bubble show olmuştur.</span>
-              </p>
+              {/* Card 2 */}
+              <div className="group relative rounded-3xl p-8 overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, rgba(236,72,153,0.15) 0%, rgba(244,114,182,0.08) 100%)', border: '1px solid rgba(236,72,153,0.2)' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-rose-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-400 flex items-center justify-center mb-6 shadow-lg shadow-pink-500/25">
+                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
+                    İçine Girilebilen Dev Balonlar
+                  </h3>
+                  <p className="text-white/70 text-base leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
+                    Çocuklar dev balonun içine girerek unutulmaz anlar yaşıyor. En sevilen aktivitemiz!
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="group relative rounded-3xl p-8 overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(147,51,234,0.08) 100%)', border: '1px solid rgba(59,130,246,0.2)' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mb-6 shadow-lg shadow-blue-500/25">
+                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
+                    LED Işık & Müzik Eşliği
+                  </h3>
+                  <p className="text-white/70 text-base leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
+                    Renkli LED ışık efektleri ve ritimli müzikler ile büyüleyici bir atmosfer.
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 4 */}
+              <div className="group relative rounded-3xl p-8 overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.15) 0%, rgba(16,185,129,0.08) 100%)', border: '1px solid rgba(34,197,94,0.2)' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-400 flex items-center justify-center mb-6 shadow-lg shadow-green-500/25">
+                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
+                    %100 Güvenli Solüsyon
+                  </h3>
+                  <p className="text-white/70 text-base leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
+                    Çocuk dostu, toksik olmayan FDA onaylı köpük solüsyonları kullanıyoruz. Cildiniz için tamamen güvenli.
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 5 - Large */}
+              <div className="md:col-span-2 lg:col-span-2 group relative rounded-3xl p-8 sm:p-10 overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, rgba(251,146,60,0.15) 0%, rgba(245,158,11,0.08) 100%)', border: '1px solid rgba(251,146,60,0.2)' }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
+                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-white font-bold text-xl sm:text-2xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
+                    2-12 Yaş Her Gruba Özel Aktiviteler
+                  </h3>
+                  <p className="text-white/70 text-base sm:text-lg leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
+                    Her yaş grubuna uygun özel aktiviteler tasarlıyoruz. Küçükler için güvenli mini balonlar, büyükler için dev köpük duvarları ve interaktif gösteriler. Herkes için eğlence garantisi!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Badge */}
+            <div className="mt-14 text-center">
+              <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full"
+                style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(236,72,153,0.2) 100%)', border: '1px solid rgba(168,85,247,0.3)', backdropFilter: 'blur(12px)' }}>
+                <svg className="w-5 h-5 text-pink-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
+                </svg>
+                <span className="text-white font-semibold" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
+                  İstanbul genelinde en çok tavsiye edilen bubble show
+                </span>
+              </div>
             </div>
           </div>
         </section>
+
+        {/* Tematik Slider 2: Işıklı & Neon Bubble Show */}
+        <HorizontalPhotoSlider images={slider2Images} title="Işıklı & Neon Bubble Show" />
 
         {/* Interactive Experience Section */}
         <section className="py-20 sm:py-24 bg-gradient-to-br from-purple-950 via-black to-pink-950">
           <div className="max-w-5xl mx-auto px-6">
             {/* Heading */}
-            <h2 
+            <h2
               className="font-extrabold text-white mb-10 text-center"
               style={{
                 fontSize: 'clamp(1.75rem, 5vw, 3rem)',
@@ -624,11 +452,13 @@ const BubbleShow = () => {
               Bu Bir <span className="italic">"İzle-Geç"</span> Gösterisi <span className="text-pink-400">DEĞİLDİR!</span>
             </h2>
 
-            {/* Photos Grid - 3 Interactive Photos */}
+            {/* Photos Grid - 3 Interactive Photos with srcSet */}
             <div className="grid md:grid-cols-3 gap-6 mb-16 items-center" style={{ maxWidth: '1200px', margin: '0 auto 4rem' }}>
               <div className="overflow-hidden rounded-2xl border-2 border-pink-500/30 shadow-lg hover:shadow-pink-500/50 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 <img
                   src="/content/images/ahunundogumgunu/bubbleshowgosterisi.webp"
+                  srcSet={generateSrcSet("/content/images/ahunundogumgunu/bubbleshowgosterisi.webp")}
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   alt="Bubble show interaktif deneyim"
                   loading="lazy"
                   width={400}
@@ -636,10 +466,12 @@ const BubbleShow = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               <div className="overflow-hidden rounded-xl border-4 border-pink-400/60 shadow-2xl shadow-pink-400/30 hover:shadow-pink-400/60 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 <img
                   src="/content/images/bubbleshow/bubbleshowslider5.webp"
+                  srcSet={generateSrcSet("/content/images/bubbleshow/bubbleshowslider5.webp")}
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   alt="Çocuklar bubble show ile eğleniyor"
                   loading="lazy"
                   width={400}
@@ -651,6 +483,8 @@ const BubbleShow = () => {
               <div className="overflow-hidden rounded-2xl border-2 border-pink-500/30 shadow-lg hover:shadow-pink-500/50 transition-all duration-300 cursor-pointer" style={{ transform: 'scale(1)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.15)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 <img
                   src="/content/images/ahunundogumgunu/anaherobubbleshowgosterisi.webp"
+                  srcSet={generateSrcSet("/content/images/ahunundogumgunu/anaherobubbleshowgosterisi.webp")}
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   alt="Dev köpükler ile çocuklar"
                   loading="lazy"
                   width={400}
@@ -663,119 +497,36 @@ const BubbleShow = () => {
             {/* Features List - Gradient Numbered Cards */}
             <div className="max-w-3xl mx-auto">
               <div className="grid gap-4">
-                {/* Item 1 */}
-                <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-sm border border-pink-500/20 rounded-xl p-5 hover:border-pink-400/40 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <span 
-                      className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold text-white text-sm"
-                    >
-                      1
-                    </span>
-                    <p 
-                      className="text-white font-medium pt-1"
-                      style={{
-                        fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                        lineHeight: '1.5',
-                        letterSpacing: '-0.015em',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                      }}
-                    >
-                      Çocuklar gösterinin parçası olur
-                    </p>
+                {[
+                  'Çocuklar gösterinin parçası olur',
+                  'Dev balonların içine girerler',
+                  'Köpük tünellerinden geçerler',
+                  'Köpük patlatma oyunları oynarlar',
+                  'Unutulmaz bir gösteri olarak hatırlanır'
+                ].map((text, i) => (
+                  <div key={i} className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-sm border border-pink-500/20 rounded-xl p-5 hover:border-pink-400/40 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300">
+                    <div className="flex items-start gap-4">
+                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold text-white text-sm">
+                        {i + 1}
+                      </span>
+                      <p
+                        className="text-white font-medium pt-1"
+                        style={{
+                          fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                          lineHeight: '1.5',
+                          letterSpacing: '-0.015em',
+                          fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+                        }}
+                      >
+                        {text}
+                      </p>
+                    </div>
                   </div>
-                </div>
-
-                {/* Item 2 */}
-                <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-sm border border-pink-500/20 rounded-xl p-5 hover:border-pink-400/40 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <span 
-                      className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold text-white text-sm"
-                    >
-                      2
-                    </span>
-                    <p 
-                      className="text-white font-medium pt-1"
-                      style={{
-                        fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                        lineHeight: '1.5',
-                        letterSpacing: '-0.015em',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                      }}
-                    >
-                      Dev balonların içine girerler
-                    </p>
-                  </div>
-                </div>
-
-                {/* Item 3 */}
-                <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-sm border border-pink-500/20 rounded-xl p-5 hover:border-pink-400/40 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <span 
-                      className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold text-white text-sm"
-                    >
-                      3
-                    </span>
-                    <p 
-                      className="text-white font-medium pt-1"
-                      style={{
-                        fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                        lineHeight: '1.5',
-                        letterSpacing: '-0.015em',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                      }}
-                    >
-                      Köpük tünellerinden geçerler
-                    </p>
-                  </div>
-                </div>
-
-                {/* Item 4 */}
-                <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-sm border border-pink-500/20 rounded-xl p-5 hover:border-pink-400/40 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <span 
-                      className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold text-white text-sm"
-                    >
-                      4
-                    </span>
-                    <p 
-                      className="text-white font-medium pt-1"
-                      style={{
-                        fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                        lineHeight: '1.5',
-                        letterSpacing: '-0.015em',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                      }}
-                    >
-                      Köpük patlatma oyunları oynarlar
-                    </p>
-                  </div>
-                </div>
-
-                {/* Item 5 */}
-                <div className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 backdrop-blur-sm border border-pink-500/20 rounded-xl p-5 hover:border-pink-400/40 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <span 
-                      className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center font-bold text-white text-sm"
-                    >
-                      5
-                    </span>
-                    <p 
-                      className="text-white font-medium pt-1"
-                      style={{
-                        fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
-                        lineHeight: '1.5',
-                        letterSpacing: '-0.015em',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                      }}
-                    >
-                      Unutulmaz bir gösteri olarak hatırlanır
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* Closing Statement */}
-              <p 
+              <p
                 className="text-white/90 text-center mt-10"
                 style={{
                   fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -790,21 +541,17 @@ const BubbleShow = () => {
           </div>
         </section>
 
-        {/* Quick Quote Form Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-white">
-          <div className="max-w-2xl mx-auto px-6">
-            <QuickQuoteForm service="bubble-show" />
-          </div>
-        </section>
+        {/* Tematik Slider 3: İnteraktif Çocuk Katılımı */}
+        <HorizontalPhotoSlider images={slider3Images} title="İnteraktif Çocuk Katılımı" />
 
         {/* Final CTA Section - Light White with Subtle Purple */}
         <section className="py-16 md:py-20 bg-gradient-to-br from-white via-slate-50 to-purple-50 relative overflow-hidden">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(168,85,247,0.05),transparent_50%)]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(236,72,153,0.05),transparent_50%)]"></div>
-          
+
           <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
-            <h2 
+            <h2
               className="font-semibold leading-tight mb-8 bg-gradient-to-r from-gray-800 via-purple-700 to-pink-700 bg-clip-text text-transparent"
               style={{
                 fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)',
@@ -817,21 +564,21 @@ const BubbleShow = () => {
             </h2>
 
             {/* Animated Chevron Down */}
-            <a 
+            <a
               href="#rezervasyon"
               className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-600/10 backdrop-blur-sm border border-purple-600/20 hover:bg-purple-600/20 hover:border-purple-600/30 transition-all duration-300 group"
               aria-label="Rezervasyon formuna git"
             >
-              <svg 
-                className="w-6 h-6 text-purple-600 animate-bounce" 
-                fill="none" 
-                stroke="currentColor" 
+              <svg
+                className="w-6 h-6 text-purple-600 animate-bounce"
+                fill="none"
+                stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2.5} 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
                   d="M19 9l-7 7-7-7"
                 />
               </svg>
@@ -882,7 +629,7 @@ const BubbleShow = () => {
                     placeholder="Adınız ve soyadınız"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-xs text-white/90 font-medium mb-1.5">Telefon</label>
                   <input
@@ -894,7 +641,7 @@ const BubbleShow = () => {
                     placeholder="+90 5XX XXX XX XX"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-xs text-white/90 font-medium mb-1.5">Etkinlik Adresi</label>
                   <input
@@ -906,7 +653,7 @@ const BubbleShow = () => {
                     placeholder="İlçe, mahalle"
                   />
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs text-white/90 font-medium mb-1.5">Tarih</label>
@@ -929,7 +676,7 @@ const BubbleShow = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label className="block text-xs text-white/90 font-medium mb-1.5">Notlar</label>
                   <textarea
@@ -942,7 +689,7 @@ const BubbleShow = () => {
                   />
                 </div>
               </div>
-              
+
               <button
                 type="button"
                 className="mt-5 w-full rounded-xl bg-white text-[#128C7E] font-bold text-sm md:text-base py-3.5 shadow-lg hover:shadow-xl hover:bg-[#DCF8C6] transition-all duration-300 flex items-center justify-center gap-2 group"
@@ -955,16 +702,18 @@ const BubbleShow = () => {
               </button>
 
               <p className="text-xs text-center text-[#DCF8C6] mt-4">
-                🔒 Bilgileriniz güvenle saklanır ve sadece rezervasyon için kullanılır
+                Bilgileriniz güvenle saklanır ve sadece rezervasyon için kullanılır
               </p>
             </div>
           </div>
         </section>
 
+        <TrustSection />
+
         {/* FAQ Section */}
         <section className="py-20 bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100">
           <div className="max-w-3xl mx-auto px-4">
-            <h2 
+            <h2
               className="font-bold text-gray-900 mb-12 text-center"
               style={{
                 fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
@@ -975,7 +724,7 @@ const BubbleShow = () => {
             >
               Sıkça Sorulan Sorular
             </h2>
-            
+
             <div className="space-y-6">
               {faqData.map((faq, index) => (
                 <div
@@ -1040,6 +789,8 @@ const BubbleShow = () => {
 
         {/* Google Müşteri Yorumları */}
         <GoogleReviews reviews={getReviewsByTags(['bubbleshow', 'genel'])} title="Bubble Show Müşteri Yorumları" />
+
+        <DeferredContentAccordion serviceKey="bubble-show" />
 
         <RelatedServices currentService="bubble-show" />
 

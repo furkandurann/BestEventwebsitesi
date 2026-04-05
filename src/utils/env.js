@@ -12,14 +12,14 @@ export const SITE_CONFIG = {
 
 // Contact Information
 export const CONTACT_INFO = {
-  phone: import.meta.env.VITE_PHONE_NUMBER || '905307309009',
+  phone: import.meta.env.VITE_PHONE_NUMBER || '+905307309009',
   email: import.meta.env.VITE_EMAIL || 'info@bestevent.com.tr',
   address: import.meta.env.VITE_ADDRESS || 'İstanbul, Türkiye',
 }
 
 // WhatsApp Configuration
 export const WHATSAPP_CONFIG = {
-  number: import.meta.env.VITE_WHATSAPP_NUMBER || '905307309009',
+  number: import.meta.env.VITE_WHATSAPP_NUMBER || '+905307309009',
   defaultMessage: import.meta.env.VITE_WHATSAPP_DEFAULT_MESSAGE || 'Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum',
   getLink: (customMessage) => {
     const message = encodeURIComponent(customMessage || WHATSAPP_CONFIG.defaultMessage)

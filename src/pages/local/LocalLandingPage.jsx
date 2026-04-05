@@ -4,8 +4,9 @@ import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
 import GoogleReviews from '../../components/GoogleReviews'
 import { getReviewsByTags } from '../../data/googleReviews'
-import { getDistrict, getService, getLocalContentAsync, getServicesForDistrict, districts } from '../../data/localPages'
+import { getLocalPageEntryAsync } from '../../data/localPages.async'
 import { createLocalBusinessSchema } from '../../utils/schemaHelpers'
+import DistrictBlogLinks from '../../components/DistrictBlogLinks'
 
 // ─── Heading Varyant Helpers ────────────────────────────
 const headingVariants = {
@@ -61,9 +62,22 @@ const orderMap = {
   D: ['localStory', 'orgScenario', 'midCta', 'eventTips', 'serviceDetail', 'reviews', 'serviceProcess', 'whyChooseUs', 'faq'],
 }
 
+const kingServiceLinks = [
+  { path: '/organizasyonlar/konsept-dogum-gunu', label: 'Konsept Doğum Günü Hizmeti' },
+  { path: '/organizasyonlar/dogum-gunu-organizasyonu', label: 'Doğum Günü Organizasyonu' },
+  { path: '/organizasyonlar/kostumlu-karakterler', label: 'Kostümlü Karakterler' },
+  { path: '/organizasyonlar/maskot-kiralama', label: 'Maskot Kiralama' },
+  { path: '/organizasyonlar/palyaco-kiralama', label: 'Palyaço Kiralama' },
+  { path: '/organizasyonlar/magic-show', label: 'Sihirbaz Gösterisi' },
+  { path: '/organizasyonlar/pamuk-seker', label: 'Pamuk Şeker' },
+  { path: '/organizasyonlar/yuz-boyama', label: 'Yüz Boyama' },
+  { path: '/organizasyonlar/noel-baba-kiralama', label: 'Noel Baba Kiralama' },
+]
+
 // ─── Shared animation props ─────────────────────────────
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.6 } }
 const sectionH2Style = { fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', lineHeight: '1.2', letterSpacing: '-0.02em' }
+const normalizeSlug = (value) => String(value || '').trim().toLowerCase().replace(/\/+$/, '')
 
 // ═══════════════════════════════════════════════════════════
 // SECTION COMPONENTS
@@ -197,7 +211,7 @@ function CTASection({ districtName, serviceName, ctaClosing }) {
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
-              0530 730 90 09
+              05307309009
             </a>
           </div>
         </motion.div>
@@ -574,9 +588,7 @@ function ServiceBackLinkBottom({ district, service }) {
 }
 
 // ─── Diğer Semtler ──────────────────────────────────────
-function OtherDistrictsSection({ currentDistrict, serviceSlug, serviceName }) {
-  const otherDistricts = districts.filter(d => d.slug !== currentDistrict).slice(0, 12)
-
+function OtherDistrictsSection({ otherDistricts, serviceSlug, serviceName }) {
   return (
     <section className="py-16 bg-zinc-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -602,9 +614,7 @@ function OtherDistrictsSection({ currentDistrict, serviceSlug, serviceName }) {
 }
 
 // ─── Aynı Semtteki Diğer Hizmetler ─────────────────────
-function OtherServicesSection({ districtSlug, districtName, currentServiceSlug }) {
-  const otherServices = getServicesForDistrict(districtSlug).filter(s => s.slug !== currentServiceSlug)
-
+function OtherServicesSection({ districtSlug, districtName, otherServices }) {
   if (otherServices.length === 0) return null
 
   return (
@@ -643,31 +653,114 @@ function OtherServicesSection({ districtSlug, districtName, currentServiceSlug }
   )
 }
 
+// ─── Ana Sayfa / Ana Hizmet / Benzer Hizmetler Blokları ─────
+function LocalAuthorityHub({ district, service, otherServices = [], districtSlug }) {
+  const similarServices = otherServices.filter((item) => item.slug !== service.slug).slice(0, 3)
+  const homepageLabel = 'Türkiye’de en çok tercih edilen etkinlik hizmetleri'
+  const serviceAnchor = `Tüm ${service.name} hizmetleri`
+
+  return (
+    <section className="py-10 bg-gradient-to-b from-zinc-950 to-black">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeUp}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+              <h3 className="text-sm uppercase tracking-[0.2em] text-gray-400 font-semibold mb-3">Ana Sayfa</h3>
+              <p className="text-white/90 text-base mb-4">
+                Tüm İstanbul için hızlı ve merkezi planlama isterseniz anasayfamızı ziyaret edin.
+              </p>
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors text-sm"
+              >
+                {homepageLabel}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+
+            <div className="rounded-2xl border border-purple-500/20 bg-gradient-to-br from-purple-950/40 to-indigo-950/20 p-6">
+              <h3 className="text-sm uppercase tracking-[0.2em] text-gray-400 font-semibold mb-3">Ana Hizmet</h3>
+              <p className="text-white/90 text-base mb-4">
+                İlgili hizmetin kapsam, fiyat ve paket karşılaştırmaları için ana hizmet sayfasına geçin.
+              </p>
+              <Link
+                to={service.pillarUrl}
+                className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors text-sm"
+              >
+                {serviceAnchor}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+
+            <div className="rounded-2xl border border-pink-500/20 bg-gradient-to-br from-pink-950/40 to-purple-950/20 p-6">
+              <h3 className="text-sm uppercase tracking-[0.2em] text-gray-400 font-semibold mb-3">Kral Sayfalar</h3>
+              <p className="text-white/90 text-base mb-4">
+                Ana satış sinyallerini güçlendirmek için hedeflenen ana hizmet sayfalarımıza direkt yönlendirme.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {kingServiceLinks.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className="inline-flex text-sm text-gray-200 bg-white/5 border border-white/10 px-3 py-2 rounded-full hover:border-purple-400 hover:text-white transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {similarServices.length > 0 && (
+            <div className="mt-6 rounded-2xl border border-white/10 bg-zinc-900/40 p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-gray-400 font-semibold mb-3">
+                İlgili Benzer Hizmetler
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {similarServices.map((item) => (
+                  <Link
+                    key={item.slug}
+                    to={`/organizasyonlar/${item.slug}/${districtSlug}`}
+                    className="inline-flex text-sm text-gray-200 bg-white/5 border border-white/10 px-3 py-2 rounded-full hover:border-purple-400 hover:text-white transition-colors"
+                  >
+                    {district.name} {item.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 // ═══════════════════════════════════════════════════════════
 // ANA COMPONENT: LocalLandingPage
 // ═══════════════════════════════════════════════════════════
 const LocalLandingPage = () => {
   const { service: serviceSlug, district: districtSlug } = useParams()
-  const [content, setContent] = useState(null)
+  const [pageEntry, setPageEntry] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const district = getDistrict(districtSlug)
-  const service = getService(serviceSlug)
-
   useEffect(() => {
-    if (!district || !service) {
-      setLoading(false)
-      return
-    }
     let cancelled = false
-    getLocalContentAsync(districtSlug, serviceSlug).then(data => {
+
+    setLoading(true)
+
+    getLocalPageEntryAsync(districtSlug, serviceSlug).then((data) => {
       if (!cancelled) {
-        setContent(data)
+        setPageEntry(data)
         setLoading(false)
       }
     })
+
     return () => { cancelled = true }
-  }, [districtSlug, serviceSlug, district, service])
+  }, [districtSlug, serviceSlug])
 
   // Loading state
   if (loading) {
@@ -679,15 +772,29 @@ const LocalLandingPage = () => {
   }
 
   // Geçersiz semt veya hizmet → 404
-  if (!district || !service || !content) {
+  if (!pageEntry) {
     return <Navigate to="/404" replace />
   }
 
+  const {
+    district,
+    service,
+    content,
+    otherDistricts = [],
+    otherServices = [],
+    districtSlug: canonicalDistrictSlug = district?.slug,
+    serviceSlug: canonicalServiceSlug = service?.slug
+  } = pageEntry
+
   const variant = content.headingVariant || 1
   const sectionOrder = content.sectionOrder || 'A'
+  const safeDistrictSlug = normalizeSlug(canonicalDistrictSlug || district?.slug)
+  const safeServiceSlug = normalizeSlug(canonicalServiceSlug || service?.slug)
+  const parentServiceCanonicalPath = service?.pillarUrl || `/organizasyonlar/${safeServiceSlug}`
+  const localCanonicalPath = `${parentServiceCanonicalPath}/${safeDistrictSlug}`
 
   const pageTitle = `${district.name} ${service.name} | Profesyonel ${service.shortName} Hizmeti | Best Event`
-  const pageDescription = `${district.name} bölgesinde profesyonel ${service.name.toLowerCase()} hizmeti. ${district.neighborhoods.slice(0, 4).join(', ')} ve çevresinde 10+ yıl deneyim, 5000+ etkinlik. Hemen teklif alın! ☎ 0530 730 90 09`
+  const pageDescription = `${district.name} bölgesinde profesyonel ${service.name.toLowerCase()} hizmeti. ${district.neighborhoods.slice(0, 4).join(', ')} ve çevresinde 10+ yıl deneyim, 5000+ etkinlik. Hemen teklif alın! ☎ 05307309009`
 
   // Schema Markup
   const schemas = [
@@ -714,6 +821,7 @@ const LocalLandingPage = () => {
         'name': `${district.name}, İstanbul`
       },
       'serviceType': service.name,
+      'url': `https://bestevent.com.tr${localCanonicalPath}`,
       'offers': {
         '@type': 'Offer',
         'priceCurrency': 'TRY',
@@ -732,20 +840,24 @@ const LocalLandingPage = () => {
         }
       }))
     },
-    createLocalBusinessSchema(district.name, service.name, serviceSlug, districtSlug, district.lat, district.lng)
+    createLocalBusinessSchema(district.name, service.name, safeServiceSlug, safeDistrictSlug, district.lat, district.lng)
   ]
 
   // Google Reviews tag mapping
   const reviewTagMap = {
     'palyaco-kiralama': ['palyaco', 'genel'],
+    'bubble-show': ['bubbleshow', 'genel'],
     'bubble-show-kiralama': ['bubbleshow', 'genel'],
+    'magic-show': ['sihirbaz', 'genel'],
     'sihirbaz-kiralama': ['sihirbaz', 'genel'],
     'dogum-gunu-organizasyonu': ['dogumgunu', 'genel'],
+    'pamuk-seker': ['pamukseker', 'genel'],
     'pamuk-seker-arabasi-kiralama': ['pamukseker', 'genel'],
+    'yuz-boyama': ['yuzboyama', 'genel'],
     'profesyonel-yuz-boyama': ['yuzboyama', 'genel'],
     'popcorn-arabasi-kiralama': ['pamukseker', 'genel']
   }
-  const reviewTags = reviewTagMap[serviceSlug] || ['genel']
+  const reviewTags = reviewTagMap[normalizeSlug(safeServiceSlug)] || ['genel']
 
   // Section map — her section key'ine karşılık gelen component
   const sectionComponents = {
@@ -837,6 +949,7 @@ const LocalLandingPage = () => {
       <Seo
         title={pageTitle}
         description={pageDescription}
+        canonicalPath={localCanonicalPath}
         keywords={[
           `${district.name.toLowerCase()} ${service.name.toLowerCase()}`,
           `${district.name.toLowerCase()} ${service.shortName.toLowerCase()} kiralama`,
@@ -894,7 +1007,7 @@ const LocalLandingPage = () => {
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
-                0530 730 90 09
+                05307309009
               </a>
             </div>
           </motion.div>
@@ -904,23 +1017,80 @@ const LocalLandingPage = () => {
       {/* ── Üst Kontekstüel Back Link ── */}
       <ServiceBackLinkTop district={district} service={service} />
 
+      {/* ── Ana Sayfa / Ana Hizmet / Benzer Hizmetler Blokları ── */}
+      <LocalAuthorityHub
+        district={district}
+        service={service}
+        otherServices={otherServices}
+        districtSlug={safeDistrictSlug}
+      />
+
       {/* ── Dinamik Section Sırası ── */}
       {sections}
 
       {/* ── Alt Kontekstüel Back Link ── */}
       <ServiceBackLinkBottom district={district} service={service} />
 
+      {/* ── Mekan Rehberi, Ulaşım ve Mahalle Detayları ── */}
+      {district.venueGuide && (
+        <section className="py-10 md:py-14">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+              {district.name} Etkinlik Mekanı Rehberi
+            </h3>
+            <p className="text-white/70 leading-relaxed text-sm md:text-base">
+              {district.venueGuide}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {district.neighborhoodDetails && district.neighborhoodDetails.length > 0 && (
+        <section className="py-10 md:py-14">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-6">
+              {district.name} Mahalle Rehberi
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {district.neighborhoodDetails.map((n, i) => (
+                <div key={i} className="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
+                  <h4 className="text-base font-semibold text-purple-400 mb-1">{n.name}</h4>
+                  <p className="text-sm text-white/60 mb-2">{n.tip}</p>
+                  <p className="text-xs text-white/40">En iyi mekan: {n.bestVenue}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {district.transportDetails && (
+        <section className="py-10 md:py-14">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+              {district.name} Ulaşım Bilgileri
+            </h3>
+            <p className="text-white/70 leading-relaxed text-sm md:text-base">
+              {district.transportDetails}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ── Bu Bölgedeki Blog Yazıları (Silo Link) ── */}
+      <DistrictBlogLinks districtSlug={safeDistrictSlug} maxPosts={4} />
+
       {/* ── Aynı Semtteki Diğer Hizmetler (her zaman sonlarda) ── */}
       <OtherServicesSection
-        districtSlug={districtSlug}
+        districtSlug={safeDistrictSlug}
         districtName={district.name}
-        currentServiceSlug={serviceSlug}
+        otherServices={otherServices}
       />
 
       {/* ── Diğer Semtler (her zaman sonlarda) ── */}
       <OtherDistrictsSection
-        currentDistrict={districtSlug}
-        serviceSlug={serviceSlug}
+        otherDistricts={otherDistricts}
+        serviceSlug={safeServiceSlug}
         serviceName={service.name}
       />
 

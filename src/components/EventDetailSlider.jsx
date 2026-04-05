@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules'
 import { motion, useReducedMotion } from 'framer-motion'
+import { generateSrcSet } from '../utils/responsiveImage'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
@@ -49,9 +50,17 @@ const EventDetailSlider = ({
           <SwiperSlide key={index} className="swiper-slide">
             <div className="absolute inset-0 h-full w-full flex items-center justify-center overflow-hidden">
               {/* Photo Background */}
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${photo})` }}
+              <img
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                src={photo}
+                srcSet={generateSrcSet(photo)}
+                sizes="100vw"
+                alt={`${displayTitle} - Fotoğraf ${index + 1}`}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+                decoding={index === 0 ? 'sync' : 'async'}
+                width={1920}
+                height={1080}
               />
 
               {/* Gradient Overlay */}

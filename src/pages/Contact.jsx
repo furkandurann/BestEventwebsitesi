@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Seo from '../components/Seo'
+import { trackFormSubmit } from '../utils/tracking'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,22 +17,7 @@ const Contact = () => {
     e.preventDefault()
     const { name, phone, message } = formData
 
-    // Google Analytics Form Submit Tracking
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'form_submit', {
-        event_category: 'lead_generation',
-        event_label: 'Contact Form WhatsApp',
-        form_name: 'Contact Form',
-        value: 1
-      })
-
-      // Google Ads Conversion Tracking (ID alındığında aktif edilecek)
-      // window.gtag('event', 'conversion', {
-      //   'send_to': 'AW-XXXXXXXXX/CONVERSION_LABEL',
-      //   'value': 100,
-      //   'currency': 'TRY'
-      // })
-    }
+    trackFormSubmit('Contact Form', 'iletisim')
 
     const text = `Merhaba Best Event,%0AAd: ${name || '-'}%0ATelefon: ${
       phone || '-'
@@ -43,7 +29,7 @@ const Contact = () => {
     <div className="min-h-screen">
       <Seo
         title="İletişim | Best Event - İstanbul Etkinlik Organizasyonu | Hemen Teklif Alın"
-        description="Best Event ile iletişime geçin. Şemsettin Günaltay Cad. No:175 Erenköy/İstanbul. WhatsApp: 0530 730 90 09. Çocuk etkinlikleri, kurumsal organizasyonlar, müzik ve dans gösterileri için hızlı teklif alın. Aynı gün dönüş garantisi."
+        description="Best Event ile iletişime geçin. Şemsettin Günaltay Cad. No:175 Erenköy/İstanbul. WhatsApp: 05307309009. Çocuk etkinlikleri, kurumsal organizasyonlar, müzik ve dans gösterileri için hızlı teklif alın. Aynı gün dönüş garantisi."
         keywords={[
           'best event iletişim',
           'istanbul etkinlik firması iletişim',
@@ -66,7 +52,7 @@ const Contact = () => {
           mainEntity: {
             '@type': 'Organization',
             name: 'Best Event',
-            telephone: '+90-530-730-90-09',
+            telephone: '+905307309009',
             email: 'besteventturkiye@gmail.com',
             address: {
               '@type': 'PostalAddress',
@@ -83,7 +69,7 @@ const Contact = () => {
             },
             contactPoint: {
               '@type': 'ContactPoint',
-              telephone: '+90-530-730-90-09',
+              telephone: '+905307309009',
               contactType: 'customer service',
               availableLanguage: ['Turkish', 'English'],
               areaServed: 'TR'
@@ -118,11 +104,11 @@ const Contact = () => {
 
                 <div className="mt-6 space-y-3">
                   <a
-                    href="tel:05307309009"
+                    href="tel:+905307309009"
                     className="flex items-center justify-center gap-2 rounded-full bg-white text-black text-sm font-semibold px-5 py-3 shadow-lg shadow-black/40 hover:bg-white/90 transition-colors"
                   >
                     <span className="text-lg">📞</span>
-                    <span>Hemen Ara: 0530 730 90 09</span>
+                    <span>Hemen Ara: 05307309009</span>
                   </a>
 
                   <a
@@ -140,8 +126,8 @@ const Contact = () => {
                   <p className="text-xs font-medium tracking-[0.18em] uppercase text-white/50">
                     Telefon
                   </p>
-                  <a href="tel:05307309009" className="mt-1 inline-block hover:text-white">
-                    +90 530 730 90 09
+                  <a href="tel:+905307309009" className="mt-1 inline-block hover:text-white">
+                    05307309009
                   </a>
                 </div>
                 <div>

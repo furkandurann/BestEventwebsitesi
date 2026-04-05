@@ -8,6 +8,7 @@ const NotFound = () => {
         title="404 - Sayfa Bulunamadı | Best Event"
         description="Aradığınız sayfa bulunamadı. Best Event ana sayfasına dönün veya organizasyon hizmetlerimize göz atın."
         keywords={['404', 'sayfa bulunamadı', 'best event']}
+        indexable={false}
       />
 
       <div className="text-center">
@@ -36,10 +37,10 @@ const NotFound = () => {
             Şu an teknik bir sorun yaşanıyor. Bize direkt müşteri iletişim numaramız üzerinden ulaşabilirsiniz:
           </p>
           <a
-            href="tel:05307309009"
+            href="tel:+905307309009"
             className="text-yellow-300 text-lg font-bold hover:text-yellow-200 transition-colors mt-2 inline-block"
           >
-            0530 730 90 09 - Best Event
+            05307309009 - Best Event
           </a>
         </div>
 

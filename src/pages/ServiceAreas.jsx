@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
 import { FaMapMarkerAlt, FaPhone, FaWhatsapp, FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import Seo from '../components/Seo'
 
 const ServiceAreas = () => {
   const [openAccordion, setOpenAccordion] = useState(null)
@@ -28,9 +28,9 @@ const ServiceAreas = () => {
   // LP slug mapping: service page link -> local landing page service slug
   const lpServiceMap = {
     '/organizasyonlar/palyaco-kiralama': 'palyaco-kiralama',
-    '/organizasyonlar/magic-show': 'sihirbaz-kiralama',
-    '/organizasyonlar/yuz-boyama': 'profesyonel-yuz-boyama',
-    '/organizasyonlar/bubble-show': 'bubble-show-kiralama',
+    '/organizasyonlar/magic-show': 'magic-show',
+    '/organizasyonlar/yuz-boyama': 'yuz-boyama',
+    '/organizasyonlar/bubble-show': 'bubble-show',
     '/organizasyonlar/konsept-dogum-gunu': 'dogum-gunu-organizasyonu',
   }
 
@@ -111,11 +111,12 @@ const ServiceAreas = () => {
 
   return (
     <>
-      <Helmet>
-        <title>İstanbul Etkinlik Bölgeleri | Best Event</title>
-        <meta name="description" content="İstanbul'un 39 ilçesinde ve diğer şehirlerde profesyonel etkinlik organizasyonu. Kadıköy'den Beşiktaş'a, Antalya ve Muğla'ya kadar her yerde mobil ekip." />
-        <meta name="keywords" content="istanbul etkinlik bölgeleri, etkinlik organizasyonu, kadıköy palyaço, beşiktaş sihirbaz, istanbul dj, istanbul dans etkinliği" />
-      </Helmet>
+      <Seo
+        title="İstanbul Etkinlik Bölgeleri | Best Event"
+        description="İstanbul'un 39 ilçesinde ve diğer şehirlerde profesyonel etkinlik organizasyonu. Kadıköy'den Beşiktaş'a, Antalya ve Muğla'ya kadar her yerde mobil ekip."
+        keywords="istanbul etkinlik bölgeleri, etkinlik organizasyonu, kadıköy palyaço, beşiktaş sihirbaz, istanbul dj, istanbul dans etkinliği"
+        canonicalPath="/hizmet-bolgeleri"
+      />
 
       <main className="bg-[#040406] text-white min-h-screen">
         {/* Hero */}
@@ -305,7 +306,7 @@ const ServiceAreas = () => {
                 <div className="flex flex-wrap gap-4 justify-center">
                   <a href="tel:+905307309009" className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:-translate-y-0.5 transition-all flex items-center gap-2">
                     <FaPhone className="text-black/80" />
-                    0530 730 90 09
+                    05307309009
                   </a>
                   <a
                     href="https://wa.me/905307309009"

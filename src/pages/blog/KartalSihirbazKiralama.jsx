@@ -120,7 +120,7 @@ const KartalSihirbazKiralama = () => {
   return (
     <BlogDetail
       content={content}
-      relatedServicePath="/organizasyonlar/sihirbaz"
+      relatedServicePath="/organizasyonlar/magic-show"
       relatedServiceName="Sihirbaz Gösterisi"
       faqData={faqData}
       slug="kartal-sihirbaz-kiralama"

@@ -1,17 +1,19 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
-import 'swiper/css'
 import Seo from '../../components/Seo'
-import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import { createServiceSchema, createFAQSchema, createImageObjectSchema } from '../../utils/schemaHelpers'
 import AdHero from '../../components/AdHero'
+import LocationHeroShowcase from '../../components/LocationHeroShowcase'
+import HorizontalPhotoSlider from '../../components/HorizontalPhotoSlider'
 import RelatedServices from '../../components/RelatedServices'
+import TrustSection from '../../components/TrustSection'
 import GoogleReviews from '../../components/GoogleReviews'
 import { getReviewsByTags } from '../../data/googleReviews'
 import DistrictLinksGrid from '../../components/DistrictLinksGrid'
 import RelatedBlogPosts from '../../components/RelatedBlogPosts'
+import DeferredContentAccordion from '../../components/DeferredContentAccordion'
+import { generateSrcSet } from '../../utils/responsiveImage'
 
 // Clown FAQ Section Component
 function ClownFAQSection({ faqs }) {
@@ -225,24 +227,37 @@ const ClownRental = () => {
     }
   ]
 
-  const heroSlides = [
-    {
-      src: '/content/images/palyaco/palyaconattiveguleryuz.webp',
-      alt: 'Palyaço güler yüzlü animatörler'
-    },
-    {
-      src: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp',
-      alt: 'Palyaço grup oyunları'
-    },
-    {
-      src: '/content/images/palyaco/palyacokarsoleni.webp',
-      alt: 'Palyaço kar gösterisi'
-    },
-    {
-      src: '/content/images/palyaco/palyacogrupoyunlari.webp',
-      alt: 'Palyaço interaktif etkinlik'
-    }
+  // Slider 1: Yüz Boyama ve Balon Show
+  const slider1Images = [
+    { src: '/content/images/palyaco/yuzboyamapalyaco.webp', alt: 'Yüz boyama palyaço etkinliği İstanbul' },
+    { src: '/content/images/palyaco/palyacoboyama.webp', alt: 'Profesyonel yüz boyama hizmeti' },
+    { src: '/content/images/palyaco/palyacoyuzboyama2.webp', alt: 'Çocuk yüz boyama aktivitesi' },
+    { src: '/content/images/palyaco/palyacososisbalon.webp', alt: 'Sosis balon şekillendirme gösterisi' },
   ]
+
+  // Slider 2: İnteraktif Oyunlar
+  const slider2Images = [
+    { src: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp', alt: 'Palyaço grup oyunları İstanbul' },
+    { src: '/content/images/palyaco/palyacogrupoyunlari.webp', alt: 'İnteraktif çocuk oyunları' },
+    { src: '/content/images/palyaco/palyacogrupoyunlarii.webp', alt: 'Eğlenceli grup aktiviteleri' },
+    { src: '/content/images/palyaco/cocuklarinyuzundekiheyecan.webp', alt: 'Çocukların yüzündeki heyecan' },
+  ]
+
+  // Slider 3: Komedi ve Eğlence
+  const slider3Images = [
+    { src: '/content/images/palyaco/palyaconattiveguleryuz.webp', alt: 'Palyaço güler yüz gösterisi' },
+    { src: '/content/images/palyaco/palyacoonemlifoto.webp', alt: 'Palyaço komedi gösterisi' },
+    { src: '/content/images/palyaco/palyacokarsoleni2.webp', alt: 'Palyaço kar şöleni finali' },
+    { src: '/content/images/palyaco/palyacosevgidoluonemli.webp', alt: 'Sevgi dolu palyaço etkinliği' },
+  ]
+
+  const showcaseSlides = [
+    slider2Images[0],
+    slider1Images[0],
+    slider3Images[1],
+    slider2Images[3],
+    slider1Images[3]
+  ].filter(Boolean)
 
   const eventFlow = [
     {
@@ -251,23 +266,26 @@ const ClownRental = () => {
       title: 'Tanışma ve Karşılama',
       description: 'Palyaço ekibimiz çocuklarla samimi bir karşılama seremonisi ile tanışır',
       image: '/content/images/palyaco/palyacoonemlifoto.webp',
-      alt: 'Palyaço kiralama İstanbul tanışma seremonisi - Best Event'
+      alt: 'Palyaço kiralama İstanbul tanışma seremonisi - Best Event',
+      href: '/hizmet-detay/palyaco-ile-tanisma-ve-karsilama'
     },
     {
       id: 'facepainting',
       number: '2',
-      title: 'Yüz Boyama',
-      description: 'Minnie Mouse, Spiderman, kedi, köpek, tavşan, Batman ve daha fazlası. Renkli karakterler yüz boyama ile canlanıyor',
+      title: 'Yüz Boyama, Glitter ve Play Doh',
+      description: 'Hızlı yüz boyama, parlak glitter detayları ve küçük yaş grupları için play doh masasıyla sıra beklerken akış bozulmaz',
       image: '/content/images/palyaco/yuzboyamapalyaco.webp',
-      alt: 'Palyaço etkinliği yüz boyama İstanbul - Best Event'
+      alt: 'Palyaço etkinliği yüz boyama İstanbul - Best Event',
+      href: '/hizmet-detay/yuz-boyama-glitter-ve-play-doh-kosesi'
     },
     {
       id: 'games',
       number: '3',
       title: 'Eğlenceli Grup Oyunları',
-      description: 'Tüm çocukların katıldığı interaktif grup oyunları ve yarışmalar',
+      description: 'Çuval yarışı, halat çekme, ringo, sandalye kapmaca, deve-cüce ve yaşa göre uyarlanan yarışmalarla tempo yükselir',
       image: '/content/images/palyaco/palyacogrupoyunlari.webp',
-      alt: 'Palyaço kiralama grup oyunları İstanbul - Best Event'
+      alt: 'Palyaço kiralama grup oyunları İstanbul - Best Event',
+      href: '/hizmet-detay/cocuk-grup-oyunlari-ve-yarismalar'
     },
     {
       id: 'balloon',
@@ -275,7 +293,8 @@ const ClownRental = () => {
       title: 'Sosis Balon Şekillendirme',
       description: 'Renkli sosis balon ile kedi, köpek, kalp, kılıç yapımı',
       image: '/content/images/palyaco/palyacososisbalon.webp',
-      alt: 'Palyaço organizasyonu balon şekillendirme - Best Event'
+      alt: 'Palyaço organizasyonu balon şekillendirme - Best Event',
+      href: '/hizmet-detay/sosis-balon-sekillendirme'
     },
     {
       id: 'happyface',
@@ -283,7 +302,8 @@ const ClownRental = () => {
       title: 'Palyaçonun Güler Yüzü',
       description: 'Çocukların mutluluğunu yansıtan neşeli anlar',
       image: '/content/images/palyaco/palyacooguleryuzzafotograf.webp',
-      alt: 'Palyaço kiralama fotoğraf çekimi İstanbul - Best Event'
+      alt: 'Palyaço kiralama fotoğraf çekimi İstanbul - Best Event',
+      href: '/hizmet-detay/palyaconun-komik-etkilesim-anlari'
     },
     {
       id: 'snowshow',
@@ -291,7 +311,8 @@ const ClownRental = () => {
       title: 'Kar Show\'u Finali',
       description: 'Büyülü kar show gösterisi ile etkinliğin en heyecanlı anı',
       image: '/content/images/palyaco/palyacokarsoleni.webp',
-      alt: 'Palyaço etkinliği kar show İstanbul - Best Event'
+      alt: 'Palyaço etkinliği kar show İstanbul - Best Event',
+      href: '/hizmet-detay/kar-show-finali'
     },
     {
       id: 'farewell',
@@ -299,23 +320,30 @@ const ClownRental = () => {
       title: 'Son Hatıra Fotoğrafı',
       description: 'Unutulmaz günün son fotoğrafı ile duygusal veda',
       image: '/content/images/palyaco/palyacoonemlifotografa.webp',
-      alt: 'Palyaço etkinliği veda fotoğrafı İstanbul - Best Event'
+      alt: 'Palyaço etkinliği veda fotoğrafı İstanbul - Best Event',
+      href: '/hizmet-detay/son-hatira-fotografi-ve-veda'
     }
   ]
 
   const serviceSchema = createServiceSchema(
-    'Palyaço Gösterisi | Palyaço Organizasyonu Kiralama',
-    'Istanbul\'da palyaço gösterisi ve organizasyonu. Palyaço kiralama, etkinliği hizmetleri. +5000 başarılı etkinlik.',
+    'Palyaço Kiralama | Palyaço Organizasyonu İstanbul',
+    'Istanbul\'da palyaço kiralama ve organizasyonu. Profesyonel palyaço gösterisi, animatör hizmetleri. +5000 başarılı etkinlik.',
     '/organizasyonlar/palyaco-kiralama',
-    'Palyaço Kiralama'
+    'Palyaço Kiralama ve Organizasyonu'
   )
   const faqSchema = createFAQSchema(faqData)
+
+  const imageGallerySchema = createImageObjectSchema([
+    { src: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp', alt: 'Palyaço kiralama İstanbul grup oyunları' },
+    { src: '/content/images/palyaco/palyacoonemlifoto.webp', alt: 'Profesyonel palyaço gösterisi' },
+    { src: '/content/images/palyaco/yuzboyamapalyaco.webp', alt: 'Yüz boyama palyaço etkinliği' },
+  ])
 
   return (
     <div className="min-h-screen bg-black text-white">
       <Seo
-        title="Palyaço Gösterisi | Palyaço Organizasyonu Kiralama"
-        description="Istanbul'da palyaço gösterisi ve organizasyonu. Palyaço kiralama, etkinliği hizmetleri. +5000 başarılı etkinlik. ☎ 0530 730 90 09"
+        title="Palyaço Kiralama | Palyaço Organizasyonu İstanbul"
+        description="Istanbul'da palyaço kiralama ve organizasyonu. Profesyonel palyaço gösterisi, animatör hizmetleri. +5000 başarılı etkinlik. ☎ 05307309009"
         keywords={[
           'istanbul palyaço gösterisi',
           'palyaço organizasyonu',
@@ -336,6 +364,7 @@ const ClownRental = () => {
         schema={[
           serviceSchema,
           faqSchema,
+          imageGallerySchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -350,7 +379,13 @@ const ClownRental = () => {
             "name": "BestEvent",
             "url": "https://bestevent.com.tr",
             "logo": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
-            "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
+            "sameAs": [
+              "https://www.instagram.com/besteventorganizasyon/",
+              "https://www.instagram.com/palyacogezegenii/",
+              "https://www.facebook.com/besteventorganizasyon",
+              "https://www.linkedin.com/company/besteventorganizasyon",
+              "https://g.co/kgs/bestevent"
+            ]
           }
         ]}
       />
@@ -360,179 +395,12 @@ const ClownRental = () => {
         backgroundImage="/content/images/palyaco/palyacoanaherogrupoyunlari.webp"
       />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-black py-12 md:py-16">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black pointer-events-none" />
-
-        <div className="relative max-w-6xl mx-auto px-6">
-          <div className="text-center mb-10 md:mb-12">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="uppercase tracking-[0.3em] text-xs sm:text-sm text-orange-300 mb-4 font-medium"
-            >
-              İstanbul'un Her Yerindeyiz
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="font-bold text-white mb-3"
-              style={{
-                fontSize: 'clamp(2.25rem, 5.5vw, 4rem)',
-                lineHeight: '1.1',
-                letterSpacing: '-0.025em',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              Palyaço Kiralama İstanbul
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-white/80 max-w-3xl mx-auto"
-              style={{
-                fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
-                lineHeight: '1.6',
-                letterSpacing: '-0.01em',
-                fontWeight: '500',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-              }}
-            >
-              Şehrin her noktasında eğlenceli palyaço şovları ve animasyonlar.
-            </motion.p>
-          </div>
-
-          <Swiper
-            modules={[Autoplay]}
-            loop
-            centeredSlides
-            autoplay={{ delay: 4500, disableOnInteraction: false }}
-            speed={900}
-            spaceBetween={18}
-            slidesPerView={1.05}
-            breakpoints={{
-              768: { slidesPerView: 1.15 },
-              1024: { slidesPerView: 1.35 }
-            }}
-            className="h-[60vh] sm:h-[65vh] md:h-[68vh]"
-          >
-            {heroSlides.map((slide, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="relative h-full w-full overflow-hidden rounded-[28px] border border-white/15 bg-white/5 shadow-2xl">
-                  <img
-                    src={slide.src}
-                    alt={slide.alt}
-                    className="w-full h-full object-cover"
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                    fetchPriority={idx === 0 ? 'high' : undefined}
-                    width={1200}
-                    height={800}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/25 to-black/55" />
-                  <div className="absolute bottom-6 left-6 right-6 text-white drop-shadow-lg">
-                    <p className="text-sm uppercase tracking-[0.25em] text-white/80 mb-2">Palyaço Organizasyonu</p>
-                    <p className="text-lg font-semibold" style={{ letterSpacing: '-0.01em' }}>
-                      {slide.alt}
-                    </p>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      </section>
-
-      {/* Brand Impact Section - Palyaço Gezegeni */}
-      <section className="py-20 sm:py-28 px-6 bg-gradient-to-br from-purple-950/40 via-black to-pink-950/40 border-y border-white/10">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* BestEvent Bilgisi */}
-            <h2 
-              className="font-bold mb-8 text-white px-4 text-center"
-              style={{
-                fontSize: 'clamp(1.41rem, 3.74vw, 2.48rem)',
-                lineHeight: '1.35',
-                letterSpacing: '-0.015em',
-                fontWeight: '700',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              <span style={{ whiteSpace: 'nowrap' }}>
-                Yüksek{' '}
-                <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent font-bold">
-                  iletişim becerisi
-                </span>
-              </span>
-              , Enerjik ve güler yüzlü animatörler ile
-            </h2>
-
-            {/* Ana Mesaj */}
-            <p 
-              className="text-white mb-12 text-center mx-auto"
-              style={{
-                fontSize: 'clamp(1.125rem, 2.5vw, 1.75rem)',
-                lineHeight: '1.5',
-                letterSpacing: '-0.02em',
-                fontWeight: '600',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              12 Yıldır Sektöre Damga Vurduk
-            </p>
-
-            {/* İstatistikler */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
-              <div>
-                <p 
-                  style={{
-                    fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-                    lineHeight: '1.4',
-                    letterSpacing: '-0.015em',
-                    fontWeight: '500',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif',
-                    color: '#E5E5E5'
-                  }}
-                >
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-bold" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>+5000</span>
-                  {' '}Kiralama
-                </p>
-              </div>
-
-              <div className="hidden sm:block w-px h-8 bg-gradient-to-b from-transparent via-white/30 to-transparent" />
-              <div className="block sm:hidden w-8 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-
-              <div>
-                <p 
-                  className="text-white font-bold"
-                  style={{
-                    fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
-                    lineHeight: '1.4',
-                    letterSpacing: '-0.015em',
-                    fontWeight: '700',
-                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-                  }}
-                >
-                  Binlerce{' '}
-                  <span 
-                    className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent font-bold"
-                    style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
-                  >
-                    Mutlu Çocuk
-                  </span>
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <LocationHeroShowcase
+        title="Palyaço Kiralama İstanbul"
+        description="Yüz boyamadan grup oyunlarına, sosis balondan mini şovlara; çocukları etkinliğin içine alan palyaço akışı tek pakette."
+        slides={showcaseSlides}
+        eyebrow="İstanbul Palyaço Organizasyonu"
+      />
 
       {/* Why Us Section - Orange Background with White Card */}
       <section className="py-20 sm:py-24 bg-gradient-to-br from-orange-950 via-black to-yellow-950">
@@ -582,6 +450,50 @@ const ClownRental = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-14 sm:py-16 bg-gradient-to-b from-black via-orange-950/35 to-black">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            {[
+              'Müzikli Danslar',
+              'APT Dansı',
+              'Heykel Dansı',
+              'Manifest Dansları'
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center rounded-full border border-orange-400/25 bg-white/5 px-4 py-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-orange-200"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <h2
+            className="font-bold text-white mb-4"
+            style={{
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)',
+              lineHeight: '1.2',
+              letterSpacing: '-0.02em',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
+            }}
+          >
+            Palyaço Etkinliğinde Ritimli Dans Akışı
+          </h2>
+
+          <p
+            className="text-zinc-300 max-w-3xl mx-auto"
+            style={{
+              fontSize: 'clamp(1rem, 1.9vw, 1.125rem)',
+              lineHeight: '1.75',
+              letterSpacing: '-0.01em',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
+            }}
+          >
+            Palyaço kiralama akışımızda müzikli danslar, APT dansı, heykel dansı ve manifest dansları gibi kısa ama enerjisi yüksek animasyon geçişleri kullanıyoruz; bu bölüm çocukların ritme katıldığı, fotoğraf ve video anlarının doğal biçimde çoğaldığı, sayfa bütünlüğüne uygun bir eğlence temposu oluşturuyor.
+          </p>
         </div>
       </section>
 
@@ -636,7 +548,10 @@ const ClownRental = () => {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="group"
               >
-                <div className="relative rounded-2xl overflow-hidden bg-zinc-900/50 backdrop-blur-sm border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500">
+                <Link
+                  to={step.href}
+                  className="block relative rounded-2xl overflow-hidden bg-zinc-900/50 backdrop-blur-sm border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500"
+                >
                   {/* Number Badge */}
                   <div className="absolute top-4 left-4 z-10">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
@@ -645,16 +560,19 @@ const ClownRental = () => {
                   </div>
 
                   {/* Image */}
-                  <div className="aspect-[4/3] w-full bg-black/60 overflow-hidden">
+                  <figure className="aspect-[4/3] w-full bg-black/60 overflow-hidden">
                     <img
                       src={step.image}
+                      srcSet={generateSrcSet(step.image)}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       alt={step.alt}
                       loading="lazy"
                       width={800}
                       height={600}
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
                     />
-                  </div>
+                    <figcaption className="sr-only">{step.title}</figcaption>
+                  </figure>
 
                   {/* Content */}
                   <div className="p-6">
@@ -682,13 +600,22 @@ const ClownRental = () => {
                     >
                       {step.description}
                     </p>
+                    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-pink-300/75">
+                      Detayı Aç
+                    </p>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Tematik Slider 2: İnteraktif Oyunlar */}
+      <HorizontalPhotoSlider images={slider2Images} title="İnteraktif Oyunlar" />
+
+      {/* Tematik Slider 3: Komedi ve Eğlence */}
+      <HorizontalPhotoSlider images={slider3Images} title="Komedi ve Eğlence" />
 
       {/* Palyaço Etkinliği Fotoğraf Şeridi - CinemaStrip */}
       <section className="w-full bg-black/90 py-20 px-6 text-center">
@@ -714,6 +641,15 @@ const ClownRental = () => {
         {/* Cinema-Strip */}
         <PalyacoCinemaStrip />
       </section>
+
+      <TrustSection />
+
+      {/* Google Müşteri Yorumları */}
+      <GoogleReviews reviews={getReviewsByTags(['palyaco', 'genel'])} title="Palyaço Kiralama Müşteri Yorumları" />
+
+      <DeferredContentAccordion serviceKey="palyaco-kiralama" />
+
+      <RelatedServices currentService="palyaco-kiralama" />
 
       {/* Apple-Style Contact Section */}
       <section className="relative py-24 sm:py-32 px-6 overflow-hidden">
@@ -829,7 +765,7 @@ const ClownRental = () => {
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
                       }}
                     >
-                      0530 730 90 09
+                      05307309009
                     </span>
                   </div>
                 </div>
@@ -939,56 +875,57 @@ const ClownRental = () => {
 
 // Cinema Strip Component
 function PalyacoCinemaStrip() {
-  const scrollContainerRef = useRef(null)
+  const stripRef = useRef(null)
+  const isPausedRef = useRef(false)
+  const translateXRef = useRef(0)
 
   const scrollImages = [
-    { file: 'palyacoanaherogrupoyunlari.JPG', alt: 'Palyaço etkinliği grup oyunları İstanbul - Best Event' },
-    { file: 'yuzboyamapalyaco.jpg', alt: 'Palyaço yüz boyama etkinliği İstanbul - Best Event' },
-    { file: 'palyacogrupoyunlari.jpg', alt: 'Palyaço kiralama grup oyunları - Best Event' },
-    { file: 'palyacososisbalon.jpg', alt: 'Palyaço sosis balon şekillendirme İstanbul - Best Event' },
-    { file: 'palyacooguleryuzzafotograf.jpeg', alt: 'Palyaço etkinliği güler yüz fotoğrafları - Best Event' },
-    { file: 'palyacokarsoleni.jpeg', alt: 'Palyaço kar show gösterisi İstanbul - Best Event' },
-    { file: 'palyacoonemlifotografa.jpg', alt: 'Palyaço etkinliği hatıra fotoğrafı - Best Event' },
-    { file: 'palyacoonemlifotografguleryız.jpg', alt: 'Palyaço organizasyonu mutlu çocuklar - Best Event' },
-    { file: 'palyacosevgidoluonemli.jpg', alt: 'Palyaço kiralama sevgi dolu anlar - Best Event' },
-    { file: 'palyaconattiveguleryuz.jpg', alt: 'Palyaço etkinliği pozitif enerji - Best Event' },
-    { file: 'palyacogrupoyunlarii.jpg', alt: 'Palyaço grup aktiviteleri İstanbul - Best Event' },
-    { file: 'MST04316.JPG', alt: 'Palyaço organizasyonu profesyonel hizmet - Best Event' },
-    { file: 'MST04321.JPG', alt: 'Palyaço kiralama etkinlik fotoğrafları - Best Event' },
-    { file: 'MST04344.JPG', alt: 'Palyaço etkinliği çocuk mutluluğu - Best Event' },
-    { file: 'IMG_1881.JPG', alt: 'Palyaço kiralama İstanbul başarılı organizasyon - Best Event' }
+    { file: 'palyacoanaherogrupoyunlari.webp', alt: 'Palyaço etkinliği grup oyunları İstanbul - Best Event' },
+    { file: 'yuzboyamapalyaco.webp', alt: 'Palyaço yüz boyama etkinliği İstanbul - Best Event' },
+    { file: 'palyacogrupoyunlari.webp', alt: 'Palyaço kiralama grup oyunları - Best Event' },
+    { file: 'palyacososisbalon.webp', alt: 'Palyaço sosis balon şekillendirme İstanbul - Best Event' },
+    { file: 'palyacooguleryuzzafotograf.webp', alt: 'Palyaço etkinliği güler yüz fotoğrafları - Best Event' },
+    { file: 'palyacokarsoleni.webp', alt: 'Palyaço kar show gösterisi İstanbul - Best Event' },
+    { file: 'palyacoonemlifotografa.webp', alt: 'Palyaço etkinliği hatıra fotoğrafı - Best Event' },
+    { file: 'palyacoonemlifotografguleryız.webp', alt: 'Palyaço organizasyonu mutlu çocuklar - Best Event' },
+    { file: 'palyacosevgidoluonemli.webp', alt: 'Palyaço kiralama sevgi dolu anlar - Best Event' },
+    { file: 'palyaconattiveguleryuz.webp', alt: 'Palyaço etkinliği pozitif enerji - Best Event' },
+    { file: 'palyacogrupoyunlarii.webp', alt: 'Palyaço grup aktiviteleri İstanbul - Best Event' },
+    { file: 'MST04316.webp', alt: 'Palyaço organizasyonu profesyonel hizmet - Best Event' },
+    { file: 'MST04321.webp', alt: 'Palyaço kiralama etkinlik fotoğrafları - Best Event' },
+    { file: 'MST04344.webp', alt: 'Palyaço etkinliği çocuk mutluluğu - Best Event' },
+    { file: 'IMG_1881.webp', alt: 'Palyaço kiralama İstanbul başarılı organizasyon - Best Event' }
   ]
 
-  // Dinamik hesaplama - fotoğraf sayısı değiştiğinde otomatik güncellenir
-  const IMAGE_WIDTH = 450  // px
-  const GAP = 24           // gap-6 = 1.5rem = 24px
+  const IMAGE_WIDTH = 450
+  const GAP = 24
   const imageCount = scrollImages.length
   const totalWidth = (IMAGE_WIDTH * imageCount) + (GAP * (imageCount - 1))
 
-  // Triple images for smoother infinite loop
+  // Triple images for seamless infinite scroll
   const allImages = [...scrollImages, ...scrollImages, ...scrollImages]
 
-  // Sadece otomatik scroll
+  // Auto-scroll with translate3d (GPU-accelerated)
   useEffect(() => {
-    const container = scrollContainerRef.current
-    if (!container) return
-    
-    const scrollSpeed = 2.0 // px per frame (x4 hız)
+    const scrollSpeed = 2.0
     let animationFrameId
-    
+
     const autoScroll = () => {
-      container.scrollLeft += scrollSpeed
-      
-      // Başa dön (seamless loop)
-      if (container.scrollLeft >= totalWidth) {
-        container.scrollLeft = 0
+      if (!isPausedRef.current && stripRef.current) {
+        translateXRef.current -= scrollSpeed
+
+        if (Math.abs(translateXRef.current) >= totalWidth) {
+          translateXRef.current = 0
+        }
+
+        stripRef.current.style.transform = `translate3d(${translateXRef.current}px, 0, 0)`
       }
-      
+
       animationFrameId = requestAnimationFrame(autoScroll)
     }
-    
+
     animationFrameId = requestAnimationFrame(autoScroll)
-    
+
     return () => {
       cancelAnimationFrame(animationFrameId)
     }
@@ -996,11 +933,21 @@ function PalyacoCinemaStrip() {
 
   return (
     <div className="relative w-screen -mx-6 md:-mx-10">
-      <div 
-        ref={scrollContainerRef}
-        className="overflow-hidden scrollbar-hide"
+      <div
+        className="overflow-hidden"
+        onMouseEnter={() => { isPausedRef.current = true }}
+        onMouseLeave={() => { isPausedRef.current = false }}
+        onTouchStart={() => { isPausedRef.current = true }}
+        onTouchEnd={() => { isPausedRef.current = false }}
       >
-        <div className="flex gap-6">
+        <div
+          ref={stripRef}
+          className="flex gap-6"
+          style={{
+            willChange: 'transform',
+            transform: 'translate3d(0, 0, 0)'
+          }}
+        >
           {allImages.map((item, idx) => (
             <div
               key={idx}
@@ -1008,8 +955,11 @@ function PalyacoCinemaStrip() {
             >
               <img
                 src={`/content/images/palyaco/${item.file}`}
+                srcSet={generateSrcSet(`/content/images/palyaco/${item.file}`)}
+                sizes="450px"
                 alt={item.alt}
                 loading="lazy"
+                decoding="async"
                 width={450}
                 height={288}
                 className="h-72 w-[450px] object-cover rounded-2xl brightness-[1.15] contrast-[1.08] saturate-[1.1]"
@@ -1018,22 +968,6 @@ function PalyacoCinemaStrip() {
           ))}
         </div>
       </div>
-
-      {/* Google Müşteri Yorumları */}
-      <GoogleReviews reviews={getReviewsByTags(['palyaco', 'genel'])} title="Palyaço Kiralama Müşteri Yorumları" />
-
-      <RelatedServices currentService="palyaco-kiralama" />
-
-      <style>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   )
 }

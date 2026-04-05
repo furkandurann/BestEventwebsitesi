@@ -14,7 +14,7 @@ const FerrisWheelServices = () => {
       icon: '🎂',
       description: 'Rüya gibi çocuk partileri',
       gradient: 'from-purple-500 via-pink-500 to-rose-400',
-      link: '/organizasyonlar/dogum-gunu'
+      link: '/organizasyonlar/dogum-gunu-organizasyonu'
     },
     {
       title: 'Yetişkin Doğum Günü',

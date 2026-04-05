@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
 import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import DeferredContentAccordion from '../../components/DeferredContentAccordion'
 
 const heroImages = [
   '/content/images/profesyonelmakeup/profesyonelmakeupistanbul.webp',
@@ -61,7 +62,7 @@ const ProfessionalMakeup = () => {
   const serviceSchema = createServiceSchema(
     'Profesyonel Makyaj | İstanbul Makeup Artist',
     'İstanbul\'da profesyonel makyaj: gelin, davet, kurumsal etkinlik ve fotoğraf çekimi için sertifikalı makeup artist kadrosu. Premium ürünler, hijyenik uygulama.',
-    '/organizasyonlar/profesyonel-makyaj',
+    '/organizasyonlar/yuz-boyama',
     'Profesyonel Makyaj'
   )
   const faqSchema = createFAQSchema(faqs)
@@ -81,7 +82,7 @@ const ProfessionalMakeup = () => {
           'istanbul makeup artist',
           'profesyonel makyaj hizmeti'
         ]}
-        canonicalPath="/organizasyonlar/profesyonel-makyaj"
+        canonicalPath="/organizasyonlar/yuz-boyama"
         schema={[
           serviceSchema,
           faqSchema
@@ -417,7 +418,7 @@ const ProfessionalMakeup = () => {
                         fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
                       }}
                     >
-                      0530 730 90 09
+                      05307309009
                     </span>
                   </div>
                 </div>
@@ -455,6 +456,8 @@ const ProfessionalMakeup = () => {
             </div>
           </div>
         </section>
+
+        <DeferredContentAccordion serviceKey="profesyonel-makyaj" />
       </main>
     </>
   )

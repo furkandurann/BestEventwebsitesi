@@ -414,7 +414,7 @@ const SiteIcindeDogumGunu12Kritik = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/905528822898?text=Merhaba,%20site%20i%C3%A7i%20do%C4%9Fum%20g%C3%BCn%C3%BC%20organizasyonu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+            href="https://wa.me/905307309009?text=Merhaba,%20site%20i%C3%A7i%20do%C4%9Fum%20g%C3%BCn%C3%BC%20organizasyonu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-white text-red-600 font-bold px-8 py-3 rounded-full hover:bg-red-50 transition-colors"

@@ -5,20 +5,49 @@
 // GOOGLE ADS CONVERSION TRACKING
 // ==========================================
 
+const ADS_CONVERSIONS = {
+  phone: 'AW-17885091470/Jfb1CIKwjIAcEI6to9BC',
+  whatsapp: 'AW-17885091470/lcecCNG-goAcEI6to9BC',
+  form: 'AW-17885091470/NuSjCM7GjIAcEI6to9BC'
+}
+
+const recentConversions = new Map()
+const isDev = typeof import.meta !== 'undefined' && import.meta.env?.DEV
+
+const debugLog = (...args) => {
+  if (isDev) {
+    console.log(...args)
+  }
+}
+
+const shouldTrackConversion = (key, ttlMs = 1500) => {
+  if (!key) return true
+
+  const now = Date.now()
+  const lastTrackedAt = recentConversions.get(key)
+
+  if (lastTrackedAt && now - lastTrackedAt < ttlMs) {
+    return false
+  }
+
+  recentConversions.set(key, now)
+  return true
+}
+
 /**
  * Google Ads Conversion Tracking
- * @param {string} conversionId - Google Ads Conversion ID
- * @param {string} conversionLabel - Conversion Label
+ * @param {string} sendTo - Google Ads send_to değeri
  * @param {number} value - Conversion değeri (TL)
+ * @param {string} dedupeKey - Yakın zamanlı çift tetiklemeleri engeller
  */
-export const trackGoogleAdsConversion = (conversionId, conversionLabel, value = 0) => {
-  if (typeof window !== 'undefined' && window.gtag) {
+export const trackGoogleAdsConversion = (sendTo, value = 0, dedupeKey = '') => {
+  if (typeof window !== 'undefined' && window.gtag && shouldTrackConversion(dedupeKey)) {
     window.gtag('event', 'conversion', {
-      'send_to': `${conversionId}/${conversionLabel}`,
+      'send_to': sendTo,
       'value': value,
       'currency': 'TRY'
     })
-    console.log(`[Google Ads] Conversion tracked: ${conversionLabel}, Value: ${value} TRY`)
+    debugLog(`[Google Ads] Conversion tracked: ${sendTo}, Value: ${value} TRY`)
   }
 }
 
@@ -34,7 +63,7 @@ export const trackGoogleAdsConversion = (conversionId, conversionLabel, value = 
 export const trackGA4Event = (eventName, params = {}) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, params)
-    console.log(`[GA4] Event tracked: ${eventName}`, params)
+    debugLog(`[GA4] Event tracked: ${eventName}`, params)
   }
 }
 
@@ -44,40 +73,25 @@ export const trackGA4Event = (eventName, params = {}) => {
 
 /**
  * WhatsApp Click Tracking
- * Google Ads Conversion ID: AW-17885091470 (Account 1) & AW-17897032718 (Account 2)
- * TODO: Google Ads'te WhatsApp conversion action oluşturduktan sonra conversion label'ı ekleyin
- * Örnek: 'AW-17885091470/AbC123XyZ'
  * @param {string} serviceName - Hizmet adı (örn: "Yüz Boyama")
  * @param {string} pageUrl - Sayfa URL'i
  */
-export const trackWhatsAppClick = (serviceName, pageUrl) => {
-  // Google Ads Conversion - WhatsApp Click (Account 1)
-  if (typeof window !== 'undefined' && window.gtag) {
-    // Account 1: AW-17885091470
-    window.gtag('event', 'conversion', {
-      'send_to': 'AW-17885091470',  // TODO: Conversion label ekleyin: 'AW-17885091470/LABEL'
-      'value': 1.0,
-      'currency': 'TRY',
-      'event_category': 'engagement',
-      'event_label': 'WhatsApp Click'
-    })
-    console.log('[Google Ads] WhatsApp Click Conversion tracked (Account 1: AW-17885091470)')
-    
-    // Account 2: AW-17897032718
-    window.gtag('event', 'conversion', {
-      'send_to': 'AW-17897032718',  // TODO: Conversion label ekleyin: 'AW-17897032718/LABEL'
-      'value': 1.0,
-      'currency': 'TRY',
-      'event_category': 'engagement',
-      'event_label': 'WhatsApp Click'
-    })
-    console.log('[Google Ads] WhatsApp Click Conversion tracked (Account 2: AW-17897032718)')
+export const trackWhatsAppClick = (serviceName, pageUrl, meta = {}) => {
+  const dedupeKey = `whatsapp:${pageUrl}:${meta.linkUrl || ''}`
+  if (!shouldTrackConversion(dedupeKey)) {
+    return
   }
+
+  trackGoogleAdsConversion(ADS_CONVERSIONS.whatsapp, 0)
 
   // GA4 Event
   trackGA4Event('whatsapp_click', {
     service_name: serviceName,
     page_url: pageUrl,
+    page_path: meta.pagePath || '',
+    page_type: meta.pageType || 'other',
+    link_url: meta.linkUrl || '',
+    link_text: meta.linkText || '',
     event_category: 'engagement',
     event_label: 'WhatsApp CTA',
     value: 1
@@ -86,40 +100,25 @@ export const trackWhatsAppClick = (serviceName, pageUrl) => {
 
 /**
  * Phone Click Tracking (Tıkla ve Ara)
- * Google Ads Conversion ID: AW-17885091470 (Account 1) & AW-17897032718 (Account 2)
- * TODO: Google Ads'te Phone Click conversion action oluşturduktan sonra conversion label'ı ekleyin
- * Örnek: 'AW-17885091470/XyZ456AbC'
  * @param {string} serviceName - Hizmet adı
  * @param {string} pageUrl - Sayfa URL'i
  */
-export const trackPhoneClick = (serviceName, pageUrl) => {
-  // Google Ads Conversion - Tıkla ve Ara
-  if (typeof window !== 'undefined' && window.gtag) {
-    // Account 1: AW-17885091470
-    window.gtag('event', 'conversion', {
-      'send_to': 'AW-17885091470',  // TODO: Conversion label ekleyin: 'AW-17885091470/LABEL'
-      'value': 1.0,
-      'currency': 'TRY',
-      'event_category': 'engagement',
-      'event_label': 'Phone Click'
-    })
-    console.log('[Google Ads] Phone Click Conversion tracked (Account 1: AW-17885091470)')
-    
-    // Account 2: AW-17897032718
-    window.gtag('event', 'conversion', {
-      'send_to': 'AW-17897032718',  // TODO: Conversion label ekleyin: 'AW-17897032718/LABEL'
-      'value': 1.0,
-      'currency': 'TRY',
-      'event_category': 'engagement',
-      'event_label': 'Phone Click'
-    })
-    console.log('[Google Ads] Phone Click Conversion tracked (Account 2: AW-17897032718)')
+export const trackPhoneClick = (serviceName, pageUrl, meta = {}) => {
+  const dedupeKey = `phone:${pageUrl}:${meta.linkUrl || ''}`
+  if (!shouldTrackConversion(dedupeKey)) {
+    return
   }
+
+  trackGoogleAdsConversion(ADS_CONVERSIONS.phone, 0)
 
   // GA4 Event
   trackGA4Event('phone_click', {
     service_name: serviceName,
     page_url: pageUrl,
+    page_path: meta.pagePath || '',
+    page_type: meta.pageType || 'other',
+    link_url: meta.linkUrl || '',
+    link_text: meta.linkText || '',
     event_category: 'engagement',
     event_label: 'Phone CTA',
     value: 1
@@ -132,8 +131,10 @@ export const trackPhoneClick = (serviceName, pageUrl) => {
  * @param {string} serviceName - Hizmet adı
  */
 export const trackFormSubmit = (formName, serviceName = '') => {
+  const pageKey = typeof window !== 'undefined' ? window.location.pathname : 'server'
+
   // Google Ads Conversion
-  trackGoogleAdsConversion('AW-XXXXXXXXX', 'form_submit_conversion', 100)
+  trackGoogleAdsConversion(ADS_CONVERSIONS.form, 0, `form:${formName}:${serviceName}:${pageKey}`)
   
   // GA4 Event
   trackGA4Event('form_submit', {
@@ -202,7 +203,7 @@ export const trackRelatedServiceClick = (fromService, toService) => {
 export const trackFacebookPixel = (eventName, params = {}) => {
   if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('track', eventName, params)
-    console.log(`[Facebook Pixel] Event tracked: ${eventName}`, params)
+    debugLog(`[Facebook Pixel] Event tracked: ${eventName}`, params)
   }
 }
 

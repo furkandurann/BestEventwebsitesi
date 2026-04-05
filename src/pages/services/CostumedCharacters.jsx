@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react'
 import Seo from '../../components/Seo'
-import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import { createServiceSchema, createFAQSchema, createImageObjectSchema } from '../../utils/schemaHelpers'
 import AdHero from '../../components/AdHero'
-import { costumedCharactersData } from '../../data/costumedCharactersData'
+import LocationHeroShowcase from '../../components/LocationHeroShowcase'
+import { getCostumedCharactersIndexData } from '../../data/catalogData.async'
 import NarrativeSection from '../../components/NarrativeSection'
 import FullBleedHero from '../../components/FullBleedHero'
 import { useNavigate, Link } from 'react-router-dom'
 import DistrictLinksGrid from '../../components/DistrictLinksGrid'
 import RelatedBlogPosts from '../../components/RelatedBlogPosts'
 import RelatedServices from '../../components/RelatedServices'
+import { generateSrcSet } from '../../utils/responsiveImage'
+import TrustSection from '../../components/TrustSection'
+import DeferredContentAccordion from '../../components/DeferredContentAccordion'
 
 const faqData = [
   {
@@ -25,22 +29,54 @@ const faqData = [
   },
   {
     question: 'Fiyatlar nedir?',
-    answer: 'Fiyatlarımız karakter, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09'
+    answer: 'Fiyatlarımız karakter, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 05307309009'
   }
+]
+
+const defaultShowcaseSlides = [
+  { src: '/content/images/Kostumlukarakterler/elsaheroo.webp', alt: 'Elsa kostümlü karakter kiralama İstanbul' },
+  { src: '/content/images/Kostumlukarakterler/spidermana.webp', alt: 'Spiderman kostümlü karakter kiralama İstanbul' },
+  { src: '/content/images/Kostumlukarakterler/batmanistan.webp', alt: 'Batman kostümlü karakter kiralama İstanbul' },
+  { src: '/content/images/Kostumlukarakterler/pamukprenseselsakurumsal.webp', alt: 'Pamuk Prenses kostümlü karakter kiralama İstanbul' },
+  { src: '/content/images/Kostumlukarakterler/minniemausekiralamaheroo.webp', alt: 'Minnie Mouse kostümlü karakter kiralama İstanbul' },
 ]
 
 const CostumedCharacters = () => {
   const [activeSection, setActiveSection] = useState(0)
   const [searchTerm, setSearchTerm] = useState('')
+  const [charactersData, setCharactersData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
+  useEffect(() => {
+    let isMounted = true
+
+    getCostumedCharactersIndexData().then((data) => {
+      if (!isMounted) return
+
+      setCharactersData(data)
+      setIsLoading(false)
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
   const allMainCharacters = [
-    costumedCharactersData.girlsCharacters.find((c) => c.id === 'elsa'),
-    costumedCharactersData.boysCharacters.find((c) => c.id === 'spiderman'),
-    costumedCharactersData.boysCharacters.find((c) => c.id === 'batman'),
-    costumedCharactersData.girlsCharacters.find((c) => c.id === 'pamuk-prenses'),
-    costumedCharactersData.girlsCharacters.find((c) => c.id === 'minnie-mouse')
+    charactersData?.girlsCharacters.find((c) => c.id === 'elsa'),
+    charactersData?.boysCharacters.find((c) => c.id === 'spiderman'),
+    charactersData?.boysCharacters.find((c) => c.id === 'batman'),
+    charactersData?.girlsCharacters.find((c) => c.id === 'pamuk-prenses'),
+    charactersData?.girlsCharacters.find((c) => c.id === 'minnie-mouse')
   ].filter(Boolean)
+
+  const showcaseSlides = allMainCharacters.length > 0
+    ? allMainCharacters.map((character) => ({
+        src: character.heroImage,
+        alt: `${character.name} kostümlü karakter kiralama İstanbul`
+      }))
+    : defaultShowcaseSlides
 
   // Filter characters based on search term
   const mainCharacters = allMainCharacters.filter((character) =>
@@ -93,12 +129,18 @@ const CostumedCharacters = () => {
     'Kostümlü Karakter Kiralama'
   )
   const faqSchema = createFAQSchema(faqData)
+  const imageGallerySchema = createImageObjectSchema([
+    { src: '/content/images/Kostumlukarakterler/elsaheroo.webp', alt: 'Elsa kostümlü karakter kiralama İstanbul' },
+    { src: '/content/images/Kostumlukarakterler/spidermana.webp', alt: 'Spiderman kostümlü karakter kiralama' },
+    { src: '/content/images/Kostumlukarakterler/minniemausekiralamaheroo.webp', alt: 'Minnie Mouse kostümlü karakter' },
+    { src: '/content/images/Kostumlukarakterler/pamukprenseselsakurumsal.webp', alt: 'Pamuk Prenses kostümlü karakter organizasyonu' },
+  ])
 
   return (
     <>
       <Seo
         title="Kostümlü Karakter Kiralama İstanbul | Elsa Prenses Spiderman Batman Minnie"
-        description="Kostümlü karakter kiralama İstanbul. Elsa, Pamuk Prenses, Spiderman, Batman, Minnie Mouse, Mickey Mouse, Paw Patrol animasyonu. ☎ 0530 730 90 09"
+        description="Kostümlü karakter kiralama İstanbul. Elsa, Pamuk Prenses, Spiderman, Batman, Minnie Mouse, Mickey Mouse, Paw Patrol animasyonu. ☎ 05307309009"
         keywords={[
           'kostümlü karakter kiralama istanbul',
           'elsa kiralama',
@@ -118,6 +160,7 @@ const CostumedCharacters = () => {
         schema={[
           serviceSchema,
           faqSchema,
+          imageGallerySchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -133,7 +176,13 @@ const CostumedCharacters = () => {
             "name": "BestEvent",
             "url": "https://bestevent.com.tr",
             "logo": "https://bestevent.com.tr/logo.png",
-            "sameAs": ["https://www.instagram.com/besteventorganizasyon/"]
+            "sameAs": [
+              "https://www.instagram.com/besteventorganizasyon/",
+              "https://www.instagram.com/palyacogezegenii/",
+              "https://www.facebook.com/besteventorganizasyon",
+              "https://www.linkedin.com/company/besteventorganizasyon",
+              "https://g.co/kgs/bestevent"
+            ]
           }
         ]}
       />
@@ -142,6 +191,12 @@ const CostumedCharacters = () => {
         title="Kostümlü Karakter Kiralama İstanbul"
         backgroundImage="/content/images/Kostumlukarakterler/elsaheroo.webp"
         subtitle="Elsa, Spiderman, Batman, Minnie Mouse — İstanbul'un Her Semtine Gönderim"
+      />
+
+      <LocationHeroShowcase
+        title="Kostümlü Karakter Kiralama İstanbul"
+        description="Elsa'dan Spiderman'e, prenseslerden maskotlara; çocukların sevdiği karakterler İstanbul'un her semtine aynı gün planla geliyor."
+        slides={showcaseSlides}
       />
 
       <main className="overflow-x-hidden scroll-smooth snap-y snap-mandatory">
@@ -203,7 +258,14 @@ const CostumedCharacters = () => {
         </div>
 
         {/* Full-screen character sections */}
-        {mainCharacters.length === 0 ? (
+        {isLoading ? (
+          <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100">
+            <div className="text-center px-6">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Karakterler yükleniyor</h2>
+              <p className="text-gray-600">Katalog hazırlanıyor, birkaç saniye içinde görünecek.</p>
+            </div>
+          </section>
+        ) : mainCharacters.length === 0 ? (
           <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100">
             <div className="text-center px-6">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Karakter bulunamadı</h2>
@@ -218,19 +280,28 @@ const CostumedCharacters = () => {
           </section>
         ) : (
           mainCharacters.map((character, index) => (
-            <section
+            <Link
               key={character.id}
-              className="character-hero-section relative min-h-screen flex items-start justify-center overflow-hidden snap-start"
+              to={`/karakter/${character.slug}`}
+              className="character-hero-section relative min-h-screen flex items-start justify-center overflow-hidden snap-start block cursor-pointer group"
             >
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('${character.heroImage}')` }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/20" />
+            <div className="absolute inset-0 overflow-hidden">
+              <img
+                src={character.heroImage}
+                srcSet={generateSrcSet(character.heroImage)}
+                sizes="100vw"
+                alt={`${character.name} kostümlü karakter kiralama İstanbul`}
+                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                width={1920}
+                height={1080}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/20 group-hover:from-black/30 group-hover:to-black/10 transition-all duration-500" />
             </div>
 
             <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-[17vh]">
-              <h1
+              <h2
                 className="font-bold text-white leading-tight tracking-tight animate-fade-in"
                 style={{
                   textShadow: '0 2px 20px rgba(0,0,0,.45)',
@@ -242,7 +313,10 @@ const CostumedCharacters = () => {
                 }}
               >
                 {index === 0 ? 'Kostümlü Karakter Kiralama İstanbul' : character.name}
-              </h1>
+              </h2>
+              <span className="inline-block mt-4 px-6 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {character.name} Detaylarını İncele →
+              </span>
             </div>
 
             {index === 0 && (
@@ -252,7 +326,7 @@ const CostumedCharacters = () => {
                 </div>
               </div>
             )}
-            </section>
+            </Link>
           ))
         )}
 
@@ -293,6 +367,8 @@ const CostumedCharacters = () => {
           gradient={false}
         />
 
+        <TrustSection />
+
         {/* FAQ Section */}
         <section className="py-20 bg-gradient-to-br from-yellow-100 via-orange-100 to-pink-100">
           <div className="max-w-3xl mx-auto px-4">
@@ -310,6 +386,8 @@ const CostumedCharacters = () => {
             </div>
           </div>
         </section>
+
+        <DeferredContentAccordion serviceKey="kostumlu-karakterler" />
 
         {/* Related Blog Posts */}
         <section className="py-12 bg-white">
@@ -351,7 +429,7 @@ const CostumedCharacters = () => {
                 href="tel:+905307309009"
                 className="bg-white hover:bg-gray-100 text-gray-900 px-12 py-5 rounded-full font-bold text-xl shadow-2xl transition-all"
               >
-                📞 0530 730 90 09
+                📞 05307309009
               </a>
             </div>
           </div>

@@ -1,8 +1,30 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getBlogsByPillarService } from '../data/blogPosts'
+import { getBlogsByPillarServiceAsync } from '../data/blogPosts.async'
 
 const RelatedBlogPosts = ({ servicePath, maxPosts = 3 }) => {
-  const blogs = getBlogsByPillarService(servicePath)
+  const [blogs, setBlogs] = useState([])
+
+  useEffect(() => {
+    let isMounted = true
+
+    if (!servicePath) {
+      setBlogs([])
+      return () => {
+        isMounted = false
+      }
+    }
+
+    getBlogsByPillarServiceAsync(servicePath).then((items) => {
+      if (isMounted) {
+        setBlogs(items || [])
+      }
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [servicePath])
 
   if (!blogs || blogs.length === 0) return null
 
@@ -19,7 +41,7 @@ const RelatedBlogPosts = ({ servicePath, maxPosts = 3 }) => {
             fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
           }}
         >
-          Bu Konudaki Blog Yazılarımız
+          Bu Konudaki Rehberlerimiz
         </h2>
         <p
           className="text-center mb-10 text-white/60"

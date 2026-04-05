@@ -21,7 +21,7 @@ const About = () => {
     <main className="bg-black min-h-screen text-white">
       <Seo
         title="Hakkımızda | Best Event - İstanbul Etkinlik Organizasyonu | 10+ Yıllık Deneyim"
-        description="Best Event, 10 yılı aşkın deneyimiyle İstanbul ve Türkiye genelinde profesyonel etkinlik organizasyonu hizmeti sunan güvenilir firma. 1000+ başarılı organizasyon, kurumsal ve bireysel etkinlik çözümleri. Çocuk etkinlikleri, kurumsal organizasyonlar, müzik ve dans gösterileri. ☎ 0530 730 90 09"
+        description="Best Event, 10 yılı aşkın deneyimiyle İstanbul ve Türkiye genelinde profesyonel etkinlik organizasyonu hizmeti sunan güvenilir firma. 1000+ başarılı organizasyon, kurumsal ve bireysel etkinlik çözümleri. Çocuk etkinlikleri, kurumsal organizasyonlar, müzik ve dans gösterileri. ☎ 05307309009"
         keywords={[
           "best event hakkında",
           "istanbul etkinlik organizasyonu hakkında",

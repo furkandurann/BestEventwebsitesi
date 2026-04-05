@@ -1,17 +1,43 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getBlogsBySubCategory, getRelatedBlogObjects } from '../data/blogPosts'
+import { getBlogsBySubCategoryAsync, getRelatedBlogObjectsAsync } from '../data/blogPosts.async'
 
 const SiloNavigation = ({ currentSlug, subCategory, relatedBlogSlugs }) => {
-  // İlişkili blogları göster (varsa relatedBlogSlugs, yoksa aynı subCategory'den)
-  let relatedBlogs = []
+  const [relatedBlogs, setRelatedBlogs] = useState([])
 
-  if (relatedBlogSlugs && relatedBlogSlugs.length > 0) {
-    relatedBlogs = getRelatedBlogObjects(relatedBlogSlugs)
-  } else if (subCategory) {
-    relatedBlogs = getBlogsBySubCategory(subCategory)
-      .filter(post => post.slug !== currentSlug)
-      .slice(0, 4)
-  }
+  useEffect(() => {
+    let isMounted = true
+
+    const loadBlogs = async () => {
+      if (relatedBlogSlugs && relatedBlogSlugs.length > 0) {
+        const items = await getRelatedBlogObjectsAsync(relatedBlogSlugs)
+        if (isMounted) {
+          setRelatedBlogs(items || [])
+        }
+        return
+      }
+
+      if (!subCategory) {
+        if (isMounted) {
+          setRelatedBlogs([])
+        }
+        return
+      }
+
+      const items = await getBlogsBySubCategoryAsync(subCategory)
+      if (isMounted) {
+        setRelatedBlogs(
+          (items || []).filter((post) => post.slug !== currentSlug).slice(0, 4)
+        )
+      }
+    }
+
+    loadBlogs()
+
+    return () => {
+      isMounted = false
+    }
+  }, [currentSlug, relatedBlogSlugs, subCategory])
 
   if (relatedBlogs.length === 0) return null
 

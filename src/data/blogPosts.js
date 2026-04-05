@@ -2,6 +2,367 @@
 // Her blog yazısına unique primaryKeyword, pillarService, relatedBlogs, subCategory atandı
 
 export const blogPosts = [
+  // ===== TICARI FİYAT CLUSTER =====
+  {
+    slug: 'palyaco-kiralama-fiyatlari',
+    title: 'Palyaço Kiralama Fiyatları İstanbul 2026: Paketi Ne Belirler?',
+    excerpt: 'İstanbul\'da palyaço kiralama fiyatları neye göre değişir? Süre, çocuk sayısı, yüz boyama, sosis balon, semt ve paket içeriğine göre fiyatı etkileyen ana kalemleri net şekilde anlattık.',
+    category: 'Etkinlik',
+    subCategory: 'palyaco',
+    tags: ['palyaço kiralama fiyatları', 'palyaço fiyat', 'istanbul palyaço', 'doğum günü organizasyonu'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/palyaco-kiralama',
+    relatedBlogs: ['palyaco-kiralama-istanbul', 'palyaco-dogum-gunu-rehberi', 'palyaco-mu-sihirbaz-mi'],
+    relatedDistricts: [],
+    primaryKeyword: 'palyaço kiralama fiyatları istanbul',
+    readTime: 7,
+    date: '19 Mart 2026',
+    dateISO: '2026-03-19',
+    image: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp',
+    introText: 'Palyaço kiralama fiyatları İstanbul genelinde tek bir rakamla açıklanamaz. Aynı gün içinde iki farklı organizasyonun fiyatı; çocuk sayısı, etkinlik süresi, mekan tipi, eklenen aktiviteler ve lokasyona göre ciddi şekilde değişebilir. Bu sayfada amaç, sadece fiyat söylemek değil; fiyatı belirleyen gerçek kalemleri şeffaf biçimde açıklamaktır.',
+    tipText: 'Fiyat sorarken sadece tarih sormayın. Tarih + semt + çocuk sayısı + mekan tipi + istediğiniz aktiviteleri birlikte paylaşırsanız çok daha net teklif alırsınız.',
+    sections: [
+      {
+        title: 'Palyaço fiyatını belirleyen 5 ana unsur',
+        paragraphs: [
+          'Palyaço kiralama hizmetinde fiyatın ilk belirleyicisi etkinlik süresidir. Sadece kısa bir karşılama ve oyun akışı isteyen aile ile 90 dakikalık detaylı program isteyen aile aynı teklifi almaz.',
+          'İkinci büyük kalem paket kapsamıdır. Sadece palyaço performansı mı isteniyor, yoksa yüz boyama, sosis balon, mini disko ve grup oyunları da pakete dahil mi? Hizmet kapsamı genişledikçe maliyet de artar.',
+          'Üçüncü unsur çocuk sayısıdır. 8-10 çocukluk ev partisi ile 30 çocukluk site organizasyonu aynı operasyon değildir. Yüksek katılımcıda ikinci personel veya daha yoğun akış gerekebilir.',
+          'Dördüncü unsur mekan tipidir. Ev, site salonu, okul, restoran ya da açık alan organizasyonlarının hazırlık ve tempo farkı fiyatı etkiler. Son unsur ise lokasyondur; İstanbul içinde uzak mesafe, trafik yükü ve zaman planı operasyonu doğrudan etkiler.'
+        ],
+        items: [
+          { bold: 'Süre', text: '45 dakika, 60 dakika veya 90 dakika program arasında fark oluşur.' },
+          { bold: 'Paket içeriği', text: 'Yüz boyama, sosis balon ve oyun akışı eklendikçe teklif değişir.' },
+          { bold: 'Katılımcı sayısı', text: 'Kalabalık etkinlikte tek kişi yerine ekip düzeni gerekebilir.' },
+          { bold: 'Mekan tipi', text: 'Ev partisi ile okul veya açık alan operasyonu farklı planlanır.' },
+          { bold: 'Semt ve ulaşım', text: 'İstanbul içi mesafe ve trafik süresi lojistiği etkiler.' }
+        ],
+        tipBox: 'Teklif alırken “palyaço kaç para” yerine organizasyon senaryosunu anlatmak her zaman daha doğru sonuç verir.'
+      },
+      {
+        title: 'Hangi paket hangi organizasyon için mantıklı?',
+        paragraphs: [
+          'Küçük ev doğum günlerinde çoğu zaman tek palyaço + temel oyun akışı yeterlidir. Eğer çocuk yaş grubu 3-6 arasındaysa, basit ama akıcı bir program yüksek memnuniyet verir.',
+          'Site salonu, apartman bahçesi veya okul etkinliğinde ise paket seçiminde sadece fiyat değil, çocukların sıra bekleme süresi ve dikkat yönetimi de önemlidir. Bu nedenle yüz boyama ve sosis balon gibi aktiviteler destekleyici olarak eklenebilir.',
+          'Ailelerin en sık yaptığı hata, en düşük paketi seçip sonra etkinlik içinde daha fazla içerik beklemektir. Doğru paket seçimi, çocuğun yaşı ve misafir sayısıyla birlikte düşünülmelidir.'
+        ],
+        items: [
+          { bold: 'Mini paket', text: 'Kısa süreli ev doğum günleri için temel eğlence akışı sunar.' },
+          { bold: 'Standart paket', text: 'Palyaço + oyunlar + sosis balon gibi daha dengeli bir içerik sağlar.' },
+          { bold: 'Geniş paket', text: 'Kalabalık etkinliklerde yüz boyama veya ek animasyonla akışı güçlendirir.' }
+        ],
+        infoBox: 'Çocuk sayısı arttıkça ucuz görünen yetersiz paketler, etkinlik kalitesini düşürerek daha pahalı bir memnuniyetsizlik yaratabilir.'
+      },
+      {
+        title: 'İstanbul\'da teklif isterken hangi bilgileri göndermelisiniz?',
+        paragraphs: [
+          'Net fiyat almanın en kısa yolu organizasyon detaylarını baştan düzgün paylaşmaktır. Tarih, saat, semt, mekan tipi, çocuk sayısı ve istenen ek aktiviteler aynı mesajda iletilirse teklif daha doğru çıkar.',
+          'Özellikle hafta sonu ve yoğun sezonlarda erken rezervasyon fiyatı değil ama seçenek kalitesini etkiler. Son dakika taleplerinde ekip planı daraldığı için paket esnekliği azalabilir.',
+          'Best Event tarafında sağlıklı teklif için minimum bilgi seti: tarih, lokasyon, yaş grubu, çocuk sayısı ve istenen program süresidir.'
+        ],
+        items: [
+          'Etkinlik tarihi ve başlangıç saati',
+          'Semt ve mekan tipi',
+          'Tahmini çocuk sayısı',
+          'Yaş grubu',
+          'İstenen ek aktiviteler'
+        ]
+      }
+    ],
+    faqItems: [
+      { q: 'Palyaço kiralama fiyatları neden sabit değil?', a: 'Çünkü süre, çocuk sayısı, paket içeriği ve lokasyon değiştikçe operasyon da değişir. Bu yüzden sabit tek fiyat yerine etkinliğe göre teklif verilir.' },
+      { q: 'En uygun palyaço paketi hangisi?', a: 'Küçük ev doğum günlerinde temel paket yeterli olabilir; kalabalık etkinliklerde daha kapsamlı paketler daha verimli çalışır.' },
+      { q: 'Yüz boyama ve sosis balon fiyatı yükseltir mi?', a: 'Evet. Bunlar ek süre ve ek operasyon gerektirdiği için fiyatı etkileyen kalemlerdendir.' },
+      { q: 'İstanbul\'un her semtine hizmet veriliyor mu?', a: 'Evet, ancak semt ve ulaşım süresi teklifin lojistik tarafını etkileyebilir.' }
+    ]
+  },
+  {
+    slug: 'sihirbaz-gosterisi-fiyatlari',
+    title: 'Sihirbaz Gösterisi Fiyatları İstanbul: Sahne, Süre ve Paket Seçenekleri',
+    excerpt: 'İstanbul\'da sihirbaz gösterisi fiyatları hangi kriterlere göre değişir? Çocuk doğum günü, okul etkinliği ve kurumsal organizasyonlarda fiyatı etkileyen ana başlıkları sade şekilde derledik.',
+    category: 'Etkinlik',
+    subCategory: 'sihirbaz',
+    tags: ['sihirbaz fiyatları', 'sihirbaz gösterisi fiyat', 'istanbul sihirbaz', 'çocuk sihirbaz gösterisi'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/magic-show',
+    relatedBlogs: ['sihirbaz-kiralama-rehberi', 'sihirbaz-gosterisi-istanbul', 'palyaco-mu-sihirbaz-mi'],
+    relatedDistricts: [],
+    primaryKeyword: 'sihirbaz gösterisi fiyatları istanbul',
+    readTime: 7,
+    date: '19 Mart 2026',
+    dateISO: '2026-03-19',
+    image: '/content/images/sihirbaz/sihirbazhero.webp',
+    introText: 'Sihirbaz gösterisi arayan kullanıcı genelde tek bir şeye bakmaz: Hem fiyatı öğrenmek ister hem de aldığı gösterinin çocuk yaş grubuna, mekana ve etkinlik akışına uygun olup olmadığını anlamak ister. Bu yüzden sihirbaz fiyatları sayfası sadece rakam değil, karar vermeyi kolaylaştıran bir rehber gibi çalışmalıdır.',
+    tipText: 'Sihirbaz teklifi isterken “kaç dakika gösteri istiyorum?” sorusuna cevap verebilirseniz çok daha doğru paket çıkartılır.',
+    sections: [
+      {
+        title: 'Sihirbaz fiyatlarını etkileyen temel kalemler',
+        paragraphs: [
+          'İlk kalem gösteri süresidir. 30 dakikalık kompakt bir doğum günü şovu ile 45-60 dakikalık daha geniş akış aynı değildir.',
+          'İkinci kalem gösteri formatıdır. Yakın plan, çocuk odaklı sahne akışı, interaktif katılım veya daha büyük organizasyonlar için güçlü sahne kurulumu gibi farklı formatlar fiyatı değiştirir.',
+          'Üçüncü kalem organizasyon tipidir. Ev doğum günü, anaokulu etkinliği, kurumsal aile günü veya AVM sahnesi farklı hazırlıklar ister. Aynı sihirbazlık hizmeti her yerde aynı operasyonla sunulmaz.'
+        ],
+        items: [
+          { bold: 'Gösteri süresi', text: 'Daha uzun akış daha fazla hazırlık ve performans yoğunluğu gerektirir.' },
+          { bold: 'Format', text: 'Yakın plan ve sahne gösterisi operasyon olarak aynı değildir.' },
+          { bold: 'Katılımcı kitlesi', text: '3-5 yaş ile 7-10 yaş grubuna göre kurgu değişebilir.' },
+          { bold: 'Mekan', text: 'Ev, okul, açık alan veya kurumsal sahne farklı altyapılar ister.' }
+        ]
+      },
+      {
+        title: 'Doğum günü, okul ve kurumsal etkinlikte fiyat mantığı aynı değildir',
+        paragraphs: [
+          'Çocuk doğum günlerinde sihirbaz gösterisi çoğunlukla ana eğlence bloğu olarak çalışır. Burada çocukların dikkat süresi, yaş grubu ve alan kullanımı fiyatı etkileyen en kritik detaylardır.',
+          'Okul etkinliklerinde ise organizasyon daha çok kitle yönetimi, görünürlük ve akış planı ile değerlendirilir. Daha büyük öğrenci gruplarında sahne düzeni ve ses kullanımı devreye girebilir.',
+          'Kurumsal etkinlikte ise marka temsil yükü, zamanlama disiplini ve daha profesyonel bir akış beklentisi fiyatı etkiler. Kullanıcı açısından bakıldığında aynı hizmet adı altında aslında üç farklı operasyon modeli vardır.'
+        ],
+        items: [
+          { bold: 'Ev doğum günü', text: 'Daha kompakt, çocuk odaklı ve yakın iletişimli formatlar uygundur.' },
+          { bold: 'Okul etkinliği', text: 'Daha geniş grup için görünür ve net sahne akışı gerekir.' },
+          { bold: 'Kurumsal aile günü', text: 'Zamanlama, sunum ve koordinasyon beklentisi daha yüksektir.' }
+        ],
+        infoBox: 'En ucuz sihirbaz teklifi her zaman en iyi tercih değildir; yaş grubuna uymayan gösteri memnuniyeti düşürür.'
+      },
+      {
+        title: 'Teklif isterken hangi soruları cevaplamalısınız?',
+        paragraphs: [
+          'Sağlıklı fiyat için mekan tipi, çocukların yaş aralığı, tahmini katılımcı sayısı ve istenen gösteri süresi birlikte düşünülmelidir. Bunlar bilinmeden verilen fiyat çoğu zaman eksik ya da yanıltıcı olur.',
+          'İstanbul\'da özellikle hafta sonu yoğunluğunda saat bilgisi de önemlidir. Aynı gün içinde iki organizasyon planı varsa ekip akışı bu veriye göre kurulur.',
+          'Net teklif isteyen aileler için en kısa yol, WhatsApp mesajında “tarih + semt + çocuk yaşı + çocuk sayısı + mekan tipi” bilgisini birlikte göndermektir.'
+        ],
+        items: [
+          'Tarih ve saat',
+          'Semt / lokasyon',
+          'Mekan tipi',
+          'Yaş aralığı',
+          'Tahmini katılımcı sayısı'
+        ],
+        tipBox: 'Sadece “fiyat nedir” diye sormak yerine organizasyon senaryosunu yazan kullanıcı çok daha hızlı doğru teklif alır.'
+      }
+    ],
+    faqItems: [
+      { q: 'Sihirbaz gösterisi fiyatı neden etkinliğe göre değişiyor?', a: 'Çünkü gösteri süresi, formatı, mekan tipi ve katılımcı profili değiştikçe operasyon da değişir.' },
+      { q: 'Doğum günü için ideal sihirbaz süresi nedir?', a: 'Çoğu çocuk doğum gününde 30-45 dakikalık akış en verimli sonuç verir. Yaş grubuna göre bu süre ayarlanabilir.' },
+      { q: 'Okul etkinliği ile ev doğum günü fiyatı aynı olur mu?', a: 'Genelde olmaz. Kalabalık grup ve sahne düzeni gerektiren etkinliklerde hazırlık seviyesi değişir.' },
+      { q: 'İstanbul genelinde hizmet veriliyor mu?', a: 'Evet. Lokasyon bilgisi teklifin lojistik kısmını netleştirmek için gereklidir.' }
+    ]
+  },
+  {
+    slug: 'bubble-show-fiyatlari',
+    title: 'Bubble Show Fiyatları İstanbul: Mekan, Süre ve Katılım Sayısı Nasıl Etkiler?',
+    excerpt: 'Bubble show fiyatları İstanbul genelinde neye göre değişir? Açık alan, kapalı mekan, gösteri süresi, çocuk sayısı ve ekstra görsel efektlerin teklifi nasıl etkilediğini anlattık.',
+    category: 'Etkinlik',
+    subCategory: 'bubble-show',
+    tags: ['bubble show fiyatları', 'bubble show kiralama fiyat', 'istanbul bubble show', 'köpük gösterisi fiyat'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/bubble-show',
+    relatedBlogs: ['bubble-show-kiralama-rehberi', 'bubble-show-ne-kadar-su-harcar', 'mini-disko-mu-bubble-show-mu'],
+    relatedDistricts: [],
+    primaryKeyword: 'bubble show fiyatları istanbul',
+    readTime: 7,
+    date: '19 Mart 2026',
+    dateISO: '2026-03-19',
+    image: '/content/images/bubbleshow/anabubblee.webp',
+    introText: 'Bubble show fiyatı soran kullanıcı için asıl konu sadece “kaç lira” değildir. Gösterinin gerçekten kendi mekanına uygun olup olmadığını, çocuk sayısına göre nasıl çalışacağını ve hangi paketin değerli olduğunu da anlamak ister. Bu içerik tam olarak o kararı kolaylaştırmak için hazırlandı.',
+    tipText: 'Bubble show teklifinde en kritik bilgi mekan tipidir. Açık alan mı, kapalı alan mı olduğunu mutlaka başta belirtin.',
+    sections: [
+      {
+        title: 'Bubble show fiyatını en çok etkileyen detaylar',
+        paragraphs: [
+          'Bubble show hizmetinde fiyatı belirleyen ilk konu mekanın özellikleridir. Kapalı alanda tavan yüksekliği, açık alanda rüzgar ve alan genişliği gösteri formunu etkiler.',
+          'İkinci ana başlık gösteri süresidir. Kısa, vurucu bir performansla daha uzun interaktif akış arasında hem hazırlık hem ekipman kullanımı açısından fark vardır.',
+          'Üçüncü başlık çocuk sayısı ve katılım modelidir. Daha kalabalık gruplarda çocukların gösteriye dahil edilme biçimi değişebilir. Eğer ekstra interaktif bölüm ya da fotoğraf odaklı bir final isteniyorsa teklif buna göre şekillenir.'
+        ],
+        items: [
+          { bold: 'Mekan tipi', text: 'Açık hava ve kapalı alan bubble show için aynı hazırlık gerektirmez.' },
+          { bold: 'Gösteri süresi', text: 'Kompakt ve uzun akış arasında maliyet farkı oluşur.' },
+          { bold: 'Katılımcı yoğunluğu', text: 'Kalabalık gruplarda akışın planlanması değişebilir.' },
+          { bold: 'Ek efektler', text: 'Işıklı veya özel final beklentileri fiyatı etkileyebilir.' }
+        ]
+      },
+      {
+        title: 'Hangi mekanlarda hangi paket mantıklı?',
+        paragraphs: [
+          'Ev doğum günü için bubble show çoğu zaman daha kontrollü, kısa ve yüksek etki odaklı planlanır. Burada amaç çocukları uzun süre sırada bekletmek değil, güçlü bir görsel an yaratmaktır.',
+          'Site bahçesi, okul veya açık alan organizasyonlarında ise hava koşulları ve alan yönetimi öne çıkar. Bu tür etkinliklerde bazen gösteri kadar kurulum güvenliği de fiyatı belirleyen unsur olur.',
+          'Bazı aileler sadece görsel şov isterken bazıları çocukların içine girdiği deneyim gibi daha interaktif anlar talep eder. Paket seçimi de buna göre değişmelidir.'
+        ],
+        items: [
+          { bold: 'Ev partisi', text: 'Kompakt ve kontrollü show akışı daha verimlidir.' },
+          { bold: 'Site / bahçe etkinliği', text: 'Kurulum, rüzgar ve alan akışı ayrıca değerlendirilir.' },
+          { bold: 'Okul etkinliği', text: 'Kalabalık öğrenci grubu için sahne yönetimi düşünülmelidir.' }
+        ],
+        infoBox: 'Bubble show her mekana uyar gibi görünse de doğru paket seçimi için alan bilgisi şarttır.'
+      },
+      {
+        title: 'İstanbul\'da doğru teklif almak için ne göndermelisiniz?',
+        paragraphs: [
+          'En doğru teklif için tarih, semt, mekan tipi, tahmini çocuk sayısı ve istenen gösteri formatı birlikte paylaşılmalıdır. Eğer mekan fotoğrafı varsa bu süreci daha da hızlandırır.',
+          'Özellikle apartman salonu, restoran özel alanı veya site etkinlik salonu gibi sınırlı mekanlarda tavan yüksekliği ve zemin tipi önemli olabilir. Bunlar teklifi yalnızca fiyat açısından değil, uygulanabilirlik açısından da netleştirir.',
+          'Bubble show hizmetinde doğru fiyat kadar doğru beklenti de önemlidir. Bu yüzden teklif aşamasında sadece rakam değil, gösterinin nasıl işleyeceği de konuşulmalıdır.'
+        ],
+        items: [
+          'Tarih ve saat',
+          'Semt / lokasyon',
+          'Açık alan mı kapalı mekan mı?',
+          'Tahmini çocuk sayısı',
+          'İstenen gösteri süresi veya formatı'
+        ],
+        tipBox: 'Mekan fotoğrafı paylaşan aileler genelde daha hızlı ve daha doğru teklif alır.'
+      }
+    ],
+    faqItems: [
+      { q: 'Bubble show fiyatları neden değişiyor?', a: 'Mekan tipi, süre, çocuk sayısı ve gösteri formatı değiştikçe operasyon değişir. Bu yüzden fiyat da sabit olmaz.' },
+      { q: 'Evde bubble show yapılabilir mi?', a: 'Evet, uygun alan ve zemin varsa evde bubble show yapılabilir. Teklif için mekan detayının paylaşılması gerekir.' },
+      { q: 'Açık alanda fiyat farkı olur mu?', a: 'Açık hava organizasyonlarında kurulum ve hava koşulları planlaması değişebildiği için fiyat yapısı etkilenebilir.' },
+      { q: 'İstanbul genelinde bubble show hizmeti veriliyor mu?', a: 'Evet. Semt bilgisi ve mekan tipi ile birlikte teklif hazırlanır.' }
+    ]
+  },
+  {
+    slug: 'dogum-gunu-organizasyonu-fiyatlari',
+    title: 'Doğum Günü Organizasyonu Fiyatları İstanbul: Bütçeyi Neler Belirler?',
+    excerpt: 'İstanbul\'da doğum günü organizasyonu fiyatları sabit değildir. Mekan, konsept, pasta, animasyon, show hizmetleri ve kişi sayısına göre bütçeyi belirleyen kalemleri tek tek anlattık.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['doğum günü organizasyonu fiyatları', 'doğum günü fiyat', 'istanbul doğum günü organizasyonu', 'çocuk doğum günü bütçe'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['dogum-gunu-organizasyonu-rehberi', 'evde-dogum-gunu-maliyeti', 'dogum-gunu-mekan-secimi'],
+    relatedDistricts: [],
+    primaryKeyword: 'doğum günü organizasyonu fiyatları istanbul',
+    readTime: 8,
+    date: '19 Mart 2026',
+    dateISO: '2026-03-19',
+    image: '/content/images/cocukdogumgunu/8AE06671-9601-4900-B09B-A4CC20A9E833.webp',
+    introText: 'Doğum günü organizasyonu fiyatı sorulduğunda çoğu zaman tek bir rakam beklenir. Oysa İstanbul\'da fiyatı belirleyen şey yalnızca süsleme değil; mekan, katılımcı sayısı, pasta, eğlence akışı, karakter hizmetleri ve hatta ulaşım planıdır. Bu yazı, bütçenizi doğru kurgulamanız için hazırlandı.',
+    tipText: 'Bütçe planlarken en büyük hata tüm kalemleri tek pakette hayal edip sonra düşük paket beklemektir. Önce önceliklerinizi belirleyin.',
+    sections: [
+      {
+        title: 'Doğum günü bütçesini oluşturan ana kalemler',
+        paragraphs: [
+          'Doğum günü organizasyonunda fiyatın çekirdeğini dekorasyon ve kurulum oluşturur. Ancak çoğu aile için asıl bütçe farkı; gösteri hizmetleri, pasta kalitesi ve eğlence akışında oluşur.',
+          'Konsept pano, masa kurulumu, balon düzeni, pasta, palyaço, sihirbaz, bubble show, kostümlü karakter ve ikram ekipmanları aynı organizasyonda birleştiğinde bütçe katmanlı hale gelir.',
+          'Bu yüzden fiyat sormadan önce “bizim için en önemli üç şey ne?” sorusunu sormak gerekir. Bazı aile için fotoğraf alanı önemlidir, bazıları için çocukların 2 saat sıkılmaması daha kritiktir.'
+        ],
+        items: [
+          { bold: 'Dekorasyon', text: 'Konsept pano, balon düzeni, masa ve alan tasarımı.' },
+          { bold: 'Pasta ve ikram', text: 'Kişi sayısı ve sunum standardına göre değişir.' },
+          { bold: 'Eğlence hizmetleri', text: 'Palyaço, sihirbaz, bubble show ve karakterler bütçeyi belirler.' },
+          { bold: 'Mekan ve lojistik', text: 'Ev, site salonu, restoran veya dış mekan farklı maliyet yaratır.' }
+        ]
+      },
+      {
+        title: 'Ev partisi ile tam paket organizasyon arasında neden fark var?',
+        paragraphs: [
+          'Ev doğum gününde çoğu zaman daha kompakt bir kurgu yapılır. Alan kısıtı olduğu için kurulum ve akış daha sade olabilir. Bu, her zaman ucuz olacağı anlamına gelmez; ama ihtiyaç seti daha kontrollü olur.',
+          'Tam paket organizasyonda ise aileler genelde tek bir hizmet değil, bir deneyim satın alır. Konseptten pastaya, animasyondan gösteriye kadar her şeyin koordineli yürümesi ayrı ekipman ve planlama gerektirir.',
+          'İstanbul\'da özellikle site salonu veya kiralık mekan kullanılan etkinliklerde tam paket çözüm, fiyatı artırsa da stres ve operasyon hatasını ciddi biçimde düşürür.'
+        ],
+        items: [
+          { bold: 'Ev doğum günü', text: 'Daha sade ama doğru planlanırsa çok verimli bir modeldir.' },
+          { bold: 'Tam paket organizasyon', text: 'Birden fazla hizmetin tek ekip tarafından koordine edildiği modeldir.' },
+          { bold: 'Mekanlı organizasyon', text: 'Kurulum ve lojistik kontrolü daha kapsamlıdır.' }
+        ],
+        infoBox: 'Bazen daha pahalı görünen paket, ayrı ayrı hizmet toplamaktan daha verimli ve daha risksiz olabilir.'
+      },
+      {
+        title: 'Doğru teklif almak için nasıl brief vermelisiniz?',
+        paragraphs: [
+          'Sağlıklı doğum günü teklifi için tarih, semt, mekan tipi, çocuk sayısı, yaş grubu ve olmazsa olmaz hizmetler birlikte yazılmalıdır. “Doğum günü fiyatı nedir?” sorusu tek başına yanıtsız kalır çünkü senaryo eksiktir.',
+          'Eğer bütçeniz belli ise bunu baştan söylemek de avantajlıdır. Böylece size gereksiz yere yüksek veya düşük değil, uygulanabilir kombinasyonlar sunulur.',
+          'Best Event için teklif hazırlarken en faydalı yaklaşım, “bizim önceliğimiz konsept + pasta + bir gösteri” gibi net çerçeve çizmektir.'
+        ],
+        items: [
+          'Tarih ve saat',
+          'Semt ve mekan tipi',
+          'Çocuk sayısı',
+          'Yaş aralığı',
+          'Olmazsa olmaz 2-3 hizmet',
+          'Varsa bütçe aralığı'
+        ],
+        tipBox: 'Bütçeyi gizlemek yerine aralık olarak paylaşmak, size daha hızlı doğru paket önerisi alınmasını sağlar.'
+      }
+    ],
+    faqItems: [
+      { q: 'Doğum günü organizasyonu fiyatı neden çok değişken?', a: 'Çünkü dekorasyon, mekan, pasta, animasyon ve show hizmetleri kombinasyonu her etkinlikte farklıdır.' },
+      { q: 'Tam paket organizasyon daha mı mantıklı?', a: 'Birden fazla hizmet alınacaksa çoğu zaman evet. Tek tek yönetmek yerine koordineli yapı daha verimli olur.' },
+      { q: 'Bütçeye göre daha küçük paket yapılabilir mi?', a: 'Evet. Öncelikler doğru belirlenirse daha sade ama etkili bir organizasyon planlanabilir.' },
+      { q: 'İstanbul\'un tüm semtlerinde hizmet veriliyor mu?', a: 'Evet. Teklif için semt ve mekan bilgisinin paylaşılması gerekir.' }
+    ]
+  },
+  {
+    slug: 'kostumlu-karakter-kiralama-fiyatlari',
+    title: 'Kostümlü Karakter Kiralama Fiyatları İstanbul: Hangi Paket Kime Uygun?',
+    excerpt: 'Kostümlü karakter kiralama fiyatları İstanbul genelinde süre, karakter tipi, performans akışı ve etkinlik senaryosuna göre değişir. Doğru teklifi nasıl alacağınızı sade bir dille anlattık.',
+    category: 'Etkinlik',
+    subCategory: 'karakter',
+    tags: ['kostümlü karakter kiralama fiyatları', 'elsa kiralama fiyat', 'spiderman kiralama fiyat', 'istanbul karakter kiralama'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/kostumlu-karakterler',
+    relatedBlogs: ['kostumlu-karakter-kiralama-rehberi', 'kostumlu-karakter-dogum-gunu', 'elsa-kiralama-dogum-gunu'],
+    relatedDistricts: [],
+    primaryKeyword: 'kostümlü karakter kiralama fiyatları istanbul',
+    readTime: 7,
+    date: '19 Mart 2026',
+    dateISO: '2026-03-19',
+    image: '/content/images/Kostumlukarakterler/elsaheroo.webp',
+    introText: 'Kostümlü karakter kiralama fiyatı soran ailelerin büyük kısmı aslında iki şeyi aynı anda öğrenmek ister: Hangi karakter uygun ve hangi paket gerçekten işe yarar? İstanbul\'da Elsa, Spiderman, Batman ya da Minnie gibi karakterlerde fiyatı belirleyen konu sadece kostüm değil; performans süresi, etkileşim akışı ve organizasyon tipi de çok önemlidir.',
+    tipText: 'Karakter seçimi kadar etkinlik tipi de önemlidir. Ev partisi, okul gösterisi ve AVM aktivasyonu aynı fiyat mantığıyla çalışmaz.',
+    sections: [
+      {
+        title: 'Kostümlü karakter fiyatını belirleyen ana başlıklar',
+        paragraphs: [
+          'İlk belirleyici karakter ve kostüm tipidir. Bazı karakterler daha yoğun hazırlık, daha güçlü kostüm bakımı veya daha spesifik performans akışı gerektirebilir.',
+          'İkinci unsur performans süresidir. Sadece giriş, fotoğraf ve kısa etkileşim ile daha uzun sahne akışı veya oyun destekli program aynı değildir.',
+          'Üçüncü unsur organizasyonun yapıldığı yerdir. Ev partisi, okul etkinliği ve kurumsal organizasyon farklı görünürlük ve tempo ister.'
+        ],
+        items: [
+          { bold: 'Karakter tipi', text: 'Prenses, süper kahraman veya sahneye uygun karakterler farklı operasyon gerektirebilir.' },
+          { bold: 'Süre', text: 'Kısa görünüm ve uzun etkileşimli akış arasında fark oluşur.' },
+          { bold: 'Etkinlik tipi', text: 'Ev, okul, AVM veya sahne düzeni aynı hazırlık seviyesinde değildir.' },
+          { bold: 'Ek içerik', text: 'Dans, fotoğraf alanı, mini oyun veya başka hizmetlerle kombinasyon fiyatı etkiler.' }
+        ]
+      },
+      {
+        title: 'Hangi paket hangi kullanıcı için mantıklı?',
+        paragraphs: [
+          'Çocuğu yalnızca sevdiği karakterle tanıştırmak ve fotoğraf çekmek isteyen aile için kısa ve net akışlı paketler daha mantıklıdır. Burada amaç karakterin etkisini güçlü ama sade şekilde sunmaktır.',
+          'Daha büyük doğum günlerinde ise karakterin yalnızca görünmesi yetmez; çocuklarla etkileşim kurması, dans etmesi, mini akışı yönetmesi veya başka hizmetlerle birleşmesi gerekebilir.',
+          'Bu nedenle “en uygun fiyat” ile “en doğru paket” aynı şey değildir. En uygun gibi görünen paket, etkinlik beklentisini karşılamıyorsa pahalıya gelmiş olur.'
+        ],
+        items: [
+          { bold: 'Fotoğraf odaklı paket', text: 'Kısa süreli ve etkili karakter girişi isteyen aileler için uygundur.' },
+          { bold: 'Etkileşimli paket', text: 'Dans, çocuklarla temas ve daha uzun akış isteyen etkinlikler için uygundur.' },
+          { bold: 'Kombin paket', text: 'Karaktere ek olarak palyaço, bubble show veya yüz boyama istenen organizasyonlar için uygundur.' }
+        ],
+        infoBox: 'Çocukların yaşı küçükse uzun programdan çok sıcak ve doğru karakter deneyimi daha yüksek memnuniyet yaratır.'
+      },
+      {
+        title: 'İstanbul\'da teklif isterken hangi detayları vermelisiniz?',
+        paragraphs: [
+          'Net teklif için karakter adı, tarih, semt, mekan tipi, çocuk sayısı ve istenen süre aynı mesajda yazılmalıdır. Özellikle tek karakter mi yoksa ikili giriş mi isteniyor sorusu fiyatı etkiler.',
+          'Büyük organizasyonlarda karakterin tek başına mı çalışacağı yoksa başka hizmetlerle birlikte mi kullanılacağı da önemlidir. Bu bilgi teklifin çerçevesini doğru kurar.',
+          'Kostümlü karakter hizmetinde en iyi teklif, en ucuz teklif değil; çocuğun beklentisini ve organizasyon akışını doğru karşılayan tekliftir.'
+        ],
+        items: [
+          'İstenen karakter',
+          'Tarih ve saat',
+          'Semt / lokasyon',
+          'Mekan tipi',
+          'Çocuk sayısı',
+          'İstenen süre veya paket beklentisi'
+        ],
+        tipBox: 'Teklif isterken çocuğun yaşını da yazarsanız doğru performans tipi daha hızlı önerilir.'
+      }
+    ],
+    faqItems: [
+      { q: 'Kostümlü karakter kiralama fiyatları neden karaktere göre değişiyor?', a: 'Karakter tipi, kostüm yapısı, performans akışı ve organizasyon senaryosu değiştikçe fiyat da değişir.' },
+      { q: 'Tek karakter mi, iki karakter mi daha mantıklı?', a: 'Bu tamamen organizasyon akışına bağlıdır. Küçük partilerde tek karakter yeterli olabilir; daha büyük etkinliklerde ikili giriş daha güçlü etki yaratır.' },
+      { q: 'Evde kostümlü karakter hizmeti alınabilir mi?', a: 'Evet. Mekan tipi ve süre bilgisi ile birlikte teklif hazırlanabilir.' },
+      { q: 'İstanbul genelinde hizmet veriliyor mu?', a: 'Evet. Semt, mekan tipi ve karakter tercihiyle birlikte teklif hazırlanır.' }
+    ]
+  },
+
   // ===== PALYAÇO CLUSTER =====
   {
     slug: 'palyaco-gezegeni',
@@ -232,8 +593,8 @@ export const blogPosts = [
   // ===== BUBBLE SHOW CLUSTER =====
   {
     slug: 'bubble-show-istanbul',
-    title: 'Bubble Show İstanbul: Dev Balonlar ve Unutulmaz Anlar',
-    excerpt: 'En unutulmaz bubble show gösterileri, dev balon deneyimleri ve köpük sanatçısının moralini koruma yöntemleri. Teknik gereksinimler, rüzgar faktörü ve profesyonel köpük gösterisi ipuçları.',
+    title: 'Bubble Show Nasıl Yapılır? Dev Balonların Arkasındaki Sırlar',
+    excerpt: 'Bubble show gösterisinin perde arkası: dev balon deneyimleri, köpük sanatçısının teknikleri, rüzgar faktörü ve profesyonel köpük gösterisi ipuçları. Teknik gereksinimler ve hazırlık süreci.',
     category: 'Etkinlik',
     subCategory: 'bubble-show',
     tags: ['bubble-show', 'istanbul', 'gosterisi', 'deneyim'],
@@ -497,20 +858,20 @@ export const blogPosts = [
   },
   {
     slug: 'acilis-organizasyonu-istanbul',
-    title: 'Açılış Organizasyonu İstanbul: Bando, Balon ve Kördela Kesimi',
-    excerpt: 'Profesyonel açılış organizasyonu rehberi: bando gösterisi, balon uzunlukları, ses sistemi gereksinimleri ve Beylikdüzü-Beşiktaş ulaşım planlaması. Mağaza ve ofis açılışı için komple çözümler.',
+    title: 'Açılış Organizasyonu, Balon Süsleme ve Lansman Hizmetleri',
+    excerpt: 'İstanbul açılış organizasyonu hizmeti: balon süsleme, ses sistemi, bistro kurulumu, hostes karşılama, flama bayrak ve kurdele kesimi ile düzenli lansman akışı.',
     category: 'Etkinlik',
     subCategory: 'genel',
-    tags: ['acilis', 'organizasyon', 'istanbul', 'bando', 'kurumsal'],
+    tags: ['acilis', 'organizasyon', 'istanbul', 'balon-susleme', 'lansman', 'hostes'],
     searchIntent: 'commercial',
-    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
-    relatedBlogs: ['istanbul-etkinlik-rehberi', 'dogum-gunu-organizasyonu-rehberi', 'sihirbaz-gosterisi-istanbul'],
+    pillarService: null,
+    relatedBlogs: ['kurumsal-lansman-organizasyonu-nasil-planlanir', 'acilis-organizasyonu-maliyeti-hesaplama', 'avm-acilis-organizasyonu-dikkat-edilecekler', 'kurumsal-etkinlik-butcesi-planlama'],
     relatedDistricts: ['beylikduzu', 'besiktas'],
-    primaryKeyword: 'açılış organizasyonu istanbul bando kördela',
+    primaryKeyword: 'açılış organizasyonu balon süsleme istanbul',
     readTime: 6,
     date: '6 Aralık 2025',
     dateISO: '2025-12-06',
-    image: '/content/images/acilisorganizasyonu/acilisacikgorsell.webp'
+    image: '/content/images/acilisorganizasyonu/IMG_1379.webp'
   },
 
   // ===== KARAKTER & MASKOT BLOĞLARI =====
@@ -529,7 +890,7 @@ export const blogPosts = [
     readTime: 6,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/Kostumlukarakterler/elsayenii.webp'
+    image: '/content/images/Kostumlukarakterler/elsacutee.webp'
   },
   {
     slug: 'spiderman-kiralama-cocuk-partisi',
@@ -546,7 +907,7 @@ export const blogPosts = [
     readTime: 5,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/Kostumlukarakterler/spidermanyenii.webp'
+    image: '/content/images/Kostumlukarakterler/spidermancosku.webp'
   },
   {
     slug: 'batman-kiralama-organizasyon',
@@ -563,7 +924,7 @@ export const blogPosts = [
     readTime: 5,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/Kostumlukarakterler/batmanyenii.webp'
+    image: '/content/images/Kostumlukarakterler/batmanistan.webp'
   },
   {
     slug: 'minnie-mouse-mickey-mouse-parti',
@@ -614,7 +975,7 @@ export const blogPosts = [
     readTime: 5,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/Kostumlukarakterler/pawpatrolyenii.webp'
+    image: '/content/images/Kostumlukarakterler/pawpetrolkesinhero.webp'
   },
   {
     slug: 'pikachu-pokemon-parti',
@@ -648,7 +1009,7 @@ export const blogPosts = [
     readTime: 5,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/Kostumlukarakterler/unicornyenii.webp'
+    image: '/content/images/Kostumlukarakterler/unicornyeniii.webp'
   },
   {
     slug: 'hello-kitty-maskot-kiralama',
@@ -665,7 +1026,7 @@ export const blogPosts = [
     readTime: 5,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/maskotlar/hellokittymaskot.webp'
+    image: '/content/images/maskotlar/hellokitty.webp'
   },
   {
     slug: 'sonic-maskot-parti',
@@ -682,7 +1043,7 @@ export const blogPosts = [
     readTime: 5,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/maskotlar/sonicmaskot.webp'
+    image: '/content/images/maskotlar/sonicmascot.webp'
   },
   {
     slug: 'lol-bebek-tema-parti',
@@ -699,7 +1060,7 @@ export const blogPosts = [
     readTime: 5,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/maskotlar/lolbebekmaskot.webp'
+    image: '/content/images/maskotlar/lolbebek.webp'
   },
   {
     slug: 'super-mario-cocuk-organizasyonu',
@@ -716,7 +1077,7 @@ export const blogPosts = [
     readTime: 5,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/maskotlar/supermariomaskot.webp'
+    image: '/content/images/maskotlar/supermario.webp'
   },
   {
     slug: 'masa-koca-ayi-etkinlik',
@@ -767,7 +1128,7 @@ export const blogPosts = [
     readTime: 5,
     date: '26 Şubat 2026',
     dateISO: '2026-02-26',
-    image: '/content/images/Kostumlukarakterler/denizkiziyenii.webp'
+    image: '/content/images/Kostumlukarakterler/elsavodafonee.webp'
   },
 
   // ===== SEO GENEL BLOG YAZILARI (20 yeni) =====
@@ -905,7 +1266,7 @@ export const blogPosts = [
     readTime: 9,
     date: '27 Şubat 2026',
     dateISO: '2026-02-27',
-    image: '/content/images/bubbleshow/bubbleshoww.webp'
+    image: '/content/images/bubbleshow/bubbleshownattive.webp'
   },
   {
     slug: '20-farkli-dogum-gunu-konsepti',
@@ -990,7 +1351,7 @@ export const blogPosts = [
     readTime: 8,
     date: '27 Şubat 2026',
     dateISO: '2026-02-27',
-    image: '/content/images/profesyoneldogumgunucekimleri/anaherodogumgunu.webp'
+    image: '/content/images/cocukdogumgunu/8AE06671-9601-4900-B09B-A4CC20A9E833.webp'
   },
   {
     slug: 'acik-alan-kapali-mekan',
@@ -1199,6 +1560,866 @@ export const blogPosts = [
     date: '27 Şubat 2026',
     dateISO: '2026-02-27',
     image: '/content/images/kurumsal/kurumsaletkinlikk.webp'
+  },
+
+  // ===== YENİ BLOG YAZILARI - PROBLEM ODAKLI (10) =====
+  {
+    slug: 'kadikoy-mac-gunu-dogum-gunu-organizasyonu',
+    title: 'Kadıköy\'de Maç Günü Doğum Günü Organizasyonu Planlanır mı?',
+    excerpt: 'Kadıköy\'de derbi veya maç günü doğum günü organizasyonu yapmanın zorlukları, trafik planlaması, alternatif saatler ve profesyonel çözümler.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['dogum-gunu', 'kadikoy', 'mac-gunu', 'trafik', 'planlama'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['dogum-gunu-organizasyonu-rehberi', 'dogum-gunu-mekan-secimi', 'acik-alan-kapali-mekan'],
+    relatedDistricts: ['kadikoy'],
+    primaryKeyword: 'kadıköy maç günü doğum günü organizasyonu',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/konseptdogumgunukartal.webp'
+  },
+  {
+    slug: 'acik-havada-cocuk-organizasyonu-yagmur-plani',
+    title: 'Açık Havada Çocuk Organizasyonu İçin Yağmur Planı Nasıl Yapılır?',
+    excerpt: 'Açık hava etkinliklerinde yağmur planı hazırlama rehberi. B planı oluşturma, çadır kiralama, kapalı alan alternatifleri ve hava durumu takibi.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['acik-hava', 'yagmur-plani', 'organizasyon', 'cocuk-etkinligi'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['acik-alan-kapali-mekan', 'dogum-gunu-mekan-secimi', 'dogum-gunu-organizasyonu-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'açık hava çocuk organizasyonu yağmur planı',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/sirketetkinligi.webp'
+  },
+  {
+    slug: '30-kisilik-ev-dogum-gunu-profesyonel-organizasyon',
+    title: '30 Kişilik Ev Doğum Gününde Profesyonel Organizasyon Gerekli mi?',
+    excerpt: 'Evde 30 kişilik doğum günü partisi için profesyonel organizasyon şart mı? Maliyet karşılaştırması, avantajlar ve ne zaman profesyonel destek alınmalı.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['ev-partisi', 'dogum-gunu', 'profesyonel-organizasyon', '30-kisi'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['evde-dogum-gunu-organizasyonu', 'evde-dogum-gunu-maliyeti', 'dogum-gunu-organizasyonu-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'evde doğum günü profesyonel organizasyon gerekli mi',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/fullpaket/fullpaketanahero.webp'
+  },
+  {
+    slug: 'cocuk-partisinde-en-cok-yapilan-5-hata',
+    title: 'Çocuk Partisinde En Çok Yapılan 5 Hata ve Çözümleri',
+    excerpt: 'Çocuk doğum günü partilerinde en sık karşılaşılan hatalar: yanlış yaş grubu planlaması, aşırı program, mekan hataları ve daha fazlası.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['cocuk-partisi', 'hatalar', 'dogum-gunu', 'ipuclari'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['dogum-gunu-organizasyonu-10-hata', 'yasa-gore-dogum-gunu-konsepti', 'animasyon-ekibi-secimi'],
+    relatedDistricts: [],
+    primaryKeyword: 'çocuk partisi hataları ve çözümleri',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/8e6ea844-2168-4287-bda0-ba0bb00453c8.webp'
+  },
+  {
+    slug: 'dogum-gunu-organizasyonu-neden-pahali',
+    title: 'Doğum Günü Organizasyonu Neden Pahalı? Maliyet Kalemleri Açıklandı',
+    excerpt: 'Doğum günü organizasyonu fiyatlarının arkasındaki gerçek maliyetler: ekipman, personel, ulaşım, sigorta ve gizli kalemler detaylı açıklanıyor.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['fiyat', 'maliyet', 'dogum-gunu', 'butce'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['evde-dogum-gunu-maliyeti', 'dogum-gunu-organizasyonu-rehberi', '30-kisilik-ev-dogum-gunu-profesyonel-organizasyon'],
+    relatedDistricts: [],
+    primaryKeyword: 'doğum günü organizasyonu neden pahalı',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/konsepts/10156a58-28c2-4709-bb41-ea4f1bd41773.webp'
+  },
+  {
+    slug: 'kucuk-butceyle-harika-dogum-gunu',
+    title: 'Küçük Bütçeyle Harika Doğum Günü Organizasyonu Mümkün mü?',
+    excerpt: 'Sınırlı bütçeyle kaliteli doğum günü organizasyonu yapmanın yolları. Tasarruf ipuçları, paket seçenekleri ve DIY kombinasyonları.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['butce', 'tasarruf', 'dogum-gunu', 'ekonomik'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['evde-dogum-gunu-maliyeti', 'dogum-gunu-organizasyonu-neden-pahali', 'evde-dogum-gunu-organizasyonu'],
+    relatedDistricts: [],
+    primaryKeyword: 'küçük bütçe doğum günü organizasyonu istanbul',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/fullpaket/hareketlislider1konseptdogumgunubaslikk.webp'
+  },
+  {
+    slug: 'apartman-bahcesinde-organizasyon-yapilir-mi',
+    title: 'Apartman Bahçesinde Doğum Günü Organizasyonu Yapılır mı?',
+    excerpt: 'Apartman bahçesinde etkinlik düzenlerken komşu ilişkileri, ses düzeni, alan planlaması ve belediye izinleri hakkında bilmeniz gerekenler.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['apartman', 'bahce', 'organizasyon', 'komsu', 'izin'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['apartman-bahcesinde-dogum-gunu', 'evde-dogum-gunu-organizasyonu', 'acik-alan-kapali-mekan'],
+    relatedDistricts: [],
+    primaryKeyword: 'apartman bahçesi doğum günü organizasyonu',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/IMG_0612.webp'
+  },
+  {
+    slug: 'dogum-gunu-suprizi-nasil-planlanir',
+    title: 'Doğum Günü Sürprizi Nasıl Planlanır? Adım Adım Rehber',
+    excerpt: 'Eşinize, çocuğunuza veya arkadaşınıza unutulmaz doğum günü sürprizi planlama rehberi. Gizli hazırlık, zamanlama ve organizasyon ipuçları.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['surpriz', 'dogum-gunu', 'planlama', 'rehber'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['dogum-gunu-organizasyonu-rehberi', 'yirmi-farkli-dogum-gunu-konsepti', 'dogum-gunu-mekan-secimi'],
+    relatedDistricts: [],
+    primaryKeyword: 'doğum günü sürprizi nasıl planlanır',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/konseptdogumgunu/4e21a7e2-3be3-49a7-8463-ad3f559b8942.webp'
+  },
+  {
+    slug: 'cocugunuzun-ilk-dogum-gunu-rehberi',
+    title: 'Çocuğunuzun İlk Doğum Günü İçin Nelere Dikkat Etmeli?',
+    excerpt: '1 yaş doğum günü organizasyonu rehberi. Bebeğin uyku düzeni, alerji riskleri, misafir sayısı, güvenlik önlemleri ve yaşa uygun aktiviteler.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['ilk-dogum-gunu', '1-yas', 'bebek', 'guvenlik'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['yasa-gore-dogum-gunu-konsepti', 'cocuk-dogum-gunu-guvenlik-hijyen', 'dogum-gunu-organizasyonu-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'ilk doğum günü organizasyonu bebek 1 yaş',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/palyaco/eb8eb552-2347-4c43-b40e-770d0fef0893.webp'
+  },
+  {
+    slug: 'kis-aylarinda-acik-hava-etkinligi',
+    title: 'Kış Aylarında Açık Hava Etkinliği Yapılabilir mi?',
+    excerpt: 'Kış mevsiminde İstanbul\'da açık hava organizasyonu planlama. Isınma çözümleri, alternatif mekanlar, kış temalı aktiviteler ve güvenlik önlemleri.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['kis', 'acik-hava', 'mevsim', 'soğuk-hava'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['acik-havada-cocuk-organizasyonu-yagmur-plani', 'acik-alan-kapali-mekan', 'dogum-gunu-mekan-secimi'],
+    relatedDistricts: [],
+    primaryKeyword: 'kış aylarında açık hava etkinliği istanbul',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/Kostumlukarakterler/noelanne.webp'
+  },
+
+  // ===== YENİ BLOG YAZILARI - FİYAT NİYETİ (10) =====
+  {
+    slug: '2026-istanbul-dogum-gunu-fiyat-rehberi',
+    title: '2026 İstanbul Doğum Günü Organizasyonu Fiyat Rehberi',
+    excerpt: '2026 yılı güncel İstanbul doğum günü organizasyonu fiyatları. Paket karşılaştırması, hizmet bazlı fiyatlandırma ve bütçe planlaması.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['fiyat', '2026', 'dogum-gunu', 'istanbul', 'butce'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['evde-dogum-gunu-maliyeti', 'dogum-gunu-organizasyonu-neden-pahali', 'kucuk-butceyle-harika-dogum-gunu'],
+    relatedDistricts: [],
+    primaryKeyword: '2026 istanbul doğum günü organizasyonu fiyatları',
+    readTime: 9,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/fullpaket/fullpaketanahero.webp'
+  },
+  {
+    slug: 'palyaco-kiralama-fiyatlari-neye-gore-degisir',
+    title: 'Palyaço Kiralama Fiyatları Neye Göre Değişir? 2026 Rehberi',
+    excerpt: 'Palyaço kiralama fiyatlarını etkileyen faktörler: gösteri süresi, ekstra aktiviteler, hafta içi/sonu farkı, mesafe ve mevsimsel değişiklikler.',
+    category: 'Etkinlik',
+    subCategory: 'palyaco',
+    tags: ['palyaco', 'fiyat', 'kiralama', '2026'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/palyaco-kiralama',
+    relatedBlogs: ['palyaco-kiralama-istanbul', 'palyaco-dogum-gunu-rehberi', '2026-istanbul-dogum-gunu-fiyat-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'palyaço kiralama fiyatları 2026',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/palyaco/palyacoonemlifoto.webp'
+  },
+  {
+    slug: 'bubble-show-fiyatlari-2026-karsilastirma',
+    title: 'Bubble Show Fiyatları 2026: Karşılaştırma ve Seçim Rehberi',
+    excerpt: 'Bubble show kiralama fiyatları karşılaştırması. İç mekan, dış mekan, süre ve kişi sayısına göre fiyat değişimleri ve en uygun paket seçimi.',
+    category: 'Etkinlik',
+    subCategory: 'bubble-show',
+    tags: ['bubble-show', 'fiyat', '2026', 'karsilastirma'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/bubble-show',
+    relatedBlogs: ['bubble-show-kiralama-rehberi', 'bubble-show-ne-kadar-su-harcar', '2026-istanbul-dogum-gunu-fiyat-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'bubble show fiyatları 2026 istanbul',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/bubbleshow/bubbleshowslider2.webp'
+  },
+  {
+    slug: 'sihirbaz-kiralama-fiyatlari-paket-secenekleri',
+    title: 'Sihirbaz Kiralama Fiyatları ve Paket Seçenekleri 2026',
+    excerpt: 'Sihirbaz kiralama fiyat listesi: yakın plan illüzyon, sahne gösterisi, komedi sihirbazlık paketleri ve kurumsal etkinlik fiyatlandırması.',
+    category: 'Etkinlik',
+    subCategory: 'sihirbaz',
+    tags: ['sihirbaz', 'fiyat', 'paket', '2026'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/magic-show',
+    relatedBlogs: ['sihirbaz-kiralama-rehberi', 'sihirbaz-gosterisi-istanbul', '2026-istanbul-dogum-gunu-fiyat-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'sihirbaz kiralama fiyatları 2026',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/ahunundogumgunu/bubbleshowgosterisi.webp'
+  },
+  {
+    slug: 'acilis-organizasyonu-maliyeti-hesaplama',
+    title: 'Açılış Organizasyonu Maliyeti Nasıl Hesaplanır?',
+    excerpt: 'Mağaza, AVM ve kurumsal açılış organizasyonu maliyet kalemleri. Bütçe oluşturma, tasarruf yöntemleri ve fiyat karşılaştırması.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['acilis', 'maliyet', 'butce', 'kurumsal'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['acilis-organizasyonu-istanbul', 'kurumsal-cocuk-festivalleri', '2026-istanbul-dogum-gunu-fiyat-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'açılış organizasyonu maliyeti hesaplama',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/acilisorganizasyonu/IMG_1723.webp'
+  },
+  {
+    slug: 'full-paket-dogum-gunu-ne-kadara-mal-olur',
+    title: 'Full Paket Doğum Günü Organizasyonu Ne Kadara Mal Olur?',
+    excerpt: 'Full paket doğum günü organizasyonu içeriği ve fiyatlandırması. Palyaço, dekor, pasta, balon, fotoğrafçı dahil tüm kalemlerin maliyet analizi.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['full-paket', 'fiyat', 'dogum-gunu', 'maliyet'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/full-paket-organizasyon',
+    relatedBlogs: ['2026-istanbul-dogum-gunu-fiyat-rehberi', 'dogum-gunu-organizasyonu-neden-pahali', 'kucuk-butceyle-harika-dogum-gunu'],
+    relatedDistricts: [],
+    primaryKeyword: 'full paket doğum günü organizasyonu fiyatı',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/fullpaket/elsaheroo.webp'
+  },
+  {
+    slug: 'kurumsal-etkinlik-butcesi-planlama',
+    title: 'Kurumsal Etkinlik Bütçesi Nasıl Planlanır? Detaylı Rehber',
+    excerpt: 'Kurumsal etkinlik bütçe planlaması: mekan, catering, eğlence, dekorasyon ve lojistik kalemlerinin detaylı analizi ve optimizasyon önerileri.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['kurumsal', 'butce', 'etkinlik', 'planlama'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['kurumsal-cocuk-festivalleri', 'acilis-organizasyonu-maliyeti-hesaplama', '2026-istanbul-dogum-gunu-fiyat-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'kurumsal etkinlik bütçesi nasıl planlanır',
+    readTime: 9,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/kurumsal/kocholding.webp'
+  },
+  {
+    slug: 'maskot-kiralama-fiyatlari-2026',
+    title: 'Maskot Kiralama Fiyatları 2026: Tüm Karakterler',
+    excerpt: 'Hello Kitty, Unicorn, Paw Patrol, Mickey Mouse ve diğer maskot kiralama fiyatları. Süre, karakter ve etkinlik türüne göre fiyatlandırma.',
+    category: 'Etkinlik',
+    subCategory: 'karakter',
+    tags: ['maskot', 'fiyat', 'kiralama', '2026'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/maskot-kiralama',
+    relatedBlogs: ['hello-kitty-maskot-kiralama', 'sonic-maskot-parti', 'super-mario-cocuk-organizasyonu'],
+    relatedDistricts: [],
+    primaryKeyword: 'maskot kiralama fiyatları 2026 istanbul',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/maskotlar/sevimlimaskotlar.webp'
+  },
+  {
+    slug: 'konsept-dogum-gunu-fiyat-araliklari',
+    title: 'Konsept Doğum Günü Organizasyonu Fiyat Aralıkları',
+    excerpt: 'Konsept doğum günü organizasyonu fiyatları: tema seçenekleri, dekorasyon maliyetleri, karakter dahil fiyatlar ve bütçe tasarrufu yöntemleri.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['konsept', 'fiyat', 'dogum-gunu', 'tema'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/konsept-dogum-gunu',
+    relatedBlogs: ['yirmi-farkli-dogum-gunu-konsepti', '2026-istanbul-dogum-gunu-fiyat-rehberi', 'full-paket-dogum-gunu-ne-kadara-mal-olur'],
+    relatedDistricts: [],
+    primaryKeyword: 'konsept doğum günü fiyat aralıkları',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/konseptdogumgunu/590bc805-2512-4585-b1cb-6998d963dfa5.webp'
+  },
+  {
+    slug: 'yuz-boyama-pamuk-seker-kiralama-fiyatlari',
+    title: 'Yüz Boyama ve Pamuk Şeker Arabası Kiralama Fiyatları',
+    excerpt: 'Profesyonel yüz boyama ve pamuk şeker arabası kiralama fiyatları. Tek başına ve paket içinde fiyat karşılaştırması.',
+    category: 'Etkinlik',
+    subCategory: 'yuz-boyama',
+    tags: ['yuz-boyama', 'pamuk-seker', 'fiyat', 'kiralama'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/yuz-boyama',
+    relatedBlogs: ['yuz-boyama-rehberi', 'pamuk-seker-etkinlik-rehberi', '2026-istanbul-dogum-gunu-fiyat-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'yüz boyama pamuk şeker arabası kiralama fiyat',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/profesyonelmakeup/profesyonel.webp'
+  },
+
+  // ===== YENİ BLOG YAZILARI - OPERASYON DERİNLİĞİ (10) =====
+  {
+    slug: 'kurumsal-lansman-organizasyonu-nasil-planlanir',
+    title: 'Kurumsal Lansman Organizasyonu Nasıl Planlanır? A\'dan Z\'ye Rehber',
+    excerpt: 'Kurumsal ürün veya marka lansmanı organizasyonu planlama rehberi. Hedef kitle analizi, mekan seçimi, basın yönetimi ve etkinlik akışı.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['kurumsal', 'lansman', 'planlama', 'organizasyon'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['kurumsal-cocuk-festivalleri', 'kurumsal-etkinlik-butcesi-planlama', 'acilis-organizasyonu-istanbul'],
+    relatedDistricts: ['besiktas', 'sisli', 'maslak'],
+    primaryKeyword: 'kurumsal lansman organizasyonu nasıl planlanır',
+    readTime: 10,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/kurumsal/IMG_1719.webp'
+  },
+  {
+    slug: 'avm-acilis-organizasyonu-dikkat-edilecekler',
+    title: 'AVM Açılış Organizasyonunda Dikkat Edilmesi Gerekenler',
+    excerpt: 'AVM açılış organizasyonunda güvenlik, ses düzeni, alan planlaması, mağaza yönetimi koordinasyonu ve müşteri akışı yönetimi.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['avm', 'acilis', 'organizasyon', 'guvenlik'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['acilis-organizasyonu-istanbul', 'kurumsal-lansman-organizasyonu-nasil-planlanir', 'acilis-organizasyonu-maliyeti-hesaplama'],
+    relatedDistricts: ['beylikduzu', 'basaksehir', 'atasehir'],
+    primaryKeyword: 'AVM açılış organizasyonu dikkat edilmesi gerekenler',
+    readTime: 9,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/acilisorganizasyonu/IMG_1695.webp'
+  },
+  {
+    slug: '100-kisilik-cocuk-festivali-organizasyonu',
+    title: '100 Kişilik Çocuk Festivali Nasıl Organize Edilir?',
+    excerpt: 'Büyük ölçekli çocuk festivali organizasyonu rehberi: alan planlaması, aktivite istasyonları, güvenlik, personel ve lojistik yönetimi.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['festival', 'buyuk-olcek', 'cocuk', '100-kisi'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['kurumsal-cocuk-festivalleri', 'kurumsal-lansman-organizasyonu-nasil-planlanir', 'cocuk-dogum-gunu-guvenlik-hijyen'],
+    relatedDistricts: [],
+    primaryKeyword: '100 kişilik çocuk festivali organizasyonu',
+    readTime: 10,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/kurumsal/kurumsaletkinlikk.webp'
+  },
+  {
+    slug: 'dugunde-cocuk-animasyonu-rehberi',
+    title: 'Düğün Organizasyonunda Çocuk Animasyonu Rehberi',
+    excerpt: 'Düğünlerde çocuk misafirleri eğlendirmek için animasyon hizmetleri. Yaş grubuna göre aktiviteler, zamanlama ve mekan düzenlemesi.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['dugun', 'cocuk-animasyonu', 'organizasyon'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['animasyon-ekibi-secimi', 'palyaco-kiralama-istanbul', 'bubble-show-kiralama-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'düğünde çocuk animasyonu hizmeti',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/elsa.webp'
+  },
+  {
+    slug: 'kres-okul-etkinlikleri-organizasyon-rehberi',
+    title: 'Kreş ve Okul Etkinlikleri İçin Organizasyon Rehberi',
+    excerpt: 'Kreş, anaokulu ve ilkokul etkinlikleri için profesyonel organizasyon rehberi. Pedagojik uygunluk, güvenlik standartları ve etkinlik fikirleri.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['kres', 'okul', 'etkinlik', 'pedagoji'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['yasa-gore-dogum-gunu-konsepti', 'cocuk-dogum-gunu-guvenlik-hijyen', '100-kisilik-cocuk-festivali-organizasyonu'],
+    relatedDistricts: [],
+    primaryKeyword: 'kreş okul etkinlikleri organizasyon rehberi',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/IMG_0777.webp'
+  },
+  {
+    slug: 'kurumsal-piknik-organizasyonu-planlama',
+    title: 'Kurumsal Piknik Organizasyonu Planlama Rehberi',
+    excerpt: 'Şirket piknik organizasyonu A\'dan Z\'ye: mekan seçimi, aktivite planlaması, catering, ulaşım ve güvenlik detayları.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['kurumsal', 'piknik', 'organizasyon', 'planlama'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['kurumsal-cocuk-festivalleri', 'acik-havada-cocuk-organizasyonu-yagmur-plani', '100-kisilik-cocuk-festivali-organizasyonu'],
+    relatedDistricts: ['sariyer', 'besiktas', 'atasehir'],
+    primaryKeyword: 'kurumsal piknik organizasyonu istanbul',
+    readTime: 9,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/kurumsal/ed532573-5e27-4bae-8e8d-e238e9959531.webp'
+  },
+  {
+    slug: 'yilbasi-organizasyonu-detayli-planlama',
+    title: 'Yılbaşı Organizasyonu Detaylı Planlama Rehberi',
+    excerpt: 'Yılbaşı gecesi organizasyonu planlama: tema seçimi, Noel Baba kiralama, çocuk etkinlikleri, müzik ve dekorasyon detayları.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['yilbasi', 'noel', 'organizasyon', 'planlama'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/noel-baba-kiralama',
+    relatedBlogs: ['noel-baba-yilbasi-organizasyonu', 'yirmi-farkli-dogum-gunu-konsepti', 'dogum-gunu-organizasyonu-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'yılbaşı organizasyonu planlama rehberi istanbul',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/Kostumlukarakterler/noelanne.webp'
+  },
+  {
+    slug: 'bayram-organizasyonu-nasil-yapilir',
+    title: 'Bayram Organizasyonu Nasıl Yapılır? Detaylı Rehber',
+    excerpt: 'Ramazan ve Kurban bayramı organizasyonu planlama. Aile etkinlikleri, çocuk eğlenceleri, mekan önerileri ve zamanlama ipuçları.',
+    category: 'Etkinlik',
+    subCategory: 'ramazan',
+    tags: ['bayram', 'ramazan', 'organizasyon', 'aile'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['istanbul-ramazan-cocuk-etkinlikleri', 'maltepe-ramazan-palyaco-sihirbaz', 'uskudar-ramazan-cocuk-etkinligi'],
+    relatedDistricts: ['uskudar', 'eyupsultan', 'fatih'],
+    primaryKeyword: 'bayram organizasyonu nasıl yapılır istanbul',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/kurumsal/IMG_1719.webp'
+  },
+  {
+    slug: 'havuz-partisi-organizasyonu-guvenlik',
+    title: 'Havuz Partisi Organizasyonu Güvenlik Rehberi',
+    excerpt: 'Çocuklu havuz partisi organizasyonunda güvenlik önlemleri, cankurtaran gereksinimi, yaş grupları ve ebeveyn sorumlulukları.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['havuz', 'parti', 'guvenlik', 'yaz'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['cocuk-dogum-gunu-guvenlik-hijyen', 'acik-havada-cocuk-organizasyonu-yagmur-plani', 'dogum-gunu-mekan-secimi'],
+    relatedDistricts: [],
+    primaryKeyword: 'havuz partisi organizasyonu güvenlik çocuk',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/IMG_2064.webp'
+  },
+  {
+    slug: 'dogum-gunu-fotograf-video-cekimi',
+    title: 'Doğum Günü Organizasyonunda Fotoğraf ve Video Çekimi Rehberi',
+    excerpt: 'Doğum günü etkinliklerinde profesyonel fotoğraf ve video çekimi: ekipman, ışık, zamanlama ve en iyi anların yakalanması.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['fotograf', 'video', 'dogum-gunu', 'profesyonel'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['fotografci-gerekli-mi', 'dogum-gunu-organizasyonu-rehberi', 'full-paket-dogum-gunu-ne-kadara-mal-olur'],
+    relatedDistricts: [],
+    primaryKeyword: 'doğum günü fotoğraf video çekimi rehberi',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/ahunundogumgunu/vedafotografi.webp'
+  },
+
+  // ===== YENİ BLOG YAZILARI - MEVSİMSEL (10) =====
+  {
+    slug: 'yaz-ayi-dogum-gunu-organizasyonu',
+    title: 'Yaz Ayı Doğum Günü Organizasyonu Rehberi: Sıcakta Parti',
+    excerpt: 'Yaz aylarında İstanbul\'da doğum günü organizasyonu: serinleme yöntemleri, açık hava mekanları, su oyunları ve sıcak hava önlemleri.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['yaz', 'dogum-gunu', 'sicak', 'acik-hava'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['acik-havada-cocuk-organizasyonu-yagmur-plani', 'havuz-partisi-organizasyonu-guvenlik', 'dogum-gunu-mekan-secimi'],
+    relatedDistricts: [],
+    primaryKeyword: 'yaz ayı doğum günü organizasyonu istanbul',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/sirketetkinligi.webp'
+  },
+  {
+    slug: 'kis-dogum-gunu-partisi-fikirleri',
+    title: 'Kış Doğum Günü Partisi Fikirleri: İç Mekan Aktiviteleri',
+    excerpt: 'Kış aylarında iç mekanda yapılabilecek doğum günü partisi fikirleri. Kar temalı konseptler, sıcak içecek istasyonları ve kapalı alan oyunları.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['kis', 'dogum-gunu', 'ic-mekan', 'fikirler'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['yirmi-farkli-dogum-gunu-konsepti', 'kis-aylarinda-acik-hava-etkinligi', 'acik-alan-kapali-mekan'],
+    relatedDistricts: [],
+    primaryKeyword: 'kış doğum günü partisi fikirleri iç mekan',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/konseptdogumgunu/6261174a-ec36-4ed0-9b4a-2eb3a8b68f27.webp'
+  },
+  {
+    slug: 'sonbahar-acik-hava-etkinlikleri',
+    title: 'Sonbahar Açık Hava Etkinlikleri: İstanbul\'un En İyi Mekanları',
+    excerpt: 'Sonbaharda İstanbul\'da açık hava etkinlikleri için en iyi mekanlar, hava durumu planlaması ve mevsime özel aktivite fikirleri.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['sonbahar', 'acik-hava', 'mekan', 'istanbul'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['acik-havada-cocuk-organizasyonu-yagmur-plani', 'dogum-gunu-mekan-secimi', 'acik-alan-kapali-mekan'],
+    relatedDistricts: ['sariyer', 'besiktas', 'atasehir'],
+    primaryKeyword: 'sonbahar açık hava etkinlikleri istanbul',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/IMG_4979.webp'
+  },
+  {
+    slug: 'ilkbahar-organizasyonu-en-iyi-mekanlar',
+    title: 'İlkbahar Organizasyonu İçin En İyi Mekanlar: İstanbul Rehberi',
+    excerpt: 'İlkbahar aylarında İstanbul\'da etkinlik organizasyonu için en iyi parklar, bahçeler ve açık hava mekanları rehberi.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['ilkbahar', 'mekan', 'istanbul', 'park'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['sonbahar-acik-hava-etkinlikleri', 'dogum-gunu-mekan-secimi', 'acik-alan-kapali-mekan'],
+    relatedDistricts: ['kadikoy', 'besiktas', 'sariyer'],
+    primaryKeyword: 'ilkbahar organizasyonu istanbul en iyi mekanlar',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/68978382-5a6b-414b-875c-06b29db251fc.webp'
+  },
+  {
+    slug: 'ramazan-bayraminda-cocuk-etkinlikleri-rehberi',
+    title: 'Ramazan Bayramında Çocuk Etkinlikleri Rehberi 2026',
+    excerpt: 'Ramazan bayramında çocuklar için etkinlik fikirleri: palyaço gösterileri, bayram konseptli partiler, geleneksel oyunlar ve aile etkinlikleri.',
+    category: 'Etkinlik',
+    subCategory: 'ramazan',
+    tags: ['ramazan', 'bayram', 'cocuk', 'etkinlik'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['istanbul-ramazan-cocuk-etkinlikleri', 'bayram-organizasyonu-nasil-yapilir', 'uskudar-ramazan-cocuk-etkinligi'],
+    relatedDistricts: ['uskudar', 'fatih', 'eyupsultan'],
+    primaryKeyword: 'ramazan bayramı çocuk etkinlikleri 2026',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/kurumsal/kurumsaletkinlikk.webp'
+  },
+  {
+    slug: '23-nisan-cocuk-bayrami-etkinlik-fikirleri',
+    title: '23 Nisan Çocuk Bayramı Etkinlik Fikirleri',
+    excerpt: '23 Nisan Ulusal Egemenlik ve Çocuk Bayramı etkinlik fikirleri: okul organizasyonları, mahalle etkinlikleri ve özel kutlamalar.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['23-nisan', 'cocuk-bayrami', 'etkinlik', 'kutlama'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['kres-okul-etkinlikleri-organizasyon-rehberi', '100-kisilik-cocuk-festivali-organizasyonu', 'kurumsal-cocuk-festivalleri'],
+    relatedDistricts: [],
+    primaryKeyword: '23 nisan çocuk bayramı etkinlik fikirleri',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/8e359ca3-95df-487a-98f8-ae2c9f097ea9.webp'
+  },
+  {
+    slug: 'yilbasi-gecesi-cocuklu-aileler-etkinlik',
+    title: 'Yılbaşı Gecesi Çocuklu Aileler İçin Etkinlik Fikirleri',
+    excerpt: 'Yılbaşı gecesinde çocuklu aileler için eğlenceli ve güvenli etkinlik fikirleri. Noel Baba, kar teması, müzik ve gece yarısı aktiviteleri.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['yilbasi', 'cocuk', 'aile', 'gece'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/noel-baba-kiralama',
+    relatedBlogs: ['noel-baba-yilbasi-organizasyonu', 'yilbasi-organizasyonu-detayli-planlama', 'kis-dogum-gunu-partisi-fikirleri'],
+    relatedDistricts: [],
+    primaryKeyword: 'yılbaşı gecesi çocuklu aileler için etkinlik',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/Kostumlukarakterler/noelanne.webp'
+  },
+  {
+    slug: 'cadilar-bayrami-partisi-organize-etme',
+    title: 'Cadılar Bayramı Partisi Nasıl Organize Edilir?',
+    excerpt: 'Halloween partisi organizasyonu: korku temalı dekorasyon, kostüm yarışması, yüz boyama, balkabağı aktiviteleri ve güvenli eğlence.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['halloween', 'cadilar-bayrami', 'parti', 'tema'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/konsept-dogum-gunu',
+    relatedBlogs: ['yirmi-farkli-dogum-gunu-konsepti', 'kostumlu-karakter-kiralama-rehberi', 'yuz-boyama-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'cadılar bayramı partisi nasıl organize edilir',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/maskotlar/kizanahero.webp'
+  },
+  {
+    slug: 'okullarin-acilis-haftasi-etkinlik-fikirleri',
+    title: 'Okulların Açılış Haftası Etkinlik Fikirleri',
+    excerpt: 'Okul açılışı etkinlik fikirleri: karşılama organizasyonları, tanışma oyunları, motivasyon etkinlikleri ve velilere yönelik aktiviteler.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['okul-acilisi', 'etkinlik', 'karsilama', 'eylul'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['kres-okul-etkinlikleri-organizasyon-rehberi', '23-nisan-cocuk-bayrami-etkinlik-fikirleri', 'palyaco-kiralama-istanbul'],
+    relatedDistricts: [],
+    primaryKeyword: 'okulların açılış haftası etkinlik fikirleri',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/IMG_0777.webp'
+  },
+  {
+    slug: 'yaz-tatili-cocuk-kamp-organizasyonu',
+    title: 'Yaz Tatili Çocuk Kamp Organizasyonu Rehberi',
+    excerpt: 'Yaz tatilinde çocuk kampı organizasyonu: günlük program, outdoor aktiviteler, güvenlik, beslenme planı ve ebeveyn iletişimi.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['yaz-tatili', 'kamp', 'cocuk', 'organizasyon'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/cocuk-etkinlikleri',
+    relatedBlogs: ['havuz-partisi-organizasyonu-guvenlik', 'yaz-ayi-dogum-gunu-organizasyonu', '100-kisilik-cocuk-festivali-organizasyonu'],
+    relatedDistricts: [],
+    primaryKeyword: 'yaz tatili çocuk kamp organizasyonu',
+    readTime: 9,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/sirketetkinligi.webp'
+  },
+
+  // ===== YENİ BLOG YAZILARI - KARŞILAŞTIRMA & KARAR (10) =====
+  {
+    slug: 'ev-partisi-mi-mekan-partisi-mi',
+    title: 'Ev Partisi mi Mekan Partisi mi? Avantajlar ve Dezavantajlar',
+    excerpt: 'Doğum günü organizasyonunda evde parti mi yoksa dışarıda mekan kiralama mı? Maliyet, konfor ve pratiklik karşılaştırması.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['ev-partisi', 'mekan', 'karsilastirma', 'dogum-gunu'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['evde-dogum-gunu-organizasyonu', 'dogum-gunu-mekan-secimi', 'acik-alan-kapali-mekan'],
+    relatedDistricts: [],
+    primaryKeyword: 'ev partisi mi mekan partisi mi avantajlar',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/fullpaket/hareketlislider4sinirsizoyun.webp'
+  },
+  {
+    slug: 'diy-mi-profesyonel-organizasyon-mu',
+    title: 'DIY mi Profesyonel Organizasyon mu? Hangisi Sizin İçin Doğru?',
+    excerpt: 'Kendin yap doğum günü partisi mi profesyonel organizasyon mu? Zaman, maliyet, kalite ve stres faktörleri karşılaştırması.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['diy', 'profesyonel', 'karsilastirma', 'karar'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['30-kisilik-ev-dogum-gunu-profesyonel-organizasyon', 'evde-dogum-gunu-maliyeti', 'dogum-gunu-organizasyonu-neden-pahali'],
+    relatedDistricts: [],
+    primaryKeyword: 'DIY mi profesyonel organizasyon mu karşılaştırma',
+    readTime: 8,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/fullpaket/fullpaketanahero.webp'
+  },
+  {
+    slug: 'palyaco-mu-sihirbaz-mi-hangisi-daha-eglenceli',
+    title: 'Palyaço mu Sihirbaz mı? Hangisi Daha Eğlenceli?',
+    excerpt: 'Çocuk partisi için palyaço mu yoksa sihirbaz mı tercih etmeli? Yaş grupları, gösteri süreleri ve eğlence düzeyi karşılaştırması.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['palyaco', 'sihirbaz', 'karsilastirma', 'secim'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/palyaco-kiralama',
+    relatedBlogs: ['palyaco-mu-sihirbaz-mi', 'palyaco-kiralama-istanbul', 'sihirbaz-kiralama-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'palyaço mu sihirbaz mı hangisi daha eğlenceli',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/palyaco/palyacoonemlifotografa.webp'
+  },
+  {
+    slug: 'bubble-show-mu-dans-gosterisi-mi',
+    title: 'Bubble Show mu Dans Gösterisi mi? Çocuk Etkinliği Karşılaştırması',
+    excerpt: 'Çocuk etkinliğinde bubble show mu yoksa dans gösterisi mi daha uygun? Mekan, yaş grubu ve bütçe açısından karşılaştırma.',
+    category: 'Etkinlik',
+    subCategory: 'bubble-show',
+    tags: ['bubble-show', 'dans', 'karsilastirma', 'cocuk'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/bubble-show',
+    relatedBlogs: ['bubble-show-kiralama-rehberi', 'mini-disko-mu-bubble-show-mu', 'bubble-show-ne-kadar-su-harcar'],
+    relatedDistricts: [],
+    primaryKeyword: 'bubble show mu dans gösterisi mi karşılaştırma',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/bubbleshow/bubbleshowslider2.webp'
+  },
+  {
+    slug: 'ic-mekan-mi-acik-hava-mi-avantajlar',
+    title: 'İç Mekan mı Açık Hava mı? Parti Yeri Seçim Rehberi',
+    excerpt: 'Doğum günü partisi için iç mekan mı dış mekan mı? Mevsim, misafir sayısı, maliyet ve aktivite açısından detaylı karşılaştırma.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['ic-mekan', 'acik-hava', 'karsilastirma', 'mekan'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['acik-alan-kapali-mekan', 'dogum-gunu-mekan-secimi', 'acik-havada-cocuk-organizasyonu-yagmur-plani'],
+    relatedDistricts: [],
+    primaryKeyword: 'iç mekan mı açık hava mı parti yeri seçimi',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/cocukdogumgunu/3cc6171f-7a84-42ce-9592-b7cdeda4a0a8.webp'
+  },
+  {
+    slug: 'bireysel-animator-mu-organizasyon-sirketi-mi',
+    title: 'Bireysel Animatör mü Organizasyon Şirketi mi?',
+    excerpt: 'Doğum gününde bireysel animatör mü yoksa organizasyon şirketi mi tercih etmeli? Güvenilirlik, maliyet ve kalite karşılaştırması.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['animator', 'organizasyon-sirketi', 'karsilastirma', 'guvenilirlik'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/palyaco-kiralama',
+    relatedBlogs: ['animasyon-ekibi-secimi', 'palyaco-kiralama-istanbul', 'dogum-gunu-organizasyonu-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'bireysel animatör mü organizasyon şirketi mi',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/palyaco/palyacooo.webp'
+  },
+  {
+    slug: 'konsept-dogum-gunu-mu-full-paket-mi',
+    title: 'Konsept Doğum Günü mü Full Paket mi? Doğru Seçim Rehberi',
+    excerpt: 'Konsept doğum günü organizasyonu ile full paket organizasyonun farkları, avantajları ve hangi durumda hangisini tercih etmeniz gerektiği.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['konsept', 'full-paket', 'karsilastirma', 'secim'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/konsept-dogum-gunu',
+    relatedBlogs: ['konsept-dogum-gunu-fiyat-araliklari', 'full-paket-dogum-gunu-ne-kadara-mal-olur', 'yirmi-farkli-dogum-gunu-konsepti'],
+    relatedDistricts: [],
+    primaryKeyword: 'konsept doğum günü mü full paket mi',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/konseptdogumgunu/73bb9ccd-9486-413a-b71a-22760d578adf.webp'
+  },
+  {
+    slug: 'avm-etkinlik-alani-mi-ozel-mekan-mi',
+    title: 'AVM Etkinlik Alanı mı Özel Mekan mı? Doğum Günü Mekan Seçimi',
+    excerpt: 'Doğum günü organizasyonu için AVM etkinlik alanı mı yoksa özel mekan mı daha uygun? Fiyat, konfor ve erişim karşılaştırması.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['avm', 'ozel-mekan', 'karsilastirma', 'mekan-secimi'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['dogum-gunu-mekan-secimi', 'ev-partisi-mi-mekan-partisi-mi', 'ic-mekan-mi-acik-hava-mi-avantajlar'],
+    relatedDistricts: ['beylikduzu', 'atasehir', 'basaksehir'],
+    primaryKeyword: 'AVM etkinlik alanı mı özel mekan mı doğum günü',
+    readTime: 7,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/acilisorganizasyonu/IMG_0198.webp'
+  },
+  {
+    slug: 'maskot-mu-kostumlu-karakter-mi-farklari',
+    title: 'Maskot mu Kostümlü Karakter mi? Farkları Neler?',
+    excerpt: 'Maskot kiralama ile kostümlü karakter kiralama arasındaki farklar: gösteri tipi, etkileşim düzeyi, fiyat ve etkinlik uygunluğu.',
+    category: 'Etkinlik',
+    subCategory: 'karakter',
+    tags: ['maskot', 'kostumlu-karakter', 'karsilastirma', 'fark'],
+    searchIntent: 'informational',
+    pillarService: '/organizasyonlar/kostumlu-karakterler',
+    relatedBlogs: ['kostumlu-karakter-kiralama-rehberi', 'hello-kitty-maskot-kiralama', 'elsa-kiralama-dogum-gunu'],
+    relatedDistricts: [],
+    primaryKeyword: 'maskot mu kostümlü karakter mi farkları',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/maskotlar/sevimlimaskotlar.webp'
+  },
+  {
+    slug: 'tek-etkinlik-mi-kombine-paket-mi',
+    title: 'Tek Etkinlik mi Kombine Paket mi Daha Avantajlı?',
+    excerpt: 'Sadece palyaço mu yoksa palyaço + bubble show + yüz boyama kombine paketi mi? Maliyet, süre ve eğlence açısından karşılaştırma.',
+    category: 'Etkinlik',
+    subCategory: 'genel',
+    tags: ['tek-etkinlik', 'kombine', 'paket', 'avantaj'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/full-paket-organizasyon',
+    relatedBlogs: ['full-paket-dogum-gunu-ne-kadara-mal-olur', 'konsept-dogum-gunu-mu-full-paket-mi', '2026-istanbul-dogum-gunu-fiyat-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'tek etkinlik mi kombine paket mi avantajlı',
+    readTime: 6,
+    date: '2 Mart 2026',
+    dateISO: '2026-03-02',
+    image: '/content/images/fullpaket/hareketlislider7popcorn.webp'
   }
 ]
 
@@ -1207,11 +2428,53 @@ export const getEventBlogs = () => blogPosts.filter(post => post.category === 'E
 export const getLocationBlogs = () => blogPosts.filter(post => post.category === 'Bölge')
 export const getBlogBySlug = (slug) => blogPosts.find(post => post.slug === slug)
 
+export const preferredServiceOwners = {
+  '/organizasyonlar/palyaco-kiralama': '/organizasyonlar/palyaco-kiralama',
+  '/organizasyonlar/magic-show': '/organizasyonlar/magic-show',
+  '/organizasyonlar/sihirbaz': '/organizasyonlar/magic-show',
+  '/organizasyonlar/bubble-show': '/organizasyonlar/bubble-show',
+  '/organizasyonlar/dogum-gunu-organizasyonu': '/organizasyonlar/dogum-gunu-organizasyonu',
+  '/organizasyonlar/dogum-gunu': '/organizasyonlar/dogum-gunu-organizasyonu',
+  '/organizasyonlar/full-paket-organizasyon': '/organizasyonlar/dogum-gunu-organizasyonu',
+  '/organizasyonlar/kostumlu-karakterler': '/organizasyonlar/kostumlu-karakterler',
+  '/organizasyonlar/maskot-kiralama': '/organizasyonlar/maskot-kiralama',
+  '/organizasyonlar/konsept-dogum-gunu': '/organizasyonlar/konsept-dogum-gunu',
+  '/organizasyonlar/pamuk-seker': '/organizasyonlar/pamuk-seker',
+  '/organizasyonlar/profesyonel-makyaj': '/organizasyonlar/yuz-boyama'
+}
+
+export const normalizePreferredServicePath = (servicePath) => (
+  preferredServiceOwners[servicePath] || servicePath
+)
+
 // YENİ: SubCategory bazlı filtreleme
 export const getBlogsBySubCategory = (subCategory) => blogPosts.filter(post => post.subCategory === subCategory)
 
 // YENİ: Pillar service bazlı filtreleme (servis sayfası için ilgili blogları bul)
-export const getBlogsByPillarService = (servicePath) => blogPosts.filter(post => post.pillarService === servicePath)
+export const getBlogsByPillarService = (
+  servicePath,
+  {
+    excludeLocal = true,
+    preferredIntents = ['commercial', 'informational']
+  } = {}
+) => {
+  const normalizedPath = normalizePreferredServicePath(servicePath)
+
+  const getIntentPriority = (intent) => {
+    const priority = preferredIntents.indexOf(intent)
+    return priority === -1 ? preferredIntents.length : priority
+  }
+
+  return blogPosts
+    .filter(post => normalizePreferredServicePath(post.pillarService) === normalizedPath)
+    .filter(post => !excludeLocal || post.searchIntent !== 'local')
+    .sort((a, b) => {
+      const priorityDiff = getIntentPriority(a.searchIntent) - getIntentPriority(b.searchIntent)
+      if (priorityDiff !== 0) return priorityDiff
+
+      return (b.dateISO || '').localeCompare(a.dateISO || '')
+    })
+}
 
 // YENİ: Related blogs getir (slug listesinden blog objelerini döndür)
 export const getRelatedBlogObjects = (slugList) => {

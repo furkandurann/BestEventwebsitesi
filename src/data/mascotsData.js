@@ -740,9 +740,9 @@ export const mascotsData = {
       emoji: '🦈',
       title: 'Deniz Canavarı',
       description: 'Baby Shark temalı köpekbalığı maskotu, çocukları eğlendiriyor.',
-      heroImage: '/content/images/maskotlar/köpekbaligi3.webp',
+      heroImage: '/content/images/maskotlar/kopekbaligi.webp',
       images: [
-        '/content/images/maskotlar/köpekbaligi3.webp',
+        '/content/images/maskotlar/kopekbaligi.webp',
         '/content/images/maskotlar/kopekbaligi.webp'
       ],
       glassColor: 'rgba(59, 130, 246, 0.25)',

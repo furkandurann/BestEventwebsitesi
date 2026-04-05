@@ -1,4 +1,5 @@
 import React from 'react'
+import { generateSrcSet } from '../utils/responsiveImage'
 import '../styles/event-showcase.css'
 
 export default function EventShowcase({ image, title, subtitle, ctaText, ctaLink, dark = false }) {
@@ -10,7 +11,7 @@ export default function EventShowcase({ image, title, subtitle, ctaText, ctaLink
         <a href={ctaLink} className="event-showcase__cta">{ctaText}</a>
       </div>
       <div className="event-showcase__media">
-        <img src={image} alt={title} loading="lazy" />
+        <img src={image} srcSet={generateSrcSet(image)} sizes="(max-width: 768px) 100vw, 800px" alt={title} loading="lazy" width={800} height={600} decoding="async" />
       </div>
     </section>
   )

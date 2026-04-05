@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules'
+import { generateSrcSet } from '../utils/responsiveImage'
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
@@ -13,7 +14,7 @@ const MomentsSlider = () => {
       category: 'Çocuk Etkinliği'
     },
     {
-      image: '/content/images/fullpaket/fullpaket1.webp',
+      image: '/content/images/fullpaket/fullpaketanahero.webp',
       title: 'Tam Paket Organizasyon',
       category: 'Premium Paket'
     },
@@ -23,17 +24,17 @@ const MomentsSlider = () => {
       category: 'Animasyon'
     },
     {
-      image: '/content/images/bubbleshow/bubbleshow1.webp',
+      image: '/content/images/bubbleshow/bubbleshowhero.webp',
       title: 'Bubble Show',
       category: 'Sahne Gösterisi'
     },
     {
-      image: '/content/images/kurumsal/kurumsal1.webp',
+      image: '/content/images/kurumsal/061a8dec-ed17-44bb-a6b6-7e26347e9def.webp',
       title: 'Kurumsal Etkinlik',
       category: 'Profesyonel'
     },
     {
-      image: '/content/images/sihirbaz/sihirbaz1.webp',
+      image: '/content/images/sihirbaz/sihirbazhero.webp',
       title: 'Sihirbazlık Gösterisi',
       category: 'Eğlence'
     }
@@ -114,8 +115,14 @@ const MomentsSlider = () => {
                 <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl group">
                   <img
                     src={moment.image}
+                    srcSet={generateSrcSet(moment.image)}
+                    sizes="300px"
                     alt={moment.title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    width={300}
+                    height={400}
                   />
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />

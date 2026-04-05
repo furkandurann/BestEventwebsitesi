@@ -490,16 +490,16 @@ const YasaGoreDogumGunuKonsepti = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="tel:05396064100"
+              href="tel:+905307309009"
               className="bg-white text-purple-700 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg flex items-center gap-2"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
-              0539 606 41 00
+              05307309009
             </a>
             <a
-              href="https://wa.me/905396064100?text=Merhaba,%20çocuğumun%20doğum%20günü%20organizasyonu%20hakkında%20bilgi%20almak%20istiyorum."
+              href="https://wa.me/905307309009?text=Merhaba,%20çocuğumun%20doğum%20günü%20organizasyonu%20hakkında%20bilgi%20almak%20istiyorum."
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 text-white font-bold py-3 px-8 rounded-full hover:bg-green-600 transition-all duration-300 shadow-lg flex items-center gap-2"

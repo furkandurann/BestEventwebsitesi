@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/apple-hero.css'
+import { generateSrcSet } from '../utils/responsiveImage'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectFade, Autoplay, A11y, Pagination } from 'swiper/modules'
@@ -48,14 +49,18 @@ export default function AppleHeroSlider({ slides = [], height = '92vh', loop = t
                 <source src={s.video} type="video/mp4" />
               </video>
             ) : (
-              <div
+              <img
                 className="apple-hero__bg"
-                style={{
-                  backgroundImage: `url(${s.image})`,
-                  backgroundPosition: s.focal || 'center 35%',
-                }}
-                role="img"
-                aria-label={s.title}
+                src={s.image}
+                srcSet={generateSrcSet(s.image)}
+                sizes="100vw"
+                alt={s.title}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                fetchPriority={idx === 0 ? 'high' : 'auto'}
+                decoding={idx === 0 ? 'sync' : 'async'}
+                width={1920}
+                height={1080}
+                style={{ objectPosition: s.focal || 'center 35%' }}
               />
             )}
             <div className="apple-hero__mask" />

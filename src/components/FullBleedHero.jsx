@@ -1,4 +1,5 @@
 import React from "react";
+import { generateSrcSet } from '../utils/responsiveImage';
 import "../styles/fullbleed.css";
 
 /**
@@ -36,14 +37,16 @@ export default function FullBleedHero({
             playsInline
           />
         ) : (
-          <picture>
-            <img 
-              src={media.src} 
-              alt={media.alt || ""} 
-              loading="lazy" 
-              decoding="async" 
-            />
-          </picture>
+          <img
+            src={media.src}
+            srcSet={generateSrcSet(media.src)}
+            sizes="100vw"
+            alt={media.alt || ""}
+            loading="lazy"
+            decoding="async"
+            width={1920}
+            height={1080}
+          />
         )}
         {caption && <div className="fullbleed-caption">{caption}</div>}
         <div className="fullbleed-fade" />

@@ -108,7 +108,7 @@ const heroSlides = {
     {
       title: 'Kostümlü Karakterler',
       subtitle: 'Çocuğunuz Buna Değer',
-      image: '/content/images/cocukdogumgunu/elsakiralamaistanbul.webp',
+      image: '/content/images/cocukdogumgunu/elsa.webp',
       focal: 'center 35%',
       position: 'top-left',
       ctaText: 'Hemen İncele',
@@ -173,7 +173,7 @@ const heroSlides = {
     {
       title: 'Müzik & DJ',
       subtitle: 'Ses, ışık ve sahne—tek ekipte',
-      image: '/content/images/music/jordan-whitfield-eAYO8vKNeFQ-unsplash.webp',
+      image: '/content/images/music/anamusik.webp',
       focal: 'center 38%',
       position: 'bottom-center',
       ctaText: 'Setupları Gör',

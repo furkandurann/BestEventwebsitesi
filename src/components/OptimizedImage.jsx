@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { generateSrcSet } from '../utils/responsiveImage';
 
 const OptimizedImage = ({
   src,
@@ -20,30 +21,6 @@ const OptimizedImage = ({
     onError?.(e);
   };
 
-  // Generate WebP and AVIF sources from original src
-  const getImageSources = (originalSrc) => {
-    if (!originalSrc) return null;
-
-    // If already WebP or AVIF, no need for additional sources
-    if (/\.webp$/i.test(originalSrc)) {
-      return { original: originalSrc };
-    }
-    if (/\.avif$/i.test(originalSrc)) {
-      return { original: originalSrc };
-    }
-
-    const srcWithoutExt = originalSrc.replace(/\.(jpg|jpeg|png|gif)$/i, '');
-    const extension = originalSrc.match(/\.(jpg|jpeg|png|gif)$/i)?.[1]?.toLowerCase();
-
-    return {
-      avif: extension ? `${srcWithoutExt}.avif` : null,
-      webp: extension ? `${srcWithoutExt}.webp` : null,
-      original: originalSrc
-    };
-  };
-
-  const sources = getImageSources(src);
-
   if (hasError) {
     return (
       <div className={`bg-gray-200 flex items-center justify-center ${className}`}
@@ -55,37 +32,24 @@ const OptimizedImage = ({
     );
   }
 
+  const srcSet = generateSrcSet(src);
+
   const imgElement = (
-    <picture>
-      {sources?.avif && (
-        <source
-          srcSet={sources.avif}
-          type="image/avif"
-          sizes={sizes}
-        />
-      )}
-      {sources?.webp && (
-        <source
-          srcSet={sources.webp}
-          type="image/webp"
-          sizes={sizes}
-        />
-      )}
-      <img
-        src={sources?.original || src}
-        alt={alt}
-        loading={loading}
-        width={width}
-        height={height}
-        onLoad={onLoad}
-        onError={handleError}
-        sizes={sizes}
-        fetchPriority={props.fetchpriority || props.fetchPriority}
-        decoding={props.decoding || 'async'}
-        className={`${className} ${aspectRatio ? 'absolute inset-0 w-full h-full object-cover' : ''}`}
-        style={props.style}
-      />
-    </picture>
+    <img
+      src={src}
+      srcSet={srcSet}
+      alt={alt}
+      loading={loading}
+      width={width}
+      height={height}
+      onLoad={onLoad}
+      onError={handleError}
+      sizes={sizes}
+      fetchPriority={props.fetchpriority || props.fetchPriority}
+      decoding={props.decoding || 'async'}
+      className={`${className} ${aspectRatio ? 'absolute inset-0 w-full h-full object-cover' : ''}`}
+      style={props.style}
+    />
   );
 
   if (aspectRatio) {

@@ -93,7 +93,7 @@ const Home = () => {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+90-530-730-90-09',
+        telephone: '+905307309009',
         contactType: 'customer service',
         areaServed: 'TR',
         availableLanguage: ['Turkish', 'English']

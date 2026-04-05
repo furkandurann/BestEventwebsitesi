@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -8,6 +8,11 @@ import Breadcrumb from './components/Breadcrumb'
 import ThemeProvider from './components/ThemeProvider'
 import ErrorBoundary from './components/ErrorBoundary'
 import useWebVitals, { logWebVitals } from './hooks/useWebVitals'
+import {
+  clearChunkRecoveryFlag,
+  isRecoverableChunkError,
+  recoverFromChunkErrorOnce,
+} from './utils/chunkRecovery'
 
 // Lazy-loaded pages (code splitting)
 const Home = lazy(() => import('./pages/Home'))
@@ -17,6 +22,8 @@ const Gallery = lazy(() => import('./pages/Gallery'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Team = lazy(() => import('./pages/Team'))
 const ServiceAreas = lazy(() => import('./pages/ServiceAreas'))
+const JobsHub = lazy(() => import('./pages/jobs/JobsHub'))
+const JobListingPage = lazy(() => import('./pages/jobs/JobListingPage'))
 
 // Service Pages (lazy)
 const ChildEvents = lazy(() => import('./pages/services/ChildEvents'))
@@ -28,14 +35,17 @@ const BubbleShow = lazy(() => import('./pages/services/BubbleShow'))
 const CostumedCharacters = lazy(() => import('./pages/services/CostumedCharacters'))
 const CharacterDetail = lazy(() => import('./pages/services/CharacterDetail'))
 const ConceptBirthday = lazy(() => import('./pages/services/ConceptBirthday'))
+const ConceptDetail = lazy(() => import('./pages/services/ConceptDetail'))
 const FullPackageOrganization = lazy(() => import('./pages/services/FullPackageOrganization'))
 const CottonCandyCart = lazy(() => import('./pages/services/CottonCandyCart'))
+const ServiceDetailPage = lazy(() => import('./pages/services/ServiceDetailPage'))
 
 // Dans Etkinlikleri (lazy)
 const DanceEvents = lazy(() => import('./pages/services/DanceEvents'))
 
 // Müzik Etkinlikleri (lazy)
 const MusicEvents = lazy(() => import('./pages/services/MusicEvents'))
+const OpeningOrganization = lazy(() => import('./pages/services/OpeningOrganization'))
 
 // Yeni Çocuk Etkinlikleri (lazy)
 const Karaoke = lazy(() => import('./pages/services/Karaoke'))
@@ -54,6 +64,7 @@ const ChocolateFountain = lazy(() => import('./pages/services/ChocolateFountain'
 const FireShow = lazy(() => import('./pages/services/FireShow'))
 const StiltWalkers = lazy(() => import('./pages/services/StiltWalkers'))
 const FullBirthdayOrganization = lazy(() => import('./pages/organizations/FullBirthdayOrganization'))
+const SurvivorParkuru = lazy(() => import('./pages/services/SurvivorParkuru'))
 
 // Noel Baba Kiralama (lazy)
 const SantaClausRental = lazy(() => import('./pages/organizations/SantaClausRental'))
@@ -146,15 +157,72 @@ const KartalRamazanEtkinligi = lazy(() => import('./pages/blog/KartalRamazanEtki
 const UskudarRamazanEtkinligi = lazy(() => import('./pages/blog/UskudarRamazanEtkinligi'))
 const IstanbulRamazanCocukEtkinlikleri = lazy(() => import('./pages/blog/IstanbulRamazanCocukEtkinlikleri'))
 
+// Dynamic Blog Post (sections verisi olan bloglar için catch-all)
+const DynamicBlogPost = lazy(() => import('./pages/blog/DynamicBlogPost'))
+
+// Vaka Analizi (Case Studies)
+const CaseStudies = lazy(() => import('./pages/CaseStudies'))
+const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'))
+
 // Local Landing Pages (Semt bazlı hizmet sayfaları - Programmatic SEO)
 const LocalLandingPage = lazy(() => import('./pages/local/LocalLandingPage'))
+
+// Not: Eski service alias'lı district URL'leri LocalLandingPage içinde normalize ediliyor.
 
 // 404 Page (lazy)
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
   const location = useLocation()
-  
+
+  // Global click tracking - tum WhatsApp ve telefon linklerini otomatik takip eder
+  useEffect(() => {
+    let cleanup = null
+
+    import('./utils/globalTracking').then(({ initGlobalClickTracking }) => {
+      cleanup = initGlobalClickTracking()
+    })
+
+    return () => {
+      if (typeof cleanup === 'function') {
+        cleanup()
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    const timerId = window.setTimeout(() => {
+      clearChunkRecoveryFlag()
+    }, 15000)
+
+    return () => {
+      window.clearTimeout(timerId)
+    }
+  }, [location.pathname])
+
+  useEffect(() => {
+    const handleRuntimeChunkError = (event) => {
+      const candidate =
+        event?.error ||
+        event?.reason ||
+        event?.message ||
+        event?.target?.src ||
+        event?.target?.href
+
+      if (isRecoverableChunkError(candidate)) {
+        recoverFromChunkErrorOnce()
+      }
+    }
+
+    window.addEventListener('error', handleRuntimeChunkError)
+    window.addEventListener('unhandledrejection', handleRuntimeChunkError)
+
+    return () => {
+      window.removeEventListener('error', handleRuntimeChunkError)
+      window.removeEventListener('unhandledrejection', handleRuntimeChunkError)
+    }
+  }, [])
+
   // Web Vitals tracking (development: console, production: analytics)
   useWebVitals((metric) => {
     // Development: Console'a yaz
@@ -190,11 +258,18 @@ function App() {
         <Route path="/organizasyonlar" element={<Navigate to="/organizasyonlar/cocuk-etkinlikleri" replace />} />
         <Route path="/galeri" element={<Gallery />} />
         <Route path="/iletisim" element={<Contact />} />
+        <Route path="/is-ilanlari" element={<JobsHub />} />
+        <Route path="/is-ilanlari/palyaco-is-ilani" element={<JobListingPage jobSlug="palyaco-is-ilani" />} />
+        <Route path="/is-ilanlari/animator-is-ilani" element={<JobListingPage jobSlug="animator-is-ilani" />} />
+        <Route path="/is-ilanlari/maskot-is-ilani" element={<JobListingPage jobSlug="maskot-is-ilani" />} />
+        <Route path="/is-ilanlari/oyun-ablasi-abisi-is-ilani" element={<JobListingPage jobSlug="oyun-ablasi-abisi-is-ilani" />} />
         <Route path="/ekibimiz" element={<Team />} />
         <Route path="/hizmet-bolgeleri" element={<ServiceAreas />} />
         <Route path="/organik-pastalar" element={<OrganicCakes />} />
         <Route path="/gizlilik" element={<PrivacyPolicy />} />
         <Route path="/kullanim-kosullari" element={<TermsOfUse />} />
+        <Route path="/vaka-analizi" element={<CaseStudies />} />
+        <Route path="/vaka-analizi/:slug" element={<CaseStudyDetail />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/palyaco-gezegeni" element={<PalyacoGezegeni />} />
         <Route path="/blog/istanbul-etkinlik-rehberi" element={<IstanbulEtkinlikRehberi />} />
@@ -273,12 +348,14 @@ function App() {
         <Route path="/blog/uskudar-ramazan-palyaco-sihirbaz" element={<UskudarRamazanEtkinligi />} />
         <Route path="/blog/istanbul-ramazan-cocuk-etkinlikleri" element={<IstanbulRamazanCocukEtkinlikleri />} />
 
+        {/* Dynamic Blog Posts - sections verisi olan tüm bloglar için catch-all */}
+        <Route path="/blog/:slug" element={<DynamicBlogPost />} />
+
         {/* Service Routes */}
         <Route path="/organizasyonlar/cocuk-etkinlikleri" element={<ChildEvents />} />
         
         {/* Child Event Category Routes */}
         <Route path="/organizasyonlar/yuz-boyama" element={<FacePainting />} />
-        <Route path="/organizasyonlar/profesyonel-makyaj" element={<ProfessionalMakeup />} />
         <Route path="/organizasyonlar/magic-show" element={<MagicShow />} />
         <Route path="/organizasyonlar/bubble-show" element={<BubbleShow />} />
         <Route path="/organizasyonlar/kostumlu-karakterler" element={<CostumedCharacters />} />
@@ -301,6 +378,7 @@ function App() {
         <Route path="/organizasyonlar/cikolata-selalesi" element={<ChocolateFountain />} />
         <Route path="/organizasyonlar/ates-gosterisi" element={<FireShow />} />
         <Route path="/organizasyonlar/tahtabacak" element={<StiltWalkers />} />
+        <Route path="/organizasyonlar/survivor-parkuru" element={<SurvivorParkuru />} />
         
         {/* Dans Etkinlikleri Routes */}
         {/* Dans Etkinlikleri Routes */}
@@ -309,25 +387,39 @@ function App() {
         {/* Müzik Etkinlikleri Routes */}
         {/* Müzik Etkinlikleri Routes */}
         <Route path="/organizasyonlar/muzik-etkinlikleri" element={<MusicEvents />} />
+        <Route path="/organizasyonlar/acilis-organizasyonu" element={<OpeningOrganization />} />
         
         {/* Other Service Routes */}
         <Route path="/organizasyonlar/palyaco-kiralama" element={<ClownRental />} />
-        <Route path="/organizasyonlar/sihirbaz" element={<MagicShow />} />
-        <Route path="/organizasyonlar/dogum-gunu" element={<FullBirthdayOrganization />} />
+        <Route path="/organizasyonlar/sihirbaz" element={<Navigate to="/organizasyonlar/magic-show" replace />} />
+        <Route path="/organizasyonlar/sihirbaz-kiralama" element={<Navigate to="/organizasyonlar/magic-show" replace />} />
+        <Route path="/organizasyonlar/dogum-gunu" element={<Navigate to="/organizasyonlar/dogum-gunu-organizasyonu" replace />} />
         <Route path="/organizasyonlar/noel-baba-kiralama" element={<SantaClausRental />} />
         <Route path="/organizasyonlar/dj-kiralama" element={<MusicEvents />} />
         <Route path="/organizasyonlar/muzisyen-kiralama" element={<MusicEvents />} />
-        <Route path="/organizasyonlar/dansci-kiralama" element={<ChildEvents />} />
-        <Route path="/organizasyonlar/hostes-kiralama" element={<ChildEvents />} />
+        <Route path="/organizasyonlar/profesyonel-yuz-boyama" element={<Navigate to="/organizasyonlar/yuz-boyama" replace />} />
+        <Route path="/organizasyonlar/profesyonel-makyaj" element={<Navigate to="/organizasyonlar/yuz-boyama" replace />} />
+        <Route path="/organizasyonlar/bubble-show-kiralama" element={<Navigate to="/organizasyonlar/bubble-show" replace />} />
+        <Route path="/organizasyonlar/pamuk-seker-arabasi-kiralama" element={<Navigate to="/organizasyonlar/pamuk-seker" replace />} />
+        <Route path="/organizasyonlar/dansci-kiralama" element={<Navigate to="/organizasyonlar/cocuk-etkinlikleri" replace />} />
+        <Route path="/organizasyonlar/hostes-kiralama" element={<Navigate to="/organizasyonlar/cocuk-etkinlikleri" replace />} />
+        <Route path="/organizasyonlar/profesyonel-yuz-boyama/:district" element={<LocalLandingPage />} />
+        <Route path="/organizasyonlar/profesyonel-makyaj/:district" element={<LocalLandingPage />} />
+        <Route path="/organizasyonlar/bubble-show-kiralama/:district" element={<LocalLandingPage />} />
+        <Route path="/organizasyonlar/sihirbaz-kiralama/:district" element={<LocalLandingPage />} />
+        <Route path="/organizasyonlar/pamuk-seker-arabasi-kiralama/:district" element={<LocalLandingPage />} />
         
         {/* Kostümlü Karakter Detay Sayfaları - Dinamik Route */}
         <Route path="/karakter/:slug" element={<CharacterDetail />} />
         <Route path="/maskot/:slug" element={<MascotDetail />} />
+        <Route path="/konsept/:slug" element={<ConceptDetail />} />
+        <Route path="/hizmet-detay/:slug" element={<ServiceDetailPage />} />
 
         {/* Local Landing Pages - Semt Bazlı Hizmet Sayfaları (Programmatic SEO) */}
         <Route path="/organizasyonlar/:service/:district" element={<LocalLandingPage />} />
 
         {/* 404 - Sayfa Bulunamadı (en sonda olmalı) */}
+        <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
               </Routes>
             </ThemeProvider>

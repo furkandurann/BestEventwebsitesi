@@ -1,25 +1,43 @@
+import { useEffect, useState } from 'react'
 import { useParams, Navigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { getMascotBySlug, allMascots } from '../../data/mascotsData'
+import { getMascotDetailEntryBySlugAsync } from '../../data/catalogData.async'
 import Seo from '../../components/Seo'
 import NarrativeSection from '../../components/NarrativeSection'
+import { generateSrcSet } from '../../utils/responsiveImage'
 
 const MascotDetail = () => {
   const { slug } = useParams()
-  const mascot = getMascotBySlug(slug)
+  const [mascot, setMascot] = useState(null)
+  const [relatedItems, setRelatedItems] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    let isMounted = true
+
+    setIsLoading(true)
+
+    getMascotDetailEntryBySlugAsync(slug).then((entry) => {
+      if (!isMounted) return
+
+      setMascot(entry?.mascot || null)
+      setRelatedItems(entry?.relatedItems || [])
+      setIsLoading(false)
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [slug])
+
+  if (isLoading) {
+    return <div className="min-h-screen bg-white" />
+  }
 
   // 404 if mascot not found
   if (!mascot) {
     return <Navigate to="/organizasyonlar/maskot-kiralama" replace />
   }
-
-  // Resolve related mascots
-  const relatedItems = (mascot.relatedMascots || [])
-    .map(relSlug => {
-      const found = allMascots.find(m => m.slug === relSlug)
-      return found || null
-    })
-    .filter(Boolean)
 
   // Has new data fields?
   const hasNewData = !!mascot.longDescription
@@ -59,10 +77,19 @@ const MascotDetail = () => {
         transition={{ duration: 1 }}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${mascot.heroImage}')` }}
-        >
+        <div className="absolute inset-0">
+          <img
+            src={mascot.heroImage}
+            srcSet={generateSrcSet(mascot.heroImage)}
+            sizes="100vw"
+            alt={`${mascot.name} maskot kiralama İstanbul`}
+            className="absolute inset-0 w-full h-full object-cover"
+            decoding="async"
+            loading="eager"
+            fetchPriority="high"
+            width={1200}
+            height={800}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50"></div>
         </div>
 
@@ -120,9 +147,12 @@ const MascotDetail = () => {
               <div className="max-w-7xl mx-auto px-4">
                 <img
                   src={mascot.images[0]}
+                  srcSet={generateSrcSet(mascot.images[0])}
+                  sizes="(max-width: 1024px) 100vw, 1024px"
                   alt={`${mascot.name} maskot kiralama İstanbul - organizasyon`}
                   className="w-full h-auto rounded-lg"
                   loading="lazy"
+                  decoding="async"
                   width={1200}
                   height={800}
                   style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05)' }}
@@ -181,9 +211,12 @@ const MascotDetail = () => {
               <div className="max-w-7xl mx-auto px-4">
                 <img
                   src={mascot.images[1]}
+                  srcSet={generateSrcSet(mascot.images[1])}
+                  sizes="(max-width: 1024px) 100vw, 1024px"
                   alt={`${mascot.name} maskot organizasyon İstanbul - etkinlik`}
                   className="w-full h-auto rounded-lg"
                   loading="lazy"
+                  decoding="async"
                   width={1200}
                   height={800}
                   style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05)' }}
@@ -237,9 +270,12 @@ const MascotDetail = () => {
               <div className="max-w-7xl mx-auto px-4">
                 <img
                   src={mascot.images[2]}
+                  srcSet={generateSrcSet(mascot.images[2])}
+                  sizes="(max-width: 1024px) 100vw, 1024px"
                   alt={`${mascot.name} maskot doğum günü İstanbul`}
                   className="w-full h-auto rounded-lg"
                   loading="lazy"
+                  decoding="async"
                   width={1200}
                   height={800}
                   style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05)' }}
@@ -343,9 +379,12 @@ const MascotDetail = () => {
                   <div className="max-w-7xl mx-auto px-4">
                     <img
                       src={image}
+                      srcSet={generateSrcSet(image)}
+                      sizes="(max-width: 1024px) 100vw, 1024px"
                       alt={`${mascot.name} maskot organizasyon İstanbul - ${section.title}`}
                       className="w-full h-auto rounded-lg"
                       loading="lazy"
+                      decoding="async"
                       width={1200}
                       height={800}
                       style={{ boxShadow: 'inset 0 0 40px rgba(0,0,0,0.08), 0 10px 30px rgba(0,0,0,0.05)' }}
@@ -389,7 +428,7 @@ const MascotDetail = () => {
               },
               {
                 question: 'Fiyatlar nedir?',
-                answer: `${mascot.name} maskot organizasyon fiyatları süre ve lokasyona göre değişir. Detaylı fiyat bilgisi için: 0530 730 90 09`
+                answer: `${mascot.name} maskot organizasyon fiyatları süre ve lokasyona göre değişir. Detaylı fiyat bilgisi için: 05307309009`
               }
             ]).map((faq, index) => (
               <motion.div
@@ -466,9 +505,12 @@ const MascotDetail = () => {
                     <div className="relative overflow-hidden rounded-2xl shadow-lg">
                       <img
                         src={rel.heroImage}
+                        srcSet={generateSrcSet(rel.heroImage)}
+                        sizes="(max-width: 768px) 100vw, 400px"
                         alt={`${rel.name} maskot kiralama İstanbul`}
                         className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
+                        decoding="async"
                         width={400}
                         height={256}
                       />
@@ -577,7 +619,7 @@ const MascotDetail = () => {
               href="tel:+905307309009"
               className="bg-white hover:bg-gray-100 text-gray-900 px-12 py-5 rounded-xl font-bold text-xl shadow-2xl transition-all"
             >
-              0530 730 90 09
+              05307309009
             </a>
           </div>
         </div>

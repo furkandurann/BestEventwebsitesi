@@ -6,7 +6,7 @@ const DanceEvents = () => {
   const serviceSchema = createServiceSchema(
     'Dans Etkinlikleri | Profesyonel Dans Gösterileri',
     'Oryantal dans, LED dans, lüks karşılama ekibi, zumba ve modern dans gösterileriyle etkinliklerinize renk katıyoruz.',
-    '/hizmetler/dans-etkinlikleri',
+    '/organizasyonlar/dans-etkinlikleri',
     'Dans Gösterisi Organizasyonu'
   )
 
@@ -69,7 +69,7 @@ const DanceEvents = () => {
           'modern dans',
           'yoga eğitmeni'
         ]}
-        canonicalPath="/hizmetler/dans-etkinlikleri"
+        canonicalPath="/organizasyonlar/dans-etkinlikleri"
         schema={[serviceSchema]}
       />
       

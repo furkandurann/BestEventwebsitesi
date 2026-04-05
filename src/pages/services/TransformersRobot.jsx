@@ -35,7 +35,7 @@ const TransformersRobot = () => {
 
   const photos = [
     '/content/images/cocukdogumgunu/556fe6ff-e557-4b33-b59d-16b1690624ac.webp',
-    '/content/images/cocukdogumgunu/66a266b0-ef8f-4a4a-9e3e-39c657157777.webp',
+    '/content/images/cocukdogumgunu/8e6ea844-2168-4287-bda0-ba0bb00453c8.webp',
     '/content/images/cocukdogumgunu/14445323-1fe3-4dea-8055-831975e83963.webp',
     '/content/images/cocukdogumgunu/21380558-d41b-42eb-8885-5588f0b8931f.webp',
   ]
@@ -121,7 +121,7 @@ const TransformersRobot = () => {
                 href="tel:+905307309009"
                 className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
               >
-                📞 0530 730 90 09
+                📞 05307309009
               </a>
             </div>
 
@@ -239,7 +239,7 @@ const TransformersRobot = () => {
                   href="tel:+905307309009"
                   className="inline-flex items-center justify-center rounded-full border border-gray-300 px-4 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 transition"
                 >
-                  📞 0530 730 90 09
+                  📞 05307309009
                 </a>
                 <a
                   href="https://wa.me/905307309009?text=Merhaba Çocuk etkinlikleri hakkında bilgi almak istiyorum"

@@ -1,14 +1,45 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
-import { createServiceSchema, createFAQSchema } from '../../utils/schemaHelpers'
+import { createServiceSchema, createFAQSchema, createImageObjectSchema } from '../../utils/schemaHelpers'
+import TrustSection from '../../components/TrustSection'
+import DeferredContentAccordion from '../../components/DeferredContentAccordion'
+import { getMascotsIndexData } from '../../data/catalogData.async'
 
 const MascotRental = () => {
+  const [mascotsData, setMascotsData] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    let isMounted = true
+
+    getMascotsIndexData().then((data) => {
+      if (!isMounted) return
+
+      setMascotsData(data)
+      setIsLoading(false)
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  const featuredMascots = [
+    mascotsData?.girlsMascots.find((mascot) => mascot.slug === 'hello-kitty-maskot-istanbul'),
+    mascotsData?.girlsMascots.find((mascot) => mascot.slug === 'kuromi-maskot-istanbul'),
+    mascotsData?.girlsMascots.find((mascot) => mascot.slug === 'unicorn-maskot-istanbul'),
+    mascotsData?.boysMascots.find((mascot) => mascot.slug === 'sonic-maskot-istanbul'),
+    mascotsData?.boysMascots.find((mascot) => mascot.slug === 'paw-patrol-maskot-istanbul'),
+    mascotsData?.boysMascots.find((mascot) => mascot.slug === 'mickey-mouse-maskot-istanbul')
+  ].filter(Boolean)
+
   // FAQ
   const faqs = [
     {
       question: 'Maskot organizasyon süresi ne kadar?',
-      answer: 'Standart maskot organizasyon 60-90 dakika arasıdır. Kostüm içinde sıcaklık ve yorulma nedeniyle 15-20 dakikalık molalar verilir. Detaylı bilgi için 0530 730 90 09 numarasından bize ulaşabilirsiniz.'
+      answer: 'Standart maskot organizasyon 60-90 dakika arasıdır. Kostüm içinde sıcaklık ve yorulma nedeniyle 15-20 dakikalık molalar verilir. Detaylı bilgi için 05307309009 numarasından bize ulaşabilirsiniz.'
     },
     {
       question: 'Hangi maskot karakterleri mevcut?',
@@ -28,7 +59,7 @@ const MascotRental = () => {
     },
     {
       question: 'Fiyatlandırma nasıl yapılıyor?',
-      answer: 'Fiyatlandırma maskot tipi, organizasyon süresi ve lokasyona göre değişiklik gösterir. Detaylı fiyat teklifi için 0530 730 90 09 numarasından bize ulaşabilirsiniz.'
+      answer: 'Fiyatlandırma maskot tipi, organizasyon süresi ve lokasyona göre değişiklik gösterir. Detaylı fiyat teklifi için 05307309009 numarasından bize ulaşabilirsiniz.'
     },
     {
       question: 'Maskotlar çocuklarla nasıl etkileşim kurar?',
@@ -47,12 +78,17 @@ const MascotRental = () => {
     'Maskot Kiralama'
   )
   const faqSchema = createFAQSchema(faqs)
+  const imageGallerySchema = createImageObjectSchema([
+    { src: '/content/images/maskotlar/kizanahero.webp', alt: 'Maskot kiralama İstanbul' },
+    { src: '/content/images/maskotlar/sevimlimaskotlar.webp', alt: 'Sevimli maskotlar organizasyonu' },
+    { src: '/content/images/maskotlar/mariokediunicornkuromi.webp', alt: 'Mario Kedi Unicorn maskot kiralama' },
+  ])
 
   return (
     <>
       <Seo
         title="Maskot Kiralama İstanbul | Sonic Paw Patrol Hello Kitty Unicorn"
-        description="Maskot kiralama İstanbul. Sonic, Paw Patrol, Hello Kitty, Unicorn, Mickey Mouse ve tüm maskotlar. Kurumsal ve özel etkinlikler. ☎ 0530 730 90 09"
+        description="Maskot kiralama İstanbul. Sonic, Paw Patrol, Hello Kitty, Unicorn, Mickey Mouse ve tüm maskotlar. Kurumsal ve özel etkinlikler. ☎ 05307309009"
         keywords={[
           'maskot kiralama istanbul',
           'sonic maskot',
@@ -64,7 +100,8 @@ const MascotRental = () => {
         canonicalPath="/organizasyonlar/maskot-kiralama"
         schema={[
           serviceSchema,
-          faqSchema
+          faqSchema,
+          imageGallerySchema
         ]}
       />
 
@@ -79,10 +116,15 @@ const MascotRental = () => {
           className="relative min-h-screen flex items-center justify-center overflow-hidden cursor-pointer group"
         >
           {/* Background */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-            style={{ backgroundImage: `url('/content/images/maskotlar/kizanahero.webp')` }}
-          >
+          <div className="absolute inset-0 overflow-hidden">
+            <img
+              src="/content/images/maskotlar/kizanahero.webp"
+              alt="Kız çocuk maskotları kiralama İstanbul"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              decoding="async"
+              width={1200}
+              height={800}
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-black/15 to-black/5"></div>
           </div>
           
@@ -121,10 +163,16 @@ const MascotRental = () => {
           className="relative min-h-screen flex items-center justify-center overflow-hidden cursor-pointer group"
         >
           {/* Background */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-            style={{ backgroundImage: `url('/content/images/maskotlar/erkekanahero.webp')` }}
-          >
+          <div className="absolute inset-0 overflow-hidden">
+            <img
+              src="/content/images/maskotlar/erkekanahero.webp"
+              alt="Erkek çocuk maskotları kiralama İstanbul"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+              width={1200}
+              height={800}
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-black/15 to-black/5"></div>
           </div>
           
@@ -154,6 +202,97 @@ const MascotRental = () => {
           </motion.div>
         </motion.section>
       </Link>
+
+      <section className="py-20 bg-gradient-to-br from-[#12081f] via-[#160d28] to-[#0b0b12]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <p className="uppercase tracking-[0.3em] text-xs sm:text-sm text-fuchsia-300 mb-4 font-medium">Hızlı Seçim</p>
+            <h2 className="font-display font-bold text-white mb-4" style={{ fontSize: 'clamp(1.9rem, 4.8vw, 3rem)', lineHeight: '1.2' }}>
+              En Çok Tercih Edilen Maskotlar
+            </h2>
+            <p className="text-white/75 max-w-3xl mx-auto leading-relaxed">
+              Genel maskot kiralama sayfası ana owner olarak kalır. Karakteri netleşen kullanıcıyı ise doğrudan ilgili maskot detayına indiriyoruz.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {isLoading && Array.from({ length: 6 }).map((_, index) => (
+              <div
+                key={index}
+                className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-[0_22px_70px_rgba(0,0,0,0.32)]"
+              >
+                <div className="h-64 animate-pulse bg-white/10" />
+                <div className="space-y-3 p-5">
+                  <div className="h-4 w-24 animate-pulse rounded bg-white/10" />
+                  <div className="h-6 w-2/3 animate-pulse rounded bg-white/10" />
+                  <div className="h-4 w-full animate-pulse rounded bg-white/10" />
+                </div>
+              </div>
+            ))}
+
+            {!isLoading && featuredMascots.map((mascot, index) => (
+              <motion.div
+                key={mascot.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+              >
+                <Link
+                  to={`/maskot/${mascot.slug}`}
+                  className="group block overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-[0_22px_70px_rgba(0,0,0,0.32)] hover:border-fuchsia-300/40 hover:bg-white/[0.08] transition-all"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={mascot.heroImage}
+                      alt={`${mascot.name} maskot kiralama İstanbul`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      width={480}
+                      height={320}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.22em] text-white/70 mb-2">{mascot.title}</p>
+                        <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Poppins, sans-serif', lineHeight: '1.2' }}>
+                          {mascot.name}
+                        </h3>
+                      </div>
+                      <span className="shrink-0 rounded-full bg-white/15 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm">
+                        Detay
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    <p className="text-white/80 text-sm leading-relaxed min-h-[3.5rem]">
+                      {mascot.description}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {mascot.features.slice(0, 3).map((feature) => (
+                        <span
+                          key={feature}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/75"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Neden Best Event? */}
       <section className="py-20 sm:py-28 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900">
@@ -248,6 +387,8 @@ const MascotRental = () => {
         </div>
       </section>
 
+      <TrustSection />
+
       {/* FAQ Section */}
       <section className="py-20 bg-black">
         <div className="max-w-3xl mx-auto px-4">
@@ -296,6 +437,8 @@ const MascotRental = () => {
         </div>
 
       </section>
+
+      <DeferredContentAccordion serviceKey="maskot-kiralama" />
 
       {/* Hizmet Bölgeleri */}
       <section className="py-20 bg-black">
@@ -353,7 +496,7 @@ const MascotRental = () => {
               href="tel:+905307309009"
               className="min-h-[44px] bg-white hover:bg-gray-100 text-gray-900 px-12 py-5 rounded-xl font-bold text-xl shadow-2xl transition-all transform hover:scale-105"
             >
-              0530 730 90 09
+              05307309009
             </a>
           </div>
         </div>

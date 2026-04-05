@@ -1027,7 +1027,7 @@ const IstanbulPopulerCocukPartiTemalar = () => {
             href="tel:+905307309009"
             className="bg-white text-purple-600 font-bold text-base px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-2xl text-center"
           >
-            Hemen Ara: 0530 730 90 09
+            Hemen Ara: 05307309009
           </a>
           <a
             href="https://wa.me/905307309009?text=Merhaba%20%C3%87ocuk%20parti%20temas%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum"

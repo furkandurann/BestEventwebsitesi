@@ -77,6 +77,8 @@ const Footer = () => {
     { name: 'Hizmet Bölgeleri', path: '/hizmet-bolgeleri' },
     { name: 'Galeri', path: '/galeri' },
     { name: 'Blog', path: '/blog' },
+    { name: 'Vaka Analizi', path: '/vaka-analizi' },
+    { name: 'İş İlanları', path: '/is-ilanlari' },
     { name: 'Organik Pastalar', path: '/organik-pastalar' },
     { name: 'İletişim', path: '/iletisim' },
   ]
@@ -254,16 +256,16 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { name: 'Kadıköy Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/kadikoy' },
-                { name: 'Beşiktaş Sihirbaz Kiralama', path: '/organizasyonlar/sihirbaz-kiralama/besiktas' },
-                { name: 'Ataşehir Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/atasehir' },
+                { name: 'Beşiktaş Sihirbaz Kiralama', path: '/organizasyonlar/magic-show/besiktas' },
+                { name: 'Ataşehir Bubble Show', path: '/organizasyonlar/bubble-show/atasehir' },
                 { name: 'Üsküdar Doğum Günü Org.', path: '/organizasyonlar/dogum-gunu-organizasyonu/uskudar' },
                 { name: 'Şişli Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/sisli' },
-                { name: 'Bakırköy Yüz Boyama', path: '/organizasyonlar/profesyonel-yuz-boyama/bakirkoy' },
-                { name: 'Beylikdüzü Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/beylikduzu' },
-                { name: 'Maltepe Sihirbaz Kiralama', path: '/organizasyonlar/sihirbaz-kiralama/maltepe' },
+                { name: 'Bakırköy Yüz Boyama', path: '/organizasyonlar/yuz-boyama/bakirkoy' },
+                { name: 'Beylikdüzü Bubble Show', path: '/organizasyonlar/bubble-show/beylikduzu' },
+                { name: 'Maltepe Sihirbaz Kiralama', path: '/organizasyonlar/magic-show/maltepe' },
                 { name: 'Pendik Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/pendik' },
                 { name: 'Ümraniye Doğum Günü Org.', path: '/organizasyonlar/dogum-gunu-organizasyonu/umraniye' },
-                { name: 'Kartal Bubble Show', path: '/organizasyonlar/bubble-show-kiralama/kartal' },
+                { name: 'Kartal Bubble Show', path: '/organizasyonlar/bubble-show/kartal' },
                 { name: 'Sarıyer Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/sariyer' },
               ].map((link) => (
                 <li key={link.path}>
@@ -304,9 +306,9 @@ const Footer = () => {
                 <a 
                   href="tel:+905307309009" 
                   onClick={handlePhoneClick}
-                  className="text-gray-600 hover:text-primary transition-colors text-sm md:text-base"
+                  className="text-blue-600 hover:text-blue-800 font-semibold transition-colors text-sm md:text-base"
                 >
-                  +90 530 730 90 09
+                  05307309009
                 </a>
               </li>
               <li className="flex items-start space-x-3">

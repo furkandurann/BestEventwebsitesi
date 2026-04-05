@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { mascotsData } from '../../data/mascotsData'
+import { getMascotsIndexData } from '../../data/catalogData.async'
 import NarrativeSection from '../../components/NarrativeSection'
 import FullBleedHero from '../../components/FullBleedHero'
 import OptimizedImage from '../../components/OptimizedImage'
@@ -9,9 +9,23 @@ import { createServiceSchema } from '../../utils/schemaHelpers'
 
 const GirlsMascots = () => {
   const [activeSection, setActiveSection] = useState(0)
+  const [girlsMascots, setGirlsMascots] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Kız maskotları
-  const girlsMascots = mascotsData.girlsMascots
+  useEffect(() => {
+    let isMounted = true
+
+    getMascotsIndexData().then((data) => {
+      if (!isMounted) return
+
+      setGirlsMascots(data?.girlsMascots || [])
+      setIsLoading(false)
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   // Scroll observer for progress indicators (throttled with rAF)
   useEffect(() => {
@@ -122,7 +136,14 @@ const GirlsMascots = () => {
         </div>
 
         {/* FULL-SCREEN MASCOT SECTIONS */}
-        {girlsMascots.map((mascot, index) => (
+        {isLoading ? (
+          <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50">
+            <div className="text-center px-6">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Maskotlar yükleniyor</h2>
+              <p className="text-gray-600">Katalog birkaç saniye içinde hazır olacak.</p>
+            </div>
+          </section>
+        ) : girlsMascots.map((mascot, index) => (
           <section
             key={mascot.id}
             className="mascot-hero-section relative min-h-screen flex items-center justify-center overflow-hidden snap-start"
@@ -166,7 +187,7 @@ const GirlsMascots = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              href={`/${mascot.slug}`}
+              href={`/maskot/${mascot.slug}`}
               className="absolute bottom-8 right-8 z-20 min-h-[44px] px-7 py-3.5 bg-white/90 backdrop-blur-md text-purple-600 rounded-full font-semibold text-base hover:shadow-xl transition-all transform hover:scale-105"
             >
               İncele →
@@ -232,7 +253,7 @@ const GirlsMascots = () => {
                   },
                   {
                     question: "Fiyatlar nedir?",
-                    answer: "Fiyatlarımız maskot, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
+                    answer: "Fiyatlarımız maskot, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 05307309009"
                   }
                 ];
                 return faqs.map((faq, index) => (
@@ -323,7 +344,7 @@ const GirlsMascots = () => {
                   "name": "Fiyatlar nedir?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Fiyatlarımız maskot, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
+                    "text": "Fiyatlarımız maskot, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 05307309009"
                   }
                 }
               ]
@@ -352,7 +373,7 @@ const GirlsMascots = () => {
                 href="tel:+905307309009"
                 className="bg-white hover:bg-gray-100 text-gray-900 px-12 py-5 rounded-xl font-bold text-xl shadow-2xl transition-all"
               >
-                0530 730 90 09
+                05307309009
               </a>
             </div>
           </div>

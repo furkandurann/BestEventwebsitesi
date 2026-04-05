@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Seo from './Seo'
-import { getBlogBySlug } from '../data/blogPosts'
+import { getBlogBySlugAsync } from '../data/blogPosts.async'
 import PillarLink from './PillarLink'
 import SiloNavigation from './SiloNavigation'
 
@@ -19,10 +20,92 @@ const pillarServiceNames = {
   '/organizasyonlar/dogum-gunu-organizasyonu': 'Doğum Günü Organizasyonu'
 }
 
-const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName, faqData, slug: slugProp }) => {
+const kingServiceLinks = [
+  { path: '/organizasyonlar/konsept-dogum-gunu', label: 'Konsept Doğum Günü Hizmeti' },
+  { path: '/organizasyonlar/dogum-gunu-organizasyonu', label: 'Doğum Günü Organizasyonu' },
+  { path: '/organizasyonlar/kostumlu-karakterler', label: 'Kostümlü Karakterler' },
+  { path: '/organizasyonlar/maskot-kiralama', label: 'Maskot Kiralama' },
+  { path: '/organizasyonlar/palyaco-kiralama', label: 'Palyaço Kiralama' },
+  { path: '/organizasyonlar/magic-show', label: 'Sihirbaz Gösterisi' },
+  { path: '/organizasyonlar/pamuk-seker', label: 'Pamuk Şeker' },
+  { path: '/organizasyonlar/yuz-boyama', label: 'Yüz Boyama' },
+  { path: '/organizasyonlar/noel-baba-kiralama', label: 'Noel Baba Kiralama' },
+]
+
+const serviceSlugFromPath = (servicePath) => {
+  const raw = String(servicePath || '').trim().toLowerCase().replace(/^\/+/, '').replace(/\/+$/, '')
+  const pathWithoutPrefix = raw.replace(/^organizasyonlar\//, '')
+  const map = {
+    'sihirbaz-kiralama': 'magic-show',
+    'bubble-show-kiralama': 'bubble-show',
+    'profesyonel-yuz-boyama': 'yuz-boyama',
+    'profesyonel-makyaj': 'yuz-boyama',
+    'dogum-gunu': 'dogum-gunu-organizasyonu',
+    'pamuk-seker-arabasi-kiralama': 'pamuk-seker',
+  }
+  return map[pathWithoutPrefix] || pathWithoutPrefix || 'cocuk-etkinlikleri'
+}
+
+const formatDistrict = (value) => {
+  const raw = String(value || '').trim().toLowerCase()
+  if (!raw) return ''
+  return raw
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ')
+    .replace(/İ/g, 'İ')
+}
+
+const normalizeDistrictSlug = (value) => {
+  const raw = String(value || '').trim().toLowerCase().replace(/\/+$/g, '')
+  if (!raw) return ''
+  return raw
+}
+
+const BlogDetail = ({
+  children,
+  content,
+  relatedServicePath,
+  relatedServiceName,
+  faqData,
+  slug: slugProp,
+  blog: blogProp,
+  indexable = true,
+  soft404 = false
+}) => {
   const params = useParams()
   const slug = slugProp || params.slug
-  const blog = getBlogBySlug(slug)
+  const [blog, setBlog] = useState(blogProp || null)
+  const [isLoading, setIsLoading] = useState(!blogProp)
+
+  useEffect(() => {
+    let isMounted = true
+
+    if (blogProp) {
+      setBlog(blogProp)
+      setIsLoading(false)
+      return () => {
+        isMounted = false
+      }
+    }
+
+    setIsLoading(true)
+
+    getBlogBySlugAsync(slug).then((item) => {
+      if (!isMounted) return
+
+      setBlog(item || null)
+      setIsLoading(false)
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [blogProp, slug])
+
+  if (isLoading) {
+    return <div className="min-h-[60vh] bg-white" />
+  }
 
   if (!blog) {
     return (
@@ -81,6 +164,22 @@ const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName,
     })
   }
 
+  const safeServiceSlug = serviceSlugFromPath(blog.pillarService)
+  const relatedDistricts = Array.isArray(blog.relatedDistricts) ? blog.relatedDistricts : []
+  const districtLinks = Array.from(
+    new Set(
+      relatedDistricts
+        .map(normalizeDistrictSlug)
+        .filter(Boolean)
+    )
+  )
+    .map((districtSlug) => ({
+      slug: districtSlug,
+      label: formatDistrict(districtSlug),
+    }))
+    .filter(link => link.slug && link.label)
+    .slice(0, 6)
+
   return (
     <>
       <Seo
@@ -89,6 +188,7 @@ const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName,
         keywords={`${blog.title}, ${blog.category}, istanbul, etkinlik, organizasyon, kiralama, gösteri`}
         image={blog.image}
         canonicalPath={`/blog/${slug}`}
+        indexable={indexable}
         schema={schemaArray}
       />
 
@@ -135,6 +235,66 @@ const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName,
             <div>
               {children || content}
             </div>
+
+            {districtLinks.length > 0 && (
+              <section className="mb-8 p-6 rounded-2xl border border-gray-200 bg-white">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Bölge Bazlı Rehberlik</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Bu yazıyla ilgili semt bazlı içerikler ve hizmet sayfaları:
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {districtLinks.map(({ slug, label }) => (
+                    <Link
+                      key={slug}
+                      to={`/organizasyonlar/${safeServiceSlug}/${slug}`}
+                      className="inline-flex text-sm px-4 py-2 rounded-full border border-gray-300 bg-gray-50 text-gray-700 hover:border-gray-900 hover:text-gray-900 transition-colors"
+                    >
+                      {label} için {safeServiceSlug.replace('-', ' ')} Hizmeti
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {soft404 && (
+              <section className="mb-8 p-6 rounded-2xl border border-yellow-300 bg-yellow-50 text-sm text-yellow-900">
+                <strong>Not:</strong> Bu sayfanın içerik derinliği sınırlı. İlgili ana başlıklar, hizmet ve semt sayfalarına yönlendirilerek daha güçlü içerik akışıyla geliştirilebilir.
+              </section>
+            )}
+
+            <section className="mt-8 mb-8 p-6 rounded-2xl border border-gray-200 bg-gray-50">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Ana Sayfa ve Kral Hizmetler</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                Ana sinyalin korunması için önce anasayfa ve satış odağındaki ana hizmet sayfalarımıza yönelin.
+              </p>
+
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-4">
+                <Link
+                  to="/"
+                  className="inline-flex items-center justify-center text-sm px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 hover:border-gray-500 hover:text-gray-900 transition-colors"
+                >
+                  Türkiye&apos;de en çok tercih edilen etkinlik hizmetleri
+                </Link>
+                <Link
+                  to="/organizasyonlar/dogum-gunu-organizasyonu"
+                  className="inline-flex items-center justify-center text-sm px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 hover:border-gray-500 hover:text-gray-900 transition-colors"
+                >
+                  Doğum Günü Organizasyonu için Ana Sayfa
+                </Link>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {kingServiceLinks.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className="inline-flex text-sm px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 hover:border-gray-500 hover:text-gray-900 transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </section>
 
             {/* Pillar Service Link - Blog yazısını pillar sayfasına bağla */}
             {blog.pillarService && (
@@ -191,7 +351,7 @@ const BlogDetail = ({ children, content, relatedServicePath, relatedServiceName,
           <div className="flex flex-wrap justify-center gap-3">
             {relatedServicePath && (
               <Link to={relatedServicePath} className="bg-purple-600 text-white px-5 py-2.5 rounded-full shadow hover:shadow-lg transition-all text-sm font-semibold hover:bg-purple-700">
-                {relatedServiceName} Hizmeti →
+                {relatedServiceName || pillarServiceNames[relatedServicePath] || 'Hizmet'} Hizmeti →
               </Link>
             )}
             <Link to="/blog" className="bg-white text-gray-700 px-5 py-2.5 rounded-full shadow hover:shadow-lg transition-all text-sm font-semibold hover:bg-gray-100">

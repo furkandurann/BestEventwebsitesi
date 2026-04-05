@@ -11,17 +11,27 @@ const Seo = ({
   image = DEFAULT_IMAGE,
   canonicalPath = '',
   schema = null,
+  indexable = true,
   type = 'website',
   publishedTime = null
 }) => {
   const { pathname } = useLocation()
-  const canonical = `${SITE_URL}${canonicalPath || pathname}`
+  const normalizePath = (value) => {
+    const raw = String(value || '').split(/[?#]/)[0].trim()
+    const withLeadingSlash = raw.startsWith('/') ? raw : `/${raw}`
+    const lower = withLeadingSlash.toLowerCase()
+    const withoutTrailing = lower === '/' ? '/' : lower.replace(/\/+$/, '')
+    return withoutTrailing || '/'
+  }
+
+  const normalizedPath = normalizePath(canonicalPath || pathname)
+  const canonical = indexable ? `${SITE_URL}${normalizedPath}` : null
   const keywordString = Array.isArray(keywords) ? keywords.join(', ') : keywords
   const fullImageUrl = image?.startsWith('http') ? image : `${SITE_URL}${image}`
 
   // Check if running on test domain - block indexing for test.bestevent.com.tr
   const isTestDomain = typeof window !== 'undefined' && window.location.hostname === 'test.bestevent.com.tr'
-  const robotsContent = isTestDomain
+  const robotsContent = isTestDomain || !indexable
     ? 'noindex, nofollow'
     : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 
@@ -36,13 +46,12 @@ const Seo = ({
       {/* SEO Meta Tags */}
       <meta name="robots" content={robotsContent} />
       <meta name="theme-color" content="#1e3a8a" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
       <meta httpEquiv="content-language" content="tr" />
-      <link rel="canonical" href={canonical} />
+      {indexable && canonical && <link rel="canonical" href={canonical} />}
       
       {/* Hreflang Tags for Language */}
-      <link rel="alternate" hreflang="tr" href={canonical} />
-      <link rel="alternate" hreflang="x-default" href={canonical} />
+      {indexable && canonical && <link rel="alternate" hrefLang="tr" href={canonical} />}
+      {indexable && canonical && <link rel="alternate" hrefLang="x-default" href={canonical} />}
 
       {/* Preconnect for Performance */}
       <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -51,7 +60,7 @@ const Seo = ({
       {/* Open Graph / Facebook */}
       {title && <meta property="og:title" content={title} />}
       {description && <meta property="og:description" content={description} />}
-      <meta property="og:url" content={canonical} />
+      {indexable && <meta property="og:url" content={canonical} />}
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="BestEvent - İstanbul Etkinlik Organizasyonu" />
       {image && <meta property="og:image" content={fullImageUrl} />}

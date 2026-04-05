@@ -8,10 +8,10 @@ const Services = () => {
     { title: 'Palyaço Kiralama', icon: '🤡', path: '/organizasyonlar/palyaco-kiralama', color: 'from-red-500 to-pink-500' },
     { title: 'Kostümlü Karakterler', icon: '🦸', path: '/organizasyonlar/kostumlu-karakterler', color: 'from-purple-500 to-pink-500' },
     { title: 'Yüz Boyama', icon: '🎨', path: '/organizasyonlar/yuz-boyama', color: 'from-blue-500 to-cyan-500' },
-    { title: 'Sihirbaz Show', icon: '🎩', path: '/organizasyonlar/sihirbaz', color: 'from-indigo-500 to-purple-500' },
+    { title: 'Sihirbaz Show', icon: '🎩', path: '/organizasyonlar/magic-show', color: 'from-indigo-500 to-purple-500' },
     { title: 'Bubble Show', icon: '💧', path: '/organizasyonlar/bubble-show', color: 'from-cyan-500 to-blue-500' },
     { title: 'Konsept Doğum Günü', icon: '🎉', path: '/organizasyonlar/konsept-dogum-gunu', color: 'from-yellow-500 to-orange-500' },
-    { title: 'Doğum Günü Organizasyonu', icon: '🎂', path: '/organizasyonlar/dogum-gunu', color: 'from-pink-500 to-purple-500' },
+    { title: 'Doğum Günü Organizasyonu', icon: '🎂', path: '/organizasyonlar/dogum-gunu-organizasyonu', color: 'from-pink-500 to-purple-500' },
     { title: 'DJ Kiralama', icon: '🎧', path: '/organizasyonlar/dj-kiralama', color: 'from-green-500 to-teal-500' },
   ]
 

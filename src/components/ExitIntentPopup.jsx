@@ -54,7 +54,7 @@ const ExitIntentPopup = ({ pageName = 'unknown' }) => {
 
   const handleWhatsAppClick = () => {
     const message = `🎉 *Best Event - Web Sitesinden Geliyorum!*\n\n🎁 *Kupon:* Şanlı1000TL\n\n_${pageName} sayfasından yönlendirildim. Detaylı bilgi almak istiyorum._`;
-    const whatsappNumber = '905307309009';
+    const whatsappNumber = '+905307309009';
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     
     trackGA4Event('exit_popup_whatsapp_click', {
@@ -152,14 +152,14 @@ const ExitIntentPopup = ({ pageName = 'unknown' }) => {
 
               {/* Phone Button */}
               <a
-                href="tel:05307309009"
+                href="tel:+905307309009"
                 onClick={handlePhoneClick}
                 className="w-full min-h-[44px] px-6 py-4 bg-gradient-to-r from-primary to-secondary text-white font-display font-bold rounded-full hover:shadow-2xl transform hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 text-base md:text-lg"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                📞 Hemen Ara: 0530 730 90 09
+                📞 Hemen Ara: 05307309009
               </a>
             </div>
 

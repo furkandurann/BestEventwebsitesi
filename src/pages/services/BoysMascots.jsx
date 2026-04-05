@@ -1,14 +1,28 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { mascotsData } from '../../data/mascotsData'
+import { getMascotsIndexData } from '../../data/catalogData.async'
 import Seo from '../../components/Seo'
 import { createServiceSchema } from '../../utils/schemaHelpers'
 
 const BoysMascots = () => {
   const [activeSection, setActiveSection] = useState(0)
+  const [boysMascots, setBoysMascots] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Erkek maskotları
-  const boysMascots = mascotsData.boysMascots
+  useEffect(() => {
+    let isMounted = true
+
+    getMascotsIndexData().then((data) => {
+      if (!isMounted) return
+
+      setBoysMascots(data?.boysMascots || [])
+      setIsLoading(false)
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   // Scroll observer for progress indicators
   useEffect(() => {
@@ -26,7 +40,7 @@ const BoysMascots = () => {
       })
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
     
     return () => window.removeEventListener('scroll', handleScroll)
@@ -64,7 +78,7 @@ const BoysMascots = () => {
     <>
       <Seo
         title="Erkek Çocuk Maskotları Kiralama İstanbul | Sonic, Super Mario | Best Event"
-        description="İstanbul'da erkek çocuk maskot organizasyon. Sonic, Super Mario, Paw Patrol, Mickey Mouse maskotları. Kadıköy, Üsküdar, Ataşehir, Maltepe ve tüm İstanbul'da hizmet. ☎ 0530 730 90 09"
+        description="İstanbul'da erkek çocuk maskot organizasyon. Sonic, Super Mario, Paw Patrol, Mickey Mouse maskotları. Kadıköy, Üsküdar, Ataşehir, Maltepe ve tüm İstanbul'da hizmet. ☎ 05307309009"
         keywords={[
           'erkek maskot kiralama istanbul',
           'sonic maskot kiralama',
@@ -98,16 +112,29 @@ const BoysMascots = () => {
         </div>
 
         {/* FULL-SCREEN MASCOT SECTIONS */}
-        {boysMascots.map((mascot, index) => (
+        {isLoading ? (
+          <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800">
+            <div className="text-center px-6">
+              <h2 className="text-3xl font-bold text-white mb-4">Maskotlar yükleniyor</h2>
+              <p className="text-white/70">Katalog birkaç saniye içinde hazır olacak.</p>
+            </div>
+          </section>
+        ) : boysMascots.map((mascot, index) => (
           <section
             key={mascot.id}
             className="mascot-hero-section relative min-h-screen flex items-center justify-center overflow-hidden snap-start"
           >
             {/* Background Image */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('${mascot.heroImage}')` }}
-            >
+            <div className="absolute inset-0">
+              <img
+                src={mascot.heroImage}
+                alt={`${mascot.name} maskot kiralama İstanbul`}
+                className="absolute inset-0 w-full h-full object-cover"
+                loading={index === 0 ? undefined : "lazy"}
+                decoding="async"
+                width={1200}
+                height={800}
+              />
               <div className="absolute inset-0 bg-gradient-to-b from-black/15 to-black/5"></div>
             </div>
 
@@ -138,7 +165,7 @@ const BoysMascots = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              href={`/${mascot.slug}`}
+              href={`/maskot/${mascot.slug}`}
               className="absolute bottom-8 right-8 z-20 min-h-[44px] px-7 py-3.5 bg-white/90 backdrop-blur-md text-purple-600 rounded-full font-semibold text-base hover:shadow-xl transition-all transform hover:scale-105"
             >
               İncele →
@@ -204,7 +231,7 @@ const BoysMascots = () => {
                   },
                   {
                     question: "Fiyatlar nedir?",
-                    answer: "Fiyatlarımız maskot, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
+                    answer: "Fiyatlarımız maskot, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 05307309009"
                   }
                 ];
                 return faqs.map((faq, index) => (
@@ -295,7 +322,7 @@ const BoysMascots = () => {
                   "name": "Fiyatlar nedir?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Fiyatlarımız maskot, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 0530 730 90 09"
+                    "text": "Fiyatlarımız maskot, süre ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 05307309009"
                   }
                 }
               ]
@@ -324,7 +351,7 @@ const BoysMascots = () => {
                 href="tel:+905307309009"
                 className="bg-white hover:bg-gray-100 text-gray-900 px-12 py-5 rounded-xl font-bold text-xl shadow-2xl transition-all"
               >
-                0530 730 90 09
+                05307309009
               </a>
             </div>
           </div>

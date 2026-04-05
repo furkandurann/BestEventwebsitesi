@@ -479,7 +479,7 @@ const EventDetail = ({
                 className="bg-white text-purple-600 px-10 md:px-14 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold shadow-2xl hover:shadow-3xl transition-all w-full sm:w-auto"
                 aria-label="İletişime Geç"
               >
-                +90 530 730 90 09
+                05307309009
               </motion.button>
               
               <motion.a

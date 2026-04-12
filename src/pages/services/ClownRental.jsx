@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
-import { createServiceSchema, createFAQSchema, createImageObjectSchema } from '../../utils/schemaHelpers'
+import { createServiceSchema, createFAQSchema, createImageObjectSchema, createHowToSchema } from '../../utils/schemaHelpers'
+import AuthorExpertise from '../../components/AuthorExpertise'
 import AdHero from '../../components/AdHero'
 import LocationHeroShowcase from '../../components/LocationHeroShowcase'
 import HorizontalPhotoSlider from '../../components/HorizontalPhotoSlider'
@@ -224,6 +225,10 @@ const ClownRental = () => {
     {
       question: 'Hangi bölgelere hizmet veriyorsunuz?',
       answer: 'Tüm İstanbul\'a palyaço kiralama hizmeti sunuyoruz. Kadıköy, Beşiktaş, Şişli, Bakırköy, Ataşehir ve İstanbul\'un tüm ilçelerinde profesyonel palyaço organizasyonu yapıyoruz.'
+    },
+    {
+      question: 'Palyaço kiralama fiyatları ne kadar?',
+      answer: 'Palyaço kiralama hizmetimiz ₺2.500\'den başlayan fiyatlarla sunulmaktadır. Fiyat; etkinlik süresi, çocuk sayısı, lokasyon ve ek hizmet taleplerine (yüz boyama, balon şekillendirme, kar show vb.) göre değişmektedir. Sihirbaz ekleme ₺7.000\'den, bubble show ekleme ₺7.000\'den, profesyonel yüz boyama ve glitter ₺6.000\'den başlayan fiyatlarla kombine edilebilir. Size özel teklif almak için 05307309009 numarasından bize ulaşabilirsiniz.'
     }
   ]
 
@@ -261,67 +266,67 @@ const ClownRental = () => {
 
   const eventFlow = [
     {
-      id: 'greeting',
+      id: 'tanisma-ve-karsilama',
       number: '1',
       title: 'Tanışma ve Karşılama',
       description: 'Palyaço ekibimiz çocuklarla samimi bir karşılama seremonisi ile tanışır',
       image: '/content/images/palyaco/palyacoonemlifoto.webp',
       alt: 'Palyaço kiralama İstanbul tanışma seremonisi - Best Event',
-      href: '/hizmet-detay/palyaco-ile-tanisma-ve-karsilama'
+      href: '/organizasyonlar/palyaco-kiralama#tanisma-ve-karsilama'
     },
     {
-      id: 'facepainting',
+      id: 'yuz-boyama-glitter-play-doh',
       number: '2',
       title: 'Yüz Boyama, Glitter ve Play Doh',
       description: 'Hızlı yüz boyama, parlak glitter detayları ve küçük yaş grupları için play doh masasıyla sıra beklerken akış bozulmaz',
       image: '/content/images/palyaco/yuzboyamapalyaco.webp',
       alt: 'Palyaço etkinliği yüz boyama İstanbul - Best Event',
-      href: '/hizmet-detay/yuz-boyama-glitter-ve-play-doh-kosesi'
+      href: '/organizasyonlar/palyaco-kiralama#yuz-boyama-glitter-play-doh'
     },
     {
-      id: 'games',
+      id: 'grup-oyunlari',
       number: '3',
       title: 'Eğlenceli Grup Oyunları',
       description: 'Çuval yarışı, halat çekme, ringo, sandalye kapmaca, deve-cüce ve yaşa göre uyarlanan yarışmalarla tempo yükselir',
       image: '/content/images/palyaco/palyacogrupoyunlari.webp',
       alt: 'Palyaço kiralama grup oyunları İstanbul - Best Event',
-      href: '/hizmet-detay/cocuk-grup-oyunlari-ve-yarismalar'
+      href: '/organizasyonlar/palyaco-kiralama#grup-oyunlari'
     },
     {
-      id: 'balloon',
+      id: 'sosis-balon-sekillendirme',
       number: '4',
       title: 'Sosis Balon Şekillendirme',
       description: 'Renkli sosis balon ile kedi, köpek, kalp, kılıç yapımı',
       image: '/content/images/palyaco/palyacososisbalon.webp',
       alt: 'Palyaço organizasyonu balon şekillendirme - Best Event',
-      href: '/hizmet-detay/sosis-balon-sekillendirme'
+      href: '/organizasyonlar/palyaco-kiralama#sosis-balon-sekillendirme'
     },
     {
-      id: 'happyface',
+      id: 'palyaconun-guler-yuzu',
       number: '5',
       title: 'Palyaçonun Güler Yüzü',
       description: 'Çocukların mutluluğunu yansıtan neşeli anlar',
       image: '/content/images/palyaco/palyacooguleryuzzafotograf.webp',
       alt: 'Palyaço kiralama fotoğraf çekimi İstanbul - Best Event',
-      href: '/hizmet-detay/palyaconun-komik-etkilesim-anlari'
+      href: '/organizasyonlar/palyaco-kiralama#palyaconun-guler-yuzu'
     },
     {
-      id: 'snowshow',
+      id: 'kar-show-finali',
       number: '6',
       title: 'Kar Show\'u Finali',
       description: 'Büyülü kar show gösterisi ile etkinliğin en heyecanlı anı',
       image: '/content/images/palyaco/palyacokarsoleni.webp',
       alt: 'Palyaço etkinliği kar show İstanbul - Best Event',
-      href: '/hizmet-detay/kar-show-finali'
+      href: '/organizasyonlar/palyaco-kiralama#kar-show-finali'
     },
     {
-      id: 'farewell',
+      id: 'son-hatira-fotografi',
       number: '7',
       title: 'Son Hatıra Fotoğrafı',
       description: 'Unutulmaz günün son fotoğrafı ile duygusal veda',
       image: '/content/images/palyaco/palyacoonemlifotografa.webp',
       alt: 'Palyaço etkinliği veda fotoğrafı İstanbul - Best Event',
-      href: '/hizmet-detay/son-hatira-fotografi-ve-veda'
+      href: '/organizasyonlar/palyaco-kiralama#son-hatira-fotografi'
     }
   ]
 
@@ -329,9 +334,16 @@ const ClownRental = () => {
     'Palyaço Kiralama | Palyaço Organizasyonu İstanbul',
     'Istanbul\'da palyaço kiralama ve organizasyonu. Profesyonel palyaço gösterisi, animatör hizmetleri. +5000 başarılı etkinlik.',
     '/organizasyonlar/palyaco-kiralama',
-    'Palyaço Kiralama ve Organizasyonu'
+    'Palyaço Kiralama ve Organizasyonu',
+    '2500'
   )
   const faqSchema = createFAQSchema(faqData)
+  const howToSchema = createHowToSchema(
+    'Palyaço Kiralama Etkinlik Akışı — 7 Adımda Unutulmaz Parti',
+    'İstanbul\'da profesyonel palyaço kiralama etkinliğinin tanışmadan vedaya kadar 7 adımlık akışı. Yüz boyama, grup oyunları, balon şekillendirme ve kar show dahil.',
+    eventFlow,
+    'PT2H'
+  )
 
   const imageGallerySchema = createImageObjectSchema([
     { src: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp', alt: 'Palyaço kiralama İstanbul grup oyunları' },
@@ -364,13 +376,15 @@ const ClownRental = () => {
         schema={[
           serviceSchema,
           faqSchema,
+          howToSchema,
           imageGallerySchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
-              { "@type": "ListItem", "position": 2, "name": "Palyaço Kiralama", "item": "https://bestevent.com.tr/organizasyonlar/palyaco-kiralama" }
+              { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
+              { "@type": "ListItem", "position": 3, "name": "Palyaço Kiralama", "item": "https://bestevent.com.tr/organizasyonlar/palyaco-kiralama" }
             ]
           },
           {
@@ -542,14 +556,15 @@ const ClownRental = () => {
             {eventFlow.map((step, idx) => (
               <motion.div
                 key={step.id}
+                id={step.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="group"
               >
-                <Link
-                  to={step.href}
+                <a
+                  href={step.href}
                   className="block relative rounded-2xl overflow-hidden bg-zinc-900/50 backdrop-blur-sm border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500"
                 >
                   {/* Number Badge */}
@@ -600,11 +615,8 @@ const ClownRental = () => {
                     >
                       {step.description}
                     </p>
-                    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.22em] text-pink-300/75">
-                      Detayı Aç
-                    </p>
                   </div>
-                </Link>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -645,7 +657,7 @@ const ClownRental = () => {
       <TrustSection />
 
       {/* Google Müşteri Yorumları */}
-      <GoogleReviews reviews={getReviewsByTags(['palyaco', 'genel'])} title="Palyaço Kiralama Müşteri Yorumları" />
+      <GoogleReviews reviews={getReviewsByTags(['palyaco', 'genel'])} title="Palyaço Kiralama Müşteri Yorumları" serviceName="Palyaço Kiralama İstanbul" serviceUrl="/organizasyonlar/palyaco-kiralama" />
 
       <DeferredContentAccordion serviceKey="palyaco-kiralama" />
 
@@ -869,6 +881,7 @@ const ClownRental = () => {
 
       <RelatedBlogPosts servicePath="/organizasyonlar/palyaco-kiralama" />
 
+      <AuthorExpertise serviceName="Palyaço Kiralama" />
     </div>
   )
 }

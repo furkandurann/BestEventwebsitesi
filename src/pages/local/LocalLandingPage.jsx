@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense, lazy } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Seo from '../../components/Seo'
 import GoogleReviews from '../../components/GoogleReviews'
 import { getReviewsByTags } from '../../data/googleReviews'
 import { getLocalPageEntryAsync } from '../../data/localPages.async'
-import { createLocalBusinessSchema } from '../../utils/schemaHelpers'
 import DistrictBlogLinks from '../../components/DistrictBlogLinks'
+import AdHero from '../../components/AdHero'
+
+const LocationHeroShowcase = lazy(() => import('../../components/LocationHeroShowcase'))
 
 // ─── Heading Varyant Helpers ────────────────────────────
 const headingVariants = {
@@ -73,6 +75,114 @@ const kingServiceLinks = [
   { path: '/organizasyonlar/yuz-boyama', label: 'Yüz Boyama' },
   { path: '/organizasyonlar/noel-baba-kiralama', label: 'Noel Baba Kiralama' },
 ]
+
+// ─── Hizmet bazlı hero verileri (ana hizmet sayfalarından) ───
+const serviceHeroData = {
+  'palyaco-kiralama': {
+    backgroundImage: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp',
+    showcaseTitle: 'Palyaço Kiralama',
+    showcaseDescription: 'Yüz boyamadan grup oyunlarına, sosis balondan mini şovlara; çocukları etkinliğin içine alan palyaço akışı tek pakette.',
+    showcaseEyebrow: 'Palyaço Organizasyonu',
+    slides: [
+      { src: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp', alt: 'Palyaço grup oyunları İstanbul', tag: 'Grup Oyunları', title: 'Palyaço eşliğinde grup oyunları', description: 'Çocukları bir arada tutan, eğlenceli ve enerjik grup oyunları palyaço gösterisinin vazgeçilmez parçasıdır.' },
+      { src: '/content/images/palyaco/yuzboyamapalyaco.webp', alt: 'Yüz boyama palyaço etkinliği İstanbul', tag: 'Yüz Boyama', title: 'Profesyonel yüz boyama etkinliği', description: 'Palyaço eşliğinde yapılan yüz boyama, çocukların etkinliğe olan ilgisini ilk dakikadan yakalar.' },
+      { src: '/content/images/palyaco/palyacoonemlifoto.webp', alt: 'Palyaço komedi gösterisi', tag: 'Komedi Show', title: 'Kahkaha dolu komedi gösterisi', description: 'Yaş grubuna uygun komedi ve etkileşimli sahne gösterileri ile çocuklar sürece aktif olarak katılır.' },
+      { src: '/content/images/palyaco/cocuklarinyuzundekiheyecan.webp', alt: 'Çocukların yüzündeki heyecan', tag: 'Çocuk Heyecanı', title: 'Çocukların yüzündeki mutluluk', description: 'Her etkinlikte çocukların gözlerindeki heyecan ve mutluluk, işimizin en değerli ödülüdür.' },
+      { src: '/content/images/palyaco/palyacososisbalon.webp', alt: 'Sosis balon şekillendirme gösterisi', tag: 'Balon Şov', title: 'Sosis balon şekillendirme gösterisi', description: 'Kılıçtan çiçeğe, köpekten krala; sosis balonlar çocukların eline geçtiğinde etkinlik doruk noktasına ulaşır.' },
+    ],
+  },
+  'magic-show': {
+    backgroundImage: '/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp',
+    showcaseTitle: 'Sihirbaz Kiralama',
+    showcaseDescription: 'Sahne numaralarından çocuk katılımlı illüzyonlara, yakın plan sihirbazlıktan final şovuna; tüm akış tek gösteride birleşiyor.',
+    showcaseEyebrow: 'Sihirbaz Gösterisi',
+    slides: [
+      { src: '/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp', alt: 'Kart numaraları ile yakın plan sihirbaz gösterisi İstanbul', tag: 'Kart Numaraları', title: 'Yakın plan kart numaraları ve şaşkınlık anları', description: 'Kart numaraları, çocukların sihri göz hizasında yaşadığı bölüm olur.' },
+      { src: '/content/images/sihirbaz/sihirbazhero.webp', alt: 'Sahne illüzyonları ile sihirbaz kiralama İstanbul', tag: 'İllüzyon', title: 'Büyük sahne illüzyonları ve final etkisi', description: 'Işık, tempo ve sahne hakimiyetiyle kurulan illüzyon akışı.' },
+      { src: '/content/images/ahunundogumgunu/inanılmazsihirbazlıkgosterileri.webp', alt: 'Sandalye ve masa uçurma sihir numarası İstanbul', tag: 'Uçurma Numarası', title: 'Sandalye ve masa uçurma ile yüksek gerilim', description: 'Sandalye ve masa uçurma numaraları sahne enerjisini anında yükseltir.' },
+      { src: '/content/images/ahunundogumgunu/canlıguvercinileilktemas.webp', alt: 'Güvercinli sihirbaz gösterisi İstanbul', tag: 'Güvercin Numaraları', title: 'Canlı güvercinle ilk temas ve sürpriz etki', description: 'Güvercinli sihir numaraları çocukların dikkatini ilk saniyede toplar.' },
+      { src: '/content/images/ahunundogumgunu/ilktemas.webp', alt: 'Tavşanlı sihirbaz kiralama gösterisi İstanbul', tag: 'Tavşan Sürprizi', title: 'Tavşanlı klasik numaralara modern yorum', description: 'Tavşanlı final anları, ailelerin en çok fotoğrafladığı bölüm olur.' },
+    ],
+  },
+  'bubble-show': {
+    backgroundImage: '/content/images/bubbleshow/anabubblee.webp',
+    showcaseTitle: 'Bubble Show',
+    showcaseDescription: 'Dev sabun balonlarından ışıklı sahne anlarına, interaktif oyunlardan final fotoğraflarına; bubble show akışı tek kurguda ilerliyor.',
+    showcaseEyebrow: 'Bubble Show Gösterisi',
+    slides: [
+      { src: '/content/images/bubbleshow/anabubblee.webp', alt: 'Bubble show gösterisi İstanbul sahne girişi', tag: 'Bubble Show Sahnesi', title: 'Dev sabun balonlarıyla açılış etkisi', description: 'Bubble show açılışında kullanılan büyük sabun balonları, çocuk etkinliğine ilk saniyeden itibaren görsel hareket kazandırır.' },
+      { src: '/content/images/bubbleshow/bubbleshowslider2.webp', alt: 'Köpük şov organizasyonu İstanbul', tag: 'Sabun Balonları', title: 'Işığı yakalayan saydam balon katmanları', description: 'Farklı boyuttaki sabun balonları ışıkla birleştiğinde sahnede estetik ve akıcı bir show görünümü oluşur.' },
+      { src: '/content/images/bubbleshow/bubbleshowslider3.webp', alt: 'Dev balon gösterisi İstanbul çocuk etkinliği', tag: 'Dev Balon Deneyimi', title: 'Çocukların içine girebildiği dev balon anı', description: 'Dev balon deneyimi en çok merak edilen bölümlerden biridir; çocuklar gösterinin merkezine geçer.' },
+      { src: '/content/images/bubbleshow/bubbleshowslider5.webp', alt: 'İnteraktif bubble show İstanbul', tag: 'İnteraktif Show', title: 'Seyirden katılıma geçen canlı oyun akışı', description: 'İnteraktif bubble show akışı köpük patlatma ve ritim takibiyle çocukların enerjisini canlı tutar.' },
+      { src: '/content/images/bubbleshow/anabubbleee.webp', alt: 'LED ışıklı bubble show kiralama İstanbul', tag: 'LED ve Müzik', title: 'Müzik eşliğinde ışıklı bubble show finali', description: 'LED ışıklar ve ritimli müzikle desteklenen final bölümü, organizasyonu görsel açıdan güçlü kılar.' },
+    ],
+  },
+  'kostumlu-karakterler': {
+    backgroundImage: '/content/images/Kostumlukarakterler/elsaheroo.webp',
+    showcaseTitle: 'Kostümlü Karakter Kiralama',
+    showcaseDescription: 'Elsa\'dan Spiderman\'e, prenseslerden maskotlara; çocukların sevdiği karakterler İstanbul\'un her semtine aynı gün planla geliyor.',
+    showcaseEyebrow: 'Kostümlü Karakterler',
+    slides: [
+      { src: '/content/images/Kostumlukarakterler/elsaheroo.webp', alt: 'Elsa kostümlü karakter kiralama İstanbul', tag: 'Elsa', title: 'Frozen temalı Elsa karşılama', description: 'Elsa karakteri kız çocuklarının en çok tercih ettiği karakter olarak doğum günlerinde fark yaratır.' },
+      { src: '/content/images/Kostumlukarakterler/spidermana.webp', alt: 'Spiderman kostümlü karakter kiralama İstanbul', tag: 'Spiderman', title: 'Spiderman eşliğinde aksiyon dolu parti', description: 'Spiderman karakteri erkek çocukların heyecanını zirveye taşır.' },
+      { src: '/content/images/Kostumlukarakterler/pamukprenseselsakurumsal.webp', alt: 'Pamuk Prenses kostümlü karakter kiralama İstanbul', tag: 'Pamuk Prenses', title: 'Masalsı prenses deneyimi', description: 'Pamuk Prenses karakteri ile masal temalı doğum günleri unutulmaz olur.' },
+      { src: '/content/images/Kostumlukarakterler/minniemausekiralamaheroo.webp', alt: 'Minnie Mouse kostümlü karakter kiralama İstanbul', tag: 'Minnie Mouse', title: 'Minnie Mouse ile eğlence dolu anlar', description: 'Minnie Mouse karakteri her yaş grubuna hitap eden sevimli bir deneyim sunar.' },
+    ],
+  },
+  'maskot-kiralama': {
+    backgroundImage: '/content/images/Kostumlukarakterler/masakocaayi.webp',
+    showcaseTitle: 'Maskot Kiralama',
+    showcaseDescription: 'Sonic\'ten Paw Patrol\'a, Hello Kitty\'den Unicorn\'a; profesyonel maskot kiralama hizmeti İstanbul genelinde.',
+    showcaseEyebrow: 'Maskot Kiralama',
+    slides: [
+      { src: '/content/images/Kostumlukarakterler/masakocaayi.webp', alt: 'Masa Koca Ayı maskot kiralama İstanbul', tag: 'Masa Koca Ayı', title: 'Sevimli Masa Koca Ayı maskotu', description: 'Masa Koca Ayı maskotu çocukların en çok sevdiği karakterlerden biridir.' },
+      { src: '/content/images/Kostumlukarakterler/minniemause.webp', alt: 'Minnie Mouse maskot kiralama İstanbul', tag: 'Minnie Mouse', title: 'Minnie Mouse maskot deneyimi', description: 'Minnie Mouse maskotu ile kız çocukları için rüya gibi bir parti.' },
+      { src: '/content/images/Kostumlukarakterler/noelanne.webp', alt: 'Noel Anne maskot kiralama İstanbul', tag: 'Noel Anne', title: 'Yılbaşı temalı maskot gösterisi', description: 'Noel Anne maskotu yılbaşı etkinliklerinde büyük ilgi görür.' },
+    ],
+  },
+  'konsept-dogum-gunu': {
+    backgroundImage: '/content/images/Anasayfa/siteanahero.webp',
+    showcaseTitle: 'Konsept Doğum Günü',
+    showcaseDescription: 'Barbie\'den Safari\'ye, Spider-Man\'den Hello Kitty\'ye; 30+ konsept tema ile doğum günü pano süslemesi.',
+    showcaseEyebrow: 'Konsept Doğum Günü Süsleme',
+    slides: [],
+  },
+  'pamuk-seker': {
+    backgroundImage: '/content/images/Parti Ekipmanları/popcornpamukseker.webp',
+    showcaseTitle: 'Pamuk Şeker Arabası Kiralama',
+    showcaseDescription: 'Pamuk şekerden popcorn standına, çikolata şelalesinden servis düzenine; etkinliğinize tatlı ikramları tek kurulumda getiriyoruz.',
+    showcaseEyebrow: 'Pamuk Şeker & İkram',
+    slides: [
+      { src: '/content/images/Parti Ekipmanları/hareketlislider6cikolataselalsi.webp', alt: 'Çikolata şelalesi kiralama İstanbul', tag: 'Çikolata Şelalesi', title: 'Çikolata şelalesi ikram servisi', description: 'Çikolata şelalesi etkinliklerde hem görsel hem lezzet açısından fark yaratır.' },
+      { src: '/content/images/Parti Ekipmanları/hareketlislider7popcorn.webp', alt: 'Popcorn arabası kiralama İstanbul', tag: 'Popcorn', title: 'Taze popcorn ikram arabası', description: 'Popcorn arabası etkinliklerin vazgeçilmez ikram seçeneğidir.' },
+      { src: '/content/images/Parti Ekipmanları/pamukseker.webp', alt: 'Pamuk şeker arabası kiralama İstanbul', tag: 'Pamuk Şeker', title: 'Renkli pamuk şeker deneyimi', description: 'Pamuk şeker arabası çocukların en çok sevdiği ikram seçeneklerinden biridir.' },
+    ],
+  },
+  'dogum-gunu-organizasyonu': {
+    backgroundImage: '/profesyoneldogumgunucekimleri/anaherodogumgunu.webp',
+    showcaseTitle: 'Doğum Günü Organizasyonu',
+    showcaseDescription: 'Konsept süsleme, organik pasta, bubble show, sihirbazlık, palyaço animasyonu tek pakette.',
+    showcaseEyebrow: 'Doğum Günü Organizasyonu',
+    slides: [
+      { src: '/profesyoneldogumgunucekimleri/anaherodogumgunu.webp', alt: 'Profesyonel doğum günü organizasyonu İstanbul', tag: 'Doğum Günü', title: 'Profesyonel doğum günü organizasyonu', description: 'Doğum günü organizasyonu İstanbul genelinde profesyonel ekiple planlanır.' },
+      { src: '/profesyoneldogumgunucekimleri/dogumgunuonemlı1.webp', alt: 'Doğum günü özel anlar', tag: 'Özel Anlar', title: 'Unutulmaz doğum günü anları', description: 'Her detayı özenle planlanan doğum günlerinde özel anlar yaratıyoruz.' },
+    ],
+  },
+  'yuz-boyama': {
+    backgroundImage: '/content/images/palyaco/yuzboyamapalyaco.webp',
+    showcaseTitle: 'Yüz Boyama',
+    showcaseDescription: 'Profesyonel yüz boyama etkinliği ile çocukların hayal dünyası renklerle buluşuyor.',
+    showcaseEyebrow: 'Yüz Boyama Etkinliği',
+    slides: [],
+  },
+  'noel-baba-kiralama': {
+    backgroundImage: '/content/images/Kostumlukarakterler/noelanne.webp',
+    showcaseTitle: 'Noel Baba Kiralama',
+    showcaseDescription: 'Yılbaşı ve Noel etkinlikleri için profesyonel Noel Baba kiralama hizmeti.',
+    showcaseEyebrow: 'Noel Baba Kiralama',
+    slides: [],
+  },
+}
 
 // ─── Shared animation props ─────────────────────────────
 const fadeUp = { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 0.6 } }
@@ -514,28 +624,49 @@ function ServiceBackLinkTop({ district, service }) {
 
   const paragraphs = [
     <>
-      {district.name} bölgesinde <Link to={service.pillarUrl} className="text-purple-400 hover:text-purple-300 font-semibold underline underline-offset-4 decoration-purple-500/40 hover:decoration-purple-400 transition-colors">{service.name} hizmetimiz hakkında detaylı bilgi</Link> almak için ana hizmet sayfamızı ziyaret edebilirsiniz. Fiyatlandırma, paket seçenekleri ve İstanbul genelindeki hizmet kapsamımızı inceleyerek organizasyonunuzu daha bilinçli planlayabilirsiniz.
+      {district.name} bölgesinde <Link to={service.pillarUrl} className="text-purple-400 hover:text-purple-300 font-semibold underline underline-offset-4 decoration-purple-500/40 hover:decoration-purple-400 transition-colors">{service.name}</Link> hizmetimiz hakkında detaylı bilgi almak için ana hizmet sayfamızı ziyaret edebilirsiniz. Fiyatlandırma, paket seçenekleri ve İstanbul genelindeki hizmet kapsamımızı inceleyerek organizasyonunuzu daha bilinçli planlayabilirsiniz.
     </>,
     <>
-      Organizasyonunuzu planlarken <Link to={service.pillarUrl} className="text-purple-400 hover:text-purple-300 font-semibold underline underline-offset-4 decoration-purple-500/40 hover:decoration-purple-400 transition-colors">profesyonel {service.shortName} organizasyonu sayfamızı</Link> incelemenizi öneriyoruz. {district.name} dahil İstanbul'un tüm ilçelerinde sunduğumuz hizmet detayları, müşteri yorumları ve rezervasyon bilgilerine buradan ulaşabilirsiniz.
+      Organizasyonunuzu planlarken <Link to={service.pillarUrl} className="text-purple-400 hover:text-purple-300 font-semibold underline underline-offset-4 decoration-purple-500/40 hover:decoration-purple-400 transition-colors">{service.name}</Link> sayfamızı incelemenizi öneriyoruz. {district.name} dahil İstanbul'un tüm ilçelerinde sunduğumuz hizmet detayları, müşteri yorumları ve rezervasyon bilgilerine buradan ulaşabilirsiniz.
     </>,
     <>
-      {district.name} ve çevresindeki etkinlikleriniz için <Link to={service.pillarUrl} className="text-purple-400 hover:text-purple-300 font-semibold underline underline-offset-4 decoration-purple-500/40 hover:decoration-purple-400 transition-colors">Best Event {service.name} hizmeti</Link> kapsamındaki tüm paket ve fiyat seçeneklerini inceleyebilirsiniz. 10 yılı aşkın deneyimimizle İstanbul'un her köşesinde kaliteli organizasyon sunuyoruz.
+      {district.name} ve çevresindeki etkinlikleriniz için <Link to={service.pillarUrl} className="text-purple-400 hover:text-purple-300 font-semibold underline underline-offset-4 decoration-purple-500/40 hover:decoration-purple-400 transition-colors">{service.name}</Link> kapsamındaki tüm paket ve fiyat seçeneklerini inceleyebilirsiniz. 10 yılı aşkın deneyimimizle İstanbul'un her köşesinde kaliteli organizasyon sunuyoruz.
     </>
   ]
 
   return (
-    <section className="py-10 bg-gradient-to-b from-black to-zinc-950/80">
+    <section className="py-6 sm:py-10 bg-gradient-to-b from-black to-zinc-950/80">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Breadcrumb navigasyon — SEO hiyerarşisi ve iç link gücü */}
+        <nav aria-label="Breadcrumb" className="mb-4">
+          <ol className="flex flex-wrap items-center gap-1.5 text-sm text-gray-400">
+            <li><Link to="/" className="hover:text-white transition-colors">Ana Sayfa</Link></li>
+            <li className="text-gray-600">/</li>
+            <li><Link to="/organizasyonlar/cocuk-etkinlikleri" className="hover:text-white transition-colors">Çocuk Etkinlikleri</Link></li>
+            <li className="text-gray-600">/</li>
+            <li><Link to={service.pillarUrl} className="text-purple-400 hover:text-purple-300 font-medium transition-colors">{service.name}</Link></li>
+            <li className="text-gray-600">/</li>
+            <li className="text-white font-medium">{district.name}</li>
+          </ol>
+        </nav>
+
         <motion.div {...fadeUp}>
           <div className="bg-zinc-900/30 border border-purple-500/15 rounded-2xl p-6 sm:p-8">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-white text-lg">
                 {service.icon}
               </div>
-              <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
-                {paragraphs[variant]}
-              </p>
+              <div>
+                <p className="text-gray-300 leading-relaxed text-base sm:text-lg mb-3">
+                  {paragraphs[variant]}
+                </p>
+                <Link
+                  to={service.pillarUrl}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors"
+                >
+                  ← {service.name} Ana Sayfasına Git
+                </Link>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -792,40 +923,70 @@ const LocalLandingPage = () => {
   const safeServiceSlug = normalizeSlug(canonicalServiceSlug || service?.slug)
   const parentServiceCanonicalPath = service?.pillarUrl || `/organizasyonlar/${safeServiceSlug}`
   const localCanonicalPath = `${parentServiceCanonicalPath}/${safeDistrictSlug}`
+  const heroData = serviceHeroData[safeServiceSlug] || null
 
   const pageTitle = `${district.name} ${service.name} | Profesyonel ${service.shortName} Hizmeti | Best Event`
   const pageDescription = `${district.name} bölgesinde profesyonel ${service.name.toLowerCase()} hizmeti. ${district.neighborhoods.slice(0, 4).join(', ')} ve çevresinde 10+ yıl deneyim, 5000+ etkinlik. Hemen teklif alın! ☎ 05307309009`
 
-  // Schema Markup
+  // Schema Markup — ana hizmet sayfasına isPartOf ile bağlı, otorite konsolidasyonu
+  const parentServiceUrl = `https://bestevent.com.tr${parentServiceCanonicalPath}`
   const schemas = [
     {
       '@context': 'https://schema.org',
-      '@type': 'Service',
-      'name': `${district.name} ${service.name}`,
-      'description': content.intro,
-      'provider': {
-        '@type': 'LocalBusiness',
-        'name': 'Best Event',
-        'telephone': '+905307309009',
-        'address': {
-          '@type': 'PostalAddress',
-          'streetAddress': 'Şemsettin Günaltay Caddesi No:175',
-          'addressLocality': district.name,
-          'addressRegion': 'İstanbul',
-          'postalCode': '34738',
-          'addressCountry': 'TR'
-        }
-      },
-      'areaServed': {
-        '@type': 'AdministrativeArea',
-        'name': `${district.name}, İstanbul`
-      },
-      'serviceType': service.name,
+      '@type': 'WebPage',
+      'name': pageTitle,
+      'description': pageDescription,
       'url': `https://bestevent.com.tr${localCanonicalPath}`,
-      'offers': {
-        '@type': 'Offer',
-        'priceCurrency': 'TRY',
-        'priceRange': service.priceRange
+      'isPartOf': {
+        '@type': 'WebPage',
+        'name': `${service.name} | Best Event`,
+        'url': parentServiceUrl
+      },
+      'breadcrumb': {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [
+          { '@type': 'ListItem', 'position': 1, 'name': 'Ana Sayfa', 'item': 'https://bestevent.com.tr' },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Çocuk Etkinlikleri', 'item': 'https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri' },
+          { '@type': 'ListItem', 'position': 3, 'name': service.name, 'item': parentServiceUrl },
+          { '@type': 'ListItem', 'position': 4, 'name': `${district.name} ${service.name}`, 'item': `https://bestevent.com.tr${localCanonicalPath}` }
+        ]
+      },
+      'mainEntity': {
+        '@type': 'Service',
+        'name': `${district.name} ${service.name}`,
+        'description': content.intro,
+        'provider': {
+          '@type': 'LocalBusiness',
+          'name': 'Best Event',
+          'telephone': '+905307309009',
+          'url': 'https://bestevent.com.tr',
+          'address': {
+            '@type': 'PostalAddress',
+            'streetAddress': 'Şemsettin Günaltay Caddesi No:175',
+            'addressLocality': 'Erenköy',
+            'addressRegion': 'İstanbul',
+            'postalCode': '34738',
+            'addressCountry': 'TR'
+          }
+        },
+        'areaServed': {
+          '@type': 'AdministrativeArea',
+          'name': `${district.name}, İstanbul`
+        },
+        'serviceType': service.name,
+        'url': parentServiceUrl,
+        'offers': {
+          '@type': 'Offer',
+          'priceCurrency': 'TRY',
+          'priceRange': service.priceRange
+        },
+        'aggregateRating': {
+          '@type': 'AggregateRating',
+          'ratingValue': '5.0',
+          'reviewCount': '217',
+          'bestRating': '5',
+          'worstRating': '1'
+        }
       }
     },
     {
@@ -839,8 +1000,7 @@ const LocalLandingPage = () => {
           'text': faq.a
         }
       }))
-    },
-    createLocalBusinessSchema(district.name, service.name, safeServiceSlug, safeDistrictSlug, district.lat, district.lng)
+    }
   ]
 
   // Google Reviews tag mapping
@@ -928,6 +1088,8 @@ const LocalLandingPage = () => {
         key="reviews"
         reviews={getReviewsByTags(reviewTags)}
         title={`${district.name} ${service.shortName} Müşteri Yorumları`}
+        serviceName={`${district.name} ${service.name}`}
+        serviceUrl={parentServiceCanonicalPath}
       />
     ),
     faq: (
@@ -949,7 +1111,7 @@ const LocalLandingPage = () => {
       <Seo
         title={pageTitle}
         description={pageDescription}
-        canonicalPath={localCanonicalPath}
+        canonicalPath={parentServiceCanonicalPath}
         keywords={[
           `${district.name.toLowerCase()} ${service.name.toLowerCase()}`,
           `${district.name.toLowerCase()} ${service.shortName.toLowerCase()} kiralama`,
@@ -961,140 +1123,114 @@ const LocalLandingPage = () => {
         schema={schemas}
       />
 
-      {/* ── Hero Section (her zaman ilk) ── */}
-      <section className="relative min-h-[50vh] flex items-center bg-gradient-to-b from-purple-950/40 via-black to-black overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(168,85,247,0.12),_transparent_50%)] pointer-events-none" />
+      {/* ── 1. HERO — Tam ekran görsel + CTA ── */}
+      <AdHero
+        title={`${district.name} ${service.name}`}
+        backgroundImage={heroData?.backgroundImage || '/content/images/Anasayfa/siteanahero.webp'}
+        subtitle={`${district.name} ve çevresinde profesyonel ${service.shortName.toLowerCase()} hizmeti`}
+        primaryLabel="WhatsApp'tan Bilgi Al"
+        whatsappMessage={`Merhaba, ${district.name} bölgesinde ${service.name} hakkında bilgi almak istiyorum.`}
+        quickFacts={[]}
+      />
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="uppercase tracking-[0.3em] text-xs sm:text-sm text-purple-400 mb-4 font-medium">
-              {district.name} Bölgesi
-            </p>
-            <h1
-              className="font-bold text-white mb-6"
-              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', lineHeight: '1.1', letterSpacing: '-0.03em' }}
-            >
-              {district.name}{' '}
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {service.name}
-              </span>
-            </h1>
-            <p className="text-gray-300 text-lg sm:text-xl max-w-3xl leading-relaxed mb-8">
-              {content.intro}
-            </p>
+      {/* ── 2. FOTOĞRAF SLIDER ── */}
+      {heroData?.slides?.length > 0 && (
+        <Suspense fallback={null}>
+          <LocationHeroShowcase
+            title={`${district.name} ${heroData.showcaseTitle}`}
+            description={heroData.showcaseDescription}
+            slides={heroData.slides}
+            eyebrow={`${district.name} ${heroData.showcaseEyebrow}`}
+          />
+        </Suspense>
+      )}
 
-            {/* Hero CTA */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://wa.me/905307309009"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                </svg>
-                Ücretsiz Teklif Alın
-              </a>
-              <a
-                href="tel:+905307309009"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-white/10 border border-white/20 text-white rounded-xl font-bold hover:bg-white/20 transition-all duration-300"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-                05307309009
-              </a>
-            </div>
-          </motion.div>
+      {/* ── 3. BREADCRUMB + INTRO ── */}
+      <section className="py-8 bg-black border-b border-white/[0.06]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <nav aria-label="Breadcrumb" className="mb-5">
+            <ol className="flex flex-wrap items-center gap-1.5 text-sm text-gray-400">
+              <li><Link to="/" className="hover:text-white transition-colors">Ana Sayfa</Link></li>
+              <li className="text-gray-600">/</li>
+              <li><Link to={service.pillarUrl} className="text-purple-400 hover:text-purple-300 transition-colors">{service.name}</Link></li>
+              <li className="text-gray-600">/</li>
+              <li className="text-white font-medium">{district.name}</li>
+            </ol>
+          </nav>
+          <p className="text-white/70 leading-relaxed text-base">{content.intro}</p>
         </div>
       </section>
 
-      {/* ── Üst Kontekstüel Back Link ── */}
-      <ServiceBackLinkTop district={district} service={service} />
-
-      {/* ── Ana Sayfa / Ana Hizmet / Benzer Hizmetler Blokları ── */}
-      <LocalAuthorityHub
-        district={district}
-        service={service}
-        otherServices={otherServices}
-        districtSlug={safeDistrictSlug}
-      />
-
-      {/* ── Dinamik Section Sırası ── */}
+      {/* ── 4. DİNAMİK İÇERİK (FAQ, Hikaye, Süreç vb.) ── */}
       {sections}
 
-      {/* ── Alt Kontekstüel Back Link ── */}
-      <ServiceBackLinkBottom district={district} service={service} />
+      {/* ── 5. BÖLGE BİLGİLERİ (kompakt) ── */}
+      {(district.venueGuide || district.transportDetails || (district.neighborhoodDetails && district.neighborhoodDetails.length > 0)) && (
+        <section className="py-14 bg-gradient-to-b from-black to-zinc-950/50">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl font-bold text-white mb-8 text-center">
+              {district.name} <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Bölge Rehberi</span>
+            </h2>
 
-      {/* ── Mekan Rehberi, Ulaşım ve Mahalle Detayları ── */}
-      {district.venueGuide && (
-        <section className="py-10 md:py-14">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
-              {district.name} Etkinlik Mekanı Rehberi
-            </h3>
-            <p className="text-white/70 leading-relaxed text-sm md:text-base">
-              {district.venueGuide}
-            </p>
-          </div>
-        </section>
-      )}
-
-      {district.neighborhoodDetails && district.neighborhoodDetails.length > 0 && (
-        <section className="py-10 md:py-14">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-6">
-              {district.name} Mahalle Rehberi
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {district.neighborhoodDetails.map((n, i) => (
-                <div key={i} className="p-4 rounded-xl border border-white/10 bg-white/[0.02]">
-                  <h4 className="text-base font-semibold text-purple-400 mb-1">{n.name}</h4>
-                  <p className="text-sm text-white/60 mb-2">{n.tip}</p>
-                  <p className="text-xs text-white/40">En iyi mekan: {n.bestVenue}</p>
+            <div className="space-y-4">
+              {district.venueGuide && (
+                <div className="p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+                  <h3 className="text-sm uppercase tracking-widest text-purple-400 font-semibold mb-2">Etkinlik Mekanları</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{district.venueGuide}</p>
                 </div>
-              ))}
+              )}
+
+              {district.transportDetails && (
+                <div className="p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+                  <h3 className="text-sm uppercase tracking-widest text-purple-400 font-semibold mb-2">Ulaşım</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{district.transportDetails}</p>
+                </div>
+              )}
+
+              {district.neighborhoodDetails && district.neighborhoodDetails.length > 0 && (
+                <div className="p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+                  <h3 className="text-sm uppercase tracking-widest text-purple-400 font-semibold mb-3">Mahalleler</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {district.neighborhoodDetails.map((n, i) => (
+                      <div key={i} className="text-sm">
+                        <span className="text-white font-medium">{n.name}</span>
+                        <span className="text-white/40"> — {n.tip}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
       )}
 
-      {district.transportDetails && (
-        <section className="py-10 md:py-14">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
-              {district.name} Ulaşım Bilgileri
-            </h3>
-            <p className="text-white/70 leading-relaxed text-sm md:text-base">
-              {district.transportDetails}
-            </p>
-          </div>
-        </section>
-      )}
+      {/* ── 6. ANA HİZMET BAĞLANTISI ── */}
+      <section className="py-10 bg-black">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <Link
+            to={service.pillarUrl}
+            className="group flex items-center justify-between p-6 rounded-2xl border border-purple-500/20 bg-gradient-to-r from-purple-950/30 to-indigo-950/20 hover:border-purple-500/40 transition-all duration-300"
+          >
+            <div>
+              <p className="text-xs uppercase tracking-widest text-purple-400 mb-1">Ana Hizmet Sayfası</p>
+              <p className="text-white font-bold text-lg">{service.name} İstanbul — Fiyat ve Rezervasyon</p>
+            </div>
+            <svg className="w-6 h-6 text-purple-400 group-hover:translate-x-1 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+        </div>
+      </section>
 
-      {/* ── Bu Bölgedeki Blog Yazıları (Silo Link) ── */}
-      <DistrictBlogLinks districtSlug={safeDistrictSlug} maxPosts={4} />
-
-      {/* ── Aynı Semtteki Diğer Hizmetler (her zaman sonlarda) ── */}
-      <OtherServicesSection
-        districtSlug={safeDistrictSlug}
-        districtName={district.name}
-        otherServices={otherServices}
-      />
-
-      {/* ── Diğer Semtler (her zaman sonlarda) ── */}
+      {/* ── 7. DİĞER SEMTLER ── */}
       <OtherDistrictsSection
         otherDistricts={otherDistricts}
         serviceSlug={safeServiceSlug}
         serviceName={service.name}
       />
 
-      {/* ── Final CTA (her zaman son) ── */}
+      {/* ── 8. FINAL CTA ── */}
       <CTASection
         districtName={district.name}
         serviceName={service.name}

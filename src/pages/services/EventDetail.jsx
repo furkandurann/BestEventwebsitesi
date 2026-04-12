@@ -40,14 +40,6 @@ const EventDetail = ({
     ? createFAQSchema(faqs)
     : null
 
-  const reviewSchema = reviews.length
-    ? {
-        '@type': 'AggregateRating',
-        ratingValue: averageRating?.toFixed(1),
-        reviewCount: reviews.length
-      }
-    : null
-
   const serviceSchema = canonicalPath
     ? createServiceSchema(title, description, canonicalPath, serviceType)
     : {
@@ -73,9 +65,19 @@ const EventDetail = ({
           : undefined
       }
 
+  // AggregateRating'i Service entity'sine entegre et (bağımsız @graph item olarak değil)
+  if (reviews.length && averageRating) {
+    serviceSchema.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: averageRating.toFixed(1),
+      reviewCount: reviews.length.toString(),
+      bestRating: '5',
+      worstRating: '1'
+    }
+  }
+
   const schemaGraph = [serviceSchema]
   if (faqSchema) schemaGraph.push(faqSchema)
-  if (reviewSchema) schemaGraph.push(reviewSchema)
   const schema = {
     '@context': 'https://schema.org',
     '@graph': schemaGraph
@@ -417,36 +419,27 @@ const EventDetail = ({
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.1, duration: 0.5 }}
                     className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
-                    itemScope
-                    itemType="https://schema.org/Review"
                   >
                     <div className="flex items-center mb-4">
-                      <div 
+                      <div
                         className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0"
                         aria-hidden="true"
                       >
                         {review.name.charAt(0)}
                       </div>
                       <div className="ml-4 flex-1">
-                        <p className="font-bold text-dark" itemProp="author">{review.name}</p>
-                        <div 
-                          className="flex text-yellow-400"
-                          itemProp="reviewRating"
-                          itemScope
-                          itemType="https://schema.org/Rating"
-                        >
-                          <meta itemProp="ratingValue" content={review.rating} />
-                          <meta itemProp="bestRating" content="5" />
+                        <p className="font-bold text-dark">{review.name}</p>
+                        <div className="flex text-yellow-400">
                           {Array.from({ length: review.rating }).map((_, i) => (
                             <span key={i} aria-hidden="true">⭐</span>
                           ))}
                         </div>
                       </div>
                     </div>
-                    <p className="text-gray-700 italic mb-4" itemProp="reviewBody">
+                    <p className="text-gray-700 italic mb-4">
                       "{review.comment}"
                     </p>
-                    <p className="text-gray-500 text-sm" itemProp="datePublished">{review.date}</p>
+                    <p className="text-gray-500 text-sm">{review.date}</p>
                   </motion.article>
                 ))}
               </div>

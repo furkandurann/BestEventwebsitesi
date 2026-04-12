@@ -79,39 +79,11 @@ const ReviewCard = ({ review }) => (
   </a>
 )
 
-const GoogleReviews = ({ reviews, title = 'Müşterilerimiz Ne Diyor?' }) => {
+const GoogleReviews = ({ reviews, title = 'Müşterilerimiz Ne Diyor?', serviceName = '', serviceUrl = '' }) => {
   if (!reviews || reviews.length === 0) return null
-
-  const reviewSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: 'Best Event',
-    url: 'https://bestevent.com.tr',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: reviews.length.toString(),
-      bestRating: '5'
-    },
-    review: reviews.map(r => ({
-      '@type': 'Review',
-      author: { '@type': 'Person', name: r.name },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: r.rating.toString(),
-        bestRating: '5'
-      },
-      reviewBody: r.comment
-    }))
-  }
 
   return (
     <section className="py-16 md:py-24 bg-black relative overflow-hidden">
-      {/* Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-      />
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}

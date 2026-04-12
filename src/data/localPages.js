@@ -516,8 +516,10 @@ export const getAllLocalPageUrls = () => {
   const urls = []
   districts.forEach(district => {
     services.forEach(service => {
+      // pillarUrl'den canonical slug'ı çıkar (redirect olmayan gerçek URL)
+      const canonicalSlug = service.pillarUrl.replace('/organizasyonlar/', '')
       urls.push({
-        url: `/organizasyonlar/${service.slug}/${district.slug}`,
+        url: `/organizasyonlar/${canonicalSlug}/${district.slug}`,
         district: district.name,
         service: service.name,
         priority: 0.8

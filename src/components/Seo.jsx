@@ -7,7 +7,6 @@ const DEFAULT_IMAGE = '/content/images/slider/konfeti.webp'
 const Seo = ({
   title,
   description = '',
-  keywords = [],
   image = DEFAULT_IMAGE,
   canonicalPath = '',
   schema = null,
@@ -26,36 +25,27 @@ const Seo = ({
 
   const normalizedPath = normalizePath(canonicalPath || pathname)
   const canonical = indexable ? `${SITE_URL}${normalizedPath}` : null
-  const keywordString = Array.isArray(keywords) ? keywords.join(', ') : keywords
   const fullImageUrl = image?.startsWith('http') ? image : `${SITE_URL}${image}`
 
-  // Check if running on test domain - block indexing for test.bestevent.com.tr
   const isTestDomain = typeof window !== 'undefined' && window.location.hostname === 'test.bestevent.com.tr'
   const robotsContent = isTestDomain || !indexable
     ? 'noindex, nofollow'
     : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 
-  // GA is loaded in index.html - no duplicate loading needed
-
   return (
-    <Helmet>
+    <Helmet defer={false}>
       {title && <title>{title}</title>}
       {description && <meta name="description" content={description} />}
-      {keywordString && <meta name="keywords" content={keywordString} />}
-      
+
       {/* SEO Meta Tags */}
       <meta name="robots" content={robotsContent} />
       <meta name="theme-color" content="#1e3a8a" />
       <meta httpEquiv="content-language" content="tr" />
       {indexable && canonical && <link rel="canonical" href={canonical} />}
-      
+
       {/* Hreflang Tags for Language */}
       {indexable && canonical && <link rel="alternate" hrefLang="tr" href={canonical} />}
       {indexable && canonical && <link rel="alternate" hrefLang="x-default" href={canonical} />}
-
-      {/* Preconnect for Performance */}
-      <link rel="preconnect" href="https://www.googletagmanager.com" />
-      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
       {/* Open Graph / Facebook */}
       {title && <meta property="og:title" content={title} />}

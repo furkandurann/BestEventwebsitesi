@@ -1,5 +1,44 @@
 import BlogDetail from '../../components/BlogDetail'
 
+const palyacoGezegeniSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://bestevent.com.tr/#palyacogezegeni",
+  "name": "Palyaço Gezegeni",
+  "description": "6 yıldır profesyonel palyaço, animatör ve çocuk etkinlikleri hizmeti sunuyoruz. Doğum günleri, okul etkinlikleri ve özel organizasyonlar için deneyimli ekibimizle hizmetinizdeyiz.",
+  "url": "https://www.palyacogezegeni.com.tr",
+  "telephone": "05307309009",
+  "email": "galaksipalyaco@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Şemsettin Günaltay Cd. No:160",
+    "addressLocality": "Erenköy",
+    "addressRegion": "İstanbul",
+    "postalCode": "34738",
+    "addressCountry": "TR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.9872,
+    "longitude": 29.0301
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "09:00",
+    "closes": "21:00"
+  },
+  "priceRange": "$$",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "217",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "parentOrganization": {"@id": "https://bestevent.com.tr/#organization"}
+}
+
 const PalyacoGezegeni = () => {
   const content = (
     <>
@@ -522,6 +561,7 @@ const PalyacoGezegeni = () => {
       slug="palyaco-gezegeni"
       relatedServicePath="/organizasyonlar/palyaco-kiralama"
       relatedServiceName="Palyaço Kiralama"
+      additionalSchema={palyacoGezegeniSchema}
     >
       {content}
     </BlogDetail>

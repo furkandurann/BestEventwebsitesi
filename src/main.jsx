@@ -8,13 +8,11 @@ import './index.css'
 const rootElement = document.getElementById('root')
 
 const app = (
-  <React.StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </HelmetProvider>
-  </React.StrictMode>
+  <HelmetProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </HelmetProvider>
 )
 
 ReactDOM.createRoot(rootElement).render(app)

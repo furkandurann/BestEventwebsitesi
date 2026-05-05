@@ -651,7 +651,7 @@ const ClownRental = () => {
 
           {/* Yaptık */}
           <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-10">
-            Yaptık ;
+            Tamamladığımız Palyaço Etkinlikleri
           </h2>
         </div>
 

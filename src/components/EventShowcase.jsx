@@ -6,7 +6,7 @@ export default function EventShowcase({ image, title, subtitle, ctaText, ctaLink
   return (
     <section className={`event-showcase ${dark ? 'event-showcase--dark' : ''}`}>
       <div className="event-showcase__content">
-        <h1 className="event-showcase__title">{title}</h1>
+        <h2 className="event-showcase__title">{title}</h2>
         <p className="event-showcase__subtitle">{subtitle}</p>
         <a href={ctaLink} className="event-showcase__cta">{ctaText}</a>
       </div>

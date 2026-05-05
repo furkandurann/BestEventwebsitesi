@@ -71,7 +71,8 @@ const BlogDetail = ({
   slug: slugProp,
   blog: blogProp,
   indexable = true,
-  soft404 = false
+  soft404 = false,
+  additionalSchema = null
 }) => {
   const params = useParams()
   const slug = slugProp || params.slug
@@ -164,6 +165,11 @@ const BlogDetail = ({
     })
   }
 
+  if (additionalSchema) {
+    const extras = Array.isArray(additionalSchema) ? additionalSchema : [additionalSchema]
+    schemaArray.push(...extras)
+  }
+
   const safeServiceSlug = serviceSlugFromPath(blog.pillarService)
   const relatedDistricts = Array.isArray(blog.relatedDistricts) ? blog.relatedDistricts : []
   const districtLinks = Array.from(
@@ -185,7 +191,6 @@ const BlogDetail = ({
       <Seo
         title={`${blog.title} | Best Event Blog`}
         description={blog.excerpt}
-        keywords={`${blog.title}, ${blog.category}, istanbul, etkinlik, organizasyon, kiralama, gösteri`}
         image={blog.image}
         canonicalPath={`/blog/${slug}`}
         indexable={indexable}

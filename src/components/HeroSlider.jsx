@@ -77,9 +77,9 @@ const SlideContent = ({ slide, index, isMobile }) => {
               </div>
             )}
             {slide.title && (
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-white mb-4 drop-shadow-2xl [text-shadow:_0_4px_8px_rgb(0_0_0_/_80%)] text-center md:text-left leading-tight whitespace-nowrap">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-white mb-4 drop-shadow-2xl [text-shadow:_0_4px_8px_rgb(0_0_0_/_80%)] text-center md:text-left leading-tight whitespace-nowrap">
                 {slide.title}
-              </h1>
+              </h2>
             )}
             {slide.description && (
               <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 drop-shadow-lg whitespace-nowrap">

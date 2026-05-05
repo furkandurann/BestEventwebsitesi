@@ -116,7 +116,7 @@ const Breadcrumb = () => {
   return (
     <>
       {/* Schema Markup */}
-      <Helmet>
+      <Helmet defer={false}>
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbSchema)}
         </script>

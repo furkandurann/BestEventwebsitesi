@@ -261,7 +261,7 @@ const Home = () => {
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           {/* H2 */}
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-16">
-            Binlerce organizasyonu başarıyla
+            İstanbul'da 5000+ Başarılı Etkinlik Organizasyonu
           </h2>
 
           {/* H3 */}
@@ -273,7 +273,7 @@ const Home = () => {
 
           {/* Yaptık */}
           <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-10">
-            Yaptık ;
+            Tamamladığımız Etkinlikler
           </h2>
         </div>
 

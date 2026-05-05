@@ -7,6 +7,7 @@ import RelatedServices from '../../components/RelatedServices'
 import { trackWhatsAppClick, trackPhoneClick, trackServicePageView } from '../../utils/tracking'
 import DistrictLinksGrid from '../../components/DistrictLinksGrid'
 import RelatedBlogPosts from '../../components/RelatedBlogPosts'
+import AuthorExpertise from '../../components/AuthorExpertise'
 
 const heroImages = [
   '/content/images/profesyonelmakeup/profesyonelkopyasiistanbul.webp',
@@ -599,6 +600,83 @@ const FacePainting = () => {
         {/* Related Services */}
         <RelatedServices currentService="yuz-boyama" />
 
+        {/* SEO Hizmet Detayları — Yüz Boyama & Glitter Mor/Pembe Tema */}
+        <section className="relative py-24 px-6 bg-gradient-to-b from-[#0c0c10] via-[#0f0d14] to-black border-t border-white/10 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(168,85,247,0.08),_transparent_50%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(236,72,153,0.06),_transparent_50%)] pointer-events-none" />
+
+          <div className="relative max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <p className="uppercase tracking-[0.3em] text-xs text-pink-400 mb-4 font-medium">İstanbul Yüz Boyama & Glitter</p>
+              <h2
+                className="font-display font-bold text-white"
+                style={{
+                  fontSize: 'clamp(1.75rem, 4.5vw, 2.75rem)',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.025em'
+                }}
+              >
+                Yüz Boyama & Glitter Tattoo Kiralama
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {[
+                {
+                  num: '01',
+                  title: 'Profesyonel Yüz Boyama Kiralama',
+                  text: 'Profesyonel yüz boyama kiralama hizmetimiz; çocuk doğum günü, kreş etkinliği, AVM organizasyonu için ideal. Hijyenik, hipoalerjenik FDA onaylı boyalar kullanıyoruz; kelebek, prenses, süper kahraman, kedi, aslan, dragon gibi 50+ farklı tasarım. Çocuk yüz boyama için profesyonel sanatçı kadromuz.',
+                  accent: 'border-purple-500/20',
+                  tag: 'border-purple-500/30 text-purple-300',
+                },
+                {
+                  num: '02',
+                  title: 'Glitter Tattoo & Vücut Süsleme',
+                  text: 'Glitter tattoo kiralama hizmetimiz; ışıltılı geçici dövme, glitter yüz süsleme ve vücut sanatı içerir. Cilt dostu, su geçirmez glitter ürünleri kullanıyoruz; 5-7 gün kalıcı, sabunla kolayca silinir. Glitter doğum günü, mezuniyet, parti süslemesi için tercih edilen seçenek.',
+                  accent: 'border-pink-500/20',
+                  tag: 'border-pink-500/30 text-pink-300',
+                },
+                {
+                  num: '03',
+                  title: 'Yüz Boyama Fiyatları & Paketler',
+                  text: 'Yüz boyama fiyatları ve glitter tattoo fiyat detayları; etkinlik süresi, misafir sayısı ve seçilen paket türüne göre belirlenir. Yüz boyama hizmeti, glitter tattoo organizasyonu ve kombine paket için WhatsApp\'tan teklif alın. Standart, premium ve VIP yüz boyama paketleri.',
+                  accent: 'border-rose-500/20',
+                  tag: 'border-rose-500/30 text-rose-300',
+                },
+                {
+                  num: '04',
+                  title: 'Kurumsal Yüz Boyama Etkinliği',
+                  text: 'Kurumsal yüz boyama etkinliği; mağaza açılışı, AVM organizasyonu, fuar, şirket aile günü ve ürün lansmanı için profesyonel hizmet. Çocuk etkinliği yüz boyama, glitter tattoo standı ve face painting performans paketleri ile etkinliğinizi unutulmaz kılıyoruz; 5⭐ Google yorumu garanti.',
+                  accent: 'border-fuchsia-500/20',
+                  tag: 'border-fuchsia-500/30 text-fuchsia-300',
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className={`group p-7 rounded-2xl border ${item.accent} bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm transition-all duration-300`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl font-black bg-gradient-to-br from-purple-400 via-pink-400 to-fuchsia-400 bg-clip-text text-transparent">
+                      {item.num}
+                    </span>
+                    <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${item.tag} font-medium`}>
+                      Hizmet
+                    </span>
+                  </div>
+                  <h3 className="text-white font-bold text-xl mb-3 leading-tight">{item.title}</h3>
+                  <p className="text-white/65 text-sm leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-14 text-center">
+              <p className="text-white/40 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+                Yüz boyama ve glitter tattoo kiralama hizmetimiz İstanbul'un tüm ilçelerine (Kadıköy, Ataşehir, Üsküdar, Beşiktaş, Şişli, Bakırköy, Pendik, Maltepe) gönderim yapmaktadır.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="py-18 px-6 bg-gradient-to-br from-gray-50 to-white text-gray-900">
           <div className="max-w-4xl mx-auto">
@@ -631,6 +709,8 @@ const FacePainting = () => {
       </main>
 
       <RelatedBlogPosts servicePath="/organizasyonlar/yuz-boyama" />
+
+      <AuthorExpertise serviceName="Profesyonel Yüz Boyama" />
     </>
   )
 }

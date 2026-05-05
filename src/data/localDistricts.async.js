@@ -27,8 +27,15 @@ const districtLoaders = {
 
 export { districtDirectory }
 
+const normalizeDistrictSlug = (slug) => String(slug || '')
+  .toLowerCase()
+  .trim()
+  .normalize('NFKD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9-]/g, '')
+
 export async function getDistrictBySlugAsync(slug) {
-  const normalizedSlug = String(slug || '').toLowerCase().trim()
+  const normalizedSlug = normalizeDistrictSlug(slug)
   const loader = districtLoaders[normalizedSlug]
 
   if (!loader) {

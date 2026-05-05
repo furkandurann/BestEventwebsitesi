@@ -14,8 +14,15 @@ const serviceAliasMap = {
 
 const normalizeServiceSlug = (serviceSlug) => serviceAliasMap[serviceSlug] || serviceSlug
 
+const normalizeDistrictSlug = (districtSlug) => String(districtSlug || '')
+  .toLowerCase()
+  .trim()
+  .normalize('NFKD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9-]/g, '')
+
 export async function getLocalPageEntryAsync(districtSlug, serviceSlug) {
-  const normalizedDistrictSlug = String(districtSlug || '').toLowerCase().trim()
+  const normalizedDistrictSlug = normalizeDistrictSlug(districtSlug)
   const normalizedServiceSlug = normalizeServiceSlug(String(serviceSlug || '').toLowerCase().trim())
   const [district, service, content] = await Promise.all([
     getDistrictBySlugAsync(normalizedDistrictSlug),

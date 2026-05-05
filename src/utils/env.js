@@ -56,9 +56,9 @@ export const BUILD_INFO = {
 // Feature Flags
 export const FEATURE_FLAGS = {
   analytics: import.meta.env.VITE_ENABLE_ANALYTICS === 'true',
-  pwa: import.meta.env.VITE_ENABLE_PWA !== 'false', // Default true
-  serviceWorker: import.meta.env.VITE_ENABLE_SERVICE_WORKER !== 'false', // Default true
-  webVitals: import.meta.env.VITE_ENABLE_WEB_VITALS !== 'false', // Default true
+  pwa: import.meta.env.VITE_ENABLE_SERVICE_WORKER === 'true',
+  serviceWorker: import.meta.env.VITE_ENABLE_SERVICE_WORKER === 'true',
+  webVitals: import.meta.env.VITE_ENABLE_WEB_VITALS !== 'false',
   performanceMonitoring: import.meta.env.VITE_ENABLE_PERFORMANCE_MONITORING === 'true',
   debug: import.meta.env.VITE_ENABLE_DEBUG === 'true',
   mockData: import.meta.env.VITE_ENABLE_MOCK_DATA === 'true',

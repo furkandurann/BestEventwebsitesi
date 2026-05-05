@@ -148,7 +148,7 @@ const RelatedServices = ({ currentService }) => {
                 >
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-3 text-gray-900 group-hover:text-primary transition-colors">
-                      {service.name}
+                      {service.name} İstanbul
                     </h3>
                     <p className="text-gray-600 mb-4">
                       {service.description}

@@ -1,4 +1,8 @@
-const RECOVERY_FLAG = 'bestevent:chunk-recovery-attempted'
+/**
+ * Chunk Recovery - 2026 Google Standards
+ * Tek, temiz strateji: lazy import retry + fallback
+ * Sonsuz döngü yok, agresif cache wipe yok.
+ */
 
 const CHUNK_ERROR_PATTERNS = [
   'failed to fetch dynamically imported module',
@@ -6,58 +10,17 @@ const CHUNK_ERROR_PATTERNS = [
   'loading chunk',
   'chunkloaderror',
   'dynamically imported module',
+  'error loading dynamically imported module',
 ]
 
-function getErrorMessage(errorLike) {
-  if (!errorLike) return ''
-
-  if (typeof errorLike === 'string') {
-    return errorLike.toLowerCase()
-  }
-
-  if (typeof errorLike.message === 'string') {
-    return errorLike.message.toLowerCase()
-  }
-
-  if (typeof errorLike.reason?.message === 'string') {
-    return errorLike.reason.message.toLowerCase()
-  }
-
-  if (typeof errorLike.reason === 'string') {
-    return errorLike.reason.toLowerCase()
-  }
-
+function getErrorMessage(err) {
+  if (!err) return ''
+  if (typeof err === 'string') return err.toLowerCase()
+  if (typeof err.message === 'string') return err.message.toLowerCase()
   return ''
 }
 
-export function isRecoverableChunkError(errorLike) {
-  const message = getErrorMessage(errorLike)
-  return CHUNK_ERROR_PATTERNS.some((pattern) => message.includes(pattern))
-}
-
-export function recoverFromChunkErrorOnce() {
-  if (typeof window === 'undefined') return false
-
-  try {
-    if (window.sessionStorage.getItem(RECOVERY_FLAG) === '1') {
-      return false
-    }
-
-    window.sessionStorage.setItem(RECOVERY_FLAG, '1')
-    window.location.reload()
-    return true
-  } catch {
-    window.location.reload()
-    return true
-  }
-}
-
-export function clearChunkRecoveryFlag() {
-  if (typeof window === 'undefined') return
-
-  try {
-    window.sessionStorage.removeItem(RECOVERY_FLAG)
-  } catch {
-    // sessionStorage erişimi engelliyse sessizce geç
-  }
+export function isChunkError(err) {
+  const msg = getErrorMessage(err)
+  return CHUNK_ERROR_PATTERNS.some(p => msg.includes(p))
 }

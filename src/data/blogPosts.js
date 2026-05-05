@@ -2420,6 +2420,393 @@ export const blogPosts = [
     date: '2 Mart 2026',
     dateISO: '2026-03-02',
     image: '/content/images/fullpaket/hareketlislider7popcorn.webp'
+  },
+
+  // ===== PAMUK ŞEKER / POPCORN / ÇİKOLATA ŞELALESİ - AYRI BLOG YAZILARI =====
+  {
+    slug: 'pamuk-seker-arabasi-kiralama-fiyatlari',
+    title: 'Pamuk Şeker Arabası Kiralama Fiyatları İstanbul 2026: Otomat, Makine ve Paket Seçenekleri',
+    excerpt: 'İstanbul\'da pamuk şeker arabası kiralama fiyatları neye göre değişir? Otomat tipi, makine büyüklüğü, operatör dahil paketler ve etkinlik süresine göre fiyat rehberi.',
+    category: 'Etkinlik',
+    subCategory: 'pamuk-seker',
+    tags: ['pamuk şeker arabası kiralama fiyatları', 'pamuk şeker otomatı kiralama', 'pamuk şeker makinesi kiralama istanbul', 'pamuk şeker fiyat 2026', 'doğum günü pamuk şeker'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/pamuk-seker',
+    relatedBlogs: ['popcorn-arabasi-kiralama-fiyatlari', 'cikolata-selalesi-kiralama-fiyatlari', 'pamuk-seker-etkinlik-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'pamuk şeker arabası kiralama fiyatları istanbul',
+    readTime: 8,
+    date: '10 Nisan 2026',
+    dateISO: '2026-04-10',
+    image: '/content/images/Parti Ekipmanları/pamukseker.webp',
+    introText: 'Pamuk şeker arabası kiralama fiyatları İstanbul genelinde tek bir rakamla ifade edilemez. Etkinlik süresi, katılımcı sayısı, makine tipi, operatör dahil mi değil mi, mekan türü ve lokasyon gibi birçok değişken fiyatı doğrudan etkiler. Doğum günü partisinden okul şenliğine, AVM aktivasyonundan kurumsal etkinliğe kadar farklı senaryolarda pamuk şeker hizmeti farklı şekilde planlanır. Bu rehberde pamuk şeker arabası kiralama fiyatlarını belirleyen gerçek kalemleri şeffaf biçimde anlatıyoruz.',
+    tipText: 'Pamuk şeker arabası kiralarken sadece "fiyat nedir" diye sormak yerine etkinlik tarihi, saat, semt, mekan tipi ve tahmini çocuk sayısını birlikte paylaşırsanız çok daha doğru ve hızlı teklif alırsınız.',
+    sections: [
+      {
+        title: 'Pamuk şeker arabası kiralama fiyatını belirleyen ana kalemler',
+        paragraphs: [
+          'Pamuk şeker arabası kiralama fiyatının ilk belirleyicisi etkinlik süresidir. 1 saatlik kısa bir ikram servisi ile 4 saatlik kesintisiz bir organizasyon aynı maliyette olmaz. Süre uzadıkça şeker malzemesi tüketimi ve operatör çalışma saati de artar.',
+          'İkinci önemli kalem makine ve araba tipidir. Retro tasarımlı dekoratif arabalar ile kompakt masa üstü makinelerin hem görsel etkisi hem operasyon maliyeti farklıdır. Özellikle Instagram\'lık fotoğraf köşesi isteyenler retro arabayı tercih ederken, küçük ev partilerinde kompakt makine yeterli olabilir.',
+          'Üçüncü faktör katılımcı sayısıdır. 15 çocukluk bir doğum gününde tek makine ve tek operatör yeterliyken, 100+ kişilik bir site etkinliğinde ikinci makine veya ek operatör gerekebilir. Bu da doğrudan fiyata yansır.',
+          'Dördüncü kalem mekan tipi ve lokasyondur. Apartman dairesi, villa bahçesi, site salonu, okul, restoran veya AVM gibi farklı mekan türlerinin kurulum gereksinimleri ve ulaşım planlaması fiyatı etkiler.'
+        ],
+        items: [
+          { bold: 'Etkinlik süresi', text: '1-2 saat, 3-4 saat veya tüm gün seçeneklerinde fiyat kademeli artar.' },
+          { bold: 'Araba/makine tipi', text: 'Retro dekoratif araba, standart profesyonel makine veya kompakt masa üstü otomat arasında fark oluşur.' },
+          { bold: 'Katılımcı sayısı', text: '50+ kişide ek makine veya operatör ihtiyacı doğabilir.' },
+          { bold: 'Mekan ve lokasyon', text: 'İstanbul içi mesafe, kat çıkma, asansör durumu ve elektrik erişimi fiyatı etkiler.' },
+          { bold: 'Renk ve aroma çeşitliliği', text: 'Tek renk yerine 4-5 farklı renk ve aroma sunulması malzeme maliyetini artırır.' }
+        ],
+        tipBox: 'Retro pamuk şeker arabası görsel olarak çok daha etkileyicidir ancak kompakt makine dar mekanlarda daha pratik çalışır. Mekan tipinize göre seçim yapın.'
+      },
+      {
+        title: 'Pamuk şeker otomatı mı, profesyonel makine mi, retro araba mı?',
+        paragraphs: [
+          'Pamuk şeker otomatı (self-servis otomat) genellikle AVM, bowling salonu ve eğlence merkezlerinde sabit olarak kullanılır. Etkinlik kiralama için uygun değildir çünkü operatör kontrolü olmadan çocukların kullanması güvenli değildir. Ancak bazı aileler "pamuk şeker otomatı kiralama" araması yapar; bu durumda operatörlü profesyonel makine hizmeti en doğru karşılıktır.',
+          'Profesyonel pamuk şeker makinesi sanayi tipi paslanmaz çelik kazana sahiptir ve dakikada 1 adet pamuk şeker üretir. Operatör tarafından kullanılır, hijyen standartlarına uygundur ve 8 farklı renk-aroma seçeneği sunar. Bu en yaygın kiralama formatıdır.',
+          'Retro pamuk şeker arabası ise profesyonel makineyi nostaljik görünümlü bir araba içinde sunar. Görsel etkisi çok yüksektir: renkli şeritler, ahşap detaylar ve tabelası ile etkinliğin fotoğraf köşesine dönüşür. Fiyatı standart makineye göre daha yüksektir ancak dekoratif katkısı nedeniyle konsept partilerde çok tercih edilir.'
+        ],
+        items: [
+          { bold: 'Otomat (self-servis)', text: 'Etkinlik kiralaması için uygun değildir, sabit mekan çözümüdür.' },
+          { bold: 'Profesyonel makine', text: 'En yaygın kiralama formatı: operatörlü, hijyenik, hızlı üretim.' },
+          { bold: 'Retro araba', text: 'Görsel şölen + profesyonel makine: konsept partiler ve Instagram köşesi için ideal.' }
+        ],
+        infoBox: 'Google\'da "pamuk şeker otomatı kiralama" arayan kişilerin büyük çoğunluğu aslında operatörlü profesyonel makine hizmeti istemektedir. Otomat tipi cihazlar etkinlik ortamında güvenli değildir.'
+      },
+      {
+        title: 'Etkinlik türüne göre pamuk şeker arabası paket önerileri',
+        paragraphs: [
+          'Çocuk doğum günü partisinde (10-25 kişi) genellikle tek profesyonel makine + operatör + sınırsız malzeme paketi yeterlidir. 2-3 saatlik servis süresi çoğu parti için idealdir. Çocuklar kendi renklerini seçerek pamuk şekerlerini izlemeyi çok sever.',
+          'Site etkinliği veya okul şenliğinde (50-200 kişi) retro araba formatı hem görsel hem kapasite açısından daha uygun çalışır. Bu tür etkinliklerde 3-4 saat kesintisiz servis ve ek operatör planlanması önerilir.',
+          'AVM aktivasyonu veya kurumsal lansmanda (100+ kişi) çift makine kurulumu, marka uyumlu araba dekorasyonu ve uzun süreli operasyon planlaması gerekir. Bu senaryoda fiyat doğal olarak daha yüksektir ancak marka görünürlüğü ve müşteri etkileşimi açısından yatırımın geri dönüşü güçlüdür.',
+          'Düğün ve nişan organizasyonlarında ise pamuk şeker arabası genellikle ikram köşesi olarak konumlandırılır. Beyaz veya pastel tonlarda özel dekorasyon talepleri bu tür etkinliklerde sık görülür.'
+        ],
+        items: [
+          { bold: 'Doğum günü (10-25 kişi)', text: 'Tek makine + operatör + 2-3 saat: en ekonomik ve etkili paket.' },
+          { bold: 'Site/okul (50-200 kişi)', text: 'Retro araba + ek operatör + 3-4 saat: kapasite ve görsellik dengesi.' },
+          { bold: 'Kurumsal/AVM (100+ kişi)', text: 'Çift makine + marka uyumlu dekor + uzun süreli operasyon.' },
+          { bold: 'Düğün/nişan', text: 'Özel dekorlu araba + pastel renk pamuk şeker + fotoğraf alanı.' }
+        ]
+      },
+      {
+        title: 'İstanbul\'da pamuk şeker arabası teklifi alırken göndermeniz gereken bilgiler',
+        paragraphs: [
+          'Doğru ve hızlı fiyat teklifi almanın en kısa yolu, organizasyon detaylarını eksiksiz paylaşmaktır. "Pamuk şeker arabası kaç para?" sorusu tek başına yanıtsız kalır çünkü her etkinliğin operasyonu farklıdır.',
+          'Best Event olarak sağlıklı teklif için ihtiyacımız olan minimum bilgi seti: etkinlik tarihi ve saati, semt ve mekan tipi (ev, site, okul, AVM), tahmini katılımcı sayısı, istenen servis süresi ve varsa özel talepler (renk, tema uyumu, retro araba tercihi).',
+          'Hafta sonu ve yoğun sezonlarda (mayıs-haziran doğum günü sezonu, yılbaşı dönemi) erken rezervasyon ekipman seçeneğinizi genişletir. Son dakika taleplerinde retro araba müsaitliği sınırlı kalabilir.'
+        ],
+        items: [
+          'Etkinlik tarihi ve başlangıç saati',
+          'Semt ve mekan tipi (ev, site salonu, okul, AVM, açık alan)',
+          'Tahmini katılımcı sayısı',
+          'İstenen servis süresi',
+          'Makine tercihi (retro araba / standart makine)',
+          'Özel renk veya tema talebi varsa belirtilmesi'
+        ],
+        tipBox: 'Popcorn arabası veya çikolata şelalesi ile kombine paket alındığında hem lojistik hem fiyat avantajı sağlanır. Tek seferde birden fazla ikram hizmeti planlamak operasyonu da kolaylaştırır.'
+      }
+    ],
+    faqItems: [
+      { q: 'Pamuk şeker arabası kiralama fiyatları 2026\'da ne kadar?', a: 'Fiyat etkinlik süresine, makine tipine, katılımcı sayısına ve lokasyona göre değişir. Sabit tek fiyat yerine organizasyona özel teklif verilir. Detaylı bilgi için etkinlik bilgilerinizi paylaşarak teklif alabilirsiniz.' },
+      { q: 'Pamuk şeker otomatı kiralayabilir miyim?', a: 'Self-servis otomat tipi cihazlar etkinlik ortamında güvenli değildir. Bunun yerine operatörlü profesyonel pamuk şeker makinesi veya retro araba hizmeti sunuyoruz. Aynı görselliği çok daha güvenli ve hijyenik şekilde sağlar.' },
+      { q: 'Retro pamuk şeker arabası ile normal makine arasındaki fark nedir?', a: 'Retro araba, profesyonel makineyi nostaljik görünümlü dekoratif bir araba içinde sunar. Görsel etkisi çok daha yüksektir ve fotoğraf köşesine dönüşür. Standart makine ise daha kompakt ve ekonomiktir.' },
+      { q: 'Pamuk şeker kaç renk ve aroma seçeneği var?', a: 'Profesyonel makinemizde 8 farklı renk ve aroma sunuyoruz: pembe (çilek), mavi (tutti frutti), yeşil (elma), sarı (muz), mor (üzüm), turuncu (portakal), kırmızı (vişne) ve beyaz (vanilya). Tema uyumlu renk kombinasyonları yapılabilir.' },
+      { q: 'Apartman dairesinde pamuk şeker makinesi kullanılabilir mi?', a: 'Evet. Kompakt profesyonel makinemiz standart apartman dairelerinde rahatlıkla kullanılır. Elektrik prizi yeterlidir, özel kurulum gerekmez. Havalandırma olan bir alan tercih edilmesi önerilir.' },
+      { q: 'Popcorn veya çikolata şelalesi ile birlikte alınabilir mi?', a: 'Kesinlikle. Pamuk şeker + popcorn + çikolata şelalesi kombine paketlerinde özel indirimler uygulanır. Tek seferde birden fazla ikram hizmeti hem fiyat hem lojistik avantajı sağlar.' }
+    ]
+  },
+  {
+    slug: 'popcorn-arabasi-kiralama-fiyatlari',
+    title: 'Popcorn Arabası Kiralama Fiyatları İstanbul 2026: Makine, Otomat ve Paket Rehberi',
+    excerpt: 'İstanbul\'da popcorn arabası kiralama fiyatları neye göre değişir? Retro araba, profesyonel makine, operatör dahil paketler ve etkinlik türüne göre fiyat karşılaştırması.',
+    category: 'Etkinlik',
+    subCategory: 'pamuk-seker',
+    tags: ['popcorn arabası kiralama fiyatları', 'popcorn makinesi kiralama istanbul', 'popcorn otomatı kiralama', 'patlamış mısır arabası kiralama', 'doğum günü popcorn'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/pamuk-seker',
+    relatedBlogs: ['pamuk-seker-arabasi-kiralama-fiyatlari', 'cikolata-selalesi-kiralama-fiyatlari', 'pamuk-seker-dogum-gunu-organizasyonu'],
+    relatedDistricts: [],
+    primaryKeyword: 'popcorn arabası kiralama fiyatları istanbul',
+    readTime: 8,
+    date: '10 Nisan 2026',
+    dateISO: '2026-04-10',
+    image: '/content/images/Parti Ekipmanları/popcornkalitelihijyenikmalzeme.webp',
+    introText: 'Popcorn arabası kiralama fiyatları İstanbul\'da etkinlik türüne, süreye, araba modeline ve katılımcı sayısına göre değişir. Retro tasarımlı popcorn arabası doğum günü partisinden kurumsal lansmanına, okul şenliğinden AVM etkinliğine kadar her organizasyonda hem lezzet hem görsellik sunar. Bu rehberde popcorn arabası kiralama fiyatlarını belirleyen gerçek kalemleri, otomat ile profesyonel makine farkını ve etkinlik tipine göre en uygun paket seçimini detaylı şekilde anlatıyoruz.',
+    tipText: 'Popcorn arabası fiyatı sorarken "kaç para" yerine etkinlik tarihi, mekan tipi, tahmini kişi sayısı ve istenen süreyi paylaşın. Senaryo ne kadar net olursa teklif o kadar doğru çıkar.',
+    sections: [
+      {
+        title: 'Popcorn arabası kiralama fiyatını belirleyen temel kalemler',
+        paragraphs: [
+          'Popcorn arabası kiralama fiyatının ilk belirleyicisi etkinlik süresidir. 2 saatlik kısa bir ikram servisi ile 5-6 saatlik gün boyu organizasyon aynı maliyette olmaz. Süre uzadıkça mısır malzemesi tüketimi, yağ kullanımı ve operatör çalışma saati artar.',
+          'İkinci önemli kalem araba ve makine tipidir. Retro tasarımlı kırmızı popcorn arabası sinema temalı konseptlerde harika görünürken, kompakt profesyonel makine dar alanlarda daha pratik çalışır. Retro arabanın dekoratif etkisi fiyatına yansır ancak etkinliğe kattığı atmosfer buna değer.',
+          'Üçüncü faktör katılımcı sayısıdır. Küçük bir doğum günü partisinde (10-20 çocuk) tek makine rahat yeterliyken, 80-100 kişilik bir site etkinliğinde servis hızı için ek makine veya daha büyük kapasite gerekebilir.',
+          'Dördüncü kalem mekan koşulları ve ulaşımdır. Popcorn hazırlanırken hafif yağ kokusu oluşur, bu nedenle kapalı mekanlarda havalandırma durumu önemlidir. Arabanın mekana girişi (asansör boyutu, kapı genişliği, kat durumu) kurulumu etkiler. İstanbul içi mesafe ve trafik de lojistik planlamayı belirler.'
+        ],
+        items: [
+          { bold: 'Etkinlik süresi', text: '2 saat, 4 saat veya tüm gün paketlerinde fiyat kademeli değişir.' },
+          { bold: 'Araba/makine tipi', text: 'Retro dekoratif araba, standart profesyonel makine veya kompakt masa üstü model arasında fark oluşur.' },
+          { bold: 'Katılımcı sayısı', text: '50+ kişide servis hızı için ek kapasite planlanması gerekebilir.' },
+          { bold: 'Mekan koşulları', text: 'Havalandırma, elektrik erişimi, arabanın giriş yapabileceği alan boyutu fiyatı etkiler.' },
+          { bold: 'Malzeme kalitesi', text: 'Organik mısır, özel baharat seçenekleri veya karamel popcorn talebi ek maliyet oluşturur.' }
+        ],
+        tipBox: 'Popcorn arabasının mekanınıza uygunluğunu önceden kontrol ettirmek sürprizleri önler. Arabanın boyutları yaklaşık 65x50 cm taban, 150 cm yüksekliktir.'
+      },
+      {
+        title: 'Popcorn otomatı mı, profesyonel makine mi, retro araba mı?',
+        paragraphs: [
+          'Popcorn otomatı (jetonlu veya self-servis) sinema ve AVM girişlerinde sabit olarak kullanılan cihazlardır. Etkinlik kiralaması için pratik değildir çünkü taşınması zor, hijyen kontrolü sınırlı ve operatör desteği yoktur. "Popcorn otomatı kiralama" araması yapanlar çoğunlukla operatörlü profesyonel hizmeti kastetmektedir.',
+          'Profesyonel popcorn makinesi paslanmaz çelik kazan, ısıtma sistemi ve şeffaf cam kabine sahiptir. Operatör tarafından taze mısır patlatılır, kokusu ve sesi etkinliğe atmosfer katar. Dakikada yaklaşık 2-3 porsiyon üretir. Hijyen sertifikalı operatör, tek kullanımlık popcorn kutuları ve kaliteli mısır malzemesi paketin parçasıdır.',
+          'Retro popcorn arabası ise profesyonel makineyi nostaljik kırmızı-beyaz çizgili, ahşap tekerlekli bir araba formatında sunar. Sinema gecesi, karnaval temalı parti veya Amerikan konsepti doğum günlerinde mükemmel bir dekoratif unsur olur. Çocuklar ve yetişkinler fotoğraf çekmek için sıraya girer.'
+        ],
+        items: [
+          { bold: 'Otomat (self-servis)', text: 'Sabit mekan çözümü, etkinlik kiralamasına uygun değil.' },
+          { bold: 'Profesyonel makine', text: 'En yaygın kiralama formatı: operatörlü, hijyenik, taze üretim, porsiyon kontrolü.' },
+          { bold: 'Retro araba', text: 'Profesyonel makine + dekoratif araba: sinema/karnaval temalı partiler ve fotoğraf köşesi için ideal.' }
+        ],
+        infoBox: 'Popcorn arabasının etkinlikteki en büyük avantajı görselden öte kokusudur. Taze patlayan mısırın kokusu mekana yayıldığında çocuklar ve yetişkinler otomatik olarak arabaya yönelir. Bu, etkinlik akışında doğal bir çekim noktası yaratır.'
+      },
+      {
+        title: 'Etkinlik türüne göre popcorn arabası paket önerileri',
+        paragraphs: [
+          'Çocuk doğum günü partisinde (10-25 kişi) kompakt profesyonel makine + operatör + 2 saat servis en ekonomik pakettir. Çocuklar taze popcornun patlamasını izlemeyi çok sever ve bu süreç tek başına bir gösteri niteliği taşır. Klasik tuzlu, karamelli ve peynirli olmak üzere 2-3 çeşit sunulabilir.',
+          'Sinema temalı doğum gününde retro araba neredeyse zorunlu bir unsurdur. Kırmızı-beyaz çizgili araba, film afişleri ve patlamış mısır kutuları ile sinema salonu atmosferi ev ortamında bile yaratılabilir. Bu konsept son yıllarda İstanbul\'da en çok talep edilen parti temalarından biridir.',
+          'Okul ve site etkinliklerinde (50-200 kişi) retro araba + ek operatör + 3-4 saat kesintisiz servis planlanmalıdır. Kalabalık etkinliklerde bekleme süresi uzamaması için servis hızı kritiktir.',
+          'Kurumsal etkinliklerde marka renklerine uygun popcorn kutuları, logolu ambalaj ve profesyonel sunum beklentisi fiyatı etkiler ancak marka aktivasyonu açısından güçlü bir geri dönüş sağlar.'
+        ],
+        items: [
+          { bold: 'Doğum günü (10-25 kişi)', text: 'Kompakt makine + operatör + 2 saat: ekonomik ve etkili.' },
+          { bold: 'Sinema temalı parti', text: 'Retro araba + özel popcorn kutuları + film konsepti dekor.' },
+          { bold: 'Okul/site (50-200 kişi)', text: 'Retro araba + ek operatör + 3-4 saat kesintisiz servis.' },
+          { bold: 'Kurumsal etkinlik', text: 'Marka uyumlu sunum + logolu ambalaj + uzun süreli operasyon.' }
+        ]
+      },
+      {
+        title: 'İstanbul\'da popcorn arabası teklifi alırken paylaşmanız gereken bilgiler',
+        paragraphs: [
+          'Doğru fiyat teklifi için organizasyon senaryosunu net paylaşmanız yeterlidir. "Popcorn arabası kaç lira?" sorusu tek başına cevaplanamaz çünkü 15 çocukluk ev partisi ile 200 kişilik okul şenliğinin operasyonu tamamen farklıdır.',
+          'Best Event olarak hızlı ve doğru teklif için şu bilgilere ihtiyacımız var: etkinlik tarihi, saati, semt, mekan tipi ve büyüklüğü, tahmini katılımcı sayısı, istenen servis süresi ve varsa tema tercihi.',
+          'Pamuk şeker arabası veya çikolata şelalesi ile birlikte alınan kombine paketlerde hem fiyat avantajı hem tek seferde lojistik kolaylığı sağlanır. Üçlü ikram paketi (pamuk şeker + popcorn + çikolata şelalesi) İstanbul\'daki doğum günü organizasyonlarında en çok talep edilen kombinasyondur.'
+        ],
+        items: [
+          'Etkinlik tarihi ve başlangıç saati',
+          'Semt ve mekan tipi (ev, site, okul, AVM, açık alan)',
+          'Tahmini katılımcı sayısı',
+          'İstenen servis süresi',
+          'Araba tercihi (retro araba / standart makine)',
+          'Popcorn çeşidi tercihi (klasik tuzlu, karamel, peynirli)',
+          'Kombine paket talebi (pamuk şeker, çikolata şelalesi ile birlikte)'
+        ],
+        tipBox: 'Üçlü ikram paketi (pamuk şeker + popcorn + çikolata şelalesi) tek tek kiralamanın toplamından daha avantajlıdır. Hem fiyat indirimi hem de tek ekiple kurulum kolaylığı sağlar.'
+      }
+    ],
+    faqItems: [
+      { q: 'Popcorn arabası kiralama fiyatları 2026\'da ne kadar?', a: 'Fiyat etkinlik süresi, araba tipi, katılımcı sayısı ve lokasyona göre değişir. Sabit fiyat yerine etkinliğe özel teklif verilir. Organizasyon detaylarınızı paylaşarak kişiselleştirilmiş teklif alabilirsiniz.' },
+      { q: 'Popcorn otomatı kiralamak mümkün mü?', a: 'Self-servis popcorn otomatları sabit mekan cihazlarıdır ve etkinlik kiralamasına uygun değildir. Operatörlü profesyonel popcorn makinesi veya retro araba hizmeti sunuyoruz, çok daha hijyenik ve etkili çalışır.' },
+      { q: 'Popcorn arabası kapalı mekanda kullanılabilir mi?', a: 'Evet. Havalandırması olan kapalı mekanlarda rahatlıkla kullanılır. Hafif yağ kokusu oluşabilir, bu nedenle mutfak yakını veya balkon kenarı konumlandırma önerilir. Kompakt makine apartman dairelerine de sığar.' },
+      { q: 'Kaç çeşit popcorn sunuluyor?', a: 'Klasik tuzlu, tereyağlı, karamelli ve peynirli popcorn seçenekleri mevcuttur. Etkinlik temasına göre özel sunum yapılabilir. Tüm malzemeler gıda onaylı ve taze kullanılır.' },
+      { q: 'Popcorn arabası ile pamuk şeker arabası birlikte kiralanabilir mi?', a: 'Evet ve bu en popüler kombinasyondur. İkili veya üçlü (+ çikolata şelalesi) paketlerde özel indirimler uygulanır. Tek ekip ile kurulum yapılır, hem fiyat hem operasyon avantajı sağlar.' },
+      { q: 'Sinema temalı doğum günü için popcorn arabası şart mı?', a: 'Şart olmasa da sinema konseptinin en güçlü unsurlarından biridir. Retro popcorn arabası, film afişleri ve bilet tasarımıyla birlikte gerçek bir sinema deneyimi yaratır. Bu tema İstanbul\'da en çok talep edilen konseptler arasındadır.' }
+    ]
+  },
+  {
+    slug: 'cikolata-selalesi-kiralama-fiyatlari',
+    title: 'Çikolata Şelalesi Kiralama Fiyatları İstanbul 2026: Kat Sayısı, Çikolata Tipi ve Paket Rehberi',
+    excerpt: 'İstanbul\'da çikolata şelalesi kiralama fiyatları neye göre değişir? Kat sayısı, çikolata kalitesi, meyve tabağı, katılımcı sayısı ve etkinlik türüne göre fiyat rehberi.',
+    category: 'Etkinlik',
+    subCategory: 'pamuk-seker',
+    tags: ['çikolata şelalesi kiralama fiyatları', 'çikolata şelalesi kiralama istanbul', 'çikolata çeşmesi kiralama', 'çikolata fondue kiralama', 'doğum günü çikolata şelalesi'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/cikolata-selalesi',
+    relatedBlogs: ['pamuk-seker-arabasi-kiralama-fiyatlari', 'popcorn-arabasi-kiralama-fiyatlari', 'pamuk-seker-etkinlik-rehberi'],
+    relatedDistricts: [],
+    primaryKeyword: 'çikolata şelalesi kiralama fiyatları istanbul',
+    readTime: 8,
+    date: '10 Nisan 2026',
+    dateISO: '2026-04-10',
+    image: '/content/images/Parti Ekipmanları/cikolataselalesiistanbul.webp',
+    introText: 'Çikolata şelalesi kiralama fiyatları İstanbul genelinde kat sayısı, çikolata kalitesi, etkinlik süresi, katılımcı sayısı ve mekan tipine göre değişir. Doğum günü partisinden düğüne, kurumsal lansmanından okul şenliğine kadar her etkinlikte görsel şölen yaratan çikolata şelalesi, doğru planlama ile bütçeye uygun hale getirilebilir. Bu rehberde çikolata şelalesi kiralama fiyatlarını etkileyen tüm kalemleri, çikolata tipi farklarını ve etkinlik senaryosuna göre paket önerilerini detaylı şekilde anlatıyoruz.',
+    tipText: 'Çikolata şelalesi teklifi alırken etkinlik tarihi, mekan tipi, tahmini kişi sayısı ve çikolata tercihinizi (süt/bitter/beyaz) birlikte paylaşın. Senaryo ne kadar net olursa teklif o kadar doğru çıkar.',
+    sections: [
+      {
+        title: 'Çikolata şelalesi kiralama fiyatını belirleyen ana kalemler',
+        paragraphs: [
+          'Çikolata şelalesi kiralama fiyatının en büyük belirleyicisi şelale boyutu ve kat sayısıdır. 3 katlı kompakt model küçük doğum günü partileri için yeterliyken, 5 katlı profesyonel model 50+ kişilik etkinliklerde hem kapasite hem görsellik açısından daha etkileyicidir. 7 katlı dev model ise düğün ve kurumsal organizasyonlarda tercih edilir.',
+          'İkinci önemli kalem çikolata kalitesidir. Belçika veya İsviçre menşeili kuvertür çikolata ile standart çikolata arasında hem lezzet hem maliyet farkı vardır. Süt çikolata en yaygın tercih edilendir ancak bitter ve beyaz çikolata seçenekleri de sunulur. Bazı etkinliklerde iki farklı çikolata tipi (süt + beyaz) aynı anda kullanılması talep edilir.',
+          'Üçüncü faktör eşlik eden meyve ve malzeme tabağıdır. Çilek, muz, ananas, marşmelov, kurabiye ve kuru meyve gibi daldırma malzemeleri paketin ayrılmaz parçasıdır. Mevsimsel meyve seçimi hem lezzeti hem maliyeti etkiler. Sadece çikolata şelalesi kiralamak ile tam donanımlı meyve tabağı dahil paket arasında fiyat farkı oluşur.',
+          'Dördüncü kalem etkinlik süresi ve katılımcı sayısıdır. Çikolata eritme süresi (30-40 dakika) dahil kurulum planlanır. 2 saatlik kısa servis ile 4-5 saatlik uzun etkinlik arasında çikolata tüketimi ve operatör süresi farkı fiyata yansır.'
+        ],
+        items: [
+          { bold: 'Kat sayısı/boyut', text: '3 kat (kompakt), 5 kat (standart), 7 kat (premium) modellerde fiyat kademeli artar.' },
+          { bold: 'Çikolata kalitesi', text: 'Belçika/İsviçre kuvertür çikolata ile standart çikolata arasında fark oluşur.' },
+          { bold: 'Çikolata tipi', text: 'Süt, bitter veya beyaz çikolata seçimi; çift çikolata talebi ek maliyet oluşturur.' },
+          { bold: 'Meyve/malzeme tabağı', text: 'Mevsimsel meyve, marşmelov, kurabiye gibi daldırma malzemeleri paketin parçasıdır.' },
+          { bold: 'Etkinlik süresi', text: '2 saat, 4 saat veya tüm gün paketlerinde çikolata tüketimi ve operatör süresi değişir.' },
+          { bold: 'Katılımcı sayısı', text: '30+ kişide çikolata miktarı ve porsiyon planlaması fiyatı etkiler.' }
+        ],
+        tipBox: '5 katlı çikolata şelalesi görsel etki ve kapasite açısından en dengeli modeldir. Küçük ev partileri hariç çoğu etkinlik için bu boyut idealdir.'
+      },
+      {
+        title: 'Çikolata şelalesi mi, fondue seti mi, çikolata çeşmesi mi?',
+        paragraphs: [
+          'Çikolata şelalesi (chocolate fountain) eritilmiş çikolatanın kademeli olarak aşağı aktığı, gösterişli ve büyük ölçekli bir ekipmandır. Etkinliklerde en çok tercih edilen format budur çünkü hem lezzet hem görsel şölen sunar. Akan çikolata hipnotize edici bir etki yaratır ve özellikle çocuklar saatlerce izleyebilir.',
+          'Çikolata fondue seti ise daha küçük, masa üstü formatta bir ısıtıcı ve kazan kombinasyonudur. Samimi akşam yemekleri veya küçük toplantılarda tercih edilir ancak etkinlik kiralama formatına uygun değildir çünkü görsel etkisi sınırlıdır.',
+          '"Çikolata çeşmesi" terimi ise çikolata şelalesi ile aynı anlama gelir, farklı bir ürün değildir. Google aramalarında her iki terim de kullanılır. Best Event olarak sunduğumuz hizmet profesyonel çikolata şelalesi (fountain) formatındadır.',
+          'Tüm çikolata şelalelerimiz paslanmaz çelik gövdelidir, gıda sertifikalıdır ve her etkinlik öncesinde sterilize edilir. Eritme işlemi ekibimiz tarafından yapılır ve sürekli sıcaklık kontrolü sağlanır.'
+        ],
+        items: [
+          { bold: 'Çikolata şelalesi (fountain)', text: 'Kademeli akış, büyük görsel etki, etkinlik kiralamasının en popüler formatı.' },
+          { bold: 'Fondue seti', text: 'Küçük masa üstü format, samimi toplantılar için uygun ancak etkinlik kiralamasına değil.' },
+          { bold: 'Çikolata çeşmesi', text: 'Çikolata şelalesi ile aynı ürün, farklı bir isim. Aynı hizmet sunulur.' }
+        ],
+        infoBox: 'Çikolata şelalesi sadece bir ikram değil, etkinliğin odak noktasıdır. Akan çikolata görüntüsü hem çocukları hem yetişkinleri büyüler ve partinin en çok fotoğraflanan unsuru olur.'
+      },
+      {
+        title: 'Etkinlik türüne göre çikolata şelalesi paket önerileri',
+        paragraphs: [
+          'Çocuk doğum günü partisinde (10-25 kişi) 3-5 katlı çikolata şelalesi + süt çikolata + mevsimsel meyve tabağı + marşmelov paketi idealdir. 2-3 saat servis süresi çoğu parti için yeterlidir. Çocuklar çilekleri ve marşmelovları çikolataya batırmayı çok sever.',
+          'Düğün ve nişan organizasyonlarında 5-7 katlı premium çikolata şelalesi tercih edilir. Beyaz çikolata + süt çikolata çift şelale kurulumu son yıllarda çok popülerdir. Geniş meyve ve tatlı tabağı (çilek, ahududu, profiterol, kurabiye) düğün büfesinin yıldızı olur.',
+          'Kurumsal etkinliklerde çikolata şelalesi marka aktivasyonunun parçası olarak konumlandırılır. Logolu çikolata kalıpları, marka renklerine uygun sunum ve profesyonel servis beklentisi bu tür etkinliklerde standart taleptir.',
+          'Okul ve site etkinliklerinde (50-200 kişi) 5 katlı model + geniş meyve tabağı + uzun süreli servis planlaması gerekir. Çocukların hijyenik şekilde servis alması için operatör yönlendirmesi kritiktir.'
+        ],
+        items: [
+          { bold: 'Doğum günü (10-25 kişi)', text: '3-5 kat + süt çikolata + meyve tabağı + 2-3 saat: ekonomik ve eğlenceli.' },
+          { bold: 'Düğün/nişan', text: '5-7 kat + premium çikolata + çift şelale seçeneği + geniş tatlı tabağı.' },
+          { bold: 'Kurumsal etkinlik', text: 'Marka uyumlu sunum + logolu çikolata + profesyonel servis operasyonu.' },
+          { bold: 'Okul/site (50-200 kişi)', text: '5 kat + geniş meyve tabağı + operatör yönlendirmeli uzun süreli servis.' }
+        ]
+      },
+      {
+        title: 'İstanbul\'da çikolata şelalesi teklifi alırken paylaşmanız gereken bilgiler',
+        paragraphs: [
+          'Çikolata şelalesi kiralama fiyatı sormak için organizasyon detaylarını paylaşmanız yeterlidir. "Çikolata şelalesi kaç para?" sorusu tek başına yanıtlanamaz çünkü 15 çocukluk ev partisi ile 300 kişilik düğünün operasyonu tamamen farklıdır.',
+          'Best Event olarak doğru teklif için şu bilgilere ihtiyacımız var: etkinlik tarihi, saati ve tahmini süresi, mekan tipi ve adresi, katılımcı sayısı, çikolata tercihi (süt/bitter/beyaz), meyve tabağı tercihi ve varsa özel talepler.',
+          'Pamuk şeker arabası veya popcorn arabası ile kombine alınan üçlü ikram paketinde hem fiyat avantajı hem lojistik kolaylığı sağlanır. Özellikle doğum günü organizasyonlarında bu üçlü kombinasyon İstanbul\'da en çok tercih edilen ikram paketidir.'
+        ],
+        items: [
+          'Etkinlik tarihi, saati ve tahmini süresi',
+          'Mekan tipi ve adresi (ev, site, düğün salonu, otel, AVM)',
+          'Tahmini katılımcı sayısı',
+          'Çikolata tercihi (süt, bitter, beyaz veya kombinasyon)',
+          'Meyve/malzeme tabağı tercihi',
+          'Şelale boyutu tercihi (3 kat, 5 kat, 7 kat)',
+          'Kombine paket talebi (pamuk şeker, popcorn ile birlikte)'
+        ],
+        tipBox: 'Üçlü ikram paketi (pamuk şeker + popcorn + çikolata şelalesi) İstanbul\'daki doğum günü organizasyonlarının en popüler kombinasyonudur. Tek seferde hem görsel zenginlik hem lezzet çeşitliliği sağlar.'
+      }
+    ],
+    faqItems: [
+      { q: 'Çikolata şelalesi kiralama fiyatları 2026\'da ne kadar?', a: 'Fiyat şelale boyutuna, çikolata kalitesine, meyve tabağı içeriğine, etkinlik süresine ve katılımcı sayısına göre değişir. Organizasyon detaylarınızı paylaşarak kişiselleştirilmiş teklif alabilirsiniz.' },
+      { q: 'Çikolata şelalesi hangi çikolatalarla çalışır?', a: 'Belçika ve İsviçre menşeili kuvertür çikolata kullanılır. Süt çikolata, bitter çikolata ve beyaz çikolata seçenekleri mevcuttur. Her etkinlik için taze çikolata eritilir.' },
+      { q: 'Çikolata şelalesi ile çikolata çeşmesi aynı şey mi?', a: 'Evet, aynı ürüne verilen farklı isimlerdir. Her iki terimle de aynı profesyonel çikolata şelalesi (chocolate fountain) hizmeti kastedilir.' },
+      { q: 'Meyve tabağı dahil mi?', a: 'Meyve tabağı paket seçimine göre dahil edilir. Çilek, muz, ananas, marşmelov, kurabiye ve kuru meyve gibi daldırma malzemeleri sunulur. Sadece şelale kiralama veya meyve dahil paket seçenekleri mevcuttur.' },
+      { q: 'Kapalı mekanda çikolata şelalesi kurulabilir mi?', a: 'Evet. Çikolata şelalesi kapalı mekanlarda rahatlıkla kullanılır. Önemli olan düz ve sabit bir zemin, elektrik erişimi ve çevresinde yeterli servis alanıdır. Kurulum ve eritme işlemi ekibimiz tarafından yapılır.' },
+      { q: 'Pamuk şeker ve popcorn ile birlikte alınabilir mi?', a: 'Kesinlikle. Üçlü ikram paketi (pamuk şeker + popcorn + çikolata şelalesi) en popüler kombinasyondur. Kombine paketlerde özel fiyat avantajı ve tek ekiple kurulum kolaylığı sağlanır.' },
+      { q: 'Düğünde çikolata şelalesi nasıl sunulur?', a: '5-7 katlı premium şelale, genellikle ikram büfesinin merkezine yerleştirilir. Beyaz + süt çikolata çift şelale kurulumu, geniş meyve ve tatlı tabağı ile düğünlerin en çok fotoğraflanan köşesi olur.' }
+    ]
+  },
+
+  // ===== DOĞUM GÜNÜ ÖZEL SAYFALARI (6 ADET - Custom JSX) =====
+  {
+    slug: 'dogum-gunu-palyacosu',
+    title: 'Doğum Günü Palyaçosu: Çocuğunuzun Partisini Unutulmaz Kılmanın Yolu',
+    excerpt: 'İstanbul\'da doğum günü palyaçosu kiralama rehberi. Yaş grubuna göre program akışı, palyaço seçim kriterleri, ebeveyn rehberi ve gerçek organizasyon hikayeleri.',
+    category: 'Etkinlik',
+    subCategory: 'palyaco',
+    tags: ['doğum günü palyaçosu', 'doğum günü palyaçosu kiralama', 'çocuk doğum günü palyaço', 'istanbul palyaço', 'doğum günü eğlencesi'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/palyaco-kiralama',
+    relatedBlogs: ['dogum-gunu-sihirbazi', 'dogum-gunu-bubble-show', 'palyaco-kiralama-fiyatlari'],
+    relatedDistricts: ['kadikoy', 'maltepe', 'besiktas', 'atasehir', 'sisli', 'bakirkoy'],
+    primaryKeyword: 'doğum günü palyaçosu',
+    readTime: 10,
+    date: '10 Nisan 2026',
+    dateISO: '2026-04-10',
+    image: '/content/images/palyaco/palyacoanaherogrupoyunlari.webp'
+  },
+  {
+    slug: 'dogum-gunu-sihirbazi',
+    title: 'Doğum Günü Sihirbazı: Çocukları Büyüleyen Gösteri Rehberi',
+    excerpt: 'İstanbul\'da doğum günü sihirbazı kiralama rehberi. Numara türleri, yaş grubuna göre gösteri formatı, sahne vs yakın plan farkı ve gerçek etkinlik hikayeleri.',
+    category: 'Etkinlik',
+    subCategory: 'sihirbaz',
+    tags: ['doğum günü sihirbazı', 'doğum günü sihirbaz kiralama', 'çocuk sihirbaz gösterisi', 'istanbul sihirbaz', 'doğum günü illüzyon'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/magic-show',
+    relatedBlogs: ['dogum-gunu-palyacosu', 'dogum-gunu-bubble-show', 'sihirbaz-gosterisi-fiyatlari'],
+    relatedDistricts: ['maltepe', 'sisli', 'kadikoy', 'besiktas', 'atasehir', 'bakirkoy'],
+    primaryKeyword: 'doğum günü sihirbazı',
+    readTime: 10,
+    date: '10 Nisan 2026',
+    dateISO: '2026-04-10',
+    image: '/content/images/sihirbaz/sihirbazhero.webp'
+  },
+  {
+    slug: 'dogum-gunu-bubble-show',
+    title: 'Doğum Günü Bubble Show: Dev Baloncuklarla Büyülü Parti',
+    excerpt: 'İstanbul\'da doğum günü bubble show kiralama rehberi. Gösteri akışı, mekan gereksinimleri, yaş grubuna göre etki ve gerçek organizasyon hikayeleri.',
+    category: 'Etkinlik',
+    subCategory: 'bubble-show',
+    tags: ['doğum günü bubble show', 'bubble show kiralama doğum günü', 'köpük gösterisi', 'istanbul bubble show', 'dev baloncuk gösterisi'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/bubble-show',
+    relatedBlogs: ['dogum-gunu-palyacosu', 'dogum-gunu-sihirbazi', 'bubble-show-fiyatlari'],
+    relatedDistricts: ['umraniye', 'bakirkoy', 'kadikoy', 'besiktas', 'atasehir', 'sisli'],
+    primaryKeyword: 'doğum günü bubble show',
+    readTime: 10,
+    date: '10 Nisan 2026',
+    dateISO: '2026-04-10',
+    image: '/content/images/bubbleshow/bubbleshowhero.webp'
+  },
+  {
+    slug: 'dogum-gunu-pamuk-seker',
+    title: 'Doğum Gününde Pamuk Şeker: Retro Araba, Renkli Şekerler ve İkram Gösterisi',
+    excerpt: 'Doğum günü partisinde pamuk şeker arabası kiralama rehberi. Retro araba, 8 renk seçeneği, popcorn ve çikolata şelalesi kombinasyonları.',
+    category: 'Etkinlik',
+    subCategory: 'pamuk-seker',
+    tags: ['doğum günü pamuk şeker', 'pamuk şeker arabası doğum günü', 'çocuk partisi ikram', 'istanbul pamuk şeker kiralama', 'retro araba kiralama'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/pamuk-seker',
+    relatedBlogs: ['pamuk-seker-arabasi-kiralama-fiyatlari', 'popcorn-arabasi-kiralama-fiyatlari', 'cikolata-selalesi-kiralama-fiyatlari'],
+    relatedDistricts: ['beylikduzu', 'kadikoy', 'besiktas', 'atasehir', 'bakirkoy', 'sisli'],
+    primaryKeyword: 'doğum günü pamuk şeker',
+    readTime: 9,
+    date: '10 Nisan 2026',
+    dateISO: '2026-04-10',
+    image: '/content/images/Parti Ekipmanları/pamukseker.webp'
+  },
+  {
+    slug: 'dogum-gunu-animatoru',
+    title: 'Doğum Günü Animatörü: Program Akışı, Seçim Kriterleri ve Fiyat Rehberi',
+    excerpt: 'İstanbul\'da doğum günü animatörü kiralama rehberi. Animatör ile palyaço farkı, program içerikleri, yaş grubuna göre format ve kombine paketler.',
+    category: 'Etkinlik',
+    subCategory: 'palyaco',
+    tags: ['doğum günü animatörü', 'animatör kiralama istanbul', 'çocuk animatörü', 'doğum günü animasyon', 'parti animatörü'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/palyaco-kiralama',
+    relatedBlogs: ['dogum-gunu-palyacosu', 'dogum-gunu-sihirbazi', 'animasyon-ekibi-secimi'],
+    relatedDistricts: ['kadikoy', 'maltepe', 'kartal', 'besiktas', 'sisli', 'atasehir'],
+    primaryKeyword: 'doğum günü animatörü',
+    readTime: 9,
+    date: '10 Nisan 2026',
+    dateISO: '2026-04-10',
+    image: '/content/images/palyaco/palyacogrupoyunlari.webp'
+  },
+  {
+    slug: 'dogum-gunu-organizasyonu-2026-rehberi',
+    title: 'Doğum Günü Organizasyonu 2026: Planlama, Hizmet Seçimi ve Bütçe Rehberi',
+    excerpt: 'İstanbul\'da doğum günü organizasyonu planlama rehberi. Hizmet seçimi, bütçe planlaması, mekan tercihi, zamanlama ve profesyonel ipuçları.',
+    category: 'Etkinlik',
+    subCategory: 'dogum-gunu',
+    tags: ['doğum günü organizasyonu', 'doğum günü organizasyonu istanbul', 'çocuk doğum günü planlama', 'doğum günü partisi 2026', 'doğum günü organizasyonu fiyatları'],
+    searchIntent: 'commercial',
+    pillarService: '/organizasyonlar/dogum-gunu-organizasyonu',
+    relatedBlogs: ['dogum-gunu-palyacosu', 'dogum-gunu-sihirbazi', 'dogum-gunu-bubble-show'],
+    relatedDistricts: ['kadikoy', 'maltepe', 'besiktas', 'sisli', 'atasehir', 'bakirkoy'],
+    primaryKeyword: 'doğum günü organizasyonu 2026',
+    readTime: 12,
+    date: '10 Nisan 2026',
+    dateISO: '2026-04-10',
+    image: '/content/images/cocukdogumgunu/konseptdogumgunistanbul.webp'
   }
 ]
 
@@ -2440,6 +2827,7 @@ export const preferredServiceOwners = {
   '/organizasyonlar/maskot-kiralama': '/organizasyonlar/maskot-kiralama',
   '/organizasyonlar/konsept-dogum-gunu': '/organizasyonlar/konsept-dogum-gunu',
   '/organizasyonlar/pamuk-seker': '/organizasyonlar/pamuk-seker',
+  '/organizasyonlar/cikolata-selalesi': '/organizasyonlar/cikolata-selalesi',
   '/organizasyonlar/profesyonel-makyaj': '/organizasyonlar/yuz-boyama'
 }
 

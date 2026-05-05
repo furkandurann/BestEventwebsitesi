@@ -2,11 +2,22 @@
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Polyfill for .at() - needed for react-snap prerendering (Chromium 78) -->
-    <script>if(!Array.prototype.at){Object.defineProperty(Array.prototype,'at',{value:function(n){n=Math.trunc(n)||0;if(n<0)n+=this.length;if(n<0||n>=this.length)return undefined;return this[n]},writable:true,configurable:true});Object.defineProperty(String.prototype,'at',{value:function(n){n=Math.trunc(n)||0;if(n<0)n+=this.length;if(n<0||n>=this.length)return undefined;return this[n]},writable:true,configurable:true});}</script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NMX7ZV2T');</script>
+    <!-- End Google Tag Manager -->
 
     <!-- Google Analytics 4 & Google Ads - Delayed 3s for Core Web Vitals -->
     <script>
@@ -19,7 +30,6 @@
         gtag('config', 'G-ZHE878D53T');
         gtag('config', 'GT-NBJ8Z7DX');
         gtag('config', 'AW-17885091470');
-        gtag('config', 'AW-17897032718');
 
         var script = document.createElement('script');
         script.async = true;
@@ -39,6 +49,31 @@
       ['mousedown', 'touchstart', 'scroll', 'keydown'].forEach(function(e) {
         document.addEventListener(e, triggerAnalytics, { once: true, passive: true });
       });
+    </script>
+
+    <!-- Google Ads Conversion Tracking - WhatsApp Click Events -->
+    <script>
+      (function() {
+        document.addEventListener('click', function(e) {
+          var target = e.target.closest('a');
+          if (!target) return;
+          var href = target.getAttribute('href') || '';
+
+          // WhatsApp click conversion
+          if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp://') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
+            triggerAnalytics();
+            setTimeout(function() {
+              if (typeof gtag === 'function') {
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-17885091470/lcecCNG-goAcEI6to9BC',
+                  'value': 2000,
+                  'currency': 'TRY'
+                });
+              }
+            }, 50);
+          }
+        }, { passive: true });
+      })();
     </script>
 
     <!-- Meta Pixel (Instagram Reklamları) - ID alındığında aktif edin -->
@@ -62,7 +97,7 @@
     -->
     
     <!-- Primary Meta Tags (fallback - React Helmet overrides per page) -->
-    <meta name="description" content="İstanbul'da doğum günü organizasyonu, palyaço, sihirbaz, bubble show ve kostümlü karakter kiralama. 10+ yıl deneyim, 5000+ etkinlik. ☎ 0534 930 67 99" />
+    <meta name="description" content="İstanbul'da doğum günü organizasyonu, palyaço, sihirbaz, bubble show ve kostümlü karakter kiralama. 10+ yıl deneyim, 5000+ etkinlik. ☎ 05307309009" />
     <meta name="keywords" content="etkinlik organizasyonu istanbul, çocuk doğum günü, palyaço kiralama istanbul, DJ kiralama, müzisyen kiralama, bubble show, kostümlü karakter, magic show, yüz boyama, erenköy etkinlik, kadıköy organizasyon" />
     <meta name="author" content="Best Event" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -119,17 +154,43 @@
     <link rel="prefetch" href="/iletisim" as="document">
     
     <!-- Preload critical images (hero section) - First slide for LCP optimization -->
-    <link rel="preload" as="image" href="/content/images/Anasayfa/siteanahero.webp" type="image/webp" fetchpriority="high" imagesrcset="/content/images/Anasayfa/siteanahero.webp 1920w" imagesizes="100vw">
+    <link rel="preload" as="image" href="/content/images/Anasayfa/siteanahero.webp" type="image/webp" fetchpriority="high" imagesrcset="/content/images/Anasayfa/siteanahero-640w.webp 640w, /content/images/Anasayfa/siteanahero-1024w.webp 1024w, /content/images/Anasayfa/siteanahero.webp 1920w" imagesizes="100vw">
+
+    <!-- Route-based hero image preload (for service landing pages - LCP optimization) -->
+    <script>
+      (function() {
+        var path = window.location.pathname;
+        var heroMap = {
+          '/organizasyonlar/palyaco-kiralama': '/content/images/palyaco/palyacoanaherogrupoyunlari',
+          '/organizasyonlar/sihirbaz-kiralama': '/content/images/sihirbaz/sihirbazanaherohero',
+          '/organizasyonlar/bubble-show': '/content/images/Bubble Show/bubbleshowanaherohero',
+          '/organizasyonlar/pamuk-seker': '/content/images/Pamuk Şeker ve Patlamış Mısır/pamukseker',
+          '/organizasyonlar/kostumlu-karakterler': '/content/images/Kostumlukarakterler/kostumluana'
+        };
+        var basePath = heroMap[path];
+        if (basePath) {
+          var link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'image';
+          link.fetchPriority = 'high';
+          link.type = 'image/webp';
+          link.href = basePath + '.webp';
+          link.imageSrcset = basePath + '-400w.webp 400w, ' + basePath + '-640w.webp 640w, ' + basePath + '-1024w.webp 1024w, ' + basePath + '.webp 1920w';
+          link.imageSizes = '100vw';
+          document.head.appendChild(link);
+        }
+      })();
+    </script>
 
     <!-- Fonts: @fontsource self-hosted kullanılıyor, Google Fonts kaldırıldı (render-blocking önleme) -->
     
     <!-- Inline Critical CSS (Above the Fold) - Optimized -->
     <style>
-      /* CSS Variables */
+      /* CSS Variables - Fallback fonts metric-matched for CLS fix */
       :root {
-        --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-        --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-        --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        --font-sans: 'Montserrat', 'Montserrat Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        --font-body: 'Inter', 'Inter Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        --font-display: 'Poppins', 'Poppins Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
         --primary: #9333ea;
         --secondary: #ec4899;
         --bg-dark: #050507;
@@ -221,21 +282,79 @@
     
     <title>İstanbul Etkinlik Organizasyonu | Doğum Günü Organizasyonu | Sihirbaz Palyaço Bubble Show Kiralama</title>
     
-    <!-- Schema.org JSON-LD - LocalBusiness -->
+    <!-- Schema.org JSON-LD - Organization (Entity SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://bestevent.com.tr/#organization",
+      "name": "Best Event",
+      "alternateName": "Best Event Organizasyon",
+      "url": "https://bestevent.com.tr",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://bestevent.com.tr/#logo",
+        "url": "https://bestevent.com.tr/logo.png",
+        "contentUrl": "https://bestevent.com.tr/logo.png",
+        "width": 512,
+        "height": 512,
+        "caption": "Best Event Logo"
+      },
+      "image": {"@id": "https://bestevent.com.tr/#logo"},
+      "sameAs": [
+        "https://www.instagram.com/besteventorganizasyon/",
+        "https://www.instagram.com/palyacogezegenii/",
+        "https://www.facebook.com/besteventorganizasyon",
+        "https://www.linkedin.com/company/besteventorganizasyon",
+        "https://g.co/kgs/bestevent"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "05307309009",
+          "contactType": "customer service",
+          "areaServed": "TR",
+          "availableLanguage": ["Turkish", "English"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "05307309009",
+          "contactType": "sales",
+          "areaServed": "TR",
+          "availableLanguage": ["Turkish"]
+        }
+      ],
+      "foundingDate": "2018",
+      "slogan": "Hayalinizdeki etkinligi gercege donusturuyoruz",
+      "knowsAbout": [
+        "Etkinlik Organizasyonu",
+        "Cocuk Dogum Gunu Organizasyonu",
+        "Palyaco Kiralama",
+        "Bubble Show",
+        "Sihirbaz Gosterisi",
+        "Kostumlu Karakter Kiralama",
+        "Kurumsal Etkinlik",
+        "Acilis Organizasyonu"
+      ]
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD - LocalBusiness (Best Event) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Best Event",
-      "description": "Profesyonel etkinlik organizasyon şirketi. Çocuk doğum günleri, kurumsal etkinlikler, müzik ve eğlence hizmetleri.",
-      "image": "https://bestevent.com.tr/content/images/slider/konfeti.jpg",
-      "telephone": "+905307309009",
+      "@id": "https://bestevent.com.tr/#localbusiness",
+      "name": "Best Event - Etkinlik Organizasyonu",
+      "description": "Profesyonel etkinlik organizasyon sirketi. Cocuk dogum gunleri, kurumsal etkinlikler, muzik ve eglence hizmetleri.",
+      "image": "https://bestevent.com.tr/content/images/slider/konfeti.webp",
+      "telephone": "05307309009",
       "email": "besteventturkiye@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Şemsettin Günaltay Caddesi No:175",
+        "streetAddress": "Semsettin Gunaltay Caddesi No:175",
         "addressLocality": "Erenköy",
-        "addressRegion": "İstanbul",
+        "addressRegion": "Istanbul",
         "postalCode": "34738",
         "addressCountry": "TR"
       },
@@ -245,39 +364,40 @@
         "longitude": 29.0301
       },
       "url": "https://bestevent.com.tr",
-      "logo": "https://bestevent.com.tr/logo.png",
+      "logo": {"@id": "https://bestevent.com.tr/#logo"},
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
         "opens": "09:00",
         "closes": "21:00"
       },
-      "priceRange": "₺₺"
+      "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "217",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "parentOrganization": {"@id": "https://bestevent.com.tr/#organization"}
     }
     </script>
-    
-    <!-- Schema.org JSON-LD - LocalBusiness (Palyaço Gezegeni) -->
+
+    <!-- Schema.org JSON-LD - LocalBusiness (Palyaco Gezegeni) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Palyaço Gezegeni",
-      "description": "6 yıldır profesyonel palyaço, animatör ve çocuk etkinlikleri hizmeti sunuyoruz. Doğum günleri, okul etkinlikleri ve özel organizasyonlar için deneyimli ekibimizle hizmetinizdeyiz.",
-      "telephone": "+905349306799",
+      "@id": "https://bestevent.com.tr/#palyacogezegeni",
+      "name": "Palyaco Gezegeni",
+      "description": "6 yildir profesyonel palyaco, animator ve cocuk etkinlikleri hizmeti sunuyoruz. Dogum gunleri, okul etkinlikleri ve ozel organizasyonlar icin deneyimli ekibimizle hizmetinizdeyiz.",
+      "telephone": "05307309009",
       "email": "galaksipalyaco@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Şemsettin Günaltay Cd. No:160",
+        "streetAddress": "Semsettin Gunaltay Cd. No:160",
         "addressLocality": "Erenköy",
-        "addressRegion": "İstanbul",
+        "addressRegion": "Istanbul",
         "postalCode": "34738",
         "addressCountry": "TR"
       },
@@ -294,35 +414,48 @@
       "url": "https://bestevent.com.tr",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
         "opens": "09:00",
         "closes": "21:00"
       },
-      "priceRange": "₺₺"
+      "priceRange": "$$",
+      "parentOrganization": {"@id": "https://bestevent.com.tr/#organization"}
     }
     </script>
-    
-    <!-- Schema.org JSON-LD - Service -->
+
+    <!-- Schema.org JSON-LD - WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://bestevent.com.tr/#website",
+      "url": "https://bestevent.com.tr",
+      "name": "Best Event",
+      "description": "Istanbul etkinlik organizasyonu, dogum gunu, palyaco, sihirbaz, bubble show kiralama",
+      "publisher": {"@id": "https://bestevent.com.tr/#organization"},
+      "inLanguage": "tr-TR",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://bestevent.com.tr/blog?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD - Service Catalog -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Service",
+      "@id": "https://bestevent.com.tr/#service",
       "serviceType": "Etkinlik Organizasyonu",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Best Event"
-      },
+      "provider": {"@id": "https://bestevent.com.tr/#localbusiness"},
       "areaServed": {
         "@type": "City",
-        "name": "İstanbul"
+        "name": "Istanbul"
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -332,15 +465,15 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Çocuk Doğum Günü Organizasyonu",
-              "description": "Palyaço, kostümlü karakterler, bubble show, magic show ile unutulmaz doğum günleri"
+              "name": "Cocuk Dogum Gunu Organizasyonu",
+              "description": "Palyaco, kostumlu karakterler, bubble show, magic show ile unutulmaz dogum gunleri"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "DJ ve Müzisyen Kiralama",
+              "name": "DJ ve Muzisyen Kiralama",
               "description": "Profesyonel DJ, trio, opera, saksafon, bando hizmetleri"
             }
           },
@@ -349,7 +482,31 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Kurumsal Etkinlik Organizasyonu",
-              "description": "Şirket partileri, lansman etkinlikleri, hostes hizmetleri"
+              "description": "Sirket partileri, lansman etkinlikleri, hostes hizmetleri"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Palyaco Kiralama",
+              "description": "Profesyonel palyaco ve animator hizmetleri, yuz boyama, balon showu"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bubble Show Gosterisi",
+              "description": "Profesyonel balon show ve bubble show gosterileri"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sihirbaz Gosterisi",
+              "description": "Yakin plan ve sahne sihirbazligi, illuzyon gosterisi"
             }
           }
         ]
@@ -358,6 +515,10 @@
     </script>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMX7ZV2T"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

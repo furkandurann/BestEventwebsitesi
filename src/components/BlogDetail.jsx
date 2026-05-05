@@ -228,6 +228,26 @@ const BlogDetail = ({
         </div>
       </section>
 
+      {/* Pillar Service Banner - Blog üst kısmında ana hizmete güçlü contextual link */}
+      {blog.pillarService && pillarServiceNames[blog.pillarService] && (
+        <div className="bg-gradient-to-r from-purple-50 to-indigo-50 border-b border-purple-100">
+          <div className="container mx-auto px-4 py-4">
+            <div className="max-w-4xl mx-auto flex items-center justify-between flex-wrap gap-3">
+              <p className="text-sm text-gray-700">
+                Bu yazı <Link to={blog.pillarService} className="font-semibold text-purple-700 hover:text-purple-900 underline underline-offset-2">{pillarServiceNames[blog.pillarService]} İstanbul</Link> hizmetimizle ilgilidir.
+              </p>
+              <Link
+                to={blog.pillarService}
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-purple-700 hover:text-purple-900 transition-colors"
+              >
+                Detaylı Bilgi ve Fiyat
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Blog Content */}
       <article className="py-16 bg-white">
         <div className="container mx-auto px-4">

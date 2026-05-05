@@ -13,6 +13,7 @@ import RelatedServices from '../../components/RelatedServices'
 import { generateSrcSet } from '../../utils/responsiveImage'
 import TrustSection from '../../components/TrustSection'
 import DeferredContentAccordion from '../../components/DeferredContentAccordion'
+import AuthorExpertise from '../../components/AuthorExpertise'
 
 const faqData = [
   {
@@ -438,6 +439,8 @@ const CostumedCharacters = () => {
         <RelatedServices currentService="kostumlu-karakterler" />
         <DistrictLinksGrid lpServiceSlug="palyaco-kiralama" serviceName="Kostümlü Karakter" />
         <RelatedBlogPosts servicePath="/organizasyonlar/kostumlu-karakterler" />
+
+        <AuthorExpertise serviceName="Kostümlü Karakter Kiralama" />
       </main>
     </>
   )

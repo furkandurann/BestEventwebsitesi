@@ -20,8 +20,14 @@ build/
 .AppleDouble
 .LSOverride
 
-# Thumbnails
-._*
+# Image backup directories
+**/orig_jpg/
+
+# Unused raw media files (web'de kullanılmıyor)
+*.MOV
+*.mov
+*.HEIC
+*.heic
 
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
@@ -99,3 +105,4 @@ firestore-debug.log
 # package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
+.chunk-backup

@@ -5,6 +5,8 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import { VitePWA } from 'vite-plugin-pwa'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
+const ENABLE_SERVICE_WORKER = process.env.VITE_ENABLE_SERVICE_WORKER === 'true'
+
 export default defineConfig({
   plugins: [
     react(),
@@ -85,8 +87,19 @@ export default defineConfig({
     
     // PWA Support
     VitePWA({
+      disable: !ENABLE_SERVICE_WORKER,
+      // Servis çalışanı varsayılan olarak kapalı.
+      // Üretimde PWA isterseniz VITE_ENABLE_SERVICE_WORKER=true ayarlayın.
+      injectRegister: ENABLE_SERVICE_WORKER ? 'auto' : false,
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'robots.txt'],
+      includeAssets: [
+        'favicon.ico',
+        'favicon-48.png',
+        'favicon-192.png',
+        'favicon-512.png',
+        'apple-touch-icon.png',
+        'robots.txt'
+      ],
       manifest: {
         name: 'Best Event - Etkinlik Organizasyonu',
         short_name: 'Best Event',
@@ -96,12 +109,12 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: '/assets/images/logos/logo-192.png',
+            src: '/favicon-192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/assets/images/logos/logo-512.png',
+            src: '/favicon-512.png',
             sizes: '512x512',
             type: 'image/png'
           }
@@ -110,28 +123,34 @@ export default defineConfig({
       workbox: {
         skipWaiting: true,
         clientsClaim: true,
+        cleanupOutdatedCaches: true,
+        // Sadece hashed asset'leri precache et (HTML dosyalari HARIC)
+        // HTML her zaman networkten alinir - stale SW cache onlenir
+        globPatterns: ['assets/**/*.{js,css,woff2}'],
+        navigateFallback: '/index.html',
         runtimeCaching: [
           {
-            // Images - Cache First Strategy
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|avif)$/,
-            handler: 'CacheFirst',
+            // HTML sayfalari - Network First (her zaman guncel versiyon)
+            urlPattern: ({request}) => request.mode === 'navigate',
+            handler: 'NetworkFirst',
             options: {
-              cacheName: 'images-cache',
+              cacheName: 'html-cache',
+              networkTimeoutSeconds: 3,
               expiration: {
-                maxEntries: 100, // Increased from 50
-                maxAgeSeconds: 60 * 60 * 24 * 90 // 90 days (increased from 30)
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 // 1 gun
               }
             }
           },
           {
-            // JS/CSS - Stale While Revalidate
-            urlPattern: /\.(?:js|css)$/,
+            // Images - StaleWhileRevalidate (cache + arka planda guncelle)
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|avif)$/,
             handler: 'StaleWhileRevalidate',
             options: {
-              cacheName: 'static-resources',
+              cacheName: 'images-cache',
               expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 7 // 7 days
+                maxEntries: 200,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
               }
             }
           },
@@ -177,6 +196,11 @@ export default defineConfig({
   },
   
   build: {
+    // Eski chunk dosyalarini KORU - dist/ temizleme
+    // Browser cache'indeki eski chunk hash'leri sunucuda da bulunmali
+    // yoksa SPA fallback index.html donuyor ve JS parse hatasi veriyor
+    emptyOutDir: false,
+
     // Chunk splitting stratejisi (daha granüler)
     rollupOptions: {
       output: {
@@ -243,9 +267,24 @@ export default defineConfig({
             if (match) return `localContent-${match[1]}`
           }
 
+          // localPages.js - sadece districts/services metadata (küçük)
+          if (id.includes('/src/data/localPages') && !id.includes('localContent-')) {
+            return 'data-local-meta'
+          }
+
           // Maskot ve karakter data dosyaları (ayrı chunk)
           if (id.includes('/src/data/mascotsData') || id.includes('/src/data/costumedCharactersData')) {
             return 'data-characters'
+          }
+
+          // Blog posts data (büyük - ayrı chunk)
+          if (id.includes('/src/data/blogPosts')) {
+            return 'data-blog'
+          }
+
+          // Hero slides data
+          if (id.includes('/src/data/heroSlides') || id.includes('/src/data/istanbulEtkinlikData')) {
+            return 'data-home'
           }
           
           // Components (büyük component'ler ayrı)

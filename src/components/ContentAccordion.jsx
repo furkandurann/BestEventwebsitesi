@@ -58,7 +58,7 @@ const ContentAccordion = ({ sections = [], title = 'Detayli Bilgi', initialOpenI
                   className="overflow-hidden"
                 >
                   <div className="px-5 md:px-6 pb-5 md:pb-6">
-                    <div className="text-white/70 text-sm md:text-base leading-relaxed space-y-4 border-t border-white/5 pt-4">
+                    <div className="text-white text-sm md:text-base leading-relaxed space-y-4 border-t border-white/5 pt-4">
                       {section.content.split('\n\n').map((paragraph, pIdx) => (
                         <p key={pIdx}>{paragraph}</p>
                       ))}
@@ -67,7 +67,7 @@ const ContentAccordion = ({ sections = [], title = 'Detayli Bilgi', initialOpenI
                     {section.tips && section.tips.length > 0 && (
                       <ul className="mt-4 space-y-2">
                         {section.tips.map((tip, tIdx) => (
-                          <li key={tIdx} className="flex items-start gap-2 text-white/60 text-sm">
+                          <li key={tIdx} className="flex items-start gap-2 text-white text-sm">
                             <span className="text-purple-400 mt-0.5">&#10003;</span>
                             <span>{tip}</span>
                           </li>

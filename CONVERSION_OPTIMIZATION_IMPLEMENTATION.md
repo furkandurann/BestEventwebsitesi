@@ -264,7 +264,7 @@ import ExitIntentPopup from '../../components/ExitIntentPopup'
 
 ## 📞 WhatsApp Number
 
-**Current:** `905307309009`
+**Current:** `05307309009`
 
 All forms and popups are configured to send messages to this number.
 

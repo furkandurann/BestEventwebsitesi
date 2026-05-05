@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useParams } from 'react-router-dom'
 import { Suspense, lazy, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -8,173 +8,203 @@ import Breadcrumb from './components/Breadcrumb'
 import ThemeProvider from './components/ThemeProvider'
 import ErrorBoundary from './components/ErrorBoundary'
 import useWebVitals, { logWebVitals } from './hooks/useWebVitals'
-import {
-  clearChunkRecoveryFlag,
-  isRecoverableChunkError,
-  recoverFromChunkErrorOnce,
-} from './utils/chunkRecovery'
+
+// Chunk import retry - hata verirse cache-bust ile 1 kez daha dener
+function retryImport(fn) {
+  return lazy(() => fn().catch(() =>
+    // İlk deneme başarısız - ?t=timestamp ile cache bypass yapıp tekrar dene
+    new Promise((resolve) => {
+      // Kısa bekleme sonrası tekrar dene (network gecikmesi için)
+      setTimeout(() => resolve(fn()), 100)
+    })
+  ))
+}
 
 // Lazy-loaded pages (code splitting)
-const Home = lazy(() => import('./pages/Home'))
-const About = lazy(() => import('./pages/About'))
-const Services = lazy(() => import('./pages/Services'))
-const Gallery = lazy(() => import('./pages/Gallery'))
-const Contact = lazy(() => import('./pages/Contact'))
-const Team = lazy(() => import('./pages/Team'))
-const ServiceAreas = lazy(() => import('./pages/ServiceAreas'))
-const JobsHub = lazy(() => import('./pages/jobs/JobsHub'))
-const JobListingPage = lazy(() => import('./pages/jobs/JobListingPage'))
+const Home = retryImport(() => import('./pages/Home'))
+const About = retryImport(() => import('./pages/About'))
+const Services = retryImport(() => import('./pages/Services'))
+const Gallery = retryImport(() => import('./pages/Gallery'))
+const Contact = retryImport(() => import('./pages/Contact'))
+const Team = retryImport(() => import('./pages/Team'))
+const ServiceAreas = retryImport(() => import('./pages/ServiceAreas'))
+const JobsHub = retryImport(() => import('./pages/jobs/JobsHub'))
+const JobListingPage = retryImport(() => import('./pages/jobs/JobListingPage'))
 
 // Service Pages (lazy)
-const ChildEvents = lazy(() => import('./pages/services/ChildEvents'))
-const ClownRental = lazy(() => import('./pages/services/ClownRental'))
-const FacePainting = lazy(() => import('./pages/services/FacePainting'))
-const ProfessionalMakeup = lazy(() => import('./pages/services/ProfessionalMakeup'))
-const MagicShow = lazy(() => import('./pages/services/MagicShow'))
-const BubbleShow = lazy(() => import('./pages/services/BubbleShow'))
-const CostumedCharacters = lazy(() => import('./pages/services/CostumedCharacters'))
-const CharacterDetail = lazy(() => import('./pages/services/CharacterDetail'))
-const ConceptBirthday = lazy(() => import('./pages/services/ConceptBirthday'))
-const ConceptDetail = lazy(() => import('./pages/services/ConceptDetail'))
-const FullPackageOrganization = lazy(() => import('./pages/services/FullPackageOrganization'))
-const CottonCandyCart = lazy(() => import('./pages/services/CottonCandyCart'))
-const ServiceDetailPage = lazy(() => import('./pages/services/ServiceDetailPage'))
+const ChildEvents = retryImport(() => import('./pages/services/ChildEvents'))
+const ClownRental = retryImport(() => import('./pages/services/ClownRental'))
+const FacePainting = retryImport(() => import('./pages/services/FacePainting'))
+const ProfessionalMakeup = retryImport(() => import('./pages/services/ProfessionalMakeup'))
+const MagicShow = retryImport(() => import('./pages/services/MagicShow'))
+const BubbleShow = retryImport(() => import('./pages/services/BubbleShow'))
+const CostumedCharacters = retryImport(() => import('./pages/services/CostumedCharacters'))
+const CharacterDetail = retryImport(() => import('./pages/services/CharacterDetail'))
+const ConceptBirthday = retryImport(() => import('./pages/services/ConceptBirthday'))
+const ConceptDetail = retryImport(() => import('./pages/services/ConceptDetail'))
+const FullPackageOrganization = retryImport(() => import('./pages/services/FullPackageOrganization'))
+const CottonCandyCart = retryImport(() => import('./pages/services/CottonCandyCart'))
+const ServiceDetailPage = retryImport(() => import('./pages/services/ServiceDetailPage'))
 
 // Dans Etkinlikleri (lazy)
-const DanceEvents = lazy(() => import('./pages/services/DanceEvents'))
+const DanceEvents = retryImport(() => import('./pages/services/DanceEvents'))
 
 // Müzik Etkinlikleri (lazy)
-const MusicEvents = lazy(() => import('./pages/services/MusicEvents'))
-const OpeningOrganization = lazy(() => import('./pages/services/OpeningOrganization'))
+const MusicEvents = retryImport(() => import('./pages/services/MusicEvents'))
+const OpeningOrganization = retryImport(() => import('./pages/services/OpeningOrganization'))
 
 // Yeni Çocuk Etkinlikleri (lazy)
-const Karaoke = lazy(() => import('./pages/services/Karaoke'))
-const PlanetEducation = lazy(() => import('./pages/services/PlanetEducation'))
-const VRExperience = lazy(() => import('./pages/services/VRExperience'))
-const MascotRental = lazy(() => import('./pages/services/MascotRental'))
-const GirlsMascots = lazy(() => import('./pages/services/GirlsMascots'))
-const BoysMascots = lazy(() => import('./pages/services/BoysMascots'))
-const MascotDetail = lazy(() => import('./pages/services/MascotDetail'))
-const KidsTableChairs = lazy(() => import('./pages/services/KidsTableChairs'))
-const TransformersRobot = lazy(() => import('./pages/services/TransformersRobot'))
-const InflatableParks = lazy(() => import('./pages/services/InflatableParks'))
-const Juggler = lazy(() => import('./pages/services/Juggler'))
-const WorkshopActivities = lazy(() => import('./pages/services/WorkshopActivities'))
-const ChocolateFountain = lazy(() => import('./pages/services/ChocolateFountain'))
-const FireShow = lazy(() => import('./pages/services/FireShow'))
-const StiltWalkers = lazy(() => import('./pages/services/StiltWalkers'))
-const FullBirthdayOrganization = lazy(() => import('./pages/organizations/FullBirthdayOrganization'))
-const SurvivorParkuru = lazy(() => import('./pages/services/SurvivorParkuru'))
+const Karaoke = retryImport(() => import('./pages/services/Karaoke'))
+const PlanetEducation = retryImport(() => import('./pages/services/PlanetEducation'))
+const VRExperience = retryImport(() => import('./pages/services/VRExperience'))
+const MascotRental = retryImport(() => import('./pages/services/MascotRental'))
+const GirlsMascots = retryImport(() => import('./pages/services/GirlsMascots'))
+const BoysMascots = retryImport(() => import('./pages/services/BoysMascots'))
+const MascotDetail = retryImport(() => import('./pages/services/MascotDetail'))
+const KidsTableChairs = retryImport(() => import('./pages/services/KidsTableChairs'))
+const TransformersRobot = retryImport(() => import('./pages/services/TransformersRobot'))
+const InflatableParks = retryImport(() => import('./pages/services/InflatableParks'))
+const Juggler = retryImport(() => import('./pages/services/Juggler'))
+const WorkshopActivities = retryImport(() => import('./pages/services/WorkshopActivities'))
+const ChocolateFountain = retryImport(() => import('./pages/services/ChocolateFountain'))
+const FireShow = retryImport(() => import('./pages/services/FireShow'))
+const StiltWalkers = retryImport(() => import('./pages/services/StiltWalkers'))
+const FullBirthdayOrganization = retryImport(() => import('./pages/organizations/FullBirthdayOrganization'))
+const SurvivorParkuru = retryImport(() => import('./pages/services/SurvivorParkuru'))
 
 // Noel Baba Kiralama (lazy)
-const SantaClausRental = lazy(() => import('./pages/organizations/SantaClausRental'))
+const SantaClausRental = retryImport(() => import('./pages/organizations/SantaClausRental'))
 
 // Organik Pastalar (lazy)
-const OrganicCakes = lazy(() => import('./pages/OrganicCakes'))
+const OrganicCakes = retryImport(() => import('./pages/OrganicCakes'))
 
 // Gizlilik & Kullanım Koşulları (lazy)
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
-const TermsOfUse = lazy(() => import('./pages/TermsOfUse'))
+const PrivacyPolicy = retryImport(() => import('./pages/PrivacyPolicy'))
+const TermsOfUse = retryImport(() => import('./pages/TermsOfUse'))
 
 // Blog (lazy)
-const Blog = lazy(() => import('./pages/Blog'))
+const Blog = retryImport(() => import('./pages/Blog'))
 
 // Blog Details (lazy) - Mevcut 6 blog
-const AcilisOrganizasyonu = lazy(() => import('./pages/blog/AcilisOrganizasyonu'))
-const PalyacoKiralama = lazy(() => import('./pages/blog/PalyacoKiralama'))
-const SihirbazGosterisi = lazy(() => import('./pages/blog/SihirbazGosterisi'))
-const BubbleShowGosterisi = lazy(() => import('./pages/blog/BubbleShowGosterisi'))
-const IstanbulEtkinlikRehberi = lazy(() => import('./pages/blog/IstanbulEtkinlikRehberi'))
-const PalyacoGezegeni = lazy(() => import('./pages/blog/PalyacoGezegeni'))
+const AcilisOrganizasyonu = retryImport(() => import('./pages/blog/AcilisOrganizasyonu'))
+const PalyacoKiralama = retryImport(() => import('./pages/blog/PalyacoKiralama'))
+const SihirbazGosterisi = retryImport(() => import('./pages/blog/SihirbazGosterisi'))
+const BubbleShowGosterisi = retryImport(() => import('./pages/blog/BubbleShowGosterisi'))
+const IstanbulEtkinlikRehberi = retryImport(() => import('./pages/blog/IstanbulEtkinlikRehberi'))
+const PalyacoGezegeni = retryImport(() => import('./pages/blog/PalyacoGezegeni'))
 
 // Blog Details (lazy) - 14 yeni blog yazısı
-const PalyacoKizKulesi = lazy(() => import('./pages/blog/PalyacoKizKulesi'))
-const PalyacoDogumGunuRehberi = lazy(() => import('./pages/blog/PalyacoDogumGunuRehberi'))
-const SihirbazGokturkAtCiftligi = lazy(() => import('./pages/blog/SihirbazGokturkAtCiftligi'))
-const SihirbazKiralamaRehberi = lazy(() => import('./pages/blog/SihirbazKiralamaRehberi'))
-const BubbleShowSuHarcama = lazy(() => import('./pages/blog/BubbleShowSuHarcama'))
-const BubbleShowKiralamaRehberi = lazy(() => import('./pages/blog/BubbleShowKiralamaRehberi'))
-const DogumGunuOrganizasyonuRehberi = lazy(() => import('./pages/blog/DogumGunuOrganizasyonuRehberi'))
-const DogumGunuMekanSecimi = lazy(() => import('./pages/blog/DogumGunuMekanSecimi'))
-const PamukSekerEtkinlikRehberi = lazy(() => import('./pages/blog/PamukSekerEtkinlikRehberi'))
-const PamukSekerDogumGunu = lazy(() => import('./pages/blog/PamukSekerDogumGunu'))
-const KostumluKarakterRehberi = lazy(() => import('./pages/blog/KostumluKarakterRehberi'))
-const KostumluKarakterDogumGunu = lazy(() => import('./pages/blog/KostumluKarakterDogumGunu'))
-const YuzBoyamaRehberi = lazy(() => import('./pages/blog/YuzBoyamaRehberi'))
-const YuzBoyamaDogumGunu = lazy(() => import('./pages/blog/YuzBoyamaDogumGunu'))
-const MaltepePalyacoKiralama = lazy(() => import('./pages/blog/MaltepePalyacoKiralama'))
-const KartalPalyacoKiralama = lazy(() => import('./pages/blog/KartalPalyacoKiralama'))
-const MaltepeSihirbazKiralama = lazy(() => import('./pages/blog/MaltepeSihirbazKiralama'))
-const KartalSihirbazKiralama = lazy(() => import('./pages/blog/KartalSihirbazKiralama'))
-const KadikoyBesiktasAtasehirBubbleShowKiralama = lazy(() => import('./pages/blog/KadikoyBesiktasAtasehirBubbleShowKiralama'))
-const SisliPalyacoKiralama = lazy(() => import('./pages/blog/SisliPalyacoKiralama'))
-const BakirkoyPalyacoKiralama = lazy(() => import('./pages/blog/BakirkoyPalyacoKiralama'))
-const BesiktasAtasehirPamukSekerArabasiKiralama = lazy(() => import('./pages/blog/BesiktasAtasehirPamukSekerArabasiKiralama'))
-const UmraniyeBeylikduzuBakirkoySariyerDogumGunuOrganizasyonu = lazy(() => import('./pages/blog/UmraniyeBeylikduzuBakirkoySariyerDogumGunuOrganizasyonu'))
+const PalyacoKizKulesi = retryImport(() => import('./pages/blog/PalyacoKizKulesi'))
+const PalyacoDogumGunuRehberi = retryImport(() => import('./pages/blog/PalyacoDogumGunuRehberi'))
+const SihirbazGokturkAtCiftligi = retryImport(() => import('./pages/blog/SihirbazGokturkAtCiftligi'))
+const SihirbazKiralamaRehberi = retryImport(() => import('./pages/blog/SihirbazKiralamaRehberi'))
+const BubbleShowSuHarcama = retryImport(() => import('./pages/blog/BubbleShowSuHarcama'))
+const BubbleShowKiralamaRehberi = retryImport(() => import('./pages/blog/BubbleShowKiralamaRehberi'))
+const DogumGunuOrganizasyonuRehberi = retryImport(() => import('./pages/blog/DogumGunuOrganizasyonuRehberi'))
+const DogumGunuMekanSecimi = retryImport(() => import('./pages/blog/DogumGunuMekanSecimi'))
+const PamukSekerEtkinlikRehberi = retryImport(() => import('./pages/blog/PamukSekerEtkinlikRehberi'))
+const PamukSekerDogumGunu = retryImport(() => import('./pages/blog/PamukSekerDogumGunu'))
+const KostumluKarakterRehberi = retryImport(() => import('./pages/blog/KostumluKarakterRehberi'))
+const KostumluKarakterDogumGunu = retryImport(() => import('./pages/blog/KostumluKarakterDogumGunu'))
+const YuzBoyamaRehberi = retryImport(() => import('./pages/blog/YuzBoyamaRehberi'))
+const YuzBoyamaDogumGunu = retryImport(() => import('./pages/blog/YuzBoyamaDogumGunu'))
+const MaltepePalyacoKiralama = retryImport(() => import('./pages/blog/MaltepePalyacoKiralama'))
+const KartalPalyacoKiralama = retryImport(() => import('./pages/blog/KartalPalyacoKiralama'))
+const MaltepeSihirbazKiralama = retryImport(() => import('./pages/blog/MaltepeSihirbazKiralama'))
+const KartalSihirbazKiralama = retryImport(() => import('./pages/blog/KartalSihirbazKiralama'))
+const KadikoyBesiktasAtasehirBubbleShowKiralama = retryImport(() => import('./pages/blog/KadikoyBesiktasAtasehirBubbleShowKiralama'))
+const SisliPalyacoKiralama = retryImport(() => import('./pages/blog/SisliPalyacoKiralama'))
+const BakirkoyPalyacoKiralama = retryImport(() => import('./pages/blog/BakirkoyPalyacoKiralama'))
+const BesiktasAtasehirPamukSekerArabasiKiralama = retryImport(() => import('./pages/blog/BesiktasAtasehirPamukSekerArabasiKiralama'))
+const UmraniyeBeylikduzuBakirkoySariyerDogumGunuOrganizasyonu = retryImport(() => import('./pages/blog/UmraniyeBeylikduzuBakirkoySariyerDogumGunuOrganizasyonu'))
 // Blog Details (lazy) - 15 yeni karakter & maskot blogları
-const ElsaKiralamaDogumGunu = lazy(() => import('./pages/blog/ElsaKiralamaDogumGunu'))
-const SpidermanKiralamaCocukPartisi = lazy(() => import('./pages/blog/SpidermanKiralamaCocukPartisi'))
-const BatmanKiralamaOrganizasyon = lazy(() => import('./pages/blog/BatmanKiralamaOrganizasyon'))
-const MinnieMouseMickeyMouseParti = lazy(() => import('./pages/blog/MinnieMouseMickeyMouseParti'))
-const PamukPrensesTemaPart = lazy(() => import('./pages/blog/PamukPrensesTemaPart'))
-const PawPatrolCocukEtkinligi = lazy(() => import('./pages/blog/PawPatrolCocukEtkinligi'))
-const PikachuPokemonParti = lazy(() => import('./pages/blog/PikachuPokemonParti'))
-const UnicornTemaliDogumGunu = lazy(() => import('./pages/blog/UnicornTemaliDogumGunu'))
-const HelloKittyMaskotKiralama = lazy(() => import('./pages/blog/HelloKittyMaskotKiralama'))
-const SonicMaskotParti = lazy(() => import('./pages/blog/SonicMaskotParti'))
-const LolBebekTemaParti = lazy(() => import('./pages/blog/LolBebekTemaParti'))
-const SuperMarioCocukOrganizasyonu = lazy(() => import('./pages/blog/SuperMarioCocukOrganizasyonu'))
-const MasaKocaAyiEtkinlik = lazy(() => import('./pages/blog/MasaKocaAyiEtkinlik'))
-const NoelBabaYilbasiOrganizasyonu = lazy(() => import('./pages/blog/NoelBabaYilbasiOrganizasyonu'))
-const DenizKiziTemaParti = lazy(() => import('./pages/blog/DenizKiziTemaParti'))
+const ElsaKiralamaDogumGunu = retryImport(() => import('./pages/blog/ElsaKiralamaDogumGunu'))
+const SpidermanKiralamaCocukPartisi = retryImport(() => import('./pages/blog/SpidermanKiralamaCocukPartisi'))
+const BatmanKiralamaOrganizasyon = retryImport(() => import('./pages/blog/BatmanKiralamaOrganizasyon'))
+const MinnieMouseMickeyMouseParti = retryImport(() => import('./pages/blog/MinnieMouseMickeyMouseParti'))
+const PamukPrensesTemaPart = retryImport(() => import('./pages/blog/PamukPrensesTemaPart'))
+const PawPatrolCocukEtkinligi = retryImport(() => import('./pages/blog/PawPatrolCocukEtkinligi'))
+const PikachuPokemonParti = retryImport(() => import('./pages/blog/PikachuPokemonParti'))
+const UnicornTemaliDogumGunu = retryImport(() => import('./pages/blog/UnicornTemaliDogumGunu'))
+const HelloKittyMaskotKiralama = retryImport(() => import('./pages/blog/HelloKittyMaskotKiralama'))
+const SonicMaskotParti = retryImport(() => import('./pages/blog/SonicMaskotParti'))
+const LolBebekTemaParti = retryImport(() => import('./pages/blog/LolBebekTemaParti'))
+const SuperMarioCocukOrganizasyonu = retryImport(() => import('./pages/blog/SuperMarioCocukOrganizasyonu'))
+const MasaKocaAyiEtkinlik = retryImport(() => import('./pages/blog/MasaKocaAyiEtkinlik'))
+const NoelBabaYilbasiOrganizasyonu = retryImport(() => import('./pages/blog/NoelBabaYilbasiOrganizasyonu'))
+const DenizKiziTemaParti = retryImport(() => import('./pages/blog/DenizKiziTemaParti'))
 
 // Blog Details (lazy) - 20 yeni SEO blog yazısı
-const EvdeDogumGunuOrganizasyonu = lazy(() => import('./pages/blog/EvdeDogumGunuOrganizasyonu'))
-const YasaGoreDogumGunuKonsepti = lazy(() => import('./pages/blog/YasaGoreDogumGunuKonsepti'))
-const SiteIcindeDogumGunu12Kritik = lazy(() => import('./pages/blog/SiteIcindeDogumGunu12Kritik'))
-const PalyacoMuSihirbazMi = lazy(() => import('./pages/blog/PalyacoMuSihirbazMi'))
-const DogumGunuOrganizasyonu10Hata = lazy(() => import('./pages/blog/DogumGunuOrganizasyonu10Hata'))
-const ApartmanBahcesindeDogumGunu = lazy(() => import('./pages/blog/ApartmanBahcesindeDogumGunu'))
-const CocukDogumGunuGuvenlikHijyen = lazy(() => import('./pages/blog/CocukDogumGunuGuvenlikHijyen'))
-const MiniDiskoMuBubbleShowMu = lazy(() => import('./pages/blog/MiniDiskoMuBubbleShowMu'))
-const YirmiFarkliDogumGunuKonsepti = lazy(() => import('./pages/blog/YirmiFarkliDogumGunuKonsepti'))
-const EvdeDogumGunuMaliyeti = lazy(() => import('./pages/blog/EvdeDogumGunuMaliyeti'))
-const AnimasyonEkibiSecimi = lazy(() => import('./pages/blog/AnimasyonEkibiSecimi'))
-const IstanbulPopulerCocukPartiTemalar = lazy(() => import('./pages/blog/IstanbulPopulerCocukPartiTemalar'))
-const FotografciGerekliMi = lazy(() => import('./pages/blog/FotografciGerekliMi'))
-const AcikAlanKapaliMekan = lazy(() => import('./pages/blog/AcikAlanKapaliMekan'))
-const KurumsalCocukFestivalleri = lazy(() => import('./pages/blog/KurumsalCocukFestivalleri'))
-const CocukPartisi2026Trendleri = lazy(() => import('./pages/blog/CocukPartisi2026Trendleri'))
-const AvrupaYakasiUlasimRehberi = lazy(() => import('./pages/blog/AvrupaYakasiUlasimRehberi'))
-const AnadoluYakasiUlasimRehberi = lazy(() => import('./pages/blog/AnadoluYakasiUlasimRehberi'))
-const TopluTasimaEtkinlikUlasim = lazy(() => import('./pages/blog/TopluTasimaEtkinlikUlasim'))
-const MarmarayMetroEtkinlikErisim = lazy(() => import('./pages/blog/MarmarayMetroEtkinlikErisim'))
+const EvdeDogumGunuOrganizasyonu = retryImport(() => import('./pages/blog/EvdeDogumGunuOrganizasyonu'))
+const YasaGoreDogumGunuKonsepti = retryImport(() => import('./pages/blog/YasaGoreDogumGunuKonsepti'))
+const SiteIcindeDogumGunu12Kritik = retryImport(() => import('./pages/blog/SiteIcindeDogumGunu12Kritik'))
+const PalyacoMuSihirbazMi = retryImport(() => import('./pages/blog/PalyacoMuSihirbazMi'))
+const DogumGunuOrganizasyonu10Hata = retryImport(() => import('./pages/blog/DogumGunuOrganizasyonu10Hata'))
+const ApartmanBahcesindeDogumGunu = retryImport(() => import('./pages/blog/ApartmanBahcesindeDogumGunu'))
+const CocukDogumGunuGuvenlikHijyen = retryImport(() => import('./pages/blog/CocukDogumGunuGuvenlikHijyen'))
+const MiniDiskoMuBubbleShowMu = retryImport(() => import('./pages/blog/MiniDiskoMuBubbleShowMu'))
+const YirmiFarkliDogumGunuKonsepti = retryImport(() => import('./pages/blog/YirmiFarkliDogumGunuKonsepti'))
+const EvdeDogumGunuMaliyeti = retryImport(() => import('./pages/blog/EvdeDogumGunuMaliyeti'))
+const AnimasyonEkibiSecimi = retryImport(() => import('./pages/blog/AnimasyonEkibiSecimi'))
+const IstanbulPopulerCocukPartiTemalar = retryImport(() => import('./pages/blog/IstanbulPopulerCocukPartiTemalar'))
+const FotografciGerekliMi = retryImport(() => import('./pages/blog/FotografciGerekliMi'))
+const AcikAlanKapaliMekan = retryImport(() => import('./pages/blog/AcikAlanKapaliMekan'))
+const KurumsalCocukFestivalleri = retryImport(() => import('./pages/blog/KurumsalCocukFestivalleri'))
+const CocukPartisi2026Trendleri = retryImport(() => import('./pages/blog/CocukPartisi2026Trendleri'))
+const AvrupaYakasiUlasimRehberi = retryImport(() => import('./pages/blog/AvrupaYakasiUlasimRehberi'))
+const AnadoluYakasiUlasimRehberi = retryImport(() => import('./pages/blog/AnadoluYakasiUlasimRehberi'))
+const TopluTasimaEtkinlikUlasim = retryImport(() => import('./pages/blog/TopluTasimaEtkinlikUlasim'))
+const MarmarayMetroEtkinlikErisim = retryImport(() => import('./pages/blog/MarmarayMetroEtkinlikErisim'))
 
 // Blog Details (lazy) - 5 Ramazan etkinlik blogları
-const MaltepeRamazanEtkinligi = lazy(() => import('./pages/blog/MaltepeRamazanEtkinligi'))
-const EyupsultanRamazanEtkinligi = lazy(() => import('./pages/blog/EyupsultanRamazanEtkinligi'))
-const KartalRamazanEtkinligi = lazy(() => import('./pages/blog/KartalRamazanEtkinligi'))
-const UskudarRamazanEtkinligi = lazy(() => import('./pages/blog/UskudarRamazanEtkinligi'))
-const IstanbulRamazanCocukEtkinlikleri = lazy(() => import('./pages/blog/IstanbulRamazanCocukEtkinlikleri'))
+const MaltepeRamazanEtkinligi = retryImport(() => import('./pages/blog/MaltepeRamazanEtkinligi'))
+const EyupsultanRamazanEtkinligi = retryImport(() => import('./pages/blog/EyupsultanRamazanEtkinligi'))
+const KartalRamazanEtkinligi = retryImport(() => import('./pages/blog/KartalRamazanEtkinligi'))
+const UskudarRamazanEtkinligi = retryImport(() => import('./pages/blog/UskudarRamazanEtkinligi'))
+const IstanbulRamazanCocukEtkinlikleri = retryImport(() => import('./pages/blog/IstanbulRamazanCocukEtkinlikleri'))
+
+// Blog Details (lazy) - 6 Doğum Günü özel sayfaları
+const DogumGunuPalyacosu = retryImport(() => import('./pages/blog/DogumGunuPalyacosu'))
+const DogumGunuSihirbazi = retryImport(() => import('./pages/blog/DogumGunuSihirbazi'))
+const DogumGunuBubbleShow = retryImport(() => import('./pages/blog/DogumGunuBubbleShow'))
+const DogumGunuPamukSeker = retryImport(() => import('./pages/blog/DogumGunuPamukSeker'))
+const DogumGunuAnimatoru = retryImport(() => import('./pages/blog/DogumGunuAnimatoru'))
+const DogumGunuOrganizasyonuRehber2026 = retryImport(() => import('./pages/blog/DogumGunuOrganizasyonuRehber2026'))
 
 // Dynamic Blog Post (sections verisi olan bloglar için catch-all)
-const DynamicBlogPost = lazy(() => import('./pages/blog/DynamicBlogPost'))
+const DynamicBlogPost = retryImport(() => import('./pages/blog/DynamicBlogPost'))
 
 // Vaka Analizi (Case Studies)
-const CaseStudies = lazy(() => import('./pages/CaseStudies'))
-const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'))
+const CaseStudies = retryImport(() => import('./pages/CaseStudies'))
+const CaseStudyDetail = retryImport(() => import('./pages/CaseStudyDetail'))
 
 // Local Landing Pages (Semt bazlı hizmet sayfaları - Programmatic SEO)
-const LocalLandingPage = lazy(() => import('./pages/local/LocalLandingPage'))
+const LocalLandingPage = retryImport(() => import('./pages/local/LocalLandingPage'))
 
 // Not: Eski service alias'lı district URL'leri LocalLandingPage içinde normalize ediliyor.
 
 // 404 Page (lazy)
-const NotFound = lazy(() => import('./pages/NotFound'))
+const NotFound = retryImport(() => import('./pages/NotFound'))
+
+const normalizeDistrictSlug = (value) => String(value || '')
+  .toLowerCase()
+  .trim()
+  .normalize('NFKD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9-]/g, '')
+
+const LocalLandingAliasRedirect = ({ serviceSlug }) => {
+  const { district } = useParams()
+  const normalizedDistrict = normalizeDistrictSlug(district)
+
+  if (!normalizedDistrict) {
+    return <Navigate to="/404" replace />
+  }
+
+  return <Navigate to={`/organizasyonlar/${serviceSlug}/${normalizedDistrict}`} replace />
+}
 
 function App() {
-  const location = useLocation()
-
   // Global click tracking - tum WhatsApp ve telefon linklerini otomatik takip eder
   useEffect(() => {
     let cleanup = null
@@ -187,39 +217,6 @@ function App() {
       if (typeof cleanup === 'function') {
         cleanup()
       }
-    }
-  }, [])
-
-  useEffect(() => {
-    const timerId = window.setTimeout(() => {
-      clearChunkRecoveryFlag()
-    }, 15000)
-
-    return () => {
-      window.clearTimeout(timerId)
-    }
-  }, [location.pathname])
-
-  useEffect(() => {
-    const handleRuntimeChunkError = (event) => {
-      const candidate =
-        event?.error ||
-        event?.reason ||
-        event?.message ||
-        event?.target?.src ||
-        event?.target?.href
-
-      if (isRecoverableChunkError(candidate)) {
-        recoverFromChunkErrorOnce()
-      }
-    }
-
-    window.addEventListener('error', handleRuntimeChunkError)
-    window.addEventListener('unhandledrejection', handleRuntimeChunkError)
-
-    return () => {
-      window.removeEventListener('error', handleRuntimeChunkError)
-      window.removeEventListener('unhandledrejection', handleRuntimeChunkError)
     }
   }, [])
 
@@ -348,6 +345,14 @@ function App() {
         <Route path="/blog/uskudar-ramazan-palyaco-sihirbaz" element={<UskudarRamazanEtkinligi />} />
         <Route path="/blog/istanbul-ramazan-cocuk-etkinlikleri" element={<IstanbulRamazanCocukEtkinlikleri />} />
 
+        {/* Doğum Günü Özel Blog Sayfaları (6 adet - Trust Signals + Custom UX) */}
+        <Route path="/blog/dogum-gunu-palyacosu" element={<DogumGunuPalyacosu />} />
+        <Route path="/blog/dogum-gunu-sihirbazi" element={<DogumGunuSihirbazi />} />
+        <Route path="/blog/dogum-gunu-bubble-show" element={<DogumGunuBubbleShow />} />
+        <Route path="/blog/dogum-gunu-pamuk-seker" element={<DogumGunuPamukSeker />} />
+        <Route path="/blog/dogum-gunu-animatoru" element={<DogumGunuAnimatoru />} />
+        <Route path="/blog/dogum-gunu-organizasyonu-2026-rehberi" element={<DogumGunuOrganizasyonuRehber2026 />} />
+
         {/* Dynamic Blog Posts - sections verisi olan tüm bloglar için catch-all */}
         <Route path="/blog/:slug" element={<DynamicBlogPost />} />
 
@@ -403,11 +408,11 @@ function App() {
         <Route path="/organizasyonlar/pamuk-seker-arabasi-kiralama" element={<Navigate to="/organizasyonlar/pamuk-seker" replace />} />
         <Route path="/organizasyonlar/dansci-kiralama" element={<Navigate to="/organizasyonlar/cocuk-etkinlikleri" replace />} />
         <Route path="/organizasyonlar/hostes-kiralama" element={<Navigate to="/organizasyonlar/cocuk-etkinlikleri" replace />} />
-        <Route path="/organizasyonlar/profesyonel-yuz-boyama/:district" element={<LocalLandingPage />} />
-        <Route path="/organizasyonlar/profesyonel-makyaj/:district" element={<LocalLandingPage />} />
-        <Route path="/organizasyonlar/bubble-show-kiralama/:district" element={<LocalLandingPage />} />
-        <Route path="/organizasyonlar/sihirbaz-kiralama/:district" element={<LocalLandingPage />} />
-        <Route path="/organizasyonlar/pamuk-seker-arabasi-kiralama/:district" element={<LocalLandingPage />} />
+        <Route path="/organizasyonlar/profesyonel-yuz-boyama/:district" element={<LocalLandingAliasRedirect serviceSlug="yuz-boyama" />} />
+        <Route path="/organizasyonlar/profesyonel-makyaj/:district" element={<LocalLandingAliasRedirect serviceSlug="yuz-boyama" />} />
+        <Route path="/organizasyonlar/bubble-show-kiralama/:district" element={<LocalLandingAliasRedirect serviceSlug="bubble-show" />} />
+        <Route path="/organizasyonlar/sihirbaz-kiralama/:district" element={<LocalLandingAliasRedirect serviceSlug="magic-show" />} />
+        <Route path="/organizasyonlar/pamuk-seker-arabasi-kiralama/:district" element={<LocalLandingAliasRedirect serviceSlug="pamuk-seker" />} />
         
         {/* Kostümlü Karakter Detay Sayfaları - Dinamik Route */}
         <Route path="/karakter/:slug" element={<CharacterDetail />} />

@@ -1,8 +1,8 @@
-# Best Event - Apache Server Configuration for React SPA
-# Natro Hosting ile uyumlu - Single Page Application (SPA) routing
+# Best Event - Apache Configuration for React SPA
+# Natro Hosting uyumlu - 2026 Google Standards
 
 # ============================================
-# MIME Types (AVIF/WebP support)
+# MIME Types
 # ============================================
 AddType image/avif .avif
 AddType image/webp .webp
@@ -20,62 +20,101 @@ AddType font/woff .woff
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
-  # Force Non-WWW (WWW -> Non-WWW Redirect)
+  # Force Non-WWW
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
-  # ============================================
-  # Pre-compressed file serving (Gzip only - safer for shared hosting)
-  # Brotli rewrite removed: Natro shared hosting may not support .br serving
-  # ============================================
+  # Remove trailing slash (non-root)
+  RewriteCond %{REQUEST_URI} .+/$
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteCond %{REQUEST_URI} !\.\w+$
+  RewriteRule ^(.+)//?$ /$1 [R=301,L]
 
-  # Serve Gzip compressed files if available
+  # ============================================
+  # Pre-compressed file serving (Brotli > Gzip)
+  # ============================================
+  RewriteCond %{HTTP:Accept-Encoding} br
+  RewriteCond %{REQUEST_URI} ^/assets/
+  RewriteCond %{REQUEST_FILENAME}.br -f
+  RewriteRule ^(.+)\.(js|css|svg|json)$ $1.$2.br [E=no-gzip:1,L]
+
   RewriteCond %{HTTP:Accept-Encoding} gzip
+  RewriteCond %{REQUEST_URI} ^/assets/
   RewriteCond %{REQUEST_FILENAME}.gz -f
-  RewriteRule ^(.+)\.(js|css|html|svg|json)$ $1.$2.gz [E=no-gzip:1,L]
+  RewriteRule ^(.+)\.(js|css|svg|json)$ $1.$2.gz [E=no-gzip:1,L]
 
-  # index.html'i direkt gecir
+  # ============================================
+  # SEO 301 Redirects
+  # ============================================
+  RewriteRule ^organizasyonlar/sihirbaz-kiralama/([a-z0-9-]+)$ /organizasyonlar/magic-show/$1 [R=301,L]
+  RewriteRule ^organizasyonlar/sihirbaz-kiralama$ /organizasyonlar/magic-show [R=301,L]
+  RewriteRule ^organizasyonlar/sihirbaz$ /organizasyonlar/magic-show [R=301,L]
+  RewriteRule ^organizasyonlar/bubble-show-kiralama/([a-z0-9-]+)$ /organizasyonlar/bubble-show/$1 [R=301,L]
+  RewriteRule ^organizasyonlar/bubble-show-kiralama$ /organizasyonlar/bubble-show [R=301,L]
+  RewriteRule ^organizasyonlar/profesyonel-yuz-boyama/([a-z0-9-]+)$ /organizasyonlar/yuz-boyama/$1 [R=301,L]
+  RewriteRule ^organizasyonlar/profesyonel-yuz-boyama$ /organizasyonlar/yuz-boyama [R=301,L]
+  RewriteRule ^organizasyonlar/profesyonel-makyaj/([a-z0-9-]+)$ /organizasyonlar/yuz-boyama/$1 [R=301,L]
+  RewriteRule ^organizasyonlar/profesyonel-makyaj$ /organizasyonlar/yuz-boyama [R=301,L]
+  RewriteRule ^organizasyonlar/pamuk-seker-arabasi-kiralama/([a-z0-9-]+)$ /organizasyonlar/pamuk-seker/$1 [R=301,L]
+  RewriteRule ^organizasyonlar/pamuk-seker-arabasi-kiralama$ /organizasyonlar/pamuk-seker [R=301,L]
+  RewriteRule ^organizasyonlar/dogum-gunu$ /organizasyonlar/dogum-gunu-organizasyonu [R=301,L]
+  RewriteRule ^organizasyonlar/dansci-kiralama$ /organizasyonlar/cocuk-etkinlikleri [R=301,L]
+  RewriteRule ^organizasyonlar/hostes-kiralama$ /organizasyonlar/cocuk-etkinlikleri [R=301,L]
+
+  # ============================================
+  # Static file handling + SPA Fallback
+  # ============================================
+
+  # index.html direkt sun
   RewriteRule ^index\.html$ - [L]
 
-  # Statik dosyalari direkt sun (sitemap, robots, manifest vb.)
+  # Sitemap, robots vb.
   RewriteRule \.(xml|txt|webmanifest)$ - [L]
 
-  # Dosya veya klasor mevcutsa, direkt sun
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+  # Gercek dosya/dizin varsa direkt sun
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
 
-  # Tum diger istekleri index.html'e yonlendir (React Router icin)
-  RewriteRule . /index.html [L]
+  # KRITIK: Statik asset uzantili dosyalar bulunamazsa SPA fallback YAPMA
+  # Yoksa eski chunk hash'leri index.html olarak donuyor ve browser JS parse hatasi veriyor
+  RewriteRule \.(js|css|woff2?|ttf|eot|png|jpe?g|gif|webp|avif|svg|ico|mp4|mov|heic|pdf|json|map|br|gz)$ - [L]
+
+  # Diger tum istekler -> index.html (React Router yonetir)
+  RewriteRule ^ /index.html [L]
 </IfModule>
 
 # ============================================
-# Gzip headers for pre-compressed files
+# Compressed file headers
 # ============================================
 <IfModule mod_headers.c>
-  # Gzip compressed files
+  <FilesMatch "\.br$">
+    Header set Content-Encoding br
+    Header set Vary "Accept-Encoding"
+  </FilesMatch>
+  <FilesMatch "\.js\.br$">
+    Header set Content-Type "application/javascript"
+  </FilesMatch>
+  <FilesMatch "\.css\.br$">
+    Header set Content-Type "text/css"
+  </FilesMatch>
   <FilesMatch "\.gz$">
     Header set Content-Encoding gzip
     Header set Vary "Accept-Encoding"
   </FilesMatch>
-
-  # Correct Content-Type for compressed JS
   <FilesMatch "\.js\.gz$">
     Header set Content-Type "application/javascript"
   </FilesMatch>
-
-  # Correct Content-Type for compressed CSS
   <FilesMatch "\.css\.gz$">
     Header set Content-Type "text/css"
   </FilesMatch>
-
-  # Correct Content-Type for compressed HTML
   <FilesMatch "\.html\.gz$">
     Header set Content-Type "text/html"
   </FilesMatch>
 </IfModule>
 
 # ============================================
-# Gzip compression (fallback for non-precompressed)
+# Compression fallback
 # ============================================
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
@@ -84,12 +123,10 @@ AddType font/woff .woff
 </IfModule>
 
 # ============================================
-# Browser caching (aggressive for hashed assets)
+# Browser caching
 # ============================================
 <IfModule mod_expires.c>
   ExpiresActive On
-
-  # Images - 1 year (rarely change)
   ExpiresByType image/jpg "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/gif "access plus 1 year"
@@ -98,32 +135,22 @@ AddType font/woff .woff
   ExpiresByType image/avif "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
-
-  # Fonts - 1 year (never change)
   ExpiresByType font/woff "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType application/font-woff "access plus 1 year"
   ExpiresByType application/font-woff2 "access plus 1 year"
-
-  # JS/CSS - 1 year (Vite uses content hash, safe to cache forever)
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType text/javascript "access plus 1 year"
-
-  # PDF
   ExpiresByType application/pdf "access plus 1 month"
-
-  # HTML - NO CACHE (index.html must always be fresh)
   ExpiresByType text/html "access plus 0 seconds"
-
   ExpiresDefault "access plus 2 days"
 </IfModule>
 
 # ============================================
-# Security & Performance Headers
+# Security & Cache Headers
 # ============================================
 <IfModule mod_headers.c>
-  # Security Headers
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
@@ -131,40 +158,33 @@ AddType font/woff .woff
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=(self)"
 
-  # Cache Control for HTML - NO CACHE (SPA routing)
-  <FilesMatch "index\.html$">
+  # HTML - asla cache'leme
+  <FilesMatch "\.html$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
     Header set Expires "0"
   </FilesMatch>
 
-  # Immutable cache for hashed assets (Vite builds with [hash])
+  # Hash'li assets - sonsuza kadar cache'le (immutable)
   <FilesMatch "\.(js|css|woff2|woff)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 
-  # Image cache
+  # Gorseller
   <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico)$">
     Header set Cache-Control "public, max-age=31536000"
   </FilesMatch>
 </IfModule>
 
-# ============================================
-# Prevent directory browsing
-# ============================================
 Options -Indexes
 
-# ============================================
-# Block access to sensitive files
-# ============================================
-<FilesMatch "(^\.env|\.lock$|\.log$)">
+<FilesMatch "(^\.env|\.lock$|\.log$|^\.htaccess)">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
 </FilesMatch>
 
-# Allow manifest and sitemap
-<FilesMatch "(manifest\.webmanifest|sitemap\.xml|robots\.txt)$">
+<FilesMatch "(manifest\.webmanifest|sitemap.*\.xml|robots\.txt)$">
   <IfModule mod_authz_core.c>
     Require all granted
   </IfModule>

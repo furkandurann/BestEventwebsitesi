@@ -154,28 +154,6 @@ const SantaClausRental = () => {
               }
             }))
           },
-          {
-            "@context": "https://schema.org",
-            "@type": "Event",
-            "name": "Yılbaşı Noel Baba Organizasyonu",
-            "description": "Profesyonel Noel Baba kiralama ve yılbaşı organizasyonu hizmeti",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "location": {
-              "@type": "Place",
-              "name": "İstanbul",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "İstanbul",
-                "addressCountry": "TR"
-              }
-            },
-            "organizer": {
-              "@type": "Organization",
-              "name": "Best Event",
-              "url": "https://bestevent.com.tr"
-            }
-          }
         ]}
       />
 

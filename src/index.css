@@ -7,6 +7,32 @@
 @import './styles/kids-product-hero.css';
 @import './styles/standartlardosyasi.css';
 
+/* CLS Fix: Fallback font metrics matching webfonts to prevent layout shift on font-swap */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90.20%;
+  descent-override: 22.48%;
+  line-gap-override: 0%;
+  size-adjust: 107.40%;
+}
+@font-face {
+  font-family: 'Poppins Fallback';
+  src: local('Arial');
+  ascent-override: 92.50%;
+  descent-override: 30.83%;
+  line-gap-override: 8.33%;
+  size-adjust: 112.16%;
+}
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial');
+  ascent-override: 85.62%;
+  descent-override: 22.18%;
+  line-gap-override: 0%;
+  size-adjust: 113.07%;
+}
+
 /* Self-Hosted Fonts - font-display: swap to prevent CLS */
 /* Inter - Latin (400, 600, 700 only - 500 removed for performance) */
 @font-face { font-family: 'Inter'; font-style: normal; font-display: swap; font-weight: 400; src: url('@fontsource/inter/files/inter-latin-400-normal.woff2') format('woff2'); }

@@ -523,7 +523,7 @@ const FullPackageOrganization = () => {
       <TrustSection />
 
       {/* Google Müşteri Yorumları */}
-      <GoogleReviews reviews={getReviewsByTags(['dogumgunu', 'genel'])} title="Doğum Günü Organizasyonu Müşteri Yorumları" />
+      <GoogleReviews reviews={getReviewsByTags(['dogumgunu', 'genel'])} title="Doğum Günü Organizasyonu Müşteri Yorumları" serviceName="Full Paket Organizasyon İstanbul" serviceUrl="/organizasyonlar/full-paket-organizasyon" />
 
       {/* FAQ */}
       <section className="py-20 bg-black">

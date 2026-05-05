@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
-import { createServiceSchema, createFAQSchema, createImageObjectSchema } from '../../utils/schemaHelpers'
+import { createServiceSchema, createFAQSchema, createImageObjectSchema, createHowToSchema } from '../../utils/schemaHelpers'
+import AuthorExpertise from '../../components/AuthorExpertise'
 import AdHero from '../../components/AdHero'
 import LocationHeroShowcase from '../../components/LocationHeroShowcase'
 import HorizontalPhotoSlider from '../../components/HorizontalPhotoSlider'
@@ -137,8 +138,8 @@ const BubbleShow = () => {
       answer: "İstanbul'un tüm ilçelerine bubble show hizmeti veriyoruz. Kadıköy, Erenköy, Üsküdar, Maltepe, Kartal, Ataşehir, Pendik başta olmak üzere Anadolu ve Avrupa yakasının her bölgesine gidiyoruz."
     },
     {
-      question: "Bubble show fiyatları nedir?",
-      answer: "Fiyatlarımız gösteri süresine, mekan tipine ve katılımcı sayısına göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 05307309009"
+      question: "Bubble show fiyatları ne kadar?",
+      answer: "Bubble show kiralama hizmetimiz ₺7.000'den başlayan fiyatlarla sunulmaktadır. Fiyat; gösteri süresi (20-40 dk), mekan tipi (iç/dış mekan), katılımcı sayısı ve ek efektlere (LED ışık, UV neon, duman baloncukları) göre değişmektedir. Palyaço ekleme ₺2.500'den, sihirbaz ekleme ₺7.000'den başlayan fiyatlarla kombine edilebilir. Size özel teklif almak için 05307309009 numarasından bize ulaşabilirsiniz."
     },
     {
       question: "Bubble show ile birlikte başka hizmetler alabilir miyiz?",
@@ -150,11 +151,25 @@ const BubbleShow = () => {
     }
   ]
 
+  const howToSchema = createHowToSchema(
+    'Bubble Show Gösterisi Akışı — 5 Bölüm',
+    'İstanbul\'da profesyonel bubble show kiralama gösterisinin 5 bölümü: dev sabun balonları açılışı, ışıklı balon katmanları, dev balon deneyimi, interaktif oyun akışı ve LED finali.',
+    heroShowcaseSlides.map(slide => ({
+      title: slide.title || slide.tag,
+      description: slide.description,
+      image: slide.src,
+      alt: slide.alt,
+      href: slide.href
+    })),
+    'PT1H'
+  )
+
   const serviceSchema = createServiceSchema(
     'Bubble Show Gösterisi | Bubble Show Organizasyonu Kiralama',
     'Istanbul\'da bubble show gösterisi, organizasyonu ve kiralama. Bubble show etkinliği için profesyonel hizmet.',
     '/organizasyonlar/bubble-show',
-    'Bubble Show Gösterileri ve Köpük Şov Organizasyonu'
+    'Bubble Show Gösterileri ve Köpük Şov Organizasyonu',
+    '7000'
   )
   const faqSchema = createFAQSchema(faqData)
 
@@ -188,13 +203,15 @@ const BubbleShow = () => {
         schema={[
           serviceSchema,
           faqSchema,
+          howToSchema,
           imageGallerySchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
-              { "@type": "ListItem", "position": 2, "name": "Bubble Show", "item": "https://bestevent.com.tr/organizasyonlar/bubble-show" }
+              { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
+              { "@type": "ListItem", "position": 3, "name": "Bubble Show Kiralama", "item": "https://bestevent.com.tr/organizasyonlar/bubble-show" }
             ]
           },
           {
@@ -218,13 +235,18 @@ const BubbleShow = () => {
               "https://www.linkedin.com/company/besteventorganizasyon",
               "https://g.co/kgs/bestevent"
             ]
-          }
+          },
         ]}
       />
 
       <AdHero
         title="Bubble Show Kiralama İstanbul"
         backgroundImage="/content/images/bubbleshow/anabubblee.webp"
+        subtitle="Doğum günü ve çocuk partileri için göz alıcı köpük gösterisi"
+        primaryLabel="WhatsApp'tan Teklif Al"
+        whatsappMessage="Merhaba, bubble show kiralama hakkında bilgi almak istiyorum."
+        quickFacts={['10+ Yıl Tecrübe', 'Hijyenik Köpük', '5⭐ Google Yorumu', 'Aynı Gün Rezervasyon']}
+        ctaNote="📞 Hızlı yanıt — mesajınıza dakikalar içinde dönüş"
       />
 
       <main className="overflow-x-hidden scroll-smooth">
@@ -234,6 +256,58 @@ const BubbleShow = () => {
           slides={heroShowcaseSlides}
           eyebrow="İstanbul Bubble Show Gösterisi"
         />
+
+        {/* 45 Dakika Bubble Show — Gösteri Akışı */}
+        <section className="py-20 sm:py-28 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.06),_transparent_50%)] pointer-events-none" />
+          <div className="max-w-5xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-14">
+              <p className="uppercase tracking-[0.3em] text-xs text-purple-400 mb-4 font-medium">45 Dakika Profesyonel Gösteri</p>
+              <h2 className="font-bold text-white" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.025em' }}>
+                Bir Köpük Gösterisi Değil, Büyülü Bir Deneyim
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {[
+                {
+                  num: '01',
+                  title: 'Dev Çember Balonun İçine Girin',
+                  text: 'Dev sabun çemberi yavaşça yükselir — aileler ve çocuklar balonun içine alınır. Herkesin nefesini tuttuğu, etkinliğin en çok fotoğraflanan anı.',
+                  accent: 'border-purple-500/20',
+                },
+                {
+                  num: '02',
+                  title: 'Binlerce Baloncuk Havada Uçuşur',
+                  text: 'Baloncuk makinası devreye girer — binlerce mini baloncuk havada dans eder, ışıkla buluşur. Çocuklar koşarak baloncukları yakalar, kahkahalar salonu sarar.',
+                  accent: 'border-pink-500/20',
+                },
+                {
+                  num: '03',
+                  title: 'Köpükten Taçlar ve Figürler',
+                  text: 'Çocukların başına köpükten taçlar yapılır — prenses, kral, unicorn. Kalp, yıldız ve özel aparatlarla sıradan sabun balonları sanata dönüşür.',
+                  accent: 'border-cyan-500/20',
+                },
+                {
+                  num: '04',
+                  title: 'LED Işıklı Final Gösterisi',
+                  text: 'Renkli LED ışıklar ve ritimli müzik eşliğinde dev balonlar sahnede süzülür. Gösterinin finali, çocukların "bir daha, bir daha!" diye bağırdığı muhteşem kapanış.',
+                  accent: 'border-blue-500/20',
+                },
+              ].map((item, i) => (
+                <div key={i} className={`p-6 rounded-2xl border ${item.accent} bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300`}>
+                  <span className="text-3xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">{item.num}</span>
+                  <h3 className="text-white font-bold text-lg mt-3 mb-2">{item.title}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <p className="text-white/50 text-sm">Doğum günleri, okul şenlikleri, AVM etkinlikleri ve kurumsal organizasyonlarda İstanbul'un en çok tercih edilen bubble show gösterisi.</p>
+            </div>
+          </div>
+        </section>
 
         {/* Why Us Section - Purple Background with White Card */}
         <section className="py-20 sm:py-24 bg-gradient-to-br from-purple-950 via-black to-pink-950">
@@ -289,146 +363,63 @@ const BubbleShow = () => {
         {/* Tematik Slider 1: Dev Balon Gösterileri */}
         <HorizontalPhotoSlider images={slider1Images} title="Dev Balon Gösterileri" />
 
-        {/* Features Section - Modern Card Grid */}
-        <section className="py-20 sm:py-28 bg-gradient-to-br from-purple-950 via-black to-pink-950 relative overflow-hidden">
-          {/* Ambient glow effects */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
+        {/* Features Section */}
+        <section className="py-20 sm:py-28 bg-gradient-to-b from-black via-purple-950/20 to-black relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(168,85,247,0.06),_transparent_50%)] pointer-events-none" />
 
-          <div className="max-w-6xl mx-auto px-6 relative z-10">
-            <h2
-              className="font-extrabold text-white mb-6 text-center"
-              style={{
-                fontSize: 'clamp(1.75rem, 5vw, 3rem)',
-                lineHeight: '1.15',
-                letterSpacing: '-0.025em',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
-              }}
-            >
-              Bubble Show Gösterimizin Özellikleri
-            </h2>
-            <p
-              className="text-white/60 text-center mb-16 max-w-2xl mx-auto"
-              style={{
-                fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-                lineHeight: '1.6',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif'
-              }}
-            >
-              Her detayı özenle planlanmış, profesyonel bir bubble show deneyimi
-            </p>
-
-            {/* Bento Grid Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {/* Card 1 - Large */}
-              <div className="md:col-span-2 lg:col-span-2 group relative rounded-3xl p-8 sm:p-10 overflow-hidden"
-                style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(236,72,153,0.1) 100%)', border: '1px solid rgba(168,85,247,0.2)' }}>
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/25">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <circle cx="12" cy="12" r="9" />
-                      <circle cx="12" cy="12" r="5" strokeDasharray="2 2" />
-                      <path d="M12 3c0 3-2 5-2 9s2 6 2 9" />
-                    </svg>
-                  </div>
-                  <h3 className="text-white font-bold text-xl sm:text-2xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
-                    3+ Metre Dev Sabun Köpükleri
-                  </h3>
-                  <p className="text-white/70 text-base sm:text-lg leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
-                    Profesyonel ekipmanlarımız ile 3 metreden büyük dev sabun köpükleri oluşturuyoruz. Gökyüzüne yükselen devasa balonlar, etkinliğinize büyülü bir atmosfer katıyor.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="group relative rounded-3xl p-8 overflow-hidden"
-                style={{ background: 'linear-gradient(135deg, rgba(236,72,153,0.15) 0%, rgba(244,114,182,0.08) 100%)', border: '1px solid rgba(236,72,153,0.2)' }}>
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-rose-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-400 flex items-center justify-center mb-6 shadow-lg shadow-pink-500/25">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
-                    İçine Girilebilen Dev Balonlar
-                  </h3>
-                  <p className="text-white/70 text-base leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
-                    Çocuklar dev balonun içine girerek unutulmaz anlar yaşıyor. En sevilen aktivitemiz!
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="group relative rounded-3xl p-8 overflow-hidden"
-                style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(147,51,234,0.08) 100%)', border: '1px solid rgba(59,130,246,0.2)' }}>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mb-6 shadow-lg shadow-blue-500/25">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
-                    LED Işık & Müzik Eşliği
-                  </h3>
-                  <p className="text-white/70 text-base leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
-                    Renkli LED ışık efektleri ve ritimli müzikler ile büyüleyici bir atmosfer.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="group relative rounded-3xl p-8 overflow-hidden"
-                style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.15) 0%, rgba(16,185,129,0.08) 100%)', border: '1px solid rgba(34,197,94,0.2)' }}>
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-400 flex items-center justify-center mb-6 shadow-lg shadow-green-500/25">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-white font-bold text-xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
-                    %100 Güvenli Solüsyon
-                  </h3>
-                  <p className="text-white/70 text-base leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
-                    Çocuk dostu, toksik olmayan FDA onaylı köpük solüsyonları kullanıyoruz. Cildiniz için tamamen güvenli.
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 5 - Large */}
-              <div className="md:col-span-2 lg:col-span-2 group relative rounded-3xl p-8 sm:p-10 overflow-hidden"
-                style={{ background: 'linear-gradient(135deg, rgba(251,146,60,0.15) 0%, rgba(245,158,11,0.08) 100%)', border: '1px solid rgba(251,146,60,0.2)' }}>
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center mb-6 shadow-lg shadow-orange-500/25">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-white font-bold text-xl sm:text-2xl mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif' }}>
-                    2-12 Yaş Her Gruba Özel Aktiviteler
-                  </h3>
-                  <p className="text-white/70 text-base sm:text-lg leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
-                    Her yaş grubuna uygun özel aktiviteler tasarlıyoruz. Küçükler için güvenli mini balonlar, büyükler için dev köpük duvarları ve interaktif gösteriler. Herkes için eğlence garantisi!
-                  </p>
-                </div>
-              </div>
+          <div className="max-w-5xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-16">
+              <p className="uppercase tracking-[0.3em] text-xs text-purple-400 mb-4 font-medium">Neden Bizi Tercih Etmelisiniz</p>
+              <h2 className="font-bold text-white" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.025em' }}>
+                Bubble Show Gösterimizin Özellikleri
+              </h2>
             </div>
 
-            {/* Bottom Badge */}
-            <div className="mt-14 text-center">
-              <div className="inline-flex items-center gap-3 px-8 py-4 rounded-full"
-                style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(236,72,153,0.2) 100%)', border: '1px solid rgba(168,85,247,0.3)', backdropFilter: 'blur(12px)' }}>
-                <svg className="w-5 h-5 text-pink-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clipRule="evenodd" />
-                </svg>
-                <span className="text-white font-semibold" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif' }}>
-                  İstanbul genelinde en çok tavsiye edilen bubble show
-                </span>
-              </div>
+            <div className="space-y-6">
+              {[
+                {
+                  icon: <><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" strokeDasharray="2 2" /><path d="M12 3c0 3-2 5-2 9s2 6 2 9" /></>,
+                  title: '3+ Metre Dev Sabun Köpükleri',
+                  text: 'Profesyonel ekipmanlarımız ile 3 metreden büyük dev sabun köpükleri oluşturuyoruz. Gökyüzüne yükselen devasa balonlar, etkinliğinize büyülü bir atmosfer katıyor.',
+                  accent: 'from-purple-500 to-pink-500',
+                },
+                {
+                  icon: <path d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />,
+                  title: 'İçine Girilebilen Dev Balonlar',
+                  text: 'Çocuklar dev balonun içine girerek unutulmaz anlar yaşıyor. En sevilen aktivitemiz!',
+                  accent: 'from-pink-500 to-rose-400',
+                },
+                {
+                  icon: <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />,
+                  title: 'LED Işık & Müzik Eşliği',
+                  text: 'Renkli LED ışık efektleri ve ritimli müzikler ile büyüleyici bir atmosfer.',
+                  accent: 'from-blue-500 to-purple-500',
+                },
+                {
+                  icon: <path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />,
+                  title: '%100 Güvenli Solüsyon',
+                  text: 'Çocuk dostu, toksik olmayan FDA onaylı köpük solüsyonları kullanıyoruz. Cildiniz için tamamen güvenli.',
+                  accent: 'from-green-500 to-emerald-400',
+                },
+                {
+                  icon: <path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0z" />,
+                  title: '2-12 Yaş Her Gruba Özel Aktiviteler',
+                  text: 'Her yaş grubuna uygun özel aktiviteler tasarlıyoruz. Küçükler için güvenli mini balonlar, büyükler için dev köpük duvarları ve interaktif gösteriler.',
+                  accent: 'from-orange-500 to-amber-400',
+                },
+              ].map((feature, i) => (
+                <div key={i} className="group flex items-start gap-5 p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] hover:border-purple-500/20 transition-all duration-300">
+                  <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${feature.accent} flex items-center justify-center shadow-lg`}>
+                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      {feature.icon}
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg mb-1.5">{feature.title}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed">{feature.text}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -543,6 +534,33 @@ const BubbleShow = () => {
 
         {/* Tematik Slider 3: İnteraktif Çocuk Katılımı */}
         <HorizontalPhotoSlider images={slider3Images} title="İnteraktif Çocuk Katılımı" />
+
+        {/* İstanbul'un En İyisi — Güven Bandı */}
+        <section className="py-12 bg-gradient-to-r from-purple-950/40 via-black to-pink-950/40 border-y border-white/[0.06]">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-center">
+              <div>
+                <p className="text-3xl font-black text-white">45 dk</p>
+                <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Gösteri Süresi</p>
+              </div>
+              <div className="hidden sm:block w-px h-10 bg-white/10" />
+              <div>
+                <p className="text-3xl font-black text-white">5.000+</p>
+                <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Başarılı Etkinlik</p>
+              </div>
+              <div className="hidden sm:block w-px h-10 bg-white/10" />
+              <div>
+                <p className="text-3xl font-black text-white">Dev Balon</p>
+                <p className="text-white/50 text-xs uppercase tracking-widest mt-1">İçine Girilebilir</p>
+              </div>
+              <div className="hidden sm:block w-px h-10 bg-white/10" />
+              <div>
+                <p className="text-3xl font-black text-white">2-12 Yaş</p>
+                <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Tüm Yaş Grupları</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Final CTA Section - Light White with Subtle Purple */}
         <section className="py-16 md:py-20 bg-gradient-to-br from-white via-slate-50 to-purple-50 relative overflow-hidden">
@@ -710,6 +728,83 @@ const BubbleShow = () => {
 
         <TrustSection />
 
+        {/* SEO Hizmet Detayları — Bubble Show Mor/Pembe/Mavi Tema */}
+        <section className="relative py-24 sm:py-28 bg-gradient-to-b from-black via-purple-950/20 to-black overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(168,85,247,0.08),_transparent_50%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(59,130,246,0.06),_transparent_50%)] pointer-events-none" />
+
+          <div className="relative max-w-5xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <p className="uppercase tracking-[0.3em] text-xs text-purple-400 mb-4 font-medium">İstanbul Bubble Show Hizmetleri</p>
+              <h2
+                className="font-bold text-white"
+                style={{
+                  fontSize: 'clamp(1.75rem, 4.5vw, 2.75rem)',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.02em'
+                }}
+              >
+                Bubble Show Kiralama Hizmetlerimiz
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {[
+                {
+                  num: '01',
+                  title: 'Doğum Günü Bubble Show',
+                  text: 'Çocuğunuzun doğum günü partisi için doğum günü bubble show kiralama hizmetimiz, 3-12 yaş arası misafirleri sahnenin yıldızı yapar. Köpük şovu içinde dev köpük baloncuklar, ışık efektleri ve müzik koordinasyonu — bubble show kiralama paketlerimiz tüm İstanbul ilçelerine gönderim yapar.',
+                  accent: 'border-purple-500/20',
+                  tag: 'border-purple-500/30 text-purple-300',
+                },
+                {
+                  num: '02',
+                  title: 'Çocuk Bubble Show & Köpük Gösterisi',
+                  text: 'Çocuk bubble show hizmetimiz, klasik köpük gösterisi anlayışının ötesinde profesyonel sahne deneyimi sunar. Sabun köpük şovu sırasında çocuklar pasif izleyici değil — köpüklerin içinde durabilir, dev baloncuklarla etkileşime girer. Kreş etkinliği, AVM organizasyonu, okul partisinde tercih ediliyor.',
+                  accent: 'border-pink-500/20',
+                  tag: 'border-pink-500/30 text-pink-300',
+                },
+                {
+                  num: '03',
+                  title: 'Bubble Show Fiyatları & Paketler',
+                  text: 'Bubble show fiyatları; gösteri süresi, etkinlik tipi, misafir sayısı ve tercih edilen köpük show paketine göre belirlenir. Köpük show kiralama detayları için WhatsApp\'tan hızlı teklif alın; bubble şov hizmeti kataloğu dakikalar içinde iletilir. Standart, premium ve kurumsal organizasyon paketleri mevcuttur.',
+                  accent: 'border-blue-500/20',
+                  tag: 'border-blue-500/30 text-blue-300',
+                },
+                {
+                  num: '04',
+                  title: 'Premium Bubble Show & Kurumsal',
+                  text: 'İstanbul bubble show kiralama denildiğinde akla gelen profesyonel bubble show ekibimiz, 10+ yıl sahne deneyimiyle fark yaratır. AVM açılışı, fuar, gala, ürün lansmanı, şirket aile günü için yapılandırılır. Premium bubble show paketinde 5⭐ Google yorumu ve hijyenik köpük garantisi.',
+                  accent: 'border-cyan-500/20',
+                  tag: 'border-cyan-500/30 text-cyan-300',
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className={`group p-7 rounded-2xl border ${item.accent} bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm transition-all duration-300`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl font-black bg-gradient-to-br from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                      {item.num}
+                    </span>
+                    <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${item.tag} font-medium`}>
+                      Hizmet
+                    </span>
+                  </div>
+                  <h3 className="text-white font-bold text-xl mb-3 leading-tight">{item.title}</h3>
+                  <p className="text-white/65 text-sm leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-14 text-center">
+              <p className="text-white/40 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+                Bubble show kiralama İstanbul hizmetimiz tüm ilçelere (Kadıköy, Ataşehir, Üsküdar, Beşiktaş, Şişli, Bakırköy, Pendik, Maltepe, Beylikdüzü, Ümraniye) gönderim yapmaktadır.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section className="py-20 bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100">
           <div className="max-w-3xl mx-auto px-4">
@@ -788,13 +883,15 @@ const BubbleShow = () => {
         </section>
 
         {/* Google Müşteri Yorumları */}
-        <GoogleReviews reviews={getReviewsByTags(['bubbleshow', 'genel'])} title="Bubble Show Müşteri Yorumları" />
+        <GoogleReviews reviews={getReviewsByTags(['bubbleshow', 'genel'])} title="Bubble Show Müşteri Yorumları" serviceName="Bubble Show Kiralama İstanbul" serviceUrl="/organizasyonlar/bubble-show" />
 
         <DeferredContentAccordion serviceKey="bubble-show" />
 
         <RelatedServices currentService="bubble-show" />
 
         <RelatedBlogPosts servicePath="/organizasyonlar/bubble-show" />
+
+        <AuthorExpertise serviceName="Bubble Show Kiralama" />
       </main>
 
       {/* Exit Intent Popup */}

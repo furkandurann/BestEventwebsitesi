@@ -1,7 +1,8 @@
 import { Suspense, lazy, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../../components/Seo'
-import { createServiceSchema, createFAQSchema, createImageObjectSchema } from '../../utils/schemaHelpers'
+import { createServiceSchema, createFAQSchema, createImageObjectSchema, createHowToSchema } from '../../utils/schemaHelpers'
+import AuthorExpertise from '../../components/AuthorExpertise'
 import AdHero from '../../components/AdHero'
 import LocationHeroShowcase from '../../components/LocationHeroShowcase'
 import DeferredContentAccordion from '../../components/DeferredContentAccordion'
@@ -118,8 +119,8 @@ const MagicShow = () => {
       answer: "Evet, tüm sihir malzemeleri, ses sistemi, ışık ekipmanları ve sahne aksesuarlarını biz sağlıyoruz. Sizin herhangi bir şey temin etmenize gerek yoktur."
     },
     {
-      question: "Sihirbaz kiralama fiyatları nedir?",
-      answer: "Fiyatlarımız gösteri süresine, katılımcı sayısına ve lokasyona göre değişiklik gösterir. Detaylı fiyat bilgisi için bizi arayın: 05307309009"
+      question: "Sihirbaz kiralama fiyatları ne kadar?",
+      answer: "Sihirbaz kiralama hizmetimiz ₺7.000'den başlayan fiyatlarla sunulmaktadır. Fiyat; gösteri süresi (30-60 dk), katılımcı sayısı, lokasyon ve gösteri içeriğine (sahne illüzyonu, yakın plan sihir, güvercinli/tavşanlı numaralar) göre değişmektedir. Palyaço ekleme ₺2.500'den, bubble show ekleme ₺7.000'den başlayan fiyatlarla kombine edilebilir. Size özel teklif almak için 05307309009 numarasından bize ulaşabilirsiniz."
     },
     {
       question: "Sihirbaz gösterileri ile birlikte başka hizmetler alabilir miyiz?",
@@ -131,11 +132,25 @@ const MagicShow = () => {
     }
   ]
 
+  const howToSchema = createHowToSchema(
+    'Sihirbaz Kiralama Gösteri Akışı — 5 Bölüm',
+    'İstanbul\'da profesyonel sihirbaz kiralama gösterisinin 5 bölümü: yakın plan kart numaraları, sahne illüzyonları, uçurma numaraları, güvercinli sihir ve tavşanlı final.',
+    heroShowcaseSlides.map(slide => ({
+      title: slide.title || slide.tag,
+      description: slide.description,
+      image: slide.src,
+      alt: slide.alt,
+      href: slide.href
+    })),
+    'PT1H'
+  )
+
   const serviceSchema = createServiceSchema(
     'Sihirbaz Gösterisi | Sihirbaz Organizasyonu Kiralama',
     'Istanbul\'da sihirbaz gösterisi, organizasyonu ve kiralama. Sihirbazlık etkinliği için profesyonel hizmet.',
     '/organizasyonlar/magic-show',
-    'Sihirbaz Gösterileri ve Magic Show Organizasyonu'
+    'Sihirbaz Gösterileri ve Magic Show Organizasyonu',
+    '7000'
   )
   const faqSchema = createFAQSchema(faqData)
 
@@ -168,13 +183,15 @@ const MagicShow = () => {
         schema={[
           serviceSchema,
           faqSchema,
+          howToSchema,
           imageGallerySchema,
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://bestevent.com.tr" },
-              { "@type": "ListItem", "position": 2, "name": "Magic Show", "item": "https://bestevent.com.tr/organizasyonlar/magic-show" }
+              { "@type": "ListItem", "position": 2, "name": "Çocuk Etkinlikleri", "item": "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
+              { "@type": "ListItem", "position": 3, "name": "Sihirbaz Kiralama", "item": "https://bestevent.com.tr/organizasyonlar/magic-show" }
             ]
           },
           {
@@ -198,34 +215,18 @@ const MagicShow = () => {
               "https://www.linkedin.com/company/besteventorganizasyon",
               "https://g.co/kgs/bestevent"
             ]
-          }
+          },
         ]}
       />
 
       <AdHero
         title="Sihirbaz Kiralama İstanbul"
         backgroundImage="/content/images/ahunundogumgunu/sihirbazlıkgosterisivekomedishow.webp"
-        subtitle="45 dakikalık sihirbazlık gösterisi, tüm İstanbul'da planlı kurulum ve sahne akışı"
-        primaryLabel="WhatsApp’tan Hızlı Fiyat Al"
-        whatsappMessage="Merhaba, sihirbaz kiralama için tarih + ilçe + kişi sayısı paylaşarak hızlı fiyat almak istiyorum."
-        quickFacts={[
-          '45 dakika sihirbazlık gösterisi',
-          'Tüm İstanbul’a hizmet veriyoruz',
-          'Tarih + ilçe + kişi sayısı gönder, hızlı fiyat al',
-        ]}
-        ctaNote="Sihirbaz kiralama fiyatı için tarih, ilçe ve kişi sayısını iletmeniz yeterli."
-      />
-
-      <QuickServiceQuote
-        eyebrow="Hızlı Teklif Akışı"
-        title="Sihirbaz kiralama için net ve hızlı fiyat dönüşü"
-        description="Sihirbazlık gösterisi standart akışta 45 dakika planlanır. Doğum günü, okul etkinliği ve kurumsal organizasyonlar için tüm İstanbul'a hizmet veriyoruz. Tarih, ilçe ve kişi sayısını paylaştığınızda ekip hızlı teklif döner."
-        bullets={[
-          '45 dakika gösteri',
-          'Doğum günü ve kurumsal etkinlikler',
-          'Tüm İstanbul',
-        ]}
-        whatsappText="Merhaba, sihirbaz kiralama için tarih + ilçe + kişi sayısı paylaşarak hızlı fiyat almak istiyorum."
+        subtitle="Profesyonel sahne sihirbazlığı ve yakın plan illüzyonlar"
+        primaryLabel="WhatsApp'tan Bilgi Al"
+        whatsappMessage="Merhaba, sihirbaz kiralama için bilgi almak istiyorum."
+        quickFacts={['10+ Yıl Tecrübe', 'Canlı Tavşan & Güvercin', '5⭐ Google Yorumu', 'Aynı Gün Rezervasyon']}
+        ctaNote="📞 Hızlı yanıt — mesajınıza dakikalar içinde dönüş"
       />
 
       <main className="overflow-x-hidden scroll-smooth">
@@ -235,6 +236,58 @@ const MagicShow = () => {
           slides={heroShowcaseSlides}
           eyebrow="İstanbul Sihirbaz Gösterisi"
         />
+
+        {/* 45 Dakika Sihir — Gösteri Akışı */}
+        <section className="py-20 sm:py-28 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(168,85,247,0.06),_transparent_50%)] pointer-events-none" />
+          <div className="max-w-5xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-14">
+              <p className="uppercase tracking-[0.3em] text-xs text-purple-400 mb-4 font-medium">45 Dakika Profesyonel Gösteri</p>
+              <h2 className="font-bold text-white" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.025em' }}>
+                Her Saniyesi Planlanmış, Nefes Kesen Bir Akış
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {[
+                {
+                  num: '01',
+                  title: 'Şapkadan Tavşan Sürprizi',
+                  text: 'Önce sahte bir tavşan çıkar — çocuklar ters köşe olur, kahkahalar yükselir. Ardından gerçek tavşan sahneye çıktığında heyecan çığlıkları bütün salonu sarar. Çocuklar tavşanla doğrudan etkileşime girer.',
+                  accent: 'border-purple-500/20',
+                },
+                {
+                  num: '02',
+                  title: 'Güvercin Dönüşümü',
+                  text: 'Hiç beklenmeyen bir anda sahte güvercin gerçek güvercine dönüşür. Çocukların şaşkınlık dolu çığlıkları her taraftan duyulur — gösterinin en çok fotoğraflanan anı.',
+                  accent: 'border-pink-500/20',
+                },
+                {
+                  num: '03',
+                  title: 'Masa Uçurma İllüzyonu',
+                  text: 'Sihirbazımız masayı yerden kaldırır — havada süzülen masa sahne enerjisini zirveye taşır. Büyük illüzyon izlediklerini hisseden çocuklar ağızları açık kalır.',
+                  accent: 'border-blue-500/20',
+                },
+                {
+                  num: '04',
+                  title: 'Kola Suya Dönüşür, Çiçekler Renk Değiştirir',
+                  text: 'Yakın plan numaralarla çocuklar sihri göz hizasında yaşar. Kola bir anda suya dönüşür, çiçekler saniyeler içinde renk değiştirir — her numara yeni bir "nasıl yaptı?" sorusu doğurur.',
+                  accent: 'border-cyan-500/20',
+                },
+              ].map((item, i) => (
+                <div key={i} className={`p-6 rounded-2xl border ${item.accent} bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300`}>
+                  <span className="text-3xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">{item.num}</span>
+                  <h3 className="text-white font-bold text-lg mt-3 mb-2">{item.title}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <p className="text-white/50 text-sm">Doğum günleri, okul etkinlikleri, AVM organizasyonları ve kurumsal etkinliklerde tercih edilen profesyonel sihirbazlık gösterisi.</p>
+            </div>
+          </div>
+        </section>
 
         {/* Why Us Section - Navy Background with White Card */}
         <section className="py-20 sm:py-24 bg-gradient-to-br from-blue-950 via-black to-indigo-950">
@@ -621,6 +674,33 @@ const MagicShow = () => {
           </div>
         </section>
 
+        {/* İstanbul'un En İyisi — Güven Bandı */}
+        <section className="py-12 bg-gradient-to-r from-purple-950/40 via-black to-pink-950/40 border-y border-white/[0.06]">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-center">
+              <div>
+                <p className="text-3xl font-black text-white">45 dk</p>
+                <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Gösteri Süresi</p>
+              </div>
+              <div className="hidden sm:block w-px h-10 bg-white/10" />
+              <div>
+                <p className="text-3xl font-black text-white">5.000+</p>
+                <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Başarılı Etkinlik</p>
+              </div>
+              <div className="hidden sm:block w-px h-10 bg-white/10" />
+              <div>
+                <p className="text-3xl font-black text-white">%100</p>
+                <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Canlı Hayvan Etkileşimi</p>
+              </div>
+              <div className="hidden sm:block w-px h-10 bg-white/10" />
+              <div>
+                <p className="text-3xl font-black text-white">2-12 Yaş</p>
+                <p className="text-white/50 text-xs uppercase tracking-widest mt-1">Tüm Yaş Grupları</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* İlgili Blog Yazıları - Internal Links for SEO */}
         <section className="py-12 sm:py-16 bg-gradient-to-br from-blue-950 via-black to-indigo-950 border-t border-white/5">
           <div className="max-w-3xl mx-auto px-6">
@@ -844,6 +924,83 @@ const MagicShow = () => {
           </Suspense>
         </LazySection>
 
+        {/* SEO Hizmet Detayları — Sihirbaz Mor/Pembe Tema */}
+        <section className="relative py-24 sm:py-28 bg-black overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(168,85,247,0.08),_transparent_50%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(236,72,153,0.06),_transparent_50%)] pointer-events-none" />
+
+          <div className="relative max-w-5xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <p className="uppercase tracking-[0.3em] text-xs text-purple-400 mb-4 font-medium">İstanbul Sihirbaz Hizmetleri</p>
+              <h2
+                className="font-bold text-white"
+                style={{
+                  fontSize: 'clamp(1.75rem, 4.5vw, 2.75rem)',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.02em'
+                }}
+              >
+                Sihirbaz Kiralama Hizmetlerimiz
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {[
+                {
+                  num: '01',
+                  title: 'Doğum Günü Sihirbazı',
+                  text: 'Çocuğunuzun doğum günü partisi için doğum günü sihirbaz kiralama hizmetimiz, 4-12 yaş arası misafirleri 45 dakikalık akışla gösterinin içine çeker. Canlı tavşan, güvercin, masa uçurma ve yakın plan kart numaralarını tek programda birleştiriyor; doğum günü sihirbaz organizasyonu kişiselleştirilebilir.',
+                  accent: 'border-purple-500/20',
+                  tag: 'border-purple-500/30 text-purple-300',
+                },
+                {
+                  num: '02',
+                  title: 'Çocuk Sihirbaz Gösterisi & Animatör Sihirbaz',
+                  text: 'Çocuk sihirbaz hizmetimiz klasik animatör sihirbaz konseptinin ötesinde profesyonel sahne deneyimi sunar. Çocuk sihirbaz gösterisi sırasında çocuklar aktif katılımcı; sahneye davet edilir, numaranın parçası olur. Okul etkinliği, AVM organizasyonu, kreş partisinde tercih ediliyor.',
+                  accent: 'border-pink-500/20',
+                  tag: 'border-pink-500/30 text-pink-300',
+                },
+                {
+                  num: '03',
+                  title: 'Sihirbaz Kiralama Fiyatları',
+                  text: 'Sihirbaz kiralama fiyatları; gösteri süresi, etkinlik tipi, misafir sayısı ve tercih edilen sihirbaz şov paketine göre belirlenir. Sihirbaz fiyatları için WhatsApp\'tan hızlı teklif alın; sihirbaz hizmeti kataloğu dakikalar içinde iletilir. 45 dakikalık standart, premium illüzyon ve kurumsal organizasyon paketleri.',
+                  accent: 'border-blue-500/20',
+                  tag: 'border-blue-500/30 text-blue-300',
+                },
+                {
+                  num: '04',
+                  title: 'Profesyonel Sihirbaz Show & Kurumsal',
+                  text: 'İstanbul sihirbaz kiralama denildiğinde akla gelen profesyonel sihirbaz şov ekibimiz, 10+ yıl sahne deneyimiyle fark yaratır. Mağaza açılışı, fuar, gala, ürün lansmanı, şirket aile günü için yapılandırılır. İllüzyonist kiralama, magic show kiralama: 5⭐ Google yorumu ve sözleşmeli güvence.',
+                  accent: 'border-cyan-500/20',
+                  tag: 'border-cyan-500/30 text-cyan-300',
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className={`group p-7 rounded-2xl border ${item.accent} bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm transition-all duration-300`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl font-black bg-gradient-to-br from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                      {item.num}
+                    </span>
+                    <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${item.tag} font-medium`}>
+                      Hizmet
+                    </span>
+                  </div>
+                  <h3 className="text-white font-bold text-xl mb-3 leading-tight">{item.title}</h3>
+                  <p className="text-white/65 text-sm leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-14 text-center">
+              <p className="text-white/40 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+                Sihirbaz kiralama İstanbul hizmetimiz, tüm ilçelere (Kadıköy, Ataşehir, Üsküdar, Beşiktaş, Şişli, Bakırköy, Pendik, Maltepe ve diğerleri) gönderim yapmaktadır.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section className="py-20 bg-gradient-to-br from-blue-100 via-cyan-100 to-sky-100">
           <div className="max-w-3xl mx-auto px-4">
@@ -891,7 +1048,7 @@ const MagicShow = () => {
         {/* Google Müşteri Yorumları */}
         <LazySection minHeight={240}>
           <Suspense fallback={<div style={{ minHeight: 240 }} />}>
-            <GoogleReviews reviews={getReviewsByTags(['sihirbaz', 'genel'])} title="Sihirbaz Kiralama Müşteri Yorumları" />
+            <GoogleReviews reviews={getReviewsByTags(['sihirbaz', 'genel'])} title="Sihirbaz Kiralama Müşteri Yorumları" serviceName="Sihirbaz Kiralama İstanbul" serviceUrl="/organizasyonlar/magic-show" />
           </Suspense>
         </LazySection>
 
@@ -912,6 +1069,8 @@ const MagicShow = () => {
             <RelatedBlogPosts servicePath="/organizasyonlar/magic-show" />
           </Suspense>
         </LazySection>
+
+        <AuthorExpertise serviceName="Sihirbaz Kiralama" />
       </main>
     </>
   )

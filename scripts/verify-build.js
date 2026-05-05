@@ -260,7 +260,7 @@ function checkSitemap() {
   success(`sitemap.xml contains ${urlCount} URLs`)
   
   // Check for base URL
-  if (content.includes('https://www.bestevent.com.tr')) {
+  if (content.includes('https://bestevent.com.tr')) {
     success('Correct base URL found in sitemap')
   } else {
     error('Base URL not correct in sitemap.xml')

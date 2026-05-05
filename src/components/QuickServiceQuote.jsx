@@ -8,7 +8,7 @@ const QuickServiceQuote = ({
   whatsappText,
   whatsappLabel = 'WhatsApp’tan Hızlı Fiyat Al',
   phoneLabel = 'Telefonla Ulaş',
-  anchorLabel = 'Rezervasyon Formuna Git',
+  anchorLabel = 'Hemen Teklif Al',
   anchorHref = '#rezervasyon',
 }) => {
   const handleWhatsApp = () => {

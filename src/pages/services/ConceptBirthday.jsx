@@ -8,6 +8,7 @@ import RelatedServices from '../../components/RelatedServices'
 import TrustSection from '../../components/TrustSection'
 import { getConceptsIndexData } from '../../data/catalogData.async'
 import DeferredContentAccordion from '../../components/DeferredContentAccordion'
+import AuthorExpertise from '../../components/AuthorExpertise'
 
 const defaultHeroImages = [
   '/content/images/konseptdogumgunu/df00ef2b-d159-4e6e-bfa5-0c4458aaaa8c.webp',
@@ -515,6 +516,85 @@ const ConceptBirthday = () => {
 
       <TrustSection />
 
+      {/* SEO Hizmet Detayları — Konsept Doğum Günü Pastel Premium Tema */}
+      <section className="py-24 bg-gradient-to-br from-[#fff4fb] via-white to-[#f6f3ff] border-y border-black/5">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <p className="uppercase tracking-[0.3em] text-xs text-pink-500 mb-4 font-medium">İstanbul Konsept Doğum Günü</p>
+            <h2
+              className="font-semibold text-gray-900"
+              style={{
+                fontSize: 'clamp(1.75rem, 4.5vw, 2.75rem)',
+                lineHeight: '1.2',
+                letterSpacing: '-0.025em',
+                color: '#1d1d1f'
+              }}
+            >
+              Konsept Doğum Günü Organizasyonu
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {[
+              {
+                num: '01',
+                title: 'Tema Doğum Günü Organizasyonu',
+                text: 'Tema doğum günü organizasyonu hizmetimiz; Frozen, Mickey Mouse, Spiderman, Barbie, Süper Kahramanlar ve onlarca farklı tema ile çocuğunuzun hayalini gerçeğe dönüştürür. Konsept doğum günü partisi süslemeleri, balon dekorasyonu, masaüstü süsleri ve tema bazlı aktiviteler dahildir.',
+                accent: 'border-pink-200',
+                bg: 'bg-gradient-to-br from-pink-50 to-rose-50',
+                num_color: 'from-pink-500 to-rose-500',
+              },
+              {
+                num: '02',
+                title: 'Konsept Doğum Günü Süslemeleri',
+                text: 'Konsept doğum günü süslemeleri; tema bazlı balon dekorasyonu, kemer kapı süslemesi, masa düzeni, fotoğraf köşesi ve karakter standları içerir. Doğum günü konsepti için Pinterest\'ten esinlenmiş tasarımlar ve özgün konsept doğum günü fikirleri sunuyoruz; her etkinlik özel.',
+                accent: 'border-purple-200',
+                bg: 'bg-gradient-to-br from-purple-50 to-violet-50',
+                num_color: 'from-purple-500 to-violet-500',
+              },
+              {
+                num: '03',
+                title: 'Konsept Doğum Günü Fiyatları',
+                text: 'Konsept doğum günü fiyatları; seçilen tema, organizasyon süresi, misafir sayısı ve dahil edilen ek hizmetlere (palyaço, sihirbaz, bubble show, pamuk şeker arabası) göre belirlenir. Konsept doğum günü paketi detayları için WhatsApp\'tan hızlı teklif alın; katalog dakikalar içinde iletilir.',
+                accent: 'border-blue-200',
+                bg: 'bg-gradient-to-br from-blue-50 to-sky-50',
+                num_color: 'from-blue-500 to-sky-500',
+              },
+              {
+                num: '04',
+                title: 'Premium Konsept Etkinlik',
+                text: 'Premium konsept doğum günü organizasyonu seçen aileler; profesyonel dekoratör ekibi, özel masa düzeni, tema bazlı catering uyumu ve fotoğraf çekimi hizmeti alır. 1 yaş doğum günü, 2 yaş, çocuk doğum günü ve özel tema doğum günü için en kapsamlı paket.',
+                accent: 'border-amber-200',
+                bg: 'bg-gradient-to-br from-amber-50 to-yellow-50',
+                num_color: 'from-amber-500 to-yellow-500',
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className={`group p-7 rounded-2xl border ${item.accent} ${item.bg} hover:shadow-lg hover:shadow-pink-500/5 transition-all duration-300`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className={`text-3xl font-black bg-gradient-to-br ${item.num_color} bg-clip-text text-transparent`}>
+                    {item.num}
+                  </span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border border-gray-300 text-gray-600 font-medium bg-white/60">
+                    Hizmet
+                  </span>
+                </div>
+                <h3 className="text-gray-900 font-bold text-xl mb-3 leading-tight">{item.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-14 text-center">
+            <p className="text-gray-500 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+              Konsept doğum günü organizasyonu hizmetimiz İstanbul'un tüm ilçelerine (Kadıköy, Ataşehir, Üsküdar, Beşiktaş, Şişli, Bakırköy, Pendik, Maltepe) gönderim yapmaktadır.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-20 bg-neutral-50">
         <div className="max-w-3xl mx-auto px-4">
@@ -664,6 +744,8 @@ const ConceptBirthday = () => {
       </section>
 
       <RelatedServices currentService="konsept-dogum-gunu" />
+
+      <AuthorExpertise serviceName="Konsept Doğum Günü" />
     </>
   )
 }

@@ -13,10 +13,10 @@ const PillarLink = ({ servicePath, serviceName }) => {
           <div>
             <p className="text-sm font-medium text-purple-600 mb-1">Detaylı Hizmet Sayfamız</p>
             <h4 className="text-lg font-bold text-gray-900 group-hover:text-purple-700 transition-colors">
-              {serviceName} Hizmeti Hakkında Bilgi Alın
+              {serviceName} İstanbul — Fiyat ve Rezervasyon
             </h4>
             <p className="text-sm text-gray-600 mt-1">
-              Fiyatlar, paket seçenekleri ve rezervasyon bilgileri
+              Detaylı bilgi, paket seçenekleri ve online teklif
             </p>
           </div>
           <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 group-hover:bg-purple-200 flex items-center justify-center transition-colors">

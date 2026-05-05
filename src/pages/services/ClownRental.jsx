@@ -407,6 +407,11 @@ const ClownRental = () => {
       <AdHero
         title="Palyaço Kiralama İstanbul"
         backgroundImage="/content/images/palyaco/palyacoanaherogrupoyunlari.webp"
+        subtitle="Doğum günü ve çocuk partileri için profesyonel palyaço hizmeti"
+        primaryLabel="WhatsApp'tan Teklif Al"
+        whatsappMessage="Merhaba, palyaço kiralama hakkında bilgi almak istiyorum."
+        quickFacts={['10+ Yıl Tecrübe', '5000+ Etkinlik', '5⭐ Google Yorumu', 'Aynı Gün Rezervasyon']}
+        ctaNote="📞 Hızlı yanıt — mesajınıza dakikalar içinde dönüş"
       />
 
       <LocationHeroShowcase
@@ -655,6 +660,83 @@ const ClownRental = () => {
       </section>
 
       <TrustSection />
+
+      {/* SEO Hizmet Detayları — Palyaço Kırmızı/Turuncu Tema */}
+      <section className="relative py-24 sm:py-28 bg-gradient-to-b from-black via-red-950/20 to-black overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(239,68,68,0.08),_transparent_50%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(251,146,60,0.06),_transparent_50%)] pointer-events-none" />
+
+        <div className="relative max-w-5xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="uppercase tracking-[0.3em] text-xs text-red-400 mb-4 font-medium">İstanbul Palyaço Hizmetleri</p>
+            <h2
+              className="font-bold text-white"
+              style={{
+                fontSize: 'clamp(1.75rem, 4.5vw, 2.75rem)',
+                lineHeight: '1.2',
+                letterSpacing: '-0.02em'
+              }}
+            >
+              Palyaço Kiralama Hizmetlerimiz
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {[
+              {
+                num: '01',
+                title: 'Doğum Günü Palyaço Kiralama',
+                text: 'Çocuğunuzun doğum günü partisi için profesyonel doğum günü palyaço kiralama hizmetimiz, 3-12 yaş arası misafirleri 60 dakika boyunca eğlendirir. Doğum günü palyaçosu; balon şekillendirme, sihir numaraları, dans ve interaktif oyunları tek programda birleştirir. İstanbul\'un her ilçesine gönderim yapar.',
+                accent: 'border-red-500/20',
+                tag: 'border-red-500/30 text-red-300',
+              },
+              {
+                num: '02',
+                title: 'Profesyonel Palyaço Organizasyonu',
+                text: 'Palyaço organizasyonu için profesyonel ekibimizle çocuk parti palyaço kiralama, kreş etkinliği, AVM organizasyonu ve kurumsal aile günü hizmeti sunuyoruz. Hijyenik kostüm garantisi, sözleşmeli güvence ve 5⭐ Google yorumu — palyaço kirala dediğinizde ilk akla gelen marka.',
+                accent: 'border-orange-500/20',
+                tag: 'border-orange-500/30 text-orange-300',
+              },
+              {
+                num: '03',
+                title: 'Palyaço Kiralama Fiyatları',
+                text: 'Palyaço kiralama fiyatları; gösteri süresi, etkinlik tipi, misafir sayısı ve tercih edilen palyaço şovu paketine göre belirlenir. Palyaço fiyatları ve palyaço hizmeti detayları için WhatsApp\'tan hızlı teklif alın. Standart 60 dakikalık, premium animasyon ve kurumsal organizasyon paketleri.',
+                accent: 'border-yellow-500/20',
+                tag: 'border-yellow-500/30 text-yellow-300',
+              },
+              {
+                num: '04',
+                title: 'Animatör Palyaço & Çocuk Etkinliği',
+                text: 'Animatör palyaço hizmetimiz; çocuk etkinliği animasyonu, oyun ablası ve eğlence organizasyonu öğelerini birleştirir. İstanbul palyaço kiralama tercih edilme sebebimiz: profesyonel kadro, hijyenik kostüm ve animatör eğitimi. Doğum günü için palyaço, ev için palyaço, uygun fiyat palyaço seçenekleri.',
+                accent: 'border-pink-500/20',
+                tag: 'border-pink-500/30 text-pink-300',
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className={`group p-7 rounded-2xl border ${item.accent} bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm transition-all duration-300`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-3xl font-black bg-gradient-to-br from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+                    {item.num}
+                  </span>
+                  <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${item.tag} font-medium`}>
+                    Hizmet
+                  </span>
+                </div>
+                <h3 className="text-white font-bold text-xl mb-3 leading-tight">{item.title}</h3>
+                <p className="text-white/65 text-sm leading-relaxed">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-14 text-center">
+            <p className="text-white/40 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+              Palyaço kiralama İstanbul hizmetimiz tüm ilçelere (Kadıköy, Ataşehir, Üsküdar, Beşiktaş, Şişli, Bakırköy, Pendik, Maltepe, Beylikdüzü, Ümraniye, Çekmeköy, Esenyurt) gönderim yapmaktadır.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Google Müşteri Yorumları */}
       <GoogleReviews reviews={getReviewsByTags(['palyaco', 'genel'])} title="Palyaço Kiralama Müşteri Yorumları" serviceName="Palyaço Kiralama İstanbul" serviceUrl="/organizasyonlar/palyaco-kiralama" />

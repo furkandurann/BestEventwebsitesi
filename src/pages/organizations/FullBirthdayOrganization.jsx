@@ -12,6 +12,7 @@ import TrustSection from "../../components/TrustSection";
 import RelatedBlogPosts from "../../components/RelatedBlogPosts";
 import { generateSrcSet } from "../../utils/responsiveImage";
 import { trackFormSubmit } from "../../utils/tracking";
+import AuthorExpertise from "../../components/AuthorExpertise";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
@@ -178,7 +179,8 @@ const FullBirthdayOrganization = () => {
             "@context": "https://schema.org", "@type": "BreadcrumbList",
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://bestevent.com.tr" },
-              { "@type": "ListItem", position: 2, name: "Doğum Günü Organizasyonu", item: "https://bestevent.com.tr/organizasyonlar/dogum-gunu-organizasyonu" },
+              { "@type": "ListItem", position: 2, name: "Çocuk Etkinlikleri", item: "https://bestevent.com.tr/organizasyonlar/cocuk-etkinlikleri" },
+              { "@type": "ListItem", position: 3, name: "Doğum Günü Organizasyonu", item: "https://bestevent.com.tr/organizasyonlar/dogum-gunu-organizasyonu" },
             ],
           },
           {
@@ -880,6 +882,86 @@ const FullBirthdayOrganization = () => {
 
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           SEO Hizmet Detayları — Doğum Günü Organizasyonu
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <section className="relative bg-[#050509] border-t border-white/5 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(168,85,247,0.06),_transparent_50%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(251,146,60,0.05),_transparent_50%)] pointer-events-none" />
+
+          <div className="relative max-w-5xl mx-auto px-6 py-20 md:py-24">
+            <div className="text-center mb-14">
+              <p className="uppercase tracking-[0.3em] text-xs text-orange-400 mb-4 font-medium">İstanbul Doğum Günü Organizasyonu</p>
+              <h2
+                className="font-semibold text-white"
+                style={{
+                  fontFamily: font.display,
+                  fontSize: "clamp(1.75rem, 4.5vw, 2.75rem)",
+                  lineHeight: 1.2,
+                  letterSpacing: "-0.025em"
+                }}
+              >
+                Doğum Günü Organizasyonu Hizmetlerimiz
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {[
+                {
+                  num: '01',
+                  title: 'Çocuk Doğum Günü Organizasyonu',
+                  text: 'Çocuk doğum günü organizasyonu hizmetimiz; palyaço, sihirbaz, bubble show, pamuk şeker arabası, balon süsleme ve animatör oyun ablası dahil tam paket organizasyon sunar. 1 yaş, 2 yaş, 3 yaş ve büyük çocuk doğum günü partileri için özel paketler.',
+                  accent: 'border-purple-500/20',
+                  tag: 'border-purple-500/30 text-purple-300',
+                },
+                {
+                  num: '02',
+                  title: 'Doğum Günü Organizasyon Paketleri',
+                  text: 'Doğum günü organizasyon paketleri; etkinlik süresi, misafir sayısı, seçilen aktiviteler ve dekorasyon detaylarına göre belirlenir. Doğum günü organizasyon fiyatları için WhatsApp\'tan hızlı teklif alın. Standart paket, premium paket ve full paket organizasyonu seçenekleri.',
+                  accent: 'border-pink-500/20',
+                  tag: 'border-pink-500/30 text-pink-300',
+                },
+                {
+                  num: '03',
+                  title: 'Tema Bazlı Doğum Günü Partisi',
+                  text: 'Tema doğum günü partisi seçenekleri; Frozen, Mickey Mouse, Spiderman, Barbie, Süper Kahramanlar, Atlı Karınca, Futbol gibi onlarca konseptle çocuğunuzun hayal dünyasına uygun bir parti hazırlıyoruz. Tema bazlı dekorasyon, kostümler ve aktiviteler dahil.',
+                  accent: 'border-orange-500/20',
+                  tag: 'border-orange-500/30 text-orange-300',
+                },
+                {
+                  num: '04',
+                  title: 'Doğum Günü Etkinlik Hizmetleri',
+                  text: 'Doğum günü etkinlikleri için 10+ yıl deneyim, 5000+ başarılı organizasyon, 5⭐ Google yorumu. Doğum günü partisi, doğum günü kutlama yerleri, doğum günü hazırlıkları konularında uzman ekibimiz; sözleşmeli güvence ile İstanbul\'un her ilçesine hizmet veriyor.',
+                  accent: 'border-amber-500/20',
+                  tag: 'border-amber-500/30 text-amber-300',
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className={`group p-7 rounded-2xl border ${item.accent} bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm transition-all duration-300`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl font-black bg-gradient-to-br from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+                      {item.num}
+                    </span>
+                    <span className={`text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border ${item.tag} font-medium`}>
+                      Hizmet
+                    </span>
+                  </div>
+                  <h3 className="text-white font-bold text-xl mb-3 leading-tight" style={{ fontFamily: font.display }}>{item.title}</h3>
+                  <p className="text-white/65 text-sm leading-relaxed" style={{ fontFamily: font.text }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-14 text-center">
+              <p className="text-white/40 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+                Doğum günü organizasyonu hizmetimiz İstanbul'un tüm ilçelerine (Kadıköy, Ataşehir, Üsküdar, Beşiktaş, Şişli, Bakırköy, Pendik, Maltepe, Beylikdüzü, Ümraniye) gönderim yapmaktadır.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            SSS
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
         <section className="bg-[#0a0a0f] border-t border-white/5">
@@ -912,6 +994,8 @@ const FullBirthdayOrganization = () => {
         <RelatedBlogPosts servicePath="/organizasyonlar/dogum-gunu-organizasyonu" />
 
         <RelatedServices currentService="dogum-gunu-organizasyonu" />
+
+        <AuthorExpertise serviceName="Doğum Günü Organizasyonu" />
       </main>
     </>
   );

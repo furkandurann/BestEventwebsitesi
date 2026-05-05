@@ -337,12 +337,12 @@ const Home = () => {
       {/* Google Müşteri Yorumları */}
       <GoogleReviews reviews={googleReviews} title="Müşterilerimiz Ne Diyor?" />
 
-      {/* Bölgesel Hizmetlerimiz */}
+      {/* Profesyonel Hizmetlerimiz */}
       <section className="py-16 sm:py-20 bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-900/5 via-transparent to-purple-900/5 pointer-events-none" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <p className="uppercase tracking-[0.25em] text-xs text-purple-400 mb-4 font-semibold text-center">
-            Bölgesel Hizmetler
+            Hizmetlerimiz
           </p>
           <h2
             className="font-bold text-white text-center mb-4"
@@ -352,22 +352,26 @@ const Home = () => {
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif'
             }}
           >
-            İstanbul'un Her Bölgesinde Yanınızdayız
+            Profesyonel Etkinlik Organizasyonu
           </h2>
           <p className="text-center text-white/60 mb-10 max-w-2xl mx-auto" style={{ lineHeight: '1.7' }}>
-            20 ilçede profesyonel çocuk etkinlikleri ve organizasyon hizmetleri
+            İstanbul genelinde çocuk etkinlikleri, gösteriler ve organizasyon hizmetleri
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-8">
             {[
-              { name: 'Kadıköy Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/kadikoy' },
-              { name: 'Beşiktaş Sihirbaz Kiralama', path: '/organizasyonlar/magic-show/besiktas' },
-              { name: 'Ataşehir Bubble Show', path: '/organizasyonlar/bubble-show/atasehir' },
-              { name: 'Şişli Doğum Günü Org.', path: '/organizasyonlar/dogum-gunu-organizasyonu/sisli' },
-              { name: 'Üsküdar Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama/uskudar' },
-              { name: 'Beylikdüzü Bubble Show', path: '/organizasyonlar/bubble-show/beylikduzu' },
-              { name: 'Bakırköy Yüz Boyama', path: '/organizasyonlar/yuz-boyama/bakirkoy' },
-              { name: 'Maltepe Sihirbaz Kiralama', path: '/organizasyonlar/magic-show/maltepe' },
+              { name: 'Palyaço Kiralama', path: '/organizasyonlar/palyaco-kiralama' },
+              { name: 'Sihirbaz Kiralama', path: '/organizasyonlar/magic-show' },
+              { name: 'Bubble Show Kiralama', path: '/organizasyonlar/bubble-show' },
+              { name: 'Doğum Günü Organizasyonu', path: '/organizasyonlar/dogum-gunu-organizasyonu' },
+              { name: 'Konsept Doğum Günü', path: '/organizasyonlar/konsept-dogum-gunu' },
+              { name: 'Kostümlü Karakterler', path: '/organizasyonlar/kostumlu-karakterler' },
+              { name: 'Maskot Kiralama', path: '/organizasyonlar/maskot-kiralama' },
+              { name: 'Profesyonel Yüz Boyama', path: '/organizasyonlar/yuz-boyama' },
+              { name: 'Pamuk Şeker Arabası', path: '/organizasyonlar/pamuk-seker' },
+              { name: 'Full Paket Organizasyon', path: '/organizasyonlar/full-paket-organizasyon' },
+              { name: 'Noel Baba Kiralama', path: '/organizasyonlar/noel-baba-kiralama' },
+              { name: 'Çocuk Etkinlikleri', path: '/organizasyonlar/cocuk-etkinlikleri' },
             ].map((item) => (
               <Link
                 key={item.path}
@@ -381,10 +385,10 @@ const Home = () => {
 
           <div className="text-center">
             <Link
-              to="/hizmet-bolgeleri"
+              to="/organizasyonlar/cocuk-etkinlikleri"
               className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors"
             >
-              Tüm Hizmet Bölgelerimizi Görün
+              Tüm Etkinlik Hizmetlerimizi Keşfedin
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

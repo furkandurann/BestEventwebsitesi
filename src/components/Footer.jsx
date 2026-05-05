@@ -9,6 +9,18 @@ const Footer = () => {
     trackPhoneClick('Footer', window.location.href)
   }
 
+  // Ana Hizmetler (SEO Otorite - site-wide internal links)
+  const mainServices = [
+    { name: 'Palyaço Kiralama İstanbul', path: '/organizasyonlar/palyaco-kiralama' },
+    { name: 'Sihirbaz Kiralama İstanbul', path: '/organizasyonlar/magic-show' },
+    { name: 'Bubble Show İstanbul', path: '/organizasyonlar/bubble-show' },
+    { name: 'Doğum Günü Organizasyonu', path: '/organizasyonlar/dogum-gunu-organizasyonu' },
+    { name: 'Konsept Doğum Günü', path: '/organizasyonlar/konsept-dogum-gunu' },
+    { name: 'Kostümlü Karakter Kiralama', path: '/organizasyonlar/kostumlu-karakterler' },
+    { name: 'Maskot Kiralama İstanbul', path: '/organizasyonlar/maskot-kiralama' },
+    { name: 'Pamuk Şeker Arabası', path: '/organizasyonlar/pamuk-seker' },
+  ]
+
   // Gösteriler & Animasyon
   const showServices = [
     { name: 'Magic Show', path: '/organizasyonlar/magic-show' },
@@ -120,6 +132,24 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
+          </div>
+
+          {/* Ana Hizmetlerimiz - SEO Otorite */}
+          <div>
+            <h4 className="text-xl font-semibold mb-6">Ana Hizmetlerimiz</h4>
+            <ul className="space-y-3">
+              {mainServices.map((service) => (
+                <li key={service.path}>
+                  <Link
+                    to={service.path}
+                    className="nav-link text-gray-600 hover:text-primary flex items-center group font-medium"
+                  >
+                    <span className="mr-2 group-hover:mr-3 transition-standard">›</span>
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Quick Links */}
